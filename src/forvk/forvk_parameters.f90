@@ -1089,7 +1089,7 @@ module forvk_parameters
   type t_vk_structure_type
     type(t_physical_device) :: PHYSICAL_DEVICE = t_physical_device()
     type(t_pipeline) :: PIPELINE = t_pipeline()
-    
+    type(t_video_encode) :: VIDEO_ENCODE = t_video_encode()
     integer(c_int) :: APPLICATION_INFO = 0
     integer(c_int) :: INSTANCE_CREATE_INFO = 1
     integer(c_int) :: DEVICE_QUEUE_CREATE_INFO = 2
