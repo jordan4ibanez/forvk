@@ -527,7 +527,7 @@ module glfw
       use, intrinsic :: iso_c_binding
       implicit none
 
-      integer(c_int) :: count
+      integer(c_int), intent(inout) :: count
       type(c_ptr) :: string_array
     end function glfw_get_required_instance_extensions
 
