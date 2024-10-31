@@ -14,7 +14,11 @@ module forvk
   public :: vk_application_info
 
 
-!* TYPES. ===============================================================
+!* TYPES. ============================c===================================
+
+  !! NOTE: !!
+  !! typedef uint32_t VkFlags; !!
+  !! vk_flags VkFlags is of type integer(c_int) !!
 
 
   type, bind(c) :: vk_extension_properties
