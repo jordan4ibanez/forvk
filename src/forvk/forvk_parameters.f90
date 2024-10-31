@@ -1084,73 +1084,73 @@ module forvk_parameters
     ! Provided by VK_KHR_video_encode_queue
     integer(c_int) :: ENCODE_SESSION_PARAMETERS_FEEDBACK_INFO_KHR = 1000299010
     ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_PROFILE_INFO_KHR = 1000023000
+    integer(c_int) :: PROFILE_INFO_KHR = 1000023000
     ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_CAPABILITIES_KHR = 1000023001
+    integer(c_int) :: CAPABILITIES_KHR = 1000023001
     ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_PICTURE_RESOURCE_INFO_KHR = 1000023002
+    integer(c_int) :: PICTURE_RESOURCE_INFO_KHR = 1000023002
     ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_SESSION_MEMORY_REQUIREMENTS_KHR = 1000023003
+    integer(c_int) :: SESSION_MEMORY_REQUIREMENTS_KHR = 1000023003
     ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_SESSION_CREATE_INFO_KHR = 1000023005
+    integer(c_int) :: SESSION_CREATE_INFO_KHR = 1000023005
     ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_SESSION_PARAMETERS_CREATE_INFO_KHR = 1000023006
+    integer(c_int) :: SESSION_PARAMETERS_CREATE_INFO_KHR = 1000023006
     ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_SESSION_PARAMETERS_UPDATE_INFO_KHR = 1000023007
+    integer(c_int) :: SESSION_PARAMETERS_UPDATE_INFO_KHR = 1000023007
     ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_BEGIN_CODING_INFO_KHR = 1000023008
+    integer(c_int) :: BEGIN_CODING_INFO_KHR = 1000023008
     ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_END_CODING_INFO_KHR = 1000023009
+    integer(c_int) :: END_CODING_INFO_KHR = 1000023009
     ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_CODING_CONTROL_INFO_KHR = 1000023010
+    integer(c_int) :: CODING_CONTROL_INFO_KHR = 1000023010
     ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_REFERENCE_SLOT_INFO_KHR = 1000023011
+    integer(c_int) :: REFERENCE_SLOT_INFO_KHR = 1000023011
     ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_PROFILE_LIST_INFO_KHR = 1000023013
+    integer(c_int) :: PROFILE_LIST_INFO_KHR = 1000023013
     ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_FORMAT_PROPERTIES_KHR = 1000023015
+    integer(c_int) :: FORMAT_PROPERTIES_KHR = 1000023015
     ! Provided by VK_KHR_video_decode_queue
-    integer(c_int) :: VIDEO_DECODE_INFO_KHR = 1000024000
+    integer(c_int) :: DECODE_INFO_KHR = 1000024000
     ! Provided by VK_KHR_video_decode_queue
-    integer(c_int) :: VIDEO_DECODE_CAPABILITIES_KHR = 1000024001
+    integer(c_int) :: DECODE_CAPABILITIES_KHR = 1000024001
     ! Provided by VK_KHR_video_decode_queue
-    integer(c_int) :: VIDEO_DECODE_USAGE_INFO_KHR = 1000024002
+    integer(c_int) :: DECODE_USAGE_INFO_KHR = 1000024002
     ! Provided by VK_KHR_video_decode_h264
-    integer(c_int) :: VIDEO_DECODE_H264_CAPABILITIES_KHR = 1000040000
+    integer(c_int) :: DECODE_H264_CAPABILITIES_KHR = 1000040000
     ! Provided by VK_KHR_video_decode_h264
-    integer(c_int) :: VIDEO_DECODE_H264_PICTURE_INFO_KHR = 1000040001
+    integer(c_int) :: DECODE_H264_PICTURE_INFO_KHR = 1000040001
     ! Provided by VK_KHR_video_decode_h264
-    integer(c_int) :: VIDEO_DECODE_H264_PROFILE_INFO_KHR = 1000040003
+    integer(c_int) :: DECODE_H264_PROFILE_INFO_KHR = 1000040003
     ! Provided by VK_KHR_video_decode_h264
-    integer(c_int) :: VIDEO_DECODE_H264_SESSION_PARAMETERS_CREATE_INFO_KHR = 1000040004
+    integer(c_int) :: DECODE_H264_SESSION_PARAMETERS_CREATE_INFO_KHR = 1000040004
     ! Provided by VK_KHR_video_decode_h264
-    integer(c_int) :: VIDEO_DECODE_H264_SESSION_PARAMETERS_ADD_INFO_KHR = 1000040005
+    integer(c_int) :: DECODE_H264_SESSION_PARAMETERS_ADD_INFO_KHR = 1000040005
     ! Provided by VK_KHR_video_decode_h264
-    integer(c_int) :: VIDEO_DECODE_H264_DPB_SLOT_INFO_KHR = 1000040006
+    integer(c_int) :: DECODE_H264_DPB_SLOT_INFO_KHR = 1000040006
     ! Provided by VK_KHR_video_decode_h265
-    integer(c_int) :: VIDEO_DECODE_H265_CAPABILITIES_KHR = 1000187000
+    integer(c_int) :: DECODE_H265_CAPABILITIES_KHR = 1000187000
     ! Provided by VK_KHR_video_decode_h265
-    integer(c_int) :: VIDEO_DECODE_H265_SESSION_PARAMETERS_CREATE_INFO_KHR = 1000187001
+    integer(c_int) :: DECODE_H265_SESSION_PARAMETERS_CREATE_INFO_KHR = 1000187001
     ! Provided by VK_KHR_video_decode_h265
-    integer(c_int) :: VIDEO_DECODE_H265_SESSION_PARAMETERS_ADD_INFO_KHR = 1000187002
+    integer(c_int) :: DECODE_H265_SESSION_PARAMETERS_ADD_INFO_KHR = 1000187002
     ! Provided by VK_KHR_video_decode_h265
-    integer(c_int) :: VIDEO_DECODE_H265_PROFILE_INFO_KHR = 1000187003
+    integer(c_int) :: DECODE_H265_PROFILE_INFO_KHR = 1000187003
     ! Provided by VK_KHR_video_decode_h265
-    integer(c_int) :: VIDEO_DECODE_H265_PICTURE_INFO_KHR = 1000187004
+    integer(c_int) :: DECODE_H265_PICTURE_INFO_KHR = 1000187004
     ! Provided by VK_KHR_video_decode_h265
-    integer(c_int) :: VIDEO_DECODE_H265_DPB_SLOT_INFO_KHR = 1000187005
+    integer(c_int) :: DECODE_H265_DPB_SLOT_INFO_KHR = 1000187005
     ! Provided by VK_KHR_video_decode_av1
-    integer(c_int) :: VIDEO_DECODE_AV1_CAPABILITIES_KHR = 1000512000
+    integer(c_int) :: DECODE_AV1_CAPABILITIES_KHR = 1000512000
     ! Provided by VK_KHR_video_decode_av1
-    integer(c_int) :: VIDEO_DECODE_AV1_PICTURE_INFO_KHR = 1000512001
+    integer(c_int) :: DECODE_AV1_PICTURE_INFO_KHR = 1000512001
     ! Provided by VK_KHR_video_decode_av1
-    integer(c_int) :: VIDEO_DECODE_AV1_PROFILE_INFO_KHR = 1000512003
+    integer(c_int) :: DECODE_AV1_PROFILE_INFO_KHR = 1000512003
     ! Provided by VK_KHR_video_decode_av1
-    integer(c_int) :: VIDEO_DECODE_AV1_SESSION_PARAMETERS_CREATE_INFO_KHR = 1000512004
+    integer(c_int) :: DECODE_AV1_SESSION_PARAMETERS_CREATE_INFO_KHR = 1000512004
     ! Provided by VK_KHR_video_decode_av1
-    integer(c_int) :: VIDEO_DECODE_AV1_DPB_SLOT_INFO_KHR = 1000512005
+    integer(c_int) :: DECODE_AV1_DPB_SLOT_INFO_KHR = 1000512005
     ! Provided by VK_KHR_video_maintenance1
-    integer(c_int) :: VIDEO_INLINE_QUERY_INFO_KHR = 1000515001
+    integer(c_int) :: INLINE_QUERY_INFO_KHR = 1000515001
   end type t_video
 
 
