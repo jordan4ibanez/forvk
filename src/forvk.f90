@@ -29,6 +29,7 @@ module forvk
 
 
   type, bind(c) :: vk_application_info
+    ! uint32_t VkStructureType
     integer(c_int) :: s_type
     ! void *
     type(c_ptr) :: p_next
