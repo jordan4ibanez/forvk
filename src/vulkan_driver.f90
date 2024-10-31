@@ -72,8 +72,9 @@ contains
 
     app_info%p_engine_name = c_loc(engine_name)
     app_info%engine_version = vk_make_api_version(0,1,0,0)
-
     app_info%api_version = VK_API_VERSION_1_0
+
+    
 
 
 
