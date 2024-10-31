@@ -2417,37 +2417,37 @@ module forvk_parameters
     ! Provided by VK_KHR_8bit_storage
     integer(c_int) :: t_8BIT_STORAGE_FEATURES_KHR = 1000177000
     ! Provided by VK_KHR_shader_atomic_int64
-    integer(c_int) :: SHADER_ATOMIC_INT64_FEATURES_KHR = SHADER_ATOMIC_INT64_FEATURES
+    integer(c_int) :: SHADER_ATOMIC_INT64_FEATURES_KHR = 1000180000
     ! Provided by VK_EXT_vertex_attribute_divisor
-    integer(c_int) :: VERTEX_ATTRIBUTE_DIVISOR_FEATURES_EXT = VERTEX_ATTRIBUTE_DIVISOR_FEATURES_KHR
+    integer(c_int) :: VERTEX_ATTRIBUTE_DIVISOR_FEATURES_EXT = 1000190002
     ! Provided by VK_KHR_driver_properties
-    integer(c_int) :: DRIVER_PROPERTIES_KHR = DRIVER_PROPERTIES
+    integer(c_int) :: DRIVER_PROPERTIES_KHR = 1000196000
     ! Provided by VK_KHR_shader_float_controls
-    integer(c_int) :: FLOAT_CONTROLS_PROPERTIES_KHR = FLOAT_CONTROLS_PROPERTIES
+    integer(c_int) :: FLOAT_CONTROLS_PROPERTIES_KHR = 1000197000
     ! Provided by VK_KHR_depth_stencil_resolve
-    integer(c_int) :: DEPTH_STENCIL_RESOLVE_PROPERTIES_KHR = DEPTH_STENCIL_RESOLVE_PROPERTIES
+    integer(c_int) :: DEPTH_STENCIL_RESOLVE_PROPERTIES_KHR = 1000199000
     ! Provided by VK_NV_compute_shader_derivatives
-    integer(c_int) :: COMPUTE_SHADER_DERIVATIVES_FEATURES_NV = COMPUTE_SHADER_DERIVATIVES_FEATURES_KHR
+    integer(c_int) :: COMPUTE_SHADER_DERIVATIVES_FEATURES_NV = 1000201000
     ! Provided by VK_NV_fragment_shader_barycentric
-    integer(c_int) :: FRAGMENT_SHADER_BARYCENTRIC_FEATURES_NV = FRAGMENT_SHADER_BARYCENTRIC_FEATURES_KHR
+    integer(c_int) :: FRAGMENT_SHADER_BARYCENTRIC_FEATURES_NV = 1000203000
     ! Provided by VK_KHR_timeline_semaphore
-    integer(c_int) :: TIMELINE_SEMAPHORE_FEATURES_KHR = TIMELINE_SEMAPHORE_FEATURES
+    integer(c_int) :: TIMELINE_SEMAPHORE_FEATURES_KHR = 1000207000
     ! Provided by VK_KHR_timeline_semaphore
-    integer(c_int) :: TIMELINE_SEMAPHORE_PROPERTIES_KHR = TIMELINE_SEMAPHORE_PROPERTIES
+    integer(c_int) :: TIMELINE_SEMAPHORE_PROPERTIES_KHR = 1000207001
     ! Provided by VK_KHR_vulkan_memory_model
-    integer(c_int) :: VULKAN_MEMORY_MODEL_FEATURES_KHR = VULKAN_MEMORY_MODEL_FEATURES
+    integer(c_int) :: VULKAN_MEMORY_MODEL_FEATURES_KHR = 1000211000
     ! Provided by VK_KHR_shader_terminate_invocation
-    integer(c_int) :: SHADER_TERMINATE_INVOCATION_FEATURES_KHR = SHADER_TERMINATE_INVOCATION_FEATURES
+    integer(c_int) :: SHADER_TERMINATE_INVOCATION_FEATURES_KHR = 1000215000
     ! Provided by VK_EXT_scalar_block_layout
-    integer(c_int) :: SCALAR_BLOCK_LAYOUT_FEATURES_EXT = SCALAR_BLOCK_LAYOUT_FEATURES
+    integer(c_int) :: SCALAR_BLOCK_LAYOUT_FEATURES_EXT = 1000221000
     ! Provided by VK_EXT_subgroup_size_control
-    integer(c_int) :: SUBGROUP_SIZE_CONTROL_PROPERTIES_EXT = SUBGROUP_SIZE_CONTROL_PROPERTIES
+    integer(c_int) :: SUBGROUP_SIZE_CONTROL_PROPERTIES_EXT = 1000225000
     ! Provided by VK_EXT_subgroup_size_control
-    integer(c_int) :: SUBGROUP_SIZE_CONTROL_FEATURES_EXT = SUBGROUP_SIZE_CONTROL_FEATURES
+    integer(c_int) :: SUBGROUP_SIZE_CONTROL_FEATURES_EXT = 1000225002
     ! Provided by VK_KHR_separate_depth_stencil_layouts
-    integer(c_int) :: SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES_KHR = SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES
+    integer(c_int) :: SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES_KHR = 1000241000
     ! Provided by VK_EXT_buffer_device_address
-    integer(c_int) :: BUFFER_ADDRESS_FEATURES_EXT = BUFFER_DEVICE_ADDRESS_FEATURES_EXT
+    integer(c_int) :: BUFFER_ADDRESS_FEATURES_EXT = 1000244000
     ! Provided by VK_EXT_tooling_info
     integer(c_int) :: TOOL_PROPERTIES_EXT = TOOL_PROPERTIES
     ! Provided by VK_KHR_uniform_buffer_standard_layout
