@@ -2357,23 +2357,23 @@ module forvk_parameters
     ! Provided by VK_KHR_dynamic_rendering
     integer(c_int) :: DYNAMIC_RENDERING_FEATURES_KHR = DYNAMIC_RENDERING_FEATURES
     ! Provided by VK_KHR_multiview
-    integer(c_int) :: MULTIVIEW_FEATURES_KHR = MULTIVIEW_FEATURES
+    integer(c_int) :: MULTIVIEW_FEATURES_KHR = 1000053001
     ! Provided by VK_KHR_multiview
-    integer(c_int) :: MULTIVIEW_PROPERTIES_KHR = MULTIVIEW_PROPERTIES
+    integer(c_int) :: MULTIVIEW_PROPERTIES_KHR = 1000053002
     ! Provided by VK_KHR_get_properties2
-    integer(c_int) :: FEATURES_2_KHR = FEATURES_2
+    integer(c_int) :: FEATURES_2_KHR = 1000059000
     ! Provided by VK_KHR_get_properties2
-    integer(c_int) :: PROPERTIES_2_KHR = PROPERTIES_2
+    integer(c_int) :: PROPERTIES_2_KHR = 1000059001
     ! Provided by VK_KHR_get_properties2
-    integer(c_int) :: IMAGE_FORMAT_INFO_2_KHR = IMAGE_FORMAT_INFO_2
+    integer(c_int) :: IMAGE_FORMAT_INFO_2_KHR = 1000059004
     ! Provided by VK_KHR_get_properties2
-    integer(c_int) :: MEMORY_PROPERTIES_2_KHR = MEMORY_PROPERTIES_2
+    integer(c_int) :: MEMORY_PROPERTIES_2_KHR = 1000059006
     ! Provided by VK_KHR_get_properties2
-    integer(c_int) :: SPARSE_IMAGE_FORMAT_INFO_2_KHR = SPARSE_IMAGE_FORMAT_INFO_2
+    integer(c_int) :: SPARSE_IMAGE_FORMAT_INFO_2_KHR = 1000059008
     ! Provided by VK_EXT_texture_compression_astc_hdr
-    integer(c_int) :: TEXTURE_COMPRESSION_ASTC_HDR_FEATURES_EXT = TEXTURE_COMPRESSION_ASTC_HDR_FEATURES
+    integer(c_int) :: TEXTURE_COMPRESSION_ASTC_HDR_FEATURES_EXT = 1000066000
     ! Provided by VK_KHR_device_group_creation
-    integer(c_int) :: GROUP_PROPERTIES_KHR = GROUP_PROPERTIES
+    integer(c_int) :: GROUP_PROPERTIES_KHR = 1000070000
     ! Provided by VK_KHR_external_memory_capabilities
     integer(c_int) :: EXTERNAL_IMAGE_FORMAT_INFO_KHR = EXTERNAL_IMAGE_FORMAT_INFO
     ! Provided by VK_KHR_external_memory_capabilities
