@@ -234,6 +234,7 @@ module glfw
   integer(c_int), parameter, public :: GLFW_KEY_MENU = 348
 
   integer(c_int), parameter, public :: GLFW_NO_API = 0
+  integer(c_int), parameter, public :: GLFW_CLIENT_API = int(z"00022001")
   integer(c_int), parameter, public :: GLFW_OPENGL_API = int(z"00030001")
   integer(c_int), parameter, public :: GLFW_OPENGL_ES_API = int(z"00030002")
 
