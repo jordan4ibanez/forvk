@@ -2353,9 +2353,9 @@ module forvk_parameters
     ! Provided by VK_VERSION_1_1
     integer(c_int) :: VARIABLE_POINTER_FEATURES = 1000120000
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: SHADER_DRAW_PARAMETER_FEATURES = SHADER_DRAW_PARAMETERS_FEATURES
+    integer(c_int) :: SHADER_DRAW_PARAMETER_FEATURES = 1000063000
     ! Provided by VK_KHR_dynamic_rendering
-    integer(c_int) :: DYNAMIC_RENDERING_FEATURES_KHR = DYNAMIC_RENDERING_FEATURES
+    integer(c_int) :: DYNAMIC_RENDERING_FEATURES_KHR = 1000044003
     ! Provided by VK_KHR_multiview
     integer(c_int) :: MULTIVIEW_FEATURES_KHR = 1000053001
     ! Provided by VK_KHR_multiview
@@ -2375,17 +2375,17 @@ module forvk_parameters
     ! Provided by VK_KHR_device_group_creation
     integer(c_int) :: GROUP_PROPERTIES_KHR = 1000070000
     ! Provided by VK_KHR_external_memory_capabilities
-    integer(c_int) :: EXTERNAL_IMAGE_FORMAT_INFO_KHR = EXTERNAL_IMAGE_FORMAT_INFO
+    integer(c_int) :: EXTERNAL_IMAGE_FORMAT_INFO_KHR = 1000071000
     ! Provided by VK_KHR_external_memory_capabilities
-    integer(c_int) :: EXTERNAL_BUFFER_INFO_KHR = EXTERNAL_BUFFER_INFO
+    integer(c_int) :: EXTERNAL_BUFFER_INFO_KHR = 1000071002
     ! Provided by VK_KHR_external_fence_capabilities VK_KHR_external_memory_capabilities VK_KHR_external_semaphore_capabilities
-    integer(c_int) :: ID_PROPERTIES_KHR = ID_PROPERTIES
+    integer(c_int) :: ID_PROPERTIES_KHR = 1000071004
     ! Provided by VK_KHR_external_semaphore_capabilities
-    integer(c_int) :: EXTERNAL_SEMAPHORE_INFO_KHR = EXTERNAL_SEMAPHORE_INFO
+    integer(c_int) :: EXTERNAL_SEMAPHORE_INFO_KHR = 1000076000
     ! Provided by VK_KHR_shader_float16_int8
-    integer(c_int) :: SHADER_FLOAT16_INT8_FEATURES_KHR = SHADER_FLOAT16_INT8_FEATURES
+    integer(c_int) :: SHADER_FLOAT16_INT8_FEATURES_KHR = 1000082000
     ! Provided by VK_KHR_shader_float16_int8
-    integer(c_int) :: FLOAT16_INT8_FEATURES_KHR = SHADER_FLOAT16_INT8_FEATURES
+    integer(c_int) :: FLOAT16_INT8_FEATURES_KHR = 1000082000
     ! Provided by VK_KHR_16bit_storage
     integer(c_int) :: 16BIT_STORAGE_FEATURES_KHR = 16BIT_STORAGE_FEATURES
     ! Provided by VK_KHR_imageless_framebuffer
