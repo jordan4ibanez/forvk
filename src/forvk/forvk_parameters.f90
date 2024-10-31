@@ -1727,7 +1727,7 @@ module forvk_parameters
     ! Provided by VK_VERSION_1_1
     integer(c_int) :: SUBGROUP_PROPERTIES = 1000094000
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: 16BIT_STORAGE_FEATURES = 1000083000
+    integer(c_int) :: t_16BIT_STORAGE_FEATURES = 1000083000
     ! Provided by VK_VERSION_1_1
     integer(c_int) :: GROUP_PROPERTIES = 1000070000
     ! Provided by VK_VERSION_1_1
