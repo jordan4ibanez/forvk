@@ -1777,7 +1777,7 @@ module forvk_parameters
     ! Provided by VK_VERSION_1_2
     integer(c_int) :: VULKAN_1_2_PROPERTIES = 52
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: 8BIT_STORAGE_FEATURES = 1000177000
+    integer(c_int) :: t_8BIT_STORAGE_FEATURES = 1000177000
     ! Provided by VK_VERSION_1_2
     integer(c_int) :: DRIVER_PROPERTIES = 1000196000
     ! Provided by VK_VERSION_1_2
