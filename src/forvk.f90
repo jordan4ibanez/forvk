@@ -6,6 +6,9 @@ module forvk
   private
 
 
+  public :: vk_enumerate_instance_extension_properties
+
+
 !* PARAMETERS. ===============================================================
 
 
@@ -123,10 +126,21 @@ module forvk
   end type vk_extension_properties
 
 
-!* FUNCTIONS.
+!* C FUNCTION INTERFACES. ===============================================================
 
 
   interface
+
+
+    function vk_enumerate_instance_extension_properties(p_layer_name, p_property_count, p_properties) result(vk_result) bind(c, name = "vkEnumerateInstanceExtensionProperties")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      !? char*, uint32_t*, VkExtensionProperties*
+      type(c_ptr), intent(in), value :: p_layer_name, p_property_count, p_properties
+      !? VkResult.
+      integer(c_int) :: vk_result
+    end function vk_enumerate_instance_extension_properties
 
 
 
