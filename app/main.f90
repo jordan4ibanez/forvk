@@ -1,6 +1,7 @@
 program main
   use forvk
   use :: glfw
+  use :: string_f90
   use, intrinsic :: iso_c_binding
   implicit none
 
@@ -16,10 +17,13 @@ program main
     error stop "Failed to create window."
   end if
 
+  extension_count = 0
 
   if (vk_enumerate_instance_extension_properties(c_null_ptr, c_loc(extension_count), c_null_ptr) /= VK_SUCCESS) then
     print*,"Failed to enumerate extension properties."
   end if
+
+  print"(A)","[Vulkan]: "//int_to_string(extension_count)//" extensions supported."
 
 
   call glfw_destroy_window()
