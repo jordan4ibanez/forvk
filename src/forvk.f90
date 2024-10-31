@@ -130,6 +130,23 @@ module forvk
   end type vk_extension_properties
 
 
+  type, bind(c) :: vk_application_info
+    integer(c_int) :: s_type
+    ! void *
+    type(c_ptr) :: p_next
+    ! char *
+    type(c_ptr) :: p_application_name
+    !! was uint32_t
+    integer(c_int) :: application_version
+    ! char *
+    type(c_ptr) :: p_engine_name
+    !! was uint32_t
+    integer(c_int) :: engine_version
+    !! was uint32_t
+    integer(c_int) :: api_version
+  end type vk_application_info
+
+
 !* C FUNCTION INTERFACES. ===============================================================
 
 
