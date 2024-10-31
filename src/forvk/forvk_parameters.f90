@@ -1083,6 +1083,74 @@ module forvk_parameters
     integer(c_int) :: ENCODE_SESSION_PARAMETERS_GET_INFO_KHR = 1000299009
     ! Provided by VK_KHR_video_encode_queue
     integer(c_int) :: ENCODE_SESSION_PARAMETERS_FEEDBACK_INFO_KHR = 1000299010
+    ! Provided by VK_KHR_video_queue
+    integer(c_int) :: VIDEO_PROFILE_INFO_KHR = 1000023000
+    ! Provided by VK_KHR_video_queue
+    integer(c_int) :: VIDEO_CAPABILITIES_KHR = 1000023001
+    ! Provided by VK_KHR_video_queue
+    integer(c_int) :: VIDEO_PICTURE_RESOURCE_INFO_KHR = 1000023002
+    ! Provided by VK_KHR_video_queue
+    integer(c_int) :: VIDEO_SESSION_MEMORY_REQUIREMENTS_KHR = 1000023003
+    ! Provided by VK_KHR_video_queue
+    integer(c_int) :: VIDEO_SESSION_CREATE_INFO_KHR = 1000023005
+    ! Provided by VK_KHR_video_queue
+    integer(c_int) :: VIDEO_SESSION_PARAMETERS_CREATE_INFO_KHR = 1000023006
+    ! Provided by VK_KHR_video_queue
+    integer(c_int) :: VIDEO_SESSION_PARAMETERS_UPDATE_INFO_KHR = 1000023007
+    ! Provided by VK_KHR_video_queue
+    integer(c_int) :: VIDEO_BEGIN_CODING_INFO_KHR = 1000023008
+    ! Provided by VK_KHR_video_queue
+    integer(c_int) :: VIDEO_END_CODING_INFO_KHR = 1000023009
+    ! Provided by VK_KHR_video_queue
+    integer(c_int) :: VIDEO_CODING_CONTROL_INFO_KHR = 1000023010
+    ! Provided by VK_KHR_video_queue
+    integer(c_int) :: VIDEO_REFERENCE_SLOT_INFO_KHR = 1000023011
+    ! Provided by VK_KHR_video_queue
+    integer(c_int) :: VIDEO_PROFILE_LIST_INFO_KHR = 1000023013
+    ! Provided by VK_KHR_video_queue
+    integer(c_int) :: VIDEO_FORMAT_PROPERTIES_KHR = 1000023015
+    ! Provided by VK_KHR_video_decode_queue
+    integer(c_int) :: VIDEO_DECODE_INFO_KHR = 1000024000
+    ! Provided by VK_KHR_video_decode_queue
+    integer(c_int) :: VIDEO_DECODE_CAPABILITIES_KHR = 1000024001
+    ! Provided by VK_KHR_video_decode_queue
+    integer(c_int) :: VIDEO_DECODE_USAGE_INFO_KHR = 1000024002
+    ! Provided by VK_KHR_video_decode_h264
+    integer(c_int) :: VIDEO_DECODE_H264_CAPABILITIES_KHR = 1000040000
+    ! Provided by VK_KHR_video_decode_h264
+    integer(c_int) :: VIDEO_DECODE_H264_PICTURE_INFO_KHR = 1000040001
+    ! Provided by VK_KHR_video_decode_h264
+    integer(c_int) :: VIDEO_DECODE_H264_PROFILE_INFO_KHR = 1000040003
+    ! Provided by VK_KHR_video_decode_h264
+    integer(c_int) :: VIDEO_DECODE_H264_SESSION_PARAMETERS_CREATE_INFO_KHR = 1000040004
+    ! Provided by VK_KHR_video_decode_h264
+    integer(c_int) :: VIDEO_DECODE_H264_SESSION_PARAMETERS_ADD_INFO_KHR = 1000040005
+    ! Provided by VK_KHR_video_decode_h264
+    integer(c_int) :: VIDEO_DECODE_H264_DPB_SLOT_INFO_KHR = 1000040006
+    ! Provided by VK_KHR_video_decode_h265
+    integer(c_int) :: VIDEO_DECODE_H265_CAPABILITIES_KHR = 1000187000
+    ! Provided by VK_KHR_video_decode_h265
+    integer(c_int) :: VIDEO_DECODE_H265_SESSION_PARAMETERS_CREATE_INFO_KHR = 1000187001
+    ! Provided by VK_KHR_video_decode_h265
+    integer(c_int) :: VIDEO_DECODE_H265_SESSION_PARAMETERS_ADD_INFO_KHR = 1000187002
+    ! Provided by VK_KHR_video_decode_h265
+    integer(c_int) :: VIDEO_DECODE_H265_PROFILE_INFO_KHR = 1000187003
+    ! Provided by VK_KHR_video_decode_h265
+    integer(c_int) :: VIDEO_DECODE_H265_PICTURE_INFO_KHR = 1000187004
+    ! Provided by VK_KHR_video_decode_h265
+    integer(c_int) :: VIDEO_DECODE_H265_DPB_SLOT_INFO_KHR = 1000187005
+    ! Provided by VK_KHR_video_decode_av1
+    integer(c_int) :: VIDEO_DECODE_AV1_CAPABILITIES_KHR = 1000512000
+    ! Provided by VK_KHR_video_decode_av1
+    integer(c_int) :: VIDEO_DECODE_AV1_PICTURE_INFO_KHR = 1000512001
+    ! Provided by VK_KHR_video_decode_av1
+    integer(c_int) :: VIDEO_DECODE_AV1_PROFILE_INFO_KHR = 1000512003
+    ! Provided by VK_KHR_video_decode_av1
+    integer(c_int) :: VIDEO_DECODE_AV1_SESSION_PARAMETERS_CREATE_INFO_KHR = 1000512004
+    ! Provided by VK_KHR_video_decode_av1
+    integer(c_int) :: VIDEO_DECODE_AV1_DPB_SLOT_INFO_KHR = 1000512005
+    ! Provided by VK_KHR_video_maintenance1
+    integer(c_int) :: VIDEO_INLINE_QUERY_INFO_KHR = 1000515001
   end type t_video
 
 
@@ -1362,43 +1430,11 @@ module forvk_parameters
     ! Provided by VK_EXT_debug_marker
     integer(c_int) :: DEBUG_MARKER_MARKER_INFO_EXT = 1000022002
     ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_PROFILE_INFO_KHR = 1000023000
-    ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_CAPABILITIES_KHR = 1000023001
-    ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_PICTURE_RESOURCE_INFO_KHR = 1000023002
-    ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_SESSION_MEMORY_REQUIREMENTS_KHR = 1000023003
-    ! Provided by VK_KHR_video_queue
     integer(c_int) :: BIND_VIDEO_SESSION_MEMORY_INFO_KHR = 1000023004
-    ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_SESSION_CREATE_INFO_KHR = 1000023005
-    ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_SESSION_PARAMETERS_CREATE_INFO_KHR = 1000023006
-    ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_SESSION_PARAMETERS_UPDATE_INFO_KHR = 1000023007
-    ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_BEGIN_CODING_INFO_KHR = 1000023008
-    ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_END_CODING_INFO_KHR = 1000023009
-    ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_CODING_CONTROL_INFO_KHR = 1000023010
-    ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_REFERENCE_SLOT_INFO_KHR = 1000023011
     ! Provided by VK_KHR_video_queue
     integer(c_int) :: QUEUE_FAMILY_VIDEO_PROPERTIES_KHR = 1000023012
     ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_PROFILE_LIST_INFO_KHR = 1000023013
-    ! Provided by VK_KHR_video_queue
-    integer(c_int) :: VIDEO_FORMAT_PROPERTIES_KHR = 1000023015
-    ! Provided by VK_KHR_video_queue
     integer(c_int) :: QUEUE_FAMILY_QUERY_RESULT_STATUS_PROPERTIES_KHR = 1000023016
-    ! Provided by VK_KHR_video_decode_queue
-    integer(c_int) :: VIDEO_DECODE_INFO_KHR = 1000024000
-    ! Provided by VK_KHR_video_decode_queue
-    integer(c_int) :: VIDEO_DECODE_CAPABILITIES_KHR = 1000024001
-    ! Provided by VK_KHR_video_decode_queue
-    integer(c_int) :: VIDEO_DECODE_USAGE_INFO_KHR = 1000024002
     ! Provided by VK_NV_dedicated_allocation
     integer(c_int) :: DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV = 1000026000
     ! Provided by VK_NV_dedicated_allocation
@@ -1415,18 +1451,6 @@ module forvk_parameters
     integer(c_int) :: IMAGE_VIEW_HANDLE_INFO_NVX = 1000030000
     ! Provided by VK_NVX_image_view_handle
     integer(c_int) :: IMAGE_VIEW_ADDRESS_PROPERTIES_NVX = 1000030001
-    ! Provided by VK_KHR_video_decode_h264
-    integer(c_int) :: VIDEO_DECODE_H264_CAPABILITIES_KHR = 1000040000
-    ! Provided by VK_KHR_video_decode_h264
-    integer(c_int) :: VIDEO_DECODE_H264_PICTURE_INFO_KHR = 1000040001
-    ! Provided by VK_KHR_video_decode_h264
-    integer(c_int) :: VIDEO_DECODE_H264_PROFILE_INFO_KHR = 1000040003
-    ! Provided by VK_KHR_video_decode_h264
-    integer(c_int) :: VIDEO_DECODE_H264_SESSION_PARAMETERS_CREATE_INFO_KHR = 1000040004
-    ! Provided by VK_KHR_video_decode_h264
-    integer(c_int) :: VIDEO_DECODE_H264_SESSION_PARAMETERS_ADD_INFO_KHR = 1000040005
-    ! Provided by VK_KHR_video_decode_h264
-    integer(c_int) :: VIDEO_DECODE_H264_DPB_SLOT_INFO_KHR = 1000040006
     ! Provided by VK_AMD_texture_gather_bias_lod
     integer(c_int) :: TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD = 1000041000
     ! Provided by VK_GGP_stream_descriptor_surface
@@ -1641,18 +1665,6 @@ module forvk_parameters
     integer(c_int) :: IMPORT_MEMORY_HOST_POINTER_INFO_EXT = 1000178000
     ! Provided by VK_EXT_external_memory_host
     integer(c_int) :: MEMORY_HOST_POINTER_PROPERTIES_EXT = 1000178001
-    ! Provided by VK_KHR_video_decode_h265
-    integer(c_int) :: VIDEO_DECODE_H265_CAPABILITIES_KHR = 1000187000
-    ! Provided by VK_KHR_video_decode_h265
-    integer(c_int) :: VIDEO_DECODE_H265_SESSION_PARAMETERS_CREATE_INFO_KHR = 1000187001
-    ! Provided by VK_KHR_video_decode_h265
-    integer(c_int) :: VIDEO_DECODE_H265_SESSION_PARAMETERS_ADD_INFO_KHR = 1000187002
-    ! Provided by VK_KHR_video_decode_h265
-    integer(c_int) :: VIDEO_DECODE_H265_PROFILE_INFO_KHR = 1000187003
-    ! Provided by VK_KHR_video_decode_h265
-    integer(c_int) :: VIDEO_DECODE_H265_PICTURE_INFO_KHR = 1000187004
-    ! Provided by VK_KHR_video_decode_h265
-    integer(c_int) :: VIDEO_DECODE_H265_DPB_SLOT_INFO_KHR = 1000187005
     ! Provided by VK_KHR_global_priority
     integer(c_int) :: DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_KHR = 1000174000
     ! Provided by VK_KHR_global_priority
@@ -2033,18 +2045,6 @@ module forvk_parameters
     integer(c_int) :: COOPERATIVE_MATRIX_PROPERTIES_KHR = 1000506001
     ! Provided by VK_QCOM_multiview_per_view_render_areas
     integer(c_int) :: MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM = 1000510001
-    ! Provided by VK_KHR_video_decode_av1
-    integer(c_int) :: VIDEO_DECODE_AV1_CAPABILITIES_KHR = 1000512000
-    ! Provided by VK_KHR_video_decode_av1
-    integer(c_int) :: VIDEO_DECODE_AV1_PICTURE_INFO_KHR = 1000512001
-    ! Provided by VK_KHR_video_decode_av1
-    integer(c_int) :: VIDEO_DECODE_AV1_PROFILE_INFO_KHR = 1000512003
-    ! Provided by VK_KHR_video_decode_av1
-    integer(c_int) :: VIDEO_DECODE_AV1_SESSION_PARAMETERS_CREATE_INFO_KHR = 1000512004
-    ! Provided by VK_KHR_video_decode_av1
-    integer(c_int) :: VIDEO_DECODE_AV1_DPB_SLOT_INFO_KHR = 1000512005
-    ! Provided by VK_KHR_video_maintenance1
-    integer(c_int) :: VIDEO_INLINE_QUERY_INFO_KHR = 1000515001
     ! Provided by VK_QCOM_image_processing2
     integer(c_int) :: SAMPLER_BLOCK_MATCH_WINDOW_CREATE_INFO_QCOM = 1000518002
     ! Provided by VK_QCOM_filter_cubic_weights
