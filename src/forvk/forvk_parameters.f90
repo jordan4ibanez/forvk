@@ -2415,7 +2415,7 @@ module forvk_parameters
     ! Provided by VK_KHR_shader_subgroup_extended_types
     integer(c_int) :: SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES_KHR = 1000175000
     ! Provided by VK_KHR_8bit_storage
-    integer(c_int) :: 8BIT_STORAGE_FEATURES_KHR = 8BIT_STORAGE_FEATURES
+    integer(c_int) :: t_8BIT_STORAGE_FEATURES_KHR = 1000177000
     ! Provided by VK_KHR_shader_atomic_int64
     integer(c_int) :: SHADER_ATOMIC_INT64_FEATURES_KHR = SHADER_ATOMIC_INT64_FEATURES
     ! Provided by VK_EXT_vertex_attribute_divisor
