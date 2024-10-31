@@ -2387,7 +2387,7 @@ module forvk_parameters
     ! Provided by VK_KHR_shader_float16_int8
     integer(c_int) :: FLOAT16_INT8_FEATURES_KHR = 1000082000
     ! Provided by VK_KHR_16bit_storage
-    integer(c_int) :: 16BIT_STORAGE_FEATURES_KHR = 16BIT_STORAGE_FEATURES
+    integer(c_int) :: t_16BIT_STORAGE_FEATURES_KHR = 1000083000
     ! Provided by VK_KHR_imageless_framebuffer
     integer(c_int) :: IMAGELESS_FRAMEBUFFER_FEATURES_KHR = IMAGELESS_FRAMEBUFFER_FEATURES
     ! Provided by VK_KHR_external_fence_capabilities
