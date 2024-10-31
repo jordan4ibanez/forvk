@@ -12,6 +12,9 @@ contains
   subroutine run()
     implicit none
 
+    call init_vulkan()
+    call main_loop()
+    call clean_up()
   end subroutine run
 
 
