@@ -20,4 +20,4 @@ Probably missing something there.
 Let me know if it blows up, thanks.
 
 ## Note:
-MacOS will need some fake data to bind to because Macs can't run vulkan.
+MacOS will need MoltenVK. This is probably going to be a pain.
