@@ -549,7 +549,7 @@ contains
 
   subroutine glfw_get_error()
     use, intrinsic :: iso_c_binding
-    use :: string
+    use :: string_f90
     implicit none
 
     ! C side.
@@ -575,7 +575,7 @@ contains
 
   logical function glfw_create_window(width, height, title) result(success)
     use, intrinsic :: iso_c_binding
-    use :: string
+    use :: string_f90
     implicit none
 
     integer(c_int) :: width, height
@@ -624,12 +624,12 @@ contains
   end subroutine glfw_make_context_current
 
 
-  subroutine glfw_trigger_viewport_update()
-    use :: opengl, only: gl_view_port
-    implicit none
+  ! subroutine glfw_trigger_viewport_update()
+  !   use :: opengl, only: gl_view_port
+  !   implicit none
 
-    call gl_view_port(0,0, window_size%x, window_size%y)
-  end subroutine glfw_trigger_viewport_update
+  !   call gl_view_port(0,0, window_size%x, window_size%y)
+  ! end subroutine glfw_trigger_viewport_update
 
 
   logical function glfw_window_should_close() result(should_close)
@@ -665,7 +665,7 @@ contains
   !* NOTE: This function passed into C as a pointer!
   subroutine error_callback(i, char_pointer)
     use, intrinsic :: iso_c_binding
-    use :: string
+    use :: string_f90
     implicit none
 
     integer(c_int), intent(in), value :: i
@@ -691,33 +691,33 @@ contains
   end subroutine glfw_set_error_callback
 
 
-  subroutine size_callback(window, width, height)
-    use, intrinsic :: iso_c_binding
-    use :: string, only: int_to_string
-    use :: opengl, only: gl_view_port
-    implicit none
+  ! subroutine size_callback(window, width, height)
+  !   use, intrinsic :: iso_c_binding
+  !   use :: string_f90, only: int_to_string
+  !   use :: opengl, only: gl_view_port
+  !   implicit none
 
-    type(c_ptr), intent(in), optional :: window
-    integer(c_int), intent(in), value :: width, height
+  !   type(c_ptr), intent(in), optional :: window
+  !   integer(c_int), intent(in), value :: width, height
 
-    if (.false.) then
-      print*,window
-    end if
+  !   if (.false.) then
+  !     print*,window
+  !   end if
 
-    print"(A)", "[Window] Resize: ["//int_to_string(width)//", "//int_to_string(height)//"]"
+  !   print"(A)", "[Window] Resize: ["//int_to_string(width)//", "//int_to_string(height)//"]"
 
-    if (framebuffer_scaling_enabled) then
-      window_size%x = nint(real(width) * window_scale%x)
-      window_size%y = nint(real(height) * window_scale%y)
-    else
-      window_size%x = width
-      window_size%y = height
-    end if
+  !   if (framebuffer_scaling_enabled) then
+  !     window_size%x = nint(real(width) * window_scale%x)
+  !     window_size%y = nint(real(height) * window_scale%y)
+  !   else
+  !     window_size%x = width
+  !     window_size%y = height
+  !   end if
 
-    call gl_view_port(0,0, window_size%x, window_size%y)
+  !   call gl_view_port(0,0, window_size%x, window_size%y)
 
-    call glfw_update_window_gui_scale()
-  end subroutine size_callback
+  !   call glfw_update_window_gui_scale()
+  ! end subroutine size_callback
 
 
   subroutine glfw_set_window_size_callback()
