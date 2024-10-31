@@ -1232,17 +1232,75 @@ module forvk_parameters
     integer(c_int) :: IMAGE_MEMORY_REQUIREMENTS_KHR = 1000413003
   end type t_device
 
+  ! Part of t_vk_structure_type.
+  type t_memory
+    integer(c_int) :: MEMORY_ALLOCATE_INFO = 5
+    integer(c_int) :: MEMORY_BARRIER = 46
+    ! Provided by VK_VERSION_1_1
+    integer(c_int) :: MEMORY_DEDICATED_REQUIREMENTS = 1000127000
+    ! Provided by VK_VERSION_1_1
+    integer(c_int) :: MEMORY_DEDICATED_ALLOCATE_INFO = 1000127001
+    ! Provided by VK_VERSION_1_1
+    integer(c_int) :: MEMORY_ALLOCATE_FLAGS_INFO = 1000060000
+    ! Provided by VK_VERSION_1_1
+    integer(c_int) :: MEMORY_REQUIREMENTS_2 = 1000146003
+    ! Provided by VK_VERSION_1_2
+    integer(c_int) :: MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO = 1000257003
+    ! Provided by VK_VERSION_1_3
+    integer(c_int) :: MEMORY_BARRIER_2 = 1000314000
+    ! Provided by VK_KHR_external_memory_win32
+    integer(c_int) :: MEMORY_WIN32_HANDLE_PROPERTIES_KHR = 1000073002
+    ! Provided by VK_KHR_external_memory_win32
+    integer(c_int) :: MEMORY_GET_WIN32_HANDLE_INFO_KHR = 1000073003
+    ! Provided by VK_KHR_external_memory_fd
+    integer(c_int) :: MEMORY_FD_PROPERTIES_KHR = 1000074001
+    ! Provided by VK_KHR_external_memory_fd
+    integer(c_int) :: MEMORY_GET_FD_INFO_KHR = 1000074002
+    ! Provided by VK_ANDROID_external_memory_android_hardware_buffer
+    integer(c_int) :: MEMORY_GET_ANDROID_HARDWARE_BUFFER_INFO_ANDROID = 1000129004
+    ! Provided by VK_EXT_external_memory_host
+    integer(c_int) :: MEMORY_HOST_POINTER_PROPERTIES_EXT = 1000178001
+    ! Provided by VK_EXT_memory_priority
+    integer(c_int) :: MEMORY_PRIORITY_ALLOCATE_INFO_EXT = 1000238001
+    ! Provided by VK_EXT_host_image_copy
+    integer(c_int) :: MEMORY_TO_IMAGE_COPY_EXT = 1000270002
+    ! Provided by VK_KHR_map_memory2
+    integer(c_int) :: MEMORY_MAP_INFO_KHR = 1000271000
+    ! Provided by VK_KHR_map_memory2
+    integer(c_int) :: MEMORY_UNMAP_INFO_KHR = 1000271001
+    ! Provided by VK_EXT_map_memory_placed
+    integer(c_int) :: MEMORY_MAP_PLACED_INFO_EXT = 1000272002
+    ! Provided by VK_FUCHSIA_external_memory
+    integer(c_int) :: MEMORY_ZIRCON_HANDLE_PROPERTIES_FUCHSIA = 1000364001
+    ! Provided by VK_FUCHSIA_external_memory
+    integer(c_int) :: MEMORY_GET_ZIRCON_HANDLE_INFO_FUCHSIA = 1000364002
+    ! Provided by VK_NV_external_memory_rdma
+    integer(c_int) :: MEMORY_GET_REMOTE_ADDRESS_INFO_NV = 1000371000
+    ! Provided by VK_KHR_device_group
+    integer(c_int) :: MEMORY_ALLOCATE_FLAGS_INFO_KHR = 1000060000
+    ! Provided by VK_KHR_dedicated_allocation
+    integer(c_int) :: MEMORY_DEDICATED_REQUIREMENTS_KHR = 1000127000
+    ! Provided by VK_KHR_dedicated_allocation
+    integer(c_int) :: MEMORY_DEDICATED_ALLOCATE_INFO_KHR = 1000127001
+    ! Provided by VK_KHR_get_memory_requirements2
+    integer(c_int) :: MEMORY_REQUIREMENTS_2_KHR = 1000146003
+    ! Provided by VK_KHR_buffer_device_address
+    integer(c_int) :: MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO_KHR = 1000257003
+    ! Provided by VK_KHR_synchronization2
+    integer(c_int) :: MEMORY_BARRIER_2_KHR = 1000314000
+  end type t_memory
+
 
   type t_vk_structure_type
     type(t_physical_device) :: PHYSICAL_DEVICE = t_physical_device()
     type(t_pipeline) :: PIPELINE = t_pipeline()
     type(t_video) :: VIDEO = t_video()
     type(t_device) :: DEVICE = t_device()
+    type(t_memory) :: MEMORY = t_memory()
 
     integer(c_int) :: APPLICATION_INFO = 0
     integer(c_int) :: INSTANCE_CREATE_INFO = 1
     integer(c_int) :: SUBMIT_INFO = 4
-    integer(c_int) :: MEMORY_ALLOCATE_INFO = 5
     integer(c_int) :: MAPPED_MEMORY_RANGE = 6
     integer(c_int) :: BIND_SPARSE_INFO = 7
     integer(c_int) :: FENCE_CREATE_INFO = 8
@@ -1271,19 +1329,12 @@ module forvk_parameters
     integer(c_int) :: RENDER_PASS_BEGIN_INFO = 43
     integer(c_int) :: BUFFER_MEMORY_BARRIER = 44
     integer(c_int) :: IMAGE_MEMORY_BARRIER = 45
-    integer(c_int) :: MEMORY_BARRIER = 46
     integer(c_int) :: LOADER_INSTANCE_CREATE_INFO = 47
     integer(c_int) :: LOADER_DEVICE_CREATE_INFO = 48
     ! Provided by VK_VERSION_1_1
     integer(c_int) :: BIND_BUFFER_MEMORY_INFO = 1000157000
     ! Provided by VK_VERSION_1_1
     integer(c_int) :: BIND_IMAGE_MEMORY_INFO = 1000157001
-    ! Provided by VK_VERSION_1_1
-    integer(c_int) :: MEMORY_DEDICATED_REQUIREMENTS = 1000127000
-    ! Provided by VK_VERSION_1_1
-    integer(c_int) :: MEMORY_DEDICATED_ALLOCATE_INFO = 1000127001
-    ! Provided by VK_VERSION_1_1
-    integer(c_int) :: MEMORY_ALLOCATE_FLAGS_INFO = 1000060000
     ! Provided by VK_VERSION_1_1
     integer(c_int) :: BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO = 1000060013
     ! Provided by VK_VERSION_1_1
@@ -1294,8 +1345,6 @@ module forvk_parameters
     integer(c_int) :: IMAGE_MEMORY_REQUIREMENTS_INFO_2 = 1000146001
     ! Provided by VK_VERSION_1_1
     integer(c_int) :: IMAGE_SPARSE_MEMORY_REQUIREMENTS_INFO_2 = 1000146002
-    ! Provided by VK_VERSION_1_1
-    integer(c_int) :: MEMORY_REQUIREMENTS_2 = 1000146003
     ! Provided by VK_VERSION_1_1
     integer(c_int) :: SPARSE_IMAGE_MEMORY_REQUIREMENTS_2 = 1000146004
     ! Provided by VK_VERSION_1_1
@@ -1396,12 +1445,8 @@ module forvk_parameters
     integer(c_int) :: BUFFER_DEVICE_ADDRESS_INFO = 1000244001
     ! Provided by VK_VERSION_1_2
     integer(c_int) :: BUFFER_OPAQUE_CAPTURE_ADDRESS_CREATE_INFO = 1000257002
-    ! Provided by VK_VERSION_1_2
-    integer(c_int) :: MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO = 1000257003
     ! Provided by VK_VERSION_1_3
     integer(c_int) :: PRIVATE_DATA_SLOT_CREATE_INFO = 1000295002
-    ! Provided by VK_VERSION_1_3
-    integer(c_int) :: MEMORY_BARRIER_2 = 1000314000
     ! Provided by VK_VERSION_1_3
     integer(c_int) :: BUFFER_MEMORY_BARRIER_2 = 1000314001
     ! Provided by VK_VERSION_1_3
@@ -1528,16 +1573,8 @@ module forvk_parameters
     integer(c_int) :: IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR = 1000073000
     ! Provided by VK_KHR_external_memory_win32
     integer(c_int) :: EXPORT_MEMORY_WIN32_HANDLE_INFO_KHR = 1000073001
-    ! Provided by VK_KHR_external_memory_win32
-    integer(c_int) :: MEMORY_WIN32_HANDLE_PROPERTIES_KHR = 1000073002
-    ! Provided by VK_KHR_external_memory_win32
-    integer(c_int) :: MEMORY_GET_WIN32_HANDLE_INFO_KHR = 1000073003
     ! Provided by VK_KHR_external_memory_fd
     integer(c_int) :: IMPORT_MEMORY_FD_INFO_KHR = 1000074000
-    ! Provided by VK_KHR_external_memory_fd
-    integer(c_int) :: MEMORY_FD_PROPERTIES_KHR = 1000074001
-    ! Provided by VK_KHR_external_memory_fd
-    integer(c_int) :: MEMORY_GET_FD_INFO_KHR = 1000074002
     ! Provided by VK_KHR_win32_keyed_mutex
     integer(c_int) :: WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_KHR = 1000075000
     ! Provided by VK_KHR_external_semaphore_win32
@@ -1631,8 +1668,6 @@ module forvk_parameters
     ! Provided by VK_ANDROID_external_memory_android_hardware_buffer
     integer(c_int) :: IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID = 1000129003
     ! Provided by VK_ANDROID_external_memory_android_hardware_buffer
-    integer(c_int) :: MEMORY_GET_ANDROID_HARDWARE_BUFFER_INFO_ANDROID = 1000129004
-    ! Provided by VK_ANDROID_external_memory_android_hardware_buffer
     integer(c_int) :: EXTERNAL_FORMAT_ANDROID = 1000129005
     ! Provided by VK_ANDROID_external_memory_android_hardware_buffer with VK_KHR_format_feature_flags2 or VK_VERSION_1_3
     integer(c_int) :: ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_2_ANDROID = 1000129006
@@ -1714,8 +1749,6 @@ module forvk_parameters
     integer(c_int) :: FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT = 1000170001
     ! Provided by VK_EXT_external_memory_host
     integer(c_int) :: IMPORT_MEMORY_HOST_POINTER_INFO_EXT = 1000178000
-    ! Provided by VK_EXT_external_memory_host
-    integer(c_int) :: MEMORY_HOST_POINTER_PROPERTIES_EXT = 1000178001
     ! Provided by VK_KHR_global_priority
     integer(c_int) :: QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES_KHR = 1000388001
     ! Provided by VK_GGP_frame_token
@@ -1760,8 +1793,6 @@ module forvk_parameters
     integer(c_int) :: RENDERING_ATTACHMENT_LOCATION_INFO_KHR = 1000232001
     ! Provided by VK_KHR_dynamic_rendering_local_read
     integer(c_int) :: RENDERING_INPUT_ATTACHMENT_INDEX_INFO_KHR = 1000232002
-    ! Provided by VK_EXT_memory_priority
-    integer(c_int) :: MEMORY_PRIORITY_ALLOCATE_INFO_EXT = 1000238001
     ! Provided by VK_KHR_surface_protected_capabilities
     integer(c_int) :: SURFACE_PROTECTED_CAPABILITIES_KHR = 1000239000
     ! Provided by VK_EXT_buffer_device_address
@@ -1781,8 +1812,6 @@ module forvk_parameters
     ! Provided by VK_EXT_headless_surface
     integer(c_int) :: HEADLESS_SURFACE_CREATE_INFO_EXT = 1000256000
     ! Provided by VK_EXT_host_image_copy
-    integer(c_int) :: MEMORY_TO_IMAGE_COPY_EXT = 1000270002
-    ! Provided by VK_EXT_host_image_copy
     integer(c_int) :: IMAGE_TO_MEMORY_COPY_EXT = 1000270003
     ! Provided by VK_EXT_host_image_copy
     integer(c_int) :: COPY_IMAGE_TO_MEMORY_INFO_EXT = 1000270004
@@ -1796,12 +1825,6 @@ module forvk_parameters
     integer(c_int) :: SUBRESOURCE_HOST_MEMCPY_SIZE_EXT = 1000270008
     ! Provided by VK_EXT_host_image_copy
     integer(c_int) :: HOST_IMAGE_COPY_DEVICE_PERFORMANCE_QUERY_EXT = 1000270009
-    ! Provided by VK_KHR_map_memory2
-    integer(c_int) :: MEMORY_MAP_INFO_KHR = 1000271000
-    ! Provided by VK_KHR_map_memory2
-    integer(c_int) :: MEMORY_UNMAP_INFO_KHR = 1000271001
-    ! Provided by VK_EXT_map_memory_placed
-    integer(c_int) :: MEMORY_MAP_PLACED_INFO_EXT = 1000272002
     ! Provided by VK_EXT_surface_maintenance1
     integer(c_int) :: SURFACE_PRESENT_MODE_EXT = 1000274000
     ! Provided by VK_EXT_surface_maintenance1
@@ -1922,10 +1945,6 @@ module forvk_parameters
     integer(c_int) :: VERTEX_INPUT_ATTRIBUTE_DESCRIPTION_2_EXT = 1000352002
     ! Provided by VK_FUCHSIA_external_memory
     integer(c_int) :: IMPORT_MEMORY_ZIRCON_HANDLE_INFO_FUCHSIA = 1000364000
-    ! Provided by VK_FUCHSIA_external_memory
-    integer(c_int) :: MEMORY_ZIRCON_HANDLE_PROPERTIES_FUCHSIA = 1000364001
-    ! Provided by VK_FUCHSIA_external_memory
-    integer(c_int) :: MEMORY_GET_ZIRCON_HANDLE_INFO_FUCHSIA = 1000364002
     ! Provided by VK_FUCHSIA_external_semaphore
     integer(c_int) :: IMPORT_SEMAPHORE_ZIRCON_HANDLE_INFO_FUCHSIA = 1000365000
     ! Provided by VK_FUCHSIA_external_semaphore
@@ -1952,8 +1971,6 @@ module forvk_parameters
     integer(c_int) :: BUFFER_COLLECTION_CONSTRAINTS_INFO_FUCHSIA = 1000366009
     ! Provided by VK_HUAWEI_subpass_shading
     integer(c_int) :: SUBPASS_SHADING_PIPELINE_CREATE_INFO_HUAWEI = 1000369000
-    ! Provided by VK_NV_external_memory_rdma
-    integer(c_int) :: MEMORY_GET_REMOTE_ADDRESS_INFO_NV = 1000371000
     ! Provided by VK_EXT_frame_boundary
     integer(c_int) :: FRAME_BOUNDARY_EXT = 1000375001
     ! Provided by VK_EXT_multisampled_render_to_single_sampled
@@ -2153,8 +2170,6 @@ module forvk_parameters
     integer(c_int) :: QUEUE_FAMILY_PROPERTIES_2_KHR = 1000059005
     ! Provided by VK_KHR_get_physical_device_properties2
     integer(c_int) :: SPARSE_IMAGE_FORMAT_PROPERTIES_2_KHR = 1000059007
-    ! Provided by VK_KHR_device_group
-    integer(c_int) :: MEMORY_ALLOCATE_FLAGS_INFO_KHR = 1000060000
     ! Provided by VK_KHR_bind_memory2 with VK_KHR_device_group
     integer(c_int) :: BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO_KHR = 1000060013
     ! Provided by VK_KHR_bind_memory2 with VK_KHR_device_group
@@ -2206,10 +2221,6 @@ module forvk_parameters
     integer(c_int) :: RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO_KHR = 1000117001
     ! Provided by VK_KHR_maintenance2
     integer(c_int) :: IMAGE_VIEW_USAGE_CREATE_INFO_KHR = 1000117002
-    ! Provided by VK_KHR_dedicated_allocation
-    integer(c_int) :: MEMORY_DEDICATED_REQUIREMENTS_KHR = 1000127000
-    ! Provided by VK_KHR_dedicated_allocation
-    integer(c_int) :: MEMORY_DEDICATED_ALLOCATE_INFO_KHR = 1000127001
     ! Provided by VK_EXT_sampler_filter_minmax
     integer(c_int) :: SAMPLER_REDUCTION_MODE_CREATE_INFO_EXT = 1000130001
     ! Provided by VK_EXT_inline_uniform_block
@@ -2222,8 +2233,6 @@ module forvk_parameters
     integer(c_int) :: IMAGE_MEMORY_REQUIREMENTS_INFO_2_KHR = 1000146001
     ! Provided by VK_KHR_get_memory_requirements2
     integer(c_int) :: IMAGE_SPARSE_MEMORY_REQUIREMENTS_INFO_2_KHR = 1000146002
-    ! Provided by VK_KHR_get_memory_requirements2
-    integer(c_int) :: MEMORY_REQUIREMENTS_2_KHR = 1000146003
     ! Provided by VK_KHR_get_memory_requirements2
     integer(c_int) :: SPARSE_IMAGE_MEMORY_REQUIREMENTS_2_KHR = 1000146004
     ! Provided by VK_KHR_image_format_list
@@ -2279,12 +2288,8 @@ module forvk_parameters
     integer(c_int) :: BUFFER_DEVICE_ADDRESS_INFO_KHR = 1000244001
     ! Provided by VK_KHR_buffer_device_address
     integer(c_int) :: BUFFER_OPAQUE_CAPTURE_ADDRESS_CREATE_INFO_KHR = 1000257002
-    ! Provided by VK_KHR_buffer_device_address
-    integer(c_int) :: MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO_KHR = 1000257003
     ! Provided by VK_EXT_private_data
     integer(c_int) :: PRIVATE_DATA_SLOT_CREATE_INFO_EXT = 1000295002
-    ! Provided by VK_KHR_synchronization2
-    integer(c_int) :: MEMORY_BARRIER_2_KHR = 1000314000
     ! Provided by VK_KHR_synchronization2
     integer(c_int) :: BUFFER_MEMORY_BARRIER_2_KHR = 1000314001
     ! Provided by VK_KHR_synchronization2
