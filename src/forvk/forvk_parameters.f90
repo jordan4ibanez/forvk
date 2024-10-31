@@ -992,19 +992,19 @@ module forvk_parameters
     ! Provided by VK_EXT_depth_clamp_control
     integer(c_int) :: PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT = 1000582001
     ! Provided by VK_KHR_dynamic_rendering
-    integer(c_int) :: PIPELINE_RENDERING_CREATE_INFO_KHR = PIPELINE_RENDERING_CREATE_INFO
+    integer(c_int) :: PIPELINE_RENDERING_CREATE_INFO_KHR = 1000044002
     ! Provided by VK_KHR_maintenance2
-    integer(c_int) :: PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO_KHR = PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO
+    integer(c_int) :: PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO_KHR = 1000117003
     ! Provided by VK_EXT_vertex_attribute_divisor
-    integer(c_int) :: PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_EXT = PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_KHR
+    integer(c_int) :: PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_EXT = 1000190001
     ! Provided by VK_EXT_pipeline_creation_feedback
-    integer(c_int) :: PIPELINE_CREATION_FEEDBACK_CREATE_INFO_EXT = PIPELINE_CREATION_FEEDBACK_CREATE_INFO
+    integer(c_int) :: PIPELINE_CREATION_FEEDBACK_CREATE_INFO_EXT = 1000192000
     ! Provided by VK_EXT_subgroup_size_control
-    integer(c_int) :: PIPELINE_SHADER_STAGE_REQUIRED_SUBGROUP_SIZE_CREATE_INFO_EXT = PIPELINE_SHADER_STAGE_REQUIRED_SUBGROUP_SIZE_CREATE_INFO
+    integer(c_int) :: PIPELINE_SHADER_STAGE_REQUIRED_SUBGROUP_SIZE_CREATE_INFO_EXT = 1000225001
     ! Provided by VK_EXT_line_rasterization
-    integer(c_int) :: PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO_EXT = PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO_KHR
+    integer(c_int) :: PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO_EXT = 1000259001
     ! Provided by VK_EXT_pipeline_properties
-    integer(c_int) :: PIPELINE_INFO_EXT = PIPELINE_INFO_KHR
+    integer(c_int) :: PIPELINE_INFO_EXT = 1000269001
   end type t_pipeline
 
 
@@ -1218,7 +1218,7 @@ module forvk_parameters
     ! Provided by VK_VERSION_1_2
     integer(c_int) :: DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO = 1000257004
 
-    
+
 
     ! Provided by VK_VERSION_1_3
     integer(c_int) :: DEVICE_PRIVATE_DATA_CREATE_INFO = 1000295001
@@ -1263,7 +1263,7 @@ module forvk_parameters
     ! Provided by VK_VERSION_1_3
     integer(c_int) :: IMAGE_RESOLVE_2 = 1000337010
 
-    
+
 
     ! Provided by VK_VERSION_1_3
     integer(c_int) :: WRITE_DESCRIPTOR_SET_INLINE_UNIFORM_BLOCK = 1000138002
@@ -1274,7 +1274,7 @@ module forvk_parameters
     integer(c_int) :: RENDERING_INFO = 1000044000
     ! Provided by VK_VERSION_1_3
     integer(c_int) :: RENDERING_ATTACHMENT_INFO = 1000044001
-    
+
 
     ! Provided by VK_VERSION_1_3
     integer(c_int) :: COMMAND_BUFFER_INHERITANCE_RENDERING_INFO = 1000044004
@@ -1320,7 +1320,7 @@ module forvk_parameters
     integer(c_int) :: WIN32_SURFACE_CREATE_INFO_KHR = 1000009000
     ! Provided by VK_EXT_debug_report
     integer(c_int) :: DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT = 1000011000
-    
+
     ! Provided by VK_EXT_debug_marker
     integer(c_int) :: DEBUG_MARKER_OBJECT_NAME_INFO_EXT = 1000022000
     ! Provided by VK_EXT_debug_marker
@@ -1373,7 +1373,7 @@ module forvk_parameters
     ! Provided by VK_NV_dedicated_allocation
     integer(c_int) :: DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV = 1000026002
 
-    
+
     ! Provided by VK_NVX_binary_import
     integer(c_int) :: CU_MODULE_CREATE_INFO_NVX = 1000029000
     ! Provided by VK_NVX_binary_import
@@ -1474,7 +1474,7 @@ module forvk_parameters
     ! Provided by VK_EXT_astc_decode_mode
     integer(c_int) :: IMAGE_VIEW_ASTC_DECODE_MODE_EXT = 1000067000
 
-    
+
 
     ! Provided by VK_KHR_external_memory_win32
     integer(c_int) :: IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR = 1000073000
@@ -1512,7 +1512,7 @@ module forvk_parameters
     integer(c_int) :: CONDITIONAL_RENDERING_BEGIN_INFO_EXT = 1000081002
     ! Provided by VK_KHR_incremental_present
     integer(c_int) :: PRESENT_REGIONS_KHR = 1000084000
-    
+
     ! Provided by VK_EXT_display_surface_counter
     integer(c_int) :: SURFACE_CAPABILITIES_2_EXT = 1000090000
     ! Provided by VK_EXT_display_control
@@ -1528,7 +1528,7 @@ module forvk_parameters
 
     ! Provided by VK_NVX_multiview_per_view_attributes with VK_VERSION_1_3 or VK_KHR_dynamic_rendering
     integer(c_int) :: MULTIVIEW_PER_VIEW_ATTRIBUTES_INFO_NVX = 1000044009
-    
+
     ! Provided by VK_EXT_hdr_metadata
     integer(c_int) :: HDR_METADATA_EXT = 1000105000
 
@@ -1605,12 +1605,12 @@ module forvk_parameters
     integer(c_int) :: SAMPLE_LOCATIONS_INFO_EXT = 1000143000
     ! Provided by VK_EXT_sample_locations
     integer(c_int) :: RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT = 1000143001
-    
+
 
     ! Provided by VK_EXT_sample_locations
     integer(c_int) :: MULTISAMPLE_PROPERTIES_EXT = 1000143004
 
-    
+
     ! Provided by VK_KHR_acceleration_structure
     integer(c_int) :: WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_KHR = 1000150007
     ! Provided by VK_KHR_acceleration_structure
@@ -1646,7 +1646,7 @@ module forvk_parameters
     ! Provided by VK_KHR_ray_tracing_pipeline
     integer(c_int) :: RAY_TRACING_PIPELINE_INTERFACE_CREATE_INFO_KHR = 1000150018
 
-    
+
 
     ! Provided by VK_EXT_image_drm_format_modifier
     integer(c_int) :: DRM_FORMAT_MODIFIER_PROPERTIES_LIST_EXT = 1000158000
@@ -1663,9 +1663,9 @@ module forvk_parameters
     integer(c_int) :: VALIDATION_CACHE_CREATE_INFO_EXT = 1000160000
     ! Provided by VK_EXT_validation_cache
     integer(c_int) :: SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT = 1000160001
-    
 
-    
+
+
     ! Provided by VK_NV_ray_tracing
     integer(c_int) :: RAY_TRACING_PIPELINE_CREATE_INFO_NV = 1000165000
     ! Provided by VK_NV_ray_tracing
@@ -1688,7 +1688,7 @@ module forvk_parameters
     ! Provided by VK_NV_ray_tracing
     integer(c_int) :: ACCELERATION_STRUCTURE_INFO_NV = 1000165012
 
-    
+
 
     ! Provided by VK_EXT_filter_cubic
     integer(c_int) :: FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT = 1000170001
@@ -1698,7 +1698,7 @@ module forvk_parameters
     integer(c_int) :: MEMORY_HOST_POINTER_PROPERTIES_EXT = 1000178001
 
 
-    
+
 
     ! Provided by VK_KHR_video_decode_h265
     integer(c_int) :: VIDEO_DECODE_H265_CAPABILITIES_KHR = 1000187000
@@ -1725,7 +1725,7 @@ module forvk_parameters
 
 
 
-    
+
 
     ! Provided by VK_NV_device_diagnostic_checkpoints
     integer(c_int) :: CHECKPOINT_DATA_NV = 1000206000
@@ -1764,7 +1764,7 @@ module forvk_parameters
     integer(c_int) :: RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_INFO_EXT = 1000044007
     ! Provided by VK_KHR_fragment_shading_rate
     integer(c_int) :: FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR = 1000226000
-    
+
 
     ! Provided by VK_KHR_fragment_shading_rate with VK_VERSION_1_3 or VK_KHR_dynamic_rendering
     integer(c_int) :: RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR = 1000044006
@@ -1787,11 +1787,11 @@ module forvk_parameters
     ! Provided by VK_NV_cooperative_matrix
     integer(c_int) :: COOPERATIVE_MATRIX_PROPERTIES_NV = 1000249001
 
-    
+
     ! Provided by VK_NV_coverage_reduction_mode
     integer(c_int) :: FRAMEBUFFER_MIXED_SAMPLES_COMBINATION_NV = 1000250002
 
-    
+
 
     ! Provided by VK_EXT_full_screen_exclusive
     integer(c_int) :: SURFACE_FULL_SCREEN_EXCLUSIVE_INFO_EXT = 1000255000
@@ -1802,7 +1802,7 @@ module forvk_parameters
     ! Provided by VK_EXT_headless_surface
     integer(c_int) :: HEADLESS_SURFACE_CREATE_INFO_EXT = 1000256000
 
-    
+
 
     ! Provided by VK_EXT_host_image_copy
     integer(c_int) :: MEMORY_TO_IMAGE_COPY_EXT = 1000270002
@@ -1880,7 +1880,7 @@ module forvk_parameters
     ! Provided by VK_EXT_custom_border_color
     integer(c_int) :: SAMPLER_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT = 1000287000
 
-    
+
 
     ! Provided by VK_NV_present_barrier
     integer(c_int) :: SURFACE_CAPABILITIES_PRESENT_BARRIER_NV = 1000292001
@@ -1971,7 +1971,7 @@ module forvk_parameters
     ! Provided by VK_EXT_graphics_pipeline_library
     integer(c_int) :: GRAPHICS_PIPELINE_LIBRARY_CREATE_INFO_EXT = 1000320002
 
-    
+
     ! Provided by VK_NV_ray_tracing_motion_blur
     integer(c_int) :: ACCELERATION_STRUCTURE_GEOMETRY_MOTION_TRIANGLES_DATA_NV = 1000327000
 
@@ -2002,7 +2002,7 @@ module forvk_parameters
     ! Provided by VK_EXT_device_address_binding_report
     integer(c_int) :: DEVICE_ADDRESS_BINDING_CALLBACK_DATA_EXT = 1000354001
 
-    
+
 
     ! Provided by VK_FUCHSIA_external_memory
     integer(c_int) :: IMPORT_MEMORY_ZIRCON_HANDLE_INFO_FUCHSIA = 1000364000
@@ -2040,7 +2040,7 @@ module forvk_parameters
     ! Provided by VK_NV_external_memory_rdma
     integer(c_int) :: MEMORY_GET_REMOTE_ADDRESS_INFO_NV = 1000371000
 
-    
+
 
     ! Provided by VK_EXT_frame_boundary
     integer(c_int) :: FRAME_BOUNDARY_EXT = 1000375001
@@ -2053,7 +2053,7 @@ module forvk_parameters
     ! Provided by VK_QNX_screen_surface
     integer(c_int) :: SCREEN_SURFACE_CREATE_INFO_QNX = 1000378000
 
-    
+
 
     ! Provided by VK_EXT_image_view_min_lod
     integer(c_int) :: IMAGE_VIEW_MIN_LOD_CREATE_INFO_EXT = 1000391001
@@ -2105,7 +2105,7 @@ module forvk_parameters
 
     ! Provided by VK_NV_device_generated_commands_compute
     integer(c_int) :: COMPUTE_PIPELINE_INDIRECT_BUFFER_INFO_NV = 1000428001
-    
+
 
     ! Provided by VK_QCOM_image_processing
     integer(c_int) :: IMAGE_VIEW_SAMPLE_WEIGHT_CREATE_INFO_QCOM = 1000440002
@@ -2124,7 +2124,7 @@ module forvk_parameters
     ! Provided by VK_LUNARG_direct_driver_loading
     integer(c_int) :: DIRECT_DRIVER_LOADING_LIST_LUNARG = 1000459001
 
-    
+
     ! Provided by VK_EXT_shader_module_identifier
     integer(c_int) :: SHADER_MODULE_IDENTIFIER_EXT = 1000462003
 
@@ -2150,7 +2150,7 @@ module forvk_parameters
     integer(c_int) :: SUBRESOURCE_LAYOUT_2_KHR = 1000338002
     ! Provided by VK_KHR_maintenance5
     integer(c_int) :: IMAGE_SUBRESOURCE_2_KHR = 1000338003
-    
+
     ! Provided by VK_KHR_maintenance5
     integer(c_int) :: BUFFER_USAGE_FLAGS_2_CREATE_INFO_KHR = 1000470006
 
@@ -2162,14 +2162,14 @@ module forvk_parameters
     ! Provided by VK_EXT_shader_object
     integer(c_int) :: SHADER_CREATE_INFO_EXT = 1000482002
 
-    
+
 
     ! Provided by VK_KHR_pipeline_binary
     integer(c_int) :: RELEASE_CAPTURED_PIPELINE_DATA_INFO_KHR = 1000483005
-    
+
     ! Provided by VK_KHR_pipeline_binary
     integer(c_int) :: DEVICE_PIPELINE_BINARY_INTERNAL_CACHE_CONTROL_KHR = 1000483008
-    
+
 
     ! Provided by VK_QCOM_tile_properties
     integer(c_int) :: TILE_PROPERTIES_QCOM = 1000484001
@@ -2233,7 +2233,7 @@ module forvk_parameters
     ! Provided by VK_QCOM_ycbcr_degamma
     integer(c_int) :: SAMPLER_YCBCR_CONVERSION_YCBCR_DEGAMMA_CREATE_INFO_QCOM = 1000520001
 
-    
+
 
     ! Provided by VK_QNX_external_memory_screen_buffer
     integer(c_int) :: SCREEN_BUFFER_PROPERTIES_QNX = 1000529000
@@ -2244,7 +2244,7 @@ module forvk_parameters
     ! Provided by VK_QNX_external_memory_screen_buffer
     integer(c_int) :: EXTERNAL_FORMAT_QNX = 1000529003
 
-    
+
 
     ! Provided by VK_KHR_calibrated_timestamps
     integer(c_int) :: CALIBRATED_TIMESTAMP_INFO_KHR = 1000184000
@@ -2292,7 +2292,7 @@ module forvk_parameters
     ! Provided by VK_MESA_image_alignment_control
     integer(c_int) :: IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA = 1000575002
 
-    
+
 
     ! Provided by VK_NV_cooperative_matrix2
     integer(c_int) :: COOPERATIVE_MATRIX_FLEXIBLE_DIMENSIONS_PROPERTIES_NV = 1000593001
@@ -2304,7 +2304,7 @@ module forvk_parameters
     integer(c_int) :: RENDERING_INFO_KHR = RENDERING_INFO
     ! Provided by VK_KHR_dynamic_rendering
     integer(c_int) :: RENDERING_ATTACHMENT_INFO_KHR = RENDERING_ATTACHMENT_INFO
-    
+
 
     ! Provided by VK_KHR_dynamic_rendering
     integer(c_int) :: COMMAND_BUFFER_INHERITANCE_RENDERING_INFO_KHR = COMMAND_BUFFER_INHERITANCE_RENDERING_INFO
@@ -2394,7 +2394,7 @@ module forvk_parameters
     integer(c_int) :: RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO_KHR = RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO
     ! Provided by VK_KHR_maintenance2
     integer(c_int) :: IMAGE_VIEW_USAGE_CREATE_INFO_KHR = IMAGE_VIEW_USAGE_CREATE_INFO
-    
+
 
     ! Provided by VK_KHR_dedicated_allocation
     integer(c_int) :: MEMORY_DEDICATED_REQUIREMENTS_KHR = MEMORY_DEDICATED_REQUIREMENTS
@@ -2448,7 +2448,7 @@ module forvk_parameters
     integer(c_int) :: DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_EXT = DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_KHR
     ! Provided by VK_EXT_calibrated_timestamps
     integer(c_int) :: CALIBRATED_TIMESTAMP_INFO_EXT = CALIBRATED_TIMESTAMP_INFO_KHR
-    
+
     ! Provided by VK_KHR_depth_stencil_resolve
     integer(c_int) :: SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE_KHR = SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE
     ! Provided by VK_KHR_timeline_semaphore
@@ -2462,7 +2462,7 @@ module forvk_parameters
     ! Provided by VK_INTEL_performance_query
     ! QUERY_POOL_CREATE_INFO_INTEL is a deprecated alias
     integer(c_int) :: QUERY_POOL_CREATE_INFO_INTEL = QUERY_POOL_PERFORMANCE_QUERY_CREATE_INFO_INTEL
-    
+
     ! Provided by VK_KHR_separate_depth_stencil_layouts
     integer(c_int) :: ATTACHMENT_REFERENCE_STENCIL_LAYOUT_KHR = ATTACHMENT_REFERENCE_STENCIL_LAYOUT
     ! Provided by VK_KHR_separate_depth_stencil_layouts
@@ -2479,7 +2479,7 @@ module forvk_parameters
     integer(c_int) :: MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO_KHR = MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO
     ! Provided by VK_KHR_buffer_device_address
     integer(c_int) :: DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO_KHR = DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO
-    
+
     ! Provided by VK_EXT_private_data
     integer(c_int) :: DEVICE_PRIVATE_DATA_CREATE_INFO_EXT = DEVICE_PRIVATE_DATA_CREATE_INFO
     ! Provided by VK_EXT_private_data
@@ -2528,7 +2528,7 @@ module forvk_parameters
     integer(c_int) :: MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_VALVE = MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT
     ! Provided by VK_KHR_format_feature_flags2
     integer(c_int) :: FORMAT_PROPERTIES_3_KHR = FORMAT_PROPERTIES_3
-    
+
     ! Provided by VK_EXT_global_priority_query
     integer(c_int) :: QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES_EXT = QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES_KHR
     ! Provided by VK_KHR_maintenance4
