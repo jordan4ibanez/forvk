@@ -76,6 +76,14 @@ module forvk
   interface
 
 
+    function vk_grab_instance_pointer() result(ptr) bind(c, name = "vk_grab_instance_pointer")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      type(c_ptr) :: ptr
+    end function vk_grab_instance_pointer
+
+
     function vk_enumerate_instance_extension_properties(p_layer_name, p_property_count, p_properties) result(vk_result) bind(c, name = "vkEnumerateInstanceExtensionProperties")
       use, intrinsic :: iso_c_binding
       implicit none
