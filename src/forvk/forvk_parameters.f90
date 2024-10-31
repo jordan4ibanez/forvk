@@ -11,6 +11,12 @@ module forvk_parameters
 
   integer(c_int), parameter, public :: VK_MAX_EXTENSION_NAME_SIZE = 256
 
+  integer(c_int), parameter, public :: VK_API_VERSION_1_0 = 4194304
+  integer(c_int), parameter, public :: VK_API_VERSION_1_1 = 4198400
+  integer(c_int), parameter, public :: VK_API_VERSION_1_2 = 4202496
+  integer(c_int), parameter, public :: VK_API_VERSION_1_3 = 4206592
+
+
   !? VkResult.
 
   integer(c_int), parameter, public :: VK_SUCCESS = 0
