@@ -2536,7 +2536,7 @@ module forvk_parameters
     ! Provided by VK_KHR_maintenance4
     integer(c_int) :: DEVICE_IMAGE_MEMORY_REQUIREMENTS_KHR = DEVICE_IMAGE_MEMORY_REQUIREMENTS
     ! Provided by VK_EXT_shader_object
-    integer(c_int) :: SHADER_REQUIRED_SUBGROUP_SIZE_CREATE_INFO_EXT = PIPELINE_SHADER_STAGE_REQUIRED_SUBGROUP_SIZE_CREATE_INFO
+    integer(c_int) :: SHADER_REQUIRED_SUBGROUP_SIZE_CREATE_INFO_EXT = 1000225001
   end type t_vk_structure_type
 
 
