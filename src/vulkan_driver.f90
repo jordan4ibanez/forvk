@@ -86,6 +86,8 @@ contains
 
     create_info%enabled_layer_count = 0
 
+    !? We must grab the raw data pointer from C because it could be
+    !? different on different platforms.
     vulkan_instance = vk_grab_instance_pointer()
 
     result = vk_create_instance(c_loc(create_info), c_null_ptr, vulkan_instance)
