@@ -28,7 +28,9 @@ contains
   subroutine init_vulkan()
     implicit none
 
-    integer(c_int), target :: extension_count
+    integer(c_int), target :: glfw_extension_count
+    ! const char **
+    type(c_ptr) :: glfw_extensions
     type(vk_application_info), target :: app_info
     character(len = :, kind = c_char), pointer :: app_name, engine_name
     type(vk_instance_create_info) :: create_info
@@ -76,8 +78,10 @@ contains
     create_info%s_type = VK_STRUCTURE_TYPE%INSTANCE_CREATE_INFO
     create_info%p_application_info = c_loc(app_info)
 
+    glfw_extensions = glfw_get_required_instance_extensions(glfw_extension_count)
 
-
+    create_info%enabled_extension_count = glfw_extension_count
+    create_info%pp_enabled_extension_names = glfw_extensions
 
 
 
