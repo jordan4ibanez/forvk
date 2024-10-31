@@ -5,8 +5,14 @@ module forvk
 
   private
 
-  
+
+!* PARAMETERS. ===============================================================
+
+
   integer(c_int), parameter, public :: VK_MAX_EXTENSION_NAME_SIZE = 256
+
+
+!* TYPES. ===============================================================
 
 
   type, bind(c) :: vk_extension_properties
@@ -14,6 +20,16 @@ module forvk
     !! was uint32_t
     integer(c_int32_t) :: spec_version
   end type vk_extension_properties
+
+
+!* FUNCTIONS.
+
+
+  interface
+
+
+
+  end interface
 
 
 contains
