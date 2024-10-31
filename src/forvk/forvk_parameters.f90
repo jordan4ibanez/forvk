@@ -1007,9 +1007,15 @@ module forvk_parameters
     integer(c_int) :: INFO_EXT = 1000269001
   end type t_pipeline
 
+  type t_video_encode
+
+  end type t_video_encode
+
 
   type t_vk_structure_type
     type(t_physical_device) :: PHYSICAL_DEVICE = t_physical_device()
+    type(t_pipeline) :: PIPELINE = t_pipeline()
+    
 
     integer(c_int) :: APPLICATION_INFO = 0
     integer(c_int) :: INSTANCE_CREATE_INFO = 1
@@ -2176,13 +2182,10 @@ module forvk_parameters
 
     ! Provided by VK_SEC_amigo_profiling
     integer(c_int) :: AMIGO_PROFILING_SUBMIT_INFO_SEC = 1000485001
-
     ! Provided by VK_EXT_mutable_descriptor_type
     integer(c_int) :: MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT = 1000351002
-
     ! Provided by VK_EXT_layer_settings
     integer(c_int) :: LAYER_SETTINGS_CREATE_INFO_EXT = 1000496000
-
     ! Provided by VK_NV_low_latency2
     integer(c_int) :: LATENCY_SLEEP_MODE_INFO_NV = 1000505000
     ! Provided by VK_NV_low_latency2
@@ -2201,13 +2204,10 @@ module forvk_parameters
     integer(c_int) :: SWAPCHAIN_LATENCY_CREATE_INFO_NV = 1000505007
     ! Provided by VK_NV_low_latency2
     integer(c_int) :: LATENCY_SURFACE_CAPABILITIES_NV = 1000505008
-
     ! Provided by VK_KHR_cooperative_matrix
     integer(c_int) :: COOPERATIVE_MATRIX_PROPERTIES_KHR = 1000506001
-
     ! Provided by VK_QCOM_multiview_per_view_render_areas
     integer(c_int) :: MULTIVIEW_PER_VIEW_RENDER_AREAS_RENDER_PASS_BEGIN_INFO_QCOM = 1000510001
-
     ! Provided by VK_KHR_video_decode_av1
     integer(c_int) :: VIDEO_DECODE_AV1_CAPABILITIES_KHR = 1000512000
     ! Provided by VK_KHR_video_decode_av1
@@ -2218,23 +2218,16 @@ module forvk_parameters
     integer(c_int) :: VIDEO_DECODE_AV1_SESSION_PARAMETERS_CREATE_INFO_KHR = 1000512004
     ! Provided by VK_KHR_video_decode_av1
     integer(c_int) :: VIDEO_DECODE_AV1_DPB_SLOT_INFO_KHR = 1000512005
-
     ! Provided by VK_KHR_video_maintenance1
     integer(c_int) :: VIDEO_INLINE_QUERY_INFO_KHR = 1000515001
-
     ! Provided by VK_QCOM_image_processing2
     integer(c_int) :: SAMPLER_BLOCK_MATCH_WINDOW_CREATE_INFO_QCOM = 1000518002
     ! Provided by VK_QCOM_filter_cubic_weights
     integer(c_int) :: SAMPLER_CUBIC_WEIGHTS_CREATE_INFO_QCOM = 1000519000
-
     ! Provided by VK_QCOM_filter_cubic_weights
     integer(c_int) :: BLIT_IMAGE_CUBIC_WEIGHTS_INFO_QCOM = 1000519002
-
     ! Provided by VK_QCOM_ycbcr_degamma
     integer(c_int) :: SAMPLER_YCBCR_CONVERSION_YCBCR_DEGAMMA_CREATE_INFO_QCOM = 1000520001
-
-
-
     ! Provided by VK_QNX_external_memory_screen_buffer
     integer(c_int) :: SCREEN_BUFFER_PROPERTIES_QNX = 1000529000
     ! Provided by VK_QNX_external_memory_screen_buffer
@@ -2243,12 +2236,8 @@ module forvk_parameters
     integer(c_int) :: IMPORT_SCREEN_BUFFER_INFO_QNX = 1000529002
     ! Provided by VK_QNX_external_memory_screen_buffer
     integer(c_int) :: EXTERNAL_FORMAT_QNX = 1000529003
-
-
-
     ! Provided by VK_KHR_calibrated_timestamps
     integer(c_int) :: CALIBRATED_TIMESTAMP_INFO_KHR = 1000184000
-
     ! Provided by VK_KHR_maintenance6
     integer(c_int) :: BIND_MEMORY_STATUS_KHR = 1000545002
     ! Provided by VK_KHR_maintenance6
