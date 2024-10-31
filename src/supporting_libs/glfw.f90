@@ -238,6 +238,8 @@ module glfw
   integer(c_int), parameter, public :: GLFW_OPENGL_API = int(z"00030001")
   integer(c_int), parameter, public :: GLFW_OPENGL_ES_API = int(z"00030002")
 
+  integer(c_int), parameter, public :: GLFW_RESIZABLE = int(z"00020003")
+
   integer(c_int), parameter, public :: GLFW_NO_ROBUSTNESS = 0
   integer(c_int), parameter, public :: GLFW_NO_RESET_NOTIFICATION = int(z"00031001")
   integer(c_int), parameter, public :: GLFW_LOSE_CONTEXT_ON_RESET = int(z"00031002")
