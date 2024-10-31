@@ -887,124 +887,124 @@ module forvk_parameters
 
 
   type t_pipeline
-    integer(c_int) :: PIPELINE_CACHE_CREATE_INFO = 17
-    integer(c_int) :: PIPELINE_SHADER_STAGE_CREATE_INFO = 18
-    integer(c_int) :: PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO = 19
-    integer(c_int) :: PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO = 20
-    integer(c_int) :: PIPELINE_TESSELLATION_STATE_CREATE_INFO = 21
-    integer(c_int) :: PIPELINE_VIEWPORT_STATE_CREATE_INFO = 22
-    integer(c_int) :: PIPELINE_RASTERIZATION_STATE_CREATE_INFO = 23
-    integer(c_int) :: PIPELINE_MULTISAMPLE_STATE_CREATE_INFO = 24
-    integer(c_int) :: PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO = 25
-    integer(c_int) :: PIPELINE_COLOR_BLEND_STATE_CREATE_INFO = 26
-    integer(c_int) :: PIPELINE_DYNAMIC_STATE_CREATE_INFO = 27
-    integer(c_int) :: PIPELINE_LAYOUT_CREATE_INFO = 30
+    integer(c_int) :: CACHE_CREATE_INFO = 17
+    integer(c_int) :: SHADER_STAGE_CREATE_INFO = 18
+    integer(c_int) :: VERTEX_INPUT_STATE_CREATE_INFO = 19
+    integer(c_int) :: INPUT_ASSEMBLY_STATE_CREATE_INFO = 20
+    integer(c_int) :: TESSELLATION_STATE_CREATE_INFO = 21
+    integer(c_int) :: VIEWPORT_STATE_CREATE_INFO = 22
+    integer(c_int) :: RASTERIZATION_STATE_CREATE_INFO = 23
+    integer(c_int) :: MULTISAMPLE_STATE_CREATE_INFO = 24
+    integer(c_int) :: DEPTH_STENCIL_STATE_CREATE_INFO = 25
+    integer(c_int) :: COLOR_BLEND_STATE_CREATE_INFO = 26
+    integer(c_int) :: DYNAMIC_STATE_CREATE_INFO = 27
+    integer(c_int) :: LAYOUT_CREATE_INFO = 30
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO = 1000117003
+    integer(c_int) :: TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO = 1000117003
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: PIPELINE_CREATION_FEEDBACK_CREATE_INFO = 1000192000
+    integer(c_int) :: CREATION_FEEDBACK_CREATE_INFO = 1000192000
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: PIPELINE_SHADER_STAGE_REQUIRED_SUBGROUP_SIZE_CREATE_INFO = 1000225001
+    integer(c_int) :: SHADER_STAGE_REQUIRED_SUBGROUP_SIZE_CREATE_INFO = 1000225001
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: PIPELINE_RENDERING_CREATE_INFO = 1000044002
+    integer(c_int) :: RENDERING_CREATE_INFO = 1000044002
     ! Provided by VK_AMD_rasterization_order
-    integer(c_int) :: PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD = 1000018000
+    integer(c_int) :: RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD = 1000018000
     ! Provided by VK_EXT_transform_feedback
-    integer(c_int) :: PIPELINE_RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT = 1000028002
+    integer(c_int) :: RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT = 1000028002
     ! Provided by VK_EXT_pipeline_robustness
-    integer(c_int) :: PIPELINE_ROBUSTNESS_CREATE_INFO_EXT = 1000068000
+    integer(c_int) :: ROBUSTNESS_CREATE_INFO_EXT = 1000068000
     ! Provided by VK_NV_clip_space_w_scaling
-    integer(c_int) :: PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV = 1000087000
+    integer(c_int) :: VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV = 1000087000
     ! Provided by VK_NV_viewport_swizzle
-    integer(c_int) :: PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV = 1000098000
+    integer(c_int) :: VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV = 1000098000
     ! Provided by VK_EXT_discard_rectangles
-    integer(c_int) :: PIPELINE_DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT = 1000099001
+    integer(c_int) :: DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT = 1000099001
     ! Provided by VK_EXT_conservative_rasterization
-    integer(c_int) :: PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT = 1000101001
+    integer(c_int) :: RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT = 1000101001
     ! Provided by VK_EXT_depth_clip_enable
-    integer(c_int) :: PIPELINE_RASTERIZATION_DEPTH_CLIP_STATE_CREATE_INFO_EXT = 1000102001
+    integer(c_int) :: RASTERIZATION_DEPTH_CLIP_STATE_CREATE_INFO_EXT = 1000102001
     ! Provided by VK_EXT_sample_locations
-    integer(c_int) :: PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT = 1000143002
+    integer(c_int) :: SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT = 1000143002
     ! Provided by VK_EXT_blend_operation_advanced
-    integer(c_int) :: PIPELINE_COLOR_BLEND_ADVANCED_STATE_CREATE_INFO_EXT = 1000148002
+    integer(c_int) :: COLOR_BLEND_ADVANCED_STATE_CREATE_INFO_EXT = 1000148002
     ! Provided by VK_NV_fragment_coverage_to_color
-    integer(c_int) :: PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV = 1000149000
+    integer(c_int) :: COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV = 1000149000
     ! Provided by VK_NV_framebuffer_mixed_samples
-    integer(c_int) :: PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV = 1000152000
+    integer(c_int) :: COVERAGE_MODULATION_STATE_CREATE_INFO_NV = 1000152000
     ! Provided by VK_NV_shading_rate_image
-    integer(c_int) :: PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV = 1000164000
+    integer(c_int) :: VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV = 1000164000
     ! Provided by VK_NV_shading_rate_image
-    integer(c_int) :: PIPELINE_VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV = 1000164005
+    integer(c_int) :: VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV = 1000164005
     ! Provided by VK_NV_representative_fragment_test
-    integer(c_int) :: PIPELINE_REPRESENTATIVE_FRAGMENT_TEST_STATE_CREATE_INFO_NV = 1000166001
+    integer(c_int) :: REPRESENTATIVE_FRAGMENT_TEST_STATE_CREATE_INFO_NV = 1000166001
     ! Provided by VK_AMD_pipeline_compiler_control
-    integer(c_int) :: PIPELINE_COMPILER_CONTROL_CREATE_INFO_AMD = 1000183000
+    integer(c_int) :: COMPILER_CONTROL_CREATE_INFO_AMD = 1000183000
     ! Provided by VK_NV_scissor_exclusive
-    integer(c_int) :: PIPELINE_VIEWPORT_EXCLUSIVE_SCISSOR_STATE_CREATE_INFO_NV = 1000205000
+    integer(c_int) :: VIEWPORT_EXCLUSIVE_SCISSOR_STATE_CREATE_INFO_NV = 1000205000
     ! Provided by VK_KHR_fragment_shading_rate
-    integer(c_int) :: PIPELINE_FRAGMENT_SHADING_RATE_STATE_CREATE_INFO_KHR = 1000226001
+    integer(c_int) :: FRAGMENT_SHADING_RATE_STATE_CREATE_INFO_KHR = 1000226001
     ! Provided by VK_NV_coverage_reduction_mode
-    integer(c_int) :: PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV = 1000250001
+    integer(c_int) :: COVERAGE_REDUCTION_STATE_CREATE_INFO_NV = 1000250001
     ! Provided by VK_EXT_provoking_vertex
-    integer(c_int) :: PIPELINE_RASTERIZATION_PROVOKING_VERTEX_STATE_CREATE_INFO_EXT = 1000254001
+    integer(c_int) :: RASTERIZATION_PROVOKING_VERTEX_STATE_CREATE_INFO_EXT = 1000254001
     ! Provided by VK_KHR_pipeline_executable_properties
-    integer(c_int) :: PIPELINE_INFO_KHR = 1000269001
+    integer(c_int) :: INFO_KHR = 1000269001
     ! Provided by VK_KHR_pipeline_executable_properties
-    integer(c_int) :: PIPELINE_EXECUTABLE_PROPERTIES_KHR = 1000269002
+    integer(c_int) :: EXECUTABLE_PROPERTIES_KHR = 1000269002
     ! Provided by VK_KHR_pipeline_executable_properties
-    integer(c_int) :: PIPELINE_EXECUTABLE_INFO_KHR = 1000269003
+    integer(c_int) :: EXECUTABLE_INFO_KHR = 1000269003
     ! Provided by VK_KHR_pipeline_executable_properties
-    integer(c_int) :: PIPELINE_EXECUTABLE_STATISTIC_KHR = 1000269004
+    integer(c_int) :: EXECUTABLE_STATISTIC_KHR = 1000269004
     ! Provided by VK_KHR_pipeline_executable_properties
-    integer(c_int) :: PIPELINE_EXECUTABLE_INTERNAL_REPRESENTATION_KHR = 1000269005
+    integer(c_int) :: EXECUTABLE_INTERNAL_REPRESENTATION_KHR = 1000269005
     ! Provided by VK_KHR_pipeline_library
-    integer(c_int) :: PIPELINE_LIBRARY_CREATE_INFO_KHR = 1000290000
+    integer(c_int) :: LIBRARY_CREATE_INFO_KHR = 1000290000
     ! Provided by VK_NV_fragment_shading_rate_enums
-    integer(c_int) :: PIPELINE_FRAGMENT_SHADING_RATE_ENUM_STATE_CREATE_INFO_NV = 1000326002
+    integer(c_int) :: FRAGMENT_SHADING_RATE_ENUM_STATE_CREATE_INFO_NV = 1000326002
     ! Provided by VK_EXT_depth_clip_control
-    integer(c_int) :: PIPELINE_VIEWPORT_DEPTH_CLIP_CONTROL_CREATE_INFO_EXT = 1000355001
+    integer(c_int) :: VIEWPORT_DEPTH_CLIP_CONTROL_CREATE_INFO_EXT = 1000355001
     ! Provided by VK_EXT_pipeline_properties
-    integer(c_int) :: PIPELINE_PROPERTIES_IDENTIFIER_EXT = 1000372000
+    integer(c_int) :: PROPERTIES_IDENTIFIER_EXT = 1000372000
     ! Provided by VK_EXT_color_write_enable
-    integer(c_int) :: PIPELINE_COLOR_WRITE_CREATE_INFO_EXT = 1000381001
+    integer(c_int) :: COLOR_WRITE_CREATE_INFO_EXT = 1000381001
     ! Provided by VK_NV_device_generated_commands_compute
-    integer(c_int) :: PIPELINE_INDIRECT_DEVICE_ADDRESS_INFO_NV = 1000428002
+    integer(c_int) :: INDIRECT_DEVICE_ADDRESS_INFO_NV = 1000428002
     ! Provided by VK_EXT_shader_module_identifier
-    integer(c_int) :: PIPELINE_SHADER_STAGE_MODULE_IDENTIFIER_CREATE_INFO_EXT = 1000462002
+    integer(c_int) :: SHADER_STAGE_MODULE_IDENTIFIER_CREATE_INFO_EXT = 1000462002
     ! Provided by VK_KHR_maintenance5
-    integer(c_int) :: PIPELINE_CREATE_FLAGS_2_CREATE_INFO_KHR = 1000470005
+    integer(c_int) :: CREATE_FLAGS_2_CREATE_INFO_KHR = 1000470005
     ! Provided by VK_KHR_pipeline_binary
-    integer(c_int) :: PIPELINE_BINARY_CREATE_INFO_KHR = 1000483001
+    integer(c_int) :: BINARY_CREATE_INFO_KHR = 1000483001
     ! Provided by VK_KHR_pipeline_binary
-    integer(c_int) :: PIPELINE_BINARY_INFO_KHR = 1000483002
+    integer(c_int) :: BINARY_INFO_KHR = 1000483002
     ! Provided by VK_KHR_pipeline_binary
-    integer(c_int) :: PIPELINE_BINARY_KEY_KHR = 1000483003
+    integer(c_int) :: BINARY_KEY_KHR = 1000483003
     ! Provided by VK_KHR_pipeline_binary
-    integer(c_int) :: PIPELINE_BINARY_DATA_INFO_KHR = 1000483006
+    integer(c_int) :: BINARY_DATA_INFO_KHR = 1000483006
     ! Provided by VK_KHR_pipeline_binary
-    integer(c_int) :: PIPELINE_CREATE_INFO_KHR = 1000483007
+    integer(c_int) :: CREATE_INFO_KHR = 1000483007
     ! Provided by VK_KHR_pipeline_binary
-    integer(c_int) :: PIPELINE_BINARY_HANDLES_INFO_KHR = 1000483009
+    integer(c_int) :: BINARY_HANDLES_INFO_KHR = 1000483009
     ! Provided by VK_KHR_vertex_attribute_divisor
-    integer(c_int) :: PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_KHR = 1000190001
+    integer(c_int) :: VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_KHR = 1000190001
     ! Provided by VK_KHR_line_rasterization
-    integer(c_int) :: PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO_KHR = 1000259001
+    integer(c_int) :: RASTERIZATION_LINE_STATE_CREATE_INFO_KHR = 1000259001
     ! Provided by VK_EXT_depth_clamp_control
-    integer(c_int) :: PIPELINE_VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT = 1000582001
+    integer(c_int) :: VIEWPORT_DEPTH_CLAMP_CONTROL_CREATE_INFO_EXT = 1000582001
     ! Provided by VK_KHR_dynamic_rendering
-    integer(c_int) :: PIPELINE_RENDERING_CREATE_INFO_KHR = 1000044002
+    integer(c_int) :: RENDERING_CREATE_INFO_KHR = 1000044002
     ! Provided by VK_KHR_maintenance2
-    integer(c_int) :: PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO_KHR = 1000117003
+    integer(c_int) :: TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO_KHR = 1000117003
     ! Provided by VK_EXT_vertex_attribute_divisor
-    integer(c_int) :: PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_EXT = 1000190001
+    integer(c_int) :: VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_EXT = 1000190001
     ! Provided by VK_EXT_pipeline_creation_feedback
-    integer(c_int) :: PIPELINE_CREATION_FEEDBACK_CREATE_INFO_EXT = 1000192000
+    integer(c_int) :: CREATION_FEEDBACK_CREATE_INFO_EXT = 1000192000
     ! Provided by VK_EXT_subgroup_size_control
-    integer(c_int) :: PIPELINE_SHADER_STAGE_REQUIRED_SUBGROUP_SIZE_CREATE_INFO_EXT = 1000225001
+    integer(c_int) :: SHADER_STAGE_REQUIRED_SUBGROUP_SIZE_CREATE_INFO_EXT = 1000225001
     ! Provided by VK_EXT_line_rasterization
-    integer(c_int) :: PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO_EXT = 1000259001
+    integer(c_int) :: RASTERIZATION_LINE_STATE_CREATE_INFO_EXT = 1000259001
     ! Provided by VK_EXT_pipeline_properties
-    integer(c_int) :: PIPELINE_INFO_EXT = 1000269001
+    integer(c_int) :: INFO_EXT = 1000269001
   end type t_pipeline
 
 
