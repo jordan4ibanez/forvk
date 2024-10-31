@@ -522,6 +522,15 @@ module glfw
     end function internal_glfw_get_platform
 
 
+    function glfw_get_required_instance_extensions(count) result(string_array) bind(c, name = "glfwGetRequiredInstanceExtensions")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      integer(c_int) :: count
+      type(c_ptr) :: string_array
+    end function glfw_get_required_instance_extensions
+
+
   end interface
 
 
