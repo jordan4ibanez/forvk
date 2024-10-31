@@ -18,3 +18,6 @@ sudo yay -S vulkan-devel glfw
 Probably missing something there.
 
 Let me know if it blows up, thanks.
+
+## Note:
+MacOS will need some fake data to bind to because Macs can't run vulkan.
