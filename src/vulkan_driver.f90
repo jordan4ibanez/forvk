@@ -10,6 +10,10 @@ module vulkan_driver
   ! Treating this thing as a class to follow the vulkan tutorial.
   ! todo: in formine this will have a pointer struct which inherits from a base class, to direct traffic flow to these functions.
 
+
+  type(c_ptr) :: vk_instance = c_null_ptr
+
+
 contains
 
   subroutine vulkan_run()
@@ -25,6 +29,7 @@ contains
     implicit none
 
     integer(c_int), target :: extension_count
+    type(vk_application_info) :: app_info
 
     if (.not. glfw_init()) then
       error stop "[Vulkan] Error: Failed to initialize GLFW."
@@ -45,6 +50,10 @@ contains
     end if
 
     print"(A)","[Vulkan]: "//int_to_string(extension_count)//" extensions supported."
+
+
+
+
   end subroutine init_vulkan
 
 

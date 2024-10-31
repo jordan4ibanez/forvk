@@ -13,8 +13,6 @@ module forvk
   public :: vk_application_info
 
 
-
-
 !* TYPES. ===============================================================
 
 
