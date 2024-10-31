@@ -2290,242 +2290,242 @@ module forvk_parameters
 
     ! Provided by VK_EXT_debug_report
     ! DEBUG_REPORT_CREATE_INFO_EXT is a deprecated alias
-    integer(c_int) :: DEBUG_REPORT_CREATE_INFO_EXT = DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT
+    integer(c_int) :: DEBUG_REPORT_CREATE_INFO_EXT = 1000011000
     ! Provided by VK_KHR_dynamic_rendering
-    integer(c_int) :: RENDERING_INFO_KHR = RENDERING_INFO
+    integer(c_int) :: RENDERING_INFO_KHR = 1000044000
     ! Provided by VK_KHR_dynamic_rendering
-    integer(c_int) :: RENDERING_ATTACHMENT_INFO_KHR = RENDERING_ATTACHMENT_INFO
+    integer(c_int) :: RENDERING_ATTACHMENT_INFO_KHR = 1000044001
 
 
     ! Provided by VK_KHR_dynamic_rendering
-    integer(c_int) :: COMMAND_BUFFER_INHERITANCE_RENDERING_INFO_KHR = COMMAND_BUFFER_INHERITANCE_RENDERING_INFO
+    integer(c_int) :: COMMAND_BUFFER_INHERITANCE_RENDERING_INFO_KHR = 1000044004
     ! Provided by VK_KHR_multiview
-    integer(c_int) :: RENDER_PASS_MULTIVIEW_CREATE_INFO_KHR = RENDER_PASS_MULTIVIEW_CREATE_INFO
+    integer(c_int) :: RENDER_PASS_MULTIVIEW_CREATE_INFO_KHR = 1000053000
 
     ! Provided by VK_KHR_get_physical_device_properties2
-    integer(c_int) :: FORMAT_PROPERTIES_2_KHR = FORMAT_PROPERTIES_2
+    integer(c_int) :: FORMAT_PROPERTIES_2_KHR = 1000059002
     ! Provided by VK_KHR_get_physical_device_properties2
-    integer(c_int) :: IMAGE_FORMAT_PROPERTIES_2_KHR = IMAGE_FORMAT_PROPERTIES_2
+    integer(c_int) :: IMAGE_FORMAT_PROPERTIES_2_KHR = 1000059003
 
     ! Provided by VK_KHR_get_physical_device_properties2
-    integer(c_int) :: QUEUE_FAMILY_PROPERTIES_2_KHR = QUEUE_FAMILY_PROPERTIES_2
+    integer(c_int) :: QUEUE_FAMILY_PROPERTIES_2_KHR = 1000059005
 
     ! Provided by VK_KHR_get_physical_device_properties2
-    integer(c_int) :: SPARSE_IMAGE_FORMAT_PROPERTIES_2_KHR = SPARSE_IMAGE_FORMAT_PROPERTIES_2
+    integer(c_int) :: SPARSE_IMAGE_FORMAT_PROPERTIES_2_KHR = 1000059007
 
     ! Provided by VK_KHR_device_group
-    integer(c_int) :: MEMORY_ALLOCATE_FLAGS_INFO_KHR = MEMORY_ALLOCATE_FLAGS_INFO
+    integer(c_int) :: MEMORY_ALLOCATE_FLAGS_INFO_KHR = 1000060000
     ! Provided by VK_KHR_device_group
-    integer(c_int) :: DEVICE_GROUP_RENDER_PASS_BEGIN_INFO_KHR = DEVICE_GROUP_RENDER_PASS_BEGIN_INFO
+    integer(c_int) :: DEVICE_GROUP_RENDER_PASS_BEGIN_INFO_KHR = 1000060003
     ! Provided by VK_KHR_device_group
-    integer(c_int) :: DEVICE_GROUP_COMMAND_BUFFER_BEGIN_INFO_KHR = DEVICE_GROUP_COMMAND_BUFFER_BEGIN_INFO
+    integer(c_int) :: DEVICE_GROUP_COMMAND_BUFFER_BEGIN_INFO_KHR = 1000060004
     ! Provided by VK_KHR_device_group
-    integer(c_int) :: DEVICE_GROUP_SUBMIT_INFO_KHR = DEVICE_GROUP_SUBMIT_INFO
+    integer(c_int) :: DEVICE_GROUP_SUBMIT_INFO_KHR = 1000060005
     ! Provided by VK_KHR_device_group
-    integer(c_int) :: DEVICE_GROUP_BIND_SPARSE_INFO_KHR = DEVICE_GROUP_BIND_SPARSE_INFO
+    integer(c_int) :: DEVICE_GROUP_BIND_SPARSE_INFO_KHR = 1000060006
     ! Provided by VK_KHR_bind_memory2 with VK_KHR_device_group
-    integer(c_int) :: BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO_KHR = BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO
+    integer(c_int) :: BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO_KHR = 1000060013
     ! Provided by VK_KHR_bind_memory2 with VK_KHR_device_group
-    integer(c_int) :: BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO_KHR = BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO
+    integer(c_int) :: BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO_KHR = 1000060014
 
     ! Provided by VK_KHR_device_group_creation
-    integer(c_int) :: DEVICE_GROUP_DEVICE_CREATE_INFO_KHR = DEVICE_GROUP_DEVICE_CREATE_INFO
+    integer(c_int) :: DEVICE_GROUP_DEVICE_CREATE_INFO_KHR = 1000070001
 
     ! Provided by VK_KHR_external_memory_capabilities
-    integer(c_int) :: EXTERNAL_IMAGE_FORMAT_PROPERTIES_KHR = EXTERNAL_IMAGE_FORMAT_PROPERTIES
+    integer(c_int) :: EXTERNAL_IMAGE_FORMAT_PROPERTIES_KHR = 1000071001
 
     ! Provided by VK_KHR_external_memory_capabilities
-    integer(c_int) :: EXTERNAL_BUFFER_PROPERTIES_KHR = EXTERNAL_BUFFER_PROPERTIES
+    integer(c_int) :: EXTERNAL_BUFFER_PROPERTIES_KHR = 1000071003
 
     ! Provided by VK_KHR_external_memory
-    integer(c_int) :: EXTERNAL_MEMORY_BUFFER_CREATE_INFO_KHR = EXTERNAL_MEMORY_BUFFER_CREATE_INFO
+    integer(c_int) :: EXTERNAL_MEMORY_BUFFER_CREATE_INFO_KHR = 1000072000
     ! Provided by VK_KHR_external_memory
-    integer(c_int) :: EXTERNAL_MEMORY_IMAGE_CREATE_INFO_KHR = EXTERNAL_MEMORY_IMAGE_CREATE_INFO
+    integer(c_int) :: EXTERNAL_MEMORY_IMAGE_CREATE_INFO_KHR = 1000072001
     ! Provided by VK_KHR_external_memory
-    integer(c_int) :: EXPORT_MEMORY_ALLOCATE_INFO_KHR = EXPORT_MEMORY_ALLOCATE_INFO
+    integer(c_int) :: EXPORT_MEMORY_ALLOCATE_INFO_KHR = 1000072002
 
     ! Provided by VK_KHR_external_semaphore_capabilities
-    integer(c_int) :: EXTERNAL_SEMAPHORE_PROPERTIES_KHR = EXTERNAL_SEMAPHORE_PROPERTIES
+    integer(c_int) :: EXTERNAL_SEMAPHORE_PROPERTIES_KHR = 1000076001
     ! Provided by VK_KHR_external_semaphore
-    integer(c_int) :: EXPORT_SEMAPHORE_CREATE_INFO_KHR = EXPORT_SEMAPHORE_CREATE_INFO
+    integer(c_int) :: EXPORT_SEMAPHORE_CREATE_INFO_KHR = 1000077000
 
     ! Provided by VK_KHR_descriptor_update_template
-    integer(c_int) :: DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO_KHR = DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO
+    integer(c_int) :: DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO_KHR = 1000085000
     ! Provided by VK_EXT_display_surface_counter
     ! SURFACE_CAPABILITIES2_EXT is a deprecated alias
-    integer(c_int) :: SURFACE_CAPABILITIES2_EXT = SURFACE_CAPABILITIES_2_EXT
+    integer(c_int) :: SURFACE_CAPABILITIES2_EXT = 1000090000
 
     ! Provided by VK_KHR_imageless_framebuffer
-    integer(c_int) :: FRAMEBUFFER_ATTACHMENTS_CREATE_INFO_KHR = FRAMEBUFFER_ATTACHMENTS_CREATE_INFO
+    integer(c_int) :: FRAMEBUFFER_ATTACHMENTS_CREATE_INFO_KHR = 1000108001
     ! Provided by VK_KHR_imageless_framebuffer
-    integer(c_int) :: FRAMEBUFFER_ATTACHMENT_IMAGE_INFO_KHR = FRAMEBUFFER_ATTACHMENT_IMAGE_INFO
+    integer(c_int) :: FRAMEBUFFER_ATTACHMENT_IMAGE_INFO_KHR = 1000108002
     ! Provided by VK_KHR_imageless_framebuffer
-    integer(c_int) :: RENDER_PASS_ATTACHMENT_BEGIN_INFO_KHR = RENDER_PASS_ATTACHMENT_BEGIN_INFO
+    integer(c_int) :: RENDER_PASS_ATTACHMENT_BEGIN_INFO_KHR = 1000108003
     ! Provided by VK_KHR_create_renderpass2
-    integer(c_int) :: ATTACHMENT_DESCRIPTION_2_KHR = ATTACHMENT_DESCRIPTION_2
+    integer(c_int) :: ATTACHMENT_DESCRIPTION_2_KHR = 1000109000
     ! Provided by VK_KHR_create_renderpass2
-    integer(c_int) :: ATTACHMENT_REFERENCE_2_KHR = ATTACHMENT_REFERENCE_2
+    integer(c_int) :: ATTACHMENT_REFERENCE_2_KHR = 1000109001
     ! Provided by VK_KHR_create_renderpass2
-    integer(c_int) :: SUBPASS_DESCRIPTION_2_KHR = SUBPASS_DESCRIPTION_2
+    integer(c_int) :: SUBPASS_DESCRIPTION_2_KHR = 1000109002
     ! Provided by VK_KHR_create_renderpass2
-    integer(c_int) :: SUBPASS_DEPENDENCY_2_KHR = SUBPASS_DEPENDENCY_2
+    integer(c_int) :: SUBPASS_DEPENDENCY_2_KHR = 1000109003
     ! Provided by VK_KHR_create_renderpass2
-    integer(c_int) :: RENDER_PASS_CREATE_INFO_2_KHR = RENDER_PASS_CREATE_INFO_2
+    integer(c_int) :: RENDER_PASS_CREATE_INFO_2_KHR = 1000109004
     ! Provided by VK_KHR_create_renderpass2
-    integer(c_int) :: SUBPASS_BEGIN_INFO_KHR = SUBPASS_BEGIN_INFO
+    integer(c_int) :: SUBPASS_BEGIN_INFO_KHR = 1000109005
     ! Provided by VK_KHR_create_renderpass2
-    integer(c_int) :: SUBPASS_END_INFO_KHR = SUBPASS_END_INFO
+    integer(c_int) :: SUBPASS_END_INFO_KHR = 1000109006
 
     ! Provided by VK_KHR_external_fence_capabilities
-    integer(c_int) :: EXTERNAL_FENCE_PROPERTIES_KHR = EXTERNAL_FENCE_PROPERTIES
+    integer(c_int) :: EXTERNAL_FENCE_PROPERTIES_KHR = 1000112001
     ! Provided by VK_KHR_external_fence
-    integer(c_int) :: EXPORT_FENCE_CREATE_INFO_KHR = EXPORT_FENCE_CREATE_INFO
+    integer(c_int) :: EXPORT_FENCE_CREATE_INFO_KHR = 1000113000
 
     ! Provided by VK_KHR_maintenance2
-    integer(c_int) :: RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO_KHR = RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO
+    integer(c_int) :: RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO_KHR = 1000117001
     ! Provided by VK_KHR_maintenance2
-    integer(c_int) :: IMAGE_VIEW_USAGE_CREATE_INFO_KHR = IMAGE_VIEW_USAGE_CREATE_INFO
+    integer(c_int) :: IMAGE_VIEW_USAGE_CREATE_INFO_KHR = 1000117002
 
 
     ! Provided by VK_KHR_dedicated_allocation
-    integer(c_int) :: MEMORY_DEDICATED_REQUIREMENTS_KHR = MEMORY_DEDICATED_REQUIREMENTS
+    integer(c_int) :: MEMORY_DEDICATED_REQUIREMENTS_KHR = 1000127000
     ! Provided by VK_KHR_dedicated_allocation
-    integer(c_int) :: MEMORY_DEDICATED_ALLOCATE_INFO_KHR = MEMORY_DEDICATED_ALLOCATE_INFO
+    integer(c_int) :: MEMORY_DEDICATED_ALLOCATE_INFO_KHR = 1000127001
 
     ! Provided by VK_EXT_sampler_filter_minmax
-    integer(c_int) :: SAMPLER_REDUCTION_MODE_CREATE_INFO_EXT = SAMPLER_REDUCTION_MODE_CREATE_INFO
+    integer(c_int) :: SAMPLER_REDUCTION_MODE_CREATE_INFO_EXT = 1000130001
 
     ! Provided by VK_EXT_inline_uniform_block
-    integer(c_int) :: WRITE_DESCRIPTOR_SET_INLINE_UNIFORM_BLOCK_EXT = WRITE_DESCRIPTOR_SET_INLINE_UNIFORM_BLOCK
+    integer(c_int) :: WRITE_DESCRIPTOR_SET_INLINE_UNIFORM_BLOCK_EXT = 1000138002
     ! Provided by VK_EXT_inline_uniform_block
-    integer(c_int) :: DESCRIPTOR_POOL_INLINE_UNIFORM_BLOCK_CREATE_INFO_EXT = DESCRIPTOR_POOL_INLINE_UNIFORM_BLOCK_CREATE_INFO
+    integer(c_int) :: DESCRIPTOR_POOL_INLINE_UNIFORM_BLOCK_CREATE_INFO_EXT = 1000138003
     ! Provided by VK_KHR_get_memory_requirements2
-    integer(c_int) :: BUFFER_MEMORY_REQUIREMENTS_INFO_2_KHR = BUFFER_MEMORY_REQUIREMENTS_INFO_2
+    integer(c_int) :: BUFFER_MEMORY_REQUIREMENTS_INFO_2_KHR = 1000146000
     ! Provided by VK_KHR_get_memory_requirements2
-    integer(c_int) :: IMAGE_MEMORY_REQUIREMENTS_INFO_2_KHR = IMAGE_MEMORY_REQUIREMENTS_INFO_2
+    integer(c_int) :: IMAGE_MEMORY_REQUIREMENTS_INFO_2_KHR = 1000146001
     ! Provided by VK_KHR_get_memory_requirements2
-    integer(c_int) :: IMAGE_SPARSE_MEMORY_REQUIREMENTS_INFO_2_KHR = IMAGE_SPARSE_MEMORY_REQUIREMENTS_INFO_2
+    integer(c_int) :: IMAGE_SPARSE_MEMORY_REQUIREMENTS_INFO_2_KHR = 1000146002
     ! Provided by VK_KHR_get_memory_requirements2
-    integer(c_int) :: MEMORY_REQUIREMENTS_2_KHR = MEMORY_REQUIREMENTS_2
+    integer(c_int) :: MEMORY_REQUIREMENTS_2_KHR = 1000146003
     ! Provided by VK_KHR_get_memory_requirements2
-    integer(c_int) :: SPARSE_IMAGE_MEMORY_REQUIREMENTS_2_KHR = SPARSE_IMAGE_MEMORY_REQUIREMENTS_2
+    integer(c_int) :: SPARSE_IMAGE_MEMORY_REQUIREMENTS_2_KHR = 1000146004
     ! Provided by VK_KHR_image_format_list
-    integer(c_int) :: IMAGE_FORMAT_LIST_CREATE_INFO_KHR = IMAGE_FORMAT_LIST_CREATE_INFO
+    integer(c_int) :: IMAGE_FORMAT_LIST_CREATE_INFO_KHR = 1000147000
     ! Provided by VK_NV_framebuffer_mixed_samples with VK_VERSION_1_3 or VK_KHR_dynamic_rendering
-    integer(c_int) :: ATTACHMENT_SAMPLE_COUNT_INFO_NV = ATTACHMENT_SAMPLE_COUNT_INFO_AMD
+    integer(c_int) :: ATTACHMENT_SAMPLE_COUNT_INFO_NV = 1000044008
     ! Provided by VK_KHR_sampler_ycbcr_conversion
-    integer(c_int) :: SAMPLER_YCBCR_CONVERSION_CREATE_INFO_KHR = SAMPLER_YCBCR_CONVERSION_CREATE_INFO
+    integer(c_int) :: SAMPLER_YCBCR_CONVERSION_CREATE_INFO_KHR = 1000156000
     ! Provided by VK_KHR_sampler_ycbcr_conversion
-    integer(c_int) :: SAMPLER_YCBCR_CONVERSION_INFO_KHR = SAMPLER_YCBCR_CONVERSION_INFO
+    integer(c_int) :: SAMPLER_YCBCR_CONVERSION_INFO_KHR = 1000156001
     ! Provided by VK_KHR_sampler_ycbcr_conversion
-    integer(c_int) :: BIND_IMAGE_PLANE_MEMORY_INFO_KHR = BIND_IMAGE_PLANE_MEMORY_INFO
+    integer(c_int) :: BIND_IMAGE_PLANE_MEMORY_INFO_KHR = 1000156002
     ! Provided by VK_KHR_sampler_ycbcr_conversion
-    integer(c_int) :: IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO_KHR = IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO
+    integer(c_int) :: IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO_KHR = 1000156003
     ! Provided by VK_KHR_sampler_ycbcr_conversion
-    integer(c_int) :: SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES_KHR = SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES
+    integer(c_int) :: SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES_KHR = 1000156005
     ! Provided by VK_KHR_bind_memory2
-    integer(c_int) :: BIND_BUFFER_MEMORY_INFO_KHR = BIND_BUFFER_MEMORY_INFO
+    integer(c_int) :: BIND_BUFFER_MEMORY_INFO_KHR = 1000157000
     ! Provided by VK_KHR_bind_memory2
-    integer(c_int) :: BIND_IMAGE_MEMORY_INFO_KHR = BIND_IMAGE_MEMORY_INFO
+    integer(c_int) :: BIND_IMAGE_MEMORY_INFO_KHR = 1000157001
     ! Provided by VK_EXT_descriptor_indexing
-    integer(c_int) :: DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO_EXT = DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO
+    integer(c_int) :: DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO_EXT = 1000161000
     ! Provided by VK_EXT_descriptor_indexing
-    integer(c_int) :: DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO_EXT = DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO
+    integer(c_int) :: DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO_EXT = 1000161003
     ! Provided by VK_EXT_descriptor_indexing
-    integer(c_int) :: DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT_EXT = DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT
+    integer(c_int) :: DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT_EXT = 1000161004
     ! Provided by VK_KHR_maintenance3
-    integer(c_int) :: DESCRIPTOR_SET_LAYOUT_SUPPORT_KHR = DESCRIPTOR_SET_LAYOUT_SUPPORT
+    integer(c_int) :: DESCRIPTOR_SET_LAYOUT_SUPPORT_KHR = 1000168001
     ! Provided by VK_EXT_global_priority
-    integer(c_int) :: DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_EXT = DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_KHR
+    integer(c_int) :: DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_EXT = 1000174000
     ! Provided by VK_EXT_calibrated_timestamps
-    integer(c_int) :: CALIBRATED_TIMESTAMP_INFO_EXT = CALIBRATED_TIMESTAMP_INFO_KHR
+    integer(c_int) :: CALIBRATED_TIMESTAMP_INFO_EXT = 1000184000
 
     ! Provided by VK_KHR_depth_stencil_resolve
-    integer(c_int) :: SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE_KHR = SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE
+    integer(c_int) :: SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE_KHR = 1000199001
     ! Provided by VK_KHR_timeline_semaphore
-    integer(c_int) :: SEMAPHORE_TYPE_CREATE_INFO_KHR = SEMAPHORE_TYPE_CREATE_INFO
+    integer(c_int) :: SEMAPHORE_TYPE_CREATE_INFO_KHR = 1000207002
     ! Provided by VK_KHR_timeline_semaphore
-    integer(c_int) :: TIMELINE_SEMAPHORE_SUBMIT_INFO_KHR = TIMELINE_SEMAPHORE_SUBMIT_INFO
+    integer(c_int) :: TIMELINE_SEMAPHORE_SUBMIT_INFO_KHR = 1000207003
     ! Provided by VK_KHR_timeline_semaphore
-    integer(c_int) :: SEMAPHORE_WAIT_INFO_KHR = SEMAPHORE_WAIT_INFO
+    integer(c_int) :: SEMAPHORE_WAIT_INFO_KHR = 1000207004
     ! Provided by VK_KHR_timeline_semaphore
-    integer(c_int) :: SEMAPHORE_SIGNAL_INFO_KHR = SEMAPHORE_SIGNAL_INFO
+    integer(c_int) :: SEMAPHORE_SIGNAL_INFO_KHR = 1000207005
     ! Provided by VK_INTEL_performance_query
     ! QUERY_POOL_CREATE_INFO_INTEL is a deprecated alias
-    integer(c_int) :: QUERY_POOL_CREATE_INFO_INTEL = QUERY_POOL_PERFORMANCE_QUERY_CREATE_INFO_INTEL
+    integer(c_int) :: QUERY_POOL_CREATE_INFO_INTEL = 1000210000
 
     ! Provided by VK_KHR_separate_depth_stencil_layouts
-    integer(c_int) :: ATTACHMENT_REFERENCE_STENCIL_LAYOUT_KHR = ATTACHMENT_REFERENCE_STENCIL_LAYOUT
+    integer(c_int) :: ATTACHMENT_REFERENCE_STENCIL_LAYOUT_KHR = 1000241001
     ! Provided by VK_KHR_separate_depth_stencil_layouts
-    integer(c_int) :: ATTACHMENT_DESCRIPTION_STENCIL_LAYOUT_KHR = ATTACHMENT_DESCRIPTION_STENCIL_LAYOUT
+    integer(c_int) :: ATTACHMENT_DESCRIPTION_STENCIL_LAYOUT_KHR = 1000241002
     ! Provided by VK_EXT_buffer_device_address
-    integer(c_int) :: BUFFER_DEVICE_ADDRESS_INFO_EXT = BUFFER_DEVICE_ADDRESS_INFO
+    integer(c_int) :: BUFFER_DEVICE_ADDRESS_INFO_EXT = 1000244001
     ! Provided by VK_EXT_separate_stencil_usage
-    integer(c_int) :: IMAGE_STENCIL_USAGE_CREATE_INFO_EXT = IMAGE_STENCIL_USAGE_CREATE_INFO
+    integer(c_int) :: IMAGE_STENCIL_USAGE_CREATE_INFO_EXT = 1000246000
     ! Provided by VK_KHR_buffer_device_address
-    integer(c_int) :: BUFFER_DEVICE_ADDRESS_INFO_KHR = BUFFER_DEVICE_ADDRESS_INFO
+    integer(c_int) :: BUFFER_DEVICE_ADDRESS_INFO_KHR = 1000244001
     ! Provided by VK_KHR_buffer_device_address
-    integer(c_int) :: BUFFER_OPAQUE_CAPTURE_ADDRESS_CREATE_INFO_KHR = BUFFER_OPAQUE_CAPTURE_ADDRESS_CREATE_INFO
+    integer(c_int) :: BUFFER_OPAQUE_CAPTURE_ADDRESS_CREATE_INFO_KHR = 1000257002
     ! Provided by VK_KHR_buffer_device_address
-    integer(c_int) :: MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO_KHR = MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO
+    integer(c_int) :: MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO_KHR = 1000257003
     ! Provided by VK_KHR_buffer_device_address
-    integer(c_int) :: DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO_KHR = DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO
+    integer(c_int) :: DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO_KHR = 1000257004
 
     ! Provided by VK_EXT_private_data
-    integer(c_int) :: DEVICE_PRIVATE_DATA_CREATE_INFO_EXT = DEVICE_PRIVATE_DATA_CREATE_INFO
+    integer(c_int) :: DEVICE_PRIVATE_DATA_CREATE_INFO_EXT = 1000295001
     ! Provided by VK_EXT_private_data
-    integer(c_int) :: PRIVATE_DATA_SLOT_CREATE_INFO_EXT = PRIVATE_DATA_SLOT_CREATE_INFO
+    integer(c_int) :: PRIVATE_DATA_SLOT_CREATE_INFO_EXT = 1000295002
     ! Provided by VK_KHR_synchronization2
-    integer(c_int) :: MEMORY_BARRIER_2_KHR = MEMORY_BARRIER_2
+    integer(c_int) :: MEMORY_BARRIER_2_KHR = 1000314000
     ! Provided by VK_KHR_synchronization2
-    integer(c_int) :: BUFFER_MEMORY_BARRIER_2_KHR = BUFFER_MEMORY_BARRIER_2
+    integer(c_int) :: BUFFER_MEMORY_BARRIER_2_KHR = 1000314001
     ! Provided by VK_KHR_synchronization2
-    integer(c_int) :: IMAGE_MEMORY_BARRIER_2_KHR = IMAGE_MEMORY_BARRIER_2
+    integer(c_int) :: IMAGE_MEMORY_BARRIER_2_KHR = 1000314002
     ! Provided by VK_KHR_synchronization2
-    integer(c_int) :: DEPENDENCY_INFO_KHR = DEPENDENCY_INFO
+    integer(c_int) :: DEPENDENCY_INFO_KHR = 1000314003
     ! Provided by VK_KHR_synchronization2
-    integer(c_int) :: SUBMIT_INFO_2_KHR = SUBMIT_INFO_2
+    integer(c_int) :: SUBMIT_INFO_2_KHR = 1000314004
     ! Provided by VK_KHR_synchronization2
-    integer(c_int) :: SEMAPHORE_SUBMIT_INFO_KHR = SEMAPHORE_SUBMIT_INFO
+    integer(c_int) :: SEMAPHORE_SUBMIT_INFO_KHR = 1000314005
     ! Provided by VK_KHR_synchronization2
-    integer(c_int) :: COMMAND_BUFFER_SUBMIT_INFO_KHR = COMMAND_BUFFER_SUBMIT_INFO
+    integer(c_int) :: COMMAND_BUFFER_SUBMIT_INFO_KHR = 1000314006
     ! Provided by VK_KHR_copy_commands2
-    integer(c_int) :: COPY_BUFFER_INFO_2_KHR = COPY_BUFFER_INFO_2
+    integer(c_int) :: COPY_BUFFER_INFO_2_KHR = 1000337000
     ! Provided by VK_KHR_copy_commands2
-    integer(c_int) :: COPY_IMAGE_INFO_2_KHR = COPY_IMAGE_INFO_2
+    integer(c_int) :: COPY_IMAGE_INFO_2_KHR = 1000337001
     ! Provided by VK_KHR_copy_commands2
-    integer(c_int) :: COPY_BUFFER_TO_IMAGE_INFO_2_KHR = COPY_BUFFER_TO_IMAGE_INFO_2
+    integer(c_int) :: COPY_BUFFER_TO_IMAGE_INFO_2_KHR = 1000337002
     ! Provided by VK_KHR_copy_commands2
-    integer(c_int) :: COPY_IMAGE_TO_BUFFER_INFO_2_KHR = COPY_IMAGE_TO_BUFFER_INFO_2
+    integer(c_int) :: COPY_IMAGE_TO_BUFFER_INFO_2_KHR = 1000337003
     ! Provided by VK_KHR_copy_commands2
-    integer(c_int) :: BLIT_IMAGE_INFO_2_KHR = BLIT_IMAGE_INFO_2
+    integer(c_int) :: BLIT_IMAGE_INFO_2_KHR = 1000337004
     ! Provided by VK_KHR_copy_commands2
-    integer(c_int) :: RESOLVE_IMAGE_INFO_2_KHR = RESOLVE_IMAGE_INFO_2
+    integer(c_int) :: RESOLVE_IMAGE_INFO_2_KHR = 1000337005
     ! Provided by VK_KHR_copy_commands2
-    integer(c_int) :: BUFFER_COPY_2_KHR = BUFFER_COPY_2
+    integer(c_int) :: BUFFER_COPY_2_KHR = 1000337006
     ! Provided by VK_KHR_copy_commands2
-    integer(c_int) :: IMAGE_COPY_2_KHR = IMAGE_COPY_2
+    integer(c_int) :: IMAGE_COPY_2_KHR = 1000337007
     ! Provided by VK_KHR_copy_commands2
-    integer(c_int) :: IMAGE_BLIT_2_KHR = IMAGE_BLIT_2
+    integer(c_int) :: IMAGE_BLIT_2_KHR = 1000337008
     ! Provided by VK_KHR_copy_commands2
-    integer(c_int) :: BUFFER_IMAGE_COPY_2_KHR = BUFFER_IMAGE_COPY_2
+    integer(c_int) :: BUFFER_IMAGE_COPY_2_KHR = 1000337009
     ! Provided by VK_KHR_copy_commands2
-    integer(c_int) :: IMAGE_RESOLVE_2_KHR = IMAGE_RESOLVE_2
+    integer(c_int) :: IMAGE_RESOLVE_2_KHR = 1000337010
     ! Provided by VK_EXT_image_compression_control
-    integer(c_int) :: SUBRESOURCE_LAYOUT_2_EXT = SUBRESOURCE_LAYOUT_2_KHR
+    integer(c_int) :: SUBRESOURCE_LAYOUT_2_EXT = 1000338002
     ! Provided by VK_EXT_image_compression_control
-    integer(c_int) :: IMAGE_SUBRESOURCE_2_EXT = IMAGE_SUBRESOURCE_2_KHR
+    integer(c_int) :: IMAGE_SUBRESOURCE_2_EXT = 1000338003
     ! Provided by VK_VALVE_mutable_descriptor_type
-    integer(c_int) :: MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_VALVE = MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_EXT
+    integer(c_int) :: MUTABLE_DESCRIPTOR_TYPE_CREATE_INFO_VALVE = 1000351002
     ! Provided by VK_KHR_format_feature_flags2
-    integer(c_int) :: FORMAT_PROPERTIES_3_KHR = FORMAT_PROPERTIES_3
+    integer(c_int) :: FORMAT_PROPERTIES_3_KHR = 1000360000
 
     ! Provided by VK_EXT_global_priority_query
-    integer(c_int) :: QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES_EXT = QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES_KHR
+    integer(c_int) :: QUEUE_FAMILY_GLOBAL_PRIORITY_PROPERTIES_EXT = 1000388001
     ! Provided by VK_KHR_maintenance4
-    integer(c_int) :: DEVICE_BUFFER_MEMORY_REQUIREMENTS_KHR = DEVICE_BUFFER_MEMORY_REQUIREMENTS
+    integer(c_int) :: DEVICE_BUFFER_MEMORY_REQUIREMENTS_KHR = 1000413002
     ! Provided by VK_KHR_maintenance4
-    integer(c_int) :: DEVICE_IMAGE_MEMORY_REQUIREMENTS_KHR = DEVICE_IMAGE_MEMORY_REQUIREMENTS
+    integer(c_int) :: DEVICE_IMAGE_MEMORY_REQUIREMENTS_KHR = 1000413003
     ! Provided by VK_EXT_shader_object
     integer(c_int) :: SHADER_REQUIRED_SUBGROUP_SIZE_CREATE_INFO_EXT = 1000225001
   end type t_vk_structure_type
