@@ -15,6 +15,7 @@ program main
     error stop "Failed to initialize GLFW."
   end if
 
+  call glfw_window_hint(GLFW_SCALE_FRAMEBUFFER, GLFW_TRUE)
   call glfw_window_hint(GLFW_CLIENT_API, GLFW_NO_API)
 
   if (.not. glfw_create_window(500, 500, "forvk")) then
@@ -36,6 +37,9 @@ program main
   call matrix%translate_vec3f(vec)
 
 
+  do while(.not. glfw_window_should_close())
+    call glfw_poll_events()
+  end do
 
 
   call glfw_destroy_window()
