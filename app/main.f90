@@ -3,5 +3,7 @@ program main
   use :: glfw
   implicit none
 
-  call say_hello()
+  if (.not. glfw_create_window(500, 500, "forvk")) then
+
+  end if
 end program main
