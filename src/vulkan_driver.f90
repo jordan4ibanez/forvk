@@ -11,7 +11,7 @@ module vulkan_driver
   ! todo: in formine this will have a pointer struct which inherits from a base class, to direct traffic flow to these functions.
 
 
-  type(c_ptr) :: vk_instance = c_null_ptr
+  type(c_ptr) :: vulkan_instance = c_null_ptr
 
 
 contains
@@ -33,7 +33,8 @@ contains
     type(c_ptr) :: glfw_extensions
     type(vk_application_info), target :: app_info
     character(len = :, kind = c_char), pointer :: app_name, engine_name
-    type(vk_instance_create_info) :: create_info
+    type(vk_instance_create_info), target :: create_info
+    integer(c_int) :: result
 
 
     !* GLFW WINDOW CREATION. =====================================
@@ -83,7 +84,11 @@ contains
     create_info%enabled_extension_count = glfw_extension_count
     create_info%pp_enabled_extension_names = glfw_extensions
 
+    create_info%enabled_layer_count = 0
 
+    vulkan_instance = vk_grab_instance_pointer()
+
+    result = vk_create_instance(c_loc(create_info), c_null_ptr, vulkan_instance)
 
   end subroutine init_vulkan
 
