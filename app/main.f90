@@ -1,5 +1,5 @@
 program main
-  use forvk, only: say_hello
+  use forvk
   use :: glfw
   implicit none
 
