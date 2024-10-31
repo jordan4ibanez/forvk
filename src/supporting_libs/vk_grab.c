@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <assert.h>
 #include <vulkan/vulkan_core.h>
 
 VkInstance *vk_grab_instance_pointer()
