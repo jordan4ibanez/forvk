@@ -5,8 +5,14 @@ module vulkan_driver
 
 
   ! Treating this thing as a class to follow the vulkan tutorial.
+  ! todo: in formine this will have a pointer struct which inherits from a base class, to direct traffic flow to these functions.
 
 contains
+
+  subroutine run()
+    implicit none
+
+  end subroutine run
 
 
   subroutine init_vulkan()
