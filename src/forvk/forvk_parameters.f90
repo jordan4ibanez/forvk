@@ -886,7 +886,6 @@ module forvk_parameters
   end type t_physical_device
 
   type t_vk_structure_type
-
     type(t_physical_device) :: PHYSICAL_DEVICE = t_physical_device()
 
     integer(c_int) :: APPLICATION_INFO = 0
