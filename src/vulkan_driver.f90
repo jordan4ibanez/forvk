@@ -29,10 +29,10 @@ contains
     implicit none
 
     integer(c_int), target :: extension_count
-    type(vk_application_info) :: app_info
+    type(vk_application_info), target :: app_info
     character(len = :, kind = c_char), pointer :: app_name, engine_name
     type(vk_instance_create_info) :: create_info
-    
+
 
     !? GLFW WINDOW CREATION. =====================================
 
@@ -77,6 +77,8 @@ contains
     app_info%api_version = VK_API_VERSION_1_0
 
 
+    create_info%s_type = VK_STRUCTURE_TYPE%INSTANCE_CREATE_INFO
+    create_info%p_application_info = c_loc(app_info)
 
 
 
