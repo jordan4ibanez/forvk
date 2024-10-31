@@ -1348,13 +1348,13 @@ module forvk_parameters
     ! Provided by VK_EXT_graphics_pipeline_library
     integer(c_int) :: GRAPHICS_PIPELINE_LIBRARY_CREATE_INFO_EXT = 1000320002
     ! Provided by VK_AMD_shader_early_and_late_fragment_tests
-    ! integer(c_int) :: PHYSICAL_DEVICE_SHADER_EARLY_AND_LATE_FRAGMENT_TESTS_FEATURES_AMD = 1000321000
+    integer(c_int) :: PHYSICAL_DEVICE_SHADER_EARLY_AND_LATE_FRAGMENT_TESTS_FEATURES_AMD = 1000321000
     ! Provided by VK_KHR_fragment_shader_barycentric
     integer(c_int) :: PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_FEATURES_KHR = 1000203000
     ! Provided by VK_KHR_fragment_shader_barycentric
     integer(c_int) :: PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_PROPERTIES_KHR = 1000322000
     ! Provided by VK_KHR_shader_subgroup_uniform_control_flow
-    ! integer(c_int) :: PHYSICAL_DEVICE_SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_FEATURES_KHR = 1000323000
+    integer(c_int) :: PHYSICAL_DEVICE_SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_FEATURES_KHR = 1000323000
     ! Provided by VK_NV_fragment_shading_rate_enums
     integer(c_int) :: PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_ENUMS_PROPERTIES_NV = 1000326000
     ! Provided by VK_NV_fragment_shading_rate_enums
@@ -1472,7 +1472,7 @@ module forvk_parameters
     ! Provided by VK_EXT_frame_boundary
     integer(c_int) :: FRAME_BOUNDARY_EXT = 1000375001
     ! Provided by VK_EXT_multisampled_render_to_single_sampled
-    ! integer(c_int) :: PHYSICAL_DEVICE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_FEATURES_EXT = 1000376000
+    integer(c_int) :: PHYSICAL_DEVICE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_FEATURES_EXT = 1000376000
     ! Provided by VK_EXT_multisampled_render_to_single_sampled
     integer(c_int) :: SUBPASS_RESOLVE_PERFORMANCE_QUERY_EXT = 1000376001
     ! Provided by VK_EXT_multisampled_render_to_single_sampled
