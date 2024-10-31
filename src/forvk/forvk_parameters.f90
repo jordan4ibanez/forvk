@@ -1472,7 +1472,7 @@ module forvk_parameters
     ! Provided by VK_EXT_frame_boundary
     integer(c_int) :: FRAME_BOUNDARY_EXT = 1000375001
     ! Provided by VK_EXT_multisampled_render_to_single_sampled
-    integer(c_int) :: PHYSICAL_DEVICE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_FEATURES_EXT = 1000376000
+    ! integer(c_int) :: PHYSICAL_DEVICE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_FEATURES_EXT = 1000376000
     ! Provided by VK_EXT_multisampled_render_to_single_sampled
     integer(c_int) :: SUBPASS_RESOLVE_PERFORMANCE_QUERY_EXT = 1000376001
     ! Provided by VK_EXT_multisampled_render_to_single_sampled
