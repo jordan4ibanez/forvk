@@ -2079,7 +2079,7 @@ module forvk_parameters
     ! Provided by VK_EXT_attachment_feedback_loop_layout
     integer(c_int) :: ATTACHMENT_FEEDBACK_LOOP_LAYOUT_FEATURES_EXT = 1000339000
     ! Provided by VK_EXT_4444_formats
-    integer(c_int) :: 4444_FORMATS_FEATURES_EXT = 1000340000
+    integer(c_int) :: t_4444_FORMATS_FEATURES_EXT = 1000340000
     ! Provided by VK_EXT_device_fault
     integer(c_int) :: FAULT_FEATURES_EXT = 1000341000
     ! Provided by VK_EXT_rgba10x6_formats
