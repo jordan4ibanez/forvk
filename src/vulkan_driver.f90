@@ -29,7 +29,7 @@ contains
       error stop "[Vulkan] Error: Failed to initialize GLFW."
     end if
 
-    call glfw_window_hint(GLFW_SCALE_FRAMEBUFFER, GLFW_TRUE)
+    ! call glfw_window_hint(GLFW_SCALE_FRAMEBUFFER, GLFW_TRUE)
     call glfw_window_hint(GLFW_CLIENT_API, GLFW_NO_API)
     call glfw_window_hint(GLFW_RESIZABLE, GLFW_FALSE)
 
