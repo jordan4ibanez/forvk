@@ -624,6 +624,7 @@ contains
   end subroutine glfw_make_context_current
 
 
+  !! FIXME: THIS NEEDS TO BE ADDED INTO THE OPENGL DRIVER!
   ! subroutine glfw_trigger_viewport_update()
   !   use :: opengl, only: gl_view_port
   !   implicit none
@@ -691,6 +692,7 @@ contains
   end subroutine glfw_set_error_callback
 
 
+  !! FIXME: THIS NEEDS TO BE ADDED INTO THE OPENGL DRIVER!
   ! subroutine size_callback(window, width, height)
   !   use, intrinsic :: iso_c_binding
   !   use :: string_f90, only: int_to_string
