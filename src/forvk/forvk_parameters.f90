@@ -1234,60 +1234,60 @@ module forvk_parameters
 
   ! Part of t_vk_structure_type.
   type t_memory
-    integer(c_int) :: MEMORY_ALLOCATE_INFO = 5
-    integer(c_int) :: MEMORY_BARRIER = 46
+    integer(c_int) :: ALLOCATE_INFO = 5
+    integer(c_int) :: BARRIER = 46
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: MEMORY_DEDICATED_REQUIREMENTS = 1000127000
+    integer(c_int) :: DEDICATED_REQUIREMENTS = 1000127000
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: MEMORY_DEDICATED_ALLOCATE_INFO = 1000127001
+    integer(c_int) :: DEDICATED_ALLOCATE_INFO = 1000127001
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: MEMORY_ALLOCATE_FLAGS_INFO = 1000060000
+    integer(c_int) :: ALLOCATE_FLAGS_INFO = 1000060000
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: MEMORY_REQUIREMENTS_2 = 1000146003
+    integer(c_int) :: REQUIREMENTS_2 = 1000146003
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO = 1000257003
+    integer(c_int) :: OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO = 1000257003
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: MEMORY_BARRIER_2 = 1000314000
+    integer(c_int) :: BARRIER_2 = 1000314000
     ! Provided by VK_KHR_external_memory_win32
-    integer(c_int) :: MEMORY_WIN32_HANDLE_PROPERTIES_KHR = 1000073002
+    integer(c_int) :: WIN32_HANDLE_PROPERTIES_KHR = 1000073002
     ! Provided by VK_KHR_external_memory_win32
-    integer(c_int) :: MEMORY_GET_WIN32_HANDLE_INFO_KHR = 1000073003
+    integer(c_int) :: GET_WIN32_HANDLE_INFO_KHR = 1000073003
     ! Provided by VK_KHR_external_memory_fd
-    integer(c_int) :: MEMORY_FD_PROPERTIES_KHR = 1000074001
+    integer(c_int) :: FD_PROPERTIES_KHR = 1000074001
     ! Provided by VK_KHR_external_memory_fd
-    integer(c_int) :: MEMORY_GET_FD_INFO_KHR = 1000074002
+    integer(c_int) :: GET_FD_INFO_KHR = 1000074002
     ! Provided by VK_ANDROID_external_memory_android_hardware_buffer
-    integer(c_int) :: MEMORY_GET_ANDROID_HARDWARE_BUFFER_INFO_ANDROID = 1000129004
+    integer(c_int) :: GET_ANDROID_HARDWARE_BUFFER_INFO_ANDROID = 1000129004
     ! Provided by VK_EXT_external_memory_host
-    integer(c_int) :: MEMORY_HOST_POINTER_PROPERTIES_EXT = 1000178001
+    integer(c_int) :: HOST_POINTER_PROPERTIES_EXT = 1000178001
     ! Provided by VK_EXT_memory_priority
-    integer(c_int) :: MEMORY_PRIORITY_ALLOCATE_INFO_EXT = 1000238001
+    integer(c_int) :: PRIORITY_ALLOCATE_INFO_EXT = 1000238001
     ! Provided by VK_EXT_host_image_copy
-    integer(c_int) :: MEMORY_TO_IMAGE_COPY_EXT = 1000270002
+    integer(c_int) :: TO_IMAGE_COPY_EXT = 1000270002
     ! Provided by VK_KHR_map_memory2
-    integer(c_int) :: MEMORY_MAP_INFO_KHR = 1000271000
+    integer(c_int) :: MAP_INFO_KHR = 1000271000
     ! Provided by VK_KHR_map_memory2
-    integer(c_int) :: MEMORY_UNMAP_INFO_KHR = 1000271001
+    integer(c_int) :: UNMAP_INFO_KHR = 1000271001
     ! Provided by VK_EXT_map_memory_placed
-    integer(c_int) :: MEMORY_MAP_PLACED_INFO_EXT = 1000272002
+    integer(c_int) :: MAP_PLACED_INFO_EXT = 1000272002
     ! Provided by VK_FUCHSIA_external_memory
-    integer(c_int) :: MEMORY_ZIRCON_HANDLE_PROPERTIES_FUCHSIA = 1000364001
+    integer(c_int) :: ZIRCON_HANDLE_PROPERTIES_FUCHSIA = 1000364001
     ! Provided by VK_FUCHSIA_external_memory
-    integer(c_int) :: MEMORY_GET_ZIRCON_HANDLE_INFO_FUCHSIA = 1000364002
+    integer(c_int) :: GET_ZIRCON_HANDLE_INFO_FUCHSIA = 1000364002
     ! Provided by VK_NV_external_memory_rdma
-    integer(c_int) :: MEMORY_GET_REMOTE_ADDRESS_INFO_NV = 1000371000
+    integer(c_int) :: GET_REMOTE_ADDRESS_INFO_NV = 1000371000
     ! Provided by VK_KHR_device_group
-    integer(c_int) :: MEMORY_ALLOCATE_FLAGS_INFO_KHR = 1000060000
+    integer(c_int) :: ALLOCATE_FLAGS_INFO_KHR = 1000060000
     ! Provided by VK_KHR_dedicated_allocation
-    integer(c_int) :: MEMORY_DEDICATED_REQUIREMENTS_KHR = 1000127000
+    integer(c_int) :: DEDICATED_REQUIREMENTS_KHR = 1000127000
     ! Provided by VK_KHR_dedicated_allocation
-    integer(c_int) :: MEMORY_DEDICATED_ALLOCATE_INFO_KHR = 1000127001
+    integer(c_int) :: DEDICATED_ALLOCATE_INFO_KHR = 1000127001
     ! Provided by VK_KHR_get_memory_requirements2
-    integer(c_int) :: MEMORY_REQUIREMENTS_2_KHR = 1000146003
+    integer(c_int) :: REQUIREMENTS_2_KHR = 1000146003
     ! Provided by VK_KHR_buffer_device_address
-    integer(c_int) :: MEMORY_OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO_KHR = 1000257003
+    integer(c_int) :: OPAQUE_CAPTURE_ADDRESS_ALLOCATE_INFO_KHR = 1000257003
     ! Provided by VK_KHR_synchronization2
-    integer(c_int) :: MEMORY_BARRIER_2_KHR = 1000314000
+    integer(c_int) :: BARRIER_2_KHR = 1000314000
   end type t_memory
 
 
