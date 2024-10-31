@@ -2389,31 +2389,31 @@ module forvk_parameters
     ! Provided by VK_KHR_16bit_storage
     integer(c_int) :: t_16BIT_STORAGE_FEATURES_KHR = 1000083000
     ! Provided by VK_KHR_imageless_framebuffer
-    integer(c_int) :: IMAGELESS_FRAMEBUFFER_FEATURES_KHR = IMAGELESS_FRAMEBUFFER_FEATURES
+    integer(c_int) :: IMAGELESS_FRAMEBUFFER_FEATURES_KHR = 1000108000
     ! Provided by VK_KHR_external_fence_capabilities
-    integer(c_int) :: EXTERNAL_FENCE_INFO_KHR = EXTERNAL_FENCE_INFO
+    integer(c_int) :: EXTERNAL_FENCE_INFO_KHR = 1000112000
     ! Provided by VK_KHR_maintenance2
-    integer(c_int) :: POINT_CLIPPING_PROPERTIES_KHR = POINT_CLIPPING_PROPERTIES
+    integer(c_int) :: POINT_CLIPPING_PROPERTIES_KHR = 1000117000
     ! Provided by VK_KHR_variable_pointers
     integer(c_int) :: VARIABLE_POINTERS_FEATURES_KHR = 1000120000
     ! Provided by VK_KHR_variable_pointers
     integer(c_int) :: VARIABLE_POINTER_FEATURES_KHR = 1000120000
     ! Provided by VK_EXT_sampler_filter_minmax
-    integer(c_int) :: SAMPLER_FILTER_MINMAX_PROPERTIES_EXT = SAMPLER_FILTER_MINMAX_PROPERTIES
+    integer(c_int) :: SAMPLER_FILTER_MINMAX_PROPERTIES_EXT = 1000130000
     ! Provided by VK_EXT_inline_uniform_block
-    integer(c_int) :: INLINE_UNIFORM_BLOCK_FEATURES_EXT = INLINE_UNIFORM_BLOCK_FEATURES
+    integer(c_int) :: INLINE_UNIFORM_BLOCK_FEATURES_EXT = 1000138000
     ! Provided by VK_EXT_inline_uniform_block
-    integer(c_int) :: INLINE_UNIFORM_BLOCK_PROPERTIES_EXT = INLINE_UNIFORM_BLOCK_PROPERTIES
+    integer(c_int) :: INLINE_UNIFORM_BLOCK_PROPERTIES_EXT = 1000138001
     ! Provided by VK_KHR_sampler_ycbcr_conversion
-    integer(c_int) :: SAMPLER_YCBCR_CONVERSION_FEATURES_KHR = SAMPLER_YCBCR_CONVERSION_FEATURES
+    integer(c_int) :: SAMPLER_YCBCR_CONVERSION_FEATURES_KHR = 1000156004
     ! Provided by VK_EXT_descriptor_indexing
-    integer(c_int) :: DESCRIPTOR_INDEXING_FEATURES_EXT = DESCRIPTOR_INDEXING_FEATURES
+    integer(c_int) :: DESCRIPTOR_INDEXING_FEATURES_EXT = 1000161001
     ! Provided by VK_EXT_descriptor_indexing
-    integer(c_int) :: DESCRIPTOR_INDEXING_PROPERTIES_EXT = DESCRIPTOR_INDEXING_PROPERTIES
+    integer(c_int) :: DESCRIPTOR_INDEXING_PROPERTIES_EXT = 1000161002
     ! Provided by VK_KHR_maintenance3
-    integer(c_int) :: MAINTENANCE_3_PROPERTIES_KHR = MAINTENANCE_3_PROPERTIES
+    integer(c_int) :: MAINTENANCE_3_PROPERTIES_KHR = 1000168000
     ! Provided by VK_KHR_shader_subgroup_extended_types
-    integer(c_int) :: SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES_KHR = SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES
+    integer(c_int) :: SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES_KHR = 1000175000
     ! Provided by VK_KHR_8bit_storage
     integer(c_int) :: 8BIT_STORAGE_FEATURES_KHR = 8BIT_STORAGE_FEATURES
     ! Provided by VK_KHR_shader_atomic_int64
