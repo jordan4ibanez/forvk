@@ -31,6 +31,8 @@ contains
     integer(c_int), target :: extension_count
     type(vk_application_info) :: app_info
     character(len = :, kind = c_char), pointer :: app_name, engine_name
+    type(vk_instance_create_info) :: create_info
+    
 
     !? GLFW WINDOW CREATION. =====================================
 
@@ -74,7 +76,7 @@ contains
     app_info%engine_version = vk_make_api_version(0,1,0,0)
     app_info%api_version = VK_API_VERSION_1_0
 
-    
+
 
 
 

@@ -12,6 +12,7 @@ module forvk
 
   public :: vk_extension_properties
   public :: vk_application_info
+  public :: vk_instance_create_info
 
 
 !* TYPES. ============================c===================================
