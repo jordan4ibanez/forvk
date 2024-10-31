@@ -1010,79 +1010,79 @@ module forvk_parameters
   ! Part of t_vk_structure_type.
   type t_video_encode
     ! Provided by VK_KHR_video_encode_h264
-    integer(c_int) :: H264_CAPABILITIES_KHR = 1000038000
+    integer(c_int) :: ENCODE_H264_CAPABILITIES_KHR = 1000038000
     ! Provided by VK_KHR_video_encode_h264
-    integer(c_int) :: H264_SESSION_PARAMETERS_CREATE_INFO_KHR = 1000038001
+    integer(c_int) :: ENCODE_H264_SESSION_PARAMETERS_CREATE_INFO_KHR = 1000038001
     ! Provided by VK_KHR_video_encode_h264
-    integer(c_int) :: H264_SESSION_PARAMETERS_ADD_INFO_KHR = 1000038002
+    integer(c_int) :: ENCODE_H264_SESSION_PARAMETERS_ADD_INFO_KHR = 1000038002
     ! Provided by VK_KHR_video_encode_h264
-    integer(c_int) :: H264_PICTURE_INFO_KHR = 1000038003
+    integer(c_int) :: ENCODE_H264_PICTURE_INFO_KHR = 1000038003
     ! Provided by VK_KHR_video_encode_h264
-    integer(c_int) :: H264_DPB_SLOT_INFO_KHR = 1000038004
+    integer(c_int) :: ENCODE_H264_DPB_SLOT_INFO_KHR = 1000038004
     ! Provided by VK_KHR_video_encode_h264
-    integer(c_int) :: H264_NALU_SLICE_INFO_KHR = 1000038005
+    integer(c_int) :: ENCODE_H264_NALU_SLICE_INFO_KHR = 1000038005
     ! Provided by VK_KHR_video_encode_h264
-    integer(c_int) :: H264_GOP_REMAINING_FRAME_INFO_KHR = 1000038006
+    integer(c_int) :: ENCODE_H264_GOP_REMAINING_FRAME_INFO_KHR = 1000038006
     ! Provided by VK_KHR_video_encode_h264
-    integer(c_int) :: H264_PROFILE_INFO_KHR = 1000038007
+    integer(c_int) :: ENCODE_H264_PROFILE_INFO_KHR = 1000038007
     ! Provided by VK_KHR_video_encode_h264
-    integer(c_int) :: H264_RATE_CONTROL_INFO_KHR = 1000038008
+    integer(c_int) :: ENCODE_H264_RATE_CONTROL_INFO_KHR = 1000038008
     ! Provided by VK_KHR_video_encode_h264
-    integer(c_int) :: H264_RATE_CONTROL_LAYER_INFO_KHR = 1000038009
+    integer(c_int) :: ENCODE_H264_RATE_CONTROL_LAYER_INFO_KHR = 1000038009
     ! Provided by VK_KHR_video_encode_h264
-    integer(c_int) :: H264_SESSION_CREATE_INFO_KHR = 1000038010
+    integer(c_int) :: ENCODE_H264_SESSION_CREATE_INFO_KHR = 1000038010
     ! Provided by VK_KHR_video_encode_h264
-    integer(c_int) :: H264_QUALITY_LEVEL_PROPERTIES_KHR = 1000038011
+    integer(c_int) :: ENCODE_H264_QUALITY_LEVEL_PROPERTIES_KHR = 1000038011
     ! Provided by VK_KHR_video_encode_h264
-    integer(c_int) :: H264_SESSION_PARAMETERS_GET_INFO_KHR = 1000038012
+    integer(c_int) :: ENCODE_H264_SESSION_PARAMETERS_GET_INFO_KHR = 1000038012
     ! Provided by VK_KHR_video_encode_h264
-    integer(c_int) :: H264_SESSION_PARAMETERS_FEEDBACK_INFO_KHR = 1000038013
+    integer(c_int) :: ENCODE_H264_SESSION_PARAMETERS_FEEDBACK_INFO_KHR = 1000038013
     ! Provided by VK_KHR_video_encode_h265
-    integer(c_int) :: H265_CAPABILITIES_KHR = 1000039000
+    integer(c_int) :: ENCODE_H265_CAPABILITIES_KHR = 1000039000
     ! Provided by VK_KHR_video_encode_h265
-    integer(c_int) :: H265_SESSION_PARAMETERS_CREATE_INFO_KHR = 1000039001
+    integer(c_int) :: ENCODE_H265_SESSION_PARAMETERS_CREATE_INFO_KHR = 1000039001
     ! Provided by VK_KHR_video_encode_h265
-    integer(c_int) :: H265_SESSION_PARAMETERS_ADD_INFO_KHR = 1000039002
+    integer(c_int) :: ENCODE_H265_SESSION_PARAMETERS_ADD_INFO_KHR = 1000039002
     ! Provided by VK_KHR_video_encode_h265
-    integer(c_int) :: H265_PICTURE_INFO_KHR = 1000039003
+    integer(c_int) :: ENCODE_H265_PICTURE_INFO_KHR = 1000039003
     ! Provided by VK_KHR_video_encode_h265
-    integer(c_int) :: H265_DPB_SLOT_INFO_KHR = 1000039004
+    integer(c_int) :: ENCODE_H265_DPB_SLOT_INFO_KHR = 1000039004
     ! Provided by VK_KHR_video_encode_h265
-    integer(c_int) :: H265_NALU_SLICE_SEGMENT_INFO_KHR = 1000039005
+    integer(c_int) :: ENCODE_H265_NALU_SLICE_SEGMENT_INFO_KHR = 1000039005
     ! Provided by VK_KHR_video_encode_h265
-    integer(c_int) :: H265_GOP_REMAINING_FRAME_INFO_KHR = 1000039006
+    integer(c_int) :: ENCODE_H265_GOP_REMAINING_FRAME_INFO_KHR = 1000039006
     ! Provided by VK_KHR_video_encode_h265
-    integer(c_int) :: H265_PROFILE_INFO_KHR = 1000039007
+    integer(c_int) :: ENCODE_H265_PROFILE_INFO_KHR = 1000039007
     ! Provided by VK_KHR_video_encode_h265
-    integer(c_int) :: H265_RATE_CONTROL_INFO_KHR = 1000039009
+    integer(c_int) :: ENCODE_H265_RATE_CONTROL_INFO_KHR = 1000039009
     ! Provided by VK_KHR_video_encode_h265
-    integer(c_int) :: H265_RATE_CONTROL_LAYER_INFO_KHR = 1000039010
+    integer(c_int) :: ENCODE_H265_RATE_CONTROL_LAYER_INFO_KHR = 1000039010
     ! Provided by VK_KHR_video_encode_h265
-    integer(c_int) :: H265_SESSION_CREATE_INFO_KHR = 1000039011
+    integer(c_int) :: ENCODE_H265_SESSION_CREATE_INFO_KHR = 1000039011
     ! Provided by VK_KHR_video_encode_h265
-    integer(c_int) :: H265_QUALITY_LEVEL_PROPERTIES_KHR = 1000039012
+    integer(c_int) :: ENCODE_H265_QUALITY_LEVEL_PROPERTIES_KHR = 1000039012
     ! Provided by VK_KHR_video_encode_h265
-    integer(c_int) :: H265_SESSION_PARAMETERS_GET_INFO_KHR = 1000039013
+    integer(c_int) :: ENCODE_H265_SESSION_PARAMETERS_GET_INFO_KHR = 1000039013
     ! Provided by VK_KHR_video_encode_h265
-    integer(c_int) :: H265_SESSION_PARAMETERS_FEEDBACK_INFO_KHR = 1000039014
+    integer(c_int) :: ENCODE_H265_SESSION_PARAMETERS_FEEDBACK_INFO_KHR = 1000039014
     ! Provided by VK_KHR_video_encode_queue
-    integer(c_int) :: INFO_KHR = 1000299000
+    integer(c_int) :: ENCODE_INFO_KHR = 1000299000
     ! Provided by VK_KHR_video_encode_queue
-    integer(c_int) :: RATE_CONTROL_INFO_KHR = 1000299001
+    integer(c_int) :: ENCODE_RATE_CONTROL_INFO_KHR = 1000299001
     ! Provided by VK_KHR_video_encode_queue
-    integer(c_int) :: RATE_CONTROL_LAYER_INFO_KHR = 1000299002
+    integer(c_int) :: ENCODE_RATE_CONTROL_LAYER_INFO_KHR = 1000299002
     ! Provided by VK_KHR_video_encode_queue
-    integer(c_int) :: CAPABILITIES_KHR = 1000299003
+    integer(c_int) :: ENCODE_CAPABILITIES_KHR = 1000299003
     ! Provided by VK_KHR_video_encode_queue
-    integer(c_int) :: USAGE_INFO_KHR = 1000299004
+    integer(c_int) :: ENCODE_USAGE_INFO_KHR = 1000299004
     ! Provided by VK_KHR_video_encode_queue
-    integer(c_int) :: QUALITY_LEVEL_PROPERTIES_KHR = 1000299007
+    integer(c_int) :: ENCODE_QUALITY_LEVEL_PROPERTIES_KHR = 1000299007
     ! Provided by VK_KHR_video_encode_queue
-    integer(c_int) :: QUALITY_LEVEL_INFO_KHR = 1000299008
+    integer(c_int) :: ENCODE_QUALITY_LEVEL_INFO_KHR = 1000299008
     ! Provided by VK_KHR_video_encode_queue
-    integer(c_int) :: SESSION_PARAMETERS_GET_INFO_KHR = 1000299009
+    integer(c_int) :: ENCODE_SESSION_PARAMETERS_GET_INFO_KHR = 1000299009
     ! Provided by VK_KHR_video_encode_queue
-    integer(c_int) :: SESSION_PARAMETERS_FEEDBACK_INFO_KHR = 1000299010
+    integer(c_int) :: ENCODE_SESSION_PARAMETERS_FEEDBACK_INFO_KHR = 1000299010
   end type t_video_encode
 
 
