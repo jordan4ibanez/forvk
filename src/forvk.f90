@@ -46,6 +46,26 @@ module forvk
   end type vk_application_info
 
 
+  type, bind(c) :: vk_instance_create_info
+    ! uint32_t VkStructureType
+    integer(c_int) :: s_type
+    ! void *
+    type(c_ptr) :: p_next
+    ! VkInstanceCreateFlags: uint32_t
+    integer(c_int) :: flags
+    ! const VkApplicationInfo *
+    type(c_ptr) :: p_application_info
+    ! uint32_t
+    integer(c_int) :: enabled_layer_count
+    ! const char *
+    type(c_ptr) :: pp_enabled_layer_names
+    ! uint32_t
+    integer(c_int) :: enabled_extension_count
+    ! const char * const *  aka: (string array)
+    type(c_ptr) :: pp_enabled_extension_names
+  end type vk_instance_create_info
+
+
 !* C FUNCTION INTERFACES. ===============================================================
 
 
