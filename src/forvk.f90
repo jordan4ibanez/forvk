@@ -1,5 +1,6 @@
 module forvk
   use, intrinsic :: iso_c_binding
+  use :: forvk_parameters
   implicit none
 
 
