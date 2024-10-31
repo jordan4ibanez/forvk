@@ -1725,771 +1725,771 @@ module forvk_parameters
   ! Still in t_vk_structure_type
   type t_physical_device
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PHYSICAL_DEVICE_SUBGROUP_PROPERTIES = 1000094000
+    integer(c_int) :: SUBGROUP_PROPERTIES = 1000094000
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES = 1000083000
+    integer(c_int) :: 16BIT_STORAGE_FEATURES = 1000083000
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PHYSICAL_DEVICE_GROUP_PROPERTIES = 1000070000
+    integer(c_int) :: GROUP_PROPERTIES = 1000070000
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PHYSICAL_DEVICE_FEATURES_2 = 1000059000
+    integer(c_int) :: FEATURES_2 = 1000059000
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PHYSICAL_DEVICE_PROPERTIES_2 = 1000059001
+    integer(c_int) :: PROPERTIES_2 = 1000059001
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2 = 1000059004
+    integer(c_int) :: IMAGE_FORMAT_INFO_2 = 1000059004
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PHYSICAL_DEVICE_MEMORY_PROPERTIES_2 = 1000059006
+    integer(c_int) :: MEMORY_PROPERTIES_2 = 1000059006
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PHYSICAL_DEVICE_SPARSE_IMAGE_FORMAT_INFO_2 = 1000059008
+    integer(c_int) :: SPARSE_IMAGE_FORMAT_INFO_2 = 1000059008
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES = 1000117000
+    integer(c_int) :: POINT_CLIPPING_PROPERTIES = 1000117000
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PHYSICAL_DEVICE_MULTIVIEW_FEATURES = 1000053001
+    integer(c_int) :: MULTIVIEW_FEATURES = 1000053001
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES = 1000053002
+    integer(c_int) :: MULTIVIEW_PROPERTIES = 1000053002
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES = 1000120000
+    integer(c_int) :: VARIABLE_POINTERS_FEATURES = 1000120000
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES = 1000145001
+    integer(c_int) :: PROTECTED_MEMORY_FEATURES = 1000145001
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PHYSICAL_DEVICE_PROTECTED_MEMORY_PROPERTIES = 1000145002
+    integer(c_int) :: PROTECTED_MEMORY_PROPERTIES = 1000145002
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PHYSICAL_DEVICE_SAMPLER_YCBCR_CONVERSION_FEATURES = 1000156004
+    integer(c_int) :: SAMPLER_YCBCR_CONVERSION_FEATURES = 1000156004
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PHYSICAL_DEVICE_EXTERNAL_IMAGE_FORMAT_INFO = 1000071000
+    integer(c_int) :: EXTERNAL_IMAGE_FORMAT_INFO = 1000071000
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PHYSICAL_DEVICE_EXTERNAL_BUFFER_INFO = 1000071002
+    integer(c_int) :: EXTERNAL_BUFFER_INFO = 1000071002
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PHYSICAL_DEVICE_ID_PROPERTIES = 1000071004
+    integer(c_int) :: ID_PROPERTIES = 1000071004
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PHYSICAL_DEVICE_EXTERNAL_FENCE_INFO = 1000112000
+    integer(c_int) :: EXTERNAL_FENCE_INFO = 1000112000
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PHYSICAL_DEVICE_EXTERNAL_SEMAPHORE_INFO = 1000076000
+    integer(c_int) :: EXTERNAL_SEMAPHORE_INFO = 1000076000
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES = 1000168000
+    integer(c_int) :: MAINTENANCE_3_PROPERTIES = 1000168000
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES = 1000063000
+    integer(c_int) :: SHADER_DRAW_PARAMETERS_FEATURES = 1000063000
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: PHYSICAL_DEVICE_VULKAN_1_1_FEATURES = 49
+    integer(c_int) :: VULKAN_1_1_FEATURES = 49
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: PHYSICAL_DEVICE_VULKAN_1_1_PROPERTIES = 50
+    integer(c_int) :: VULKAN_1_1_PROPERTIES = 50
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: PHYSICAL_DEVICE_VULKAN_1_2_FEATURES = 51
+    integer(c_int) :: VULKAN_1_2_FEATURES = 51
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: PHYSICAL_DEVICE_VULKAN_1_2_PROPERTIES = 52
+    integer(c_int) :: VULKAN_1_2_PROPERTIES = 52
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES = 1000177000
+    integer(c_int) :: 8BIT_STORAGE_FEATURES = 1000177000
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: PHYSICAL_DEVICE_DRIVER_PROPERTIES = 1000196000
+    integer(c_int) :: DRIVER_PROPERTIES = 1000196000
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES = 1000180000
+    integer(c_int) :: SHADER_ATOMIC_INT64_FEATURES = 1000180000
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_FLOAT16_INT8_FEATURES = 1000082000
+    integer(c_int) :: SHADER_FLOAT16_INT8_FEATURES = 1000082000
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES = 1000197000
+    integer(c_int) :: FLOAT_CONTROLS_PROPERTIES = 1000197000
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES = 1000161001
+    integer(c_int) :: DESCRIPTOR_INDEXING_FEATURES = 1000161001
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES = 1000161002
+    integer(c_int) :: DESCRIPTOR_INDEXING_PROPERTIES = 1000161002
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES = 1000199000
+    integer(c_int) :: DEPTH_STENCIL_RESOLVE_PROPERTIES = 1000199000
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: PHYSICAL_DEVICE_SCALAR_BLOCK_LAYOUT_FEATURES = 1000221000
+    integer(c_int) :: SCALAR_BLOCK_LAYOUT_FEATURES = 1000221000
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES = 1000130000
+    integer(c_int) :: SAMPLER_FILTER_MINMAX_PROPERTIES = 1000130000
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES = 1000211000
+    integer(c_int) :: VULKAN_MEMORY_MODEL_FEATURES = 1000211000
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: PHYSICAL_DEVICE_IMAGELESS_FRAMEBUFFER_FEATURES = 1000108000
+    integer(c_int) :: IMAGELESS_FRAMEBUFFER_FEATURES = 1000108000
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: PHYSICAL_DEVICE_UNIFORM_BUFFER_STANDARD_LAYOUT_FEATURES = 1000253000
+    integer(c_int) :: UNIFORM_BUFFER_STANDARD_LAYOUT_FEATURES = 1000253000
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES = 1000175000
+    integer(c_int) :: SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES = 1000175000
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: PHYSICAL_DEVICE_SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES = 1000241000
+    integer(c_int) :: SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES = 1000241000
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES = 1000261000
+    integer(c_int) :: HOST_QUERY_RESET_FEATURES = 1000261000
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_FEATURES = 1000207000
+    integer(c_int) :: TIMELINE_SEMAPHORE_FEATURES = 1000207000
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_PROPERTIES = 1000207001
+    integer(c_int) :: TIMELINE_SEMAPHORE_PROPERTIES = 1000207001
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES = 1000257000
+    integer(c_int) :: BUFFER_DEVICE_ADDRESS_FEATURES = 1000257000
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: PHYSICAL_DEVICE_VULKAN_1_3_FEATURES = 53
+    integer(c_int) :: VULKAN_1_3_FEATURES = 53
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: PHYSICAL_DEVICE_VULKAN_1_3_PROPERTIES = 54
+    integer(c_int) :: VULKAN_1_3_PROPERTIES = 54
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_TERMINATE_INVOCATION_FEATURES = 1000215000
+    integer(c_int) :: SHADER_TERMINATE_INVOCATION_FEATURES = 1000215000
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: PHYSICAL_DEVICE_TOOL_PROPERTIES = 1000245000
+    integer(c_int) :: TOOL_PROPERTIES = 1000245000
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_DEMOTE_TO_HELPER_INVOCATION_FEATURES = 1000276000
+    integer(c_int) :: SHADER_DEMOTE_TO_HELPER_INVOCATION_FEATURES = 1000276000
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: PHYSICAL_DEVICE_PRIVATE_DATA_FEATURES = 1000295000
+    integer(c_int) :: PRIVATE_DATA_FEATURES = 1000295000
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: PHYSICAL_DEVICE_PIPELINE_CREATION_CACHE_CONTROL_FEATURES = 1000297000
+    integer(c_int) :: PIPELINE_CREATION_CACHE_CONTROL_FEATURES = 1000297000
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: PHYSICAL_DEVICE_SYNCHRONIZATION_2_FEATURES = 1000314007
+    integer(c_int) :: SYNCHRONIZATION_2_FEATURES = 1000314007
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: PHYSICAL_DEVICE_ZERO_INITIALIZE_WORKGROUP_MEMORY_FEATURES = 1000325000
+    integer(c_int) :: ZERO_INITIALIZE_WORKGROUP_MEMORY_FEATURES = 1000325000
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: PHYSICAL_DEVICE_IMAGE_ROBUSTNESS_FEATURES = 1000335000
+    integer(c_int) :: IMAGE_ROBUSTNESS_FEATURES = 1000335000
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES = 1000225000
+    integer(c_int) :: SUBGROUP_SIZE_CONTROL_PROPERTIES = 1000225000
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_FEATURES = 1000225002
+    integer(c_int) :: SUBGROUP_SIZE_CONTROL_FEATURES = 1000225002
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_FEATURES = 1000138000
+    integer(c_int) :: INLINE_UNIFORM_BLOCK_FEATURES = 1000138000
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_PROPERTIES = 1000138001
+    integer(c_int) :: INLINE_UNIFORM_BLOCK_PROPERTIES = 1000138001
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_HDR_FEATURES = 1000066000
+    integer(c_int) :: TEXTURE_COMPRESSION_ASTC_HDR_FEATURES = 1000066000
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: PHYSICAL_DEVICE_DYNAMIC_RENDERING_FEATURES = 1000044003
+    integer(c_int) :: DYNAMIC_RENDERING_FEATURES = 1000044003
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_INTEGER_DOT_PRODUCT_FEATURES = 1000280000
+    integer(c_int) :: SHADER_INTEGER_DOT_PRODUCT_FEATURES = 1000280000
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_INTEGER_DOT_PRODUCT_PROPERTIES = 1000280001
+    integer(c_int) :: SHADER_INTEGER_DOT_PRODUCT_PROPERTIES = 1000280001
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_PROPERTIES = 1000281001
+    integer(c_int) :: TEXEL_BUFFER_ALIGNMENT_PROPERTIES = 1000281001
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: PHYSICAL_DEVICE_MAINTENANCE_4_FEATURES = 1000413000
+    integer(c_int) :: MAINTENANCE_4_FEATURES = 1000413000
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: PHYSICAL_DEVICE_MAINTENANCE_4_PROPERTIES = 1000413001
+    integer(c_int) :: MAINTENANCE_4_PROPERTIES = 1000413001
     ! Provided by VK_KHR_video_queue
-    integer(c_int) :: PHYSICAL_DEVICE_VIDEO_FORMAT_INFO_KHR = 1000023014
+    integer(c_int) :: VIDEO_FORMAT_INFO_KHR = 1000023014
     ! Provided by VK_EXT_transform_feedback
-    integer(c_int) :: PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_FEATURES_EXT = 1000028000
+    integer(c_int) :: TRANSFORM_FEEDBACK_FEATURES_EXT = 1000028000
     ! Provided by VK_EXT_transform_feedback
-    integer(c_int) :: PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT = 1000028001
+    integer(c_int) :: TRANSFORM_FEEDBACK_PROPERTIES_EXT = 1000028001
     ! Provided by VK_NV_corner_sampled_image
-    integer(c_int) :: PHYSICAL_DEVICE_CORNER_SAMPLED_IMAGE_FEATURES_NV = 1000050000
+    integer(c_int) :: CORNER_SAMPLED_IMAGE_FEATURES_NV = 1000050000
     ! Provided by VK_EXT_astc_decode_mode
-    integer(c_int) :: PHYSICAL_DEVICE_ASTC_DECODE_FEATURES_EXT = 1000067001
+    integer(c_int) :: ASTC_DECODE_FEATURES_EXT = 1000067001
     ! Provided by VK_EXT_pipeline_robustness
-    integer(c_int) :: PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_FEATURES_EXT = 1000068001
+    integer(c_int) :: PIPELINE_ROBUSTNESS_FEATURES_EXT = 1000068001
     ! Provided by VK_EXT_pipeline_robustness
-    integer(c_int) :: PHYSICAL_DEVICE_PIPELINE_ROBUSTNESS_PROPERTIES_EXT = 1000068002
+    integer(c_int) :: PIPELINE_ROBUSTNESS_PROPERTIES_EXT = 1000068002
     ! Provided by VK_KHR_push_descriptor
-    integer(c_int) :: PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES_KHR = 1000080000
+    integer(c_int) :: PUSH_DESCRIPTOR_PROPERTIES_KHR = 1000080000
     ! Provided by VK_EXT_conditional_rendering
-    integer(c_int) :: PHYSICAL_DEVICE_CONDITIONAL_RENDERING_FEATURES_EXT = 1000081001
+    integer(c_int) :: CONDITIONAL_RENDERING_FEATURES_EXT = 1000081001
     ! Provided by VK_NVX_multiview_per_view_attributes
-    integer(c_int) :: PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_ATTRIBUTES_PROPERTIES_NVX = 1000097000
+    integer(c_int) :: MULTIVIEW_PER_VIEW_ATTRIBUTES_PROPERTIES_NVX = 1000097000
     ! Provided by VK_EXT_discard_rectangles
-    integer(c_int) :: PHYSICAL_DEVICE_DISCARD_RECTANGLE_PROPERTIES_EXT = 1000099000
+    integer(c_int) :: DISCARD_RECTANGLE_PROPERTIES_EXT = 1000099000
     ! Provided by VK_EXT_conservative_rasterization
-    integer(c_int) :: PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT = 1000101000
+    integer(c_int) :: CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT = 1000101000
     ! Provided by VK_EXT_depth_clip_enable
-    integer(c_int) :: PHYSICAL_DEVICE_DEPTH_CLIP_ENABLE_FEATURES_EXT = 1000102000
+    integer(c_int) :: DEPTH_CLIP_ENABLE_FEATURES_EXT = 1000102000
     ! Provided by VK_IMG_relaxed_line_rasterization
-    integer(c_int) :: PHYSICAL_DEVICE_RELAXED_LINE_RASTERIZATION_FEATURES_IMG = 1000110000
+    integer(c_int) :: RELAXED_LINE_RASTERIZATION_FEATURES_IMG = 1000110000
     ! Provided by VK_KHR_performance_query
-    integer(c_int) :: PHYSICAL_DEVICE_PERFORMANCE_QUERY_FEATURES_KHR = 1000116000
+    integer(c_int) :: PERFORMANCE_QUERY_FEATURES_KHR = 1000116000
     ! Provided by VK_KHR_performance_query
-    integer(c_int) :: PHYSICAL_DEVICE_PERFORMANCE_QUERY_PROPERTIES_KHR = 1000116001
+    integer(c_int) :: PERFORMANCE_QUERY_PROPERTIES_KHR = 1000116001
     ! Provided by VK_KHR_get_surface_capabilities2
-    integer(c_int) :: PHYSICAL_DEVICE_SURFACE_INFO_2_KHR = 1000119000
+    integer(c_int) :: SURFACE_INFO_2_KHR = 1000119000
     ! Provided by VK_EXT_sample_locations
-    integer(c_int) :: PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT = 1000143003
+    integer(c_int) :: SAMPLE_LOCATIONS_PROPERTIES_EXT = 1000143003
     ! Provided by VK_EXT_blend_operation_advanced
-    integer(c_int) :: PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_FEATURES_EXT = 1000148000
+    integer(c_int) :: BLEND_OPERATION_ADVANCED_FEATURES_EXT = 1000148000
     ! Provided by VK_EXT_blend_operation_advanced
-    integer(c_int) :: PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT = 1000148001
+    integer(c_int) :: BLEND_OPERATION_ADVANCED_PROPERTIES_EXT = 1000148001
     ! Provided by VK_KHR_acceleration_structure
-    integer(c_int) :: PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_FEATURES_KHR = 1000150013
+    integer(c_int) :: ACCELERATION_STRUCTURE_FEATURES_KHR = 1000150013
     ! Provided by VK_KHR_acceleration_structure
-    integer(c_int) :: PHYSICAL_DEVICE_ACCELERATION_STRUCTURE_PROPERTIES_KHR = 1000150014
+    integer(c_int) :: ACCELERATION_STRUCTURE_PROPERTIES_KHR = 1000150014
     ! Provided by VK_KHR_ray_tracing_pipeline
-    integer(c_int) :: PHYSICAL_DEVICE_RAY_TRACING_PIPELINE_FEATURES_KHR = 1000347000
+    integer(c_int) :: RAY_TRACING_PIPELINE_FEATURES_KHR = 1000347000
     ! Provided by VK_KHR_ray_tracing_pipeline
-    integer(c_int) :: PHYSICAL_DEVICE_RAY_TRACING_PIPELINE_PROPERTIES_KHR = 1000347001
+    integer(c_int) :: RAY_TRACING_PIPELINE_PROPERTIES_KHR = 1000347001
     ! Provided by VK_KHR_ray_query
-    integer(c_int) :: PHYSICAL_DEVICE_RAY_QUERY_FEATURES_KHR = 1000348013
+    integer(c_int) :: RAY_QUERY_FEATURES_KHR = 1000348013
     ! Provided by VK_NV_shader_sm_builtins
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_SM_BUILTINS_FEATURES_NV = 1000154000
+    integer(c_int) :: SHADER_SM_BUILTINS_FEATURES_NV = 1000154000
     ! Provided by VK_NV_shader_sm_builtins
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_SM_BUILTINS_PROPERTIES_NV = 1000154001
+    integer(c_int) :: SHADER_SM_BUILTINS_PROPERTIES_NV = 1000154001
     ! Provided by VK_EXT_image_drm_format_modifier
-    integer(c_int) :: PHYSICAL_DEVICE_IMAGE_DRM_FORMAT_MODIFIER_INFO_EXT = 1000158002
+    integer(c_int) :: IMAGE_DRM_FORMAT_MODIFIER_INFO_EXT = 1000158002
     ! Provided by VK_NV_shading_rate_image
-    integer(c_int) :: PHYSICAL_DEVICE_SHADING_RATE_IMAGE_FEATURES_NV = 1000164001
+    integer(c_int) :: SHADING_RATE_IMAGE_FEATURES_NV = 1000164001
     ! Provided by VK_NV_shading_rate_image
-    integer(c_int) :: PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV = 1000164002
+    integer(c_int) :: SHADING_RATE_IMAGE_PROPERTIES_NV = 1000164002
     ! Provided by VK_NV_ray_tracing
-    integer(c_int) :: PHYSICAL_DEVICE_RAY_TRACING_PROPERTIES_NV = 1000165009
+    integer(c_int) :: RAY_TRACING_PROPERTIES_NV = 1000165009
     ! Provided by VK_NV_representative_fragment_test
-    integer(c_int) :: PHYSICAL_DEVICE_REPRESENTATIVE_FRAGMENT_TEST_FEATURES_NV = 1000166000
+    integer(c_int) :: REPRESENTATIVE_FRAGMENT_TEST_FEATURES_NV = 1000166000
     ! Provided by VK_EXT_filter_cubic
-    integer(c_int) :: PHYSICAL_DEVICE_IMAGE_VIEW_IMAGE_FORMAT_INFO_EXT = 1000170000
+    integer(c_int) :: IMAGE_VIEW_IMAGE_FORMAT_INFO_EXT = 1000170000
     ! Provided by VK_EXT_external_memory_host
-    integer(c_int) :: PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT = 1000178002
+    integer(c_int) :: EXTERNAL_MEMORY_HOST_PROPERTIES_EXT = 1000178002
     ! Provided by VK_KHR_shader_clock
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_CLOCK_FEATURES_KHR = 1000181000
+    integer(c_int) :: SHADER_CLOCK_FEATURES_KHR = 1000181000
     ! Provided by VK_AMD_shader_core_properties
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD = 1000185000
+    integer(c_int) :: SHADER_CORE_PROPERTIES_AMD = 1000185000
     ! Provided by VK_KHR_global_priority
-    integer(c_int) :: PHYSICAL_DEVICE_GLOBAL_PRIORITY_QUERY_FEATURES_KHR = 1000388000
+    integer(c_int) :: GLOBAL_PRIORITY_QUERY_FEATURES_KHR = 1000388000
     ! Provided by VK_EXT_vertex_attribute_divisor
-    integer(c_int) :: PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT = 1000190000
+    integer(c_int) :: VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT = 1000190000
     ! Provided by VK_NV_mesh_shader
-    integer(c_int) :: PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV = 1000202000
+    integer(c_int) :: MESH_SHADER_FEATURES_NV = 1000202000
     ! Provided by VK_NV_mesh_shader
-    integer(c_int) :: PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV = 1000202001
+    integer(c_int) :: MESH_SHADER_PROPERTIES_NV = 1000202001
     ! Provided by VK_NV_shader_image_footprint
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_IMAGE_FOOTPRINT_FEATURES_NV = 1000204000
+    integer(c_int) :: SHADER_IMAGE_FOOTPRINT_FEATURES_NV = 1000204000
     ! Provided by VK_NV_scissor_exclusive
-    integer(c_int) :: PHYSICAL_DEVICE_EXCLUSIVE_SCISSOR_FEATURES_NV = 1000205002
+    integer(c_int) :: EXCLUSIVE_SCISSOR_FEATURES_NV = 1000205002
     ! Provided by VK_INTEL_shader_integer_functions2
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_INTEGER_FUNCTIONS_2_FEATURES_INTEL = 1000209000
+    integer(c_int) :: SHADER_INTEGER_FUNCTIONS_2_FEATURES_INTEL = 1000209000
     ! Provided by VK_EXT_pci_bus_info
-    integer(c_int) :: PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT = 1000212000
+    integer(c_int) :: PCI_BUS_INFO_PROPERTIES_EXT = 1000212000
     ! Provided by VK_EXT_fragment_density_map
-    integer(c_int) :: PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT = 1000218000
+    integer(c_int) :: FRAGMENT_DENSITY_MAP_FEATURES_EXT = 1000218000
     ! Provided by VK_EXT_fragment_density_map
-    integer(c_int) :: PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT = 1000218001
+    integer(c_int) :: FRAGMENT_DENSITY_MAP_PROPERTIES_EXT = 1000218001
     ! Provided by VK_KHR_fragment_shading_rate
-    integer(c_int) :: PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_PROPERTIES_KHR = 1000226002
+    integer(c_int) :: FRAGMENT_SHADING_RATE_PROPERTIES_KHR = 1000226002
     ! Provided by VK_KHR_fragment_shading_rate
-    integer(c_int) :: PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_FEATURES_KHR = 1000226003
+    integer(c_int) :: FRAGMENT_SHADING_RATE_FEATURES_KHR = 1000226003
     ! Provided by VK_KHR_fragment_shading_rate
-    integer(c_int) :: PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_KHR = 1000226004
+    integer(c_int) :: FRAGMENT_SHADING_RATE_KHR = 1000226004
     ! Provided by VK_AMD_shader_core_properties2
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_2_AMD = 1000227000
+    integer(c_int) :: SHADER_CORE_PROPERTIES_2_AMD = 1000227000
     ! Provided by VK_AMD_device_coherent_memory
-    integer(c_int) :: PHYSICAL_DEVICE_COHERENT_MEMORY_FEATURES_AMD = 1000229000
+    integer(c_int) :: COHERENT_MEMORY_FEATURES_AMD = 1000229000
     ! Provided by VK_KHR_dynamic_rendering_local_read
-    integer(c_int) :: PHYSICAL_DEVICE_DYNAMIC_RENDERING_LOCAL_READ_FEATURES_KHR = 1000232000
+    integer(c_int) :: DYNAMIC_RENDERING_LOCAL_READ_FEATURES_KHR = 1000232000
     ! Provided by VK_EXT_shader_image_atomic_int64
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_IMAGE_ATOMIC_INT64_FEATURES_EXT = 1000234000
+    integer(c_int) :: SHADER_IMAGE_ATOMIC_INT64_FEATURES_EXT = 1000234000
     ! Provided by VK_KHR_shader_quad_control
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_QUAD_CONTROL_FEATURES_KHR = 1000235000
+    integer(c_int) :: SHADER_QUAD_CONTROL_FEATURES_KHR = 1000235000
     ! Provided by VK_EXT_memory_budget
-    integer(c_int) :: PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT = 1000237000
+    integer(c_int) :: MEMORY_BUDGET_PROPERTIES_EXT = 1000237000
     ! Provided by VK_EXT_memory_priority
-    integer(c_int) :: PHYSICAL_DEVICE_MEMORY_PRIORITY_FEATURES_EXT = 1000238000
+    integer(c_int) :: MEMORY_PRIORITY_FEATURES_EXT = 1000238000
     ! Provided by VK_NV_dedicated_allocation_image_aliasing
-    integer(c_int) :: PHYSICAL_DEVICE_DEDICATED_ALLOCATION_IMAGE_ALIASING_FEATURES_NV = 1000240000
+    integer(c_int) :: DEDICATED_ALLOCATION_IMAGE_ALIASING_FEATURES_NV = 1000240000
     ! Provided by VK_EXT_buffer_device_address
-    integer(c_int) :: PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES_EXT = 1000244000
+    integer(c_int) :: BUFFER_DEVICE_ADDRESS_FEATURES_EXT = 1000244000
     ! Provided by VK_KHR_present_wait
-    integer(c_int) :: PHYSICAL_DEVICE_PRESENT_WAIT_FEATURES_KHR = 1000248000
+    integer(c_int) :: PRESENT_WAIT_FEATURES_KHR = 1000248000
     ! Provided by VK_NV_cooperative_matrix
-    integer(c_int) :: PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_NV = 1000249000
+    integer(c_int) :: COOPERATIVE_MATRIX_FEATURES_NV = 1000249000
     ! Provided by VK_NV_cooperative_matrix
-    integer(c_int) :: PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_NV = 1000249002
+    integer(c_int) :: COOPERATIVE_MATRIX_PROPERTIES_NV = 1000249002
     ! Provided by VK_NV_coverage_reduction_mode
-    integer(c_int) :: PHYSICAL_DEVICE_COVERAGE_REDUCTION_MODE_FEATURES_NV = 1000250000
+    integer(c_int) :: COVERAGE_REDUCTION_MODE_FEATURES_NV = 1000250000
     ! Provided by VK_EXT_fragment_shader_interlock
-    integer(c_int) :: PHYSICAL_DEVICE_FRAGMENT_SHADER_INTERLOCK_FEATURES_EXT = 1000251000
+    integer(c_int) :: FRAGMENT_SHADER_INTERLOCK_FEATURES_EXT = 1000251000
     ! Provided by VK_EXT_ycbcr_image_arrays
-    integer(c_int) :: PHYSICAL_DEVICE_YCBCR_IMAGE_ARRAYS_FEATURES_EXT = 1000252000
+    integer(c_int) :: YCBCR_IMAGE_ARRAYS_FEATURES_EXT = 1000252000
     ! Provided by VK_EXT_provoking_vertex
-    integer(c_int) :: PHYSICAL_DEVICE_PROVOKING_VERTEX_FEATURES_EXT = 1000254000
+    integer(c_int) :: PROVOKING_VERTEX_FEATURES_EXT = 1000254000
     ! Provided by VK_EXT_provoking_vertex
-    integer(c_int) :: PHYSICAL_DEVICE_PROVOKING_VERTEX_PROPERTIES_EXT = 1000254002
+    integer(c_int) :: PROVOKING_VERTEX_PROPERTIES_EXT = 1000254002
     ! Provided by VK_EXT_shader_atomic_float
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_FEATURES_EXT = 1000260000
+    integer(c_int) :: SHADER_ATOMIC_FLOAT_FEATURES_EXT = 1000260000
     ! Provided by VK_EXT_extended_dynamic_state
-    integer(c_int) :: PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_FEATURES_EXT = 1000267000
+    integer(c_int) :: EXTENDED_DYNAMIC_STATE_FEATURES_EXT = 1000267000
     ! Provided by VK_KHR_pipeline_executable_properties
-    integer(c_int) :: PHYSICAL_DEVICE_PIPELINE_EXECUTABLE_PROPERTIES_FEATURES_KHR = 1000269000
+    integer(c_int) :: PIPELINE_EXECUTABLE_PROPERTIES_FEATURES_KHR = 1000269000
     ! Provided by VK_EXT_host_image_copy
-    integer(c_int) :: PHYSICAL_DEVICE_HOST_IMAGE_COPY_FEATURES_EXT = 1000270000
+    integer(c_int) :: HOST_IMAGE_COPY_FEATURES_EXT = 1000270000
     ! Provided by VK_EXT_host_image_copy
-    integer(c_int) :: PHYSICAL_DEVICE_HOST_IMAGE_COPY_PROPERTIES_EXT = 1000270001
+    integer(c_int) :: HOST_IMAGE_COPY_PROPERTIES_EXT = 1000270001
     ! Provided by VK_EXT_map_memory_placed
-    integer(c_int) :: PHYSICAL_DEVICE_MAP_MEMORY_PLACED_FEATURES_EXT = 1000272000
+    integer(c_int) :: MAP_MEMORY_PLACED_FEATURES_EXT = 1000272000
     ! Provided by VK_EXT_map_memory_placed
-    integer(c_int) :: PHYSICAL_DEVICE_MAP_MEMORY_PLACED_PROPERTIES_EXT = 1000272001
+    integer(c_int) :: MAP_MEMORY_PLACED_PROPERTIES_EXT = 1000272001
     ! Provided by VK_EXT_shader_atomic_float2
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT_2_FEATURES_EXT = 1000273000
+    integer(c_int) :: SHADER_ATOMIC_FLOAT_2_FEATURES_EXT = 1000273000
     ! Provided by VK_EXT_swapchain_maintenance1
-    integer(c_int) :: PHYSICAL_DEVICE_SWAPCHAIN_MAINTENANCE_1_FEATURES_EXT = 1000275000
+    integer(c_int) :: SWAPCHAIN_MAINTENANCE_1_FEATURES_EXT = 1000275000
     ! Provided by VK_NV_device_generated_commands
-    integer(c_int) :: PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_NV = 1000277000
+    integer(c_int) :: DEVICE_GENERATED_COMMANDS_PROPERTIES_NV = 1000277000
     ! Provided by VK_NV_device_generated_commands
-    integer(c_int) :: PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_FEATURES_NV = 1000277007
+    integer(c_int) :: DEVICE_GENERATED_COMMANDS_FEATURES_NV = 1000277007
     ! Provided by VK_NV_inherited_viewport_scissor
-    integer(c_int) :: PHYSICAL_DEVICE_INHERITED_VIEWPORT_SCISSOR_FEATURES_NV = 1000278000
+    integer(c_int) :: INHERITED_VIEWPORT_SCISSOR_FEATURES_NV = 1000278000
     ! Provided by VK_EXT_texel_buffer_alignment
-    integer(c_int) :: PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_FEATURES_EXT = 1000281000
+    integer(c_int) :: TEXEL_BUFFER_ALIGNMENT_FEATURES_EXT = 1000281000
     ! Provided by VK_EXT_depth_bias_control
-    integer(c_int) :: PHYSICAL_DEVICE_DEPTH_BIAS_CONTROL_FEATURES_EXT = 1000283000
+    integer(c_int) :: DEPTH_BIAS_CONTROL_FEATURES_EXT = 1000283000
     ! Provided by VK_EXT_device_memory_report
-    integer(c_int) :: PHYSICAL_DEVICE_DEVICE_MEMORY_REPORT_FEATURES_EXT = 1000284000
+    integer(c_int) :: DEVICE_MEMORY_REPORT_FEATURES_EXT = 1000284000
     ! Provided by VK_EXT_robustness2
-    integer(c_int) :: PHYSICAL_DEVICE_ROBUSTNESS_2_FEATURES_EXT = 1000286000
+    integer(c_int) :: ROBUSTNESS_2_FEATURES_EXT = 1000286000
     ! Provided by VK_EXT_robustness2
-    integer(c_int) :: PHYSICAL_DEVICE_ROBUSTNESS_2_PROPERTIES_EXT = 1000286001
+    integer(c_int) :: ROBUSTNESS_2_PROPERTIES_EXT = 1000286001
     ! Provided by VK_EXT_custom_border_color
-    integer(c_int) :: PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_PROPERTIES_EXT = 1000287001
+    integer(c_int) :: CUSTOM_BORDER_COLOR_PROPERTIES_EXT = 1000287001
     ! Provided by VK_EXT_custom_border_color
-    integer(c_int) :: PHYSICAL_DEVICE_CUSTOM_BORDER_COLOR_FEATURES_EXT = 1000287002
+    integer(c_int) :: CUSTOM_BORDER_COLOR_FEATURES_EXT = 1000287002
     ! Provided by VK_NV_present_barrier
-    integer(c_int) :: PHYSICAL_DEVICE_PRESENT_BARRIER_FEATURES_NV = 1000292000
+    integer(c_int) :: PRESENT_BARRIER_FEATURES_NV = 1000292000
     ! Provided by VK_KHR_present_id
-    integer(c_int) :: PHYSICAL_DEVICE_PRESENT_ID_FEATURES_KHR = 1000294001
+    integer(c_int) :: PRESENT_ID_FEATURES_KHR = 1000294001
     ! Provided by VK_KHR_video_encode_queue
-    integer(c_int) :: PHYSICAL_DEVICE_VIDEO_ENCODE_QUALITY_LEVEL_INFO_KHR = 1000299006
+    integer(c_int) :: VIDEO_ENCODE_QUALITY_LEVEL_INFO_KHR = 1000299006
     ! Provided by VK_NV_device_diagnostics_config
-    integer(c_int) :: PHYSICAL_DEVICE_DIAGNOSTICS_CONFIG_FEATURES_NV = 1000300000
+    integer(c_int) :: DIAGNOSTICS_CONFIG_FEATURES_NV = 1000300000
     ! Provided by VK_NV_cuda_kernel_launch
-    integer(c_int) :: PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_FEATURES_NV = 1000307003
+    integer(c_int) :: CUDA_KERNEL_LAUNCH_FEATURES_NV = 1000307003
     ! Provided by VK_NV_cuda_kernel_launch
-    integer(c_int) :: PHYSICAL_DEVICE_CUDA_KERNEL_LAUNCH_PROPERTIES_NV = 1000307004
+    integer(c_int) :: CUDA_KERNEL_LAUNCH_PROPERTIES_NV = 1000307004
     ! Provided by VK_EXT_descriptor_buffer
-    integer(c_int) :: PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_PROPERTIES_EXT = 1000316000
+    integer(c_int) :: DESCRIPTOR_BUFFER_PROPERTIES_EXT = 1000316000
     ! Provided by VK_EXT_descriptor_buffer
-    integer(c_int) :: PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_DENSITY_MAP_PROPERTIES_EXT = 1000316001
+    integer(c_int) :: DESCRIPTOR_BUFFER_DENSITY_MAP_PROPERTIES_EXT = 1000316001
     ! Provided by VK_EXT_descriptor_buffer
-    integer(c_int) :: PHYSICAL_DEVICE_DESCRIPTOR_BUFFER_FEATURES_EXT = 1000316002
+    integer(c_int) :: DESCRIPTOR_BUFFER_FEATURES_EXT = 1000316002
     ! Provided by VK_EXT_graphics_pipeline_library
-    integer(c_int) :: PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_FEATURES_EXT = 1000320000
+    integer(c_int) :: GRAPHICS_PIPELINE_LIBRARY_FEATURES_EXT = 1000320000
     ! Provided by VK_EXT_graphics_pipeline_library
-    integer(c_int) :: PHYSICAL_DEVICE_GRAPHICS_PIPELINE_LIBRARY_PROPERTIES_EXT = 1000320001
+    integer(c_int) :: GRAPHICS_PIPELINE_LIBRARY_PROPERTIES_EXT = 1000320001
     ! Provided by VK_AMD_shader_early_and_late_fragment_tests
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_EARLY_AND_LATE_FRAGMENT_TESTS_FEATURES_AMD = 1000321000
+    integer(c_int) :: SHADER_EARLY_AND_LATE_FRAGMENT_TESTS_FEATURES_AMD = 1000321000
     ! Provided by VK_KHR_fragment_shader_barycentric
-    integer(c_int) :: PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_FEATURES_KHR = 1000203000
+    integer(c_int) :: FRAGMENT_SHADER_BARYCENTRIC_FEATURES_KHR = 1000203000
     ! Provided by VK_KHR_fragment_shader_barycentric
-    integer(c_int) :: PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_PROPERTIES_KHR = 1000322000
+    integer(c_int) :: FRAGMENT_SHADER_BARYCENTRIC_PROPERTIES_KHR = 1000322000
     ! Provided by VK_KHR_shader_subgroup_uniform_control_flow
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_FEATURES_KHR = 1000323000
+    integer(c_int) :: SHADER_SUBGROUP_UNIFORM_CONTROL_FLOW_FEATURES_KHR = 1000323000
     ! Provided by VK_NV_fragment_shading_rate_enums
-    integer(c_int) :: PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_ENUMS_PROPERTIES_NV = 1000326000
+    integer(c_int) :: FRAGMENT_SHADING_RATE_ENUMS_PROPERTIES_NV = 1000326000
     ! Provided by VK_NV_fragment_shading_rate_enums
-    integer(c_int) :: PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_ENUMS_FEATURES_NV = 1000326001
+    integer(c_int) :: FRAGMENT_SHADING_RATE_ENUMS_FEATURES_NV = 1000326001
     ! Provided by VK_NV_ray_tracing_motion_blur
-    integer(c_int) :: PHYSICAL_DEVICE_RAY_TRACING_MOTION_BLUR_FEATURES_NV = 1000327001
+    integer(c_int) :: RAY_TRACING_MOTION_BLUR_FEATURES_NV = 1000327001
     ! Provided by VK_EXT_mesh_shader
-    integer(c_int) :: PHYSICAL_DEVICE_MESH_SHADER_FEATURES_EXT = 1000328000
+    integer(c_int) :: MESH_SHADER_FEATURES_EXT = 1000328000
     ! Provided by VK_EXT_mesh_shader
-    integer(c_int) :: PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_EXT = 1000328001
+    integer(c_int) :: MESH_SHADER_PROPERTIES_EXT = 1000328001
     ! Provided by VK_EXT_ycbcr_2plane_444_formats
-    integer(c_int) :: PHYSICAL_DEVICE_YCBCR_2_PLANE_444_FORMATS_FEATURES_EXT = 1000330000
+    integer(c_int) :: YCBCR_2_PLANE_444_FORMATS_FEATURES_EXT = 1000330000
     ! Provided by VK_EXT_fragment_density_map2
-    integer(c_int) :: PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_2_FEATURES_EXT = 1000332000
+    integer(c_int) :: FRAGMENT_DENSITY_MAP_2_FEATURES_EXT = 1000332000
     ! Provided by VK_EXT_fragment_density_map2
-    integer(c_int) :: PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_2_PROPERTIES_EXT = 1000332001
+    integer(c_int) :: FRAGMENT_DENSITY_MAP_2_PROPERTIES_EXT = 1000332001
     ! Provided by VK_KHR_workgroup_memory_explicit_layout
-    integer(c_int) :: PHYSICAL_DEVICE_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_FEATURES_KHR = 1000336000
+    integer(c_int) :: WORKGROUP_MEMORY_EXPLICIT_LAYOUT_FEATURES_KHR = 1000336000
     ! Provided by VK_EXT_image_compression_control
-    integer(c_int) :: PHYSICAL_DEVICE_IMAGE_COMPRESSION_CONTROL_FEATURES_EXT = 1000338000
+    integer(c_int) :: IMAGE_COMPRESSION_CONTROL_FEATURES_EXT = 1000338000
     ! Provided by VK_EXT_attachment_feedback_loop_layout
-    integer(c_int) :: PHYSICAL_DEVICE_ATTACHMENT_FEEDBACK_LOOP_LAYOUT_FEATURES_EXT = 1000339000
+    integer(c_int) :: ATTACHMENT_FEEDBACK_LOOP_LAYOUT_FEATURES_EXT = 1000339000
     ! Provided by VK_EXT_4444_formats
-    integer(c_int) :: PHYSICAL_DEVICE_4444_FORMATS_FEATURES_EXT = 1000340000
+    integer(c_int) :: 4444_FORMATS_FEATURES_EXT = 1000340000
     ! Provided by VK_EXT_device_fault
-    integer(c_int) :: PHYSICAL_DEVICE_FAULT_FEATURES_EXT = 1000341000
+    integer(c_int) :: FAULT_FEATURES_EXT = 1000341000
     ! Provided by VK_EXT_rgba10x6_formats
-    integer(c_int) :: PHYSICAL_DEVICE_RGBA10X6_FORMATS_FEATURES_EXT = 1000344000
+    integer(c_int) :: RGBA10X6_FORMATS_FEATURES_EXT = 1000344000
     ! Provided by VK_EXT_vertex_input_dynamic_state
-    integer(c_int) :: PHYSICAL_DEVICE_VERTEX_INPUT_DYNAMIC_STATE_FEATURES_EXT = 1000352000
-    ! Provided by VK_EXT_physical_device_drm
-    integer(c_int) :: PHYSICAL_DEVICE_DRM_PROPERTIES_EXT = 1000353000
+    integer(c_int) :: VERTEX_INPUT_DYNAMIC_STATE_FEATURES_EXT = 1000352000
+    ! Provided by VK_EXT_drm
+    integer(c_int) :: DRM_PROPERTIES_EXT = 1000353000
     ! Provided by VK_EXT_device_address_binding_report
-    integer(c_int) :: PHYSICAL_DEVICE_ADDRESS_BINDING_REPORT_FEATURES_EXT = 1000354000
+    integer(c_int) :: ADDRESS_BINDING_REPORT_FEATURES_EXT = 1000354000
     ! Provided by VK_EXT_depth_clip_control
-    integer(c_int) :: PHYSICAL_DEVICE_DEPTH_CLIP_CONTROL_FEATURES_EXT = 1000355000
+    integer(c_int) :: DEPTH_CLIP_CONTROL_FEATURES_EXT = 1000355000
     ! Provided by VK_EXT_primitive_topology_list_restart
-    integer(c_int) :: PHYSICAL_DEVICE_PRIMITIVE_TOPOLOGY_LIST_RESTART_FEATURES_EXT = 1000356000
+    integer(c_int) :: PRIMITIVE_TOPOLOGY_LIST_RESTART_FEATURES_EXT = 1000356000
     ! Provided by VK_EXT_present_mode_fifo_latest_ready
-    integer(c_int) :: PHYSICAL_DEVICE_PRESENT_MODE_FIFO_LATEST_READY_FEATURES_EXT = 1000361000
+    integer(c_int) :: PRESENT_MODE_FIFO_LATEST_READY_FEATURES_EXT = 1000361000
     ! Provided by VK_HUAWEI_subpass_shading
-    integer(c_int) :: PHYSICAL_DEVICE_SUBPASS_SHADING_FEATURES_HUAWEI = 1000369001
+    integer(c_int) :: SUBPASS_SHADING_FEATURES_HUAWEI = 1000369001
     ! Provided by VK_HUAWEI_subpass_shading
-    integer(c_int) :: PHYSICAL_DEVICE_SUBPASS_SHADING_PROPERTIES_HUAWEI = 1000369002
+    integer(c_int) :: SUBPASS_SHADING_PROPERTIES_HUAWEI = 1000369002
     ! Provided by VK_HUAWEI_invocation_mask
-    integer(c_int) :: PHYSICAL_DEVICE_INVOCATION_MASK_FEATURES_HUAWEI = 1000370000
+    integer(c_int) :: INVOCATION_MASK_FEATURES_HUAWEI = 1000370000
     ! Provided by VK_NV_external_memory_rdma
-    integer(c_int) :: PHYSICAL_DEVICE_EXTERNAL_MEMORY_RDMA_FEATURES_NV = 1000371001
+    integer(c_int) :: EXTERNAL_MEMORY_RDMA_FEATURES_NV = 1000371001
     ! Provided by VK_EXT_pipeline_properties
-    integer(c_int) :: PHYSICAL_DEVICE_PIPELINE_PROPERTIES_FEATURES_EXT = 1000372001
+    integer(c_int) :: PIPELINE_PROPERTIES_FEATURES_EXT = 1000372001
     ! Provided by VK_EXT_frame_boundary
-    integer(c_int) :: PHYSICAL_DEVICE_FRAME_BOUNDARY_FEATURES_EXT = 1000375000
+    integer(c_int) :: FRAME_BOUNDARY_FEATURES_EXT = 1000375000
     ! Provided by VK_EXT_multisampled_render_to_single_sampled
-    integer(c_int) :: PHYSICAL_DEVICE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_FEATURES_EXT = 1000376000
+    integer(c_int) :: MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_FEATURES_EXT = 1000376000
     ! Provided by VK_EXT_extended_dynamic_state2
-    integer(c_int) :: PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_2_FEATURES_EXT = 1000377000
+    integer(c_int) :: EXTENDED_DYNAMIC_STATE_2_FEATURES_EXT = 1000377000
     ! Provided by VK_EXT_color_write_enable
-    integer(c_int) :: PHYSICAL_DEVICE_COLOR_WRITE_ENABLE_FEATURES_EXT = 1000381000
+    integer(c_int) :: COLOR_WRITE_ENABLE_FEATURES_EXT = 1000381000
     ! Provided by VK_EXT_primitives_generated_query
-    integer(c_int) :: PHYSICAL_DEVICE_PRIMITIVES_GENERATED_QUERY_FEATURES_EXT = 1000382000
+    integer(c_int) :: PRIMITIVES_GENERATED_QUERY_FEATURES_EXT = 1000382000
     ! Provided by VK_KHR_ray_tracing_maintenance1
-    integer(c_int) :: PHYSICAL_DEVICE_RAY_TRACING_MAINTENANCE_1_FEATURES_KHR = 1000386000
+    integer(c_int) :: RAY_TRACING_MAINTENANCE_1_FEATURES_KHR = 1000386000
     ! Provided by VK_EXT_image_view_min_lod
-    integer(c_int) :: PHYSICAL_DEVICE_IMAGE_VIEW_MIN_LOD_FEATURES_EXT = 1000391000
+    integer(c_int) :: IMAGE_VIEW_MIN_LOD_FEATURES_EXT = 1000391000
     ! Provided by VK_EXT_multi_draw
-    integer(c_int) :: PHYSICAL_DEVICE_MULTI_DRAW_FEATURES_EXT = 1000392000
+    integer(c_int) :: MULTI_DRAW_FEATURES_EXT = 1000392000
     ! Provided by VK_EXT_multi_draw
-    integer(c_int) :: PHYSICAL_DEVICE_MULTI_DRAW_PROPERTIES_EXT = 1000392001
+    integer(c_int) :: MULTI_DRAW_PROPERTIES_EXT = 1000392001
     ! Provided by VK_EXT_image_2d_view_of_3d
-    integer(c_int) :: PHYSICAL_DEVICE_IMAGE_2D_VIEW_OF_3D_FEATURES_EXT = 1000393000
+    integer(c_int) :: IMAGE_2D_VIEW_OF_3D_FEATURES_EXT = 1000393000
     ! Provided by VK_EXT_shader_tile_image
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_TILE_IMAGE_FEATURES_EXT = 1000395000
+    integer(c_int) :: SHADER_TILE_IMAGE_FEATURES_EXT = 1000395000
     ! Provided by VK_EXT_shader_tile_image
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_TILE_IMAGE_PROPERTIES_EXT = 1000395001
+    integer(c_int) :: SHADER_TILE_IMAGE_PROPERTIES_EXT = 1000395001
     ! Provided by VK_EXT_opacity_micromap
-    integer(c_int) :: PHYSICAL_DEVICE_OPACITY_MICROMAP_FEATURES_EXT = 1000396005
+    integer(c_int) :: OPACITY_MICROMAP_FEATURES_EXT = 1000396005
     ! Provided by VK_EXT_opacity_micromap
-    integer(c_int) :: PHYSICAL_DEVICE_OPACITY_MICROMAP_PROPERTIES_EXT = 1000396006
+    integer(c_int) :: OPACITY_MICROMAP_PROPERTIES_EXT = 1000396006
     ! Provided by VK_NV_displacement_micromap
-    integer(c_int) :: PHYSICAL_DEVICE_DISPLACEMENT_MICROMAP_FEATURES_NV = 1000397000
+    integer(c_int) :: DISPLACEMENT_MICROMAP_FEATURES_NV = 1000397000
     ! Provided by VK_NV_displacement_micromap
-    integer(c_int) :: PHYSICAL_DEVICE_DISPLACEMENT_MICROMAP_PROPERTIES_NV = 1000397001
+    integer(c_int) :: DISPLACEMENT_MICROMAP_PROPERTIES_NV = 1000397001
     ! Provided by VK_HUAWEI_cluster_culling_shader
-    integer(c_int) :: PHYSICAL_DEVICE_CLUSTER_CULLING_SHADER_FEATURES_HUAWEI = 1000404000
+    integer(c_int) :: CLUSTER_CULLING_SHADER_FEATURES_HUAWEI = 1000404000
     ! Provided by VK_HUAWEI_cluster_culling_shader
-    integer(c_int) :: PHYSICAL_DEVICE_CLUSTER_CULLING_SHADER_PROPERTIES_HUAWEI = 1000404001
+    integer(c_int) :: CLUSTER_CULLING_SHADER_PROPERTIES_HUAWEI = 1000404001
     ! Provided by VK_HUAWEI_cluster_culling_shader
-    integer(c_int) :: PHYSICAL_DEVICE_CLUSTER_CULLING_SHADER_VRS_FEATURES_HUAWEI = 1000404002
+    integer(c_int) :: CLUSTER_CULLING_SHADER_VRS_FEATURES_HUAWEI = 1000404002
     ! Provided by VK_EXT_border_color_swizzle
-    integer(c_int) :: PHYSICAL_DEVICE_BORDER_COLOR_SWIZZLE_FEATURES_EXT = 1000411000
+    integer(c_int) :: BORDER_COLOR_SWIZZLE_FEATURES_EXT = 1000411000
     ! Provided by VK_EXT_pageable_device_local_memory
-    integer(c_int) :: PHYSICAL_DEVICE_PAGEABLE_DEVICE_LOCAL_MEMORY_FEATURES_EXT = 1000412000
+    integer(c_int) :: PAGEABLE_DEVICE_LOCAL_MEMORY_FEATURES_EXT = 1000412000
     ! Provided by VK_ARM_shader_core_properties
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_ARM = 1000415000
+    integer(c_int) :: SHADER_CORE_PROPERTIES_ARM = 1000415000
     ! Provided by VK_KHR_shader_subgroup_rotate
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_SUBGROUP_ROTATE_FEATURES_KHR = 1000416000
+    integer(c_int) :: SHADER_SUBGROUP_ROTATE_FEATURES_KHR = 1000416000
     ! Provided by VK_ARM_scheduling_controls
-    integer(c_int) :: PHYSICAL_DEVICE_SCHEDULING_CONTROLS_FEATURES_ARM = 1000417001
+    integer(c_int) :: SCHEDULING_CONTROLS_FEATURES_ARM = 1000417001
     ! Provided by VK_ARM_scheduling_controls
-    integer(c_int) :: PHYSICAL_DEVICE_SCHEDULING_CONTROLS_PROPERTIES_ARM = 1000417002
+    integer(c_int) :: SCHEDULING_CONTROLS_PROPERTIES_ARM = 1000417002
     ! Provided by VK_EXT_image_sliced_view_of_3d
-    integer(c_int) :: PHYSICAL_DEVICE_IMAGE_SLICED_VIEW_OF_3D_FEATURES_EXT = 1000418000
+    integer(c_int) :: IMAGE_SLICED_VIEW_OF_3D_FEATURES_EXT = 1000418000
     ! Provided by VK_VALVE_descriptor_set_host_mapping
-    integer(c_int) :: PHYSICAL_DEVICE_DESCRIPTOR_SET_HOST_MAPPING_FEATURES_VALVE = 1000420000
+    integer(c_int) :: DESCRIPTOR_SET_HOST_MAPPING_FEATURES_VALVE = 1000420000
     ! Provided by VK_EXT_depth_clamp_zero_one
-    integer(c_int) :: PHYSICAL_DEVICE_DEPTH_CLAMP_ZERO_ONE_FEATURES_EXT = 1000421000
+    integer(c_int) :: DEPTH_CLAMP_ZERO_ONE_FEATURES_EXT = 1000421000
     ! Provided by VK_EXT_non_seamless_cube_map
-    integer(c_int) :: PHYSICAL_DEVICE_NON_SEAMLESS_CUBE_MAP_FEATURES_EXT = 1000422000
+    integer(c_int) :: NON_SEAMLESS_CUBE_MAP_FEATURES_EXT = 1000422000
     ! Provided by VK_ARM_render_pass_striped
-    integer(c_int) :: PHYSICAL_DEVICE_RENDER_PASS_STRIPED_FEATURES_ARM = 1000424000
+    integer(c_int) :: RENDER_PASS_STRIPED_FEATURES_ARM = 1000424000
     ! Provided by VK_ARM_render_pass_striped
-    integer(c_int) :: PHYSICAL_DEVICE_RENDER_PASS_STRIPED_PROPERTIES_ARM = 1000424001
+    integer(c_int) :: RENDER_PASS_STRIPED_PROPERTIES_ARM = 1000424001
     ! Provided by VK_QCOM_fragment_density_map_offset
-    integer(c_int) :: PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_FEATURES_QCOM = 1000425000
+    integer(c_int) :: FRAGMENT_DENSITY_MAP_OFFSET_FEATURES_QCOM = 1000425000
     ! Provided by VK_QCOM_fragment_density_map_offset
-    integer(c_int) :: PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_PROPERTIES_QCOM = 1000425001
+    integer(c_int) :: FRAGMENT_DENSITY_MAP_OFFSET_PROPERTIES_QCOM = 1000425001
     ! Provided by VK_NV_copy_memory_indirect
-    integer(c_int) :: PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_FEATURES_NV = 1000426000
+    integer(c_int) :: COPY_MEMORY_INDIRECT_FEATURES_NV = 1000426000
     ! Provided by VK_NV_copy_memory_indirect
-    integer(c_int) :: PHYSICAL_DEVICE_COPY_MEMORY_INDIRECT_PROPERTIES_NV = 1000426001
+    integer(c_int) :: COPY_MEMORY_INDIRECT_PROPERTIES_NV = 1000426001
     ! Provided by VK_NV_memory_decompression
-    integer(c_int) :: PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_FEATURES_NV = 1000427000
+    integer(c_int) :: MEMORY_DECOMPRESSION_FEATURES_NV = 1000427000
     ! Provided by VK_NV_memory_decompression
-    integer(c_int) :: PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_PROPERTIES_NV = 1000427001
+    integer(c_int) :: MEMORY_DECOMPRESSION_PROPERTIES_NV = 1000427001
     ! Provided by VK_NV_device_generated_commands_compute
-    integer(c_int) :: PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_COMPUTE_FEATURES_NV = 1000428000
+    integer(c_int) :: DEVICE_GENERATED_COMMANDS_COMPUTE_FEATURES_NV = 1000428000
     ! Provided by VK_NV_linear_color_attachment
-    integer(c_int) :: PHYSICAL_DEVICE_LINEAR_COLOR_ATTACHMENT_FEATURES_NV = 1000430000
+    integer(c_int) :: LINEAR_COLOR_ATTACHMENT_FEATURES_NV = 1000430000
     ! Provided by VK_KHR_shader_maximal_reconvergence
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_MAXIMAL_RECONVERGENCE_FEATURES_KHR = 1000434000
+    integer(c_int) :: SHADER_MAXIMAL_RECONVERGENCE_FEATURES_KHR = 1000434000
     ! Provided by VK_EXT_image_compression_control_swapchain
-    integer(c_int) :: PHYSICAL_DEVICE_IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_FEATURES_EXT = 1000437000
+    integer(c_int) :: IMAGE_COMPRESSION_CONTROL_SWAPCHAIN_FEATURES_EXT = 1000437000
     ! Provided by VK_QCOM_image_processing
-    integer(c_int) :: PHYSICAL_DEVICE_IMAGE_PROCESSING_FEATURES_QCOM = 1000440000
+    integer(c_int) :: IMAGE_PROCESSING_FEATURES_QCOM = 1000440000
     ! Provided by VK_QCOM_image_processing
-    integer(c_int) :: PHYSICAL_DEVICE_IMAGE_PROCESSING_PROPERTIES_QCOM = 1000440001
+    integer(c_int) :: IMAGE_PROCESSING_PROPERTIES_QCOM = 1000440001
     ! Provided by VK_EXT_nested_command_buffer
-    integer(c_int) :: PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_FEATURES_EXT = 1000451000
+    integer(c_int) :: NESTED_COMMAND_BUFFER_FEATURES_EXT = 1000451000
     ! Provided by VK_EXT_nested_command_buffer
-    integer(c_int) :: PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_PROPERTIES_EXT = 1000451001
+    integer(c_int) :: NESTED_COMMAND_BUFFER_PROPERTIES_EXT = 1000451001
     ! Provided by VK_EXT_extended_dynamic_state3
-    integer(c_int) :: PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_FEATURES_EXT = 1000455000
+    integer(c_int) :: EXTENDED_DYNAMIC_STATE_3_FEATURES_EXT = 1000455000
     ! Provided by VK_EXT_extended_dynamic_state3
-    integer(c_int) :: PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_PROPERTIES_EXT = 1000455001
+    integer(c_int) :: EXTENDED_DYNAMIC_STATE_3_PROPERTIES_EXT = 1000455001
     ! Provided by VK_EXT_subpass_merge_feedback
-    integer(c_int) :: PHYSICAL_DEVICE_SUBPASS_MERGE_FEEDBACK_FEATURES_EXT = 1000458000
+    integer(c_int) :: SUBPASS_MERGE_FEEDBACK_FEATURES_EXT = 1000458000
     ! Provided by VK_EXT_shader_module_identifier
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_MODULE_IDENTIFIER_FEATURES_EXT = 1000462000
+    integer(c_int) :: SHADER_MODULE_IDENTIFIER_FEATURES_EXT = 1000462000
     ! Provided by VK_EXT_shader_module_identifier
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_MODULE_IDENTIFIER_PROPERTIES_EXT = 1000462001
+    integer(c_int) :: SHADER_MODULE_IDENTIFIER_PROPERTIES_EXT = 1000462001
     ! Provided by VK_EXT_rasterization_order_attachment_access
-    integer(c_int) :: PHYSICAL_DEVICE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_FEATURES_EXT = 1000342000
+    integer(c_int) :: RASTERIZATION_ORDER_ATTACHMENT_ACCESS_FEATURES_EXT = 1000342000
     ! Provided by VK_NV_optical_flow
-    integer(c_int) :: PHYSICAL_DEVICE_OPTICAL_FLOW_FEATURES_NV = 1000464000
+    integer(c_int) :: OPTICAL_FLOW_FEATURES_NV = 1000464000
     ! Provided by VK_NV_optical_flow
-    integer(c_int) :: PHYSICAL_DEVICE_OPTICAL_FLOW_PROPERTIES_NV = 1000464001
+    integer(c_int) :: OPTICAL_FLOW_PROPERTIES_NV = 1000464001
     ! Provided by VK_EXT_legacy_dithering
-    integer(c_int) :: PHYSICAL_DEVICE_LEGACY_DITHERING_FEATURES_EXT = 1000465000
+    integer(c_int) :: LEGACY_DITHERING_FEATURES_EXT = 1000465000
     ! Provided by VK_EXT_pipeline_protected_access
-    integer(c_int) :: PHYSICAL_DEVICE_PIPELINE_PROTECTED_ACCESS_FEATURES_EXT = 1000466000
+    integer(c_int) :: PIPELINE_PROTECTED_ACCESS_FEATURES_EXT = 1000466000
     ! Provided by VK_ANDROID_external_format_resolve
-    integer(c_int) :: PHYSICAL_DEVICE_EXTERNAL_FORMAT_RESOLVE_FEATURES_ANDROID = 1000468000
+    integer(c_int) :: EXTERNAL_FORMAT_RESOLVE_FEATURES_ANDROID = 1000468000
     ! Provided by VK_ANDROID_external_format_resolve
-    integer(c_int) :: PHYSICAL_DEVICE_EXTERNAL_FORMAT_RESOLVE_PROPERTIES_ANDROID = 1000468001
+    integer(c_int) :: EXTERNAL_FORMAT_RESOLVE_PROPERTIES_ANDROID = 1000468001
     ! Provided by VK_KHR_maintenance5
-    integer(c_int) :: PHYSICAL_DEVICE_MAINTENANCE_5_FEATURES_KHR = 1000470000
+    integer(c_int) :: MAINTENANCE_5_FEATURES_KHR = 1000470000
     ! Provided by VK_KHR_maintenance5
-    integer(c_int) :: PHYSICAL_DEVICE_MAINTENANCE_5_PROPERTIES_KHR = 1000470001
+    integer(c_int) :: MAINTENANCE_5_PROPERTIES_KHR = 1000470001
     ! Provided by VK_AMD_anti_lag
-    integer(c_int) :: PHYSICAL_DEVICE_ANTI_LAG_FEATURES_AMD = 1000476000
+    integer(c_int) :: ANTI_LAG_FEATURES_AMD = 1000476000
     ! Provided by VK_KHR_ray_tracing_position_fetch
-    integer(c_int) :: PHYSICAL_DEVICE_RAY_TRACING_POSITION_FETCH_FEATURES_KHR = 1000481000
+    integer(c_int) :: RAY_TRACING_POSITION_FETCH_FEATURES_KHR = 1000481000
     ! Provided by VK_EXT_shader_object
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_OBJECT_FEATURES_EXT = 1000482000
+    integer(c_int) :: SHADER_OBJECT_FEATURES_EXT = 1000482000
     ! Provided by VK_EXT_shader_object
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_OBJECT_PROPERTIES_EXT = 1000482001
+    integer(c_int) :: SHADER_OBJECT_PROPERTIES_EXT = 1000482001
     ! Provided by VK_KHR_pipeline_binary
-    integer(c_int) :: PHYSICAL_DEVICE_PIPELINE_BINARY_FEATURES_KHR = 1000483000
+    integer(c_int) :: PIPELINE_BINARY_FEATURES_KHR = 1000483000
     ! Provided by VK_KHR_pipeline_binary
-    integer(c_int) :: PHYSICAL_DEVICE_PIPELINE_BINARY_PROPERTIES_KHR = 1000483004
+    integer(c_int) :: PIPELINE_BINARY_PROPERTIES_KHR = 1000483004
     ! Provided by VK_QCOM_tile_properties
-    integer(c_int) :: PHYSICAL_DEVICE_TILE_PROPERTIES_FEATURES_QCOM = 1000484000
+    integer(c_int) :: TILE_PROPERTIES_FEATURES_QCOM = 1000484000
     ! Provided by VK_SEC_amigo_profiling
-    integer(c_int) :: PHYSICAL_DEVICE_AMIGO_PROFILING_FEATURES_SEC = 1000485000
+    integer(c_int) :: AMIGO_PROFILING_FEATURES_SEC = 1000485000
     ! Provided by VK_QCOM_multiview_per_view_viewports
-    integer(c_int) :: PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_VIEWPORTS_FEATURES_QCOM = 1000488000
+    integer(c_int) :: MULTIVIEW_PER_VIEW_VIEWPORTS_FEATURES_QCOM = 1000488000
     ! Provided by VK_NV_ray_tracing_invocation_reorder
-    integer(c_int) :: PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_NV = 1000490000
+    integer(c_int) :: RAY_TRACING_INVOCATION_REORDER_FEATURES_NV = 1000490000
     ! Provided by VK_NV_ray_tracing_invocation_reorder
-    integer(c_int) :: PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_NV = 1000490001
+    integer(c_int) :: RAY_TRACING_INVOCATION_REORDER_PROPERTIES_NV = 1000490001
     ! Provided by VK_NV_extended_sparse_address_space
-    integer(c_int) :: PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_FEATURES_NV = 1000492000
+    integer(c_int) :: EXTENDED_SPARSE_ADDRESS_SPACE_FEATURES_NV = 1000492000
     ! Provided by VK_NV_extended_sparse_address_space
-    integer(c_int) :: PHYSICAL_DEVICE_EXTENDED_SPARSE_ADDRESS_SPACE_PROPERTIES_NV = 1000492001
+    integer(c_int) :: EXTENDED_SPARSE_ADDRESS_SPACE_PROPERTIES_NV = 1000492001
     ! Provided by VK_EXT_mutable_descriptor_type
-    integer(c_int) :: PHYSICAL_DEVICE_MUTABLE_DESCRIPTOR_TYPE_FEATURES_EXT = 1000351000
+    integer(c_int) :: MUTABLE_DESCRIPTOR_TYPE_FEATURES_EXT = 1000351000
     ! Provided by VK_EXT_legacy_vertex_attributes
-    integer(c_int) :: PHYSICAL_DEVICE_LEGACY_VERTEX_ATTRIBUTES_FEATURES_EXT = 1000495000
+    integer(c_int) :: LEGACY_VERTEX_ATTRIBUTES_FEATURES_EXT = 1000495000
     ! Provided by VK_EXT_legacy_vertex_attributes
-    integer(c_int) :: PHYSICAL_DEVICE_LEGACY_VERTEX_ATTRIBUTES_PROPERTIES_EXT = 1000495001
+    integer(c_int) :: LEGACY_VERTEX_ATTRIBUTES_PROPERTIES_EXT = 1000495001
     ! Provided by VK_ARM_shader_core_builtins
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_CORE_BUILTINS_FEATURES_ARM = 1000497000
+    integer(c_int) :: SHADER_CORE_BUILTINS_FEATURES_ARM = 1000497000
     ! Provided by VK_ARM_shader_core_builtins
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_CORE_BUILTINS_PROPERTIES_ARM = 1000497001
+    integer(c_int) :: SHADER_CORE_BUILTINS_PROPERTIES_ARM = 1000497001
     ! Provided by VK_EXT_pipeline_library_group_handles
-    integer(c_int) :: PHYSICAL_DEVICE_PIPELINE_LIBRARY_GROUP_HANDLES_FEATURES_EXT = 1000498000
+    integer(c_int) :: PIPELINE_LIBRARY_GROUP_HANDLES_FEATURES_EXT = 1000498000
     ! Provided by VK_EXT_dynamic_rendering_unused_attachments
-    integer(c_int) :: PHYSICAL_DEVICE_DYNAMIC_RENDERING_UNUSED_ATTACHMENTS_FEATURES_EXT = 1000499000
+    integer(c_int) :: DYNAMIC_RENDERING_UNUSED_ATTACHMENTS_FEATURES_EXT = 1000499000
     ! Provided by VK_KHR_cooperative_matrix
-    integer(c_int) :: PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_KHR = 1000506000
+    integer(c_int) :: COOPERATIVE_MATRIX_FEATURES_KHR = 1000506000
     ! Provided by VK_KHR_cooperative_matrix
-    integer(c_int) :: PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_KHR = 1000506002
+    integer(c_int) :: COOPERATIVE_MATRIX_PROPERTIES_KHR = 1000506002
     ! Provided by VK_QCOM_multiview_per_view_render_areas
-    integer(c_int) :: PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_RENDER_AREAS_FEATURES_QCOM = 1000510000
+    integer(c_int) :: MULTIVIEW_PER_VIEW_RENDER_AREAS_FEATURES_QCOM = 1000510000
     ! Provided by VK_KHR_compute_shader_derivatives
-    integer(c_int) :: PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_KHR = 1000201000
+    integer(c_int) :: COMPUTE_SHADER_DERIVATIVES_FEATURES_KHR = 1000201000
     ! Provided by VK_KHR_compute_shader_derivatives
-    integer(c_int) :: PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_PROPERTIES_KHR = 1000511000
+    integer(c_int) :: COMPUTE_SHADER_DERIVATIVES_PROPERTIES_KHR = 1000511000
     ! Provided by VK_KHR_video_maintenance1
-    integer(c_int) :: PHYSICAL_DEVICE_VIDEO_MAINTENANCE_1_FEATURES_KHR = 1000515000
+    integer(c_int) :: VIDEO_MAINTENANCE_1_FEATURES_KHR = 1000515000
     ! Provided by VK_NV_per_stage_descriptor_set
-    integer(c_int) :: PHYSICAL_DEVICE_PER_STAGE_DESCRIPTOR_SET_FEATURES_NV = 1000516000
+    integer(c_int) :: PER_STAGE_DESCRIPTOR_SET_FEATURES_NV = 1000516000
     ! Provided by VK_QCOM_image_processing2
-    integer(c_int) :: PHYSICAL_DEVICE_IMAGE_PROCESSING_2_FEATURES_QCOM = 1000518000
+    integer(c_int) :: IMAGE_PROCESSING_2_FEATURES_QCOM = 1000518000
     ! Provided by VK_QCOM_image_processing2
-    integer(c_int) :: PHYSICAL_DEVICE_IMAGE_PROCESSING_2_PROPERTIES_QCOM = 1000518001
+    integer(c_int) :: IMAGE_PROCESSING_2_PROPERTIES_QCOM = 1000518001
     ! Provided by VK_QCOM_filter_cubic_weights
-    integer(c_int) :: PHYSICAL_DEVICE_CUBIC_WEIGHTS_FEATURES_QCOM = 1000519001
+    integer(c_int) :: CUBIC_WEIGHTS_FEATURES_QCOM = 1000519001
     ! Provided by VK_QCOM_ycbcr_degamma
-    integer(c_int) :: PHYSICAL_DEVICE_YCBCR_DEGAMMA_FEATURES_QCOM = 1000520000
+    integer(c_int) :: YCBCR_DEGAMMA_FEATURES_QCOM = 1000520000
     ! Provided by VK_QCOM_filter_cubic_clamp
-    integer(c_int) :: PHYSICAL_DEVICE_CUBIC_CLAMP_FEATURES_QCOM = 1000521000
+    integer(c_int) :: CUBIC_CLAMP_FEATURES_QCOM = 1000521000
     ! Provided by VK_EXT_attachment_feedback_loop_dynamic_state
-    integer(c_int) :: PHYSICAL_DEVICE_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_FEATURES_EXT = 1000524000
+    integer(c_int) :: ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_FEATURES_EXT = 1000524000
     ! Provided by VK_KHR_vertex_attribute_divisor
-    integer(c_int) :: PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_KHR = 1000525000
+    integer(c_int) :: VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_KHR = 1000525000
     ! Provided by VK_KHR_vertex_attribute_divisor
-    integer(c_int) :: PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_KHR = 1000190002
+    integer(c_int) :: VERTEX_ATTRIBUTE_DIVISOR_FEATURES_KHR = 1000190002
     ! Provided by VK_KHR_shader_float_controls2
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_FLOAT_CONTROLS_2_FEATURES_KHR = 1000528000
+    integer(c_int) :: SHADER_FLOAT_CONTROLS_2_FEATURES_KHR = 1000528000
     ! Provided by VK_QNX_external_memory_screen_buffer
-    integer(c_int) :: PHYSICAL_DEVICE_EXTERNAL_MEMORY_SCREEN_BUFFER_FEATURES_QNX = 1000529004
+    integer(c_int) :: EXTERNAL_MEMORY_SCREEN_BUFFER_FEATURES_QNX = 1000529004
     ! Provided by VK_MSFT_layered_driver
-    integer(c_int) :: PHYSICAL_DEVICE_LAYERED_DRIVER_PROPERTIES_MSFT = 1000530000
+    integer(c_int) :: LAYERED_DRIVER_PROPERTIES_MSFT = 1000530000
     ! Provided by VK_KHR_index_type_uint8
-    integer(c_int) :: PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES_KHR = 1000265000
+    integer(c_int) :: INDEX_TYPE_UINT8_FEATURES_KHR = 1000265000
     ! Provided by VK_KHR_line_rasterization
-    integer(c_int) :: PHYSICAL_DEVICE_LINE_RASTERIZATION_FEATURES_KHR = 1000259000
+    integer(c_int) :: LINE_RASTERIZATION_FEATURES_KHR = 1000259000
     ! Provided by VK_KHR_line_rasterization
-    integer(c_int) :: PHYSICAL_DEVICE_LINE_RASTERIZATION_PROPERTIES_KHR = 1000259002
+    integer(c_int) :: LINE_RASTERIZATION_PROPERTIES_KHR = 1000259002
     ! Provided by VK_KHR_shader_expect_assume
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_EXPECT_ASSUME_FEATURES_KHR = 1000544000
+    integer(c_int) :: SHADER_EXPECT_ASSUME_FEATURES_KHR = 1000544000
     ! Provided by VK_KHR_maintenance6
-    integer(c_int) :: PHYSICAL_DEVICE_MAINTENANCE_6_FEATURES_KHR = 1000545000
+    integer(c_int) :: MAINTENANCE_6_FEATURES_KHR = 1000545000
     ! Provided by VK_KHR_maintenance6
-    integer(c_int) :: PHYSICAL_DEVICE_MAINTENANCE_6_PROPERTIES_KHR = 1000545001
+    integer(c_int) :: MAINTENANCE_6_PROPERTIES_KHR = 1000545001
     ! Provided by VK_NV_descriptor_pool_overallocation
-    integer(c_int) :: PHYSICAL_DEVICE_DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV = 1000546000
+    integer(c_int) :: DESCRIPTOR_POOL_OVERALLOCATION_FEATURES_NV = 1000546000
     ! Provided by VK_NV_raw_access_chains
-    integer(c_int) :: PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV = 1000555000
+    integer(c_int) :: RAW_ACCESS_CHAINS_FEATURES_NV = 1000555000
     ! Provided by VK_KHR_shader_relaxed_extended_instruction
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_RELAXED_EXTENDED_INSTRUCTION_FEATURES_KHR = 1000558000
+    integer(c_int) :: SHADER_RELAXED_EXTENDED_INSTRUCTION_FEATURES_KHR = 1000558000
     ! Provided by VK_NV_command_buffer_inheritance
-    integer(c_int) :: PHYSICAL_DEVICE_COMMAND_BUFFER_INHERITANCE_FEATURES_NV = 1000559000
+    integer(c_int) :: COMMAND_BUFFER_INHERITANCE_FEATURES_NV = 1000559000
     ! Provided by VK_KHR_maintenance7
-    integer(c_int) :: PHYSICAL_DEVICE_MAINTENANCE_7_FEATURES_KHR = 1000562000
+    integer(c_int) :: MAINTENANCE_7_FEATURES_KHR = 1000562000
     ! Provided by VK_KHR_maintenance7
-    integer(c_int) :: PHYSICAL_DEVICE_MAINTENANCE_7_PROPERTIES_KHR = 1000562001
+    integer(c_int) :: MAINTENANCE_7_PROPERTIES_KHR = 1000562001
     ! Provided by VK_KHR_maintenance7
-    integer(c_int) :: PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_LIST_KHR = 1000562002
+    integer(c_int) :: LAYERED_API_PROPERTIES_LIST_KHR = 1000562002
     ! Provided by VK_KHR_maintenance7
-    integer(c_int) :: PHYSICAL_DEVICE_LAYERED_API_PROPERTIES_KHR = 1000562003
+    integer(c_int) :: LAYERED_API_PROPERTIES_KHR = 1000562003
     ! Provided by VK_KHR_maintenance7
-    integer(c_int) :: PHYSICAL_DEVICE_LAYERED_API_VULKAN_PROPERTIES_KHR = 1000562004
+    integer(c_int) :: LAYERED_API_VULKAN_PROPERTIES_KHR = 1000562004
     ! Provided by VK_NV_shader_atomic_float16_vector
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV = 1000563000
+    integer(c_int) :: SHADER_ATOMIC_FLOAT16_VECTOR_FEATURES_NV = 1000563000
     ! Provided by VK_EXT_shader_replicated_composites
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_REPLICATED_COMPOSITES_FEATURES_EXT = 1000564000
+    integer(c_int) :: SHADER_REPLICATED_COMPOSITES_FEATURES_EXT = 1000564000
     ! Provided by VK_NV_ray_tracing_validation
-    integer(c_int) :: PHYSICAL_DEVICE_RAY_TRACING_VALIDATION_FEATURES_NV = 1000568000
+    integer(c_int) :: RAY_TRACING_VALIDATION_FEATURES_NV = 1000568000
     ! Provided by VK_EXT_device_generated_commands
-    integer(c_int) :: PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_FEATURES_EXT = 1000572000
+    integer(c_int) :: DEVICE_GENERATED_COMMANDS_FEATURES_EXT = 1000572000
     ! Provided by VK_EXT_device_generated_commands
-    integer(c_int) :: PHYSICAL_DEVICE_DEVICE_GENERATED_COMMANDS_PROPERTIES_EXT = 1000572001
+    integer(c_int) :: DEVICE_GENERATED_COMMANDS_PROPERTIES_EXT = 1000572001
     ! Provided by VK_MESA_image_alignment_control
-    integer(c_int) :: PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA = 1000575000
+    integer(c_int) :: IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA = 1000575000
     ! Provided by VK_MESA_image_alignment_control
-    integer(c_int) :: PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA = 1000575001
+    integer(c_int) :: IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA = 1000575001
     ! Provided by VK_EXT_depth_clamp_control
-    integer(c_int) :: PHYSICAL_DEVICE_DEPTH_CLAMP_CONTROL_FEATURES_EXT = 1000582000
+    integer(c_int) :: DEPTH_CLAMP_CONTROL_FEATURES_EXT = 1000582000
     ! Provided by VK_NV_cooperative_matrix2
-    integer(c_int) :: PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_FEATURES_NV = 1000593000
+    integer(c_int) :: COOPERATIVE_MATRIX_2_FEATURES_NV = 1000593000
     ! Provided by VK_NV_cooperative_matrix2
-    integer(c_int) :: PHYSICAL_DEVICE_COOPERATIVE_MATRIX_2_PROPERTIES_NV = 1000593002
+    integer(c_int) :: COOPERATIVE_MATRIX_2_PROPERTIES_NV = 1000593002
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES = 1000120000
+    integer(c_int) :: VARIABLE_POINTER_FEATURES = 1000120000
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_DRAW_PARAMETER_FEATURES = PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES
+    integer(c_int) :: SHADER_DRAW_PARAMETER_FEATURES = SHADER_DRAW_PARAMETERS_FEATURES
     ! Provided by VK_KHR_dynamic_rendering
-    integer(c_int) :: PHYSICAL_DEVICE_DYNAMIC_RENDERING_FEATURES_KHR = PHYSICAL_DEVICE_DYNAMIC_RENDERING_FEATURES
+    integer(c_int) :: DYNAMIC_RENDERING_FEATURES_KHR = DYNAMIC_RENDERING_FEATURES
     ! Provided by VK_KHR_multiview
-    integer(c_int) :: PHYSICAL_DEVICE_MULTIVIEW_FEATURES_KHR = PHYSICAL_DEVICE_MULTIVIEW_FEATURES
+    integer(c_int) :: MULTIVIEW_FEATURES_KHR = MULTIVIEW_FEATURES
     ! Provided by VK_KHR_multiview
-    integer(c_int) :: PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES_KHR = PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES
-    ! Provided by VK_KHR_get_physical_device_properties2
-    integer(c_int) :: PHYSICAL_DEVICE_FEATURES_2_KHR = PHYSICAL_DEVICE_FEATURES_2
-    ! Provided by VK_KHR_get_physical_device_properties2
-    integer(c_int) :: PHYSICAL_DEVICE_PROPERTIES_2_KHR = PHYSICAL_DEVICE_PROPERTIES_2
-    ! Provided by VK_KHR_get_physical_device_properties2
-    integer(c_int) :: PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2_KHR = PHYSICAL_DEVICE_IMAGE_FORMAT_INFO_2
-    ! Provided by VK_KHR_get_physical_device_properties2
-    integer(c_int) :: PHYSICAL_DEVICE_MEMORY_PROPERTIES_2_KHR = PHYSICAL_DEVICE_MEMORY_PROPERTIES_2
-    ! Provided by VK_KHR_get_physical_device_properties2
-    integer(c_int) :: PHYSICAL_DEVICE_SPARSE_IMAGE_FORMAT_INFO_2_KHR = PHYSICAL_DEVICE_SPARSE_IMAGE_FORMAT_INFO_2
+    integer(c_int) :: MULTIVIEW_PROPERTIES_KHR = MULTIVIEW_PROPERTIES
+    ! Provided by VK_KHR_get_properties2
+    integer(c_int) :: FEATURES_2_KHR = FEATURES_2
+    ! Provided by VK_KHR_get_properties2
+    integer(c_int) :: PROPERTIES_2_KHR = PROPERTIES_2
+    ! Provided by VK_KHR_get_properties2
+    integer(c_int) :: IMAGE_FORMAT_INFO_2_KHR = IMAGE_FORMAT_INFO_2
+    ! Provided by VK_KHR_get_properties2
+    integer(c_int) :: MEMORY_PROPERTIES_2_KHR = MEMORY_PROPERTIES_2
+    ! Provided by VK_KHR_get_properties2
+    integer(c_int) :: SPARSE_IMAGE_FORMAT_INFO_2_KHR = SPARSE_IMAGE_FORMAT_INFO_2
     ! Provided by VK_EXT_texture_compression_astc_hdr
-    integer(c_int) :: PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_HDR_FEATURES_EXT = PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_HDR_FEATURES
+    integer(c_int) :: TEXTURE_COMPRESSION_ASTC_HDR_FEATURES_EXT = TEXTURE_COMPRESSION_ASTC_HDR_FEATURES
     ! Provided by VK_KHR_device_group_creation
-    integer(c_int) :: PHYSICAL_DEVICE_GROUP_PROPERTIES_KHR = PHYSICAL_DEVICE_GROUP_PROPERTIES
+    integer(c_int) :: GROUP_PROPERTIES_KHR = GROUP_PROPERTIES
     ! Provided by VK_KHR_external_memory_capabilities
-    integer(c_int) :: PHYSICAL_DEVICE_EXTERNAL_IMAGE_FORMAT_INFO_KHR = PHYSICAL_DEVICE_EXTERNAL_IMAGE_FORMAT_INFO
+    integer(c_int) :: EXTERNAL_IMAGE_FORMAT_INFO_KHR = EXTERNAL_IMAGE_FORMAT_INFO
     ! Provided by VK_KHR_external_memory_capabilities
-    integer(c_int) :: PHYSICAL_DEVICE_EXTERNAL_BUFFER_INFO_KHR = PHYSICAL_DEVICE_EXTERNAL_BUFFER_INFO
+    integer(c_int) :: EXTERNAL_BUFFER_INFO_KHR = EXTERNAL_BUFFER_INFO
     ! Provided by VK_KHR_external_fence_capabilities VK_KHR_external_memory_capabilities VK_KHR_external_semaphore_capabilities
-    integer(c_int) :: PHYSICAL_DEVICE_ID_PROPERTIES_KHR = PHYSICAL_DEVICE_ID_PROPERTIES
+    integer(c_int) :: ID_PROPERTIES_KHR = ID_PROPERTIES
     ! Provided by VK_KHR_external_semaphore_capabilities
-    integer(c_int) :: PHYSICAL_DEVICE_EXTERNAL_SEMAPHORE_INFO_KHR = PHYSICAL_DEVICE_EXTERNAL_SEMAPHORE_INFO
+    integer(c_int) :: EXTERNAL_SEMAPHORE_INFO_KHR = EXTERNAL_SEMAPHORE_INFO
     ! Provided by VK_KHR_shader_float16_int8
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_FLOAT16_INT8_FEATURES_KHR = PHYSICAL_DEVICE_SHADER_FLOAT16_INT8_FEATURES
+    integer(c_int) :: SHADER_FLOAT16_INT8_FEATURES_KHR = SHADER_FLOAT16_INT8_FEATURES
     ! Provided by VK_KHR_shader_float16_int8
-    integer(c_int) :: PHYSICAL_DEVICE_FLOAT16_INT8_FEATURES_KHR = PHYSICAL_DEVICE_SHADER_FLOAT16_INT8_FEATURES
+    integer(c_int) :: FLOAT16_INT8_FEATURES_KHR = SHADER_FLOAT16_INT8_FEATURES
     ! Provided by VK_KHR_16bit_storage
-    integer(c_int) :: PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES_KHR = PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES
+    integer(c_int) :: 16BIT_STORAGE_FEATURES_KHR = 16BIT_STORAGE_FEATURES
     ! Provided by VK_KHR_imageless_framebuffer
-    integer(c_int) :: PHYSICAL_DEVICE_IMAGELESS_FRAMEBUFFER_FEATURES_KHR = PHYSICAL_DEVICE_IMAGELESS_FRAMEBUFFER_FEATURES
+    integer(c_int) :: IMAGELESS_FRAMEBUFFER_FEATURES_KHR = IMAGELESS_FRAMEBUFFER_FEATURES
     ! Provided by VK_KHR_external_fence_capabilities
-    integer(c_int) :: PHYSICAL_DEVICE_EXTERNAL_FENCE_INFO_KHR = PHYSICAL_DEVICE_EXTERNAL_FENCE_INFO
+    integer(c_int) :: EXTERNAL_FENCE_INFO_KHR = EXTERNAL_FENCE_INFO
     ! Provided by VK_KHR_maintenance2
-    integer(c_int) :: PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES_KHR = PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES
+    integer(c_int) :: POINT_CLIPPING_PROPERTIES_KHR = POINT_CLIPPING_PROPERTIES
     ! Provided by VK_KHR_variable_pointers
-    integer(c_int) :: PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES_KHR = 1000120000
+    integer(c_int) :: VARIABLE_POINTERS_FEATURES_KHR = 1000120000
     ! Provided by VK_KHR_variable_pointers
-    integer(c_int) :: PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES_KHR = 1000120000
+    integer(c_int) :: VARIABLE_POINTER_FEATURES_KHR = 1000120000
     ! Provided by VK_EXT_sampler_filter_minmax
-    integer(c_int) :: PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES_EXT = PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES
+    integer(c_int) :: SAMPLER_FILTER_MINMAX_PROPERTIES_EXT = SAMPLER_FILTER_MINMAX_PROPERTIES
     ! Provided by VK_EXT_inline_uniform_block
-    integer(c_int) :: PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_FEATURES_EXT = PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_FEATURES
+    integer(c_int) :: INLINE_UNIFORM_BLOCK_FEATURES_EXT = INLINE_UNIFORM_BLOCK_FEATURES
     ! Provided by VK_EXT_inline_uniform_block
-    integer(c_int) :: PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_PROPERTIES_EXT = PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_PROPERTIES
+    integer(c_int) :: INLINE_UNIFORM_BLOCK_PROPERTIES_EXT = INLINE_UNIFORM_BLOCK_PROPERTIES
     ! Provided by VK_KHR_sampler_ycbcr_conversion
-    integer(c_int) :: PHYSICAL_DEVICE_SAMPLER_YCBCR_CONVERSION_FEATURES_KHR = PHYSICAL_DEVICE_SAMPLER_YCBCR_CONVERSION_FEATURES
+    integer(c_int) :: SAMPLER_YCBCR_CONVERSION_FEATURES_KHR = SAMPLER_YCBCR_CONVERSION_FEATURES
     ! Provided by VK_EXT_descriptor_indexing
-    integer(c_int) :: PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES_EXT = PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES
+    integer(c_int) :: DESCRIPTOR_INDEXING_FEATURES_EXT = DESCRIPTOR_INDEXING_FEATURES
     ! Provided by VK_EXT_descriptor_indexing
-    integer(c_int) :: PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES_EXT = PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES
+    integer(c_int) :: DESCRIPTOR_INDEXING_PROPERTIES_EXT = DESCRIPTOR_INDEXING_PROPERTIES
     ! Provided by VK_KHR_maintenance3
-    integer(c_int) :: PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES_KHR = PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES
+    integer(c_int) :: MAINTENANCE_3_PROPERTIES_KHR = MAINTENANCE_3_PROPERTIES
     ! Provided by VK_KHR_shader_subgroup_extended_types
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES_KHR = PHYSICAL_DEVICE_SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES
+    integer(c_int) :: SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES_KHR = SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES
     ! Provided by VK_KHR_8bit_storage
-    integer(c_int) :: PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES_KHR = PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES
+    integer(c_int) :: 8BIT_STORAGE_FEATURES_KHR = 8BIT_STORAGE_FEATURES
     ! Provided by VK_KHR_shader_atomic_int64
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES_KHR = PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES
+    integer(c_int) :: SHADER_ATOMIC_INT64_FEATURES_KHR = SHADER_ATOMIC_INT64_FEATURES
     ! Provided by VK_EXT_vertex_attribute_divisor
-    integer(c_int) :: PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_EXT = PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_KHR
+    integer(c_int) :: VERTEX_ATTRIBUTE_DIVISOR_FEATURES_EXT = VERTEX_ATTRIBUTE_DIVISOR_FEATURES_KHR
     ! Provided by VK_KHR_driver_properties
-    integer(c_int) :: PHYSICAL_DEVICE_DRIVER_PROPERTIES_KHR = PHYSICAL_DEVICE_DRIVER_PROPERTIES
+    integer(c_int) :: DRIVER_PROPERTIES_KHR = DRIVER_PROPERTIES
     ! Provided by VK_KHR_shader_float_controls
-    integer(c_int) :: PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES_KHR = PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES
+    integer(c_int) :: FLOAT_CONTROLS_PROPERTIES_KHR = FLOAT_CONTROLS_PROPERTIES
     ! Provided by VK_KHR_depth_stencil_resolve
-    integer(c_int) :: PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES_KHR = PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES
+    integer(c_int) :: DEPTH_STENCIL_RESOLVE_PROPERTIES_KHR = DEPTH_STENCIL_RESOLVE_PROPERTIES
     ! Provided by VK_NV_compute_shader_derivatives
-    integer(c_int) :: PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_NV = PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_KHR
+    integer(c_int) :: COMPUTE_SHADER_DERIVATIVES_FEATURES_NV = COMPUTE_SHADER_DERIVATIVES_FEATURES_KHR
     ! Provided by VK_NV_fragment_shader_barycentric
-    integer(c_int) :: PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_FEATURES_NV = PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_FEATURES_KHR
+    integer(c_int) :: FRAGMENT_SHADER_BARYCENTRIC_FEATURES_NV = FRAGMENT_SHADER_BARYCENTRIC_FEATURES_KHR
     ! Provided by VK_KHR_timeline_semaphore
-    integer(c_int) :: PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_FEATURES_KHR = PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_FEATURES
+    integer(c_int) :: TIMELINE_SEMAPHORE_FEATURES_KHR = TIMELINE_SEMAPHORE_FEATURES
     ! Provided by VK_KHR_timeline_semaphore
-    integer(c_int) :: PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_PROPERTIES_KHR = PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_PROPERTIES
+    integer(c_int) :: TIMELINE_SEMAPHORE_PROPERTIES_KHR = TIMELINE_SEMAPHORE_PROPERTIES
     ! Provided by VK_KHR_vulkan_memory_model
-    integer(c_int) :: PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES_KHR = PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES
+    integer(c_int) :: VULKAN_MEMORY_MODEL_FEATURES_KHR = VULKAN_MEMORY_MODEL_FEATURES
     ! Provided by VK_KHR_shader_terminate_invocation
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_TERMINATE_INVOCATION_FEATURES_KHR = PHYSICAL_DEVICE_SHADER_TERMINATE_INVOCATION_FEATURES
+    integer(c_int) :: SHADER_TERMINATE_INVOCATION_FEATURES_KHR = SHADER_TERMINATE_INVOCATION_FEATURES
     ! Provided by VK_EXT_scalar_block_layout
-    integer(c_int) :: PHYSICAL_DEVICE_SCALAR_BLOCK_LAYOUT_FEATURES_EXT = PHYSICAL_DEVICE_SCALAR_BLOCK_LAYOUT_FEATURES
+    integer(c_int) :: SCALAR_BLOCK_LAYOUT_FEATURES_EXT = SCALAR_BLOCK_LAYOUT_FEATURES
     ! Provided by VK_EXT_subgroup_size_control
-    integer(c_int) :: PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES_EXT = PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES
+    integer(c_int) :: SUBGROUP_SIZE_CONTROL_PROPERTIES_EXT = SUBGROUP_SIZE_CONTROL_PROPERTIES
     ! Provided by VK_EXT_subgroup_size_control
-    integer(c_int) :: PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_FEATURES_EXT = PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_FEATURES
+    integer(c_int) :: SUBGROUP_SIZE_CONTROL_FEATURES_EXT = SUBGROUP_SIZE_CONTROL_FEATURES
     ! Provided by VK_KHR_separate_depth_stencil_layouts
-    integer(c_int) :: PHYSICAL_DEVICE_SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES_KHR = PHYSICAL_DEVICE_SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES
+    integer(c_int) :: SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES_KHR = SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES
     ! Provided by VK_EXT_buffer_device_address
-    integer(c_int) :: PHYSICAL_DEVICE_BUFFER_ADDRESS_FEATURES_EXT = PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES_EXT
+    integer(c_int) :: BUFFER_ADDRESS_FEATURES_EXT = BUFFER_DEVICE_ADDRESS_FEATURES_EXT
     ! Provided by VK_EXT_tooling_info
-    integer(c_int) :: PHYSICAL_DEVICE_TOOL_PROPERTIES_EXT = PHYSICAL_DEVICE_TOOL_PROPERTIES
+    integer(c_int) :: TOOL_PROPERTIES_EXT = TOOL_PROPERTIES
     ! Provided by VK_KHR_uniform_buffer_standard_layout
-    integer(c_int) :: PHYSICAL_DEVICE_UNIFORM_BUFFER_STANDARD_LAYOUT_FEATURES_KHR = PHYSICAL_DEVICE_UNIFORM_BUFFER_STANDARD_LAYOUT_FEATURES
+    integer(c_int) :: UNIFORM_BUFFER_STANDARD_LAYOUT_FEATURES_KHR = UNIFORM_BUFFER_STANDARD_LAYOUT_FEATURES
     ! Provided by VK_KHR_buffer_device_address
-    integer(c_int) :: PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES_KHR = PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES
+    integer(c_int) :: BUFFER_DEVICE_ADDRESS_FEATURES_KHR = BUFFER_DEVICE_ADDRESS_FEATURES
     ! Provided by VK_EXT_line_rasterization
-    integer(c_int) :: PHYSICAL_DEVICE_LINE_RASTERIZATION_FEATURES_EXT = PHYSICAL_DEVICE_LINE_RASTERIZATION_FEATURES_KHR
+    integer(c_int) :: LINE_RASTERIZATION_FEATURES_EXT = LINE_RASTERIZATION_FEATURES_KHR
     ! Provided by VK_EXT_line_rasterization
-    integer(c_int) :: PHYSICAL_DEVICE_LINE_RASTERIZATION_PROPERTIES_EXT = PHYSICAL_DEVICE_LINE_RASTERIZATION_PROPERTIES_KHR
+    integer(c_int) :: LINE_RASTERIZATION_PROPERTIES_EXT = LINE_RASTERIZATION_PROPERTIES_KHR
     ! Provided by VK_EXT_host_query_reset
-    integer(c_int) :: PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES_EXT = PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES
+    integer(c_int) :: HOST_QUERY_RESET_FEATURES_EXT = HOST_QUERY_RESET_FEATURES
     ! Provided by VK_EXT_index_type_uint8
-    integer(c_int) :: PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES_EXT = PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES_KHR
+    integer(c_int) :: INDEX_TYPE_UINT8_FEATURES_EXT = INDEX_TYPE_UINT8_FEATURES_KHR
     ! Provided by VK_EXT_shader_demote_to_helper_invocation
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_DEMOTE_TO_HELPER_INVOCATION_FEATURES_EXT = PHYSICAL_DEVICE_SHADER_DEMOTE_TO_HELPER_INVOCATION_FEATURES
+    integer(c_int) :: SHADER_DEMOTE_TO_HELPER_INVOCATION_FEATURES_EXT = SHADER_DEMOTE_TO_HELPER_INVOCATION_FEATURES
     ! Provided by VK_KHR_shader_integer_dot_product
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_INTEGER_DOT_PRODUCT_FEATURES_KHR = PHYSICAL_DEVICE_SHADER_INTEGER_DOT_PRODUCT_FEATURES
+    integer(c_int) :: SHADER_INTEGER_DOT_PRODUCT_FEATURES_KHR = SHADER_INTEGER_DOT_PRODUCT_FEATURES
     ! Provided by VK_KHR_shader_integer_dot_product
-    integer(c_int) :: PHYSICAL_DEVICE_SHADER_INTEGER_DOT_PRODUCT_PROPERTIES_KHR = PHYSICAL_DEVICE_SHADER_INTEGER_DOT_PRODUCT_PROPERTIES
+    integer(c_int) :: SHADER_INTEGER_DOT_PRODUCT_PROPERTIES_KHR = SHADER_INTEGER_DOT_PRODUCT_PROPERTIES
     ! Provided by VK_EXT_texel_buffer_alignment
-    integer(c_int) :: PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_PROPERTIES_EXT = PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_PROPERTIES
+    integer(c_int) :: TEXEL_BUFFER_ALIGNMENT_PROPERTIES_EXT = TEXEL_BUFFER_ALIGNMENT_PROPERTIES
     ! Provided by VK_EXT_private_data
-    integer(c_int) :: PHYSICAL_DEVICE_PRIVATE_DATA_FEATURES_EXT = PHYSICAL_DEVICE_PRIVATE_DATA_FEATURES
+    integer(c_int) :: PRIVATE_DATA_FEATURES_EXT = PRIVATE_DATA_FEATURES
     ! Provided by VK_EXT_pipeline_creation_cache_control
-    integer(c_int) :: PHYSICAL_DEVICE_PIPELINE_CREATION_CACHE_CONTROL_FEATURES_EXT = PHYSICAL_DEVICE_PIPELINE_CREATION_CACHE_CONTROL_FEATURES
+    integer(c_int) :: PIPELINE_CREATION_CACHE_CONTROL_FEATURES_EXT = PIPELINE_CREATION_CACHE_CONTROL_FEATURES
     ! Provided by VK_KHR_synchronization2
-    integer(c_int) :: PHYSICAL_DEVICE_SYNCHRONIZATION_2_FEATURES_KHR = PHYSICAL_DEVICE_SYNCHRONIZATION_2_FEATURES
+    integer(c_int) :: SYNCHRONIZATION_2_FEATURES_KHR = SYNCHRONIZATION_2_FEATURES
     ! Provided by VK_KHR_zero_initialize_workgroup_memory
-    integer(c_int) :: PHYSICAL_DEVICE_ZERO_INITIALIZE_WORKGROUP_MEMORY_FEATURES_KHR = PHYSICAL_DEVICE_ZERO_INITIALIZE_WORKGROUP_MEMORY_FEATURES
+    integer(c_int) :: ZERO_INITIALIZE_WORKGROUP_MEMORY_FEATURES_KHR = ZERO_INITIALIZE_WORKGROUP_MEMORY_FEATURES
     ! Provided by VK_EXT_image_robustness
-    integer(c_int) :: PHYSICAL_DEVICE_IMAGE_ROBUSTNESS_FEATURES_EXT = PHYSICAL_DEVICE_IMAGE_ROBUSTNESS_FEATURES
+    integer(c_int) :: IMAGE_ROBUSTNESS_FEATURES_EXT = IMAGE_ROBUSTNESS_FEATURES
     ! Provided by VK_ARM_rasterization_order_attachment_access
-    ! integer(c_int) :: PHYSICAL_DEVICE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_FEATURES_ARM = PHYSICAL_DEVICE_RASTERIZATION_ORDER_ATTACHMENT_ACCESS_FEATURES_EXT
+    ! integer(c_int) :: RASTERIZATION_ORDER_ATTACHMENT_ACCESS_FEATURES_ARM = RASTERIZATION_ORDER_ATTACHMENT_ACCESS_FEATURES_EXT
     ! Provided by VK_VALVE_mutable_descriptor_type
-    integer(c_int) :: PHYSICAL_DEVICE_MUTABLE_DESCRIPTOR_TYPE_FEATURES_VALVE = PHYSICAL_DEVICE_MUTABLE_DESCRIPTOR_TYPE_FEATURES_EXT
+    integer(c_int) :: MUTABLE_DESCRIPTOR_TYPE_FEATURES_VALVE = MUTABLE_DESCRIPTOR_TYPE_FEATURES_EXT
     ! Provided by VK_EXT_global_priority_query
-    integer(c_int) :: PHYSICAL_DEVICE_GLOBAL_PRIORITY_QUERY_FEATURES_EXT = PHYSICAL_DEVICE_GLOBAL_PRIORITY_QUERY_FEATURES_KHR
+    integer(c_int) :: GLOBAL_PRIORITY_QUERY_FEATURES_EXT = GLOBAL_PRIORITY_QUERY_FEATURES_KHR
     ! Provided by VK_KHR_maintenance4
-    integer(c_int) :: PHYSICAL_DEVICE_MAINTENANCE_4_FEATURES_KHR = PHYSICAL_DEVICE_MAINTENANCE_4_FEATURES
+    integer(c_int) :: MAINTENANCE_4_FEATURES_KHR = MAINTENANCE_4_FEATURES
     ! Provided by VK_KHR_maintenance4
-    integer(c_int) :: PHYSICAL_DEVICE_MAINTENANCE_4_PROPERTIES_KHR = PHYSICAL_DEVICE_MAINTENANCE_4_PROPERTIES
+    integer(c_int) :: MAINTENANCE_4_PROPERTIES_KHR = MAINTENANCE_4_PROPERTIES
   end type t_physical_device
 
 
