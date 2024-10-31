@@ -15,8 +15,8 @@
   "files.exclude": {
     "**/.git": true,
     "**/**.mod": true,
-    // "build/": true,
-    // "scripts/": true
+    "build/": true,
+    "scripts/": true
   },
   // Lua configuration.
   "Lua.runtime.version": "LuaJIT",
