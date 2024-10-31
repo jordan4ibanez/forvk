@@ -39,7 +39,7 @@ module glfw
   public :: glfw_create_window
   public :: glfw_make_context_current
   public :: glfw_get_error
-  public :: glfw_trigger_viewport_update
+  ! public :: glfw_trigger_viewport_update
   public :: glfw_window_should_close
   public :: glfw_swap_buffers
   public :: glfw_poll_events
@@ -690,6 +690,17 @@ contains
 
     call internal_glfw_set_error_callback(c_funloc(error_callback))
   end subroutine glfw_set_error_callback
+
+
+  !! PLACEHOLDER.
+  subroutine size_callback(window, width, height)
+    implicit none
+
+    type(c_ptr), intent(in), value :: window
+    integer(c_int), intent(in), value :: width, height
+
+    print*,"size_callback no-op"
+  end subroutine size_callback
 
 
   !! FIXME: THIS NEEDS TO BE ADDED INTO THE OPENGL DRIVER!
