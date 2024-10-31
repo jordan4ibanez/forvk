@@ -47,6 +47,7 @@ module glfw
   public :: glfw_set_error_callback
   public :: glfw_window_hint
   public :: glfw_set_window_size_callback
+  public :: glfw_get_required_instance_extensions
   public :: glfw_get_aspect_ratio
   public :: glfw_swap_interval
   public :: glfw_get_window_width
