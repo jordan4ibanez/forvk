@@ -9,6 +9,8 @@ module forvk
 
   public :: vk_enumerate_instance_extension_properties
 
+  public :: vk_extension_properties
+  public :: vk_application_info
 
 
 
