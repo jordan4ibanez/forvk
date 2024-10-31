@@ -17,7 +17,7 @@ module forvk_parameters
   integer(c_int), parameter, public :: VK_API_VERSION_1_3 = 4206592
 
 
-  !? VkResult.
+  !? VkResult. ==========================================================================
 
   integer(c_int), parameter, public :: VK_SUCCESS = 0
   integer(c_int), parameter, public :: VK_NOT_READY = 1
@@ -119,7 +119,7 @@ module forvk_parameters
   integer(c_int), parameter, public :: VK_ERROR_INCOMPATIBLE_SHADER_BINARY_EXT = VK_INCOMPATIBLE_SHADER_BINARY_EXT
 
 
-  !? VkStructureType
+  !? VkStructureType. ==========================================================================
 
 
   ! Part of t_vk_structure_type.
@@ -2352,6 +2352,6 @@ module forvk_parameters
   end type t_vk_structure_type
 
 
-  type(t_vk_structure_type), parameter :: VK_STRUCTURE_TYPE = t_vk_structure_type()
+  type(t_vk_structure_type), parameter, public :: VK_STRUCTURE_TYPE = t_vk_structure_type()
 
 end module forvk_parameters
