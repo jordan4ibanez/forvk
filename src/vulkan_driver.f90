@@ -34,7 +34,7 @@ contains
     type(vk_instance_create_info) :: create_info
 
 
-    !? GLFW WINDOW CREATION. =====================================
+    !* GLFW WINDOW CREATION. =====================================
 
     if (.not. glfw_init()) then
       error stop "[Vulkan] Error: Failed to initialize GLFW."
@@ -48,15 +48,10 @@ contains
       error stop "[Vulkan]: Failed to create window."
     end if
 
-    !? VULKAN CREATION. =====================================
+    !* VULKAN CREATION. =====================================
 
-    extension_count = 0
 
-    ! if (vk_enumerate_instance_extension_properties(c_null_ptr, c_loc(extension_count), c_null_ptr) /= VK_SUCCESS) then
-    !   print*,"Failed to enumerate extension properties."
-    ! end if
-
-    ! print"(A)","[Vulkan]: "//int_to_string(extension_count)//" extensions supported."
+    !? APP INFO. =====================================
 
 
     app_info%s_type = VK_STRUCTURE_TYPE%APPLICATION_INFO
@@ -76,9 +71,12 @@ contains
     app_info%engine_version = vk_make_api_version(0,1,0,0)
     app_info%api_version = VK_API_VERSION_1_0
 
+    !? CREATE INFO. =====================================
 
     create_info%s_type = VK_STRUCTURE_TYPE%INSTANCE_CREATE_INFO
     create_info%p_application_info = c_loc(app_info)
+
+
 
 
 
