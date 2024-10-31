@@ -1158,78 +1158,78 @@ module forvk_parameters
 
   ! Part of t_vk_structure_type.
   type t_device
-    integer(c_int) :: DEVICE_QUEUE_CREATE_INFO = 2
-    integer(c_int) :: DEVICE_CREATE_INFO = 3
+    integer(c_int) :: QUEUE_CREATE_INFO = 2
+    integer(c_int) :: CREATE_INFO = 3
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: DEVICE_GROUP_RENDER_PASS_BEGIN_INFO = 1000060003
+    integer(c_int) :: GROUP_RENDER_PASS_BEGIN_INFO = 1000060003
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: DEVICE_GROUP_COMMAND_BUFFER_BEGIN_INFO = 1000060004
+    integer(c_int) :: GROUP_COMMAND_BUFFER_BEGIN_INFO = 1000060004
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: DEVICE_GROUP_SUBMIT_INFO = 1000060005
+    integer(c_int) :: GROUP_SUBMIT_INFO = 1000060005
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: DEVICE_GROUP_BIND_SPARSE_INFO = 1000060006
+    integer(c_int) :: GROUP_BIND_SPARSE_INFO = 1000060006
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: DEVICE_GROUP_DEVICE_CREATE_INFO = 1000070001
+    integer(c_int) :: GROUP_DEVICE_CREATE_INFO = 1000070001
     ! Provided by VK_VERSION_1_1
-    integer(c_int) :: DEVICE_QUEUE_INFO_2 = 1000145003
+    integer(c_int) :: QUEUE_INFO_2 = 1000145003
     ! Provided by VK_VERSION_1_2
-    integer(c_int) :: DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO = 1000257004
+    integer(c_int) :: MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO = 1000257004
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: DEVICE_PRIVATE_DATA_CREATE_INFO = 1000295001
+    integer(c_int) :: PRIVATE_DATA_CREATE_INFO = 1000295001
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: DEVICE_BUFFER_MEMORY_REQUIREMENTS = 1000413002
+    integer(c_int) :: BUFFER_MEMORY_REQUIREMENTS = 1000413002
     ! Provided by VK_VERSION_1_3
-    integer(c_int) :: DEVICE_IMAGE_MEMORY_REQUIREMENTS = 1000413003
+    integer(c_int) :: IMAGE_MEMORY_REQUIREMENTS = 1000413003
     ! Provided by VK_VERSION_1_1 with VK_KHR_swapchain VK_KHR_device_group with VK_KHR_surface
-    integer(c_int) :: DEVICE_GROUP_PRESENT_CAPABILITIES_KHR = 1000060007
+    integer(c_int) :: GROUP_PRESENT_CAPABILITIES_KHR = 1000060007
     ! Provided by VK_VERSION_1_1 with VK_KHR_swapchain VK_KHR_device_group with VK_KHR_swapchain
-    integer(c_int) :: DEVICE_GROUP_PRESENT_INFO_KHR = 1000060011
+    integer(c_int) :: GROUP_PRESENT_INFO_KHR = 1000060011
     ! Provided by VK_VERSION_1_1 with VK_KHR_swapchain VK_KHR_device_group with VK_KHR_swapchain
-    integer(c_int) :: DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR = 1000060012
+    integer(c_int) :: GROUP_SWAPCHAIN_CREATE_INFO_KHR = 1000060012
     ! Provided by VK_EXT_display_control
-    integer(c_int) :: DEVICE_EVENT_INFO_EXT = 1000091001
+    integer(c_int) :: EVENT_INFO_EXT = 1000091001
     ! Provided by VK_KHR_global_priority
-    integer(c_int) :: DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_KHR = 1000174000
+    integer(c_int) :: QUEUE_GLOBAL_PRIORITY_CREATE_INFO_KHR = 1000174000
     ! Provided by VK_AMD_memory_overallocation_behavior
-    integer(c_int) :: DEVICE_MEMORY_OVERALLOCATION_CREATE_INFO_AMD = 1000189000
+    integer(c_int) :: MEMORY_OVERALLOCATION_CREATE_INFO_AMD = 1000189000
     ! Provided by VK_EXT_device_memory_report
-    integer(c_int) :: DEVICE_DEVICE_MEMORY_REPORT_CREATE_INFO_EXT = 1000284001
+    integer(c_int) :: DEVICE_MEMORY_REPORT_CREATE_INFO_EXT = 1000284001
     ! Provided by VK_EXT_device_memory_report
-    integer(c_int) :: DEVICE_MEMORY_REPORT_CALLBACK_DATA_EXT = 1000284002
+    integer(c_int) :: MEMORY_REPORT_CALLBACK_DATA_EXT = 1000284002
     ! Provided by VK_NV_device_diagnostics_config
-    integer(c_int) :: DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV = 1000300001
+    integer(c_int) :: DIAGNOSTICS_CONFIG_CREATE_INFO_NV = 1000300001
     ! Provided by VK_EXT_device_fault
-    integer(c_int) :: DEVICE_FAULT_COUNTS_EXT = 1000341001
+    integer(c_int) :: FAULT_COUNTS_EXT = 1000341001
     ! Provided by VK_EXT_device_fault
-    integer(c_int) :: DEVICE_FAULT_INFO_EXT = 1000341002
+    integer(c_int) :: FAULT_INFO_EXT = 1000341002
     ! Provided by VK_EXT_device_address_binding_report
-    integer(c_int) :: DEVICE_ADDRESS_BINDING_CALLBACK_DATA_EXT = 1000354001
+    integer(c_int) :: ADDRESS_BINDING_CALLBACK_DATA_EXT = 1000354001
     ! Provided by VK_ARM_scheduling_controls
-    integer(c_int) :: DEVICE_QUEUE_SHADER_CORE_CONTROL_CREATE_INFO_ARM = 1000417000
+    integer(c_int) :: QUEUE_SHADER_CORE_CONTROL_CREATE_INFO_ARM = 1000417000
     ! Provided by VK_KHR_maintenance5
-    integer(c_int) :: DEVICE_IMAGE_SUBRESOURCE_INFO_KHR = 1000470004
+    integer(c_int) :: IMAGE_SUBRESOURCE_INFO_KHR = 1000470004
     ! Provided by VK_KHR_pipeline_binary
-    integer(c_int) :: DEVICE_PIPELINE_BINARY_INTERNAL_CACHE_CONTROL_KHR = 1000483008
+    integer(c_int) :: PIPELINE_BINARY_INTERNAL_CACHE_CONTROL_KHR = 1000483008
     ! Provided by VK_KHR_device_group
-    integer(c_int) :: DEVICE_GROUP_RENDER_PASS_BEGIN_INFO_KHR = 1000060003
+    integer(c_int) :: GROUP_RENDER_PASS_BEGIN_INFO_KHR = 1000060003
     ! Provided by VK_KHR_device_group
-    integer(c_int) :: DEVICE_GROUP_COMMAND_BUFFER_BEGIN_INFO_KHR = 1000060004
+    integer(c_int) :: GROUP_COMMAND_BUFFER_BEGIN_INFO_KHR = 1000060004
     ! Provided by VK_KHR_device_group
-    integer(c_int) :: DEVICE_GROUP_SUBMIT_INFO_KHR = 1000060005
+    integer(c_int) :: GROUP_SUBMIT_INFO_KHR = 1000060005
     ! Provided by VK_KHR_device_group
-    integer(c_int) :: DEVICE_GROUP_BIND_SPARSE_INFO_KHR = 1000060006
+    integer(c_int) :: GROUP_BIND_SPARSE_INFO_KHR = 1000060006
     ! Provided by VK_KHR_device_group_creation
-    integer(c_int) :: DEVICE_GROUP_DEVICE_CREATE_INFO_KHR = 1000070001
+    integer(c_int) :: GROUP_DEVICE_CREATE_INFO_KHR = 1000070001
     ! Provided by VK_EXT_global_priority
-    integer(c_int) :: DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_EXT = 1000174000
+    integer(c_int) :: QUEUE_GLOBAL_PRIORITY_CREATE_INFO_EXT = 1000174000
     ! Provided by VK_KHR_buffer_device_address
-    integer(c_int) :: DEVICE_MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO_KHR = 1000257004
+    integer(c_int) :: MEMORY_OPAQUE_CAPTURE_ADDRESS_INFO_KHR = 1000257004
     ! Provided by VK_EXT_private_data
-    integer(c_int) :: DEVICE_PRIVATE_DATA_CREATE_INFO_EXT = 1000295001
+    integer(c_int) :: PRIVATE_DATA_CREATE_INFO_EXT = 1000295001
     ! Provided by VK_KHR_maintenance4
-    integer(c_int) :: DEVICE_BUFFER_MEMORY_REQUIREMENTS_KHR = 1000413002
+    integer(c_int) :: BUFFER_MEMORY_REQUIREMENTS_KHR = 1000413002
     ! Provided by VK_KHR_maintenance4
-    integer(c_int) :: DEVICE_IMAGE_MEMORY_REQUIREMENTS_KHR = 1000413003
+    integer(c_int) :: IMAGE_MEMORY_REQUIREMENTS_KHR = 1000413003
   end type t_device
 
 
