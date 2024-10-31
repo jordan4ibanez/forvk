@@ -1008,7 +1008,7 @@ module forvk_parameters
   end type t_pipeline
 
   ! Part of t_vk_structure_type.
-  type t_video_encode
+  type t_video
     ! Provided by VK_KHR_video_encode_h264
     integer(c_int) :: ENCODE_H264_CAPABILITIES_KHR = 1000038000
     ! Provided by VK_KHR_video_encode_h264
@@ -1083,13 +1083,13 @@ module forvk_parameters
     integer(c_int) :: ENCODE_SESSION_PARAMETERS_GET_INFO_KHR = 1000299009
     ! Provided by VK_KHR_video_encode_queue
     integer(c_int) :: ENCODE_SESSION_PARAMETERS_FEEDBACK_INFO_KHR = 1000299010
-  end type t_video_encode
+  end type t_video
 
 
   type t_vk_structure_type
     type(t_physical_device) :: PHYSICAL_DEVICE = t_physical_device()
     type(t_pipeline) :: PIPELINE = t_pipeline()
-    type(t_video_encode) :: VIDEO_ENCODE = t_video_encode()
+    type(t_video) :: VIDEO = t_video()
     integer(c_int) :: APPLICATION_INFO = 0
     integer(c_int) :: INSTANCE_CREATE_INFO = 1
     integer(c_int) :: DEVICE_QUEUE_CREATE_INFO = 2
