@@ -11,6 +11,8 @@ auto-tests = true
 auto-examples = true
 module-naming = false
 
+link = ["glfw"]
+
 [dependencies]
 fglm = { git = "https://github.com/jordan4ibanez/fglm" }
 string_f90 = { git = "https://github.com/jordan4ibanez/string_f90" }
