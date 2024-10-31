@@ -95,6 +95,16 @@ module forvk
     end function vk_enumerate_instance_extension_properties
 
 
+    function vk_create_instance(p_create_info, p_allocator, p_instance) result(res) bind(c, name = "vkCreateInstance")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! const VkInstanceCreateInfo *, const VkAllocationCallbacks *, VkInstance *
+      type(c_ptr), intent(in), value :: p_create_info, p_allocator, p_instance
+      integer(c_int) :: res
+    end function vk_create_instance
+
+
 
   end interface
 
