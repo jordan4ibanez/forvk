@@ -2449,47 +2449,47 @@ module forvk_parameters
     ! Provided by VK_EXT_buffer_device_address
     integer(c_int) :: BUFFER_ADDRESS_FEATURES_EXT = 1000244000
     ! Provided by VK_EXT_tooling_info
-    integer(c_int) :: TOOL_PROPERTIES_EXT = TOOL_PROPERTIES
+    integer(c_int) :: TOOL_PROPERTIES_EXT = 1000245000
     ! Provided by VK_KHR_uniform_buffer_standard_layout
-    integer(c_int) :: UNIFORM_BUFFER_STANDARD_LAYOUT_FEATURES_KHR = UNIFORM_BUFFER_STANDARD_LAYOUT_FEATURES
+    integer(c_int) :: UNIFORM_BUFFER_STANDARD_LAYOUT_FEATURES_KHR = 1000253000
     ! Provided by VK_KHR_buffer_device_address
-    integer(c_int) :: BUFFER_DEVICE_ADDRESS_FEATURES_KHR = BUFFER_DEVICE_ADDRESS_FEATURES
+    integer(c_int) :: BUFFER_DEVICE_ADDRESS_FEATURES_KHR = 1000257000
     ! Provided by VK_EXT_line_rasterization
-    integer(c_int) :: LINE_RASTERIZATION_FEATURES_EXT = LINE_RASTERIZATION_FEATURES_KHR
+    integer(c_int) :: LINE_RASTERIZATION_FEATURES_EXT = 1000259000
     ! Provided by VK_EXT_line_rasterization
-    integer(c_int) :: LINE_RASTERIZATION_PROPERTIES_EXT = LINE_RASTERIZATION_PROPERTIES_KHR
+    integer(c_int) :: LINE_RASTERIZATION_PROPERTIES_EXT = 1000259002
     ! Provided by VK_EXT_host_query_reset
-    integer(c_int) :: HOST_QUERY_RESET_FEATURES_EXT = HOST_QUERY_RESET_FEATURES
+    integer(c_int) :: HOST_QUERY_RESET_FEATURES_EXT = 1000261000
     ! Provided by VK_EXT_index_type_uint8
-    integer(c_int) :: INDEX_TYPE_UINT8_FEATURES_EXT = INDEX_TYPE_UINT8_FEATURES_KHR
+    integer(c_int) :: INDEX_TYPE_UINT8_FEATURES_EXT = 1000265000
     ! Provided by VK_EXT_shader_demote_to_helper_invocation
-    integer(c_int) :: SHADER_DEMOTE_TO_HELPER_INVOCATION_FEATURES_EXT = SHADER_DEMOTE_TO_HELPER_INVOCATION_FEATURES
+    integer(c_int) :: SHADER_DEMOTE_TO_HELPER_INVOCATION_FEATURES_EXT = 1000276000
     ! Provided by VK_KHR_shader_integer_dot_product
-    integer(c_int) :: SHADER_INTEGER_DOT_PRODUCT_FEATURES_KHR = SHADER_INTEGER_DOT_PRODUCT_FEATURES
+    integer(c_int) :: SHADER_INTEGER_DOT_PRODUCT_FEATURES_KHR = 1000280000
     ! Provided by VK_KHR_shader_integer_dot_product
-    integer(c_int) :: SHADER_INTEGER_DOT_PRODUCT_PROPERTIES_KHR = SHADER_INTEGER_DOT_PRODUCT_PROPERTIES
+    integer(c_int) :: SHADER_INTEGER_DOT_PRODUCT_PROPERTIES_KHR = 1000280001
     ! Provided by VK_EXT_texel_buffer_alignment
-    integer(c_int) :: TEXEL_BUFFER_ALIGNMENT_PROPERTIES_EXT = TEXEL_BUFFER_ALIGNMENT_PROPERTIES
+    integer(c_int) :: TEXEL_BUFFER_ALIGNMENT_PROPERTIES_EXT = 1000281001
     ! Provided by VK_EXT_private_data
-    integer(c_int) :: PRIVATE_DATA_FEATURES_EXT = PRIVATE_DATA_FEATURES
+    integer(c_int) :: PRIVATE_DATA_FEATURES_EXT = 1000295000
     ! Provided by VK_EXT_pipeline_creation_cache_control
-    integer(c_int) :: PIPELINE_CREATION_CACHE_CONTROL_FEATURES_EXT = PIPELINE_CREATION_CACHE_CONTROL_FEATURES
+    integer(c_int) :: PIPELINE_CREATION_CACHE_CONTROL_FEATURES_EXT = 1000297000
     ! Provided by VK_KHR_synchronization2
-    integer(c_int) :: SYNCHRONIZATION_2_FEATURES_KHR = SYNCHRONIZATION_2_FEATURES
+    integer(c_int) :: SYNCHRONIZATION_2_FEATURES_KHR = 1000314007
     ! Provided by VK_KHR_zero_initialize_workgroup_memory
-    integer(c_int) :: ZERO_INITIALIZE_WORKGROUP_MEMORY_FEATURES_KHR = ZERO_INITIALIZE_WORKGROUP_MEMORY_FEATURES
+    integer(c_int) :: ZERO_INITIALIZE_WORKGROUP_MEMORY_FEATURES_KHR = 1000325000
     ! Provided by VK_EXT_image_robustness
-    integer(c_int) :: IMAGE_ROBUSTNESS_FEATURES_EXT = IMAGE_ROBUSTNESS_FEATURES
+    integer(c_int) :: IMAGE_ROBUSTNESS_FEATURES_EXT = 1000335000
     ! Provided by VK_ARM_rasterization_order_attachment_access
     ! integer(c_int) :: RASTERIZATION_ORDER_ATTACHMENT_ACCESS_FEATURES_ARM = RASTERIZATION_ORDER_ATTACHMENT_ACCESS_FEATURES_EXT
     ! Provided by VK_VALVE_mutable_descriptor_type
-    integer(c_int) :: MUTABLE_DESCRIPTOR_TYPE_FEATURES_VALVE = MUTABLE_DESCRIPTOR_TYPE_FEATURES_EXT
+    integer(c_int) :: MUTABLE_DESCRIPTOR_TYPE_FEATURES_VALVE = 1000351000
     ! Provided by VK_EXT_global_priority_query
-    integer(c_int) :: GLOBAL_PRIORITY_QUERY_FEATURES_EXT = GLOBAL_PRIORITY_QUERY_FEATURES_KHR
+    integer(c_int) :: GLOBAL_PRIORITY_QUERY_FEATURES_EXT = 1000388000
     ! Provided by VK_KHR_maintenance4
-    integer(c_int) :: MAINTENANCE_4_FEATURES_KHR = MAINTENANCE_4_FEATURES
+    integer(c_int) :: MAINTENANCE_4_FEATURES_KHR = 1000413000
     ! Provided by VK_KHR_maintenance4
-    integer(c_int) :: MAINTENANCE_4_PROPERTIES_KHR = MAINTENANCE_4_PROPERTIES
+    integer(c_int) :: MAINTENANCE_4_PROPERTIES_KHR = 1000413001
   end type t_physical_device
 
 
