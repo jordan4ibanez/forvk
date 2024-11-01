@@ -7,12 +7,12 @@ module forvk
   private
 
 
-  public :: forvk_grab_instance_pointer
+  ! public :: forvk_grab_instance_pointer
   public :: vk_enumerate_instance_extension_properties
   public :: vk_make_api_version
   public :: vk_instance_create_info
   public :: vk_create_instance
-  public :: forvk_destroy_pointer_instance
+  ! public :: forvk_destroy_pointer_instance
 
   public :: vk_extension_properties
   public :: vk_application_info
@@ -77,12 +77,12 @@ module forvk
   interface
 
 
-    function vk_grab_instance_pointer() result(ptr) bind(c, name = "vk_grab_instance_pointer")
-      use, intrinsic :: iso_c_binding
-      implicit none
+    ! function vk_grab_instance_pointer() result(ptr) bind(c, name = "vk_grab_instance_pointer")
+    !   use, intrinsic :: iso_c_binding
+    !   implicit none
 
-      type(c_ptr) :: ptr
-    end function vk_grab_instance_pointer
+    !   type(c_ptr) :: ptr
+    ! end function vk_grab_instance_pointer
 
 
     function vk_enumerate_instance_extension_properties(p_layer_name, p_property_count, p_properties) result(vk_result) bind(c, name = "vkEnumerateInstanceExtensionProperties")
@@ -106,12 +106,12 @@ module forvk
     end function vk_create_instance
 
 
-    subroutine forvk_destroy_pointer_instance(instance) bind(c, name = "forvk_destroy_pointer_instance")
-      use, intrinsic :: iso_c_binding
-      implicit none
+    ! subroutine forvk_destroy_pointer_instance(instance) bind(c, name = "forvk_destroy_pointer_instance")
+    !   use, intrinsic :: iso_c_binding
+    !   implicit none
 
-      type(c_ptr), intent(in), value :: instance
-    end subroutine forvk_destroy_pointer_instance
+    !   type(c_ptr), intent(in), value :: instance
+    ! end subroutine forvk_destroy_pointer_instance
 
 
   end interface
