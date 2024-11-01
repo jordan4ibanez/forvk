@@ -10,3 +10,9 @@ VkInstance *forvk_grab_instance_pointer()
 
   return (VkInstance *)data;
 }
+
+void forvk_destroy_pointer_instance(VkInstance *instance)
+{
+  // We're not using any custom allocators with this because that would be a nightmare.
+  vkDestroyInstance(*instance, NULL);
+}
