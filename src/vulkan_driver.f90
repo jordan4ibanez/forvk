@@ -40,6 +40,8 @@ contains
 
     call create_required_extensions(required_extensions)
 
+    call ensure_extensions_present(required_extensions)
+
     call create_create_info(create_info, app_info, required_extensions)
 
     call create_vulkan_instance(create_info)
@@ -142,6 +144,32 @@ contains
     !   ! print*,len(temp)
     ! end do
   end subroutine create_required_extensions
+
+
+  subroutine ensure_extensions_present(required_extensions)
+    implicit none
+
+    type(vec), intent(inout) :: required_extensions
+    integer(c_int) :: result, extension_count
+    type(vec) :: available_extensions_array
+    type(vk_extension_properties) :: blank
+
+    result = vk_enumerate_instance_extension_properties(c_null_ptr, extension_count, c_null_ptr)
+
+    if (result /= VK_SUCCESS) then
+      error stop "[Vulkan]: Failed to enumrate instance extension properties. Error code ["//int_to_string(result)//"]"
+    end if
+
+    print*,"extension count:", extension_count
+
+    available_extensions_array = new_vec(sizeof(blank), int(extension_count, c_int64_t))
+    call available_extensions_array%resize(int(extension_count, c_int64_t), blank)
+
+    ! print*,available_extensions_array%get(1_8)
+
+    ! result = vk_enumerate_instance_extension_properties(c_null_ptr, extension_count, available_extensions_array%get(1_8))
+
+  end subroutine ensure_extensions_present
 
 
   subroutine create_create_info(create_info, app_info, required_extensions)
