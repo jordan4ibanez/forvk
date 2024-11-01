@@ -2358,11 +2358,7 @@ module forvk_parameters
   !? VkInstanceCreateFlagBits. ==========================================================================
 
 
-  type t_vk_instance_create_flag_bits
-    integer(c_int) :: VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR = int(z"00000001")
-  end type t_vk_instance_create_flag_bits
-
-  type(t_vk_instance_create_flag_bits), parameter, public :: vk_instance_create_flag_bits = t_vk_instance_create_flag_bits()
+  integer(c_int), parameter, public :: VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR = int(z"00000001")
 
 
   !? VK EXTENSION NAMES. ==========================================================================
