@@ -165,7 +165,7 @@ contains
     available_extensions_array = new_vec(sizeof(blank), int(extension_count, c_int64_t))
     call available_extensions_array%resize(int(extension_count, c_int64_t), blank)
 
-    ! print*,available_extensions_array%get(1_8)
+    print*,available_extensions_array%get(1_8)
 
     ! result = vk_enumerate_instance_extension_properties(c_null_ptr, extension_count, available_extensions_array%get(1_8))
 
