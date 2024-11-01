@@ -157,6 +157,7 @@ contains
     ! type(c_ptr), pointer :: raw_c_ptr
     type(vk_extension_properties), pointer :: extension_properties
 
+    print"(A)","[Vulkan]: Gathering available extensions."
 
     result = vk_enumerate_instance_extension_properties(c_null_ptr, extension_count, c_null_ptr)
 
@@ -164,7 +165,7 @@ contains
       error stop "[Vulkan]: Failed to enumrate instance extension properties. Error code ["//int_to_string(result)//"]"
     end if
 
-    print*,"extension count:", extension_count
+    ! print*,"extension count:", extension_count
 
     available_extensions_array = new_vec(sizeof(blank), int(extension_count, c_int64_t))
     call available_extensions_array%resize(int(extension_count, c_int64_t), blank)
