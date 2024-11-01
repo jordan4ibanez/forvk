@@ -103,14 +103,16 @@ contains
     type(vk_application_info), intent(in), pointer :: app_info
     type(c_ptr), intent(in), value :: glfw_extensions
     integer(c_int), intent(in), value :: glfw_extension_count
-    ! type(vec) :: required_extensions
-    ! character(len = 1, kind = c_char), pointer :: blank
-    ! type(c_ptr), dimension(:), pointer :: c_glfw_extension_array_pointer
+    type(vec) :: required_extensions
+    character(len = 1, kind = c_char), pointer :: blank
+    type(c_ptr), dimension(:), pointer :: c_glfw_extension_array_pointer
 
-    ! blank => null()
-    ! required_extensions = new_vec(sizeof(blank), 0_8)
+    blank => null()
+    required_extensions = new_vec(sizeof(blank), 0_8)
 
-    ! call c_f_pointer(glfw_extensions, c_glfw_extension_array_pointer, [glfw_extension_count])
+    call c_f_pointer(glfw_extensions, c_glfw_extension_array_pointer, [glfw_extension_count])
+
+    print*,c_glfw_extension_array_pointer
 
     allocate(create_info)
     create_info%s_type = VK_STRUCTURE_TYPE%INSTANCE_CREATE_INFO
