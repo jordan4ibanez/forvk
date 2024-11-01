@@ -194,6 +194,10 @@ contains
   subroutine clean_up()
     implicit none
 
+    print"(A)","[Vulkan]: Destroying instance."
+
+    call forvk_destroy_pointer_instance(vulkan_instance)
+
     call glfw_destroy_window()
 
     call glfw_terminate()
