@@ -107,14 +107,28 @@ contains
     character(len = :, kind = c_char), pointer :: temp, output
     type(c_ptr), dimension(:), pointer :: c_glfw_extension_array_pointer
     integer(c_int) :: i
+    type(c_ptr), pointer :: raw_c_ptr
 
-    blank => null()
-    required_extensions = new_vec(sizeof(blank), 0_8)
+
+    ! Grabble the extension string pointers from C.
+    temp => null()
+    required_extensions = new_vec(sizeof(c_null_ptr), 0_8)
 
     call c_f_pointer(glfw_extensions, c_glfw_extension_array_pointer, [glfw_extension_count])
 
     do i = 1,glfw_extension_count
-      print*,string_from_c(c_glfw_extension_array_pointer(i))
+      temp => string_from_c(c_glfw_extension_array_pointer(i))
+      allocate(character(len = len(temp)+1, kind = c_char) :: output)
+      output = temp//achar(0)
+
+      call required_extensions%push_back(c_loc(output))
+    end do
+
+    do i = 1,int(required_extensions%size())
+      call c_f_pointer(required_extensions%get(int(i, c_int64_t)), raw_c_ptr)
+      temp => string_from_c(raw_c_ptr)
+      ! print*,temp(1:15)
+      ! print*,len(temp)
     end do
 
     allocate(create_info)
