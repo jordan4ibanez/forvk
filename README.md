@@ -12,7 +12,13 @@ This program will probably blow up if you try to run it, but if you want to run 
 ### Arch
 
 ```
-sudo yay -S vulkan-devel glfw shaderc
+yay -S vulkan-devel glfw shaderc
+```
+
+If you have an amd gpu:
+
+```
+yay -S vulkan-radeon
 ```
 
 Probably missing something there.
