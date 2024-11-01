@@ -75,6 +75,8 @@ contains
     type(vk_application_info), intent(inout), pointer :: app_info
     character(len = :, kind = c_char), pointer :: app_name, engine_name
 
+    print"(A)","[Vulkan]: Creating app info."
+
     allocate(app_info)
 
     app_info%s_type = VK_STRUCTURE_TYPE%APPLICATION_INFO
@@ -109,6 +111,7 @@ contains
     integer(c_int) :: i
     ! type(c_ptr), pointer :: raw_c_ptr
 
+    print"(A)","[Vulkan]: Creating create info."
 
     ! Grabble the extension string pointers from C.
     temp => null()
