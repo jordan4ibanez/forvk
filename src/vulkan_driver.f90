@@ -38,6 +38,8 @@ contains
 
     call create_app_info(app_info)
 
+    call create_required_extensions(required_extensions)
+
     call create_create_info(create_info, app_info, required_extensions)
 
     call create_vulkan_instance(create_info)
@@ -95,11 +97,9 @@ contains
   end subroutine create_app_info
 
 
-  subroutine create_create_info(create_info, app_info, required_extensions)
+  subroutine create_required_extensions(required_extensions)
     implicit none
 
-    type(vk_instance_create_info), intent(inout), pointer :: create_info
-    type(vk_application_info), intent(in), pointer :: app_info
     type(vec), intent(inout) :: required_extensions
     integer(c_int) :: glfw_extension_count
     type(c_ptr) :: c_glfw_extension_array_pointer
@@ -111,8 +111,6 @@ contains
     print"(A)","[Vulkan]: Gathering required GLFW extensions."
 
     c_glfw_extension_array_pointer = glfw_get_required_instance_extensions(glfw_extension_count)
-
-    print"(A)","[Vulkan]: Creating create info."
 
     ! Grabble the extension string pointers from C.
     temp => null()
@@ -129,6 +127,8 @@ contains
       call required_extensions%push_back(c_loc(output))
     end do
 
+    print"(A)","[Vulkan]: Creating required GLFW extensions."
+
     ! We need this for it to work in MoltenVK.
     allocate(character(len = len(VK_KHR_PORTABILITY_ENUMERATION_EXTENSION_NAME), kind = c_char) :: output)
     output = VK_KHR_PORTABILITY_ENUMERATION_EXTENSION_NAME
@@ -141,6 +141,17 @@ contains
     !   ! print*,temp(1:15)
     !   ! print*,len(temp)
     ! end do
+  end subroutine create_required_extensions
+
+
+  subroutine create_create_info(create_info, app_info, required_extensions)
+    implicit none
+
+    type(vk_instance_create_info), intent(inout), pointer :: create_info
+    type(vk_application_info), intent(in), pointer :: app_info
+    type(vec), intent(inout) :: required_extensions
+
+    print"(A)","[Vulkan]: Creating create info."
 
     allocate(create_info)
 
