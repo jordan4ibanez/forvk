@@ -107,7 +107,7 @@ contains
     character(len = :, kind = c_char), pointer :: temp, output
     type(c_ptr), dimension(:), pointer :: c_glfw_extension_array_pointer
     integer(c_int) :: i
-    type(c_ptr), pointer :: raw_c_ptr
+    ! type(c_ptr), pointer :: raw_c_ptr
 
 
     ! Grabble the extension string pointers from C.
@@ -116,6 +116,7 @@ contains
 
     call c_f_pointer(glfw_extensions, c_glfw_extension_array_pointer, [glfw_extension_count])
 
+    ! Shove all those char pointers into the vector's heap.
     do i = 1,glfw_extension_count
       temp => string_from_c(c_glfw_extension_array_pointer(i))
       allocate(character(len = len(temp)+1, kind = c_char) :: output)
@@ -124,6 +125,7 @@ contains
       call required_extensions%push_back(c_loc(output))
     end do
 
+    ! We need this for it to work in MoltenVK.
     allocate(character(len = len(VK_KHR_PORTABILITY_ENUMERATION_EXTENSION_NAME), kind = c_char) :: output)
     output = VK_KHR_PORTABILITY_ENUMERATION_EXTENSION_NAME
     call required_extensions%push_back(c_loc(output))
