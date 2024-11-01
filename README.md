@@ -13,7 +13,7 @@ Something something deep quote about bringing the newest graphics api into the o
 
 -----
 
-So GCC Gfortran is stuck in 1991 and has a 63 character variable name limit. I was going to compare this to C but as far as I can C that's always been unlimited.
+So GCC Gfortran is stuck at a 63 character variable name limit.
 
 I had to get creative to allow the Vulkan constants to be accessed in the same manor you can get them in the C docs.
 
