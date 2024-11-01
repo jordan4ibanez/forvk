@@ -39,18 +39,10 @@ contains
 
     call create_app_info(app_info)
 
-
-    !? CREATE INFO. =====================================
-
-    create_info%s_type = VK_STRUCTURE_TYPE%INSTANCE_CREATE_INFO
-    create_info%p_application_info = c_loc(app_info)
-
     glfw_extensions = glfw_get_required_instance_extensions(glfw_extension_count)
 
-    create_info%enabled_extension_count = glfw_extension_count
-    create_info%pp_enabled_extension_names = glfw_extensions
 
-    create_info%enabled_layer_count = 0
+
 
     !? We must grab the raw data pointer from C because it could be
     !? different on different platforms.
@@ -102,6 +94,23 @@ contains
     app_info%engine_version = vk_make_api_version(0,1,0,0)
     app_info%api_version = VK_API_VERSION_1_0
   end subroutine create_app_info
+
+
+  subroutine create_create_info(create_info, app_info, glfw_extensions, glfw_extension_count)
+    implicit none
+
+    type(vk_instance_create_info), intent(inout), target :: create_info
+    type(vk_application_info), intent(in), target :: app_info
+    type(c_ptr), intent(in), value :: glfw_extensions
+    integer(c_int), intent(in), value :: glfw_extension_count
+
+    create_info%s_type = VK_STRUCTURE_TYPE%INSTANCE_CREATE_INFO
+    create_info%p_application_info = c_loc(app_info)
+    create_info%enabled_extension_count = glfw_extension_count
+    create_info%pp_enabled_extension_names = glfw_extensions
+
+    create_info%enabled_layer_count = 0
+  end subroutine create_create_info
 
 
 !* MAIN LOOP. ====================================================================
