@@ -8,7 +8,7 @@ windows:
 
 # This does not work on macOS :D
 gdb:
-	@MALLOC_CHECK_=2 fpm run --flag   -g --flag   -lmcheck --flag -z \
+	@MALLOC_CHECK_=2 fpm run --flag   -g --flag   -lmcheck \
 	                         --c-flag -g --c-flag -lmcheck
 
 valgrind:
