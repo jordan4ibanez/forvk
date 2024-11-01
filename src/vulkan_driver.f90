@@ -37,20 +37,6 @@ contains
     integer(c_int) :: result
 
 
-    !* GLFW WINDOW CREATION. =====================================
-
-    if (.not. glfw_init()) then
-      error stop "[Vulkan] Error: Failed to initialize GLFW."
-    end if
-
-    ! call glfw_window_hint(GLFW_SCALE_FRAMEBUFFER, GLFW_TRUE)
-    call glfw_window_hint(GLFW_CLIENT_API, GLFW_NO_API)
-    call glfw_window_hint(GLFW_RESIZABLE, GLFW_FALSE)
-
-    if (.not. glfw_create_window(500, 500, "forvk")) then
-      error stop "[Vulkan]: Failed to create window."
-    end if
-
     !* VULKAN CREATION. =====================================
 
 
@@ -93,6 +79,26 @@ contains
     result = vk_create_instance(c_loc(create_info), c_null_ptr, vulkan_instance)
 
   end subroutine init_vulkan
+
+
+  subroutine create_glfw()
+    implicit none
+
+    if (.not. glfw_init()) then
+      error stop "[Vulkan] Error: Failed to initialize GLFW."
+    end if
+
+    ! call glfw_window_hint(GLFW_SCALE_FRAMEBUFFER, GLFW_TRUE)
+    call glfw_window_hint(GLFW_CLIENT_API, GLFW_NO_API)
+    call glfw_window_hint(GLFW_RESIZABLE, GLFW_FALSE)
+
+    if (.not. glfw_create_window(500, 500, "forvk")) then
+      error stop "[Vulkan]: Failed to create window."
+    end if
+  end subroutine create_glfw
+
+
+!* MAIN LOOP. ====================================================================
 
 
   subroutine main_loop()
