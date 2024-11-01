@@ -34,7 +34,6 @@ contains
     type(c_ptr) :: glfw_extensions
     type(vk_application_info), target :: app_info
     type(vk_instance_create_info), target :: create_info
-    integer(c_int) :: result
 
     call create_glfw()
 
@@ -44,13 +43,8 @@ contains
 
     call create_create_info(create_info, app_info, glfw_extensions, glfw_extension_count)
 
-    !? We must grab the raw data pointer from C because it could be
-    !? different on different platforms.
-    vulkan_instance = vk_grab_instance_pointer()
+    call create_vulkan_instance(create_info)
 
-    result = vk_create_instance(c_loc(create_info), c_null_ptr, vulkan_instance)
-
-    
   end subroutine init_vulkan
 
 
@@ -112,6 +106,24 @@ contains
 
     create_info%enabled_layer_count = 0
   end subroutine create_create_info
+
+
+  subroutine create_vulkan_instance(create_info)
+    implicit none
+
+    type(vk_instance_create_info), intent(in), target :: create_info
+    integer(c_int) :: result
+
+    !? We must grab the raw data pointer from C because it could be
+    !? different on different platforms.
+    vulkan_instance = vk_grab_instance_pointer()
+
+    result = vk_create_instance(c_loc(create_info), c_null_ptr, vulkan_instance)
+
+    if (result /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to create Vulkan instance. Error code: ["//int_to_string(result)//"]"
+    end if
+  end subroutine create_vulkan_instance
 
 
 !* MAIN LOOP. ====================================================================
