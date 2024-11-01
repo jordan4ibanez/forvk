@@ -7,12 +7,15 @@ module forvk
   private
 
 
-  ! public :: forvk_grab_instance_pointer
+  !* Functions.
+
   public :: vk_enumerate_instance_extension_properties
   public :: vk_make_api_version
   public :: vk_instance_create_info
   public :: vk_create_instance
-  ! public :: forvk_destroy_pointer_instance
+
+
+  !* Types.
 
   public :: vk_extension_properties
   public :: vk_application_info
@@ -95,7 +98,6 @@ module forvk
       integer(c_int64_t), intent(in), value :: instance
       type(c_ptr), intent(in), value :: p_allocator
     end subroutine vk_destroy_instance
-
 
 
     function vk_enumerate_instance_extension_properties(p_layer_name, p_property_count, p_properties) result(vk_result) bind(c, name = "vkEnumerateInstanceExtensionProperties")
