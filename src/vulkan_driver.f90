@@ -153,6 +153,10 @@ contains
     integer(c_int) :: result, extension_count
     type(vec) :: available_extensions_array
     type(vk_extension_properties) :: blank
+    integer(c_int) :: i
+    ! type(c_ptr), pointer :: raw_c_ptr
+    type(vk_extension_properties), pointer :: extension_properties
+
 
     result = vk_enumerate_instance_extension_properties(c_null_ptr, extension_count, c_null_ptr)
 
@@ -165,10 +169,14 @@ contains
     available_extensions_array = new_vec(sizeof(blank), int(extension_count, c_int64_t))
     call available_extensions_array%resize(int(extension_count, c_int64_t), blank)
 
-    print*,available_extensions_array%get(1_8)
+    result = vk_enumerate_instance_extension_properties(c_null_ptr, extension_count, available_extensions_array%get(1_8))
 
-    ! result = vk_enumerate_instance_extension_properties(c_null_ptr, extension_count, available_extensions_array%get(1_8))
+    do i = 1,int(extension_count)
+      call c_f_pointer(available_extensions_array%get(int(i, c_int64_t)), extension_properties)
+      print*,extension_properties
 
+      ! todo: check against required.
+    end do
   end subroutine ensure_extensions_present
 
 
