@@ -1,18 +1,22 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include <assert.h>
 #include <vulkan/vulkan_core.h>
 
-VkInstance *forvk_grab_instance_pointer()
-{
-  void *data = malloc(sizeof(VkInstance));
+// VkInstance *forvk_grab_instance_pointer()
+// {
 
-  assert(data);
+//   printf("size: %i\n", sizeof(VkInstance));
 
-  return (VkInstance *)data;
-}
+//   void *data = malloc(sizeof(VkInstance));
 
-void forvk_destroy_pointer_instance(VkInstance *instance)
-{
-  // We're not using any custom allocators with this because that would be a nightmare.
-  vkDestroyInstance(*instance, NULL);
-}
+//   assert(data);
+
+//   return (VkInstance *)data;
+// }
+
+// void forvk_destroy_pointer_instance(VkInstance *instance)
+// {
+//   // We're not using any custom allocators with this because that would be a nightmare.
+//   vkDestroyInstance(*instance, NULL);
+// }
