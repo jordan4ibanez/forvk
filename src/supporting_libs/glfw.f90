@@ -713,6 +713,11 @@ contains
     integer(c_int), intent(in), value :: width, height
 
     print*,"size_callback no-op"
+
+    !? Temporarily shut the IDE up.
+    if (.false.) then
+      print*,window,width,height
+    end if
   end subroutine size_callback
 
 
