@@ -161,10 +161,6 @@ contains
     type(vk_instance_create_info), intent(in), target :: create_info
     integer(c_int) :: result
 
-    !? We must grab the raw data pointer from C because it could be
-    !? different on different platforms.
-    vulkan_instance = forvk_grab_instance_pointer()
-
     print"(A)", "[Vulkan]: Creating instance."
 
     result = vk_create_instance(c_loc(create_info), c_null_ptr, vulkan_instance)
