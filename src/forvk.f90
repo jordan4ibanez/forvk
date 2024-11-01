@@ -105,7 +105,6 @@ module forvk
     end function vk_create_instance
 
 
-
   end interface
 
 
