@@ -7,6 +7,8 @@ I have no idea what I'm doing.
 
 Something something deep quote about bringing the newest graphics api into the oldest language blah blah.
 
+AKA: Don't blame me man I'm just trying to bring this thing into fortran.
+
 -----
 
 ### Note:
