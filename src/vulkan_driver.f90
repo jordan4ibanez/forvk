@@ -4,6 +4,7 @@ module vulkan_driver
   use :: forvk_parameters
   use :: glfw
   use :: string_f90
+  use :: vector
   implicit none
 
 
