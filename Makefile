@@ -1,5 +1,5 @@
 default:	
-	@fpm run --flag -fmax-identifier-length=80
+	@fpm run
 
 
 windows:
@@ -8,8 +8,8 @@ windows:
 
 # This does not work on macOS :D
 gdb:
-	@MALLOC_CHECK_=2 fpm run --flag   -g --flag   -lmcheck --flag -z --flag -fmax-identifier-length=80 \
-	                         --c-flag -g --c-flag -lmcheck --c-flag -fmax-identifier-length=90
+	@MALLOC_CHECK_=2 fpm run --flag   -g --flag   -lmcheck --flag -z \
+	                         --c-flag -g --c-flag -lmcheck
 
 valgrind:
 	@./scripts/run_valgrind.sh
