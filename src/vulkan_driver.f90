@@ -163,7 +163,7 @@ contains
 
     print"(A)", "[Vulkan]: Creating instance."
 
-    result = vk_create_instance(c_loc(create_info), c_null_ptr, c_loc(vulkan_instance))
+    result = vk_create_instance(c_loc(create_info), c_null_ptr, vulkan_instance)
 
     if (result /= VK_SUCCESS) then
       ! Shove driver check in.
@@ -192,7 +192,7 @@ contains
 
     print"(A)","[Vulkan]: Destroying instance."
 
-    call forvk_destroy_pointer_instance(vulkan_instance)
+    ! call forvk_destroy_pointer_instance(vulkan_instance)
 
     call glfw_destroy_window()
 

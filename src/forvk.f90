@@ -77,6 +77,27 @@ module forvk
   interface
 
 
+    function vk_create_instance(p_create_info, p_allocator, p_instance) result(res) bind(c, name = "vkCreateInstance")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! const VkInstanceCreateInfo *, const VkAllocationCallbacks *, VkInstance *
+      type(c_ptr), intent(in), value :: p_create_info, p_allocator
+      integer(c_int64_t), intent(inout) :: p_instance
+      integer(c_int) :: res
+    end function vk_create_instance
+
+
+    subroutine vk_destroy_instance(instance, p_allocator) bind(c, name = "vkDestroyInstance")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      integer(c_int64_t), intent(in), value :: instance
+      type(c_ptr), intent(in), value :: p_allocator
+    end subroutine vk_destroy_instance
+
+
+
     function vk_enumerate_instance_extension_properties(p_layer_name, p_property_count, p_properties) result(vk_result) bind(c, name = "vkEnumerateInstanceExtensionProperties")
       use, intrinsic :: iso_c_binding
       implicit none
@@ -86,18 +107,6 @@ module forvk
       !? VkResult.
       integer(c_int) :: vk_result
     end function vk_enumerate_instance_extension_properties
-
-
-    function vk_create_instance(p_create_info, p_allocator, p_instance) result(res) bind(c, name = "vkCreateInstance")
-      use, intrinsic :: iso_c_binding
-      implicit none
-
-      ! const VkInstanceCreateInfo *, const VkAllocationCallbacks *, VkInstance *
-      type(c_ptr), intent(in), value :: p_create_info, p_allocator, p_instance
-      integer(c_int) :: res
-    end function vk_create_instance
-
-
 
 
 
