@@ -124,6 +124,10 @@ contains
       call required_extensions%push_back(c_loc(output))
     end do
 
+    allocate(character(len = len(VK_KHR_PORTABILITY_ENUMERATION_EXTENSION_NAME), kind = c_char) :: output)
+    output = VK_KHR_PORTABILITY_ENUMERATION_EXTENSION_NAME
+    call required_extensions%push_back(c_loc(output))
+
     !? How to transfer out for a double check.
     ! do i = 1,int(required_extensions%size())
     !   call c_f_pointer(required_extensions%get(int(i, c_int64_t)), raw_c_ptr)
@@ -133,10 +137,14 @@ contains
     ! end do
 
     allocate(create_info)
+
+    create_info%flags = xor(create_info%flags, VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR)
+
     create_info%s_type = VK_STRUCTURE_TYPE%INSTANCE_CREATE_INFO
     create_info%p_application_info = c_loc(app_info)
-    create_info%enabled_extension_count = glfw_extension_count
-    create_info%pp_enabled_extension_names = glfw_extensions
+    create_info%enabled_extension_count = int(required_extensions%size())
+    !? Note: This basically turns the vector into a pointer array.
+    create_info%pp_enabled_extension_names = required_extensions%get(1_8)
 
     create_info%enabled_layer_count = 0
   end subroutine create_create_info
