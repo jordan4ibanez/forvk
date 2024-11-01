@@ -104,7 +104,7 @@ contains
     type(c_ptr), intent(in), value :: glfw_extensions
     integer(c_int), intent(in), value :: glfw_extension_count
     type(vec) :: required_extensions
-    character(len = 1, kind = c_char), pointer :: blank
+    character(len = :, kind = c_char), pointer :: temp, output
     type(c_ptr), dimension(:), pointer :: c_glfw_extension_array_pointer
     integer(c_int) :: i
 
