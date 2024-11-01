@@ -106,13 +106,16 @@ contains
     type(vec) :: required_extensions
     character(len = 1, kind = c_char), pointer :: blank
     type(c_ptr), dimension(:), pointer :: c_glfw_extension_array_pointer
+    integer(c_int) :: i
 
     blank => null()
     required_extensions = new_vec(sizeof(blank), 0_8)
 
     call c_f_pointer(glfw_extensions, c_glfw_extension_array_pointer, [glfw_extension_count])
 
-    print*,c_glfw_extension_array_pointer
+    do i = 1,glfw_extension_count
+      print*,string_from_c(c_glfw_extension_array_pointer(i))
+    end do
 
     allocate(create_info)
     create_info%s_type = VK_STRUCTURE_TYPE%INSTANCE_CREATE_INFO
