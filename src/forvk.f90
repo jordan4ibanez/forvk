@@ -7,7 +7,7 @@ module forvk
   private
 
 
-  public :: vk_grab_instance_pointer
+  public :: forvk_grab_instance_pointer
   public :: vk_enumerate_instance_extension_properties
   public :: vk_make_api_version
   public :: vk_instance_create_info
