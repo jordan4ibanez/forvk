@@ -148,9 +148,9 @@ contains
   subroutine main_loop()
     implicit none
 
-    do while(.not. glfw_window_should_close())
-      call glfw_poll_events()
-    end do
+    ! do while(.not. glfw_window_should_close())
+    !   call glfw_poll_events()
+    ! end do
 
   end subroutine main_loop
 
