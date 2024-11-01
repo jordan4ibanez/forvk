@@ -121,6 +121,10 @@ contains
     result = vk_create_instance(c_loc(create_info), c_null_ptr, vulkan_instance)
 
     if (result /= VK_SUCCESS) then
+      ! Shove driver check in.
+      if (result == VK_ERROR_INCOMPATIBLE_DRIVER) then
+        error stop "[Vulkan] Error: Failed to create Vulkan instance. Incompatible driver. Error code: ["//int_to_string(result)//"]"
+      end if
       error stop "[Vulkan] Error: Failed to create Vulkan instance. Error code: ["//int_to_string(result)//"]"
     end if
   end subroutine create_vulkan_instance
