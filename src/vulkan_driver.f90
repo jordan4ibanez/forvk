@@ -38,6 +38,7 @@ contains
 
 
     !* VULKAN CREATION. =====================================
+    call create_glfw()
 
 
     !? APP INFO. =====================================
