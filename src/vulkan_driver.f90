@@ -12,7 +12,7 @@ module vulkan_driver
   ! todo: in formine this will have a pointer struct which inherits from a base class, to direct traffic flow to these functions.
 
 
-  type(c_ptr) :: vulkan_instance = c_null_ptr
+  integer(c_int64_t) :: vulkan_instance = 0
 
 
 contains
@@ -163,7 +163,7 @@ contains
 
     !? We must grab the raw data pointer from C because it could be
     !? different on different platforms.
-    vulkan_instance = vk_grab_instance_pointer()
+    vulkan_instance = forvk_grab_instance_pointer()
 
     print"(A)", "[Vulkan]: Creating instance."
 
