@@ -124,12 +124,13 @@ contains
       call required_extensions%push_back(c_loc(output))
     end do
 
-    do i = 1,int(required_extensions%size())
-      call c_f_pointer(required_extensions%get(int(i, c_int64_t)), raw_c_ptr)
-      temp => string_from_c(raw_c_ptr)
-      ! print*,temp(1:15)
-      ! print*,len(temp)
-    end do
+    !? How to transfer out for a double check.
+    ! do i = 1,int(required_extensions%size())
+    !   call c_f_pointer(required_extensions%get(int(i, c_int64_t)), raw_c_ptr)
+    !   temp => string_from_c(raw_c_ptr)
+    !   ! print*,temp(1:15)
+    !   ! print*,len(temp)
+    ! end do
 
     allocate(create_info)
     create_info%s_type = VK_STRUCTURE_TYPE%INSTANCE_CREATE_INFO
