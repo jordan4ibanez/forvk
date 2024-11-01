@@ -31,17 +31,17 @@ contains
 
     integer(c_int), target :: glfw_extension_count
     ! const char **
-    type(c_ptr) :: glfw_extensions_array_pointer
-    type(vk_application_info), target :: app_info
-    type(vk_instance_create_info), target :: create_info
+    type(c_ptr) :: c_glfw_extensions_array_pointer
+    type(vk_application_info), pointer :: app_info
+    type(vk_instance_create_info), pointer :: create_info
 
     call create_glfw()
 
     call create_app_info(app_info)
 
-    glfw_extensions_array_pointer = glfw_get_required_instance_extensions(glfw_extension_count)
+    c_glfw_extensions_array_pointer = glfw_get_required_instance_extensions(glfw_extension_count)
 
-    call create_create_info(create_info, app_info, glfw_extensions_array_pointer, glfw_extension_count)
+    call create_create_info(create_info, app_info, c_glfw_extensions_array_pointer, glfw_extension_count)
 
     call create_vulkan_instance(create_info)
 
@@ -68,9 +68,10 @@ contains
   subroutine create_app_info(app_info)
     implicit none
 
+    type(vk_application_info), intent(inout), pointer :: app_info
     character(len = :, kind = c_char), pointer :: app_name, engine_name
 
-    type(vk_application_info), intent(inout), target :: app_info
+    allocate(app_info)
 
     app_info%s_type = VK_STRUCTURE_TYPE%APPLICATION_INFO
 
@@ -94,8 +95,8 @@ contains
   subroutine create_create_info(create_info, app_info, glfw_extensions, glfw_extension_count)
     implicit none
 
-    type(vk_instance_create_info), intent(inout), target :: create_info
-    type(vk_application_info), intent(in), target :: app_info
+    type(vk_instance_create_info), intent(inout), pointer :: create_info
+    type(vk_application_info), intent(in), pointer :: app_info
     type(c_ptr), intent(in), value :: glfw_extensions
     integer(c_int), intent(in), value :: glfw_extension_count
     ! type(vec) :: required_extensions
@@ -107,6 +108,7 @@ contains
 
     ! call c_f_pointer(glfw_extensions, c_glfw_extension_array_pointer, [glfw_extension_count])
 
+    allocate(create_info)
     create_info%s_type = VK_STRUCTURE_TYPE%INSTANCE_CREATE_INFO
     create_info%p_application_info = c_loc(app_info)
     create_info%enabled_extension_count = glfw_extension_count
@@ -125,6 +127,8 @@ contains
     !? We must grab the raw data pointer from C because it could be
     !? different on different platforms.
     vulkan_instance = vk_grab_instance_pointer()
+
+    print"(A)", "[Vulkan]: Creating instance."
 
     result = vk_create_instance(c_loc(create_info), c_null_ptr, vulkan_instance)
 
