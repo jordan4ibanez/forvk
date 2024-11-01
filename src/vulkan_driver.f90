@@ -45,6 +45,10 @@ contains
 
     call create_vulkan_instance(create_info)
 
+    ! todo: deallocate any pointers inside.
+    deallocate(app_info)
+    deallocate(create_info)
+
   end subroutine init_vulkan
 
 
