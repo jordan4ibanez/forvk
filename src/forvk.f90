@@ -110,6 +110,7 @@ module forvk
 
 contains
 
+
   function vk_make_api_version(variant, major, minor, patch) result(ver)
     implicit none
 
@@ -119,5 +120,6 @@ contains
     ver = xor(xor(xor(lshift(variant, 29), lshift(major, 22)), lshift(minor, 12)), patch)
 
   end function vk_make_api_version
+
 
 end module forvk

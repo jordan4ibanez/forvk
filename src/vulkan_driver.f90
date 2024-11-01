@@ -31,7 +31,7 @@ contains
 
     integer(c_int), target :: glfw_extension_count
     ! const char **
-    type(c_ptr) :: glfw_extensions
+    type(c_ptr) :: glfw_extensions_array_pointer
     type(vk_application_info), target :: app_info
     type(vk_instance_create_info), target :: create_info
 
@@ -39,9 +39,9 @@ contains
 
     call create_app_info(app_info)
 
-    glfw_extensions = glfw_get_required_instance_extensions(glfw_extension_count)
+    glfw_extensions_array_pointer = glfw_get_required_instance_extensions(glfw_extension_count)
 
-    call create_create_info(create_info, app_info, glfw_extensions, glfw_extension_count)
+    call create_create_info(create_info, app_info, glfw_extensions_array_pointer, glfw_extension_count)
 
     call create_vulkan_instance(create_info)
 
@@ -98,6 +98,13 @@ contains
     type(vk_application_info), intent(in), target :: app_info
     type(c_ptr), intent(in), value :: glfw_extensions
     integer(c_int), intent(in), value :: glfw_extension_count
+    type(vec) :: required_extensions
+    character(len = 1, kind = c_char), pointer :: blank
+
+    blank => null()
+    required_extensions = new_vec(sizeof(blank), 0_8)
+
+
 
     create_info%s_type = VK_STRUCTURE_TYPE%INSTANCE_CREATE_INFO
     create_info%p_application_info = c_loc(app_info)
