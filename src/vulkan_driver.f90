@@ -29,19 +29,16 @@ contains
   subroutine init_vulkan()
     implicit none
 
-    integer(c_int), target :: glfw_extension_count
-    ! const char **
-    type(c_ptr) :: c_glfw_extensions_array_pointer
     type(vk_application_info), pointer :: app_info
     type(vk_instance_create_info), pointer :: create_info
+    ! const char **
+    type(vec) :: required_extensions
 
     call create_glfw()
 
     call create_app_info(app_info)
 
-    c_glfw_extensions_array_pointer = glfw_get_required_instance_extensions(glfw_extension_count)
-
-    call create_create_info(create_info, app_info, c_glfw_extensions_array_pointer, glfw_extension_count)
+    call create_create_info(create_info, app_info, required_extensions)
 
     call create_vulkan_instance(create_info)
 
@@ -98,18 +95,22 @@ contains
   end subroutine create_app_info
 
 
-  subroutine create_create_info(create_info, app_info, glfw_extensions, glfw_extension_count)
+  subroutine create_create_info(create_info, app_info, required_extensions)
     implicit none
 
     type(vk_instance_create_info), intent(inout), pointer :: create_info
     type(vk_application_info), intent(in), pointer :: app_info
-    type(c_ptr), intent(in), value :: glfw_extensions
-    integer(c_int), intent(in), value :: glfw_extension_count
-    type(vec) :: required_extensions
+    type(vec), intent(inout) :: required_extensions
+    integer(c_int) :: glfw_extension_count
+    type(c_ptr) :: c_glfw_extension_array_pointer
     character(len = :, kind = c_char), pointer :: temp, output
-    type(c_ptr), dimension(:), pointer :: c_glfw_extension_array_pointer
+    type(c_ptr), dimension(:), pointer :: c_extension_name_pointer_array
     integer(c_int) :: i
     ! type(c_ptr), pointer :: raw_c_ptr
+
+    print"(A)","[Vulkan]: Gathering required GLFW extensions."
+
+    c_glfw_extension_array_pointer = glfw_get_required_instance_extensions(glfw_extension_count)
 
     print"(A)","[Vulkan]: Creating create info."
 
@@ -117,11 +118,11 @@ contains
     temp => null()
     required_extensions = new_vec(sizeof(c_null_ptr), 0_8)
 
-    call c_f_pointer(glfw_extensions, c_glfw_extension_array_pointer, [glfw_extension_count])
+    call c_f_pointer(c_glfw_extension_array_pointer, c_extension_name_pointer_array, [glfw_extension_count])
 
     ! Shove all those char pointers into the vector's heap.
     do i = 1,glfw_extension_count
-      temp => string_from_c(c_glfw_extension_array_pointer(i))
+      temp => string_from_c(c_extension_name_pointer_array(i))
       allocate(character(len = len(temp)+1, kind = c_char) :: output)
       output = temp//achar(0)
 
