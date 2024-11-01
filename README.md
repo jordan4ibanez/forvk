@@ -7,6 +7,20 @@ I have no idea what I'm doing.
 
 Something something deep quote about bringing the newest graphics api into the oldest language blah blah.
 
+-----
+
+## Note:
+
+-----
+
+So GCC Gfortran is stuck in 1993 and has a 63 character variable name limit.
+
+I had to get creative to allow the Vulkan constants to be accessed in the same manor you can get them in the C docs.
+
+-----
+
+
+
 This program will probably blow up if you try to run it, but if you want to run it:
 
 ### Arch
