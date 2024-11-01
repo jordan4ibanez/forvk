@@ -12,7 +12,7 @@ module vulkan_driver
   ! todo: in formine this will have a pointer struct which inherits from a base class, to direct traffic flow to these functions.
 
 
-  integer(c_int64_t) :: vulkan_instance = 0
+  integer(c_int64_t), target :: vulkan_instance = 0
 
 
 contains
