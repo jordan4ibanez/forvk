@@ -48,6 +48,8 @@ contains
 
     call create_create_info(create_info, app_info, required_extensions)
 
+    call check_validation_layer_support()
+
     call create_vulkan_instance(create_info)
 
     ! todo: deallocate any pointers inside.
@@ -254,21 +256,29 @@ contains
   end subroutine create_create_info
 
 
-  function check_validation_layer_support() result(has_support)
+  subroutine check_validation_layer_support()
     implicit none
 
     logical(c_bool) :: has_support
     type(vec) :: validation_layers
     character(len = :, kind = c_char), pointer :: layer
 
+    ! If we're not in debug mode, don't bother with this.
+    if (.not. DEBUG_MODE) then
+      return
+    end if
+
     layer => null()
     validation_layers = new_vec(sizeof(layer), 0_8)
 
-
-
     has_support = .false.
 
-  end function check_validation_layer_support
+
+    ! Then we will stop the program if we're in debug mode and we don't have any validation layer support.
+    if (.not. has_support) then
+      error stop "[Vulkan]: Debug mode requested validation layers, but are not available. Is LunarG installed?"
+    end if
+  end subroutine check_validation_layer_support
 
 
   subroutine create_vulkan_instance(create_info)
