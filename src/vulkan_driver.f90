@@ -16,6 +16,8 @@ module vulkan_driver
 
   integer(c_int64_t), target :: vulkan_instance = 0
 
+  logical(c_bool), parameter :: DEBUG_MODE = .true.
+
 
 contains
 
@@ -250,6 +252,23 @@ contains
 
     create_info%enabled_layer_count = 0
   end subroutine create_create_info
+
+
+  function check_validation_layer_support() result(has_support)
+    implicit none
+
+    logical(c_bool) :: has_support
+    type(vec) :: validation_layers
+    character(len = :, kind = c_char), pointer :: layer
+
+    layer => null()
+    validation_layers = new_vec(sizeof(layer), 0_8)
+
+
+
+    has_support = .false.
+
+  end function check_validation_layer_support
 
 
   subroutine create_vulkan_instance(create_info)
