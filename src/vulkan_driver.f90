@@ -260,6 +260,7 @@ contains
     implicit none
 
     logical(c_bool) :: has_support
+    ! char *
     type(vec) :: validation_layers
     character(len = :, kind = c_char), pointer :: layer
 
@@ -269,9 +270,11 @@ contains
     end if
 
     layer => null()
-    validation_layers = new_vec(sizeof(layer), 0_8)
+    validation_layers = new_vec(sizeof(c_null_ptr), 0_8)
 
     has_support = .false.
+
+
 
 
     ! Then we will stop the program if we're in debug mode and we don't have any validation layer support.
