@@ -7,6 +7,8 @@ I have no idea what I'm doing.
 
 Something something deep quote about bringing the newest graphics api into the oldest language blah blah.
 
+Join my discord for questions: https://discord.gg/D95q7BHUE4
+
 -----
 
 ### Note:
