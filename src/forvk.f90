@@ -11,6 +11,7 @@ module forvk
   !* Functions.
 
   public :: vk_enumerate_instance_extension_properties
+  public :: vk_enumerate_instance_layer_properties
   public :: vk_make_api_version
   public :: vk_create_instance
   public :: vk_destroy_instance
@@ -123,6 +124,19 @@ module forvk
       ! VkResult.
       integer(c_int) :: vk_result
     end function vk_enumerate_instance_extension_properties
+
+
+    function vk_enumerate_instance_layer_properties(p_property_count, p_properties) result (vk_result) bind(c, name = "vkEnumerateInstanceLayerProperties")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! uint32 *
+      integer(c_int), intent(inout) :: p_property_count
+      ! VkLayerProperties *
+      type(c_ptr), intent(in), value :: p_properties
+      ! VkResult
+      integer(c_int) :: vk_result
+    end function vk_enumerate_instance_layer_properties
 
 
 
