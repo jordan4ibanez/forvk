@@ -21,6 +21,7 @@ module forvk
   public :: vk_extension_properties
   public :: vk_application_info
   public :: vk_instance_create_info
+  public :: vk_layer_properties
 
 
 
@@ -74,6 +75,16 @@ module forvk
     ! const char * const *  aka: (string array)
     type(c_ptr) :: pp_enabled_extension_names
   end type vk_instance_create_info
+
+
+  type, bind(c) :: vk_layer_properties
+    character(len = 1, kind = c_char), dimension(VK_MAX_EXTENSION_NAME_SIZE) :: layer_name
+    ! uint32_t
+    integer(c_int32_t) :: spec_version
+    ! uint32_t
+    integer(c_int32_t) :: implementation_version
+    character(len = 1, kind = c_char), dimension(VK_MAX_DESCRIPTION_SIZE) :: description
+  end type vk_layer_properties
 
 
 !* C FUNCTION INTERFACES. ===============================================================
