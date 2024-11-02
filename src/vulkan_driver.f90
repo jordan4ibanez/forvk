@@ -274,12 +274,16 @@ contains
 
     has_support = .false.
 
+    allocate(character(len = 28, kind = c_char) :: layer)
+    layer = "VK_LAYER_KHRONOS_validation"//achar(0)
+
+    call validation_layers%push_back(c_loc(layer))
 
 
 
     ! Then we will stop the program if we're in debug mode and we don't have any validation layer support.
     if (.not. has_support) then
-      error stop "[Vulkan]: Debug mode requested validation layers, but are not available. Is LunarG installed?"
+      ! error stop "[Vulkan]: Debug mode requested validation layers, but are not available. Is LunarG installed?"
     end if
   end subroutine check_validation_layer_support
 
