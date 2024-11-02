@@ -174,6 +174,8 @@ contains
     result = vk_enumerate_instance_extension_properties(c_null_ptr, extension_count, available_extensions_array%get(1_8))
 
     do i = 1,int(extension_count)
+      
+      ! Transfer the VkExtensionProperties pointer into Fortran.
       call c_f_pointer(available_extensions_array%get(int(i, c_int64_t)), extension_properties)
 
       ! Find the length of the character array.
