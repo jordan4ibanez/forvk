@@ -140,7 +140,7 @@ contains
     ! do i = 1,int(required_extensions%size())
     !   call c_f_pointer(required_extensions%get(int(i, c_int64_t)), raw_c_ptr)
     !   temp => string_from_c(raw_c_ptr)
-    !   ! print*,temp(1:15)
+    !   ! print*,temp
     !   ! print*,len(temp)
     ! end do
   end subroutine create_required_extensions
@@ -153,9 +153,10 @@ contains
     integer(c_int) :: result, extension_count
     type(vec) :: available_extensions_array
     type(vk_extension_properties) :: blank
-    integer(c_int) :: i
-    ! type(c_ptr), pointer :: raw_c_ptr
+    integer(c_int) :: i, j
+    type(c_ptr), pointer :: raw_c_ptr
     type(vk_extension_properties), pointer :: extension_properties
+    character(len = :, kind = c_char), pointer :: temp_string_pointer
 
     print"(A)","[Vulkan]: Gathering available extensions."
 
@@ -173,11 +174,19 @@ contains
     result = vk_enumerate_instance_extension_properties(c_null_ptr, extension_count, available_extensions_array%get(1_8))
 
     do i = 1,int(extension_count)
+      print*,"=============== LOOP AGAIN ================================================"
       call c_f_pointer(available_extensions_array%get(int(i, c_int64_t)), extension_properties)
-      print*,extension_properties
 
-      ! todo: check against required.
+      ! print*,extension_properties
+
+      do j = 1,int(required_extensions%size())
+        call c_f_pointer(required_extensions%get(int(j, c_int64_t)), raw_c_ptr)
+        temp_string_pointer => string_from_c(raw_c_ptr)
+        print*,temp_string_pointer
+      end do
+
     end do
+
   end subroutine ensure_extensions_present
 
 
