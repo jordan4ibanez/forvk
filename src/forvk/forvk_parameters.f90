@@ -10,6 +10,7 @@ module forvk_parameters
 
 
   integer(c_int), parameter, public :: VK_MAX_EXTENSION_NAME_SIZE = 256
+  integer(c_int), parameter, public :: VK_MAX_DESCRIPTION_SIZE = 256
 
   integer(c_int), parameter, public :: VK_API_VERSION_1_0 = 4194304
   integer(c_int), parameter, public :: VK_API_VERSION_1_1 = 4198400
