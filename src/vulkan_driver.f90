@@ -10,6 +10,8 @@ module vulkan_driver
 
   ! Treating this thing as a class to follow the vulkan tutorial.
   ! todo: in formine this will have a pointer struct which inherits from a base class, to direct traffic flow to these functions.
+  !
+  ! todo: this has a lot of memory leaks which will need to be tested with valgrind to fix.
 
 
   integer(c_int64_t), target :: vulkan_instance = 0
