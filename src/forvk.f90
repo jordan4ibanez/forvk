@@ -13,6 +13,7 @@ module forvk
   public :: vk_make_api_version
   public :: vk_instance_create_info
   public :: vk_create_instance
+  public :: vk_destroy_instance
 
 
   !* Types.

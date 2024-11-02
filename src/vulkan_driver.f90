@@ -160,7 +160,6 @@ contains
     character(len = :, kind = c_char), allocatable :: temp
     logical(c_bool) :: found
 
-
     print"(A)","[Vulkan]: Gathering available extensions."
 
     result = vk_enumerate_instance_extension_properties(c_null_ptr, extension_count, c_null_ptr)
@@ -288,7 +287,7 @@ contains
 
     print"(A)","[Vulkan]: Destroying instance."
 
-    ! call forvk_destroy_pointer_instance(vulkan_instance)
+    call vk_destroy_instance(vulkan_instance, c_null_ptr)
 
     call glfw_destroy_window()
 
