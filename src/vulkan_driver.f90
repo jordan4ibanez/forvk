@@ -158,6 +158,7 @@ contains
     type(vk_extension_properties), pointer :: extension_properties
     character(len = :, kind = c_char), pointer :: temp_string_pointer
     character(len = :, kind = c_char), allocatable :: temp
+    logical(c_bool) :: found
 
 
     print"(A)","[Vulkan]: Gathering available extensions."
@@ -173,36 +174,57 @@ contains
 
     result = vk_enumerate_instance_extension_properties(c_null_ptr, extension_count, available_extensions_array%get(1_8))
 
-    do i = 1,int(extension_count)
-      
-      ! Transfer the VkExtensionProperties pointer into Fortran.
-      call c_f_pointer(available_extensions_array%get(int(i, c_int64_t)), extension_properties)
+    print"(A)","[Vulkan]: Ensuring required extensions are present."
 
-      ! Find the length of the character array.
-      do k = 1,VK_MAX_EXTENSION_NAME_SIZE
-        if (extension_properties%extension_name(k) == achar(0)) then
-          prop_length = k - 1
+    ! Iterate all required extensions.
+
+    do j = 1,int(required_extensions%size())
+
+      found = .false.
+
+      call c_f_pointer(required_extensions%get(int(j, c_int64_t)), raw_c_ptr)
+      temp_string_pointer => string_from_c(raw_c_ptr)
+
+      ! Iterate all available extensions.
+      do i = 1,int(extension_count)
+
+        ! Transfer the VkExtensionProperties pointer into Fortran.
+        call c_f_pointer(available_extensions_array%get(int(i, c_int64_t)), extension_properties)
+
+        ! Find the length of the character array.
+        do k = 1,VK_MAX_EXTENSION_NAME_SIZE
+          if (extension_properties%extension_name(k) == achar(0)) then
+            prop_length = k - 1
+            exit
+          end if
+        end do
+
+        ! Now copy it into a string.
+        allocate(character(len = prop_length, kind = c_char) :: temp)
+
+        do k = 1,prop_length
+          temp(k:k) = extension_properties%extension_name(k)
+        end do
+
+        ! And check if the strings are equal.
+        if (temp_string_pointer == temp) then
+          found = .true.
+          deallocate(temp)
           exit
         end if
+
+        deallocate(temp)
       end do
 
-      ! Now copy it into a string.
-      allocate(character(len = prop_length, kind = c_char) :: temp)
-      do k = 1,prop_length
-        temp(k:k) = extension_properties%extension_name(k)
-      end do
-
-      ! print*,temp
-
-      do j = 1,int(required_extensions%size())
-        call c_f_pointer(required_extensions%get(int(j, c_int64_t)), raw_c_ptr)
-        temp_string_pointer => string_from_c(raw_c_ptr)
-        ! print*,temp_string_pointer
-      end do
-
-      deallocate(temp)
+      ! We can't continue if a required extensions isn't present.
+      if (found) then
+        print"(A)","[Vulkan]: Found required extension ["//temp_string_pointer//"]"
+      else
+        error stop "[Vulkan] Error: Could not find required extension ["//temp_string_pointer//"]"
+      end if
     end do
 
+    print"(A)","[Vulkan]: All required extensions are present."
   end subroutine ensure_extensions_present
 
 
