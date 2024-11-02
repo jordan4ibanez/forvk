@@ -33,7 +33,7 @@ module forvk
 
   type, bind(c) :: vk_extension_properties
     character(len = 1, kind = c_char), dimension(VK_MAX_EXTENSION_NAME_SIZE) :: extension_name
-    !! was uint32_t
+    ! uint32_t
     integer(c_int32_t) :: spec_version
   end type vk_extension_properties
 
@@ -45,13 +45,13 @@ module forvk
     type(c_ptr) :: p_next
     ! char *
     type(c_ptr) :: p_application_name
-    !! was uint32_t
+    ! uint32_t
     integer(c_int) :: application_version
     ! char *
     type(c_ptr) :: p_engine_name
-    !! was uint32_t
+    ! uint32_t
     integer(c_int) :: engine_version
-    !! was uint32_t
+    ! uint32_t
     integer(c_int) :: api_version
   end type vk_application_info
 
