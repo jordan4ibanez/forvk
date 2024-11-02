@@ -153,10 +153,12 @@ contains
     integer(c_int) :: result, extension_count
     type(vec) :: available_extensions_array
     type(vk_extension_properties) :: blank
-    integer(c_int) :: i, j
+    integer(c_int) :: i, j, k, prop_length
     type(c_ptr), pointer :: raw_c_ptr
     type(vk_extension_properties), pointer :: extension_properties
     character(len = :, kind = c_char), pointer :: temp_string_pointer
+    character(len = :, kind = c_char), allocatable :: temp
+
 
     print"(A)","[Vulkan]: Gathering available extensions."
 
@@ -166,25 +168,37 @@ contains
       error stop "[Vulkan]: Failed to enumrate instance extension properties. Error code ["//int_to_string(result)//"]"
     end if
 
-    ! print*,"extension count:", extension_count
-
     available_extensions_array = new_vec(sizeof(blank), int(extension_count, c_int64_t))
     call available_extensions_array%resize(int(extension_count, c_int64_t), blank)
 
     result = vk_enumerate_instance_extension_properties(c_null_ptr, extension_count, available_extensions_array%get(1_8))
 
     do i = 1,int(extension_count)
-      print*,"=============== LOOP AGAIN ================================================"
       call c_f_pointer(available_extensions_array%get(int(i, c_int64_t)), extension_properties)
 
-      ! print*,extension_properties
+      ! Find the length of the character array.
+      do k = 1,VK_MAX_EXTENSION_NAME_SIZE
+        if (extension_properties%extension_name(k) == achar(0)) then
+          prop_length = k - 1
+          exit
+        end if
+      end do
+
+      ! Now copy it into a string.
+      allocate(character(len = prop_length, kind = c_char) :: temp)
+      do k = 1,prop_length
+        temp(k:k) = extension_properties%extension_name(k)
+      end do
+
+      ! print*,temp
 
       do j = 1,int(required_extensions%size())
         call c_f_pointer(required_extensions%get(int(j, c_int64_t)), raw_c_ptr)
         temp_string_pointer => string_from_c(raw_c_ptr)
-        print*,temp_string_pointer
+        ! print*,temp_string_pointer
       end do
 
+      deallocate(temp)
     end do
 
   end subroutine ensure_extensions_present
