@@ -12,7 +12,6 @@ module forvk
 
   public :: vk_enumerate_instance_extension_properties
   public :: vk_make_api_version
-  public :: vk_instance_create_info
   public :: vk_create_instance
   public :: vk_destroy_instance
 
@@ -21,6 +20,7 @@ module forvk
 
   public :: vk_extension_properties
   public :: vk_application_info
+  public :: vk_instance_create_info
 
 
 
