@@ -262,22 +262,43 @@ contains
     logical(c_bool) :: has_support
     ! char *
     type(vec) :: validation_layers
-    character(len = :, kind = c_char), pointer :: layer
+    ! VkLayerProperties
+    type(vec) :: available_layers
+    character(len = :, kind = c_char), pointer :: layer_name
+    type(vk_layer_properties) :: layer
+    integer(c_int) :: available_layer_count
 
     ! If we're not in debug mode, don't bother with this.
     if (.not. DEBUG_MODE) then
       return
     end if
 
-    layer => null()
+    ! Create validation layers that we need.
+
+    print"(A)","[Vulkan]: Creating validation layers."
+
+    layer_name => null()
     validation_layers = new_vec(sizeof(c_null_ptr), 0_8)
 
     has_support = .false.
 
-    allocate(character(len = 28, kind = c_char) :: layer)
-    layer = "VK_LAYER_KHRONOS_validation"//achar(0)
+    allocate(character(len = 28, kind = c_char) :: layer_name)
+    layer_name = "VK_LAYER_KHRONOS_validation"//achar(0)
+    call validation_layers%push_back(c_loc(layer_name))
 
-    call validation_layers%push_back(c_loc(layer))
+    ! Check the validation layers we have available.
+
+    available_layers = new_vec(sizeof(layer), 0_8)
+
+    if (vk_enumerate_instance_layer_properties(available_layer_count, c_null_ptr) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to enumerate instance layer properties."
+    end if
+
+    call available_layers%resize(int(available_layer_count, c_int64_t), layer)
+
+    if (vk_enumerate_instance_layer_properties(available_layer_count, available_layers%get(1_8)) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to enumerate instance layer properties."
+    end if
 
 
 
