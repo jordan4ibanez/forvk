@@ -299,7 +299,7 @@ contains
     logical(c_bool) :: has_support
     ! char **
     type(c_ptr), pointer :: raw_c_ptr_ptr
-    integer(c_int) :: i
+    integer(c_int) :: i, j
     character(len = :, kind = c_char), pointer :: required_layer
 
     ! If we're not in debug mode, don't bother with this.
@@ -313,7 +313,6 @@ contains
 
     allocate(layer)
     available_layers = new_vec(sizeof(layer), 0_8)
-    
 
     if (vk_enumerate_instance_layer_properties(available_layer_count, c_null_ptr) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to enumerate instance layer properties."
@@ -322,18 +321,28 @@ contains
     call available_layers%resize(int(available_layer_count, c_int64_t), layer)
     deallocate(layer)
 
-    ! ! This is sending in the vector as if it were a C array.
+    ! This is sending in the vector as if it were a C array.
     if (vk_enumerate_instance_layer_properties(available_layer_count, available_layers%get(1_8)) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to enumerate instance layer properties."
     end if
 
     ! Check if we have all required validation layers when running in debug mode.
     do i = 1,int(validation_layers%size())
+
+      ! From: validation layers.
       call c_f_pointer(validation_layers%get(int(i, c_int64_t)), raw_c_ptr_ptr)
       required_layer => string_from_c(raw_c_ptr_ptr)
 
+      ! Now, let's see if we have this required layer available.
 
+      do j = 1,int(available_layers%size())
 
+        print*,available_layer_count
+
+        print*, j
+
+        print*,"uhh", available_layers%size()
+      end do
     end do
 
     ! Then we will stop the program if we're in debug mode and we don't have any validation layer support.
