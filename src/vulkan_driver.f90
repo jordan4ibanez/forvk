@@ -40,6 +40,14 @@ contains
     ! const char **
     type(vec) :: validation_layers
 
+    !? This is how to get from these vectors. (char ** array underneath)
+    !? do i = 1,int(validation_layers%size())
+    !   !! NOTICE: Redirecting the pointer with c_f_pointer here!
+    !?   call c_f_pointer(validation_layers%get(int(i, c_int64_t)), raw_c_ptr_ptr)
+    !?   required_layer => string_from_c(raw_c_ptr_ptr)
+    !?   print*,required_layer
+    !? end do
+
     call create_glfw()
 
     call create_app_info(app_info)
