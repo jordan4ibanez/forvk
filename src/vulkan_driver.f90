@@ -50,7 +50,7 @@ contains
 
     call create_create_info(create_info, app_info, required_extensions)
 
-    call check_validation_layer_support()
+    call create_validation_layer_request(validation_layers)
 
     call create_vulkan_instance(create_info)
 
@@ -258,17 +258,12 @@ contains
   end subroutine create_create_info
 
 
-  subroutine check_validation_layer_support(validation_layers)
+  subroutine create_validation_layer_request(validation_layers)
     implicit none
 
-    logical(c_bool) :: has_support
     ! const char *
     type(vec), intent(inout) :: validation_layers
-    ! VkLayerProperties
-    type(vec) :: available_layers
     character(len = :, kind = c_char), pointer :: layer_name
-    type(vk_layer_properties) :: layer
-    integer(c_int) :: available_layer_count
 
     ! If we're not in debug mode, don't bother with this.
     if (.not. DEBUG_MODE) then
@@ -282,34 +277,45 @@ contains
     layer_name => null()
     validation_layers = new_vec(sizeof(c_null_ptr), 0_8)
 
-    has_support = .false.
-
     allocate(character(len = 28, kind = c_char) :: layer_name)
     layer_name = "VK_LAYER_KHRONOS_validation"//achar(0)
     call validation_layers%push_back(c_loc(layer_name))
+  end subroutine create_validation_layer_request
 
 
-    
-    available_layers = new_vec(sizeof(layer), 0_8)
+  subroutine check_validation_layer_support()
+    implicit none
 
-    if (vk_enumerate_instance_layer_properties(available_layer_count, c_null_ptr) /= VK_SUCCESS) then
-      error stop "[Vulkan] Error: Failed to enumerate instance layer properties."
+    ! VkLayerProperties
+    type(vec) :: available_layers
+    type(vk_layer_properties) :: layer
+    integer(c_int) :: available_layer_count
+    logical(c_bool) :: has_support
+
+    ! If we're not in debug mode, don't bother with this.
+    if (.not. DEBUG_MODE) then
+      return
     end if
 
-    call available_layers%resize(int(available_layer_count, c_int64_t), layer)
+    ! has_support = .false.
 
-    if (vk_enumerate_instance_layer_properties(available_layer_count, available_layers%get(1_8)) /= VK_SUCCESS) then
-      error stop "[Vulkan] Error: Failed to enumerate instance layer properties."
-    end if
+    ! available_layers = new_vec(sizeof(layer), 0_8)
 
+    ! if (vk_enumerate_instance_layer_properties(available_layer_count, c_null_ptr) /= VK_SUCCESS) then
+    !   error stop "[Vulkan] Error: Failed to enumerate instance layer properties."
+    ! end if
 
+    ! call available_layers%resize(int(available_layer_count, c_int64_t), layer)
 
+    ! if (vk_enumerate_instance_layer_properties(available_layer_count, available_layers%get(1_8)) /= VK_SUCCESS) then
+    !   error stop "[Vulkan] Error: Failed to enumerate instance layer properties."
+    ! end if
 
 
     ! Then we will stop the program if we're in debug mode and we don't have any validation layer support.
-    if (.not. has_support) then
-      ! error stop "[Vulkan]: Debug mode requested validation layers, but are not available. Is LunarG installed?"
-    end if
+    ! if (.not. has_support) then
+    !   ! error stop "[Vulkan]: Debug mode requested validation layers, but are not available. Is LunarG installed?"
+    ! end if
   end subroutine check_validation_layer_support
 
 
