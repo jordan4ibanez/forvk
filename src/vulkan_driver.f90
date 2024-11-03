@@ -348,10 +348,7 @@ contains
       end if
     end do
 
-    ! Then we will stop the program if we're in debug mode and we don't have any validation layer support.
-    ! if (.not. has_support) then
-    !   error stop "[Vulkan]: Debug mode requested validation layers, but are not available. Is LunarG installed?"
-    ! end if
+    print"(A)","[Vulkan]: Found all required validation layers."
   end subroutine ensure_validation_layer_support
 
 
