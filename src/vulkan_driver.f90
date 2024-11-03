@@ -374,6 +374,7 @@ contains
     create_info%pp_enabled_extension_names = required_extensions%get(1_8)
 
     if (DEBUG_MODE) then
+      ! Passing the underlying char** array in.
       create_info%enabled_layer_count = int(required_validation_layers%size())
       create_info%pp_enabled_layer_names = required_validation_layers%get(1_8)
     else
