@@ -56,11 +56,11 @@ contains
 
     call ensure_extensions_present(required_extensions)
 
-    call create_create_info(create_info, app_info, required_extensions)
-
     call create_required_validation_layers(validation_layers)
 
     call check_validation_layer_support(validation_layers)
+
+    call create_create_info(create_info, app_info, required_extensions)
 
     call create_vulkan_instance(create_info)
 
@@ -238,29 +238,6 @@ contains
   end subroutine ensure_extensions_present
 
 
-  subroutine create_create_info(create_info, app_info, required_extensions)
-    implicit none
-
-    type(vk_instance_create_info), intent(inout), pointer :: create_info
-    type(vk_application_info), intent(in), pointer :: app_info
-    type(vec), intent(inout) :: required_extensions
-
-    print"(A)","[Vulkan]: Creating create info."
-
-    allocate(create_info)
-
-    create_info%flags = xor(create_info%flags, VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR)
-
-    create_info%s_type = VK_STRUCTURE_TYPE%INSTANCE_CREATE_INFO
-    create_info%p_application_info = c_loc(app_info)
-    create_info%enabled_extension_count = int(required_extensions%size())
-    !? Note: This basically turns the vector into a pointer array.
-    create_info%pp_enabled_extension_names = required_extensions%get(1_8)
-
-    create_info%enabled_layer_count = 0
-  end subroutine create_create_info
-
-
   subroutine create_required_validation_layers(validation_layers)
     implicit none
 
@@ -376,6 +353,30 @@ contains
     !   error stop "[Vulkan]: Debug mode requested validation layers, but are not available. Is LunarG installed?"
     ! end if
   end subroutine check_validation_layer_support
+
+
+
+  subroutine create_create_info(create_info, app_info, required_extensions)
+    implicit none
+
+    type(vk_instance_create_info), intent(inout), pointer :: create_info
+    type(vk_application_info), intent(in), pointer :: app_info
+    type(vec), intent(inout) :: required_extensions
+
+    print"(A)","[Vulkan]: Creating create info."
+
+    allocate(create_info)
+
+    create_info%flags = xor(create_info%flags, VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR)
+
+    create_info%s_type = VK_STRUCTURE_TYPE%INSTANCE_CREATE_INFO
+    create_info%p_application_info = c_loc(app_info)
+    create_info%enabled_extension_count = int(required_extensions%size())
+    !? Note: This basically turns the vector into a pointer array.
+    create_info%pp_enabled_extension_names = required_extensions%get(1_8)
+
+    create_info%enabled_layer_count = 0
+  end subroutine create_create_info
 
 
   subroutine create_vulkan_instance(create_info)
