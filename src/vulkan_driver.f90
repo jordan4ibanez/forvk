@@ -157,7 +157,7 @@ contains
     type(vec) :: available_extensions_array
     type(vk_extension_properties) :: blank
     integer(c_int) :: i, j, k, prop_length
-    type(c_ptr), pointer :: raw_c_ptr
+    type(c_ptr), pointer :: raw_c_ptr_ptr
     type(vk_extension_properties), pointer :: extension_properties
     character(len = :, kind = c_char), pointer :: temp_string_pointer
     character(len = :, kind = c_char), allocatable :: temp
@@ -184,8 +184,8 @@ contains
 
       found = .false.
 
-      call c_f_pointer(required_extensions%get(int(j, c_int64_t)), raw_c_ptr)
-      temp_string_pointer => string_from_c(raw_c_ptr)
+      call c_f_pointer(required_extensions%get(int(j, c_int64_t)), raw_c_ptr_ptr)
+      temp_string_pointer => string_from_c(raw_c_ptr_ptr)
 
       ! Iterate all available extensions.
       do i = 1,int(extension_count)
