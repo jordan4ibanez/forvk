@@ -60,7 +60,7 @@ contains
 
     call ensure_validation_layer_support(required_validation_layers)
 
-    call create_create_info(create_info, app_info, required_extensions)
+    call create_create_info(create_info, app_info, required_extensions, required_validation_layers)
 
     call create_vulkan_instance(create_info)
 
@@ -353,12 +353,13 @@ contains
 
 
 
-  subroutine create_create_info(create_info, app_info, required_extensions)
+  subroutine create_create_info(create_info, app_info, required_extensions, required_validation_layers)
     implicit none
 
     type(vk_instance_create_info), intent(inout), pointer :: create_info
     type(vk_application_info), intent(in), pointer :: app_info
     type(vec), intent(inout) :: required_extensions
+    type(vec), intent(inout) :: required_validation_layers
 
     print"(A)","[Vulkan]: Creating create info."
 
@@ -371,6 +372,13 @@ contains
     create_info%enabled_extension_count = int(required_extensions%size())
     !? Note: This basically turns the vector into a pointer array.
     create_info%pp_enabled_extension_names = required_extensions%get(1_8)
+
+    if (DEBUG_MODE) then
+      create_info%enabled_layer_count = int(required_validation_layers%size())
+      create_info%pp_enabled_layer_names = required_validation_layers%get(1_8)
+    else
+      create_info%enabled_layer_count = 0
+    end if
 
     create_info%enabled_layer_count = 0
   end subroutine create_create_info
