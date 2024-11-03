@@ -50,7 +50,7 @@ contains
 
     call create_create_info(create_info, app_info, required_extensions)
 
-    call create_validation_layer_support_request(validation_layers)
+    call create_required_validation_layers(validation_layers)
 
     call check_validation_layer_support(validation_layers)
 
@@ -260,7 +260,7 @@ contains
   end subroutine create_create_info
 
 
-  subroutine create_validation_layer_support_request(validation_layers)
+  subroutine create_required_validation_layers(validation_layers)
     implicit none
 
     ! const char *
@@ -274,7 +274,7 @@ contains
 
     ! Create validation layers that we need.
 
-    print"(A)","[Vulkan]: Creating validation layers."
+    print"(A)","[Vulkan]: Creating required validation layers."
 
     layer_name => null()
     validation_layers = new_vec(sizeof(c_null_ptr), 0_8)
@@ -282,7 +282,7 @@ contains
     allocate(character(len = 28, kind = c_char) :: layer_name)
     layer_name = "VK_LAYER_KHRONOS_validation"//achar(0)
     call validation_layers%push_back(c_loc(layer_name))
-  end subroutine create_validation_layer_support_request
+  end subroutine create_required_validation_layers
 
 
   subroutine check_validation_layer_support(validation_layers)
@@ -300,6 +300,8 @@ contains
     if (.not. DEBUG_MODE) then
       return
     end if
+
+    print"(A)","[Vulkan]: Checking validation layer support."
 
     has_support = .false.
 
