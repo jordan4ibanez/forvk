@@ -283,6 +283,7 @@ contains
     allocate(character(len = 28, kind = c_char) :: layer_name)
     layer_name = "VK_LAYER_KHRONOS_validation"//achar(0)
     call validation_layers%push_back(c_loc(layer_name))
+
   end subroutine create_required_validation_layers
 
 
@@ -290,12 +291,16 @@ contains
     implicit none
 
     ! const char *
-    type(vec), intent(in) :: validation_layers
+    type(vec), intent(inout) :: validation_layers
     ! VkLayerProperties
     type(vec) :: available_layers
     type(vk_layer_properties) :: layer
     integer(c_int) :: available_layer_count
     logical(c_bool) :: has_support
+    ! char **
+    type(c_ptr), pointer :: raw_c_ptr_ptr
+    integer(c_int) :: i
+    character(len = :, kind = c_char), pointer :: required_layer
 
     ! If we're not in debug mode, don't bother with this.
     if (.not. DEBUG_MODE) then
@@ -314,15 +319,24 @@ contains
 
     call available_layers%resize(int(available_layer_count, c_int64_t), layer)
 
+    ! ! This is sending in the vector as if it were a C array.
     if (vk_enumerate_instance_layer_properties(available_layer_count, available_layers%get(1_8)) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to enumerate instance layer properties."
     end if
 
+    ! Check if we have all required validation layers when running in debug mode.
+    do i = 1,int(validation_layers%size())
+      call c_f_pointer(validation_layers%get(int(i, c_int64_t)), raw_c_ptr_ptr)
+      required_layer => string_from_c(raw_c_ptr_ptr)
+
+      print*,"Validation layer: ", required_layer
+
+    end do
 
     ! Then we will stop the program if we're in debug mode and we don't have any validation layer support.
-    if (.not. has_support) then
-      ! error stop "[Vulkan]: Debug mode requested validation layers, but are not available. Is LunarG installed?"
-    end if
+    ! if (.not. has_support) then
+    !   ! error stop "[Vulkan]: Debug mode requested validation layers, but are not available. Is LunarG installed?"
+    ! end if
   end subroutine check_validation_layer_support
 
 
