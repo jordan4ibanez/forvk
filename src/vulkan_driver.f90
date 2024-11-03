@@ -294,7 +294,7 @@ contains
     type(vec), intent(inout) :: validation_layers
     ! VkLayerProperties
     type(vec) :: available_layers
-    type(vk_layer_properties) :: layer
+    type(vk_layer_properties), pointer :: layer
     integer(c_int) :: available_layer_count
     logical(c_bool) :: has_support
     ! char **
@@ -311,13 +311,16 @@ contains
 
     has_support = .false.
 
+    allocate(layer)
     available_layers = new_vec(sizeof(layer), 0_8)
+    
 
     if (vk_enumerate_instance_layer_properties(available_layer_count, c_null_ptr) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to enumerate instance layer properties."
     end if
 
     call available_layers%resize(int(available_layer_count, c_int64_t), layer)
+    deallocate(layer)
 
     ! ! This is sending in the vector as if it were a C array.
     if (vk_enumerate_instance_layer_properties(available_layer_count, available_layers%get(1_8)) /= VK_SUCCESS) then
@@ -329,7 +332,7 @@ contains
       call c_f_pointer(validation_layers%get(int(i, c_int64_t)), raw_c_ptr_ptr)
       required_layer => string_from_c(raw_c_ptr_ptr)
 
-      print*,"Validation layer: ", required_layer
+
 
     end do
 
