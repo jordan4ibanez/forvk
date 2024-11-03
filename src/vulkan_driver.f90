@@ -296,7 +296,7 @@ contains
     type(vec) :: available_layer_array
     type(vk_layer_properties), pointer :: layer
     integer(c_int) :: available_layer_count
-    logical(c_bool) :: has_support
+    logical(c_bool) :: found
     ! char **
     type(c_ptr), pointer :: raw_c_ptr_ptr
     integer(c_int) :: i, j, k, available_layer_name_length
@@ -309,8 +309,6 @@ contains
     end if
 
     print"(A)","[Vulkan]: Checking validation layer support."
-
-    has_support = .false.
 
     allocate(layer)
     available_layer_array = new_vec(sizeof(layer), 0_8)
@@ -334,6 +332,8 @@ contains
       call c_f_pointer(validation_layers%get(int(i, c_int64_t)), raw_c_ptr_ptr)
       required_layer => string_from_c(raw_c_ptr_ptr)
 
+      found = .false.
+
       ! Now, let's see if we have this required layer available.
       do j = 1,int(available_layer_array%size())
 
@@ -354,11 +354,21 @@ contains
           temp(k:k) = layer%layer_name(k)
         end do
 
-        print*,temp
+        ! Check if it's what we need.
+        if (required_layer == temp) then
+          print"(A)","[Vulkan]: Found required validation layer ["//required_layer//"]"
+          found = .true.
+          deallocate(temp)
+          exit
+        end if
 
         deallocate(temp)
-
       end do
+
+      ! If we're missing a required validation layer, we literally can't debug.
+      if (.not. found) then
+        error stop "[Vulkan] Error: Did not find required validation layer ["//required_layer//"]"
+      end if
     end do
 
     ! Then we will stop the program if we're in debug mode and we don't have any validation layer support.
