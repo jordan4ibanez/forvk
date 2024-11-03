@@ -146,13 +146,6 @@ contains
     output = VK_KHR_PORTABILITY_ENUMERATION_EXTENSION_NAME
     call required_extensions%push_back(c_loc(output))
 
-    !? How to transfer out for a double check.
-    ! do i = 1,int(required_extensions%size())
-    !   call c_f_pointer(required_extensions%get(int(i, c_int64_t)), raw_c_ptr)
-    !   temp => string_from_c(raw_c_ptr)
-    !   ! print*,temp
-    !   ! print*,len(temp)
-    ! end do
   end subroutine create_required_extensions
 
 
