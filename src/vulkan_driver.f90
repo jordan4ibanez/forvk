@@ -330,7 +330,7 @@ contains
     ! Check if we have all required validation layers when running in debug mode.
     do i = 1,int(validation_layers%size())
 
-      ! From: validation layers.
+      ! From: Required validation layers.
       call c_f_pointer(validation_layers%get(int(i, c_int64_t)), raw_c_ptr_ptr)
       required_layer => string_from_c(raw_c_ptr_ptr)
 
