@@ -37,6 +37,8 @@ contains
     type(vk_instance_create_info), pointer :: create_info
     ! const char **
     type(vec) :: required_extensions
+    ! const char **
+    type(vec) :: validation_layers
 
     call create_glfw()
 
@@ -256,12 +258,12 @@ contains
   end subroutine create_create_info
 
 
-  subroutine check_validation_layer_support()
+  subroutine check_validation_layer_support(validation_layers)
     implicit none
 
     logical(c_bool) :: has_support
-    ! char *
-    type(vec) :: validation_layers
+    ! const char *
+    type(vec), intent(inout) :: validation_layers
     ! VkLayerProperties
     type(vec) :: available_layers
     character(len = :, kind = c_char), pointer :: layer_name
@@ -286,8 +288,8 @@ contains
     layer_name = "VK_LAYER_KHRONOS_validation"//achar(0)
     call validation_layers%push_back(c_loc(layer_name))
 
-    ! Check the validation layers we have available.
 
+    
     available_layers = new_vec(sizeof(layer), 0_8)
 
     if (vk_enumerate_instance_layer_properties(available_layer_count, c_null_ptr) /= VK_SUCCESS) then
@@ -299,6 +301,8 @@ contains
     if (vk_enumerate_instance_layer_properties(available_layer_count, available_layers%get(1_8)) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to enumerate instance layer properties."
     end if
+
+
 
 
 
