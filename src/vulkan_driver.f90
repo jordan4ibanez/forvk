@@ -38,7 +38,7 @@ contains
     ! const char **
     type(vec) :: required_extensions
     ! const char **
-    type(vec) :: validation_layers
+    type(vec) :: required_validation_layers
 
     !? This is how to get from these vectors. (char ** array underneath)
     !? do i = 1,int(validation_layers%size())
@@ -56,9 +56,9 @@ contains
 
     call ensure_extensions_present(required_extensions)
 
-    call create_required_validation_layers(validation_layers)
+    call create_required_validation_layers(required_validation_layers)
 
-    call check_validation_layer_support(validation_layers)
+    call ensure_validation_layer_support(required_validation_layers)
 
     call create_create_info(create_info, app_info, required_extensions)
 
@@ -238,11 +238,11 @@ contains
   end subroutine ensure_extensions_present
 
 
-  subroutine create_required_validation_layers(validation_layers)
+  subroutine create_required_validation_layers(required_validation_layers)
     implicit none
 
     ! const char *
-    type(vec), intent(inout) :: validation_layers
+    type(vec), intent(inout) :: required_validation_layers
     character(len = :, kind = c_char), pointer :: layer_name
 
     ! If we're not in debug mode, don't bother with this.
@@ -255,20 +255,20 @@ contains
     print"(A)","[Vulkan]: Creating required validation layers."
 
     layer_name => null()
-    validation_layers = new_vec(sizeof(c_null_ptr), 0_8)
+    required_validation_layers = new_vec(sizeof(c_null_ptr), 0_8)
 
     allocate(character(len = 28, kind = c_char) :: layer_name)
     layer_name = "VK_LAYER_KHRONOS_validation"//achar(0)
-    call validation_layers%push_back(c_loc(layer_name))
+    call required_validation_layers%push_back(c_loc(layer_name))
 
   end subroutine create_required_validation_layers
 
 
-  subroutine check_validation_layer_support(validation_layers)
+  subroutine ensure_validation_layer_support(required_validation_layers)
     implicit none
 
     ! const char *
-    type(vec), intent(inout) :: validation_layers
+    type(vec), intent(inout) :: required_validation_layers
     ! VkLayerProperties
     type(vec) :: available_layer_array
     type(vk_layer_properties), pointer :: layer
@@ -303,10 +303,10 @@ contains
     end if
 
     ! Check if we have all required validation layers when running in debug mode.
-    do i = 1,int(validation_layers%size())
+    do i = 1,int(required_validation_layers%size())
 
       ! From: Required validation layers.
-      call c_f_pointer(validation_layers%get(int(i, c_int64_t)), raw_c_ptr_ptr)
+      call c_f_pointer(required_validation_layers%get(int(i, c_int64_t)), raw_c_ptr_ptr)
       required_layer => string_from_c(raw_c_ptr_ptr)
 
       found = .false.
@@ -352,7 +352,7 @@ contains
     ! if (.not. has_support) then
     !   error stop "[Vulkan]: Debug mode requested validation layers, but are not available. Is LunarG installed?"
     ! end if
-  end subroutine check_validation_layer_support
+  end subroutine ensure_validation_layer_support
 
 
 
