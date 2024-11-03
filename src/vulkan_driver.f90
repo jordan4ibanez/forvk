@@ -299,8 +299,8 @@ contains
     logical(c_bool) :: has_support
     ! char **
     type(c_ptr), pointer :: raw_c_ptr_ptr
-    integer(c_int) :: i, j
-    character(len = :, kind = c_char), pointer :: required_layer
+    integer(c_int) :: i, j, k, available_layer_name_length
+    character(len = :, kind = c_char), pointer :: required_layer, temp
 
 
     ! If we're not in debug mode, don't bother with this.
@@ -335,12 +335,28 @@ contains
       required_layer => string_from_c(raw_c_ptr_ptr)
 
       ! Now, let's see if we have this required layer available.
-
       do j = 1,int(available_layer_array%size())
 
         call c_f_pointer(available_layer_array%get(int(j, c_int64_t)), layer)
 
-        print*,layer
+        ! Let's get the length of that character array.
+        do k = 1,VK_MAX_EXTENSION_NAME_SIZE
+          if (layer%layer_name(k) == achar(0)) then
+            available_layer_name_length = k - 1
+            exit
+          end if
+        end do
+
+        ! Now copy the character array into a string.
+        allocate(character(len = available_layer_name_length, kind = c_char) :: temp)
+
+        do k = 1,available_layer_name_length
+          temp(k:k) = layer%layer_name(k)
+        end do
+
+        print*,temp
+
+        deallocate(temp)
 
       end do
     end do
