@@ -88,6 +88,16 @@ module forvk
   end type vk_layer_properties
 
 
+  type, bind(c) :: vk_debug_utils_label_ext
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type
+    ! const void *
+    type(c_ptr) :: p_next
+    ! const char *
+    type(c_ptr) :: p_label_name
+    real(c_float), dimension(4) :: color
+  end type vk_debug_utils_label_ext
+
 !* C FUNCTION INTERFACES. ===============================================================
 
 
