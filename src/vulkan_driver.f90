@@ -161,7 +161,6 @@ contains
       output = VK_EXT_DEBUG_UTILS_EXTENSION_NAME
       call required_extensions%push_back(c_loc(output))
     end if
-
   end subroutine create_required_extensions
 
 
@@ -377,6 +376,7 @@ contains
 
     create_info%s_type = VK_STRUCTURE_TYPE%INSTANCE_CREATE_INFO
     create_info%p_application_info = c_loc(app_info)
+
     create_info%enabled_extension_count = int(required_extensions%size())
     !? Note: This basically turns the vector into a pointer array.
     create_info%pp_enabled_extension_names = required_extensions%get(1_8)
