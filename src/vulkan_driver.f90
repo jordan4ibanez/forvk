@@ -45,6 +45,10 @@ contains
     type(vec) :: required_extensions
     ! const char **
     type(vec) :: required_validation_layers
+    type(vk_debug_utils_messenger_create_info_ext), pointer :: debug_messenger_create_info
+
+
+
 
     !? This is how to get from these vectors. (char ** array underneath)
     !? do i = 1,int(validation_layers%size())
@@ -70,7 +74,8 @@ contains
 
     call create_vulkan_instance(vulkan_create_info)
 
-    call setup_debug_messenger()
+    call create_messenger_struct(debug_messenger_create_info)
+    call setup_debug_messenger(debug_messenger_create_info)
 
     ! todo: deallocate any pointers inside.
     deallocate(app_info)
@@ -392,6 +397,10 @@ contains
       ! Passing the underlying char** array in.
       vulkan_create_info%enabled_layer_count = int(required_validation_layers%size())
       vulkan_create_info%pp_enabled_layer_names = required_validation_layers%get(1_8)
+
+
+      ! vulkan_create_info%p_next =
+
     else
       vulkan_create_info%enabled_layer_count = 0
     end if
@@ -418,17 +427,14 @@ contains
   end subroutine create_vulkan_instance
 
 
-  subroutine setup_debug_messenger()
+  subroutine create_messenger_struct(messenger_create_info)
     implicit none
 
-    type(vk_debug_utils_messenger_create_info_ext), pointer :: messenger_create_info!validation_create_info
+    type(vk_debug_utils_messenger_create_info_ext), intent(inout), pointer :: messenger_create_info!validation_create_info
 
-    ! Don't need this if we're not in debug mode.
     if (.not. DEBUG_MODE) then
       return
     end if
-
-    print"(A)","[Vulkan]: Setting up debug messenger."
 
     allocate(messenger_create_info)
 
@@ -437,11 +443,24 @@ contains
     messenger_create_info%message_type = or(VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT, or(VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT, VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT))
     messenger_create_info%pfn_user_callback = c_funloc(debug_callback)
     messenger_create_info%p_user_data = c_null_ptr ! Optional.
+  end subroutine create_messenger_struct
 
-    if (forvulkan_create_debug_utils_messenger_ext(vulkan_instance, c_loc(messenger_create_info), c_null_ptr, debug_messenger) /= VK_SUCCESS) then
-      error stop "[Vulkan] Error: Failed to set up debug messenger."
+
+  subroutine setup_debug_messenger(debug_messenger_create_info)
+    implicit none
+
+    type(vk_debug_utils_messenger_create_info_ext), intent(inout), pointer :: debug_messenger_create_info!validation_create_info
+
+    ! Don't need this if we're not in debug mode.
+    if (.not. DEBUG_MODE) then
+      return
     end if
 
+    print"(A)","[Vulkan]: Setting up debug messenger."
+
+    if (forvulkan_create_debug_utils_messenger_ext(vulkan_instance, c_loc(debug_messenger_create_info), c_null_ptr, debug_messenger) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to set up debug messenger."
+    end if
   end subroutine setup_debug_messenger
 
 
