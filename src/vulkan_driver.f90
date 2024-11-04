@@ -46,9 +46,8 @@ contains
     ! const char **
     type(vec) :: required_validation_layers
     type(vk_debug_utils_messenger_create_info_ext), pointer :: debug_messenger_create_info
-
-
-
+    !* Note: this will go out of scope after this. We only need it for pre-initialization.
+    type(vk_debug_utils_messenger_create_info_ext) :: before_init_messenger_create_info
 
     !? This is how to get from these vectors. (char ** array underneath)
     !? do i = 1,int(validation_layers%size())
