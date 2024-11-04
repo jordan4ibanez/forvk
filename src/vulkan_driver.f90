@@ -7,6 +7,7 @@ module vulkan_driver
   use :: vector
   implicit none
 
+  ! https://github.com/KhronosGroup/Vulkan-Headers/blob/main/include/vulkan/vulkan_core.h
 
   ! Treating this thing as a class to follow the vulkan tutorial.
   ! todo: in formine this will have a pointer struct which inherits from a base class, to direct traffic flow to these functions.
@@ -357,7 +358,6 @@ contains
 
     print"(A)","[Vulkan]: Found all required validation layers."
   end subroutine ensure_validation_layer_support
-
 
 
   subroutine create_create_info(create_info, app_info, required_extensions, required_validation_layers)

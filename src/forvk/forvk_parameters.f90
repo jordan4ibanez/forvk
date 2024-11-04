@@ -5,6 +5,8 @@ module forvk_parameters
   ! todo: dump all these parameters into forvk.f90
   !! This is only a temp.
 
+  ! https://github.com/KhronosGroup/Vulkan-Headers/blob/main/include/vulkan/vulkan_core.h
+
 
   !* PARAMETERS. ===============================================================
 
