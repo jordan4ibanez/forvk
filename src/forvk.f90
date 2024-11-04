@@ -111,6 +111,35 @@ module forvk
     ! const char *
     type(c_ptr) :: p_object_name
   end type vk_debug_utils_object_name_info_ext
+
+
+  type, bind(c) :: vk_debug_utils_messenger_callback_data_ext
+    ! int32_t [VkStructureType]
+    integer(c_int32_t) :: s_type
+    ! void *
+    type(c_ptr) :: p_next
+    ! uint32_t [VkDebugUtilsMessengerCallbackDataFlagsEXT]
+    integer(c_int32_t) :: flags
+    ! const char *
+    type(c_ptr) :: p_message_id_name
+    ! int32_t
+    integer(c_int32_t) :: message_id_number
+    ! const char *
+    type(c_ptr) :: p_message
+    ! uint32_t
+    integer(c_int32_t) :: queue_label_count
+    ! const VkDebugUtilsLabelEXT *
+    type(c_ptr) :: p_queue_labels
+    ! uint32_t
+    integer(c_int32_t) :: cmd_buf_label_count
+    ! const VkDebugUtilsLabelEXT *
+    type(c_ptr) :: p_cmd_buf_labels
+    ! uint32_t
+    integer(c_int32_t) :: object_count
+    ! const VkDebugUtilsObjectNameInfoEXT *
+    type(c_ptr) :: p_objects
+  end type vk_debug_utils_messenger_callback_data_ext
+
 !* C FUNCTION INTERFACES. ===============================================================
 
 
