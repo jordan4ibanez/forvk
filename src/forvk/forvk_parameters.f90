@@ -2736,4 +2736,98 @@ module forvk_parameters
   character(len = 19, kind = c_char), parameter :: VK_EXT_MESH_SHADER_EXTENSION_NAME = "VK_EXT_mesh_shader"//achar(0)
 
 
+  !? VkObjectType. ==========================================================================
+
+
+  ! Provided by VK_VERSION_1_0
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_UNKNOWN = 0
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_INSTANCE = 1
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_PHYSICAL_DEVICE = 2
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_DEVICE = 3
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_QUEUE = 4
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_SEMAPHORE = 5
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_COMMAND_BUFFER = 6
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_FENCE = 7
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_DEVICE_MEMORY = 8
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_BUFFER = 9
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_IMAGE = 10
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_EVENT = 11
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_QUERY_POOL = 12
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_BUFFER_VIEW = 13
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_IMAGE_VIEW = 14
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_SHADER_MODULE = 15
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_PIPELINE_CACHE = 16
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_PIPELINE_LAYOUT = 17
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_RENDER_PASS = 18
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_PIPELINE = 19
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT = 20
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_SAMPLER = 21
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_DESCRIPTOR_POOL = 22
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_DESCRIPTOR_SET = 23
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_FRAMEBUFFER = 24
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_COMMAND_POOL = 25
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION = 1000156000
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE = 1000085000
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_PRIVATE_DATA_SLOT = 1000295000
+  ! Provided by VK_KHR_surface
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_SURFACE_KHR = 1000000000
+  ! Provided by VK_KHR_swapchain
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_SWAPCHAIN_KHR = 1000001000
+  ! Provided by VK_KHR_display
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_DISPLAY_KHR = 1000002000
+  ! Provided by VK_KHR_display
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_DISPLAY_MODE_KHR = 1000002001
+  ! Provided by VK_EXT_debug_report
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT = 1000011000
+  ! Provided by VK_KHR_video_queue
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_VIDEO_SESSION_KHR = 1000023000
+  ! Provided by VK_KHR_video_queue
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_VIDEO_SESSION_PARAMETERS_KHR = 1000023001
+  ! Provided by VK_NVX_binary_import
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_CU_MODULE_NVX = 1000029000
+  ! Provided by VK_NVX_binary_import
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_CU_FUNCTION_NVX = 1000029001
+  ! Provided by VK_EXT_debug_utils
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_DEBUG_UTILS_MESSENGER_EXT = 1000128000
+  ! Provided by VK_KHR_acceleration_structure
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_KHR = 1000150000
+  ! Provided by VK_EXT_validation_cache
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_VALIDATION_CACHE_EXT = 1000160000
+  ! Provided by VK_NV_ray_tracing
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV = 1000165000
+  ! Provided by VK_INTEL_performance_query
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_PERFORMANCE_CONFIGURATION_INTEL = 1000210000
+  ! Provided by VK_KHR_deferred_host_operations
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_DEFERRED_OPERATION_KHR = 1000268000
+  ! Provided by VK_NV_device_generated_commands
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_NV = 1000277000
+  ! Provided by VK_NV_cuda_kernel_launch
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_CUDA_MODULE_NV = 1000307000
+  ! Provided by VK_NV_cuda_kernel_launch
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_CUDA_FUNCTION_NV = 1000307001
+  ! Provided by VK_FUCHSIA_buffer_collection
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA = 1000366000
+  ! Provided by VK_EXT_opacity_micromap
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_MICROMAP_EXT = 1000396000
+  ! Provided by VK_NV_optical_flow
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_OPTICAL_FLOW_SESSION_NV = 1000464000
+  ! Provided by VK_EXT_shader_object
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_SHADER_EXT = 1000482000
+  ! Provided by VK_KHR_pipeline_binary
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_PIPELINE_BINARY_KHR = 1000483000
+  ! Provided by VK_EXT_device_generated_commands
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_EXT = 1000572000
+  ! Provided by VK_EXT_device_generated_commands
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_INDIRECT_EXECUTION_SET_EXT = 1000572001
+  ! Provided by VK_KHR_descriptor_update_template
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_KHR = VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_KHR = VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION
+  ! Provided by VK_EXT_private_data
+  integer(c_int), parameter, public :: VK_OBJECT_TYPE_PRIVATE_DATA_SLOT_EXT = VK_OBJECT_TYPE_PRIVATE_DATA_SLOT
+
+
 end module forvk_parameters
