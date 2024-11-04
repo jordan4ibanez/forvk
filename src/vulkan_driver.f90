@@ -18,6 +18,10 @@ module vulkan_driver
   ! VkInstance
   integer(c_int64_t), target :: vulkan_instance = 0
 
+  ! VkDebugUtilsMessengerEXT
+  integer(c_int64_t), target :: debug_messenger = 0
+
+
   logical(c_bool), parameter :: DEBUG_MODE = .true.
 
 
@@ -375,7 +379,7 @@ contains
 
     allocate(vulkan_create_info)
 
-    vulkan_create_info%flags = xor(vulkan_create_info%flags, VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR)
+    vulkan_create_info%flags = or(vulkan_create_info%flags, VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR)
 
     vulkan_create_info%s_type = VK_STRUCTURE_TYPE%INSTANCE_CREATE_INFO
     vulkan_create_info%p_application_info = c_loc(app_info)
@@ -414,6 +418,28 @@ contains
       error stop "[Vulkan] Error: Failed to create Vulkan instance. Error code: ["//int_to_string(result)//"]"
     end if
   end subroutine create_vulkan_instance
+
+
+  subroutine setup_debug_messenger()
+    implicit none
+
+    type(vk_debug_utils_messenger_create_info_ext), target :: create_info!validation_create_info
+
+    ! Don't need this if we're not in debug mode.
+    if (.not. DEBUG_MODE) then
+      return
+    end if
+
+    print"(A)","[Vulkan]: Setting up debug messenger."
+
+    create_info%s_type = VK_STRUCTURE_TYPE%DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT
+    create_info%message_severity = or(VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT, or(VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT, VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT))
+    create_info%message_type = or(VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT, or(VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT, VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT))
+    create_info%pfn_user_callback = c_funloc(debug_callback)
+    create_info%p_user_data = c_null_ptr ! Optional.
+
+
+  end subroutine setup_debug_messenger
 
 
   recursive function debug_callback(message_severity, message_type, p_callback_data_ptr) result(vk_bool_32) bind(c)
