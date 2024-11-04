@@ -230,7 +230,7 @@ module forvk
 !? FUNCTION BLUEPRINTS. ============================================================
 
 
-    function vk_create_debug_utils_messenger_ext(instance, p_create_info, p_allocator, p_messenger) result(vk_result) bind(c)
+    function pfn_vk_create_debug_utils_messenger_ext(instance, p_create_info, p_allocator, p_messenger) result(vk_result) bind(c)
       use, intrinsic :: iso_c_binding
       implicit none
 
@@ -243,7 +243,7 @@ module forvk
       ! VkDebugUtilsMessengerEXT *
       integer(c_int64_t), intent(inout) :: p_messenger
       integer(c_int32_t) :: vk_result
-    end function vk_create_debug_utils_messenger_ext
+    end function pfn_vk_create_debug_utils_messenger_ext
 
 
   end interface
@@ -275,7 +275,7 @@ contains
     integer(c_int32_t) :: vk_result
     character(len = :, kind = c_char), pointer :: function_name
     type(c_funptr) :: function_pointer
-    procedure(vk_create_debug_utils_messenger_ext), pointer :: func
+    procedure(pfn_vk_create_debug_utils_messenger_ext), pointer :: func
 
     ! We're asking Vulkan for the function pointer for debug info here.
     allocate(character(len = 31, kind = c_char) :: function_name)
