@@ -225,6 +225,25 @@ module forvk
     end function vk_get_instance_proc_addr
 
 
+!? FUNCTION BLUEPRINTS. ============================================================
+
+
+    function vk_create_debug_utils_messenger_ext(instance, p_create_info, p_allocator, p_messenger) result(vk_result) bind(c)
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkInstance
+      integer(c_int64_t), intent(in), value :: instance
+      ! const VkDebugUtilsMessengerCreateInfoEXT*
+      type(c_ptr), intent(in), value :: p_create_info
+      ! const VkAllocationCallbacks *
+      type(c_funptr), intent(in), value :: p_allocator
+      ! VkDebugUtilsMessengerEXT *
+      integer(c_int64_t), intent(inout) :: p_messenger
+      integer(c_int32_t) :: vk_result
+    end function vk_create_debug_utils_messenger_ext
+
+
   end interface
 
 
