@@ -41,7 +41,7 @@ module forvk
 
 
   type, bind(c) :: vk_application_info
-    ! uint32_t VkStructureType
+    ! uint32_t [VkStructureType]
     integer(c_int) :: s_type
     ! void *
     type(c_ptr) :: p_next
@@ -59,11 +59,11 @@ module forvk
 
 
   type, bind(c) :: vk_instance_create_info
-    ! uint32_t VkStructureType
+    ! uint32_t [VkStructureType]
     integer(c_int) :: s_type
     ! void *
     type(c_ptr) :: p_next
-    ! VkInstanceCreateFlags: uint32_t
+    ! uint32_t [VkInstanceCreateFlags]
     integer(c_int) :: flags
     ! const VkApplicationInfo *
     type(c_ptr) :: p_application_info
