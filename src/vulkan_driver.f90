@@ -413,6 +413,33 @@ contains
   end subroutine create_vulkan_instance
 
 
+  recursive function debug_callback(message_severity, message_type, p_callback_data_ptr) result(vk_bool_32) bind(c)
+    implicit none
+
+    integer(c_int), intent(in), value :: message_severity, message_type
+    ! const VkDebugUtilsMessengerCallbackDataEXT *
+    type(c_ptr), intent(in), value :: p_callback_data_ptr
+    integer(c_int) :: vk_bool_32
+    type(vk_debug_utils_messenger_callback_data_ext), pointer :: p_callback_data
+
+    if (.false.) then
+      print*,message_severity, message_type
+    end if
+
+    call c_f_pointer(p_callback_data_ptr, p_callback_data)
+
+
+    if (message_severity >= VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT) then
+      print*,"high severity"
+    end if
+
+    print"(A)", "[Vulkan] Validation layer: ",p_callback_data%p_message
+
+    vk_bool_32 = VK_FALSE
+  end function debug_callback
+
+
+
 !* MAIN LOOP. ====================================================================
 
 
