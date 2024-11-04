@@ -395,8 +395,6 @@ contains
     else
       vulkan_create_info%enabled_layer_count = 0
     end if
-
-    vulkan_create_info%enabled_layer_count = 0
   end subroutine create_vulkan_instance_create_info
 
 
