@@ -397,8 +397,8 @@ contains
       vulkan_create_info%enabled_layer_count = int(required_validation_layers%size())
       vulkan_create_info%pp_enabled_layer_names = required_validation_layers%get(1_8)
 
-
-      ! vulkan_create_info%p_next =
+      call create_messenger_struct(before_init_messenger_create_info)
+      vulkan_create_info%p_next = c_loc(before_init_messenger_create_info)
 
     else
       vulkan_create_info%enabled_layer_count = 0
@@ -411,6 +411,7 @@ contains
 
     type(vk_instance_create_info), intent(in), target :: vulkan_create_info
     integer(c_int) :: result
+
 
     print"(A)", "[Vulkan]: Creating instance."
 
@@ -429,13 +430,11 @@ contains
   subroutine create_messenger_struct(messenger_create_info)
     implicit none
 
-    type(vk_debug_utils_messenger_create_info_ext), intent(inout), pointer :: messenger_create_info!validation_create_info
+    type(vk_debug_utils_messenger_create_info_ext), intent(inout), target :: messenger_create_info!validation_create_info
 
     if (.not. DEBUG_MODE) then
       return
     end if
-
-    allocate(messenger_create_info)
 
     messenger_create_info%s_type = VK_STRUCTURE_TYPE%DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT
     messenger_create_info%message_severity = or(VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT, or(VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT, VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT))
