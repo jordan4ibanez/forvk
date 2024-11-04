@@ -155,9 +155,12 @@ contains
     call required_extensions%push_back(c_loc(output))
 
     ! We need this for debug messaging in debug mode.
-    allocate(character(len = len(VK_EXT_DEBUG_UTILS_EXTENSION_NAME), kind = c_char) :: output)
-    output = VK_EXT_DEBUG_UTILS_EXTENSION_NAME
-    call required_extensions%push_back(c_loc(output))
+
+    if (DEBUG_MODE) then
+      allocate(character(len = len(VK_EXT_DEBUG_UTILS_EXTENSION_NAME), kind = c_char) :: output)
+      output = VK_EXT_DEBUG_UTILS_EXTENSION_NAME
+      call required_extensions%push_back(c_loc(output))
+    end if
 
   end subroutine create_required_extensions
 
