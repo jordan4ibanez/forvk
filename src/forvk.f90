@@ -225,7 +225,7 @@ contains
     integer(c_int), intent(in), value :: variant, major, minor, patch
     integer(c_int) :: ver
 
-    ver = xor(xor(xor(lshift(variant, 29), lshift(major, 22)), lshift(minor, 12)), patch)
+    ver = or(or(or(lshift(variant, 29), lshift(major, 22)), lshift(minor, 12)), patch)
 
   end function vk_make_api_version
 
