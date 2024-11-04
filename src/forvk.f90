@@ -142,6 +142,24 @@ module forvk
   end type vk_debug_utils_messenger_callback_data_ext
 
 
+  type, bind(c) :: vk_debug_utils_messenger_create_info_ext
+    ! int32_t [VkStructureType]
+    integer(c_int32_t) :: s_type
+    ! void *
+    type(c_ptr) :: p_next
+    ! uint32_t [VkDebugUtilsMessengerCreateFlagsEXT]
+    integer(c_int32_t) :: flags
+    ! uint32_t [VkDebugUtilsMessageSeverityFlagsEXT]
+    integer(c_int32_t) :: message_severity
+    ! uint32_t [VkDebugUtilsMessageTypeFlagsEXT]
+    integer(c_int32_t) :: message_type
+    ! PFN_vkDebugUtilsMessengerCallbackEXT
+    type(c_funptr) :: pfn_user_callback
+    ! void *
+    type(c_ptr) :: p_user_data
+  end type vk_debug_utils_messenger_create_info_ext
+
+
 !* C FUNCTION INTERFACES. ===============================================================
 
 
