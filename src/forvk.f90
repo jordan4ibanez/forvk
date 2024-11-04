@@ -272,7 +272,6 @@ contains
     type(c_funptr), intent(in), value :: p_allocator
     ! VkDebugUtilsMessengerEXT *
     integer(c_int64_t), intent(inout) :: p_debug_messenger
-
     integer(c_int32_t) :: vk_result
     character(len = :, kind = c_char), pointer :: function_name
     type(c_funptr) :: function_pointer
