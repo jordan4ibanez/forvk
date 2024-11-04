@@ -17,6 +17,7 @@ module forvk
   public :: vk_destroy_instance
 
   public :: forvulkan_create_debug_utils_messenger_ext
+  public :: forvulkan_destroy_debug_utils_messenger_ext
 
   !* Types.
 
@@ -308,6 +309,38 @@ contains
     ! And we run it. :)
     vk_result = func(instance, p_create_info, p_allocator, p_debug_messenger)
   end function forvulkan_create_debug_utils_messenger_ext
+
+
+  subroutine forvulkan_destroy_debug_utils_messenger_ext(instance, debug_messenger, p_allocator)
+    implicit none
+
+    integer(c_int64_t), intent(in), value :: instance
+    ! VkDebugUtilsMessengerEXT
+    integer(c_int64_t), intent(in), value :: debug_messenger
+    ! const VkAllocationCallbacks *
+    type(c_funptr), intent(in), value :: p_allocator
+    character(len = :, kind = c_char), pointer :: function_name
+    type(c_funptr) :: function_pointer
+    procedure(pfn_vk_destroy_debug_utils_messenger_ext), pointer :: func
+
+    ! We're asking Vulkan for the function pointer for debug info here.
+    allocate(character(len = 32, kind = c_char) :: function_name)
+    function_name = "vkDestroyDebugUtilsMessengerEXT"//achar(0)
+
+    function_pointer = vk_get_instance_proc_addr(instance, c_loc(function_name))
+
+    ! If it's not available, we cannot continue in debug mode.
+    if (.not. c_associated(function_pointer)) then
+      print"(A)","[Vulkan] WARNING: Failed to destroy debug messenger."
+      return
+    end if
+
+    ! Transfer the function from C to Fortran.
+    call c_f_procpointer(function_pointer, func)
+
+    ! And we run it. :D
+    call func(instance, debug_messenger, p_allocator)
+  end subroutine forvulkan_destroy_debug_utils_messenger_ext
 
 
 end module forvk
