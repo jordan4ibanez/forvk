@@ -98,6 +98,16 @@ module forvk
     real(c_float), dimension(4) :: color
   end type vk_debug_utils_label_ext
 
+
+  type, bind(c) :: vk_debug_utils_object_name_info_ext
+    ! int32_t [VkStructureType]
+    integer(c_int32_t) :: s_type
+    ! void *
+    type(c_ptr) :: p_next
+    VkObjectType       objectType;
+    uint64_t           objectHandle;
+    const char*        pObjectName;
+  end type vk_debug_utils_object_name_info_ext
 !* C FUNCTION INTERFACES. ===============================================================
 
 
