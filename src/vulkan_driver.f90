@@ -423,7 +423,7 @@ contains
   subroutine setup_debug_messenger()
     implicit none
 
-    type(vk_debug_utils_messenger_create_info_ext), target :: create_info!validation_create_info
+    type(vk_debug_utils_messenger_create_info_ext), target :: messenger_create_info!validation_create_info
 
     ! Don't need this if we're not in debug mode.
     if (.not. DEBUG_MODE) then
@@ -434,13 +434,13 @@ contains
 
     ! allocate(create_info)
 
-    create_info%s_type = VK_STRUCTURE_TYPE%DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT
-    create_info%message_severity = or(VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT, or(VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT, VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT))
-    create_info%message_type = or(VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT, or(VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT, VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT))
-    create_info%pfn_user_callback = c_funloc(debug_callback)
-    create_info%p_user_data = c_null_ptr ! Optional.
+    messenger_create_info%s_type = VK_STRUCTURE_TYPE%DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT
+    messenger_create_info%message_severity = or(VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT, or(VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT, VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT))
+    messenger_create_info%message_type = or(VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT, or(VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT, VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT))
+    messenger_create_info%pfn_user_callback = c_funloc(debug_callback)
+    messenger_create_info%p_user_data = c_null_ptr ! Optional.
 
-    if (forvulkan_create_debug_utils_messenger_ext(vulkan_instance, c_loc(create_info), c_null_ptr, debug_messenger) /= VK_SUCCESS) then
+    if (forvulkan_create_debug_utils_messenger_ext(vulkan_instance, c_loc(messenger_create_info), c_null_ptr, debug_messenger) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to set up debug messenger."
     end if
 
