@@ -10,31 +10,26 @@ module forvk_parameters
 
   !* PARAMETERS. ===============================================================
 
-
-  integer(c_int), parameter, public :: VK_MAX_EXTENSION_NAME_SIZE = 256
-  integer(c_int), parameter, public :: VK_MAX_DESCRIPTION_SIZE = 256
-
   integer(c_int), parameter, public :: VK_API_VERSION_1_0 = 4194304
   integer(c_int), parameter, public :: VK_API_VERSION_1_1 = 4198400
   integer(c_int), parameter, public :: VK_API_VERSION_1_2 = 4202496
   integer(c_int), parameter, public :: VK_API_VERSION_1_3 = 4206592
 
-
-  integer(c_int), parameter, public :: VK_ATTACHMENT_UNUSED              (~0U)
-  integer(c_int), parameter, public :: VK_FALSE                          0U
-  integer(c_int), parameter, public :: VK_LOD_CLAMP_NONE                 1000.0F
-  integer(c_int), parameter, public :: VK_QUEUE_FAMILY_IGNORED           (~0U)
-  integer(c_int), parameter, public :: VK_REMAINING_ARRAY_LAYERS         (~0U)
-  integer(c_int), parameter, public :: VK_REMAINING_MIP_LEVELS           (~0U)
-  integer(c_int), parameter, public :: VK_SUBPASS_EXTERNAL               (~0U)
-  integer(c_int), parameter, public :: VK_TRUE                           1U
-  integer(c_int), parameter, public :: VK_WHOLE_SIZE                     (~0ULL)
-  integer(c_int), parameter, public :: VK_MAX_MEMORY_TYPES               32U
-  integer(c_int), parameter, public :: VK_MAX_PHYSICAL_DEVICE_NAME_SIZE  256U
-  integer(c_int), parameter, public :: VK_UUID_SIZE                      16U
-  integer(c_int), parameter, public :: VK_MAX_EXTENSION_NAME_SIZE        256U
-  integer(c_int), parameter, public :: VK_MAX_DESCRIPTION_SIZE           256U
-  integer(c_int), parameter, public :: VK_MAX_MEMORY_HEAPS               16U
+  integer(c_int), parameter, public :: VK_ATTACHMENT_UNUSED = not(0)
+  integer(c_int), parameter, public :: VK_FALSE = 0
+  real(c_float), parameter, public :: VK_LOD_CLAMP_NONE = 1000.0
+  integer(c_int), parameter, public :: VK_QUEUE_FAMILY_IGNORED = not(0)
+  integer(c_int), parameter, public :: VK_REMAINING_ARRAY_LAYERS = not(0)
+  integer(c_int), parameter, public :: VK_REMAINING_MIP_LEVELS = not(0)
+  integer(c_int), parameter, public :: VK_SUBPASS_EXTERNAL = not(0)
+  integer(c_int), parameter, public :: VK_TRUE = 1
+  integer(c_long_long), parameter, public :: VK_WHOLE_SIZE = not(0_8)
+  integer(c_int), parameter, public :: VK_MAX_MEMORY_TYPES = 32
+  integer(c_int), parameter, public :: VK_MAX_PHYSICAL_DEVICE_NAME_SIZE = 256
+  integer(c_int), parameter, public :: VK_UUID_SIZE = 16
+  integer(c_int), parameter, public :: VK_MAX_EXTENSION_NAME_SIZE = 256
+  integer(c_int), parameter, public :: VK_MAX_DESCRIPTION_SIZE = 256
+  integer(c_int), parameter, public :: VK_MAX_MEMORY_HEAPS = 16
 
 
   !? VkResult. ==========================================================================
