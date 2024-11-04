@@ -370,13 +370,14 @@ contains
   end subroutine ensure_validation_layer_support
 
 
-  subroutine create_vulkan_instance_create_info(vulkan_create_info, app_info, required_extensions, required_validation_layers)
+  subroutine create_vulkan_instance_create_info(vulkan_create_info, app_info, required_extensions, required_validation_layers, before_init_messenger_create_info)
     implicit none
 
     type(vk_instance_create_info), intent(inout), pointer :: vulkan_create_info
     type(vk_application_info), intent(in), pointer :: app_info
     type(vec), intent(inout) :: required_extensions
     type(vec), intent(inout) :: required_validation_layers
+    type(vk_debug_utils_messenger_create_info_ext), intent(inout), target :: before_init_messenger_create_info
 
     print"(A)","[Vulkan]: Creating create info."
 
