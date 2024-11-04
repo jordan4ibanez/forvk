@@ -225,8 +225,6 @@ module forvk
     end function vk_get_instance_proc_addr
 
 
-
-
   end interface
 
 
