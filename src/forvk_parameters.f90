@@ -31,6 +31,11 @@ module forvk_parameters
   integer(c_int), parameter, public :: VK_MAX_DESCRIPTION_SIZE = 256
   integer(c_int), parameter, public :: VK_MAX_MEMORY_HEAPS = 16
 
+  integer(c_int), parameter, public :: VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT = int(z"00000001")
+  integer(c_int), parameter, public :: VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT = int(z"00000002")
+  integer(c_int), parameter, public :: VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT = int(z"00000004")
+  integer(c_int), parameter, public :: VK_DEBUG_UTILS_MESSAGE_TYPE_DEVICE_ADDRESS_BINDING_BIT_EXT = int(z"00000008")
+
 
   !? VkDebugUtilsMessageSeverityFlagBitsEXT. ==========================================================================
 
