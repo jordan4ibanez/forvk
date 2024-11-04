@@ -428,7 +428,6 @@ contains
 
     call c_f_pointer(p_callback_data_ptr, p_callback_data)
 
-
     if (message_severity >= VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT) then
       print*,"high severity"
     end if
@@ -437,7 +436,6 @@ contains
 
     vk_bool_32 = VK_FALSE
   end function debug_callback
-
 
 
 !* MAIN LOOP. ====================================================================
