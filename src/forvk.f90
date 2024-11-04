@@ -16,6 +16,8 @@ module forvk
   public :: vk_create_instance
   public :: vk_destroy_instance
 
+  public :: forvulkan_create_debug_utils_messenger_ext
+
   !* Types.
 
   public :: vk_extension_properties
@@ -260,6 +262,40 @@ contains
   end function vk_make_api_version
 
 
+  function forvulkan_create_debug_utils_messenger_ext(instance, p_create_info, p_allocator, p_debug_messenger) result(vk_result)
+    implicit none
+
+    integer(c_int64_t), intent(in), value :: instance
+    ! const VkDebugUtilsMessengerCreateInfoEXT *
+    type(c_ptr), intent(in), value :: p_create_info
+    ! const VkAllocationCallbacks *
+    type(c_funptr), intent(in), value :: p_allocator
+    ! VkDebugUtilsMessengerEXT *
+    integer(c_int64_t), intent(inout) :: p_debug_messenger
+
+    integer(c_int32_t) :: vk_result
+    character(len = :, kind = c_char), pointer :: function_name
+    type(c_funptr) :: function_pointer
+    procedure(vk_create_debug_utils_messenger_ext), pointer :: func
+
+    ! We're asking Vulkan for the function pointer for debug info here.
+    allocate(character(len = 31, kind = c_char) :: function_name)
+    function_name = "vkCreateDebugUtilsMessengerEXT"//achar(0)
+
+    function_pointer = vk_get_instance_proc_addr(instance, c_loc(function_name))
+
+    ! If it's not available, we cannot continue in debug mode.
+    if (.not. c_associated(function_pointer)) then
+      vk_result = VK_ERROR_EXTENSION_NOT_PRESENT
+      return
+    end if
+
+    ! Now we're transfering the function from C to Fortran.
+    call c_f_procpointer(function_pointer, func)
+
+    ! And we run it. :)
+    vk_result = func(instance, p_create_info, p_allocator, p_debug_messenger)
+  end function forvulkan_create_debug_utils_messenger_ext
 
 
 end module forvk
