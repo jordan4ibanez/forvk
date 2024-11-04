@@ -231,15 +231,16 @@ module forvk
 contains
 
 
-  function vk_make_api_version(variant, major, minor, patch) result(ver)
+  function vk_make_api_version(variant, major, minor, patch) result(version)
     implicit none
 
     integer(c_int), intent(in), value :: variant, major, minor, patch
-    integer(c_int) :: ver
+    integer(c_int) :: version
 
-    ver = or(or(or(lshift(variant, 29), lshift(major, 22)), lshift(minor, 12)), patch)
-
+    version = or(or(or(lshift(variant, 29), lshift(major, 22)), lshift(minor, 12)), patch)
   end function vk_make_api_version
+
+
 
 
 end module forvk
