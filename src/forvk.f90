@@ -246,6 +246,19 @@ module forvk
     end function pfn_vk_create_debug_utils_messenger_ext
 
 
+    subroutine pfn_vk_destroy_debug_utils_messenger_ext(instance, messenger, p_allocator) bind(c)
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkInstance
+      integer(c_int64_t), intent(in), value :: instance
+      ! VkDebugUtilsMessengerEXT
+      integer(c_int64_t), intent(in) :: messenger
+      ! const VkAllocationCallbacks *
+      type(c_funptr), intent(in), value :: p_allocator
+    end subroutine pfn_vk_destroy_debug_utils_messenger_ext
+
+
   end interface
 
 
