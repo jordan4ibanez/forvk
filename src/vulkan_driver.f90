@@ -423,7 +423,7 @@ contains
   subroutine setup_debug_messenger()
     implicit none
 
-    type(vk_debug_utils_messenger_create_info_ext), target :: messenger_create_info!validation_create_info
+    type(vk_debug_utils_messenger_create_info_ext), pointer :: messenger_create_info!validation_create_info
 
     ! Don't need this if we're not in debug mode.
     if (.not. DEBUG_MODE) then
@@ -432,7 +432,7 @@ contains
 
     print"(A)","[Vulkan]: Setting up debug messenger."
 
-    ! allocate(create_info)
+    allocate(messenger_create_info)
 
     messenger_create_info%s_type = VK_STRUCTURE_TYPE%DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT
     messenger_create_info%message_severity = or(VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT, or(VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT, VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT))
