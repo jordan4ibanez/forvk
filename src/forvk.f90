@@ -17,14 +17,6 @@ module forvk
   public :: vk_destroy_instance
 
 
-  !* Types.
-
-  public :: vk_extension_properties
-  public :: vk_application_info
-  public :: vk_instance_create_info
-  public :: vk_layer_properties
-
-
 
 !* TYPES. ============================c===================================
 
@@ -33,14 +25,14 @@ module forvk
   !! vk_flags VkFlags is of type integer(c_int) !!
 
 
-  type, bind(c) :: vk_extension_properties
+  type, bind(c), public :: vk_extension_properties
     character(len = 1, kind = c_char), dimension(VK_MAX_EXTENSION_NAME_SIZE) :: extension_name
     ! uint32_t
     integer(c_int32_t) :: spec_version
   end type vk_extension_properties
 
 
-  type, bind(c) :: vk_application_info
+  type, bind(c), public :: vk_application_info
     ! uint32_t [VkStructureType]
     integer(c_int) :: s_type
     ! void *
@@ -58,7 +50,7 @@ module forvk
   end type vk_application_info
 
 
-  type, bind(c) :: vk_instance_create_info
+  type, bind(c), public :: vk_instance_create_info
     ! uint32_t [VkStructureType]
     integer(c_int) :: s_type
     ! void *
@@ -78,7 +70,7 @@ module forvk
   end type vk_instance_create_info
 
 
-  type, bind(c) :: vk_layer_properties
+  type, bind(c), public :: vk_layer_properties
     character(len = 1, kind = c_char), dimension(VK_MAX_EXTENSION_NAME_SIZE) :: layer_name
     ! uint32_t
     integer(c_int32_t) :: spec_version
@@ -88,7 +80,7 @@ module forvk
   end type vk_layer_properties
 
 
-  type, bind(c) :: vk_debug_utils_label_ext
+  type, bind(c), public :: vk_debug_utils_label_ext
     ! uint32_t [VkStructureType]
     integer(c_int32_t) :: s_type
     ! const void *
@@ -99,7 +91,7 @@ module forvk
   end type vk_debug_utils_label_ext
 
 
-  type, bind(c) :: vk_debug_utils_object_name_info_ext
+  type, bind(c), public :: vk_debug_utils_object_name_info_ext
     ! uint32_t [VkStructureType]
     integer(c_int32_t) :: s_type
     ! void *
@@ -113,7 +105,7 @@ module forvk
   end type vk_debug_utils_object_name_info_ext
 
 
-  type, bind(c) :: vk_debug_utils_messenger_callback_data_ext
+  type, bind(c), public :: vk_debug_utils_messenger_callback_data_ext
     ! int32_t [VkStructureType]
     integer(c_int32_t) :: s_type
     ! void *
