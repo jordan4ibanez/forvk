@@ -73,7 +73,6 @@ contains
 
     call create_vulkan_instance(vulkan_create_info)
 
-    call create_messenger_struct(debug_messenger_create_info)
     call setup_debug_messenger(debug_messenger_create_info)
 
     ! todo: deallocate any pointers inside.
@@ -456,6 +455,9 @@ contains
     end if
 
     print"(A)","[Vulkan]: Setting up debug messenger."
+
+    allocate(debug_messenger_create_info)
+    call create_messenger_struct(debug_messenger_create_info)
 
     if (forvulkan_create_debug_utils_messenger_ext(vulkan_instance, c_loc(debug_messenger_create_info), c_null_ptr, debug_messenger) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to set up debug messenger."
