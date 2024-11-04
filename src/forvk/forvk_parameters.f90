@@ -20,6 +20,23 @@ module forvk_parameters
   integer(c_int), parameter, public :: VK_API_VERSION_1_3 = 4206592
 
 
+  integer(c_int), parameter, public :: VK_ATTACHMENT_UNUSED              (~0U)
+  integer(c_int), parameter, public :: VK_FALSE                          0U
+  integer(c_int), parameter, public :: VK_LOD_CLAMP_NONE                 1000.0F
+  integer(c_int), parameter, public :: VK_QUEUE_FAMILY_IGNORED           (~0U)
+  integer(c_int), parameter, public :: VK_REMAINING_ARRAY_LAYERS         (~0U)
+  integer(c_int), parameter, public :: VK_REMAINING_MIP_LEVELS           (~0U)
+  integer(c_int), parameter, public :: VK_SUBPASS_EXTERNAL               (~0U)
+  integer(c_int), parameter, public :: VK_TRUE                           1U
+  integer(c_int), parameter, public :: VK_WHOLE_SIZE                     (~0ULL)
+  integer(c_int), parameter, public :: VK_MAX_MEMORY_TYPES               32U
+  integer(c_int), parameter, public :: VK_MAX_PHYSICAL_DEVICE_NAME_SIZE  256U
+  integer(c_int), parameter, public :: VK_UUID_SIZE                      16U
+  integer(c_int), parameter, public :: VK_MAX_EXTENSION_NAME_SIZE        256U
+  integer(c_int), parameter, public :: VK_MAX_DESCRIPTION_SIZE           256U
+  integer(c_int), parameter, public :: VK_MAX_MEMORY_HEAPS               16U
+
+
   !? VkResult. ==========================================================================
 
   integer(c_int), parameter, public :: VK_SUCCESS = 0
