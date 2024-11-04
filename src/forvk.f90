@@ -100,13 +100,16 @@ module forvk
 
 
   type, bind(c) :: vk_debug_utils_object_name_info_ext
-    ! int32_t [VkStructureType]
+    ! uint32_t [VkStructureType]
     integer(c_int32_t) :: s_type
     ! void *
     type(c_ptr) :: p_next
-    VkObjectType       objectType;
-    uint64_t           objectHandle;
-    const char*        pObjectName;
+    ! uint32_t [VkObjectType]
+    integer(c_int32_t) :: object_type
+    ! uint64_t
+    integer(c_int64_t) :: object_handle
+    ! const char *
+    type(c_ptr) :: p_object_name
   end type vk_debug_utils_object_name_info_ext
 !* C FUNCTION INTERFACES. ===============================================================
 
