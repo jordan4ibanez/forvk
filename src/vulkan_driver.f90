@@ -485,7 +485,7 @@ contains
       print*,"high severity"
     end if
 
-    print"(A)", "[Vulkan] Validation layer: ",p_callback_data%p_message
+    print"(A)", "===========================|"//achar(10)//"[Vulkan] Validation layer: |"//achar(10)//"===========================|"//achar(10)//string_from_c(p_callback_data%p_message)//achar(10)//"=========================="
 
     vk_bool_32 = VK_FALSE
   end function debug_callback
