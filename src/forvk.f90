@@ -212,6 +212,20 @@ module forvk
     end function vk_enumerate_instance_layer_properties
 
 
+    !* Note: This is for getting Vulkan function pointers.
+    function vk_get_instance_proc_addr(instance, p_name) result(pfn_vk_void_function) bind(c, name = "vkGetInstanceProcAddr")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkInstance
+      integer(c_int64_t), intent(in), value :: instance
+      ! const char *
+      type(c_ptr), intent(in), value :: p_name
+      type(c_funptr) :: pfn_vk_void_function
+    end function vk_get_instance_proc_addr
+
+
+
 
   end interface
 
