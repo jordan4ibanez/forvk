@@ -253,7 +253,7 @@ module forvk
       ! VkInstance
       integer(c_int64_t), intent(in), value :: instance
       ! VkDebugUtilsMessengerEXT
-      integer(c_int64_t), intent(in) :: messenger
+      integer(c_int64_t), intent(in), value :: messenger
       ! const VkAllocationCallbacks *
       type(c_funptr), intent(in), value :: p_allocator
     end subroutine pfn_vk_destroy_debug_utils_messenger_ext
