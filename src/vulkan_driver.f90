@@ -396,15 +396,15 @@ contains
   end subroutine create_vulkan_instance_create_info
 
 
-  subroutine create_vulkan_instance(create_info)
+  subroutine create_vulkan_instance(vulkan_create_info)
     implicit none
 
-    type(vk_instance_create_info), intent(in), target :: create_info
+    type(vk_instance_create_info), intent(in), target :: vulkan_create_info
     integer(c_int) :: result
 
     print"(A)", "[Vulkan]: Creating instance."
 
-    result = vk_create_instance(c_loc(create_info), c_null_ptr, vulkan_instance)
+    result = vk_create_instance(c_loc(vulkan_create_info), c_null_ptr, vulkan_instance)
 
     if (result /= VK_SUCCESS) then
       ! Shove driver check in.
