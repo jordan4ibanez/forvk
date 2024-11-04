@@ -25,6 +25,7 @@ module forvk
   public :: vk_debug_utils_label_ext
   public :: vk_debug_utils_object_name_info_ext
   public :: vk_debug_utils_messenger_callback_data_ext
+  public :: vk_debug_utils_messenger_create_info_ext
 
 
 !* TYPES. ============================c===================================
