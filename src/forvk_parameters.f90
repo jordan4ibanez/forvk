@@ -32,7 +32,17 @@ module forvk_parameters
   integer(c_int), parameter, public :: VK_MAX_MEMORY_HEAPS = 16
 
 
+  !? VkDebugUtilsMessageSeverityFlagBitsEXT. ==========================================================================
+
+
+  integer(c_int), parameter, public :: VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT = int(z"00000001")
+  integer(c_int), parameter, public :: VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT = int(z"00000010")
+  integer(c_int), parameter, public :: VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT = int(z"00000100")
+  integer(c_int), parameter, public :: VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT = int(z"00001000")
+
+
   !? VkResult. ==========================================================================
+
 
   integer(c_int), parameter, public :: VK_SUCCESS = 0
   integer(c_int), parameter, public :: VK_NOT_READY = 1
