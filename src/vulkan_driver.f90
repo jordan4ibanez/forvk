@@ -22,6 +22,9 @@ module vulkan_driver
   ! VkDebugUtilsMessengerEXT
   integer(c_int64_t), target :: debug_messenger = VK_NULL_HANDLE
 
+  ! VkPhysicalDevice
+  integer(c_int64_t), target :: physical_device = VK_NULL_HANDLE
+
   ! Controls debugging output.
   logical(c_bool), parameter :: DEBUG_MODE = .true.
 
