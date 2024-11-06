@@ -1,8 +1,8 @@
-module forvk_parameters
+module forvulkan_parameters
   use, intrinsic :: iso_c_binding
   implicit none
 
-  ! todo: dump all these parameters into forvk.f90
+  ! todo: dump all these parameters into forvulkan.f90
   !! This is only a temp.
 
   ! https://github.com/KhronosGroup/Vulkan-Headers/blob/main/include/vulkan/vulkan_core.h
@@ -2856,4 +2856,4 @@ module forvk_parameters
   integer(c_int), parameter, public :: VK_OBJECT_TYPE_PRIVATE_DATA_SLOT_EXT = VK_OBJECT_TYPE_PRIVATE_DATA_SLOT
 
 
-end module forvk_parameters
+end module forvulkan_parameters
