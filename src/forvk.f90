@@ -380,6 +380,20 @@ module forvk
     ! uint64_t [VkDeviceSize]
     integer(c_int64_t) :: non_coherent_atom_size
   end type vk_physical_device_limits
+
+
+  type, bind(c) :: vk_physical_device_sparse_properties
+    ! VkBool32
+    integer(c_int32_t) :: residency_standard_2d_block_shape
+    ! VkBool32
+    integer(c_int32_t) :: residency_standard_2d_multisample_block_shape
+    ! VkBool32
+    integer(c_int32_t) :: residency_standard_3d_block_shape
+    ! VkBool32
+    integer(c_int32_t) :: residency_aligned_mip_size
+    ! VkBool32
+    integer(c_int32_t) :: residency_non_resident_strict
+  end type vk_physical_device_sparse_properties
 !* C FUNCTION INTERFACES. ===============================================================
 
 
