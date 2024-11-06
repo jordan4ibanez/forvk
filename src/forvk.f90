@@ -31,6 +31,9 @@ module forvk
   public :: vk_debug_utils_object_name_info_ext
   public :: vk_debug_utils_messenger_callback_data_ext
   public :: vk_debug_utils_messenger_create_info_ext
+  public :: vk_physical_device_limits
+  public :: vk_physical_device_sparse_properties
+  public :: vk_physical_device_properties
 
 
 !* TYPES. ============================c===================================
