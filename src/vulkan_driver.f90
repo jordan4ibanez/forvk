@@ -37,6 +37,9 @@ contains
   end subroutine vulkan_run
 
 
+!* INITIALIZATION. ====================================================================
+
+
   subroutine init_vulkan()
     implicit none
 
@@ -83,7 +86,6 @@ contains
     deallocate(vulkan_create_info)
 
   end subroutine init_vulkan
-
 
 
 !* MAIN LOOP. ====================================================================
