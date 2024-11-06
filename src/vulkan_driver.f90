@@ -39,7 +39,9 @@ contains
   subroutine init_vulkan()
     implicit none
 
+    ! VkApplicationInfo
     type(vk_application_info), pointer :: app_info
+    ! VkInstanceCreateInfo
     type(vk_instance_create_info), pointer :: vulkan_create_info
     ! const char **
     type(vec) :: required_extensions
