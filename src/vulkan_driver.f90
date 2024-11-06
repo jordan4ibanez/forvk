@@ -84,6 +84,10 @@ contains
 
     call setup_debug_messenger(debug_messenger_create_info, vulkan_instance, debug_messenger, DEBUG_MODE)
 
+    ! TODO: THIS SHOULD BE BROKEN UP INTO ANOTHER FUNCTION THAT SELECTS PHYSICAL DEVICE!
+    ! TODO: OR, MAKE A GREEN SPACER INSIDE THE FILE TO DENOTE WHERE PHYSICAL DEVICE SELECTION STARTS.
+    !! PROBABLY SHOULD DO THE SAME THING WHICH EACH STEP IN INITIALIZATION !!
+
     call pick_physical_device()
 
     ! todo: deallocate any pointers inside.
