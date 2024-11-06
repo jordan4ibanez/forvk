@@ -108,7 +108,6 @@ contains
     ! VkPhysicalDevice *
     integer(c_int64_t), pointer :: device_pointer
 
-
     device = 0
 
     ! First, we will get the available devices from Vulkan.
