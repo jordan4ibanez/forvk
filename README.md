@@ -1,4 +1,4 @@
-# forvk
+# forvulkan
  You got Vulkan in my Fortran!
 
 I have no idea what I'm doing.
