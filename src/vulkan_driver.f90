@@ -106,7 +106,10 @@ contains
       error stop "[Vulkan] Error: Failed to enumerate physical devices."
     end if
 
-    print*,"physical devices:", device_count
+    if (device_count == 0) then
+      ! todo: in Formine we will make this clean up then run the OpenGL driver. :)
+      error stop "[Vulkan] Error: No GPU with Vulkan support available."
+    end if
 
   end subroutine pick_physical_device
 
