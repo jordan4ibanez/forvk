@@ -38,6 +38,16 @@ module forvk_parameters
   integer(c_int), parameter, public :: VK_DEBUG_UTILS_MESSAGE_TYPE_DEVICE_ADDRESS_BINDING_BIT_EXT = int(z"00000008")
 
 
+  !? VkPhysicalDeviceType. ==========================================================================
+
+
+  integer(c_int), parameter, public :: VK_PHYSICAL_DEVICE_TYPE_OTHER = 0
+  integer(c_int), parameter, public :: VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU = 1
+  integer(c_int), parameter, public :: VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU = 2
+  integer(c_int), parameter, public :: VK_PHYSICAL_DEVICE_TYPE_VIRTUAL_GPU = 3
+  integer(c_int), parameter, public :: VK_PHYSICAL_DEVICE_TYPE_CPU = 4
+
+
   !? VkDebugUtilsMessageSeverityFlagBitsEXT. ==========================================================================
 
 
