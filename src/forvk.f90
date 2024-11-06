@@ -394,6 +394,29 @@ module forvk
     ! VkBool32
     integer(c_int32_t) :: residency_non_resident_strict
   end type vk_physical_device_sparse_properties
+
+
+  type, bind(c) :: vk_physical_device_properties
+    ! uint32_t
+    integer(c_int32_t) :: api_version
+    ! uint32_t
+    integer(c_int32_t) :: driver_version
+    ! uint32_t
+    integer(c_int32_t) :: vendor_id
+    ! uint32_t
+    integer(c_int32_t) :: device_id
+    ! VkPhysicalDeviceType. [uint32_t]
+    integer(c_int32_t) :: device_type
+    character(len = 1, kind = c_char), dimension(VK_MAX_PHYSICAL_DEVICE_NAME_SIZE) :: device_name
+    ! uint_8[VK_UUID_SIZE]
+    integer(c_int8_t), dimension(VK_UUID_SIZE) :: pipeline_cache_uuid
+    ! VkPhysicalDeviceLimits
+    type(vk_physical_device_limits) :: limits
+    ! VkPhysicalDeviceSparseProperties
+    type(vk_physical_device_sparse_properties) :: sparse_properties
+  end type vk_physical_device_properties
+
+
 !* C FUNCTION INTERFACES. ===============================================================
 
 
