@@ -100,8 +100,18 @@ contains
   subroutine pick_physical_device()
     implicit none
 
-    integer(c_int32_t) :: device_count
+    integer(c_int32_t) :: device_count, i
+    ! c_int64_t [VkPhysicalDevice]
+    type(vec) :: available_devices
+    ! VkPhysicalDevice
+    integer(c_int64_t) :: device
+    ! VkPhysicalDevice *
+    integer(c_int64_t), pointer :: device_pointer
 
+
+    device = 0
+
+    ! First, we will get the available devices from Vulkan.
     if (vk_enumerate_physical_devices(vulkan_instance, device_count, c_null_ptr) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to enumerate physical devices."
     end if
@@ -111,7 +121,43 @@ contains
       error stop "[Vulkan] Error: No GPU with Vulkan support available."
     end if
 
+    ! Now, create the vector to store the data.
+    available_devices = new_vec(sizeof(device), int(device_count, c_int64_t))
+    call available_devices%resize(int(device_count, c_int64_t), device)
+
+    ! Here we're passing in the underlying C array.
+    if (vk_enumerate_physical_devices(vulkan_instance, device_count, available_devices%get(1_8)) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to enumerate physical devices."
+    end if
+
+    ! Let's find a device that's suitable.
+    device_search: do i = 1,int(available_devices%size())
+      ! We're inlining transfering the device pointer from the interal C array into Fortran.
+      call c_f_pointer(available_devices%get(int(i, c_int64_t)), device_pointer)
+
+      ! We found it, woo. That's our physical device.
+      ! todo: Make a menu option to select another physical device.
+      if (device_is_suitable(device_pointer)) then
+        physical_device = device_pointer
+        exit device_search
+      end if
+    end do device_search
   end subroutine pick_physical_device
+
+
+  function device_is_suitable(device_pointer) result(suitable)
+    implicit none
+
+    ! VkPhysicalDevice
+    integer(c_int64_t), pointer :: device_pointer
+    logical(c_bool) :: suitable
+
+    suitable = .false.
+
+    ! do things here
+
+    suitable = .true.
+  end function device_is_suitable
 
 
 !* MAIN LOOP. ====================================================================
