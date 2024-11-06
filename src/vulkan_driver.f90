@@ -505,6 +505,8 @@ contains
   end subroutine main_loop
 
 
+!* CLEAN UP. ====================================================================
+
   subroutine clean_up()
     implicit none
 
