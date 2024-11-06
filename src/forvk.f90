@@ -166,6 +166,220 @@ module forvk
   end type vk_debug_utils_messenger_create_info_ext
 
 
+  type, bind(c) :: vk_physical_device_limits
+    ! uint32_t
+    integer(c_int32_t) :: max_image_dimension_1d
+    ! uint32_t
+    integer(c_int32_t) :: max_image_dimension_2d
+    ! uint32_t
+    integer(c_int32_t) :: max_image_dimension_3d
+    ! uint32_t
+    integer(c_int32_t) :: max_image_dimension_cube
+    ! uint32_t
+    integer(c_int32_t) :: max_image_array_layers
+    ! uint32_t
+    integer(c_int32_t) :: max_texel_buffer_elements
+    ! uint32_t
+    integer(c_int32_t) :: max_uniform_buffer_range
+    ! uint32_t
+    integer(c_int32_t) :: max_storage_buffer_range
+    ! uint32_t
+    integer(c_int32_t) :: max_push_constants_size
+    ! uint32_t
+    integer(c_int32_t) :: max_memory_allocation_count
+    ! uint32_t
+    integer(c_int32_t) :: max_sampler_allocation_count
+    ! uint64_t [VkDeviceSize]
+    integer(c_int64_t) :: buffer_image_granularity
+    ! uint64_t [VkDeviceSize]
+    integer(c_int64_t) :: sparse_address_space_size
+    ! uint32_t
+    integer(c_int32_t) :: max_bound_descriptor_sets
+    ! uint32_t
+    integer(c_int32_t) :: max_per_stage_descriptor_samplers
+    ! uint32_t
+    integer(c_int32_t) ::  max_per_stage_descriptor_uniform_buffers
+    ! uint32_t
+    integer(c_int32_t) :: max_per_stage_descriptor_storage_buffers
+    ! uint32_t
+    integer(c_int32_t) :: max_per_stage_descriptor_sampled_images
+    ! uint32_t
+    integer(c_int32_t) :: max_per_stage_descriptor_storage_images
+    ! uint32_t
+    integer(c_int32_t) :: max_per_stage_descriptor_input_attachments
+    ! uint32_t
+    integer(c_int32_t) :: max_per_stage_resources
+    ! uint32_t
+    integer(c_int32_t) :: max_descriptor_set_samplers
+    ! uint32_t
+    integer(c_int32_t) :: max_descriptor_set_uniform_buffers
+    ! uint32_t
+    integer(c_int32_t) :: max_descriptor_set_uniform_buffers_dynamic
+    ! uint32_t
+    integer(c_int32_t) :: max_descriptor_set_storage_buffers
+    ! uint32_t
+    integer(c_int32_t) :: max_descriptor_set_storage_buffers_dynamic
+    ! uint32_t
+    integer(c_int32_t) :: max_descriptor_set_sampled_images
+    ! uint32_t
+    integer(c_int32_t) :: max_descriptor_set_storage_images
+    ! uint32_t
+    integer(c_int32_t) :: max_descriptor_set_input_attachments
+    ! uint32_t
+    integer(c_int32_t) :: max_vertex_input_attributes
+    ! uint32_t
+    integer(c_int32_t) :: max_vertex_input_bindings
+    ! uint32_t
+    integer(c_int32_t) :: max_vertex_input_attribute_offset
+    ! uint32_t
+    integer(c_int32_t) :: max_vertex_input_binding_stride
+    ! uint32_t
+    integer(c_int32_t) :: max_vertex_output_components
+    ! uint32_t
+    integer(c_int32_t) :: max_tesselation_generation_level
+    ! uint32_t
+    integer(c_int32_t) :: max_tesselation_patch_size
+    ! uint32_t
+    integer(c_int32_t) :: max_tesselation_control_per_vertex_input_components
+    ! uint32_t
+    integer(c_int32_t) :: max_tesselation_control_per_vertex_output_components
+    ! uint32_t
+    integer(c_int32_t) :: max_tesselation_control_per_patch_output_components
+    ! uint32_t
+    integer(c_int32_t) :: max_tesselation_control_total_output_components
+    ! uint32_t
+    integer(c_int32_t) :: max_tesselation_evaluation_input_components
+    ! uint32_t
+    integer(c_int32_t) :: max_tesselation_evaluation_output_components
+    ! uint32_t
+    integer(c_int32_t) :: max_geometry_shader_invocations
+    ! uint32_t
+    integer(c_int32_t) :: max_geometry_input_components
+    ! uint32_t
+    integer(c_int32_t) :: max_geometry_output_components
+    ! uint32_t
+    integer(c_int32_t) :: max_geometry_output_vertices
+    ! uint32_t
+    integer(c_int32_t) :: max_geometry_total_output_components
+    ! uint32_t
+    integer(c_int32_t) :: max_fragment_input_components
+    ! uint32_t
+    integer(c_int32_t) :: max_fragment_output_attachments
+    ! uint32_t
+    integer(c_int32_t) :: max_fragment_dual_src_attachments
+    ! uint32_t
+    integer(c_int32_t) :: max_fragment_combined_output_resources
+    ! uint32_t
+    integer(c_int32_t) :: max_compute_shared_memory_size
+    ! uint32_t[3]
+    integer(c_int32_t), dimension(3) :: max_compute_work_group_count
+    ! uint32_t
+    integer(c_int32_t) :: max_compute_work_group_invocations
+    ! uint32_t[3]
+    integer(c_int32_t), dimension(3) :: max_compute_work_group_size
+    ! uint32_t
+    integer(c_int32_t) :: sub_pixel_precision_bits
+    ! uint32_t
+    integer(c_int32_t) :: sub_texel_precision_bits
+    ! uint32_t
+    integer(c_int32_t) :: mipmap_precision_bits
+    ! uint32_t
+    integer(c_int32_t) :: max_draw_indexed_index_value
+    ! uint32_t
+    integer(c_int32_t) :: max_draw_indirect_count
+    ! float
+    real(c_float) :: max_sampler_lod_bias
+    ! float
+    real(c_float) :: max_sampler_anisotropy
+    ! uint32_t
+    integer(c_int32_t) :: max_viewports
+    ! uint32_t[2]
+    integer(c_int32_t), dimension(2) :: max_viewport_dimensions
+    ! uint32_t[2]
+    integer(c_int32_t), dimension(2) :: viewport_bounds_range
+    ! uint32_t
+    integer(c_int32_t) :: viewport_sub_pixel_bits
+    ! size_t
+    integer(c_size_t) :: min_memory_map_alignment
+    ! uint64_t [VkDeviceSize]
+    integer(c_int64_t) :: min_texel_buffer_offset_alignment
+    ! uint64_t [VkDeviceSize]
+    integer(c_int64_t) ::  min_uniform_buffer_offset_alignment
+    ! uint64_t [VkDeviceSize]
+    integer(c_int64_t) ::  min_storage_buffer_offset_alignment
+    ! int32_t
+    integer(c_int32_t) :: min_texel_offset
+    ! uint32_t
+    integer(c_int32_t) ::  max_texel_offset
+    ! int32_t
+    integer(c_int32_t) ::  min_texel_gather_offset
+    ! uint32_t
+    integer(c_int32_t) :: max_texel_gather_offset
+    ! float
+    real(c_float) :: min_interpolation_offset
+    ! float
+    real(c_float) :: max_interpolation_offset
+    ! uint32_t
+    integer(c_int32_t) :: sub_pixel_interpolation_offset_bits
+    ! uint32_t
+    integer(c_int32_t) :: max_framebuffer_width
+    ! uint32_t
+    integer(c_int32_t) :: max_framebuffer_height
+    ! uint32_t
+    integer(c_int32_t) :: max_framebuffer_layers
+    ! uint32_t [VkSampleCountFlags]
+    integer(c_int32_t) :: framebuffer_color_sample_counts
+    ! uint32_t [VkSampleCountFlags]
+    integer(c_int32_t) :: framebuffer_depth_sample_counts
+    ! uint32_t [VkSampleCountFlags]
+    integer(c_int32_t) :: framebuffer_stencil_sample_counts
+    ! uint32_t [VkSampleCountFlags]
+    integer(c_int32_t) :: framebuffer_no_attachments_sample_counts
+    ! uint32_t
+    integer(c_int32_t) :: max_color_attachments
+    ! uint32_t [VkSampleCountFlags]
+    integer(c_int32_t) :: sampled_image_color_sample_counts
+    ! uint32_t [VkSampleCountFlags]
+    integer(c_int32_t) :: sampled_image_integer_sample_counts
+    ! uint32_t [VkSampleCountFlags]
+    integer(c_int32_t) :: sampled_image_depth_sample_counts
+    ! uint32_t [VkSampleCountFlags]
+    integer(c_int32_t) :: sampled_image_stencil_sample_counts
+    ! uint32_t [VkSampleCountFlags]
+    integer(c_int32_t) :: storage_image_sample_counts
+    ! uint32_t
+    integer(c_int32_t) :: max_sample_mask_words
+    ! VkBool32
+    integer(c_int32_t) :: timestamp_compute_and_graphics
+    ! float
+    real(c_float) :: timestamp_period
+    ! uint32_t
+    integer(c_int32_t) :: max_clip_distances
+    ! uint32_t
+    integer(c_int32_t) :: max_cull_distances
+    ! uint32_t
+    integer(c_int32_t) :: max_combined_clip_and_cull_distances
+    ! uint32_t
+    integer(c_int32_t) :: discrete_queue_priorities
+    ! float[2]
+    real(c_float), dimension(2) :: point_size_range
+    ! float[2]
+    real(c_float), dimension(2) :: line_width_range
+    ! float
+    real(c_float) :: point_size_granularity
+    ! float
+    real(c_float) :: line_width_granularity
+    ! VkBool32
+    integer(c_int32_t) :: strict_lines
+    ! VkBool32
+    integer(c_int32_t) :: standard_sample_locations
+    ! uint64_t [VkDeviceSize]
+    integer(c_int64_t) :: optimal_buffer_copy_offset_alignment
+    ! uint64_t [VkDeviceSize]
+    integer(c_int64_t) :: optimal_buffer_copy_row_pitch_alignment
+    ! uint64_t [VkDeviceSize]
+    integer(c_int64_t) :: non_coherent_atom_size
+  end type vk_physical_device_limits
 !* C FUNCTION INTERFACES. ===============================================================
 
 
