@@ -49,13 +49,13 @@ module forvk
     ! uint32_t [VkStructureType]
     integer(c_int32_t) :: s_type = 0
     ! void *
-    type(c_ptr) :: p_next
+    type(c_ptr) :: p_next = c_null_ptr
     ! char *
-    type(c_ptr) :: p_application_name
+    type(c_ptr) :: p_application_name = c_null_ptr
     ! uint32_t
     integer(c_int32_t) :: application_version = 0
     ! char *
-    type(c_ptr) :: p_engine_name
+    type(c_ptr) :: p_engine_name = c_null_ptr
     ! uint32_t
     integer(c_int32_t) :: engine_version = 0
     ! uint32_t
@@ -67,19 +67,19 @@ module forvk
     ! uint32_t [VkStructureType]
     integer(c_int32_t) :: s_type = 0
     ! void *
-    type(c_ptr) :: p_next
+    type(c_ptr) :: p_next = c_null_ptr
     ! uint32_t [VkInstanceCreateFlags]
     integer(c_int32_t) :: flags = 0
     ! const VkApplicationInfo *
-    type(c_ptr) :: p_application_info
+    type(c_ptr) :: p_application_info = c_null_ptr
     ! uint32_t
     integer(c_int32_t) :: enabled_layer_count = 0
     ! const char *
-    type(c_ptr) :: pp_enabled_layer_names
+    type(c_ptr) :: pp_enabled_layer_names = c_null_ptr
     ! uint32_t
     integer(c_int32_t) :: enabled_extension_count = 0
     ! const char * const *  aka: (string array)
-    type(c_ptr) :: pp_enabled_extension_names
+    type(c_ptr) :: pp_enabled_extension_names = c_null_ptr
   end type vk_instance_create_info
 
 
@@ -97,9 +97,9 @@ module forvk
     ! uint32_t [VkStructureType]
     integer(c_int32_t) :: s_type = 0
     ! const void *
-    type(c_ptr) :: p_next
+    type(c_ptr) :: p_next = c_null_ptr
     ! const char *
-    type(c_ptr) :: p_label_name
+    type(c_ptr) :: p_label_name = c_null_ptr
     real(c_float), dimension(4) :: color
   end type vk_debug_utils_label_ext
 
@@ -108,13 +108,13 @@ module forvk
     ! uint32_t [VkStructureType]
     integer(c_int32_t) :: s_type = 0
     ! void *
-    type(c_ptr) :: p_next
+    type(c_ptr) :: p_next = c_null_ptr
     ! uint32_t [VkObjectType]
     integer(c_int32_t) :: object_type = 0
     ! uint64_t
     integer(c_int64_t) :: object_handle = 0
     ! const char *
-    type(c_ptr) :: p_object_name
+    type(c_ptr) :: p_object_name = c_null_ptr
   end type vk_debug_utils_object_name_info_ext
 
 
@@ -122,27 +122,27 @@ module forvk
     ! int32_t [VkStructureType]
     integer(c_int32_t) :: s_type = 0
     ! void *
-    type(c_ptr) :: p_next
+    type(c_ptr) :: p_next = c_null_ptr
     ! uint32_t [VkDebugUtilsMessengerCallbackDataFlagsEXT]
     integer(c_int32_t) :: flags = 0
     ! const char *
-    type(c_ptr) :: p_message_id_name
+    type(c_ptr) :: p_message_id_name = c_null_ptr
     ! int32_t
     integer(c_int32_t) :: message_id_number = 0
     ! const char *
-    type(c_ptr) :: p_message
+    type(c_ptr) :: p_message = c_null_ptr
     ! uint32_t
     integer(c_int32_t) :: queue_label_count = 0
     ! const VkDebugUtilsLabelEXT *
-    type(c_ptr) :: p_queue_labels
+    type(c_ptr) :: p_queue_labels = c_null_ptr
     ! uint32_t
     integer(c_int32_t) :: cmd_buf_label_count = 0
     ! const VkDebugUtilsLabelEXT *
-    type(c_ptr) :: p_cmd_buf_labels
+    type(c_ptr) :: p_cmd_buf_labels = c_null_ptr
     ! uint32_t
     integer(c_int32_t) :: object_count = 0
     ! const VkDebugUtilsObjectNameInfoEXT *
-    type(c_ptr) :: p_objects
+    type(c_ptr) :: p_objects = c_null_ptr
   end type vk_debug_utils_messenger_callback_data_ext
 
 
@@ -150,7 +150,7 @@ module forvk
     ! int32_t [VkStructureType]
     integer(c_int32_t) :: s_type = 0
     ! void *
-    type(c_ptr) :: p_next
+    type(c_ptr) :: p_next = c_null_ptr
     ! uint32_t [VkDebugUtilsMessengerCreateFlagsEXT]
     integer(c_int32_t) :: flags = 0
     ! uint32_t [VkDebugUtilsMessageSeverityFlagsEXT]
@@ -160,7 +160,7 @@ module forvk
     ! PFN_vkDebugUtilsMessengerCallbackEXT
     type(c_funptr) :: pfn_user_callback
     ! void *
-    type(c_ptr) :: p_user_data
+    type(c_ptr) :: p_user_data = c_null_ptr
   end type vk_debug_utils_messenger_create_info_ext
 
 
