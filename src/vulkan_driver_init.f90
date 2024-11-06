@@ -1,7 +1,7 @@
 module vulkan_driver_init
   use, intrinsic :: iso_c_binding
-  use :: forvk_parameters
-  use :: forvk
+  use :: forvulkan_parameters
+  use :: forvulkan
   use :: glfw
   use :: vector
   use :: string_f90
@@ -21,7 +21,7 @@ contains
     call glfw_window_hint(GLFW_CLIENT_API, GLFW_NO_API)
     call glfw_window_hint(GLFW_RESIZABLE, GLFW_FALSE)
 
-    if (.not. glfw_create_window(500, 500, "forvk")) then
+    if (.not. glfw_create_window(500, 500, "forvulkan")) then
       error stop "[Vulkan]: Failed to create window."
     end if
   end subroutine create_glfw
