@@ -2,6 +2,7 @@ module vulkan_driver
   use, intrinsic :: iso_c_binding
   use :: forvk
   use :: forvk_parameters
+  use :: vulkan_driver_init
   use :: glfw
   use :: string_f90
   use :: vector
@@ -63,19 +64,19 @@ contains
 
     call create_app_info(app_info)
 
-    call create_required_extensions(required_extensions)
+    call create_required_extensions(required_extensions, DEBUG_MODE)
 
     call ensure_extensions_present(required_extensions)
 
-    call create_required_validation_layers(required_validation_layers)
+    call create_required_validation_layers(required_validation_layers, DEBUG_MODE)
 
-    call ensure_validation_layer_support(required_validation_layers)
+    call ensure_validation_layer_support(required_validation_layers, DEBUG_MODE)
 
-    call create_vulkan_instance_create_info(vulkan_create_info, app_info, required_extensions, required_validation_layers, before_init_messenger_create_info)
+    call create_vulkan_instance_create_info(vulkan_create_info, app_info, required_extensions, required_validation_layers, before_init_messenger_create_info, DEBUG_MODE)
 
-    call create_vulkan_instance(vulkan_create_info)
+    call create_vulkan_instance(vulkan_create_info, vulkan_instance)
 
-    call setup_debug_messenger(debug_messenger_create_info)
+    call setup_debug_messenger(debug_messenger_create_info, vulkan_instance, debug_messenger, DEBUG_MODE)
 
     ! todo: deallocate any pointers inside.
     deallocate(app_info)
