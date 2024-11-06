@@ -15,6 +15,8 @@ module forvk
   public :: vk_make_api_version
   public :: vk_create_instance
   public :: vk_destroy_instance
+  public :: vk_get_instance_proc_addr
+  public :: vk_enumerate_physical_devices
 
   public :: forvulkan_create_debug_utils_messenger_ext
   public :: forvulkan_destroy_debug_utils_messenger_ext
