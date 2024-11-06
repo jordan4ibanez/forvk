@@ -3,6 +3,8 @@ module vulkan_driver_init
   use :: forvk_parameters
   use :: forvk
   use :: glfw
+  use :: vector
+  use :: string_f90
   implicit none
 
 
@@ -54,10 +56,11 @@ contains
   end subroutine create_app_info
 
 
-  subroutine create_required_extensions(required_extensions)
+  subroutine create_required_extensions(required_extensions, DEBUG_MODE)
     implicit none
 
     type(vec), intent(inout) :: required_extensions
+    logical(c_bool), intent(in), value :: DEBUG_MODE
     integer(c_int) :: glfw_extension_count
     type(c_ptr) :: c_glfw_extension_array_pointer
     character(len = :, kind = c_char), pointer :: temp, output
@@ -182,11 +185,12 @@ contains
   end subroutine ensure_extensions_present
 
 
-  subroutine create_required_validation_layers(required_validation_layers)
+  subroutine create_required_validation_layers(required_validation_layers, DEBUG_MODE)
     implicit none
 
     ! const char *
     type(vec), intent(inout) :: required_validation_layers
+    logical(c_bool), intent(in), value :: DEBUG_MODE
     character(len = :, kind = c_char), pointer :: layer_name
 
     ! If we're not in debug mode, don't bother with this.
@@ -208,11 +212,12 @@ contains
   end subroutine create_required_validation_layers
 
 
-  subroutine ensure_validation_layer_support(required_validation_layers)
+  subroutine ensure_validation_layer_support(required_validation_layers, DEBUG_MODE)
     implicit none
 
     ! const char *
     type(vec), intent(inout) :: required_validation_layers
+    logical(c_bool), intent(in), value :: DEBUG_MODE
     ! VkLayerProperties
     type(vec) :: available_layer_array
     type(vk_layer_properties), pointer :: layer
@@ -296,7 +301,7 @@ contains
   end subroutine ensure_validation_layer_support
 
 
-  subroutine create_vulkan_instance_create_info(vulkan_create_info, app_info, required_extensions, required_validation_layers, before_init_messenger_create_info)
+  subroutine create_vulkan_instance_create_info(vulkan_create_info, app_info, required_extensions, required_validation_layers, before_init_messenger_create_info, DEBUG_MODE)
     implicit none
 
     type(vk_instance_create_info), intent(inout), pointer :: vulkan_create_info
@@ -304,6 +309,7 @@ contains
     type(vec), intent(inout) :: required_extensions
     type(vec), intent(inout) :: required_validation_layers
     type(vk_debug_utils_messenger_create_info_ext), intent(inout), target :: before_init_messenger_create_info
+    logical(c_bool), intent(in), value :: DEBUG_MODE
 
     print"(A)","[Vulkan]: Creating create info."
 
@@ -323,7 +329,7 @@ contains
       vulkan_create_info%enabled_layer_count = int(required_validation_layers%size())
       vulkan_create_info%pp_enabled_layer_names = required_validation_layers%get(1_8)
 
-      call create_messenger_struct(before_init_messenger_create_info)
+      call create_messenger_struct(before_init_messenger_create_info, DEBUG_MODE)
       vulkan_create_info%p_next = c_loc(before_init_messenger_create_info)
 
     else
@@ -332,10 +338,13 @@ contains
   end subroutine create_vulkan_instance_create_info
 
 
-  subroutine create_vulkan_instance(vulkan_create_info)
+  subroutine create_vulkan_instance(vulkan_create_info, vulkan_instance)
     implicit none
 
+    ! VkInstanceCreateInfo
     type(vk_instance_create_info), intent(in), target :: vulkan_create_info
+    ! VkInstance
+    integer(c_int64_t), intent(inout) :: vulkan_instance
     integer(c_int) :: result
 
 
@@ -353,10 +362,11 @@ contains
   end subroutine create_vulkan_instance
 
 
-  subroutine create_messenger_struct(messenger_create_info)
+  subroutine create_messenger_struct(messenger_create_info, DEBUG_MODE)
     implicit none
 
     type(vk_debug_utils_messenger_create_info_ext), intent(inout), target :: messenger_create_info!validation_create_info
+    logical(c_bool), intent(in), value :: DEBUG_MODE
 
     if (.not. DEBUG_MODE) then
       return
@@ -370,10 +380,13 @@ contains
   end subroutine create_messenger_struct
 
 
-  subroutine setup_debug_messenger(debug_messenger_create_info)
+  subroutine setup_debug_messenger(debug_messenger_create_info, vulkan_instance, debug_messenger, DEBUG_MODE)
     implicit none
 
     type(vk_debug_utils_messenger_create_info_ext), intent(inout), pointer :: debug_messenger_create_info!validation_create_info
+    integer(c_int64_t), intent(inout) :: vulkan_instance
+    integer(c_int64_t), intent(inout) :: debug_messenger
+    logical(c_bool), intent(in), value :: DEBUG_MODE
 
     ! Don't need this if we're not in debug mode.
     if (.not. DEBUG_MODE) then
@@ -383,7 +396,7 @@ contains
     print"(A)","[Vulkan]: Setting up debug messenger."
 
     allocate(debug_messenger_create_info)
-    call create_messenger_struct(debug_messenger_create_info)
+    call create_messenger_struct(debug_messenger_create_info, DEBUG_MODE)
 
     if (forvulkan_create_debug_utils_messenger_ext(vulkan_instance, c_loc(debug_messenger_create_info), c_null_ptr, debug_messenger) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to set up debug messenger."
