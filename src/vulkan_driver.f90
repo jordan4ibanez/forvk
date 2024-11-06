@@ -482,10 +482,9 @@ contains
 
     if (message_severity >= VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT) then
       ! Message is important enough to show
-      print*,"high severity"
+      ! print*,"high severity"
+      error stop achar(10)//"===========================|"//achar(10)//"[Vulkan] Validation layer: |"//achar(10)//"===========================|"//achar(10)//string_from_c(p_callback_data%p_message)//achar(10)//"=========================="
     end if
-
-    print"(A)", "===========================|"//achar(10)//"[Vulkan] Validation layer: |"//achar(10)//"===========================|"//achar(10)//string_from_c(p_callback_data%p_message)//achar(10)//"=========================="
 
     vk_bool_32 = VK_FALSE
   end function debug_callback
