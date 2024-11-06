@@ -35,7 +35,7 @@ module forvk
 
   !! NOTE: !!
   !! typedef uint32_t VkFlags; !!
-  !! vk_flags VkFlags is of type integer(c_int) !!
+  !! vk_flags VkFlags is of type integer(c_int32_t) !!
 
 
   type, bind(c) :: vk_extension_properties
@@ -47,37 +47,37 @@ module forvk
 
   type, bind(c) :: vk_application_info
     ! uint32_t [VkStructureType]
-    integer(c_int) :: s_type
+    integer(c_int32_t) :: s_type
     ! void *
     type(c_ptr) :: p_next
     ! char *
     type(c_ptr) :: p_application_name
     ! uint32_t
-    integer(c_int) :: application_version
+    integer(c_int32_t) :: application_version
     ! char *
     type(c_ptr) :: p_engine_name
     ! uint32_t
-    integer(c_int) :: engine_version
+    integer(c_int32_t) :: engine_version
     ! uint32_t
-    integer(c_int) :: api_version
+    integer(c_int32_t) :: api_version
   end type vk_application_info
 
 
   type, bind(c) :: vk_instance_create_info
     ! uint32_t [VkStructureType]
-    integer(c_int) :: s_type
+    integer(c_int32_t) :: s_type
     ! void *
     type(c_ptr) :: p_next
     ! uint32_t [VkInstanceCreateFlags]
-    integer(c_int) :: flags
+    integer(c_int32_t) :: flags
     ! const VkApplicationInfo *
     type(c_ptr) :: p_application_info
     ! uint32_t
-    integer(c_int) :: enabled_layer_count
+    integer(c_int32_t) :: enabled_layer_count
     ! const char *
     type(c_ptr) :: pp_enabled_layer_names
     ! uint32_t
-    integer(c_int) :: enabled_extension_count
+    integer(c_int32_t) :: enabled_extension_count
     ! const char * const *  aka: (string array)
     type(c_ptr) :: pp_enabled_extension_names
   end type vk_instance_create_info
@@ -177,7 +177,7 @@ module forvk
       ! const VkInstanceCreateInfo *, const VkAllocationCallbacks *, VkInstance *
       type(c_ptr), intent(in), value :: p_create_info, p_allocator
       integer(c_int64_t), intent(inout) :: p_instance
-      integer(c_int) :: res
+      integer(c_int32_t) :: res
     end function vk_create_instance
 
 
@@ -196,9 +196,9 @@ module forvk
 
       ! char*, uint32_t*, VkExtensionProperties*
       type(c_ptr), intent(in), value :: p_layer_name, p_properties
-      integer(c_int), intent(inout) :: p_property_count
+      integer(c_int32_t), intent(inout) :: p_property_count
       ! VkResult.
-      integer(c_int) :: vk_result
+      integer(c_int32_t) :: vk_result
     end function vk_enumerate_instance_extension_properties
 
 
@@ -207,11 +207,11 @@ module forvk
       implicit none
 
       ! uint32 *
-      integer(c_int), intent(inout) :: p_property_count
+      integer(c_int32_t), intent(inout) :: p_property_count
       ! VkLayerProperties *
       type(c_ptr), intent(in), value :: p_properties
       ! VkResult
-      integer(c_int) :: vk_result
+      integer(c_int32_t) :: vk_result
     end function vk_enumerate_instance_layer_properties
 
 
@@ -269,8 +269,8 @@ contains
   function vk_make_api_version(variant, major, minor, patch) result(version)
     implicit none
 
-    integer(c_int), intent(in), value :: variant, major, minor, patch
-    integer(c_int) :: version
+    integer(c_int32_t), intent(in), value :: variant, major, minor, patch
+    integer(c_int32_t) :: version
 
     version = or(or(or(lshift(variant, 29), lshift(major, 22)), lshift(minor, 12)), patch)
   end function vk_make_api_version
