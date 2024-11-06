@@ -22,7 +22,7 @@ module vulkan_driver
   ! VkDebugUtilsMessengerEXT
   integer(c_int64_t), target :: debug_messenger = 0
 
-
+  ! Controls debugging output.
   logical(c_bool), parameter :: DEBUG_MODE = .true.
 
 
