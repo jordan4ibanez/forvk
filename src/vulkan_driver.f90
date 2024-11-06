@@ -17,10 +17,10 @@ module vulkan_driver
 
 
   ! VkInstance
-  integer(c_int64_t), target :: vulkan_instance = 0
+  integer(c_int64_t), target :: vulkan_instance = VK_NULL_HANDLE
 
   ! VkDebugUtilsMessengerEXT
-  integer(c_int64_t), target :: debug_messenger = 0
+  integer(c_int64_t), target :: debug_messenger = VK_NULL_HANDLE
 
   ! Controls debugging output.
   logical(c_bool), parameter :: DEBUG_MODE = .true.
