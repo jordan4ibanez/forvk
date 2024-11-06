@@ -1,6 +1,6 @@
-module forvk
+module forvulkan
   use, intrinsic :: iso_c_binding
-  use :: forvk_parameters
+  use :: forvulkan_parameters
   implicit none
 
   ! https://github.com/KhronosGroup/Vulkan-Headers/blob/main/include/vulkan/vulkan_core.h
@@ -613,4 +613,4 @@ contains
   end subroutine forvulkan_destroy_debug_utils_messenger_ext
 
 
-end module forvk
+end module forvulkan
