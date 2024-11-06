@@ -142,6 +142,10 @@ contains
         exit device_search
       end if
     end do device_search
+
+    if (physical_device == VK_NULL_HANDLE) then
+      error stop "[Vulkan] Error: No suitable GPU available."
+    end if
   end subroutine pick_physical_device
 
 
