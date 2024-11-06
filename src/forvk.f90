@@ -41,43 +41,43 @@ module forvk
   type, bind(c) :: vk_extension_properties
     character(len = 1, kind = c_char), dimension(VK_MAX_EXTENSION_NAME_SIZE) :: extension_name
     ! uint32_t
-    integer(c_int32_t) :: spec_version
+    integer(c_int32_t) :: spec_version = 0
   end type vk_extension_properties
 
 
   type, bind(c) :: vk_application_info
     ! uint32_t [VkStructureType]
-    integer(c_int32_t) :: s_type
+    integer(c_int32_t) :: s_type = 0
     ! void *
     type(c_ptr) :: p_next
     ! char *
     type(c_ptr) :: p_application_name
     ! uint32_t
-    integer(c_int32_t) :: application_version
+    integer(c_int32_t) :: application_version = 0
     ! char *
     type(c_ptr) :: p_engine_name
     ! uint32_t
-    integer(c_int32_t) :: engine_version
+    integer(c_int32_t) :: engine_version = 0
     ! uint32_t
-    integer(c_int32_t) :: api_version
+    integer(c_int32_t) :: api_version = 0
   end type vk_application_info
 
 
   type, bind(c) :: vk_instance_create_info
     ! uint32_t [VkStructureType]
-    integer(c_int32_t) :: s_type
+    integer(c_int32_t) :: s_type = 0
     ! void *
     type(c_ptr) :: p_next
     ! uint32_t [VkInstanceCreateFlags]
-    integer(c_int32_t) :: flags
+    integer(c_int32_t) :: flags = 0
     ! const VkApplicationInfo *
     type(c_ptr) :: p_application_info
     ! uint32_t
-    integer(c_int32_t) :: enabled_layer_count
+    integer(c_int32_t) :: enabled_layer_count = 0
     ! const char *
     type(c_ptr) :: pp_enabled_layer_names
     ! uint32_t
-    integer(c_int32_t) :: enabled_extension_count
+    integer(c_int32_t) :: enabled_extension_count = 0
     ! const char * const *  aka: (string array)
     type(c_ptr) :: pp_enabled_extension_names
   end type vk_instance_create_info
@@ -86,16 +86,16 @@ module forvk
   type, bind(c) :: vk_layer_properties
     character(len = 1, kind = c_char), dimension(VK_MAX_EXTENSION_NAME_SIZE) :: layer_name
     ! uint32_t
-    integer(c_int32_t) :: spec_version
+    integer(c_int32_t) :: spec_version = 0
     ! uint32_t
-    integer(c_int32_t) :: implementation_version
+    integer(c_int32_t) :: implementation_version = 0
     character(len = 1, kind = c_char), dimension(VK_MAX_DESCRIPTION_SIZE) :: description
   end type vk_layer_properties
 
 
   type, bind(c) :: vk_debug_utils_label_ext
     ! uint32_t [VkStructureType]
-    integer(c_int32_t) :: s_type
+    integer(c_int32_t) :: s_type = 0
     ! const void *
     type(c_ptr) :: p_next
     ! const char *
@@ -106,13 +106,13 @@ module forvk
 
   type, bind(c) :: vk_debug_utils_object_name_info_ext
     ! uint32_t [VkStructureType]
-    integer(c_int32_t) :: s_type
+    integer(c_int32_t) :: s_type = 0
     ! void *
     type(c_ptr) :: p_next
     ! uint32_t [VkObjectType]
-    integer(c_int32_t) :: object_type
+    integer(c_int32_t) :: object_type = 0
     ! uint64_t
-    integer(c_int64_t) :: object_handle
+    integer(c_int64_t) :: object_handle = 0
     ! const char *
     type(c_ptr) :: p_object_name
   end type vk_debug_utils_object_name_info_ext
@@ -120,27 +120,27 @@ module forvk
 
   type, bind(c) :: vk_debug_utils_messenger_callback_data_ext
     ! int32_t [VkStructureType]
-    integer(c_int32_t) :: s_type
+    integer(c_int32_t) :: s_type = 0
     ! void *
     type(c_ptr) :: p_next
     ! uint32_t [VkDebugUtilsMessengerCallbackDataFlagsEXT]
-    integer(c_int32_t) :: flags
+    integer(c_int32_t) :: flags = 0
     ! const char *
     type(c_ptr) :: p_message_id_name
     ! int32_t
-    integer(c_int32_t) :: message_id_number
+    integer(c_int32_t) :: message_id_number = 0
     ! const char *
     type(c_ptr) :: p_message
     ! uint32_t
-    integer(c_int32_t) :: queue_label_count
+    integer(c_int32_t) :: queue_label_count = 0
     ! const VkDebugUtilsLabelEXT *
     type(c_ptr) :: p_queue_labels
     ! uint32_t
-    integer(c_int32_t) :: cmd_buf_label_count
+    integer(c_int32_t) :: cmd_buf_label_count = 0
     ! const VkDebugUtilsLabelEXT *
     type(c_ptr) :: p_cmd_buf_labels
     ! uint32_t
-    integer(c_int32_t) :: object_count
+    integer(c_int32_t) :: object_count = 0
     ! const VkDebugUtilsObjectNameInfoEXT *
     type(c_ptr) :: p_objects
   end type vk_debug_utils_messenger_callback_data_ext
@@ -148,15 +148,15 @@ module forvk
 
   type, bind(c) :: vk_debug_utils_messenger_create_info_ext
     ! int32_t [VkStructureType]
-    integer(c_int32_t) :: s_type
+    integer(c_int32_t) :: s_type = 0
     ! void *
     type(c_ptr) :: p_next
     ! uint32_t [VkDebugUtilsMessengerCreateFlagsEXT]
-    integer(c_int32_t) :: flags
+    integer(c_int32_t) :: flags = 0
     ! uint32_t [VkDebugUtilsMessageSeverityFlagsEXT]
-    integer(c_int32_t) :: message_severity
+    integer(c_int32_t) :: message_severity = 0
     ! uint32_t [VkDebugUtilsMessageTypeFlagsEXT]
-    integer(c_int32_t) :: message_type
+    integer(c_int32_t) :: message_type = 0
     ! PFN_vkDebugUtilsMessengerCallbackEXT
     type(c_funptr) :: pfn_user_callback
     ! void *
