@@ -100,6 +100,14 @@ contains
   subroutine pick_physical_device()
     implicit none
 
+    integer(c_int32_t) :: device_count
+
+    if (vk_enumerate_physical_devices(vulkan_instance, device_count, c_null_ptr) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to enumerate physical devices."
+    end if
+
+    print*,"physical devices:", device_count
+
   end subroutine pick_physical_device
 
 
