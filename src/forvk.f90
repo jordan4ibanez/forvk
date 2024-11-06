@@ -228,6 +228,20 @@ module forvk
     end function vk_get_instance_proc_addr
 
 
+    function vk_enumerate_physical_devices(instance, p_physical_device_count, p_physical_devices) result(vk_result) bind(c, name = "vkEnumeratePhysicalDevices")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkInstance
+      integer(c_int64_t), intent(in), value :: instance
+      ! uint32_t *
+      integer(c_int32_t), intent(inout) :: p_physical_device_count
+      ! VkPhysicalDevice *
+      type(c_ptr), intent(in), value :: p_physical_devices
+      integer(c_int32_t) :: vk_result
+    end function vk_enumerate_physical_devices
+
+
 !? FUNCTION BLUEPRINTS. ============================================================
 
 
