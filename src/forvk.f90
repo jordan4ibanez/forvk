@@ -158,7 +158,7 @@ module forvk
     ! uint32_t [VkDebugUtilsMessageTypeFlagsEXT]
     integer(c_int32_t) :: message_type = 0
     ! PFN_vkDebugUtilsMessengerCallbackEXT
-    type(c_funptr) :: pfn_user_callback
+    type(c_funptr) :: pfn_user_callback = c_null_funptr
     ! void *
     type(c_ptr) :: p_user_data = c_null_ptr
   end type vk_debug_utils_messenger_create_info_ext
