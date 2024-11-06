@@ -1,7 +1,7 @@
 module vulkan_driver
   use, intrinsic :: iso_c_binding
-  use :: forvk
-  use :: forvk_parameters
+  use :: forvulkan
+  use :: forvulkan_parameters
   use :: vulkan_driver_init
   use :: glfw
   use :: string_f90
