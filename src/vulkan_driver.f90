@@ -84,11 +84,19 @@ contains
 
     call setup_debug_messenger(debug_messenger_create_info, vulkan_instance, debug_messenger, DEBUG_MODE)
 
+    call pick_physical_device()
+
     ! todo: deallocate any pointers inside.
     deallocate(app_info)
     deallocate(vulkan_create_info)
 
   end subroutine init_vulkan
+
+
+  subroutine pick_physical_device()
+    implicit none
+
+  end subroutine pick_physical_device
 
 
 !* MAIN LOOP. ====================================================================
