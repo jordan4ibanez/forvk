@@ -35,6 +35,7 @@ module forvulkan
   public :: vk_physical_device_limits
   public :: vk_physical_device_sparse_properties
   public :: vk_physical_device_properties
+  public :: vk_physical_device_features
 
 
 !* TYPES. ============================c===================================
@@ -432,7 +433,122 @@ module forvulkan
   end type vk_physical_device_properties
 
 
-!* C FUNCTION INTERFACES. ===============================================================
+  !? VkPhysicalDeviceFeatures.
+  type, bind(c) :: vk_physical_device_features
+    ! VkBool32
+    integer(c_int32_t) :: robust_buffer_access
+    ! VkBool32
+    integer(c_int32_t) :: full_draw_index_uint32
+    ! VkBool32
+    integer(c_int32_t) :: image_cube_array
+    ! VkBool32
+    integer(c_int32_t) :: independent_blend
+    ! VkBool32
+    integer(c_int32_t) :: geometry_shader
+    ! VkBool32
+    integer(c_int32_t) :: tesselation_shader
+    ! VkBool32
+    integer(c_int32_t) :: sample_rate_shading
+    ! VkBool32
+    integer(c_int32_t) :: dual_src_blend
+    ! VkBool32
+    integer(c_int32_t) :: logic_op
+    ! VkBool32
+    integer(c_int32_t) :: multi_draw_indirect
+    ! VkBool32
+    integer(c_int32_t) :: draw_indirect_first_instance
+    ! VkBool32
+    integer(c_int32_t) :: depth_clamp
+    ! VkBool32
+    integer(c_int32_t) :: depth_bias_clamp
+    ! VkBool32
+    integer(c_int32_t) :: fill_mode_non_solid
+    ! VkBool32
+    integer(c_int32_t) :: depth_bounds
+    ! VkBool32
+    integer(c_int32_t) :: wide_lines
+    ! VkBool32
+    integer(c_int32_t) :: large_points
+    ! VkBool32
+    integer(c_int32_t) :: alpha_to_one
+    ! VkBool32
+    integer(c_int32_t) :: multi_view_port
+    ! VkBool32
+    integer(c_int32_t) :: sampler_anisotropy
+    ! VkBool32
+    integer(c_int32_t) :: texture_compression_etc2
+    ! VkBool32
+    integer(c_int32_t) :: texture_compression_astc_ldr
+    ! VkBool32
+    integer(c_int32_t) :: texture_compression_bc
+    ! VkBool32
+    integer(c_int32_t) :: occlusion_query_precise
+    ! VkBool32
+    integer(c_int32_t) :: pipeline_statistics_query
+    ! VkBool32
+    integer(c_int32_t) :: vertex_pipeline_stores_and_atomics
+    ! VkBool32
+    integer(c_int32_t) :: fragment_stores_and_atomics
+    ! VkBool32
+    integer(c_int32_t) :: shader_tessellation_and_geometry_point_size
+    ! VkBool32
+    integer(c_int32_t) :: shader_image_gather_extended
+    ! VkBool32
+    integer(c_int32_t) :: shader_storage_image_extended_formats
+    ! VkBool32
+    integer(c_int32_t) :: shader_storage_image_multisample
+    ! VkBool32
+    integer(c_int32_t) :: shader_storage_image_read_without_format
+    ! VkBool32
+    integer(c_int32_t) :: shader_storage_image_write_without_format
+    ! VkBool32
+    integer(c_int32_t) :: shader_uniform_buffer_array_dynamic_indexing
+    ! VkBool32
+    integer(c_int32_t) :: shader_sampled_image_array_dynamic_indexing
+    ! VkBool32
+    integer(c_int32_t) :: shader_storage_buffer_array_dynamic_indexing
+    ! VkBool32
+    integer(c_int32_t) :: shader_storage_image_array_dynamic_indexing
+    ! VkBool32
+    integer(c_int32_t) :: shader_clip_distance
+    ! VkBool32
+    integer(c_int32_t) :: shader_cull_distance
+    ! VkBool32
+    integer(c_int32_t) :: shader_float64
+    ! VkBool32
+    integer(c_int32_t) :: shader_int64
+    ! VkBool32
+    integer(c_int32_t) :: shader_int16
+    ! VkBool32
+    integer(c_int32_t) :: shader_resource_residency
+    ! VkBool32
+    integer(c_int32_t) :: shader_resource_min_lod
+    ! VkBool32
+    integer(c_int32_t) :: sparse_binding
+    ! VkBool32
+    integer(c_int32_t) :: sparse_residency_buffer
+    ! VkBool32
+    integer(c_int32_t) :: sparse_residency_image_2d
+    ! VkBool32
+    integer(c_int32_t) :: sparse_residency_image_3d
+    ! VkBool32
+    integer(c_int32_t) :: sparse_residency_2_samples
+    ! VkBool32
+    integer(c_int32_t) :: sparse_residency_4_samples
+    ! VkBool32
+    integer(c_int32_t) :: sparse_residency_8_samples
+    ! VkBool32
+    integer(c_int32_t) :: sparse_residency_16_samples
+    ! VkBool32
+    integer(c_int32_t) :: sparse_residency_aliased
+    ! VkBool32
+    integer(c_int32_t) :: variable_multisample_rate
+    ! VkBool32
+    integer(c_int32_t) :: inherited_queries
+  end type vk_physical_device_features
+
+
+!* C FUNCTION INTERFACES. ======c=========================================================
 
 
   interface
