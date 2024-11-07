@@ -1,4 +1,4 @@
-module vulkan_driver_base_creation
+module vulkan_driver_create_base
   use, intrinsic :: iso_c_binding
   use :: glfw
   use :: forvulkan_parameters
@@ -55,4 +55,4 @@ contains
   end subroutine create_app_info
 
 
-end module vulkan_driver_base_creation
+end module vulkan_driver_create_base
