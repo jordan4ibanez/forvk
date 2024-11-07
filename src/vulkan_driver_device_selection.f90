@@ -19,12 +19,8 @@ contains
     integer(c_int32_t) :: device_count, i
     ! c_int64_t [VkPhysicalDevice]
     type(vec) :: available_devices
-    ! VkPhysicalDevice
-    integer(c_int64_t) :: device
     ! VkPhysicalDevice *
     integer(c_int64_t), pointer :: device_pointer
-
-    device = 0
 
     ! First, we will get the available devices from Vulkan.
     if (vk_enumerate_physical_devices(vulkan_instance, device_count, c_null_ptr) /= VK_SUCCESS) then
@@ -37,8 +33,8 @@ contains
     end if
 
     ! Now, create the vector to store the data.
-    available_devices = new_vec(sizeof(device), int(device_count, c_int64_t))
-    call available_devices%resize(int(device_count, c_int64_t), device)
+    available_devices = new_vec(sizeof(physical_device), int(device_count, c_int64_t))
+    call available_devices%resize(int(device_count, c_int64_t), physical_device)
 
     ! Here we're passing in the underlying C array.
     if (vk_enumerate_physical_devices(vulkan_instance, device_count, available_devices%get(1_8)) /= VK_SUCCESS) then
