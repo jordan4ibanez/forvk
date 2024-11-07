@@ -2,6 +2,8 @@ module vulkan_driver
   use, intrinsic :: iso_c_binding
   use :: forvulkan
   use :: forvulkan_parameters
+  ! These are imported in the order of the steps this takes.
+  use :: vulkan_driver_base_creation
   use :: vulkan_driver_init
   use :: vulkan_driver_device_selection
   use :: glfw
