@@ -3,7 +3,7 @@ module vulkan_driver
   use :: forvulkan
   use :: forvulkan_parameters
   use :: vulkan_driver_init
-  use :: forvulkan_device_selection
+  use :: vulkan_driver_device_selection
   use :: glfw
   use :: string_f90
   use :: vector
