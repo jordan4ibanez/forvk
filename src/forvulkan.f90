@@ -40,7 +40,7 @@ module forvulkan
 !* TYPES. ============================c===================================
 
   !! NOTE: !!
-  !! typedef uint32_t VkFlags; !!
+  !! typedef uint32_t VkFlags !!
   !! vk_flags VkFlags is of type integer(c_int32_t) !!
 
 
