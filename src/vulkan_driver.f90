@@ -1,16 +1,17 @@
 module vulkan_driver
   use, intrinsic :: iso_c_binding
-  use :: forvulkan
-  use :: forvulkan_parameters
-  ! These are imported in the order of the steps this takes.
-  use :: vulkan_driver_create_base
-  use :: vulkan_driver_create_extensions
-  use :: vulkan_driver_create_validation_layers
-  use :: vulkan_driver_init
-  use :: vulkan_driver_device_selection
   use :: glfw
   use :: string_f90
   use :: vector
+  use :: forvulkan
+  use :: forvulkan_parameters
+  !? These are imported in the order of the steps this takes.
+  use :: vulkan_driver_create_base
+  use :: vulkan_driver_create_extensions
+  use :: vulkan_driver_create_validation_layers
+  use :: vulkan_driver_create_instance
+  use :: vulkan_driver_init
+  use :: vulkan_driver_device_selection
   implicit none
 
   ! https://github.com/KhronosGroup/Vulkan-Headers/blob/main/include/vulkan/vulkan_core.h
