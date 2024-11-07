@@ -3,40 +3,8 @@ module forvulkan
   use :: forvulkan_parameters
   implicit none
 
+  
   ! https://github.com/KhronosGroup/Vulkan-Headers/blob/main/include/vulkan/vulkan_core.h
-
-  private
-
-
-  !* Functions.
-
-  public :: vk_enumerate_instance_extension_properties
-  public :: vk_enumerate_instance_layer_properties
-  public :: vk_make_api_version
-  public :: vk_create_instance
-  public :: vk_destroy_instance
-  public :: vk_get_instance_proc_addr
-  public :: vk_enumerate_physical_devices
-  public :: vk_get_physical_device_properties
-  public :: vk_get_physical_device_features
-
-  public :: forvulkan_create_debug_utils_messenger_ext
-  public :: forvulkan_destroy_debug_utils_messenger_ext
-
-  !* Types.
-
-  public :: vk_extension_properties
-  public :: vk_application_info
-  public :: vk_instance_create_info
-  public :: vk_layer_properties
-  public :: vk_debug_utils_label_ext
-  public :: vk_debug_utils_object_name_info_ext
-  public :: vk_debug_utils_messenger_callback_data_ext
-  public :: vk_debug_utils_messenger_create_info_ext
-  public :: vk_physical_device_limits
-  public :: vk_physical_device_sparse_properties
-  public :: vk_physical_device_properties
-  public :: vk_physical_device_features
 
 
 !* TYPES. ============================c===================================
