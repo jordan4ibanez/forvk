@@ -155,11 +155,15 @@ contains
     integer(c_int64_t), pointer :: device_pointer
     logical(c_bool) :: suitable
     type(vk_physical_device_properties), pointer :: device_properties
+    type(vk_physical_device_features), pointer :: device_features
 
     suitable = .false.
 
     allocate(device_properties)
     call vk_get_physical_device_properties(device_pointer, c_loc(device_properties))
+
+    allocate(device_features)
+    call vk_get_physical_device_features(device_pointer, c_loc(device_features))
 
 
     suitable = .true.
