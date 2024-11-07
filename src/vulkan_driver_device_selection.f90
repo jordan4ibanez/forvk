@@ -21,6 +21,9 @@ contains
     type(vec) :: available_devices
     ! VkPhysicalDevice *
     integer(c_int64_t), pointer :: device_pointer
+    character(len = :, kind = c_char), pointer :: device_name
+
+    print"(A)","[Vulkan]: Selecting physical device."
 
     ! First, we will get the available devices from Vulkan.
     if (vk_enumerate_physical_devices(vulkan_instance, device_count, c_null_ptr) /= VK_SUCCESS) then
@@ -48,7 +51,7 @@ contains
 
       ! We found it, woo. That's our physical device.
       ! todo: Make a menu option to select another physical device.
-      if (device_is_suitable(device_pointer)) then
+      if (device_is_suitable(device_pointer, device_name)) then
         physical_device = device_pointer
         exit device_search
       end if
@@ -56,18 +59,24 @@ contains
 
     if (physical_device == VK_NULL_HANDLE) then
       error stop "[Vulkan] Error: No suitable GPU available."
+    else
+      ! todo: can put these devices in some kind of array instead of just destroying the pointers.
+      print"(A)","[Vulkan]: Using physical device ["//device_name//"]"
+      deallocate(device_name)
     end if
   end subroutine pick_physical_device
 
 
-  function device_is_suitable(device_pointer) result(suitable)
+  function device_is_suitable(device_pointer, device_name) result(suitable)
     implicit none
 
     ! VkPhysicalDevice
     integer(c_int64_t), pointer :: device_pointer
+    character(len = :, kind = c_char), intent(inout), pointer :: device_name
     logical(c_bool) :: suitable
     type(vk_physical_device_properties), pointer :: device_properties
     type(vk_physical_device_features), pointer :: device_features
+    integer(c_int32_t) :: i, device_name_length
 
     suitable = .false.
 
@@ -85,6 +94,24 @@ contains
     ! if (device_features%geometry_shader == VK_TRUE) then
     suitable = .true.
     ! end if
+
+    ! todo: this should probably just go into a string pointer map.
+    ! Get the device name length.
+    do i = 1,VK_MAX_PHYSICAL_DEVICE_NAME_SIZE
+      if (device_properties%device_name(i) == achar(0)) then
+        device_name_length = i - 1
+        exit
+      end if
+    end do
+
+    ! Now copy it over.
+    !! fixme: This is a memory leak. :D
+    allocate(character(len = device_name_length, kind = c_char) :: device_name)
+    do i = 1,device_name_length
+      device_name(i:i) = device_properties%device_name(i)
+    end do
+
+    print"(A)","[Vulkan]: Found physical device ["//device_name//"]"
 
     deallocate(device_properties)
     deallocate(device_features)
