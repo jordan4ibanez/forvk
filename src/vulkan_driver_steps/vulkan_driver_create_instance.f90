@@ -2,6 +2,7 @@ module vulkan_driver_create_instance
   use, intrinsic :: iso_c_binding
   use :: forvulkan
   use :: forvulkan_parameters
+  use :: vulkan_driver_create_debug_messenger
   use :: vector
   use :: string_f90
   implicit none
