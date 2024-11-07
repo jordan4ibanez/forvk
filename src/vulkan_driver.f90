@@ -103,6 +103,18 @@ contains
   end subroutine init_vulkan
 
 
+  function find_queue_families(device) result(indices)
+    implicit none
+
+    ! VkPhysicalDevice
+    integer(c_int64_t), intent(in), value :: device
+    type(forvulkan_queue_family_indices) :: indices
+
+    ! Sniff out those graphics queue families.
+
+
+  end function find_queue_families
+
 
 !* MAIN LOOP. ====================================================================
 
