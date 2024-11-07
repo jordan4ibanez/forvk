@@ -3,7 +3,7 @@ module forvulkan
   use :: forvulkan_parameters
   implicit none
 
-  
+
   ! https://github.com/KhronosGroup/Vulkan-Headers/blob/main/include/vulkan/vulkan_core.h
 
 
