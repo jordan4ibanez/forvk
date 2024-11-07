@@ -10,7 +10,7 @@ module vulkan_driver
   use :: vulkan_driver_create_extensions
   use :: vulkan_driver_create_validation_layers
   use :: vulkan_driver_create_instance
-  use :: vulkan_driver_init
+  use :: vulkan_driver_create_debug_messenger
   use :: vulkan_driver_device_selection
   implicit none
 
