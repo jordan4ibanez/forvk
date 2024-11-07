@@ -154,10 +154,13 @@ contains
     ! VkPhysicalDevice
     integer(c_int64_t), pointer :: device_pointer
     logical(c_bool) :: suitable
+    type(vk_physical_device_properties), pointer :: device_properties
 
     suitable = .false.
 
-    ! do things here
+    allocate(device_properties)
+    call vk_get_physical_device_properties(device_pointer, c_loc(device_properties))
+
 
     suitable = .true.
   end function device_is_suitable
