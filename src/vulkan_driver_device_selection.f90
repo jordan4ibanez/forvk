@@ -1,4 +1,4 @@
-module forvulkan_device_selection
+module vulkan_driver_device_selection
   use :: forvulkan
   use :: forvulkan_parameters
   use :: vector
@@ -96,4 +96,4 @@ contains
   end function device_is_suitable
 
 
-end module forvulkan_device_selection
+end module vulkan_driver_device_selection
