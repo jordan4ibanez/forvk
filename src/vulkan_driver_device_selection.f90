@@ -105,7 +105,7 @@ contains
     end do
 
     ! Now copy it over.
-    !! fixme: This is a memory leak. :D
+    !! fixme: This is a memory leak when we start checking multiple gpus. :D
     allocate(character(len = device_name_length, kind = c_char) :: device_name)
     do i = 1,device_name_length
       device_name(i:i) = device_properties%device_name(i)
