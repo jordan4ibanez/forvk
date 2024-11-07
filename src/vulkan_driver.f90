@@ -99,7 +99,7 @@ contains
     ! todo: deallocate any pointers inside.
     deallocate(app_info)
     deallocate(vulkan_create_info)
-
+    ! todo: destroy the vectors!
   end subroutine init_vulkan
 
 
