@@ -166,6 +166,10 @@ contains
     call vk_get_physical_device_features(device_pointer, c_loc(device_features))
 
 
+
+    deallocate(device_properties)
+    deallocate(device_features)
+
     suitable = .true.
   end function device_is_suitable
 
