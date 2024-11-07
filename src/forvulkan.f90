@@ -44,6 +44,7 @@ module forvulkan
   !! vk_flags VkFlags is of type integer(c_int32_t) !!
 
 
+  !? VkExtensionProperties.
   type, bind(c) :: vk_extension_properties
     character(len = 1, kind = c_char), dimension(VK_MAX_EXTENSION_NAME_SIZE) :: extension_name
     ! uint32_t
@@ -51,6 +52,7 @@ module forvulkan
   end type vk_extension_properties
 
 
+  !? VkApplicationInfo.
   type, bind(c) :: vk_application_info
     ! uint32_t [VkStructureType]
     integer(c_int32_t) :: s_type = 0
@@ -69,6 +71,7 @@ module forvulkan
   end type vk_application_info
 
 
+  !? VkInstanceCreateInfo.
   type, bind(c) :: vk_instance_create_info
     ! uint32_t [VkStructureType]
     integer(c_int32_t) :: s_type = 0
@@ -89,6 +92,7 @@ module forvulkan
   end type vk_instance_create_info
 
 
+  !? VkLayerProperties.
   type, bind(c) :: vk_layer_properties
     character(len = 1, kind = c_char), dimension(VK_MAX_EXTENSION_NAME_SIZE) :: layer_name
     ! uint32_t
@@ -99,6 +103,7 @@ module forvulkan
   end type vk_layer_properties
 
 
+  !? VkDebugUtilsLabelExt.
   type, bind(c) :: vk_debug_utils_label_ext
     ! uint32_t [VkStructureType]
     integer(c_int32_t) :: s_type = 0
@@ -110,6 +115,7 @@ module forvulkan
   end type vk_debug_utils_label_ext
 
 
+  !? VkDebugUtilsObjectNameInfoExt.
   type, bind(c) :: vk_debug_utils_object_name_info_ext
     ! uint32_t [VkStructureType]
     integer(c_int32_t) :: s_type = 0
@@ -124,6 +130,7 @@ module forvulkan
   end type vk_debug_utils_object_name_info_ext
 
 
+  !? VkDebugUtilsMessengerCallbackDataExt.
   type, bind(c) :: vk_debug_utils_messenger_callback_data_ext
     ! int32_t [VkStructureType]
     integer(c_int32_t) :: s_type = 0
@@ -152,6 +159,7 @@ module forvulkan
   end type vk_debug_utils_messenger_callback_data_ext
 
 
+  !? VkDebugUtilsMessengerCreateInfoExt.
   type, bind(c) :: vk_debug_utils_messenger_create_info_ext
     ! int32_t [VkStructureType]
     integer(c_int32_t) :: s_type = 0
@@ -170,6 +178,7 @@ module forvulkan
   end type vk_debug_utils_messenger_create_info_ext
 
 
+  !? VkPhysicalDeviceLimits.
   type, bind(c) :: vk_physical_device_limits
     ! uint32_t
     integer(c_int32_t) :: max_image_dimension_1d
@@ -386,6 +395,7 @@ module forvulkan
   end type vk_physical_device_limits
 
 
+  !? VkPhysicalDeviceSparseProperties.
   type, bind(c) :: vk_physical_device_sparse_properties
     ! VkBool32
     integer(c_int32_t) :: residency_standard_2d_block_shape
@@ -400,6 +410,7 @@ module forvulkan
   end type vk_physical_device_sparse_properties
 
 
+  !? VkPhysicalDeviceProperties.
   type, bind(c) :: vk_physical_device_properties
     ! uint32_t
     integer(c_int32_t) :: api_version
