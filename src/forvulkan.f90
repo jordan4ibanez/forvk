@@ -517,6 +517,15 @@ module forvulkan
   end type vk_physical_device_features
 
 
+  !? CUSTOM TYPES .===============================================================
+
+
+  type, bind(c) :: forvulkan_queue_family_indices
+    ! uint32_t
+    integer(c_int32_t) :: graphics_family
+  end type forvulkan_queue_family_indices
+
+
 !* C FUNCTION INTERFACES. ===============================================================
 
 
