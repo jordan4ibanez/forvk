@@ -165,12 +165,18 @@ contains
     allocate(device_features)
     call vk_get_physical_device_features(device_pointer, c_loc(device_features))
 
-
+    ! Check if we have the bare minimum to run with.
+    ! todo: score GPUs.
+    ! todo: device_properties%device_type == VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU .and.
+    ! todo: https://vulkan-tutorial.com/Drawing_a_triangle/Setup/Physical_devices_and_queue_families
+    ! todo: Base device suitability checks
+    if (device_features%geometry_shader == VK_TRUE) then
+      suitable = .true.
+    end if
 
     deallocate(device_properties)
     deallocate(device_features)
 
-    suitable = .true.
   end function device_is_suitable
 
 
