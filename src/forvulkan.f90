@@ -17,6 +17,7 @@ module forvulkan
   public :: vk_destroy_instance
   public :: vk_get_instance_proc_addr
   public :: vk_enumerate_physical_devices
+  public :: vk_get_physical_device_properties
 
   public :: forvulkan_create_debug_utils_messenger_ext
   public :: forvulkan_destroy_debug_utils_messenger_ext
@@ -496,6 +497,17 @@ module forvulkan
       type(c_ptr), intent(in), value :: p_physical_devices
       integer(c_int32_t) :: vk_result
     end function vk_enumerate_physical_devices
+
+
+    subroutine vk_get_physical_device_properties(physical_device, p_properties) bind(c, name = "vkGetPhysicalDeviceProperties")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkPhysicalDevice
+      integer(c_int64_t), intent(in), value :: physical_device
+      ! VkPhysicalDeviceProperties *
+      type(c_ptr), intent(in), value :: p_properties
+    end subroutine vk_get_physical_device_properties
 
 
 !? FUNCTION BLUEPRINTS. ============================================================
