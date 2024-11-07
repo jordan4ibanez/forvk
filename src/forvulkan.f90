@@ -517,7 +517,7 @@ module forvulkan
   end type vk_physical_device_features
 
 
-!* C FUNCTION INTERFACES. ======c=========================================================
+!* C FUNCTION INTERFACES. ===============================================================
 
 
   interface
