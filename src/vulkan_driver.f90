@@ -105,11 +105,25 @@ contains
 
     call create_logical_device(physical_device, logical_device, queue_index, required_validation_layers, graphics_queue, DEBUG_MODE)
 
+    call create_surface()
+
     ! todo: deallocate any pointers inside.
     deallocate(app_info)
     deallocate(vulkan_create_info)
     ! todo: destroy the vectors!
   end subroutine init_vulkan
+
+
+  subroutine create_surface()
+    implicit none
+
+    type(c_ptr) :: window_pointer
+
+    window_pointer = glfw_get_window_pointer()
+
+    print*,window_pointer
+
+  end subroutine create_surface
 
 
 
