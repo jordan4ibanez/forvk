@@ -517,6 +517,17 @@ module forvulkan
   end type vk_physical_device_features
 
 
+  !? VkExtent3D.
+  type, bind(c) :: vk_extent_3d
+    ! uint32_t
+    integer(c_int32_t) :: width
+    ! uint32_t
+    integer(c_int32_t) :: height
+    ! uint32_t
+    integer(c_int32_t) :: depth
+  end type vk_extent_3d
+
+
   !? CUSTOM TYPES .===============================================================
 
 
