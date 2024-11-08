@@ -38,6 +38,9 @@ module vulkan_driver
   ! VkQueue
   integer(c_int64_t), target :: graphics_queue = VK_NULL_HANDLE
 
+  ! VkSurfaceKHR
+  integer(c_int64_t), target :: surface = VK_NULL_HANDLE
+
   ! Controls debugging output.
   logical(c_bool), parameter :: DEBUG_MODE = .true.
 
