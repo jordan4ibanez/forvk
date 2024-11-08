@@ -102,7 +102,7 @@ contains
 
     call setup_debug_messenger(debug_messenger_create_info, vulkan_instance, debug_messenger, DEBUG_MODE)
 
-    call select_physical_device(vulkan_instance, physical_device, queue_index)
+    call select_physical_device(vulkan_instance, physical_device, queue_index, window_surface)
 
     call create_logical_device(physical_device, logical_device, queue_index, required_validation_layers, graphics_queue, DEBUG_MODE)
 

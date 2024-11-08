@@ -10,7 +10,7 @@ module vulkan_driver_device_selection
 contains
 
 
-  subroutine select_physical_device(vulkan_instance, physical_device, queue_index)
+  subroutine select_physical_device(vulkan_instance, physical_device, queue_index, window_surface)
     implicit none
 
     ! VkInstance
@@ -18,6 +18,8 @@ contains
     ! VkPhysicalDevice
     integer(c_int64_t), intent(inout) :: physical_device
     type(forvulkan_queue_family_index), intent(inout) :: queue_index
+    ! VkSurfaceKHR
+    integer(c_int64_t), intent(in), value :: window_surface
     integer(c_int32_t) :: device_count, i
     ! c_int64_t [VkPhysicalDevice]
     type(vec) :: available_devices
@@ -53,7 +55,7 @@ contains
 
       ! We found it, woo. That's our physical device.
       ! todo: Make a menu option to select another physical device.
-      if (device_is_suitable(device_pointer, device_name, queue_index)) then
+      if (device_is_suitable(device_pointer, device_name, queue_index, window_surface)) then
         physical_device = device_pointer
         exit device_search
       end if
@@ -69,13 +71,15 @@ contains
   end subroutine select_physical_device
 
 
-  function device_is_suitable(device_pointer, device_name, queue_index) result(suitable)
+  function device_is_suitable(device_pointer, device_name, queue_index, window_surface) result(suitable)
     implicit none
 
     ! VkPhysicalDevice
     integer(c_int64_t), intent(inout), pointer :: device_pointer
     character(len = :, kind = c_char), intent(inout), pointer :: device_name
     type(forvulkan_queue_family_index), intent(inout) :: queue_index
+    ! VkSurfaceKHR
+    integer(c_int64_t), intent(in), value :: window_surface
     logical(c_bool) :: suitable
     type(vk_physical_device_properties), pointer :: device_properties
     type(vk_physical_device_features), pointer :: device_features
@@ -116,7 +120,7 @@ contains
 
     print"(A)","[Vulkan]: Found physical device ["//device_name//"]"
 
-    queue_index = find_queue_families(device_pointer)
+    queue_index = find_queue_families(device_pointer, window_surface)
 
     if (queue_index%has_value) then
       print"(A)","[Vulkan]: Device has graphical queue family."
