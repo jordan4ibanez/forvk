@@ -124,11 +124,8 @@ contains
       suitable = .false.
     end if
 
-
-
     deallocate(device_properties)
     deallocate(device_features)
-
   end function device_is_suitable
 
 
