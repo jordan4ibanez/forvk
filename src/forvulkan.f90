@@ -542,6 +542,23 @@ module forvulkan
   end type vk_queue_family_properties
 
 
+  !? VkDeviceQueueCreateInfo.
+  type, bind(c) :: vk_device_queue_create_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type
+    ! const void *
+    type(c_ptr) :: p_next
+    ! uint32_t [VkDeviceQueueCreateFlags]
+    integer(c_int32_t) :: flags
+    ! uint32_t
+    integer(c_int32_t) :: queue_family_index
+    ! uint32_t
+    integer(c_int32_t) :: queue_count
+    ! const float *
+    type(c_ptr) :: p_queue_priorities
+  end type vk_device_queue_create_info
+
+
   !? CUSTOM TYPES .===============================================================
 
 
