@@ -41,6 +41,8 @@ contains
         exit
       end if
     end do
+
+    call queue_families%destroy()
   end function find_queue_families
 
 end module vulkan_driver_find_queue_families
