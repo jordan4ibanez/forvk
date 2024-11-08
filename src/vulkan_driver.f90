@@ -146,7 +146,7 @@ contains
     end if
 
     if (vk_create_device(physical_device, c_loc(device_create_info), c_null_ptr, c_loc(logical_device)) /= VK_SUCCESS) then
-
+      error stop "[Vulkan]: Failed to create logical device."
     end if
   end subroutine create_logical_device
 
@@ -169,6 +169,8 @@ contains
 
   subroutine clean_up()
     implicit none
+
+    call vk_destroy_device(logical_device, c_null_ptr)
 
     if (DEBUG_MODE) then
       call forvulkan_destroy_debug_utils_messenger_ext(vulkan_instance, debug_messenger, c_null_ptr)
