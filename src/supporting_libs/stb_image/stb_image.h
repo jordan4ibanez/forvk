@@ -1,6 +1,8 @@
-#ifndef STBI_NO_STDIO
+
+#ifndef STBI_INCLUDE_STB_IMAGE_H
+#define STBI_INCLUDE_STB_IMAGE_H
+
 #include <stdio.h>
-#endif // STBI_NO_STDIO
 
 #define STBI_VERSION 1
 
