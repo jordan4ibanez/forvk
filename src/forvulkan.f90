@@ -5,6 +5,7 @@ module forvulkan
 
 
   ! https://github.com/KhronosGroup/Vulkan-Headers/blob/main/include/vulkan/vulkan_core.h
+  ! Forvulkan is hand translated with love to ensure correctness. :D
 
 
 !* TYPES. ============================c===================================
@@ -649,6 +650,19 @@ module forvulkan
       ! VkPhysicalDeviceFeatures *
       type(c_ptr), intent(in), value :: p_features
     end subroutine vk_get_physical_device_features
+
+
+    subroutine vk_get_physical_device_queue_family_properties(physical_device, p_queue_family_property_count, p_queue_family_properties) bind(c, name = "vkGetPhysicalDeviceQueueFamilyProperties")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkPhysicalDevice
+      integer(c_int64_t), intent(in), value :: physical_device
+      ! uint32_t *
+      integer(c_int32_t), intent(inout) :: p_queue_family_property_count
+      ! VkQueueFamilyProperties *
+      type(c_ptr), intent(in), value :: p_queue_family_properties
+    end subroutine vk_get_physical_device_queue_family_properties
 
 
 !? FUNCTION BLUEPRINTS. ============================================================
