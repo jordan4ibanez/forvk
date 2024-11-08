@@ -36,6 +36,8 @@ module glfw
   public :: glfw_get_proc_address
   public :: glfw_init
   public :: glfw_terminate
+  public :: glfw_create_window_surface
+  public :: glfw_get_window_pointer
   public :: glfw_create_window
   public :: glfw_make_context_current
   public :: glfw_get_error
@@ -574,6 +576,15 @@ contains
     call internal_glfw_terminate()
     print"(A)","[GLFW]: Successfully terminated."
   end subroutine glfw_terminate
+
+
+  function glfw_get_window_pointer() result(p)
+    implicit none
+
+    type(c_ptr) :: p
+
+    p = window_pointer
+  end function glfw_get_window_pointer
 
 
   subroutine glfw_get_error()
