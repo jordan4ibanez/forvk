@@ -727,12 +727,14 @@ module forvulkan
     end function vk_create_device
 
 
-    subroutine vk_destroy_device(device, p_allocator) bind(c, name = "vkDestroyDevice")
+    subroutine vk_destroy_device(logical_device, p_allocator) bind(c, name = "vkDestroyDevice")
       use, intrinsic :: iso_c_binding
       implicit none
 
+      !? Note: I named the device more explicitly.
+
       ! VkDevice
-      integer(c_int64_t), intent(in), value :: device
+      integer(c_int64_t), intent(in), value :: logical_device
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
     end subroutine vk_destroy_device
