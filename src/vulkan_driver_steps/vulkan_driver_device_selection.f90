@@ -72,7 +72,7 @@ contains
     implicit none
 
     ! VkPhysicalDevice
-    integer(c_int64_t), pointer :: device_pointer
+    integer(c_int64_t), intent(inout), pointer :: device_pointer
     character(len = :, kind = c_char), intent(inout), pointer :: device_name
     logical(c_bool) :: suitable
     type(vk_physical_device_properties), pointer :: device_properties
