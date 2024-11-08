@@ -559,6 +559,33 @@ module forvulkan
   end type vk_device_queue_create_info
 
 
+  !? VkDeviceCreateInfo.
+  type, bind(c) :: vk_device_create_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type
+    ! const void *
+    type(c_ptr) :: p_next
+    ! uint32_t [VkDeviceCreateFlags]
+    integer(c_int32_t) :: flags
+    ! uint32
+    integer(c_int32_t) :: queue_create_info_count
+    ! const VkDeviceQueueCreateInfo *
+    type(c_ptr) :: p_queue_create_infos
+    !! enabledLayerCount is deprecated and should not be used
+    ! uint32_t
+    integer(c_int32_t) :: enabled_layer_count
+    !! ppEnabledLayerNames is deprecated and should not be used
+    ! const char* const*
+    type(c_ptr) :: pp_enabled_layer_names
+    ! uint32_t
+    integer(c_int32_t) :: enabled_extension_count
+    ! const char* const*
+    type(c_ptr) :: pp_enabled_extension_names
+    ! const VkPhysicalDeviceFeatures*
+    type(c_ptr) :: p_enabled_features
+  end type vk_device_create_info
+
+
   !? CUSTOM TYPES .===============================================================
 
 
