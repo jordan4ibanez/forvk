@@ -45,3 +45,6 @@ Let me know if it blows up, thanks.
 
 ## Note:
 MacOS will need MoltenVK. This is probably going to be a pain.
+
+## Note:
+If this ridiculous readme didn't drive you away, thanks for checking out my project :D
