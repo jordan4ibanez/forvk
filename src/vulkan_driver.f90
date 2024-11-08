@@ -31,6 +31,9 @@ module vulkan_driver
   ! VkPhysicalDevice
   integer(c_int64_t), target :: physical_device = VK_NULL_HANDLE
 
+  ! VkDevice
+  integer(c_int64_t), target :: logical_device = VK_NULL_HANDLE
+
   ! Controls debugging output.
   logical(c_bool), parameter :: DEBUG_MODE = .true.
 
