@@ -96,25 +96,11 @@ contains
 
     call pick_physical_device(vulkan_instance, physical_device)
 
-    call blah()
-
     ! todo: deallocate any pointers inside.
     deallocate(app_info)
     deallocate(vulkan_create_info)
     ! todo: destroy the vectors!
   end subroutine init_vulkan
-
-
-  subroutine blah()
-    implicit none
-
-    type(forvulkan_queue_family_index) :: a
-
-    a = find_queue_families(physical_device)
-
-  end subroutine blah
-
-
 
 
 
