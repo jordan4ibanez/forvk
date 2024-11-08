@@ -96,11 +96,23 @@ contains
 
     call pick_physical_device(vulkan_instance, physical_device)
 
+    call blah()
+
     ! todo: deallocate any pointers inside.
     deallocate(app_info)
     deallocate(vulkan_create_info)
     ! todo: destroy the vectors!
   end subroutine init_vulkan
+
+
+  subroutine blah()
+    implicit none
+
+    type(forvulkan_queue_family_indices) :: a
+
+    a = find_queue_families(physical_device)
+
+  end subroutine blah
 
 
   function find_queue_families(device) result(indices)
@@ -109,9 +121,16 @@ contains
     ! VkPhysicalDevice
     integer(c_int64_t), intent(in), value :: device
     type(forvulkan_queue_family_indices) :: indices
+    integer(c_int32_t) :: queue_family_count
+    ! VkQueueFamilyProperties
+    type(vec) :: queue_families
+    type(vk_queue_family_properties), pointer :: properties
 
     ! Sniff out those graphics queue families.
 
+    call vk_get_physical_device_queue_family_properties(device, queue_family_count, c_null_ptr)
+
+    print*,"available:", queue_family_count
 
   end function find_queue_families
 
