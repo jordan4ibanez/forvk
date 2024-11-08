@@ -545,11 +545,11 @@ module forvulkan
   !? CUSTOM TYPES .===============================================================
 
 
-  type, bind(c) :: forvulkan_queue_family_indices
+  type, bind(c) :: forvulkan_queue_family_index
     ! uint32_t
     integer(c_int32_t) :: graphics_family = 0
     logical(c_bool) :: has_value = .false.
-  end type forvulkan_queue_family_indices
+  end type forvulkan_queue_family_index
 
 
 !* C FUNCTION INTERFACES. ===============================================================
