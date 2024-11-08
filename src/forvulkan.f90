@@ -546,7 +546,8 @@ module forvulkan
 
   type, bind(c) :: forvulkan_queue_family_indices
     ! uint32_t
-    integer(c_int32_t) :: graphics_family
+    integer(c_int32_t) :: graphics_family = 0
+    logical(c_bool) :: has_value = .false.
   end type forvulkan_queue_family_indices
 
 
