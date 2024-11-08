@@ -122,10 +122,16 @@ contains
 
     queue_index = find_queue_families(device_pointer, window_surface)
 
-    if (queue_index%graphics_family_has_value) then
-      print"(A)","[Vulkan]: Device has graphical queue family."
+    if (queue_index%graphics_family_has_value .and. queue_index%present_family_has_value) then
+      print"(A)","[Vulkan]: Device has graphical queue family and present support."
     else
-      print"(A)", "[Vulkan]: Device has no graphical queue family."
+      if (.not. queue_index%graphics_family_has_value) then
+        print"(A)", "[Vulkan]: Device has no graphical queue."
+      end if
+      if (.not. queue_index%present_family_has_value) then
+        print"(A)", "[Vulkan]: Device has no present queue."
+      end if
+
       suitable = .false.
     end if
 
