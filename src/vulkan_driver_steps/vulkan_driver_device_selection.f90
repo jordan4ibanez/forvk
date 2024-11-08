@@ -126,10 +126,10 @@ contains
       print"(A)","[Vulkan]: Device has graphical queue family and present support."
     else
       if (.not. queue_index%graphics_family_has_value) then
-        print"(A)", "[Vulkan]: Device has no graphical queue."
+        print"(A)", "[Vulkan]: Device has no graphical queue family."
       end if
       if (.not. queue_index%present_family_has_value) then
-        print"(A)", "[Vulkan]: Device has no present queue."
+        print"(A)", "[Vulkan]: Device has no present queue family."
       end if
 
       suitable = .false.
