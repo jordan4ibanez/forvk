@@ -10,13 +10,14 @@ module vulkan_driver_device_selection
 contains
 
 
-  subroutine select_physical_device(vulkan_instance, physical_device)
+  subroutine select_physical_device(vulkan_instance, physical_device, queue_family)
     implicit none
 
     ! VkInstance
     integer(c_int64_t), intent(in), value :: vulkan_instance
     ! VkPhysicalDevice
     integer(c_int64_t), intent(inout) :: physical_device
+    type(forvulkan_queue_family_index), intent(inout) :: queue_family
     integer(c_int32_t) :: device_count, i
     ! c_int64_t [VkPhysicalDevice]
     type(vec) :: available_devices
@@ -52,7 +53,7 @@ contains
 
       ! We found it, woo. That's our physical device.
       ! todo: Make a menu option to select another physical device.
-      if (device_is_suitable(device_pointer, device_name)) then
+      if (device_is_suitable(device_pointer, device_name, queue_family)) then
         physical_device = device_pointer
         exit device_search
       end if
@@ -68,17 +69,17 @@ contains
   end subroutine select_physical_device
 
 
-  function device_is_suitable(device_pointer, device_name) result(suitable)
+  function device_is_suitable(device_pointer, device_name, queue_family) result(suitable)
     implicit none
 
     ! VkPhysicalDevice
     integer(c_int64_t), intent(inout), pointer :: device_pointer
     character(len = :, kind = c_char), intent(inout), pointer :: device_name
+    type(forvulkan_queue_family_index), intent(inout) :: queue_family
     logical(c_bool) :: suitable
     type(vk_physical_device_properties), pointer :: device_properties
     type(vk_physical_device_features), pointer :: device_features
     integer(c_int32_t) :: i, device_name_length
-    type(forvulkan_queue_family_index) :: queue_index
 
     suitable = .false.
 
@@ -115,9 +116,9 @@ contains
 
     print"(A)","[Vulkan]: Found physical device ["//device_name//"]"
 
-    queue_index = find_queue_families(device_pointer)
+    queue_family = find_queue_families(device_pointer)
 
-    if (queue_index%has_value) then
+    if (queue_family%has_value) then
       print"(A)","[Vulkan]: Device has graphical queue family."
     else
       print"(A)", "[Vulkan]: Device has no graphical queue family."

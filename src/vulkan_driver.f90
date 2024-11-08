@@ -95,7 +95,7 @@ contains
     ! TODO: OR, MAKE A GREEN SPACER INSIDE THE FILE TO DENOTE WHERE PHYSICAL DEVICE SELECTION STARTS.
     !! PROBABLY SHOULD DO THE SAME THING WHICH EACH STEP IN INITIALIZATION !!
 
-    call select_physical_device(vulkan_instance, physical_device)
+    call select_physical_device(vulkan_instance, physical_device, queue_family)
 
     call create_logical_device()
 
