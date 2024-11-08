@@ -406,115 +406,115 @@ module forvulkan
   !? VkPhysicalDeviceFeatures.
   type, bind(c) :: vk_physical_device_features
     ! VkBool32
-    integer(c_int32_t) :: robust_buffer_access
+    integer(c_int32_t) :: robust_buffer_access = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: full_draw_index_uint32
+    integer(c_int32_t) :: full_draw_index_uint32 = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: image_cube_array
+    integer(c_int32_t) :: image_cube_array = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: independent_blend
+    integer(c_int32_t) :: independent_blend = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: geometry_shader
+    integer(c_int32_t) :: geometry_shader = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: tesselation_shader
+    integer(c_int32_t) :: tesselation_shader = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: sample_rate_shading
+    integer(c_int32_t) :: sample_rate_shading = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: dual_src_blend
+    integer(c_int32_t) :: dual_src_blend = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: logic_op
+    integer(c_int32_t) :: logic_op = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: multi_draw_indirect
+    integer(c_int32_t) :: multi_draw_indirect = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: draw_indirect_first_instance
+    integer(c_int32_t) :: draw_indirect_first_instance = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: depth_clamp
+    integer(c_int32_t) :: depth_clamp = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: depth_bias_clamp
+    integer(c_int32_t) :: depth_bias_clamp = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: fill_mode_non_solid
+    integer(c_int32_t) :: fill_mode_non_solid = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: depth_bounds
+    integer(c_int32_t) :: depth_bounds = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: wide_lines
+    integer(c_int32_t) :: wide_lines = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: large_points
+    integer(c_int32_t) :: large_points = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: alpha_to_one
+    integer(c_int32_t) :: alpha_to_one = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: multi_view_port
+    integer(c_int32_t) :: multi_view_port = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: sampler_anisotropy
+    integer(c_int32_t) :: sampler_anisotropy = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: texture_compression_etc2
+    integer(c_int32_t) :: texture_compression_etc2 = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: texture_compression_astc_ldr
+    integer(c_int32_t) :: texture_compression_astc_ldr = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: texture_compression_bc
+    integer(c_int32_t) :: texture_compression_bc = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: occlusion_query_precise
+    integer(c_int32_t) :: occlusion_query_precise = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: pipeline_statistics_query
+    integer(c_int32_t) :: pipeline_statistics_query = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: vertex_pipeline_stores_and_atomics
+    integer(c_int32_t) :: vertex_pipeline_stores_and_atomics = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: fragment_stores_and_atomics
+    integer(c_int32_t) :: fragment_stores_and_atomics = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: shader_tessellation_and_geometry_point_size
+    integer(c_int32_t) :: shader_tessellation_and_geometry_point_size = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: shader_image_gather_extended
+    integer(c_int32_t) :: shader_image_gather_extended = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: shader_storage_image_extended_formats
+    integer(c_int32_t) :: shader_storage_image_extended_formats = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: shader_storage_image_multisample
+    integer(c_int32_t) :: shader_storage_image_multisample = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: shader_storage_image_read_without_format
+    integer(c_int32_t) :: shader_storage_image_read_without_format = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: shader_storage_image_write_without_format
+    integer(c_int32_t) :: shader_storage_image_write_without_format = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: shader_uniform_buffer_array_dynamic_indexing
+    integer(c_int32_t) :: shader_uniform_buffer_array_dynamic_indexing = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: shader_sampled_image_array_dynamic_indexing
+    integer(c_int32_t) :: shader_sampled_image_array_dynamic_indexing = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: shader_storage_buffer_array_dynamic_indexing
+    integer(c_int32_t) :: shader_storage_buffer_array_dynamic_indexing = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: shader_storage_image_array_dynamic_indexing
+    integer(c_int32_t) :: shader_storage_image_array_dynamic_indexing = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: shader_clip_distance
+    integer(c_int32_t) :: shader_clip_distance = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: shader_cull_distance
+    integer(c_int32_t) :: shader_cull_distance = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: shader_float64
+    integer(c_int32_t) :: shader_float64 = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: shader_int64
+    integer(c_int32_t) :: shader_int64 = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: shader_int16
+    integer(c_int32_t) :: shader_int16 = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: shader_resource_residency
+    integer(c_int32_t) :: shader_resource_residency = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: shader_resource_min_lod
+    integer(c_int32_t) :: shader_resource_min_lod = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: sparse_binding
+    integer(c_int32_t) :: sparse_binding = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: sparse_residency_buffer
+    integer(c_int32_t) :: sparse_residency_buffer = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: sparse_residency_image_2d
+    integer(c_int32_t) :: sparse_residency_image_2d = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: sparse_residency_image_3d
+    integer(c_int32_t) :: sparse_residency_image_3d = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: sparse_residency_2_samples
+    integer(c_int32_t) :: sparse_residency_2_samples = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: sparse_residency_4_samples
+    integer(c_int32_t) :: sparse_residency_4_samples = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: sparse_residency_8_samples
+    integer(c_int32_t) :: sparse_residency_8_samples = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: sparse_residency_16_samples
+    integer(c_int32_t) :: sparse_residency_16_samples = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: sparse_residency_aliased
+    integer(c_int32_t) :: sparse_residency_aliased = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: variable_multisample_rate
+    integer(c_int32_t) :: variable_multisample_rate = VK_FALSE
     ! VkBool32
-    integer(c_int32_t) :: inherited_queries
+    integer(c_int32_t) :: inherited_queries = VK_FALSE
   end type vk_physical_device_features
 
 
