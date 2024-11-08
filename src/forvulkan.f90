@@ -722,7 +722,7 @@ module forvulkan
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
       ! VkDevice *
-      type(c_ptr), intent(in), value :: p_device
+      type(c_ptr), intent(in), value :: p_logical_device
       integer(c_int32_t) :: vk_result
     end function vk_create_device
 
