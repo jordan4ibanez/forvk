@@ -138,8 +138,6 @@ contains
     device_create_info%enabled_extension_count = 0
 
     if (DEBUG_MODE) then
-      !! FIXME: creating a segfault.
-      print*,"val layer size:",int(required_validation_layers%size())
       device_create_info%enabled_layer_count = int(required_validation_layers%size())
       ! Passing in the underlying C array.
       device_create_info%pp_enabled_extension_names = required_validation_layers%get(1_8)
