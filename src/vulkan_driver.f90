@@ -140,7 +140,7 @@ contains
     if (DEBUG_MODE) then
       device_create_info%enabled_layer_count = int(required_validation_layers%size())
       ! Passing in the underlying C array.
-      device_create_info%pp_enabled_extension_names = required_validation_layers%get(1_8)
+      device_create_info%pp_enabled_layer_names = required_validation_layers%get(1_8)
     else
       device_create_info%enabled_layer_count = 0
     end if
