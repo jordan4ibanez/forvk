@@ -35,6 +35,9 @@ module vulkan_driver
   ! VkDevice
   integer(c_int64_t), target :: logical_device = VK_NULL_HANDLE
 
+  ! VkQueue
+  integer(c_int64_t), target :: graphics_queue = VK_NULL_HANDLE
+
   ! Controls debugging output.
   logical(c_bool), parameter :: DEBUG_MODE = .true.
 
