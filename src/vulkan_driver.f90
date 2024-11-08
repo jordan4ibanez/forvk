@@ -63,7 +63,7 @@ contains
     type(vk_debug_utils_messenger_create_info_ext), pointer :: debug_messenger_create_info
     !* Note: this will go out of scope after this. We only need it for pre-initialization.
     type(vk_debug_utils_messenger_create_info_ext) :: before_init_messenger_create_info
-    type(forvulkan_queue_family_index) :: queue_family
+    type(forvulkan_queue_family_index) :: queue_index
 
     !? This is how to get from these vectors. (char ** array underneath)
     !? do i = 1,int(validation_layers%size())
@@ -91,9 +91,9 @@ contains
 
     call setup_debug_messenger(debug_messenger_create_info, vulkan_instance, debug_messenger, DEBUG_MODE)
 
-    call select_physical_device(vulkan_instance, physical_device, queue_family)
+    call select_physical_device(vulkan_instance, physical_device, queue_index)
 
-    call create_logical_device()
+    call create_logical_device(queue_index)
 
     ! todo: deallocate any pointers inside.
     deallocate(app_info)
@@ -102,7 +102,16 @@ contains
   end subroutine init_vulkan
 
 
-  subroutine create_logical_device()
+  subroutine create_logical_device(queue_index)
+    implicit none
+
+    type(forvulkan_queue_family_index), intent(in) :: queue_index
+    type(vk_device_queue_create_info), target :: queue_create_info
+
+    queue_create_info%s_type = VK_STRUCTURE_TYPE%DEVICE%QUEUE_CREATE_INFO
+    queue_create_info%queue_family_index = queue_index%
+
+
 
 
   end subroutine create_logical_device
