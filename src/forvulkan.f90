@@ -766,6 +766,22 @@ module forvulkan
     end subroutine vk_destroy_surface_khr
 
 
+    function vk_get_physical_device_surface_support_khr(physical_device, queue_family_index, window_surface, p_supported) result(vk_result) bind(c, name = "vkGetPhysicalDeviceSurfaceSupportKHR")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkPhysicalDevice
+      integer(c_int64_t), intent(in), value :: physical_device
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: queue_family_index
+      ! VkSurfaceKHR
+      integer(c_int64_t), intent(in), value :: window_surface
+      ! VkBool32 *
+      integer(c_int32_t), intent(inout) :: p_supported
+      integer(c_int32_t) :: vk_result
+    end function vk_get_physical_device_surface_support_khr
+
+
 !? FUNCTION BLUEPRINTS. ============================================================
 
 
