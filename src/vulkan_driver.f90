@@ -11,9 +11,9 @@ module vulkan_driver
   use :: vulkan_driver_create_validation_layers
   use :: vulkan_driver_create_instance
   use :: vulkan_driver_create_debug_messenger
+  use :: vulkan_driver_create_surface
   use :: vulkan_driver_device_selection
   use :: vulkan_driver_create_logical_device
-  use :: vulkan_driver_create_surface
   implicit none
 
   ! https://github.com/KhronosGroup/Vulkan-Headers/blob/main/include/vulkan/vulkan_core.h
@@ -102,11 +102,11 @@ contains
 
     call setup_debug_messenger(debug_messenger_create_info, vulkan_instance, debug_messenger, DEBUG_MODE)
 
+    call create_surface(vulkan_instance, window_surface)
+
     call select_physical_device(vulkan_instance, physical_device, queue_index, window_surface)
 
     call create_logical_device(physical_device, logical_device, queue_index, required_validation_layers, graphics_queue, DEBUG_MODE)
-
-    call create_surface(vulkan_instance, window_surface)
 
     ! todo: deallocate any pointers inside.
     deallocate(app_info)
