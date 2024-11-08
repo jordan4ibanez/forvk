@@ -125,6 +125,7 @@ contains
     if (queue_index%graphics_family_has_value .and. queue_index%present_family_has_value) then
       print"(A)","[Vulkan]: Device has graphical queue family and present support."
     else
+      ! No if else, we want to warn about every unsupported queue family.
       if (.not. queue_index%graphics_family_has_value) then
         print"(A)", "[Vulkan]: Device has no graphical queue family."
       end if
