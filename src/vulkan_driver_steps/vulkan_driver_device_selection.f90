@@ -10,7 +10,7 @@ module vulkan_driver_device_selection
 contains
 
 
-  subroutine pick_physical_device(vulkan_instance, physical_device)
+  subroutine select_physical_device(vulkan_instance, physical_device)
     implicit none
 
     ! VkInstance
@@ -65,7 +65,7 @@ contains
       print"(A)","[Vulkan]: Using physical device ["//device_name//"]"
       deallocate(device_name)
     end if
-  end subroutine pick_physical_device
+  end subroutine select_physical_device
 
 
   function device_is_suitable(device_pointer, device_name) result(suitable)

@@ -94,7 +94,7 @@ contains
     ! TODO: OR, MAKE A GREEN SPACER INSIDE THE FILE TO DENOTE WHERE PHYSICAL DEVICE SELECTION STARTS.
     !! PROBABLY SHOULD DO THE SAME THING WHICH EACH STEP IN INITIALIZATION !!
 
-    call pick_physical_device(vulkan_instance, physical_device)
+    call select_physical_device(vulkan_instance, physical_device)
 
     ! todo: deallocate any pointers inside.
     deallocate(app_info)
