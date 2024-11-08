@@ -160,6 +160,23 @@ module forvulkan_parameters
   integer(c_int), parameter, public :: VK_ERROR_INCOMPATIBLE_SHADER_BINARY_EXT = VK_INCOMPATIBLE_SHADER_BINARY_EXT
 
 
+  !? VkQueueFlagBits. ==========================================================================
+
+
+  integer(c_int), parameter, public :: VK_QUEUE_GRAPHICS_BIT = int(z"00000001")
+  integer(c_int), parameter, public :: VK_QUEUE_COMPUTE_BIT = int(z"00000002")
+  integer(c_int), parameter, public :: VK_QUEUE_TRANSFER_BIT = int(z"00000004")
+  integer(c_int), parameter, public :: VK_QUEUE_SPARSE_BINDING_BIT = int(z"00000008")
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_QUEUE_PROTECTED_BIT = int(z"00000010")
+  ! Provided by VK_KHR_video_decode_queue
+  integer(c_int), parameter, public :: VK_QUEUE_VIDEO_DECODE_BIT_KHR = int(z"00000020")
+  ! Provided by VK_KHR_video_encode_queue
+  integer(c_int), parameter, public :: VK_QUEUE_VIDEO_ENCODE_BIT_KHR = int(z"00000040")
+  ! Provided by VK_NV_optical_flow
+  integer(c_int), parameter, public :: VK_QUEUE_OPTICAL_FLOW_BIT_NV = int(z"00000100")
+
+
   !? VkStructureType. ==========================================================================
 
 
