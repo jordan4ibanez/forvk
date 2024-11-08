@@ -2,6 +2,7 @@ module vulkan_driver_device_selection
   use :: forvulkan
   use :: forvulkan_parameters
   use :: vector
+  use :: vulkan_driver_find_queue_families
   use, intrinsic :: iso_c_binding
   implicit none
 
