@@ -107,7 +107,7 @@ contains
 
     type(forvulkan_queue_family_index), intent(in) :: queue_index
     ! const char **
-    type(vec), intent(in) :: required_validation_layers
+    type(vec), intent(inout) :: required_validation_layers
     type(vk_device_queue_create_info), target :: queue_create_info
     real(c_float), target :: queue_priority
     type(vk_physical_device_features), pointer :: device_features
@@ -134,9 +134,9 @@ contains
     device_create_info%enabled_extension_count = 0
 
     if (DEBUG_MODE) then
-
-
-
+      device_create_info%enabled_layer_count = int(required_validation_layers%size())
+      ! Passing in the underlying C array.
+      device_create_info%pp_enabled_extension_names = required_validation_layers%get(1_8)
     else
       device_create_info%enabled_layer_count = 0
     end if
