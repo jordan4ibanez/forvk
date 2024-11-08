@@ -724,6 +724,7 @@ module forvulkan
       integer(c_int32_t) :: vk_result
     end function vk_create_device
 
+
 !? FUNCTION BLUEPRINTS. ============================================================
 
 
