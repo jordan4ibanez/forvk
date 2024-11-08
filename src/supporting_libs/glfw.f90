@@ -534,7 +534,7 @@ module glfw
     end function glfw_get_required_instance_extensions
 
 
-    function glfw_create_window_surface(instance, window, allocator, surface) result(vk_result) bind(c, name = "glfwCreateWindowSurface")
+    function glfw_create_window_surface(instance, window, allocator, window_surface) result(vk_result) bind(c, name = "glfwCreateWindowSurface")
       use, intrinsic :: iso_c_binding
       implicit none
 
@@ -545,7 +545,7 @@ module glfw
       ! const VkAllocationCallbacks *
       type(c_funptr), intent(in), value :: allocator
       ! VkSurfaceKHR *
-      type(c_ptr), intent(in), value :: surface
+      integer(c_int64_t), intent(inout) :: window_surface
       integer(c_int32_t) :: vk_result
     end function glfw_create_window_surface
 
