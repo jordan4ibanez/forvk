@@ -545,44 +545,44 @@ module forvulkan
   !? VkDeviceQueueCreateInfo.
   type, bind(c) :: vk_device_queue_create_info
     ! uint32_t [VkStructureType]
-    integer(c_int32_t) :: s_type
+    integer(c_int32_t) :: s_type = 0
     ! const void *
-    type(c_ptr) :: p_next
+    type(c_ptr) :: p_next = c_null_ptr
     ! uint32_t [VkDeviceQueueCreateFlags]
-    integer(c_int32_t) :: flags
+    integer(c_int32_t) :: flags = 0
     ! uint32_t
-    integer(c_int32_t) :: queue_family_index
+    integer(c_int32_t) :: queue_family_index = 0
     ! uint32_t
-    integer(c_int32_t) :: queue_count
+    integer(c_int32_t) :: queue_count = 0
     ! const float *
-    type(c_ptr) :: p_queue_priorities
+    type(c_ptr) :: p_queue_priorities = c_null_ptr
   end type vk_device_queue_create_info
 
 
   !? VkDeviceCreateInfo.
   type, bind(c) :: vk_device_create_info
     ! uint32_t [VkStructureType]
-    integer(c_int32_t) :: s_type
+    integer(c_int32_t) :: s_type = 0
     ! const void *
-    type(c_ptr) :: p_next
+    type(c_ptr) :: p_next = c_null_ptr
     ! uint32_t [VkDeviceCreateFlags]
-    integer(c_int32_t) :: flags
+    integer(c_int32_t) :: flags = 0
     ! uint32
-    integer(c_int32_t) :: queue_create_info_count
+    integer(c_int32_t) :: queue_create_info_count = 0
     ! const VkDeviceQueueCreateInfo *
-    type(c_ptr) :: p_queue_create_infos
+    type(c_ptr) :: p_queue_create_infos = c_null_ptr
     !! enabledLayerCount is deprecated and should not be used
     ! uint32_t
-    integer(c_int32_t) :: enabled_layer_count
+    integer(c_int32_t) :: enabled_layer_count = 0
     !! ppEnabledLayerNames is deprecated and should not be used
     ! const char* const*
-    type(c_ptr) :: pp_enabled_layer_names
+    type(c_ptr) :: pp_enabled_layer_names = c_null_ptr
     ! uint32_t
-    integer(c_int32_t) :: enabled_extension_count
+    integer(c_int32_t) :: enabled_extension_count = 0
     ! const char* const*
-    type(c_ptr) :: pp_enabled_extension_names
+    type(c_ptr) :: pp_enabled_extension_names = c_null_ptr
     ! const VkPhysicalDeviceFeatures*
-    type(c_ptr) :: p_enabled_features
+    type(c_ptr) :: p_enabled_features = c_null_ptr
   end type vk_device_create_info
 
 
