@@ -124,12 +124,7 @@ contains
     if (glfw_create_window_surface(vulkan_instance, window_pointer, c_null_ptr, window_surface) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to create window surface."
     end if
-
   end subroutine create_surface
-
-
-
-
 
 
 !* MAIN LOOP. ====================================================================
@@ -149,6 +144,8 @@ contains
 
   subroutine clean_up()
     implicit none
+
+    call vk_destroy_surface_khr(vulkan_instance, window_surface, c_null_ptr)
 
     call vk_destroy_device(logical_device, c_null_ptr)
 
