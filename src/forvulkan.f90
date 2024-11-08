@@ -709,6 +709,21 @@ module forvulkan
     end subroutine vk_get_physical_device_queue_family_properties
 
 
+    function vk_create_device(physical_device, p_create_info, p_allocator, p_device) result(vk_result) bind(c, name = "vkCreateDevice")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkPhysicalDevice
+      integer(c_int64_t), intent(in), value :: physical_device
+      ! const VkDeviceCreateInfo *
+      type(c_ptr), intent(in), value :: p_create_info
+      ! const VkAllocationCallbacks *
+      type(c_ptr), intent(in), value :: p_allocator
+      ! VkDevice *
+      type(c_ptr), intent(in), value :: p_device
+      integer(c_int32_t) :: vk_result
+    end function vk_create_device
+
 !? FUNCTION BLUEPRINTS. ============================================================
 
 
