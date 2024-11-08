@@ -121,7 +121,9 @@ contains
 
     window_pointer = glfw_get_window_pointer()
 
-    print*,window_pointer
+    if (glfw_create_window_surface(vulkan_instance, window_pointer, c_null_ptr, surface) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to create window surface."
+    end if
 
   end subroutine create_surface
 
