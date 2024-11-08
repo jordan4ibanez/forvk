@@ -709,9 +709,11 @@ module forvulkan
     end subroutine vk_get_physical_device_queue_family_properties
 
 
-    function vk_create_device(physical_device, p_create_info, p_allocator, p_device) result(vk_result) bind(c, name = "vkCreateDevice")
+    function vk_create_device(physical_device, p_create_info, p_allocator, p_logical_device) result(vk_result) bind(c, name = "vkCreateDevice")
       use, intrinsic :: iso_c_binding
       implicit none
+
+      !? Note: I named the devices more explicitly.
 
       ! VkPhysicalDevice
       integer(c_int64_t), intent(in), value :: physical_device
