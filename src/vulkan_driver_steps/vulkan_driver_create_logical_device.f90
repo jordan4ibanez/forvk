@@ -9,7 +9,7 @@ module vulkan_driver_create_logical_device
 contains
 
 
-  subroutine create_logical_device(physical_device, logical_device, queue_index, required_validation_layers, DEBUG_MODE)
+  subroutine create_logical_device(physical_device, logical_device, queue_index, required_validation_layers, graphics_queue,  DEBUG_MODE)
     implicit none
 
     integer(c_int64_t), intent(in), value :: physical_device
@@ -17,6 +17,7 @@ contains
     type(forvulkan_queue_family_index), intent(in) :: queue_index
     ! const char **
     type(vec), intent(inout) :: required_validation_layers
+    integer(c_int64_t), intent(inout), target :: graphics_queue
     logical(c_bool), intent(in), value :: DEBUG_MODE
     type(vk_device_queue_create_info), pointer :: queue_create_info
     real(c_float), target :: queue_priority
