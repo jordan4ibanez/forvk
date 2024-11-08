@@ -78,6 +78,7 @@ contains
     type(vk_physical_device_properties), pointer :: device_properties
     type(vk_physical_device_features), pointer :: device_features
     integer(c_int32_t) :: i, device_name_length
+    type(forvulkan_queue_family_index) :: queue_index
 
     suitable = .false.
 
@@ -113,6 +114,17 @@ contains
     end do
 
     print"(A)","[Vulkan]: Found physical device ["//device_name//"]"
+
+    queue_index = find_queue_families(device_pointer)
+
+    if (queue_index%has_value) then
+      print"(A)","[Vulkan]: Device has graphical queue family."
+    else
+      print"(A)", "[Vulkan]: Device has no graphical queue family."
+      suitable = .false.
+    end if
+
+
 
     deallocate(device_properties)
     deallocate(device_features)
