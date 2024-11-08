@@ -107,9 +107,37 @@ contains
 
     type(forvulkan_queue_family_index), intent(in) :: queue_index
     type(vk_device_queue_create_info), target :: queue_create_info
+    real(c_float), target :: queue_priority
+    type(vk_physical_device_features), pointer :: device_features
+    type(vk_device_create_info), pointer :: device_create_info
 
     queue_create_info%s_type = VK_STRUCTURE_TYPE%DEVICE%QUEUE_CREATE_INFO
-    queue_create_info%queue_family_index = queue_index%
+    queue_create_info%queue_family_index = queue_index%graphics_family
+    queue_create_info%queue_count = 1
+
+    queue_priority = 1.0
+    queue_create_info%p_queue_priorities = c_loc(queue_priority)
+
+    allocate(device_features)
+    ! Leaving device_features at defaults for now.
+
+    allocate(device_create_info)
+
+    device_create_info%s_type = VK_STRUCTURE_TYPE%DEVICE%CREATE_INFO
+    device_create_info%p_queue_create_infos = c_loc(queue_create_info)
+    device_create_info%queue_create_info_count = 1
+    device_create_info%p_enabled_features = c_loc(device_features)
+
+
+    device_create_info%enabled_extension_count = 0
+
+    if (DEBUG_MODE) then
+
+      
+
+    else
+      device_create_info%enabled_layer_count = 0
+    end if
 
 
 
