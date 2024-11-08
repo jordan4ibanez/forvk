@@ -736,6 +736,21 @@ module forvulkan
     end subroutine vk_destroy_device
 
 
+    subroutine vk_get_device_queue(logical_device, queue_family_index, queue_index, p_queue) bind(c, name = "vkGetDeviceQueue")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkDevice
+      integer(c_int64_t), intent(in), value :: logical_device
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: queue_family_index
+      ! uint32_t
+      integer(c_int32_t), intent(in), value ::  queue_index
+      ! VkQueue *
+      integer(c_int64_t), intent(inout) :: p_queue
+    end subroutine vk_get_device_queue
+
+
 !? FUNCTION BLUEPRINTS. ============================================================
 
 
