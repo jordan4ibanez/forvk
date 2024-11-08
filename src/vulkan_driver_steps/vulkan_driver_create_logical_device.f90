@@ -58,7 +58,6 @@ contains
     end if
 
     call vk_get_device_queue(logical_device, queue_index%graphics_family, 0, graphics_queue)
-
   end subroutine create_logical_device
 
 
