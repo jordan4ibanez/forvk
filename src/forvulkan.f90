@@ -751,6 +751,19 @@ module forvulkan
     end subroutine vk_get_device_queue
 
 
+    subroutine vk_destroy_surface_khr(instance, window_surface, p_allocator) bind(c, name = "vkDestroySurfaceKHR")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkInstance
+      integer(c_int64_t), intent(in), value :: instance
+      ! VkSurfaceKHR
+      integer(c_int64_t), intent(in), value :: window_surface
+      ! const VkAllocationCallbacks *
+      type(c_funptr), intent(in), value :: p_allocator
+    end subroutine vk_destroy_surface_khr
+
+
 !? FUNCTION BLUEPRINTS. ============================================================
 
 
