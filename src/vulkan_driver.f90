@@ -39,7 +39,7 @@ module vulkan_driver
   integer(c_int64_t), target :: graphics_queue = VK_NULL_HANDLE
 
   ! VkSurfaceKHR
-  integer(c_int64_t), target :: surface = VK_NULL_HANDLE
+  integer(c_int64_t), target :: window_surface = VK_NULL_HANDLE
 
   ! Controls debugging output.
   logical(c_bool), parameter :: DEBUG_MODE = .true.
@@ -121,7 +121,7 @@ contains
 
     window_pointer = glfw_get_window_pointer()
 
-    if (glfw_create_window_surface(vulkan_instance, window_pointer, c_null_ptr, surface) /= VK_SUCCESS) then
+    if (glfw_create_window_surface(vulkan_instance, window_pointer, c_null_ptr, window_surface) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to create window surface."
     end if
 
