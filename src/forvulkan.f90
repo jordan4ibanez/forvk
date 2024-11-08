@@ -521,22 +521,22 @@ module forvulkan
   !? VkExtent3D.
   type, bind(c) :: vk_extent_3d
     ! uint32_t
-    integer(c_int32_t) :: width
+    integer(c_int32_t) :: width = 0
     ! uint32_t
-    integer(c_int32_t) :: height
+    integer(c_int32_t) :: height = 0
     ! uint32_t
-    integer(c_int32_t) :: depth
+    integer(c_int32_t) :: depth = 0
   end type vk_extent_3d
 
 
   !? VkQueueFamilyProperties.
   type, bind(c) :: vk_queue_family_properties
     ! uint32_t [VkQueueFlags]
-    integer(c_int32_t) :: queue_flags
+    integer(c_int32_t) :: queue_flags = 0
     ! uint32_t
-    integer(c_int32_t) :: queue_count
+    integer(c_int32_t) :: queue_count = 0
     ! uint32_t
-    integer(c_int32_t) :: time_stamp_valid_bits
+    integer(c_int32_t) :: time_stamp_valid_bits = 0
     ! VkExtent3D
     type(vk_extent_3d) :: min_image_transfer_granularity
   end type vk_queue_family_properties
