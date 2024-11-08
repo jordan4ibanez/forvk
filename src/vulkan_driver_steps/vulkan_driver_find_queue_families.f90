@@ -37,7 +37,8 @@ contains
 
       if (iand(properties%queue_flags, VK_QUEUE_GRAPHICS_BIT) == VK_TRUE) then
         queue_family_index%has_value = .true.
-        queue_family_index%graphics_family = i
+        ! Move it into C indexing.
+        queue_family_index%graphics_family = i - 1
         exit
       end if
     end do
