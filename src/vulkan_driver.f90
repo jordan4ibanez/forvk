@@ -13,6 +13,7 @@ module vulkan_driver
   use :: vulkan_driver_create_debug_messenger
   use :: vulkan_driver_device_selection
   use :: vulkan_driver_create_logical_device
+  use :: vulkan_driver_create_surface
   implicit none
 
   ! https://github.com/KhronosGroup/Vulkan-Headers/blob/main/include/vulkan/vulkan_core.h
@@ -105,7 +106,7 @@ contains
 
     call create_logical_device(physical_device, logical_device, queue_index, required_validation_layers, graphics_queue, DEBUG_MODE)
 
-    call create_surface()
+    call create_surface(vulkan_instance, window_surface)
 
     ! todo: deallocate any pointers inside.
     deallocate(app_info)
@@ -114,17 +115,7 @@ contains
   end subroutine init_vulkan
 
 
-  subroutine create_surface()
-    implicit none
 
-    type(c_ptr) :: window_pointer
-
-    window_pointer = glfw_get_window_pointer()
-
-    if (glfw_create_window_surface(vulkan_instance, window_pointer, c_null_ptr, window_surface) /= VK_SUCCESS) then
-      error stop "[Vulkan] Error: Failed to create window surface."
-    end if
-  end subroutine create_surface
 
 
 !* MAIN LOOP. ====================================================================
