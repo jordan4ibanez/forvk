@@ -111,10 +111,12 @@ contains
     type(forvulkan_queue_family_index), intent(in) :: queue_index
     ! const char **
     type(vec), intent(inout) :: required_validation_layers
-    type(vk_device_queue_create_info), target :: queue_create_info
+    type(vk_device_queue_create_info), pointer :: queue_create_info
     real(c_float), target :: queue_priority
     type(vk_physical_device_features), pointer :: device_features
     type(vk_device_create_info), pointer :: device_create_info
+
+    allocate(queue_create_info)
 
     queue_create_info%s_type = VK_STRUCTURE_TYPE%DEVICE%QUEUE_CREATE_INFO
     queue_create_info%queue_family_index = queue_index%graphics_family
@@ -133,10 +135,11 @@ contains
     device_create_info%queue_create_info_count = 1
     device_create_info%p_enabled_features = c_loc(device_features)
 
-
     device_create_info%enabled_extension_count = 0
 
     if (DEBUG_MODE) then
+      !! FIXME: creating a segfault.
+      print*,"val layer size:",int(required_validation_layers%size())
       device_create_info%enabled_layer_count = int(required_validation_layers%size())
       ! Passing in the underlying C array.
       device_create_info%pp_enabled_extension_names = required_validation_layers%get(1_8)
@@ -144,9 +147,9 @@ contains
       device_create_info%enabled_layer_count = 0
     end if
 
+    if (vk_create_device(physical_device, c_loc(device_create_info), c_null_ptr, c_loc(logical_device)) /= VK_SUCCESS) then
 
-
-
+    end if
   end subroutine create_logical_device
 
 
