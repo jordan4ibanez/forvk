@@ -93,7 +93,7 @@ contains
 
     call select_physical_device(vulkan_instance, physical_device, queue_index)
 
-    call create_logical_device(queue_index)
+    call create_logical_device(queue_index, required_validation_layers)
 
     ! todo: deallocate any pointers inside.
     deallocate(app_info)
@@ -102,10 +102,12 @@ contains
   end subroutine init_vulkan
 
 
-  subroutine create_logical_device(queue_index)
+  subroutine create_logical_device(queue_index, required_validation_layers)
     implicit none
 
     type(forvulkan_queue_family_index), intent(in) :: queue_index
+    ! const char **
+    type(vec), intent(in) :: required_validation_layers
     type(vk_device_queue_create_info), target :: queue_create_info
     real(c_float), target :: queue_priority
     type(vk_physical_device_features), pointer :: device_features
@@ -133,7 +135,7 @@ contains
 
     if (DEBUG_MODE) then
 
-      
+
 
     else
       device_create_info%enabled_layer_count = 0
