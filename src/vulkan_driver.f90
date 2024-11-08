@@ -74,7 +74,7 @@ contains
     type(vk_debug_utils_messenger_create_info_ext), pointer :: debug_messenger_create_info
     !* Note: this will go out of scope after this. We only need it for pre-initialization.
     type(vk_debug_utils_messenger_create_info_ext) :: before_init_messenger_create_info
-    type(forvulkan_queue_family_index) :: queue_index
+    type(forvulkan_queue_family_indices) :: queue_index
 
     !? This is how to get from these vectors. (char ** array underneath)
     !? do i = 1,int(validation_layers%size())

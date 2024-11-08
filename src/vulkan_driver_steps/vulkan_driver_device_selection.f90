@@ -17,7 +17,7 @@ contains
     integer(c_int64_t), intent(in), value :: vulkan_instance
     ! VkPhysicalDevice
     integer(c_int64_t), intent(inout) :: physical_device
-    type(forvulkan_queue_family_index), intent(inout) :: queue_index
+    type(forvulkan_queue_family_indices), intent(inout) :: queue_index
     ! VkSurfaceKHR
     integer(c_int64_t), intent(in), value :: window_surface
     integer(c_int32_t) :: device_count, i
@@ -77,7 +77,7 @@ contains
     ! VkPhysicalDevice
     integer(c_int64_t), intent(inout), pointer :: device_pointer
     character(len = :, kind = c_char), intent(inout), pointer :: device_name
-    type(forvulkan_queue_family_index), intent(inout) :: queue_index
+    type(forvulkan_queue_family_indices), intent(inout) :: queue_index
     ! VkSurfaceKHR
     integer(c_int64_t), intent(in), value :: window_surface
     logical(c_bool) :: suitable
@@ -122,7 +122,7 @@ contains
 
     queue_index = find_queue_families(device_pointer, window_surface)
 
-    if (queue_index%has_value) then
+    if (queue_index%graphics_family_has_value) then
       print"(A)","[Vulkan]: Device has graphical queue family."
     else
       print"(A)", "[Vulkan]: Device has no graphical queue family."

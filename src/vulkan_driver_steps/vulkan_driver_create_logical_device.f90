@@ -14,7 +14,7 @@ contains
 
     integer(c_int64_t), intent(in), value :: physical_device
     integer(c_int64_t), intent(inout), target :: logical_device
-    type(forvulkan_queue_family_index), intent(in) :: queue_index
+    type(forvulkan_queue_family_indices), intent(in) :: queue_index
     ! const char **
     type(vec), intent(inout) :: required_validation_layers
     integer(c_int64_t), intent(inout), target :: graphics_queue
