@@ -56,6 +56,9 @@ contains
     if (vk_create_device(physical_device, c_loc(device_create_info), c_null_ptr, c_loc(logical_device)) /= VK_SUCCESS) then
       error stop "[Vulkan]: Failed to create logical device."
     end if
+
+    call vk_get_device_queue(logical_device, queue_index%graphics_family, 0, graphics_queue)
+
   end subroutine create_logical_device
 
 
