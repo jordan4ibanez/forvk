@@ -109,7 +109,7 @@ contains
 
     call select_physical_device(vulkan_instance, physical_device, queue_indices)
 
-    call create_logical_device(physical_device, logical_device, required_validation_layers, graphics_queue, window_surface, DEBUG_MODE)
+    call create_logical_device(physical_device, logical_device, required_validation_layers, graphics_queue, present_queue, window_surface, DEBUG_MODE)
 
     ! todo: deallocate any pointers inside.
     deallocate(app_info)

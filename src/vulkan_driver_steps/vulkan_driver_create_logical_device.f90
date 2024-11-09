@@ -11,7 +11,7 @@ module vulkan_driver_create_logical_device
 contains
 
 
-  subroutine create_logical_device(physical_device, logical_device, required_validation_layers, graphics_queue, window_surface, DEBUG_MODE)
+  subroutine create_logical_device(physical_device, logical_device, required_validation_layers, graphics_queue, present_queue, window_surface, DEBUG_MODE)
     implicit none
 
     integer(c_int64_t), intent(in), value :: physical_device
@@ -19,7 +19,10 @@ contains
     ! type(forvulkan_queue_family_indices), intent(in) :: queue_indices
     ! const char **
     type(vec), intent(inout) :: required_validation_layers
+    ! VkQueue
     integer(c_int64_t), intent(inout) :: graphics_queue
+    ! VkQueue
+    integer(c_int64_t), intent(inout) :: present_queue
     ! VkSurfaceKHR
     integer(c_int64_t), intent(in), value :: window_surface
     logical(c_bool), intent(in), value :: DEBUG_MODE
@@ -75,7 +78,8 @@ contains
     end if
 
     call vk_get_device_queue(logical_device, queue_family_indices%graphics_family, 0, graphics_queue)
-    
+    call vk_get_device_queue(logical_device, queue_family_indices%present_family, 0, present_queue)
+
   end subroutine create_logical_device
 
 
