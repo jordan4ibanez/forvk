@@ -148,6 +148,7 @@ contains
     deallocate(device_features)
   end function device_is_suitable
 
+
   function check_device_extension_support(physical_device) result(has_support)
     implicit none
 
@@ -155,8 +156,31 @@ contains
     integer(c_int64_t), intent(in), value :: physical_device
     logical(c_bool) :: has_support
     integer(c_int32_t) :: extension_count
+    ! VkExtensionProperties
+    type(vec) :: available_extensions
+    type(vk_extension_properties), pointer :: extension_properties
+    integer(c_int32_t) :: i
+
+    if (vk_enumerate_device_extension_properties(physical_device, c_null_ptr, extension_count, c_null_ptr) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to enumerate device extension properties."
+    end if
+
+    print*,extension_count
+
+    allocate(extension_properties)
+    available_extensions = new_vec(sizeof(extension_properties), 0_8)
+    call available_extensions%resize(int(extension_count,c_int64_t), extension_properties)
+    deallocate(extension_properties)
+
+    do i = 1,int(available_extensions%size())
+
+    end do
 
   end function check_device_extension_support
+
+  subroutine create_required_device_extensions()
+
+  end subroutine create_required_device_extensions
 
 
 
