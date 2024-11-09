@@ -31,16 +31,16 @@ contains
     type(vk_physical_device_features), target :: device_features
     type(vec) :: queue_create_infos
     type(vk_device_create_info), pointer :: create_info
-    type(forvulkan_queue_family_indices) :: queue_family_indices
+    type(forvulkan_queue_family_indices) :: physical_queue_family_indices
     type(int32_set) :: unique_queue_families
     integer(c_int32_t) :: i
 
-    queue_family_indices = find_queue_families(physical_device, window_surface)
+    physical_queue_family_indices = find_queue_families(physical_device, window_surface)
 
     queue_create_infos = new_vec(sizeof(queue_create_info), 0_8)
 
     unique_queue_families = new_int32_set()
-    call unique_queue_families%push_array([queue_family_indices%graphics_family, queue_family_indices%present_family])
+    call unique_queue_families%push_array([physical_queue_family_indices%graphics_family, physical_queue_family_indices%present_family])
 
     do i = 1,unique_queue_families%size
       allocate(queue_priority)
@@ -78,8 +78,8 @@ contains
       error stop "[Vulkan]: Failed to create logical device."
     end if
 
-    call vk_get_device_queue(logical_device, queue_family_indices%graphics_family, 0, graphics_queue)
-    call vk_get_device_queue(logical_device, queue_family_indices%present_family, 0, present_queue)
+    call vk_get_device_queue(logical_device, physical_queue_family_indices%graphics_family, 0, graphics_queue)
+    call vk_get_device_queue(logical_device, physical_queue_family_indices%present_family, 0, present_queue)
 
   end subroutine create_logical_device
 
