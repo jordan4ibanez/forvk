@@ -58,11 +58,12 @@ contains
 
     !? Device features is left alone for now.
 
+    allocate(create_info)
+
+    create_info%s_type = VK_STRUCTURE_TYPE%DEVICE%CREATE_INFO
     create_info%queue_create_info_count = int(queue_create_infos%size())
     create_info%p_queue_create_infos = queue_create_infos%get(1_8)
-
     create_info%p_enabled_features = c_loc(device_features)
-
     create_info%enabled_extension_count = 0
 
     if (DEBUG_MODE) then
