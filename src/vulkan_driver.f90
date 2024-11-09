@@ -12,7 +12,7 @@ module vulkan_driver
   use :: vulkan_driver_create_instance
   use :: vulkan_driver_create_debug_messenger
   use :: vulkan_driver_create_surface
-  use :: vulkan_driver_physical_device_selection
+  use :: vulkan_driver_select_physical_device
   use :: vulkan_driver_create_logical_device
   implicit none
 
