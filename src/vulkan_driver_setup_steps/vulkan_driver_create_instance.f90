@@ -17,7 +17,6 @@ contains
   subroutine create_vulkan_instance(vulkan_instance, DEBUG_MODE)
     implicit none
 
-
     ! VkInstance
     integer(c_int64_t), intent(inout) :: vulkan_instance
     logical(c_bool), intent(in), value :: DEBUG_MODE
@@ -25,9 +24,10 @@ contains
     type(vk_instance_create_info), pointer :: vulkan_create_info
     ! VkApplicationInfo
     type(vk_application_info), pointer :: app_info
+    type(vk_debug_utils_messenger_create_info_ext) :: before_init_messenger_create_info
     integer(c_int) :: result
 
-    call create_vulkan_instance_create_info(vulkan_create_info, app_info, DEBUG_MODE)
+    call create_vulkan_instance_create_info(vulkan_create_info, app_info, before_init_messenger_create_info, DEBUG_MODE)
 
     print"(A)", "[Vulkan]: Creating instance."
 
