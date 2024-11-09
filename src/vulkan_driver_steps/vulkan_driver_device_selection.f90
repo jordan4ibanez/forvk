@@ -27,7 +27,6 @@ contains
     ! VkPhysicalDevice *
     integer(c_int64_t), pointer :: device_pointer
     character(len = :, kind = c_char), pointer :: device_name
-    type(int32_set) :: unique_queue_families
 
     print"(A)","[Vulkan]: Selecting physical device."
 
@@ -70,9 +69,6 @@ contains
       print"(A)","[Vulkan]: Using physical device ["//device_name//"]"
       deallocate(device_name)
     end if
-
-    unique_queue_families = new_int32_set()
-
   end subroutine select_physical_device
 
 
@@ -89,6 +85,7 @@ contains
     type(vk_physical_device_properties), pointer :: device_properties
     type(vk_physical_device_features), pointer :: device_features
     integer(c_int32_t) :: i, device_name_length
+    type(int32_set) :: unique_queue_families
 
     suitable = .false.
 
@@ -127,8 +124,14 @@ contains
 
     queue_indices = find_queue_families(device_pointer, window_surface)
 
+    ! Now, if we have all needed components, we can create the present_queue!
     if (queue_indices%graphics_family_has_value .and. queue_indices%present_family_has_value) then
       print"(A)","[Vulkan]: Device has graphical queue family and present support."
+
+      unique_queue_families = new_int32_set()
+
+      ! call unique_queue_families%push_array([])
+
     else
       ! No if else, we want to warn about every unsupported queue family.
       if (.not. queue_indices%graphics_family_has_value) then
@@ -140,6 +143,8 @@ contains
 
       suitable = .false.
     end if
+
+
 
     deallocate(device_properties)
     deallocate(device_features)
