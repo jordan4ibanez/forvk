@@ -193,6 +193,8 @@ contains
 
     end do
 
+    call required_device_extensions%destroy()
+
   end function check_device_extension_support
 
 
