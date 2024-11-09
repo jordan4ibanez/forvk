@@ -8,7 +8,7 @@ module vulkan_driver
   !? These are imported in the order of the steps this takes.
   use :: vulkan_driver_create_base
   use :: vulkan_driver_ensure_extensions_present
-  use :: vulkan_driver_create_validation_layers
+  use :: vulkan_driver_ensure_validation_layers
   use :: vulkan_driver_create_instance
   use :: vulkan_driver_create_debug_messenger
   use :: vulkan_driver_create_surface
