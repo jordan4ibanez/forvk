@@ -66,7 +66,7 @@ contains
     integer(c_int) :: result, extension_count
     type(vec) :: available_extensions_array
     type(vk_extension_properties) :: blank
-    integer(c_int) :: i, j, k, prop_length
+    integer(c_int) :: i, j
     type(c_ptr), pointer :: raw_c_ptr_ptr
     type(vk_extension_properties), pointer :: extension_properties
     character(len = :, kind = c_char), pointer :: temp_string_pointer
