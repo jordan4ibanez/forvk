@@ -6,25 +6,27 @@ module vulkan_driver_create_instance
   use :: string_f90
   use :: vulkan_driver_create_debug_messenger
   use :: vulkan_driver_create_required_extensions
+  use :: vulkan_driver_create_validation_layers
   implicit none
 
 
 contains
 
 
-  subroutine create_vulkan_instance_create_info(vulkan_create_info, app_info,required_validation_layers, before_init_messenger_create_info, DEBUG_MODE)
+  subroutine create_vulkan_instance_create_info(vulkan_create_info, app_info, before_init_messenger_create_info, DEBUG_MODE)
     implicit none
 
     type(vk_instance_create_info), intent(inout), pointer :: vulkan_create_info
     type(vk_application_info), intent(in), pointer :: app_info
-    type(vec), intent(inout) :: required_validation_layers
     type(vk_debug_utils_messenger_create_info_ext), intent(inout), target :: before_init_messenger_create_info
+    type(vec) :: required_validation_layers
     type(vec) :: required_extensions
     logical(c_bool), intent(in), value :: DEBUG_MODE
 
     print"(A)","[Vulkan]: Creating create info."
 
     call create_required_extensions(required_extensions, DEBUG_MODE)
+    call create_required_validation_layers(required_validation_layers, DEBUG_MODE)
 
     allocate(vulkan_create_info)
 

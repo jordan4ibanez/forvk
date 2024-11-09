@@ -90,7 +90,7 @@ contains
 
     call ensure_validation_layer_support(DEBUG_MODE)
 
-    call create_vulkan_instance_create_info(vulkan_create_info, app_info, required_validation_layers, before_init_messenger_create_info, DEBUG_MODE)
+    call create_vulkan_instance_create_info(vulkan_create_info, app_info, before_init_messenger_create_info, DEBUG_MODE)
 
     call create_vulkan_instance(vulkan_create_info, vulkan_instance)
 
