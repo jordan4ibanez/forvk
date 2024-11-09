@@ -28,6 +28,8 @@ contains
     ! This is done like this so we don't blow up gfortran.
     raw_c_ptr = c_loc(required_extension)
     call required_device_extensions%push_back(raw_c_ptr)
+
+    call required_device_extensions%shrink_to_fit()
   end subroutine create_required_physical_device_extensions
 
 
