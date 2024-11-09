@@ -162,8 +162,8 @@ contains
     ! character(:)
     type(vec) :: required_device_extensions
     type(vk_extension_properties), pointer :: extension_properties
-    character(len = :, kind = c_char), pointer :: required_extension
-    integer(c_int32_t) :: i, j
+    character(len = :, kind = c_char), pointer :: required_extension, extension_name
+    integer(c_int32_t) :: i, j, k, extension_name_length
     type(c_ptr), pointer :: raw_c_ptr_ptr
     logical(c_bool) :: found
 
@@ -186,7 +186,6 @@ contains
     end if
 
 
-
     ! Check we have all required device extensions.
     do i = 1,int(required_device_extensions%size())
 
@@ -200,9 +199,23 @@ contains
       do j = 1,int(available_extensions%size())
         call c_f_pointer(available_extensions%get(int(j, c_int64_t)), extension_properties)
 
+        ! Let us convert the extension name from a char array into a string.
+        do k = 1,VK_MAX_EXTENSION_NAME_SIZE
+          if (extension_properties%extension_name(k) == achar(0)) then
+            extension_name_length = k - 1
+            exit
+          end if
+        end do
+
+        allocate(character(len = extension_name_length, kind = c_char) :: extension_name)
+
+        do k = 1,extension_name_length
+
+        end do
+
+
+
         print*,extension_properties%extension_name
-
-
       end do
     end do
 
