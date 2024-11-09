@@ -44,7 +44,6 @@ contains
 
       call create_messenger_struct(before_init_messenger_create_info, DEBUG_MODE)
       vulkan_create_info%p_next = c_loc(before_init_messenger_create_info)
-
     else
       vulkan_create_info%enabled_layer_count = 0
     end if
