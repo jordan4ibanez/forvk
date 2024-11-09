@@ -8,7 +8,9 @@ module vulkan_driver_create_physical_device_extensions
 
 contains
 
-
+  ! We use this to check the physical device has everything.
+  ! Then we enable it in the logical device.
+  ! This allows for it to be passed around by using this one function
   subroutine create_required_physical_device_extensions(required_device_extensions)
     implicit none
 
