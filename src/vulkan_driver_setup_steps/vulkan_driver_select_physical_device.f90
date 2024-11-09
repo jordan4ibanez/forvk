@@ -204,12 +204,6 @@ contains
     character(len = :, kind = c_char), pointer :: required_extension
     type(c_ptr) :: raw_c_ptr
 
-
-    required_device_extensions = new_vec(sizeof(c_null_ptr), 0_8)
-
-    allocate(character(len = 32, kind = c_char) :: required_extension)
-    required_extension = "VK_KHR_SWAPCHAIN_EXTENSION_NAME"
-
     required_device_extensions = new_vec(sizeof(c_null_ptr), 0_8)
 
     allocate(character(len = 32, kind = c_char) :: required_extension)
