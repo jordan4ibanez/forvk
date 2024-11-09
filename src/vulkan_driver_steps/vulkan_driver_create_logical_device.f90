@@ -28,20 +28,23 @@ contains
     logical(c_bool), intent(in), value :: DEBUG_MODE
     type(vk_device_queue_create_info) :: logical_device_queue_create_info
     real(c_float), pointer :: queue_priority
-    type(vk_physical_device_features), target :: device_features
+    type(vk_physical_device_features), target :: physical_device_features
     type(vec) :: logical_device_queue_create_infos
     type(vk_device_create_info), pointer :: logical_device_create_info
     type(forvulkan_queue_family_indices) :: physical_queue_family_indices
     type(int32_set) :: physical_device_unique_queue_families
     integer(c_int32_t) :: i
 
+    ! Physical and logical devices can have multiple queues.
     physical_queue_family_indices = find_queue_families(physical_device, window_surface)
 
     logical_device_queue_create_infos = new_vec(sizeof(logical_device_queue_create_info), 0_8)
 
+    ! We condense them down if they overlap.
     physical_device_unique_queue_families = new_int32_set()
     call physical_device_unique_queue_families%push_array([physical_queue_family_indices%graphics_family, physical_queue_family_indices%present_family])
 
+    ! Now iterate to create the queue info.
     do i = 1,physical_device_unique_queue_families%size
       allocate(queue_priority)
       queue_priority = 1.0
@@ -56,14 +59,16 @@ contains
 
     call physical_device_unique_queue_families%destroy()
 
-    !? Device features is left alone for now.
+    !? Device features is left alone for now. I'm just putting this here to copy the C code.
+    physical_device_features = vk_physical_device_features()
 
+    ! Create the create info for the logical device.
     allocate(logical_device_create_info)
 
     logical_device_create_info%s_type = VK_STRUCTURE_TYPE%DEVICE%CREATE_INFO
     logical_device_create_info%queue_create_info_count = int(logical_device_queue_create_infos%size())
     logical_device_create_info%p_queue_create_infos = logical_device_queue_create_infos%get(1_8)
-    logical_device_create_info%p_enabled_features = c_loc(device_features)
+    logical_device_create_info%p_enabled_features = c_loc(physical_device_features)
     logical_device_create_info%enabled_extension_count = 0
 
     if (DEBUG_MODE) then
@@ -78,9 +83,9 @@ contains
       error stop "[Vulkan]: Failed to create logical device."
     end if
 
+    ! Now we can create the graphics queues so the logical devices can control the physical device queues.
     call vk_get_device_queue(logical_device, physical_queue_family_indices%graphics_family, 0, graphics_queue)
     call vk_get_device_queue(logical_device, physical_queue_family_indices%present_family, 0, present_queue)
-
   end subroutine create_logical_device
 
 
