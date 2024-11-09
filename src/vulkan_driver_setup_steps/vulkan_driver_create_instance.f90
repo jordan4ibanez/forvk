@@ -14,16 +14,20 @@ module vulkan_driver_create_instance
 contains
 
 
-  subroutine create_vulkan_instance(vulkan_instance)
+  subroutine create_vulkan_instance(vulkan_instance, DEBUG_MODE)
     implicit none
 
-    ! VkInstanceCreateInfo
-    type(vk_instance_create_info), pointer :: vulkan_create_info
+
     ! VkInstance
     integer(c_int64_t), intent(inout) :: vulkan_instance
+    logical(c_bool), intent(in), value :: DEBUG_MODE
+    ! VkInstanceCreateInfo
+    type(vk_instance_create_info), pointer :: vulkan_create_info
+    ! VkApplicationInfo
+    type(vk_application_info), pointer :: app_info
     integer(c_int) :: result
 
-    call create_vulkan_instance_create_info(vulkan_create_info, app_info, before_init_messenger_create_info, DEBUG_MODE)
+    call create_vulkan_instance_create_info(vulkan_create_info, app_info, DEBUG_MODE)
 
     print"(A)", "[Vulkan]: Creating instance."
 
@@ -70,7 +74,7 @@ contains
       vulkan_create_info%enabled_layer_count = int(required_validation_layers%size())
       vulkan_create_info%pp_enabled_layer_names = required_validation_layers%get(1_8)
 
-      call create_messenger_struct(before_init_messenger_create_info, DEBUG_MODE)
+      call create_debug_messenger_struct(before_init_messenger_create_info, DEBUG_MODE)
       vulkan_create_info%p_next = c_loc(before_init_messenger_create_info)
     else
       vulkan_create_info%enabled_layer_count = 0
