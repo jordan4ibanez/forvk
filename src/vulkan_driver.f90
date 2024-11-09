@@ -78,9 +78,6 @@ contains
     !* Note: this will go out of scope after this. We only need it for pre-initialization.
     type(vk_debug_utils_messenger_create_info_ext) :: before_init_messenger_create_info
     type(forvulkan_queue_family_indices) :: queue_indices
-    ! VkDeviceQueueCreateInfo
-    type(vec) :: queue_create_infos
-
 
     !? This is how to get from these vectors. (char ** array underneath)
     !? do i = 1,int(validation_layers%size())
@@ -110,7 +107,7 @@ contains
 
     call create_surface(vulkan_instance, window_surface)
 
-    call select_physical_device(vulkan_instance, physical_device, queue_indices, window_surface, queue_create_infos)
+    call select_physical_device(vulkan_instance, physical_device, queue_indices, window_surface)
 
     call create_logical_device(physical_device, logical_device, queue_indices, required_validation_layers, graphics_queue, DEBUG_MODE)
 

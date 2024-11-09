@@ -12,7 +12,7 @@ module vulkan_driver_select_physical_device
 contains
 
 
-  subroutine select_physical_device(vulkan_instance, physical_device, queue_indices, window_surface, queue_create_infos)
+  subroutine select_physical_device(vulkan_instance, physical_device, queue_indices, window_surface)
     implicit none
 
     ! VkInstance
@@ -22,8 +22,6 @@ contains
     type(forvulkan_queue_family_indices), intent(inout) :: queue_indices
     ! VkSurfaceKHR
     integer(c_int64_t), intent(in), value :: window_surface
-    ! VkDeviceQueueCreateInfo
-    type(vec), intent(inout) :: queue_create_infos
     integer(c_int32_t) :: device_count, i
     ! c_int64_t [VkPhysicalDevice]
     type(vec) :: available_devices
@@ -59,7 +57,7 @@ contains
 
       ! We found it, woo. That's our physical device.
       ! todo: Make a menu option to select another physical device.
-      if (device_is_suitable(device_pointer, device_name, queue_indices, window_surface, queue_create_infos)) then
+      if (device_is_suitable(device_pointer, device_name, queue_indices, window_surface)) then
         physical_device = device_pointer
         exit device_search
       end if
@@ -75,7 +73,7 @@ contains
   end subroutine select_physical_device
 
 
-  function device_is_suitable(device_pointer, device_name, queue_indices, window_surface, queue_create_infos) result(suitable)
+  function device_is_suitable(device_pointer, device_name, queue_indices, window_surface) result(suitable)
     implicit none
 
     ! VkPhysicalDevice
@@ -84,14 +82,13 @@ contains
     type(forvulkan_queue_family_indices), intent(inout) :: queue_indices
     ! VkSurfaceKHR
     integer(c_int64_t), intent(in), value :: window_surface
-    ! VkDeviceQueueCreateInfo
-    type(vec), intent(inout) :: queue_create_infos
     logical(c_bool) :: suitable
     type(vk_physical_device_properties), pointer :: device_properties
     type(vk_physical_device_features), pointer :: device_features
     integer(c_int32_t) :: i, device_name_length
     type(int32_set) :: unique_queue_families
     type(vk_device_queue_create_info) :: struct_queue_create_info
+    type(vec) :: queue_create_infos
     real(c_float), pointer :: queue_priority
 
     suitable = .false.
@@ -144,10 +141,10 @@ contains
       ! todo: move this in the parent function so we can actually destroy it.
       queue_create_infos = new_vec(sizeof(struct_queue_create_info), 0_8)
 
-      do i = 1,unique_queue_families%size
+      allocate(queue_priority)
+      queue_priority = 1.0
 
-        allocate(queue_priority)
-        queue_priority = 1.0
+      do i = 1,unique_queue_families%size
 
         struct_queue_create_info%s_type = VK_STRUCTURE_TYPE%DEVICE%QUEUE_CREATE_INFO
         struct_queue_create_info%queue_family_index = i
