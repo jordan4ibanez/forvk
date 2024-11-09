@@ -71,8 +71,6 @@ contains
     ! VkInstanceCreateInfo
     type(vk_instance_create_info), pointer :: vulkan_create_info
     ! const char **
-    type(vec) :: required_extensions
-    ! const char **
     type(vec) :: required_validation_layers
     type(vk_debug_utils_messenger_create_info_ext), pointer :: debug_messenger_create_info
     !* Note: this will go out of scope after this. We only need it for pre-initialization.
@@ -96,7 +94,7 @@ contains
 
     call ensure_validation_layer_support(required_validation_layers, DEBUG_MODE)
 
-    call create_vulkan_instance_create_info(vulkan_create_info, app_info, required_extensions, required_validation_layers, before_init_messenger_create_info, DEBUG_MODE)
+    call create_vulkan_instance_create_info(vulkan_create_info, app_info, required_validation_layers, before_init_messenger_create_info, DEBUG_MODE)
 
     call create_vulkan_instance(vulkan_create_info, vulkan_instance)
 
