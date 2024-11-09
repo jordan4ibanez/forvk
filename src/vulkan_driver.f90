@@ -70,8 +70,6 @@ contains
     type(vk_application_info), pointer :: app_info
     ! VkInstanceCreateInfo
     type(vk_instance_create_info), pointer :: vulkan_create_info
-    ! const char **
-    type(vec) :: required_validation_layers
     type(vk_debug_utils_messenger_create_info_ext), pointer :: debug_messenger_create_info
     !* Note: this will go out of scope after this. We only need it for pre-initialization.
     type(vk_debug_utils_messenger_create_info_ext) :: before_init_messenger_create_info
