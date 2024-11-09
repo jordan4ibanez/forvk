@@ -1,4 +1,4 @@
-module vulkan_driver_create_validation_layers
+module vulkan_driver_ensure_validation_layers
   use, intrinsic :: iso_c_binding
   use :: vector
   use :: forvulkan
@@ -90,4 +90,4 @@ contains
   end subroutine ensure_validation_layer_support
 
 
-end module vulkan_driver_create_validation_layers
+end module vulkan_driver_ensure_validation_layers
