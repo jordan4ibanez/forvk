@@ -2,8 +2,13 @@ module integer32_set
   use, intrinsic :: iso_c_binding
   implicit none
 
-  type :: int_set
+  ! A very smol unoptimized std::set<int32_t> library.
 
-  end type int_set
+  type :: int32_set
+    integer(c_int32_t), dimension(:), pointer :: data => null()
+
+  contains
+
+  end type int32_set
 
 end module integer32_set
