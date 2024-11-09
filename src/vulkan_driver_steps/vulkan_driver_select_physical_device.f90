@@ -2,7 +2,7 @@ module vulkan_driver_select_physical_device
   use :: forvulkan
   use :: forvulkan_parameters
   use :: vector
-  use :: vulkan_driver_find_queue_families
+
   use :: integer32_set
   use, intrinsic :: iso_c_binding
   implicit none
@@ -12,7 +12,7 @@ module vulkan_driver_select_physical_device
 contains
 
 
-  subroutine select_physical_device(vulkan_instance, physical_device, queue_indices, window_surface)
+  subroutine select_physical_device(vulkan_instance, physical_device, queue_indices)
     implicit none
 
     ! VkInstance
@@ -20,8 +20,6 @@ contains
     ! VkPhysicalDevice
     integer(c_int64_t), intent(inout) :: physical_device
     type(forvulkan_queue_family_indices), intent(inout) :: queue_indices
-    ! VkSurfaceKHR
-    integer(c_int64_t), intent(in), value :: window_surface
     integer(c_int32_t) :: device_count, i
     ! c_int64_t [VkPhysicalDevice]
     type(vec) :: available_devices
@@ -57,7 +55,7 @@ contains
 
       ! We found it, woo. That's our physical device.
       ! todo: Make a menu option to select another physical device.
-      if (device_is_suitable(device_pointer, device_name, queue_indices, window_surface)) then
+      if (device_is_suitable(device_pointer, device_name, queue_indices)) then
         physical_device = device_pointer
         exit device_search
       end if
@@ -73,23 +71,17 @@ contains
   end subroutine select_physical_device
 
 
-  function device_is_suitable(device_pointer, device_name, queue_indices, window_surface) result(suitable)
+  function device_is_suitable(device_pointer, device_name, queue_indices) result(suitable)
     implicit none
 
     ! VkPhysicalDevice
     integer(c_int64_t), intent(inout), pointer :: device_pointer
     character(len = :, kind = c_char), intent(inout), pointer :: device_name
     type(forvulkan_queue_family_indices), intent(inout) :: queue_indices
-    ! VkSurfaceKHR
-    integer(c_int64_t), intent(in), value :: window_surface
     logical(c_bool) :: suitable
     type(vk_physical_device_properties), pointer :: device_properties
     type(vk_physical_device_features), pointer :: device_features
     integer(c_int32_t) :: i, device_name_length
-    type(int32_set) :: unique_queue_families
-    type(vk_device_queue_create_info) :: struct_queue_create_info
-    type(vec) :: queue_create_infos
-    real(c_float), pointer :: queue_priority
 
     suitable = .false.
 
@@ -126,36 +118,34 @@ contains
 
     print"(A)","[Vulkan]: Found physical device ["//device_name//"]"
 
-    queue_indices = find_queue_families(device_pointer, window_surface)
-
-    ! Now, if we have all needed components, we can create the present_queue!
+    ! Now, if we have all needed components, we have our physical device!
     if (queue_indices%graphics_family_has_value .and. queue_indices%present_family_has_value) then
       print"(A)","[Vulkan]: Device has graphical queue family and present support."
 
-      ! Get only the unique queues.
-      unique_queue_families = new_int32_set()
-      call unique_queue_families%push_array([queue_indices%graphics_family, queue_indices%present_family])
+      ! ! Get only the unique queues.
+      ! unique_queue_families = new_int32_set()
+      ! call unique_queue_families%push_array([queue_indices%graphics_family, queue_indices%present_family])
 
-      ! Iterate them.
+      ! ! Iterate them.
 
-      ! todo: move this in the parent function so we can actually destroy it.
-      queue_create_infos = new_vec(sizeof(struct_queue_create_info), 0_8)
+      ! ! todo: move this in the parent function so we can actually destroy it.
+      ! queue_create_infos = new_vec(sizeof(struct_queue_create_info), 0_8)
 
-      allocate(queue_priority)
-      queue_priority = 1.0
+      ! allocate(queue_priority)
+      ! queue_priority = 1.0
 
-      do i = 1,unique_queue_families%size
+      ! do i = 1,unique_queue_families%size
 
-        struct_queue_create_info%s_type = VK_STRUCTURE_TYPE%DEVICE%QUEUE_CREATE_INFO
-        struct_queue_create_info%queue_family_index = i
-        struct_queue_create_info%queue_count = 1
-        struct_queue_create_info%p_queue_priorities = c_loc(queue_priority)
+      !   struct_queue_create_info%s_type = VK_STRUCTURE_TYPE%DEVICE%QUEUE_CREATE_INFO
+      !   struct_queue_create_info%queue_family_index = i
+      !   struct_queue_create_info%queue_count = 1
+      !   struct_queue_create_info%p_queue_priorities = c_loc(queue_priority)
 
-        ! Now push it into the vector.
-        call queue_create_infos%push_back(struct_queue_create_info)
-      end do
+      !   ! Now push it into the vector.
+      !   call queue_create_infos%push_back(struct_queue_create_info)
+      ! end do
 
-      call unique_queue_families%destroy()
+      ! call unique_queue_families%destroy()
 
     else
       ! No if else, we want to warn about every unsupported queue family.
