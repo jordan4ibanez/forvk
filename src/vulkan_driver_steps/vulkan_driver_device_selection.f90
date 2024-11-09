@@ -87,6 +87,9 @@ contains
     type(vk_physical_device_features), pointer :: device_features
     integer(c_int32_t) :: i, device_name_length
     type(int32_set) :: unique_queue_families
+    type(vk_device_queue_create_info) :: struct_queue_create_info
+    type(vec) :: queue_create_infos
+    real(c_float), pointer :: queue_priority
 
     suitable = .false.
 
@@ -129,12 +132,27 @@ contains
     if (queue_indices%graphics_family_has_value .and. queue_indices%present_family_has_value) then
       print"(A)","[Vulkan]: Device has graphical queue family and present support."
 
+      ! Get only the unique queues.
       unique_queue_families = new_int32_set()
-
       call unique_queue_families%push_array([queue_indices%graphics_family, queue_indices%present_family])
 
+      ! Iterate them.
+
+      ! todo: move this in the parent function so we can actually destroy it.
+      queue_create_infos = new_vec(sizeof(struct_queue_create_info), 0_8)
+
+      allocate(queue_priority)
+      queue_priority = 1.0
+
       do i = 1,unique_queue_families%size
-        print*,unique_queue_families%data(i)
+
+        struct_queue_create_info%s_type = VK_STRUCTURE_TYPE%DEVICE%QUEUE_CREATE_INFO
+        struct_queue_create_info%queue_family_index = i
+        struct_queue_create_info%queue_count = 1
+        struct_queue_create_info%p_queue_priorities = c_loc(queue_priority)
+
+        ! Now push it into the vector.
+        call queue_create_infos%push_back(struct_queue_create_info)
       end do
 
       call unique_queue_families%destroy()
