@@ -164,26 +164,14 @@ contains
     type(vk_extension_properties), pointer :: extension_properties
     character(len = :, kind = c_char), pointer :: required_extension
     integer(c_int32_t) :: i
-    type(c_ptr), pointer :: raw_c_ptr_ptr
-
-    type(c_ptr) :: blah
-
 
     if (vk_enumerate_device_extension_properties(physical_device, c_null_ptr, extension_count, c_null_ptr) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to enumerate device extension properties."
     end if
 
-    ! call create_required_device_extensions(required_device_extensions)
+    call create_required_device_extensions(required_device_extensions)
 
-    required_device_extensions = new_vec(sizeof(c_null_ptr), 0_8)
 
-    allocate(character(len = 32, kind = c_char) :: required_extension)
-    required_extension = "VK_KHR_SWAPCHAIN_EXTENSION_NAME"//achar(0)
-    blah = c_loc(required_extension)
-    call required_device_extensions%push_back(blah)
-    call c_f_pointer(required_device_extensions%get(1_8), raw_c_ptr_ptr)
-    required_extension => string_from_c(raw_c_ptr_ptr)
-    print*,required_extension
 
     ! print*,extension_count
 
@@ -199,21 +187,31 @@ contains
   end function check_device_extension_support
 
 
-  ! subroutine create_required_device_extensions(required_device_extensions)
-  !   implicit none
+  subroutine create_required_device_extensions(required_device_extensions)
+    implicit none
 
-  !   ! character *
-  !   type(vec), intent(inout) :: required_device_extensions
-  !   character(len = :, kind = c_char), pointer :: required_extension
+    ! character *
+    type(vec), intent(inout) :: required_device_extensions
+    character(len = :, kind = c_char), pointer :: required_extension
+    type(c_ptr) :: raw_c_ptr
+    type(c_ptr), pointer :: raw_c_ptr_ptr
 
-  !   required_device_extensions = new_vec(sizeof(c_null_ptr), 0_8)
+    required_device_extensions = new_vec(sizeof(c_null_ptr), 0_8)
 
-  !   allocate(character(len = 32, kind = c_char) :: required_extension)
-  !   required_extension = "VK_KHR_SWAPCHAIN_EXTENSION_NAME"
+    allocate(character(len = 32, kind = c_char) :: required_extension)
+    required_extension = "VK_KHR_SWAPCHAIN_EXTENSION_NAME"
 
-  !   call required_device_extensions%push_back(required_extension)
+    required_device_extensions = new_vec(sizeof(c_null_ptr), 0_8)
 
-  ! end subroutine create_required_device_extensions
+    allocate(character(len = 32, kind = c_char) :: required_extension)
+    required_extension = "VK_KHR_SWAPCHAIN_EXTENSION_NAME"//achar(0)
+    raw_c_ptr = c_loc(required_extension)
+    call required_device_extensions%push_back(raw_c_ptr)
+    call c_f_pointer(required_device_extensions%get(1_8), raw_c_ptr_ptr)
+
+    required_extension => string_from_c(raw_c_ptr_ptr)
+    print*,required_extension
+  end subroutine create_required_device_extensions
 
 
 end module vulkan_driver_select_physical_device
