@@ -85,7 +85,6 @@ contains
     logical(c_bool) :: suitable
     type(vk_physical_device_properties), pointer :: device_properties
     type(vk_physical_device_features), pointer :: device_features
-    integer(c_int32_t) :: i, device_name_length
 
     suitable = .false.
 
@@ -104,21 +103,9 @@ contains
     suitable = .true.
     ! end if
 
-    ! todo: this should probably just go into a string pointer map.
-    ! Get the device name length.
-    do i = 1,VK_MAX_PHYSICAL_DEVICE_NAME_SIZE
-      if (device_properties%device_name(i) == achar(0)) then
-        device_name_length = i - 1
-        exit
-      end if
-    end do
-
-    ! Now copy it over.
+    ! Let us convert the extension name from a char array into a string.
     !! fixme: This is a memory leak when we start checking multiple gpus. :D
-    allocate(character(len = device_name_length, kind = c_char) :: device_name)
-    do i = 1,device_name_length
-      device_name(i:i) = device_properties%device_name(i)
-    end do
+    device_name => character_array_to_string_pointer(device_properties%device_name)
 
     ! Check our queue families.
     queue_family_indices = find_queue_families(device_pointer, window_surface)
@@ -163,7 +150,7 @@ contains
     type(vec) :: required_device_extensions
     type(vk_extension_properties), pointer :: extension_properties
     character(len = :, kind = c_char), pointer :: required_extension, extension_name
-    integer(c_int32_t) :: i, j, k, extension_name_length
+    integer(c_int32_t) :: i, j
     type(c_ptr), pointer :: raw_c_ptr_ptr
     logical(c_bool) :: found
 
