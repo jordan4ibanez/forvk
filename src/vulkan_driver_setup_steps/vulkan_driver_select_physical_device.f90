@@ -208,6 +208,8 @@ contains
 
     allocate(character(len = 32, kind = c_char) :: required_extension)
     required_extension = "VK_KHR_SWAPCHAIN_EXTENSION_NAME"//achar(0)
+
+    ! This is done like this so we don't blow up gfortran.
     raw_c_ptr = c_loc(required_extension)
     call required_device_extensions%push_back(raw_c_ptr)
   end subroutine create_required_device_extensions
