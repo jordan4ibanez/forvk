@@ -129,7 +129,8 @@ contains
 
     if (.not. check_device_extension_support(device_pointer)) then
       !! FIXME: this needs to list which extension!
-      print"(A)", "[Vulkan]: Device has no extension support."
+      print"(A)", "[Vulkan]: Device is missing extension support."
+      suitable = .false.
     end if
 
     deallocate(device_properties)
