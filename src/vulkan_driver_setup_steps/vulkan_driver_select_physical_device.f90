@@ -179,12 +179,17 @@ contains
 
     allocate(extension_properties)
     available_extensions = new_vec(sizeof(extension_properties), 0_8)
-    call available_extensions%resize(int(extension_count,c_int64_t), extension_properties)
+    call available_extensions%resize(int(extension_count, c_int64_t), extension_properties)
     deallocate(extension_properties)
 
-    ! do i = 1,int(available_extensions%size())
 
-    ! end do
+    do i = 1,int(required_device_extensions%size())
+
+      ! do i = 1,int(available_extensions%size())
+
+      ! end do
+
+    end do
 
   end function check_device_extension_support
 
