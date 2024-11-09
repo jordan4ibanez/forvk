@@ -7,6 +7,7 @@ module vulkan_driver_select_physical_device
   use, intrinsic :: iso_c_binding
   implicit none
 
+  ! todo: re-tool this so we can query multiple devices and rank them.
 
 contains
 
