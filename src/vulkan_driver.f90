@@ -7,7 +7,7 @@ module vulkan_driver
   use :: forvulkan_parameters
   !? These are imported in the order of the steps this takes.
   use :: vulkan_driver_create_base
-  use :: vulkan_driver_create_extensions
+  use :: vulkan_driver_ensure_extensions_present
   use :: vulkan_driver_create_validation_layers
   use :: vulkan_driver_create_instance
   use :: vulkan_driver_create_debug_messenger
@@ -90,9 +90,7 @@ contains
 
     call create_app_info(app_info)
 
-    call create_required_extensions(required_extensions, DEBUG_MODE)
-
-    call ensure_extensions_present(required_extensions)
+    call ensure_extensions_present(DEBUG_MODE)
 
     call create_required_validation_layers(required_validation_layers, DEBUG_MODE)
 

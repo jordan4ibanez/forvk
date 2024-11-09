@@ -10,6 +10,7 @@ module vulkan_driver_create_required_extensions
 
 contains
 
+
   subroutine create_required_extensions(required_extensions, DEBUG_MODE)
     implicit none
 
