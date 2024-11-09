@@ -32,29 +32,29 @@ contains
     type(vec) :: queue_create_infos
     type(vk_device_create_info), pointer :: logical_device_create_info
     type(forvulkan_queue_family_indices) :: physical_queue_family_indices
-    type(int32_set) :: unique_queue_families
+    type(int32_set) :: physical_device_unique_queue_families
     integer(c_int32_t) :: i
 
     physical_queue_family_indices = find_queue_families(physical_device, window_surface)
 
     queue_create_infos = new_vec(sizeof(queue_create_info), 0_8)
 
-    unique_queue_families = new_int32_set()
-    call unique_queue_families%push_array([physical_queue_family_indices%graphics_family, physical_queue_family_indices%present_family])
+    physical_device_unique_queue_families = new_int32_set()
+    call physical_device_unique_queue_families%push_array([physical_queue_family_indices%graphics_family, physical_queue_family_indices%present_family])
 
-    do i = 1,unique_queue_families%size
+    do i = 1,physical_device_unique_queue_families%size
       allocate(queue_priority)
       queue_priority = 1.0
 
       queue_create_info%s_type = VK_STRUCTURE_TYPE%DEVICE%QUEUE_CREATE_INFO
-      queue_create_info%queue_family_index = unique_queue_families%data(i)
+      queue_create_info%queue_family_index = physical_device_unique_queue_families%data(i)
       queue_create_info%queue_count = 1
       queue_create_info%p_queue_priorities = c_loc(queue_priority)
 
       call queue_create_infos%push_back(queue_create_info)
     end do
 
-    call unique_queue_families%destroy()
+    call physical_device_unique_queue_families%destroy()
 
     !? Device features is left alone for now.
 
