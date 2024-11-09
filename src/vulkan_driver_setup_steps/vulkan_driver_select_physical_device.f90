@@ -154,6 +154,8 @@ contains
     type(c_ptr), pointer :: raw_c_ptr_ptr
     logical(c_bool) :: found
 
+    has_support = .false.
+
     ! First we create our required device extensions.
     call create_required_device_extensions(required_device_extensions)
 
@@ -183,14 +185,17 @@ contains
       found = .false.
 
       ! Now we need to see if we have this one in there.
-      do j = 1,int(available_extensions%size())
+      extension_search: do j = 1,int(available_extensions%size())
         call c_f_pointer(available_extensions%get(int(j, c_int64_t)), extension_properties)
 
         ! Let us convert the extension name from a char array into a string.
         extension_name => character_array_to_string_pointer(extension_properties%extension_name)
 
-        print*,extension_name
-      end do
+        if (required_extension == extension_name) then
+          found = .true.
+          exit extension_search
+        end if
+      end do extension_search
     end do
 
     !! fixme: this thing needs a GC.
