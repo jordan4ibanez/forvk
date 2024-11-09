@@ -213,6 +213,7 @@ contains
     !! fixme: this thing needs a GC.
     call required_device_extensions%destroy()
 
+    has_support = found
   end function check_device_extension_support
 
 
