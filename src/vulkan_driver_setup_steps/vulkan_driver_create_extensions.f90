@@ -1,10 +1,11 @@
-module vulkan_driver_create_extensions
+module vulkan_driver_ensure_extensions_present
   use, intrinsic :: iso_c_binding
   use :: vector
   use :: string_f90
   use :: glfw
   use :: forvulkan
   use :: forvulkan_parameters
+  use :: vulkan_driver_create_required_extensions
   implicit none
 
 
@@ -12,10 +13,11 @@ contains
 
 
 
-  subroutine ensure_extensions_present(required_extensions)
+  subroutine ensure_extensions_present(DEBUG_MODE)
     implicit none
 
-    type(vec), intent(inout) :: required_extensions
+    logical(c_bool), intent(in), value :: DEBUG_MODE
+    type(vec) :: required_extensions
     integer(c_int) :: result, extension_count
     type(vec) :: available_extensions_array
     type(vk_extension_properties) :: blank
@@ -27,6 +29,8 @@ contains
     logical(c_bool) :: found
 
     print"(A)","[Vulkan]: Gathering available extensions."
+
+    call create_required_extensions(required_extensions, DEBUG_MODE)
 
     result = vk_enumerate_instance_extension_properties(c_null_ptr, extension_count, c_null_ptr)
 
@@ -81,4 +85,4 @@ contains
   end subroutine ensure_extensions_present
 
 
-end module vulkan_driver_create_extensions
+end module vulkan_driver_ensure_extensions_present
