@@ -193,9 +193,21 @@ contains
 
         if (required_extension == extension_name) then
           found = .true.
+          deallocate(extension_name)
+          print"(A)","[Vulkan]: Found required physical device extension ["//required_extension//"]"
           exit extension_search
         end if
+
+        deallocate(extension_name)
       end do extension_search
+
+      ! Found will continue to be false or true when we're done with this loop.
+      ! If we're missing something, continue to let it be false so we can return if it has support.
+      ! If we found everything, this will always finish this loop as true.
+      if (.not. found) then
+        print"(A)","[Vulkan]: Physical device extension ["//required_extension//"] is missing."
+        exit
+      end if
     end do
 
     !! fixme: this thing needs a GC.
