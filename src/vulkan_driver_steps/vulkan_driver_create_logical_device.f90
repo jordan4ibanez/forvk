@@ -9,12 +9,12 @@ module vulkan_driver_create_logical_device
 contains
 
 
-  subroutine create_logical_device(physical_device, logical_device, queue_index, required_validation_layers, graphics_queue,  DEBUG_MODE)
+  subroutine create_logical_device(physical_device, logical_device, queue_indices, required_validation_layers, graphics_queue,  DEBUG_MODE)
     implicit none
 
     integer(c_int64_t), intent(in), value :: physical_device
     integer(c_int64_t), intent(inout), target :: logical_device
-    type(forvulkan_queue_family_indices), intent(in) :: queue_index
+    type(forvulkan_queue_family_indices), intent(in) :: queue_indices
     ! const char **
     type(vec), intent(inout) :: required_validation_layers
     integer(c_int64_t), intent(inout), target :: graphics_queue
@@ -27,7 +27,7 @@ contains
     allocate(queue_create_info)
 
     queue_create_info%s_type = VK_STRUCTURE_TYPE%DEVICE%QUEUE_CREATE_INFO
-    queue_create_info%queue_family_index = queue_index%graphics_family
+    queue_create_info%queue_family_index = queue_indices%graphics_family
     queue_create_info%queue_count = 1
 
     queue_priority = 1.0
@@ -57,7 +57,7 @@ contains
       error stop "[Vulkan]: Failed to create logical device."
     end if
 
-    call vk_get_device_queue(logical_device, queue_index%graphics_family, 0, graphics_queue)
+    call vk_get_device_queue(logical_device, queue_indices%graphics_family, 0, graphics_queue)
   end subroutine create_logical_device
 
 

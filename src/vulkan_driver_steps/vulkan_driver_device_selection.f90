@@ -11,14 +11,14 @@ module vulkan_driver_select_physical_device
 contains
 
 
-  subroutine select_physical_device(vulkan_instance, physical_device, queue_index, window_surface)
+  subroutine select_physical_device(vulkan_instance, physical_device, queue_indices, window_surface)
     implicit none
 
     ! VkInstance
     integer(c_int64_t), intent(in), value :: vulkan_instance
     ! VkPhysicalDevice
     integer(c_int64_t), intent(inout) :: physical_device
-    type(forvulkan_queue_family_indices), intent(inout) :: queue_index
+    type(forvulkan_queue_family_indices), intent(inout) :: queue_indices
     ! VkSurfaceKHR
     integer(c_int64_t), intent(in), value :: window_surface
     integer(c_int32_t) :: device_count, i
@@ -57,7 +57,7 @@ contains
 
       ! We found it, woo. That's our physical device.
       ! todo: Make a menu option to select another physical device.
-      if (device_is_suitable(device_pointer, device_name, queue_index, window_surface)) then
+      if (device_is_suitable(device_pointer, device_name, queue_indices, window_surface)) then
         physical_device = device_pointer
         exit device_search
       end if
@@ -73,7 +73,7 @@ contains
 
     unique_queue_families = new_int32_set()
 
-    call unique_queue_families%push()
+    ! call unique_queue_families%push()
 
   end subroutine select_physical_device
 
