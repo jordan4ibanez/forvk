@@ -60,6 +60,15 @@ contains
   end subroutine vulkan_run
 
 
+!? This is how to get from these vectors. (char ** array underneath)
+!? do i = 1,int(validation_layers%size())
+!   !! NOTICE: Redirecting the pointer with c_f_pointer here!
+!?   call c_f_pointer(validation_layers%get(int(i, c_int64_t)), raw_c_ptr_ptr)
+!?   required_layer => string_from_c(raw_c_ptr_ptr)
+!?   print*,required_layer
+!? end do
+
+
 !* INITIALIZATION. ====================================================================
 
 
@@ -68,14 +77,6 @@ contains
 
 
     type(vk_debug_utils_messenger_create_info_ext), pointer :: debug_messenger_create_info
-
-    !? This is how to get from these vectors. (char ** array underneath)
-    !? do i = 1,int(validation_layers%size())
-    !   !! NOTICE: Redirecting the pointer with c_f_pointer here!
-    !?   call c_f_pointer(validation_layers%get(int(i, c_int64_t)), raw_c_ptr_ptr)
-    !?   required_layer => string_from_c(raw_c_ptr_ptr)
-    !?   print*,required_layer
-    !? end do
 
     call create_glfw()
 
