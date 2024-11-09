@@ -49,7 +49,7 @@ contains
     logical(c_bool) :: found
     ! char **
     type(c_ptr), pointer :: raw_c_ptr_ptr
-    integer(c_int) :: i, j, k, available_layer_name_length
+    integer(c_int) :: i, j
     character(len = :, kind = c_char), pointer :: required_layer, temp
 
 
@@ -89,20 +89,8 @@ contains
 
         call c_f_pointer(available_layer_array%get(int(j, c_int64_t)), layer)
 
-        ! Let's get the length of that character array.
-        do k = 1,VK_MAX_EXTENSION_NAME_SIZE
-          if (layer%layer_name(k) == achar(0)) then
-            available_layer_name_length = k - 1
-            exit
-          end if
-        end do
-
-        ! Now copy the character array into a string.
-        allocate(character(len = available_layer_name_length, kind = c_char) :: temp)
-
-        do k = 1,available_layer_name_length
-          temp(k:k) = layer%layer_name(k)
-        end do
+        ! Let us convert the extension name from a char array into a string.
+        temp => character_array_to_string_pointer(layer%layer_name)
 
         ! Check if it's what we need.
         if (required_layer == temp) then
