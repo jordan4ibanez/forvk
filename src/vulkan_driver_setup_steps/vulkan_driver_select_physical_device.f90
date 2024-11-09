@@ -172,10 +172,6 @@ contains
 
     call create_required_device_extensions(required_device_extensions)
 
-    ! call c_f_pointer(required_device_extensions%get(1_8), raw_c_ptr_ptr)
-    ! required_extension => string_from_c(raw_c_ptr_ptr)
-    ! print*,required_extension
-
 
     allocate(extension_properties)
     available_extensions = new_vec(sizeof(extension_properties), 0_8)
@@ -184,6 +180,12 @@ contains
 
 
     do i = 1,int(required_device_extensions%size())
+
+      call c_f_pointer(required_device_extensions%get(int(i, c_int64_t)), raw_c_ptr_ptr)
+      required_extension => string_from_c(raw_c_ptr_ptr)
+      print*,required_extension
+
+      print*,len(required_extension)
 
       ! do i = 1,int(available_extensions%size())
 
