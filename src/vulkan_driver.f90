@@ -106,7 +106,7 @@ contains
 
     call create_surface(vulkan_instance, window_surface)
 
-    call select_physical_device(vulkan_instance, physical_device)
+    call select_physical_device(vulkan_instance, physical_device, window_surface)
 
     call create_logical_device(physical_device, logical_device, required_validation_layers, graphics_queue, present_queue, window_surface, DEBUG_MODE)
 
