@@ -27,6 +27,8 @@ contains
     type(vk_debug_utils_messenger_create_info_ext) :: before_init_messenger_create_info
     integer(c_int) :: result
 
+    call create_app_info(app_info)
+
     call create_vulkan_instance_create_info(vulkan_create_info, app_info, before_init_messenger_create_info, DEBUG_MODE)
 
     print"(A)", "[Vulkan]: Creating instance."
