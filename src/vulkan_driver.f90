@@ -67,7 +67,7 @@ contains
     implicit none
 
     ! VkApplicationInfo
-    type(vk_application_info), pointer :: app_info
+    ! type(vk_application_info), pointer :: app_info
     ! VkInstanceCreateInfo
     type(vk_instance_create_info), pointer :: vulkan_create_info
     type(vk_debug_utils_messenger_create_info_ext), pointer :: debug_messenger_create_info
