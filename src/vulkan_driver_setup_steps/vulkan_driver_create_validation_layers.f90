@@ -4,18 +4,19 @@ module vulkan_driver_create_validation_layers
   use :: forvulkan
   use :: forvulkan_parameters
   use :: string_f90
+  use :: vulkan_driver_create_validation_layers
   implicit none
 
 
 contains
 
 
-  subroutine ensure_validation_layer_support(required_validation_layers, DEBUG_MODE)
+  subroutine ensure_validation_layer_support(DEBUG_MODE)
     implicit none
 
-    ! const char *
-    type(vec), intent(inout) :: required_validation_layers
     logical(c_bool), intent(in), value :: DEBUG_MODE
+    ! const char *
+    type(vec) :: required_validation_layers
     ! VkLayerProperties
     type(vec) :: available_layer_array
     type(vk_layer_properties), pointer :: layer
@@ -25,6 +26,8 @@ contains
     type(c_ptr), pointer :: raw_c_ptr_ptr
     integer(c_int) :: i, j
     character(len = :, kind = c_char), pointer :: required_layer, temp
+
+    call create_required_validation_layers(required_validation_layers, DEBUG_MODE)
 
 
     ! If we're not in debug mode, don't bother with this.

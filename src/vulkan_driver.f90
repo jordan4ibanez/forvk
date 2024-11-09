@@ -88,9 +88,7 @@ contains
 
     call ensure_extensions_present(DEBUG_MODE)
 
-    call create_required_validation_layers(required_validation_layers, DEBUG_MODE)
-
-    call ensure_validation_layer_support(required_validation_layers, DEBUG_MODE)
+    call ensure_validation_layer_support(DEBUG_MODE)
 
     call create_vulkan_instance_create_info(vulkan_create_info, app_info, required_validation_layers, before_init_messenger_create_info, DEBUG_MODE)
 
