@@ -5,6 +5,7 @@ module vulkan_driver_create_logical_device
   use :: vulkan_driver_find_queue_families
   use :: vector
   use :: integer32_set
+  use :: vulkan_driver_create_physical_device_extensions
   implicit none
 
 
@@ -34,6 +35,7 @@ contains
     type(forvulkan_queue_family_indices) :: physical_queue_family_indices
     type(int32_set) :: physical_device_unique_queue_families
     integer(c_int32_t) :: i
+    type(vec) :: required_physical_device_extensions
 
     ! Physical and logical devices can have multiple queues.
     physical_queue_family_indices = find_queue_families(physical_device, window_surface)
@@ -63,13 +65,17 @@ contains
     physical_device_features = vk_physical_device_features()
 
     ! Create the create info for the logical device.
+
+    call create_required_physical_device_extensions(required_physical_device_extensions)
+
     allocate(logical_device_create_info)
 
     logical_device_create_info%s_type = VK_STRUCTURE_TYPE%DEVICE%CREATE_INFO
     logical_device_create_info%queue_create_info_count = int(logical_device_queue_create_infos%size())
     logical_device_create_info%p_queue_create_infos = logical_device_queue_create_infos%get(1_8)
     logical_device_create_info%p_enabled_features = c_loc(physical_device_features)
-    logical_device_create_info%enabled_extension_count = 0
+    logical_device_create_info%enabled_extension_count = int(required_physical_device_extensions%size())
+    logical_device_create_info%pp_enabled_extension_names = required_physical_device_extensions%get(1_8)
 
     if (DEBUG_MODE) then
       logical_device_create_info%enabled_layer_count = int(required_validation_layers%size())
