@@ -77,7 +77,7 @@ contains
     type(vk_debug_utils_messenger_create_info_ext), pointer :: debug_messenger_create_info
     !* Note: this will go out of scope after this. We only need it for pre-initialization.
     type(vk_debug_utils_messenger_create_info_ext) :: before_init_messenger_create_info
-    type(forvulkan_queue_family_indices) :: queue_index
+    type(forvulkan_queue_family_indices) :: queue_indices
 
     !? This is how to get from these vectors. (char ** array underneath)
     !? do i = 1,int(validation_layers%size())
@@ -107,9 +107,9 @@ contains
 
     call create_surface(vulkan_instance, window_surface)
 
-    call select_physical_device(vulkan_instance, physical_device, queue_index, window_surface)
+    call select_physical_device(vulkan_instance, physical_device, queue_indices, window_surface)
 
-    call create_logical_device(physical_device, logical_device, queue_index, required_validation_layers, graphics_queue, DEBUG_MODE)
+    call create_logical_device(physical_device, logical_device, queue_indices, required_validation_layers, graphics_queue, DEBUG_MODE)
 
     ! todo: deallocate any pointers inside.
     deallocate(app_info)

@@ -3,6 +3,7 @@ module vulkan_driver_select_physical_device
   use :: forvulkan_parameters
   use :: vector
   use :: vulkan_driver_find_queue_families
+  use :: integer32_set
   use, intrinsic :: iso_c_binding
   implicit none
 
@@ -26,6 +27,7 @@ contains
     ! VkPhysicalDevice *
     integer(c_int64_t), pointer :: device_pointer
     character(len = :, kind = c_char), pointer :: device_name
+    type(int32_set) :: unique_queue_families
 
     print"(A)","[Vulkan]: Selecting physical device."
 
@@ -68,16 +70,21 @@ contains
       print"(A)","[Vulkan]: Using physical device ["//device_name//"]"
       deallocate(device_name)
     end if
+
+    unique_queue_families = new_int32_set()
+
+    call unique_queue_families%push()
+
   end subroutine select_physical_device
 
 
-  function device_is_suitable(device_pointer, device_name, queue_index, window_surface) result(suitable)
+  function device_is_suitable(device_pointer, device_name, queue_indices, window_surface) result(suitable)
     implicit none
 
     ! VkPhysicalDevice
     integer(c_int64_t), intent(inout), pointer :: device_pointer
     character(len = :, kind = c_char), intent(inout), pointer :: device_name
-    type(forvulkan_queue_family_indices), intent(inout) :: queue_index
+    type(forvulkan_queue_family_indices), intent(inout) :: queue_indices
     ! VkSurfaceKHR
     integer(c_int64_t), intent(in), value :: window_surface
     logical(c_bool) :: suitable
@@ -120,16 +127,16 @@ contains
 
     print"(A)","[Vulkan]: Found physical device ["//device_name//"]"
 
-    queue_index = find_queue_families(device_pointer, window_surface)
+    queue_indices = find_queue_families(device_pointer, window_surface)
 
-    if (queue_index%graphics_family_has_value .and. queue_index%present_family_has_value) then
+    if (queue_indices%graphics_family_has_value .and. queue_indices%present_family_has_value) then
       print"(A)","[Vulkan]: Device has graphical queue family and present support."
     else
       ! No if else, we want to warn about every unsupported queue family.
-      if (.not. queue_index%graphics_family_has_value) then
+      if (.not. queue_indices%graphics_family_has_value) then
         print"(A)", "[Vulkan]: Device has no graphical queue family."
       end if
-      if (.not. queue_index%present_family_has_value) then
+      if (.not. queue_indices%present_family_has_value) then
         print"(A)", "[Vulkan]: Device has no present queue family."
       end if
 

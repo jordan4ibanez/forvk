@@ -9,14 +9,14 @@ module vulkan_driver_find_queue_families
 contains
 
 
-  function find_queue_families(device, window_surface) result(queue_family_index)
+  function find_queue_families(device, window_surface) result(queue_family_indices)
     implicit none
 
     ! VkPhysicalDevice
     integer(c_int64_t), intent(in), value :: device
     ! VkSurfaceKHR
     integer(c_int64_t), intent(in), value :: window_surface
-    type(forvulkan_queue_family_indices) :: queue_family_index
+    type(forvulkan_queue_family_indices) :: queue_family_indices
     integer(c_int32_t) :: queue_family_count, i, present_support
     ! VkQueueFamilyProperties
     type(vec) :: queue_families
@@ -38,10 +38,10 @@ contains
       call c_f_pointer(queue_families%get(int(i, c_int64_t)), properties)
 
       ! Check if we can do graphics on this queue.
-      if (.not. queue_family_index%graphics_family_has_value .and. iand(properties%queue_flags, VK_QUEUE_GRAPHICS_BIT) == VK_TRUE) then
+      if (.not. queue_family_indices%graphics_family_has_value .and. iand(properties%queue_flags, VK_QUEUE_GRAPHICS_BIT) == VK_TRUE) then
         ! Move it into C indexing.
-        queue_family_index%graphics_family = i - 1
-        queue_family_index%graphics_family_has_value = .true.
+        queue_family_indices%graphics_family = i - 1
+        queue_family_indices%graphics_family_has_value = .true.
       end if
 
       ! Check if we can actually present on this queue.
@@ -49,14 +49,14 @@ contains
         error stop "[Vulkan] Error: Failed to get physical device surface support."
       end if
 
-      if (.not. queue_family_index%present_family_has_value .and. present_support == VK_TRUE) then
+      if (.not. queue_family_indices%present_family_has_value .and. present_support == VK_TRUE) then
         ! Move it into C indexing.
-        queue_family_index%present_family = i - 1
-        queue_family_index%present_family_has_value = .true.
+        queue_family_indices%present_family = i - 1
+        queue_family_indices%present_family_has_value = .true.
       end if
 
       ! Now if we have graphics, and we have present support, we found it.
-      if (queue_family_index%graphics_family_has_value .and. queue_family_index%present_family_has_value) then
+      if (queue_family_indices%graphics_family_has_value .and. queue_family_indices%present_family_has_value) then
         exit
       end if
     end do
