@@ -80,7 +80,7 @@ contains
     character(len = :, kind = c_char), intent(inout), pointer :: device_name
     ! VkSurfaceKHR
     integer(c_int64_t), intent(in), value :: window_surface
-    type(forvulkan_queue_family_indices) :: queue_indices
+    type(forvulkan_queue_family_indices) :: queue_family_indices
     logical(c_bool) :: suitable
     type(vk_physical_device_properties), pointer :: device_properties
     type(vk_physical_device_features), pointer :: device_features
@@ -119,19 +119,20 @@ contains
       device_name(i:i) = device_properties%device_name(i)
     end do
 
-    queue_indices = find_queue_families(device_pointer, window_surface)
+    ! Check our queue families.
+    queue_family_indices = find_queue_families(device_pointer, window_surface)
 
     print"(A)","[Vulkan]: Found physical device ["//device_name//"]"
 
     ! Now, if we have all needed components, we have our physical device!
-    if (queue_indices%graphics_family_has_value .and. queue_indices%present_family_has_value) then
+    if (queue_family_indices%graphics_family_has_value .and. queue_family_indices%present_family_has_value) then
       print"(A)","[Vulkan]: Device has graphical queue family and present support."
     else
       ! No if else, we want to warn about every unsupported queue family.
-      if (.not. queue_indices%graphics_family_has_value) then
+      if (.not. queue_family_indices%graphics_family_has_value) then
         print"(A)", "[Vulkan]: Device has no graphical queue family."
       end if
-      if (.not. queue_indices%present_family_has_value) then
+      if (.not. queue_family_indices%present_family_has_value) then
         print"(A)", "[Vulkan]: Device has no present queue family."
       end if
 
