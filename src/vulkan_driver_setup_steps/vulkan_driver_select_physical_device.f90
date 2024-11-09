@@ -163,34 +163,47 @@ contains
     type(vec) :: required_device_extensions
     type(vk_extension_properties), pointer :: extension_properties
     character(len = :, kind = c_char), pointer :: required_extension
-    integer(c_int32_t) :: i
+    integer(c_int32_t) :: i, j
     type(c_ptr), pointer :: raw_c_ptr_ptr
+    logical(c_bool) :: found
 
+    ! First we create our required device extensions.
+    call create_required_device_extensions(required_device_extensions)
+
+    ! Now, let us store the vector of available device extensions.
     if (vk_enumerate_device_extension_properties(physical_device, c_null_ptr, extension_count, c_null_ptr) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to enumerate device extension properties."
     end if
-
-    call create_required_device_extensions(required_device_extensions)
-
 
     allocate(extension_properties)
     available_extensions = new_vec(sizeof(extension_properties), 0_8)
     call available_extensions%resize(int(extension_count, c_int64_t), extension_properties)
     deallocate(extension_properties)
 
+    ! This is pointing the function straight into the internal C array of the vector.
+    if (vk_enumerate_device_extension_properties(physical_device, c_null_ptr, extension_count, available_extensions%get(1_8)) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to enumerate device extension properties."
+    end if
 
+
+
+    ! Check we have all required device extensions.
     do i = 1,int(required_device_extensions%size())
 
+      ! Shoot that char * straight into a fortran string.
       call c_f_pointer(required_device_extensions%get(int(i, c_int64_t)), raw_c_ptr_ptr)
       required_extension => string_from_c(raw_c_ptr_ptr)
-      print*,required_extension
 
-      print*,len(required_extension)
+      found = .false.
 
-      ! do i = 1,int(available_extensions%size())
+      ! Now we need to see if we have this one in there.
+      do j = 1,int(available_extensions%size())
+        call c_f_pointer(available_extensions%get(int(j, c_int64_t)), extension_properties)
 
-      ! end do
+        print*,extension_properties%extension_name
 
+
+      end do
     end do
 
     !! fixme: this thing needs a GC.
