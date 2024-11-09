@@ -214,8 +214,8 @@ contains
 
     required_device_extensions = new_vec(sizeof(c_null_ptr), 0_8)
 
-    allocate(character(len = 32, kind = c_char) :: required_extension)
-    required_extension = "VK_KHR_SWAPCHAIN_EXTENSION_NAME"//achar(0)
+    allocate(character(len = len(VK_KHR_SWAPCHAIN_EXTENSION_NAME), kind = c_char) :: required_extension)
+    required_extension = VK_KHR_SWAPCHAIN_EXTENSION_NAME
 
     ! This is done like this so we don't blow up gfortran.
     raw_c_ptr = c_loc(required_extension)
