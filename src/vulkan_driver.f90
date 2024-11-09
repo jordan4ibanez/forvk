@@ -66,10 +66,7 @@ contains
   subroutine init_vulkan()
     implicit none
 
-    ! VkApplicationInfo
-    ! type(vk_application_info), pointer :: app_info
-    ! VkInstanceCreateInfo
-    type(vk_instance_create_info), pointer :: vulkan_create_info
+
     type(vk_debug_utils_messenger_create_info_ext), pointer :: debug_messenger_create_info
 
     !? This is how to get from these vectors. (char ** array underneath)
