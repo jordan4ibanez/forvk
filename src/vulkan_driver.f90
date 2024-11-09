@@ -75,9 +75,6 @@ contains
   subroutine init_vulkan()
     implicit none
 
-
-    type(vk_debug_utils_messenger_create_info_ext), pointer :: debug_messenger_create_info
-
     call create_glfw()
 
     call ensure_extensions_present(DEBUG_MODE)
@@ -86,7 +83,7 @@ contains
 
     call create_vulkan_instance(vulkan_instance, DEBUG_MODE)
 
-    call setup_debug_messenger(debug_messenger_create_info, vulkan_instance, debug_messenger, DEBUG_MODE)
+    call setup_debug_messenger(vulkan_instance, debug_messenger, DEBUG_MODE)
 
     call create_surface(vulkan_instance, window_surface)
 
