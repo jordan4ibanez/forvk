@@ -10,13 +10,13 @@ module vulkan_driver_create_debug_messenger
 contains
 
 
-  subroutine setup_debug_messenger(debug_messenger_create_info, vulkan_instance, debug_messenger, DEBUG_MODE)
+  subroutine setup_debug_messenger(vulkan_instance, debug_messenger, DEBUG_MODE)
     implicit none
 
-    type(vk_debug_utils_messenger_create_info_ext), intent(inout), pointer :: debug_messenger_create_info!validation_create_info
     integer(c_int64_t), intent(inout) :: vulkan_instance
     integer(c_int64_t), intent(inout) :: debug_messenger
     logical(c_bool), intent(in), value :: DEBUG_MODE
+    type(vk_debug_utils_messenger_create_info_ext), pointer :: debug_messenger_create_info !validation_create_info
 
     ! Don't need this if we're not in debug mode.
     if (.not. DEBUG_MODE) then
