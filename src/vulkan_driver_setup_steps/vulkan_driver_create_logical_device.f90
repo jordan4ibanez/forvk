@@ -6,20 +6,19 @@ module vulkan_driver_create_logical_device
   use :: vector
   use :: integer32_set
   use :: vulkan_driver_create_physical_device_extensions
+  use :: vulkan_driver_create_validation_layers
   implicit none
 
 
 contains
 
 
-  subroutine create_logical_device(physical_device, logical_device, required_validation_layers, graphics_queue, present_queue, window_surface, DEBUG_MODE)
+  subroutine create_logical_device(physical_device, logical_device, graphics_queue, present_queue, window_surface, DEBUG_MODE)
     implicit none
 
     integer(c_int64_t), intent(in), value :: physical_device
     integer(c_int64_t), intent(inout), target :: logical_device
     ! type(forvulkan_queue_family_indices), intent(in) :: queue_indices
-    ! const char **
-    type(vec), intent(inout) :: required_validation_layers
     ! VkQueue
     integer(c_int64_t), intent(inout) :: graphics_queue
     ! VkQueue
@@ -27,6 +26,8 @@ contains
     ! VkSurfaceKHR
     integer(c_int64_t), intent(in), value :: window_surface
     logical(c_bool), intent(in), value :: DEBUG_MODE
+    ! const char **
+    type(vec) :: required_validation_layers
     type(vk_device_queue_create_info) :: logical_device_queue_create_info
     real(c_float), pointer :: queue_priority
     type(vk_physical_device_features), target :: physical_device_features
@@ -78,6 +79,7 @@ contains
     logical_device_create_info%pp_enabled_extension_names = required_physical_device_extensions%get(1_8)
 
     if (DEBUG_MODE) then
+      call create_required_validation_layers(required_validation_layers, DEBUG_MODE)
       logical_device_create_info%enabled_layer_count = int(required_validation_layers%size())
       ! Passing in the underlying C array.
       logical_device_create_info%pp_enabled_layer_names = required_validation_layers%get(1_8)
