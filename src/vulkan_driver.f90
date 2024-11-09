@@ -71,8 +71,6 @@ contains
     ! VkInstanceCreateInfo
     type(vk_instance_create_info), pointer :: vulkan_create_info
     type(vk_debug_utils_messenger_create_info_ext), pointer :: debug_messenger_create_info
-    !* Note: this will go out of scope after this. We only need it for pre-initialization.
-    type(vk_debug_utils_messenger_create_info_ext) :: before_init_messenger_create_info
 
     !? This is how to get from these vectors. (char ** array underneath)
     !? do i = 1,int(validation_layers%size())
@@ -98,9 +96,6 @@ contains
 
     call create_logical_device(physical_device, logical_device, graphics_queue, present_queue, window_surface, DEBUG_MODE)
 
-    ! todo: deallocate any pointers inside.
-    deallocate(vulkan_create_info)
-    ! todo: destroy the vectors!
   end subroutine init_vulkan
 
 
