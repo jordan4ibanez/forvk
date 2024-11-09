@@ -84,15 +84,11 @@ contains
 
     call create_glfw()
 
-    call create_app_info(app_info)
-
     call ensure_extensions_present(DEBUG_MODE)
 
     call ensure_validation_layer_support(DEBUG_MODE)
 
-    call create_vulkan_instance_create_info(vulkan_create_info, app_info, before_init_messenger_create_info, DEBUG_MODE)
-
-    call create_vulkan_instance(vulkan_create_info, vulkan_instance)
+    call create_vulkan_instance(vulkan_instance, DEBUG_MODE)
 
     call setup_debug_messenger(debug_messenger_create_info, vulkan_instance, debug_messenger, DEBUG_MODE)
 
@@ -103,7 +99,6 @@ contains
     call create_logical_device(physical_device, logical_device, graphics_queue, present_queue, window_surface, DEBUG_MODE)
 
     ! todo: deallocate any pointers inside.
-    deallocate(app_info)
     deallocate(vulkan_create_info)
     ! todo: destroy the vectors!
   end subroutine init_vulkan
