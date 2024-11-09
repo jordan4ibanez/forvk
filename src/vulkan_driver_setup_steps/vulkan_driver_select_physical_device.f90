@@ -200,22 +200,9 @@ contains
         call c_f_pointer(available_extensions%get(int(j, c_int64_t)), extension_properties)
 
         ! Let us convert the extension name from a char array into a string.
-        do k = 1,VK_MAX_EXTENSION_NAME_SIZE
-          if (extension_properties%extension_name(k) == achar(0)) then
-            extension_name_length = k - 1
-            exit
-          end if
-        end do
+        extension_name => character_array_to_string_pointer(extension_properties%extension_name)
 
-        allocate(character(len = extension_name_length, kind = c_char) :: extension_name)
-
-        do k = 1,extension_name_length
-
-        end do
-
-
-
-        print*,extension_properties%extension_name
+        print*,extension_name
       end do
     end do
 
