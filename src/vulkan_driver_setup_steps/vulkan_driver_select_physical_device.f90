@@ -139,9 +139,26 @@ contains
       suitable = .false.
     end if
 
+    if (.not. check_device_extension_support(device_pointer)) then
+      !! FIXME: this needs to list which extension!
+      print"(A)", "[Vulkan]: Device has no extension support."
+    end if
+
     deallocate(device_properties)
     deallocate(device_features)
   end function device_is_suitable
+
+  function check_device_extension_support(physical_device) result(has_support)
+    implicit none
+
+    !VkPhysicalDevice
+    integer(c_int64_t), intent(in), value :: physical_device
+    logical(c_bool) :: has_support
+    integer(c_int32_t) :: extension_count
+
+  end function check_device_extension_support
+
+
 
 
 end module vulkan_driver_select_physical_device
