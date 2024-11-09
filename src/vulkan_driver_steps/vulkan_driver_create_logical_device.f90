@@ -26,10 +26,10 @@ contains
     ! VkSurfaceKHR
     integer(c_int64_t), intent(in), value :: window_surface
     logical(c_bool), intent(in), value :: DEBUG_MODE
-    type(vk_device_queue_create_info) :: queue_create_info
+    type(vk_device_queue_create_info) :: logical_device_queue_create_info
     real(c_float), pointer :: queue_priority
     type(vk_physical_device_features), target :: device_features
-    type(vec) :: queue_create_infos
+    type(vec) :: logical_device_queue_create_infos
     type(vk_device_create_info), pointer :: logical_device_create_info
     type(forvulkan_queue_family_indices) :: physical_queue_family_indices
     type(int32_set) :: physical_device_unique_queue_families
@@ -37,7 +37,7 @@ contains
 
     physical_queue_family_indices = find_queue_families(physical_device, window_surface)
 
-    queue_create_infos = new_vec(sizeof(queue_create_info), 0_8)
+    logical_device_queue_create_infos = new_vec(sizeof(logical_device_queue_create_info), 0_8)
 
     physical_device_unique_queue_families = new_int32_set()
     call physical_device_unique_queue_families%push_array([physical_queue_family_indices%graphics_family, physical_queue_family_indices%present_family])
@@ -46,12 +46,12 @@ contains
       allocate(queue_priority)
       queue_priority = 1.0
 
-      queue_create_info%s_type = VK_STRUCTURE_TYPE%DEVICE%QUEUE_CREATE_INFO
-      queue_create_info%queue_family_index = physical_device_unique_queue_families%data(i)
-      queue_create_info%queue_count = 1
-      queue_create_info%p_queue_priorities = c_loc(queue_priority)
+      logical_device_queue_create_info%s_type = VK_STRUCTURE_TYPE%DEVICE%QUEUE_CREATE_INFO
+      logical_device_queue_create_info%queue_family_index = physical_device_unique_queue_families%data(i)
+      logical_device_queue_create_info%queue_count = 1
+      logical_device_queue_create_info%p_queue_priorities = c_loc(queue_priority)
 
-      call queue_create_infos%push_back(queue_create_info)
+      call logical_device_queue_create_infos%push_back(logical_device_queue_create_info)
     end do
 
     call physical_device_unique_queue_families%destroy()
@@ -61,8 +61,8 @@ contains
     allocate(logical_device_create_info)
 
     logical_device_create_info%s_type = VK_STRUCTURE_TYPE%DEVICE%CREATE_INFO
-    logical_device_create_info%queue_create_info_count = int(queue_create_infos%size())
-    logical_device_create_info%p_queue_create_infos = queue_create_infos%get(1_8)
+    logical_device_create_info%queue_create_info_count = int(logical_device_queue_create_infos%size())
+    logical_device_create_info%p_queue_create_infos = logical_device_queue_create_infos%get(1_8)
     logical_device_create_info%p_enabled_features = c_loc(device_features)
     logical_device_create_info%enabled_extension_count = 0
 
