@@ -172,17 +172,15 @@ contains
 
     call create_required_device_extensions(required_device_extensions)
 
-    call c_f_pointer(required_device_extensions%get(1_8), raw_c_ptr_ptr)
-    required_extension => string_from_c(raw_c_ptr_ptr)
-    print*,required_extension
+    ! call c_f_pointer(required_device_extensions%get(1_8), raw_c_ptr_ptr)
+    ! required_extension => string_from_c(raw_c_ptr_ptr)
+    ! print*,required_extension
 
 
-    ! print*,extension_count
-
-    ! allocate(extension_properties)
-    ! available_extensions = new_vec(sizeof(extension_properties), 0_8)
-    ! call available_extensions%resize(int(extension_count,c_int64_t), extension_properties)
-    ! deallocate(extension_properties)
+    allocate(extension_properties)
+    available_extensions = new_vec(sizeof(extension_properties), 0_8)
+    call available_extensions%resize(int(extension_count,c_int64_t), extension_properties)
+    deallocate(extension_properties)
 
     ! do i = 1,int(available_extensions%size())
 
