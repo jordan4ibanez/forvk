@@ -73,8 +73,6 @@ contains
 
     unique_queue_families = new_int32_set()
 
-    ! call unique_queue_families%push()
-
   end subroutine select_physical_device
 
 
