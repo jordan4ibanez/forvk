@@ -199,7 +199,7 @@ contains
   subroutine create_required_device_extensions(required_device_extensions)
     implicit none
 
-    ! character *
+    ! character **
     type(vec), intent(inout) :: required_device_extensions
     character(len = :, kind = c_char), pointer :: required_extension
     type(c_ptr) :: raw_c_ptr
