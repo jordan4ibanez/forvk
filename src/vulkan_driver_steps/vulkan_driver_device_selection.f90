@@ -131,7 +131,13 @@ contains
 
       unique_queue_families = new_int32_set()
 
-      ! call unique_queue_families%push_array([])
+      call unique_queue_families%push_array([queue_indices%graphics_family, queue_indices%present_family])
+
+      do i = 1,unique_queue_families%size
+        print*,unique_queue_families%data(i)
+      end do
+
+      call unique_queue_families%destroy()
 
     else
       ! No if else, we want to warn about every unsupported queue family.
