@@ -36,11 +36,11 @@ module vulkan_driver
   ! VkDevice
   integer(c_int64_t), target :: logical_device = VK_NULL_HANDLE
 
-  ! VkQueue
-  integer(c_int64_t), target :: graphics_queue = VK_NULL_HANDLE
-
   ! VkSurfaceKHR
   integer(c_int64_t), target :: window_surface = VK_NULL_HANDLE
+
+  ! VkQueue
+  integer(c_int64_t), target :: graphics_queue = VK_NULL_HANDLE
 
   ! VkQueue
   integer(c_int64_t), target :: present_queue = VK_NULL_HANDLE
@@ -107,9 +107,9 @@ contains
 
     call create_surface(vulkan_instance, window_surface)
 
-    call select_physical_device(vulkan_instance, physical_device, queue_indices, window_surface)
+    call select_physical_device(vulkan_instance, physical_device, queue_indices)
 
-    call create_logical_device(physical_device, logical_device, queue_indices, required_validation_layers, graphics_queue, DEBUG_MODE)
+    call create_logical_device(physical_device, logical_device, required_validation_layers, graphics_queue, window_surface, DEBUG_MODE)
 
     ! todo: deallocate any pointers inside.
     deallocate(app_info)
