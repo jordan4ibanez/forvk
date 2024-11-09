@@ -61,7 +61,6 @@ contains
       end if
     end do
 
-
     call queue_families%destroy()
   end function find_queue_families
 
