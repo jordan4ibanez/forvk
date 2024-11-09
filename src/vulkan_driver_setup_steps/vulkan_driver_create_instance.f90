@@ -7,10 +7,36 @@ module vulkan_driver_create_instance
   use :: vulkan_driver_create_debug_messenger
   use :: vulkan_driver_create_required_extensions
   use :: vulkan_driver_create_validation_layers
+  use :: vulkan_driver_create_app_info
   implicit none
 
 
 contains
+
+
+  subroutine create_vulkan_instance(vulkan_instance)
+    implicit none
+
+    ! VkInstanceCreateInfo
+    type(vk_instance_create_info), pointer :: vulkan_create_info
+    ! VkInstance
+    integer(c_int64_t), intent(inout) :: vulkan_instance
+    integer(c_int) :: result
+
+    call create_vulkan_instance_create_info(vulkan_create_info, app_info, before_init_messenger_create_info, DEBUG_MODE)
+
+    print"(A)", "[Vulkan]: Creating instance."
+
+    result = vk_create_instance(c_loc(vulkan_create_info), c_null_ptr, vulkan_instance)
+
+    if (result /= VK_SUCCESS) then
+      ! Shove driver check in.
+      if (result == VK_ERROR_INCOMPATIBLE_DRIVER) then
+        error stop "[Vulkan] Error: Failed to create Vulkan instance. Incompatible driver. Error code: ["//int_to_string(result)//"]"
+      end if
+      error stop "[Vulkan] Error: Failed to create Vulkan instance. Error code: ["//int_to_string(result)//"]"
+    end if
+  end subroutine create_vulkan_instance
 
 
   subroutine create_vulkan_instance_create_info(vulkan_create_info, app_info, before_init_messenger_create_info, DEBUG_MODE)
@@ -50,30 +76,5 @@ contains
       vulkan_create_info%enabled_layer_count = 0
     end if
   end subroutine create_vulkan_instance_create_info
-
-
-  subroutine create_vulkan_instance(vulkan_create_info, vulkan_instance)
-    implicit none
-
-    ! VkInstanceCreateInfo
-    type(vk_instance_create_info), intent(in), target :: vulkan_create_info
-    ! VkInstance
-    integer(c_int64_t), intent(inout) :: vulkan_instance
-    integer(c_int) :: result
-
-
-    print"(A)", "[Vulkan]: Creating instance."
-
-    result = vk_create_instance(c_loc(vulkan_create_info), c_null_ptr, vulkan_instance)
-
-    if (result /= VK_SUCCESS) then
-      ! Shove driver check in.
-      if (result == VK_ERROR_INCOMPATIBLE_DRIVER) then
-        error stop "[Vulkan] Error: Failed to create Vulkan instance. Incompatible driver. Error code: ["//int_to_string(result)//"]"
-      end if
-      error stop "[Vulkan] Error: Failed to create Vulkan instance. Error code: ["//int_to_string(result)//"]"
-    end if
-  end subroutine create_vulkan_instance
-
 
 end module vulkan_driver_create_instance
