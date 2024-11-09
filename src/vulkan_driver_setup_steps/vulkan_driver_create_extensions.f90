@@ -70,7 +70,7 @@ contains
     type(c_ptr), pointer :: raw_c_ptr_ptr
     type(vk_extension_properties), pointer :: extension_properties
     character(len = :, kind = c_char), pointer :: temp_string_pointer
-    character(len = :, kind = c_char), allocatable :: temp
+    character(len = :, kind = c_char), pointer :: temp
     logical(c_bool) :: found
 
     print"(A)","[Vulkan]: Gathering available extensions."
@@ -103,20 +103,8 @@ contains
         ! Transfer the VkExtensionProperties pointer into Fortran.
         call c_f_pointer(available_extensions_array%get(int(i, c_int64_t)), extension_properties)
 
-        ! Find the length of the character array.
-        do k = 1,VK_MAX_EXTENSION_NAME_SIZE
-          if (extension_properties%extension_name(k) == achar(0)) then
-            prop_length = k - 1
-            exit
-          end if
-        end do
-
-        ! Now copy it into a string.
-        allocate(character(len = prop_length, kind = c_char) :: temp)
-
-        do k = 1,prop_length
-          temp(k:k) = extension_properties%extension_name(k)
-        end do
+        ! Let us convert the extension name from a char array into a string.
+        temp => character_array_to_string_pointer(extension_properties%extension_name)
 
         ! And check if the strings are equal.
         if (temp_string_pointer == temp) then
