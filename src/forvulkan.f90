@@ -866,6 +866,21 @@ module forvulkan
     end function vk_get_physical_device_surface_capabilities_khr
 
 
+    function vk_get_physical_device_surface_formats_khr(physical_device, surface, p_surface_format_count, p_surface_formats) result(vk_result) bind(c, name = "vkGetPhysicalDeviceSurfaceFormatsKHR")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkPhysicalDevice
+      integer(c_int64_t), intent(in), value :: physical_device
+      ! VkSurfaceKHR
+      integer(c_int64_t), intent(in), value :: surface
+      ! uint32_t *
+      integer(c_int32_t), intent(inout) :: p_surface_format_count
+      ! VkSurfaceFormatKHR *
+      type(c_ptr), intent(in), value :: p_surface_formats
+    end function vk_get_physical_device_surface_formats_khr
+
+
 !? FUNCTION BLUEPRINTS. ============================================================
 
 
