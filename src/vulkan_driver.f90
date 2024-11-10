@@ -91,14 +91,27 @@ contains
 
     call create_logical_device(physical_device, logical_device, graphics_queue, present_queue, window_surface, DEBUG_MODE)
 
+    call query_swap_chain_support(physical_device, window_surface)
+
   end subroutine init_vulkan
 
 
-  subroutine query_swap_chain_support(physical_device)
+  subroutine query_swap_chain_support(physical_device, window_surface)
     implicit none
 
     ! VkPhysicalDevice
     integer(c_int64_t), intent(in), value :: physical_device
+    ! VkSurfaceKHR
+    integer(c_int64_t), intent(in), value :: window_surface
+    type(forvulkan_swap_chain_support_details), pointer :: swap_chain_support_details
+
+    allocate(swap_chain_support_details)
+
+    if (vk_get_physical_device_surface_capabilities_khr(physical_device, window_surface, c_loc(swap_chain_support_details%capabilities)) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to get physical device surface capabilities."
+    end if
+
+    print*,swap_chain_support_details%capabilities
 
   end subroutine query_swap_chain_support
 
