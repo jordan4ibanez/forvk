@@ -593,6 +593,33 @@ module forvulkan
     ! uint32_t
     integer(c_int32_t) :: height = 0
   end type vk_extent_2d
+
+
+  !? VkSurfaceCapabilitiesKHR.
+  type, bind(c) :: vk_surface_capabilities_khr
+    ! uint32_t
+    integer(c_int32_t) :: min_image_count = 0
+    ! uint32_t
+    integer(c_int32_t) :: max_image_count = 0
+    ! VkExtent2D
+    type(vk_extent_2d) :: current_extent
+    ! VkExtent2D
+    type(vk_extent_2d) :: min_image_extent
+    ! VkExtent2D
+    type(vk_extent_2d) :: max_image_extent
+    ! uint32_t
+    integer(c_int32_t) :: max_image_array_layers = 0
+    ! uint32_t [VkSurfaceTransformFlagsKHR]
+    integer(c_int32_t) :: supported_transforms
+    ! uint32_t [VkSurfaceTransformFlagBitsKHR]
+    integer(c_int32_t) :: current_transform
+    ! uint32_t [VkCompositeAlphaFlagsKHR]
+    integer(c_int32_t) :: supported_composite_alpha
+    ! uint32_t [VkImageUsageFlags]
+    integer(c_int32_t) :: supported_usage_flags
+  end type vk_surface_capabilities_khr
+
+
   !? CUSTOM TYPES .===============================================================
 
 
