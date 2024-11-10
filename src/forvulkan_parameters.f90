@@ -191,6 +191,47 @@ module forvulkan_parameters
   integer(c_int), parameter, public :: VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR = int(z"00000100")
 
 
+  !? VkImageUsageFlagBits. ==========================================================================
+
+
+  integer(c_int), parameter, public :: VK_IMAGE_USAGE_TRANSFER_SRC_BIT = int(z"00000001")
+  integer(c_int), parameter, public :: VK_IMAGE_USAGE_TRANSFER_DST_BIT = int(z"00000002")
+  integer(c_int), parameter, public :: VK_IMAGE_USAGE_SAMPLED_BIT = int(z"00000004")
+  integer(c_int), parameter, public :: VK_IMAGE_USAGE_STORAGE_BIT = int(z"00000008")
+  integer(c_int), parameter, public :: VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT = int(z"00000010")
+  integer(c_int), parameter, public :: VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT = int(z"00000020")
+  integer(c_int), parameter, public :: VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT = int(z"00000040")
+  integer(c_int), parameter, public :: VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT = int(z"00000080")
+  ! Provided by VK_KHR_video_decode_queue
+  integer(c_int), parameter, public :: VK_IMAGE_USAGE_VIDEO_DECODE_DST_BIT_KHR = int(z"00000400")
+  ! Provided by VK_KHR_video_decode_queue
+  integer(c_int), parameter, public :: VK_IMAGE_USAGE_VIDEO_DECODE_SRC_BIT_KHR = int(z"00000800")
+  ! Provided by VK_KHR_video_decode_queue
+  integer(c_int), parameter, public :: VK_IMAGE_USAGE_VIDEO_DECODE_DPB_BIT_KHR = int(z"00001000")
+  ! Provided by VK_EXT_fragment_density_map
+  integer(c_int), parameter, public :: VK_IMAGE_USAGE_FRAGMENT_DENSITY_MAP_BIT_EXT = int(z"00000200")
+  ! Provided by VK_KHR_fragment_shading_rate
+  integer(c_int), parameter, public :: VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR = int(z"00000100")
+  ! Provided by VK_EXT_host_image_copy
+  integer(c_int), parameter, public :: VK_IMAGE_USAGE_HOST_TRANSFER_BIT_EXT = int(z"00400000")
+  ! Provided by VK_KHR_video_encode_queue
+  integer(c_int), parameter, public :: VK_IMAGE_USAGE_VIDEO_ENCODE_DST_BIT_KHR = int(z"00002000")
+  ! Provided by VK_KHR_video_encode_queue
+  integer(c_int), parameter, public :: VK_IMAGE_USAGE_VIDEO_ENCODE_SRC_BIT_KHR = int(z"00004000")
+  ! Provided by VK_KHR_video_encode_queue
+  integer(c_int), parameter, public :: VK_IMAGE_USAGE_VIDEO_ENCODE_DPB_BIT_KHR = int(z"00008000")
+  ! Provided by VK_EXT_attachment_feedback_loop_layout
+  integer(c_int), parameter, public :: VK_IMAGE_USAGE_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT = int(z"00080000")
+  ! Provided by VK_HUAWEI_invocation_mask
+  integer(c_int), parameter, public :: VK_IMAGE_USAGE_INVOCATION_MASK_BIT_HUAWEI = int(z"00040000")
+  ! Provided by VK_QCOM_image_processing
+  integer(c_int), parameter, public :: VK_IMAGE_USAGE_SAMPLE_WEIGHT_BIT_QCOM = int(z"00100000")
+  ! Provided by VK_QCOM_image_processing
+  integer(c_int), parameter, public :: VK_IMAGE_USAGE_SAMPLE_BLOCK_MATCH_BIT_QCOM = int(z"00200000")
+  ! Provided by VK_NV_shading_rate_image
+  integer(c_int), parameter, public :: VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV = VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR
+
+
   !? VkStructureType. ==========================================================================
 
 
