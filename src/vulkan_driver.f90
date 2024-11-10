@@ -94,6 +94,15 @@ contains
   end subroutine init_vulkan
 
 
+  subroutine query_swap_chain_support(physical_device)
+    implicit none
+
+    ! VkPhysicalDevice
+    integer(c_int64_t), intent(in), value :: physical_device
+
+  end subroutine query_swap_chain_support
+
+
 
 
 
