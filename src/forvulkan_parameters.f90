@@ -233,7 +233,7 @@ module forvulkan_parameters
 
 
   !? VkFormat.
-  
+
 
   integer(c_int), parameter, public :: VK_FORMAT_UNDEFINED = 0
   integer(c_int), parameter, public :: VK_FORMAT_R4G4_UNORM_PACK8 = 1
