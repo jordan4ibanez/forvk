@@ -153,250 +153,250 @@ module forvulkan
   !? VkPhysicalDeviceLimits.
   type, bind(c) :: vk_physical_device_limits
     ! uint32_t
-    integer(c_int32_t) :: max_image_dimension_1d
+    integer(c_int32_t) :: max_image_dimension_1d = 0
     ! uint32_t
-    integer(c_int32_t) :: max_image_dimension_2d
+    integer(c_int32_t) :: max_image_dimension_2d = 0
     ! uint32_t
-    integer(c_int32_t) :: max_image_dimension_3d
+    integer(c_int32_t) :: max_image_dimension_3d = 0
     ! uint32_t
-    integer(c_int32_t) :: max_image_dimension_cube
+    integer(c_int32_t) :: max_image_dimension_cube = 0
     ! uint32_t
-    integer(c_int32_t) :: max_image_array_layers
+    integer(c_int32_t) :: max_image_array_layers = 0
     ! uint32_t
-    integer(c_int32_t) :: max_texel_buffer_elements
+    integer(c_int32_t) :: max_texel_buffer_elements = 0
     ! uint32_t
-    integer(c_int32_t) :: max_uniform_buffer_range
+    integer(c_int32_t) :: max_uniform_buffer_range = 0
     ! uint32_t
-    integer(c_int32_t) :: max_storage_buffer_range
+    integer(c_int32_t) :: max_storage_buffer_range = 0
     ! uint32_t
-    integer(c_int32_t) :: max_push_constants_size
+    integer(c_int32_t) :: max_push_constants_size = 0
     ! uint32_t
-    integer(c_int32_t) :: max_memory_allocation_count
+    integer(c_int32_t) :: max_memory_allocation_count = 0
     ! uint32_t
-    integer(c_int32_t) :: max_sampler_allocation_count
+    integer(c_int32_t) :: max_sampler_allocation_count = 0
     ! uint64_t [VkDeviceSize]
-    integer(c_int64_t) :: buffer_image_granularity
+    integer(c_int64_t) :: buffer_image_granularity = 0
     ! uint64_t [VkDeviceSize]
-    integer(c_int64_t) :: sparse_address_space_size
+    integer(c_int64_t) :: sparse_address_space_size = 0
     ! uint32_t
-    integer(c_int32_t) :: max_bound_descriptor_sets
+    integer(c_int32_t) :: max_bound_descriptor_sets = 0
     ! uint32_t
-    integer(c_int32_t) :: max_per_stage_descriptor_samplers
+    integer(c_int32_t) :: max_per_stage_descriptor_samplers = 0
     ! uint32_t
-    integer(c_int32_t) ::  max_per_stage_descriptor_uniform_buffers
+    integer(c_int32_t) ::  max_per_stage_descriptor_uniform_buffers = 0
     ! uint32_t
-    integer(c_int32_t) :: max_per_stage_descriptor_storage_buffers
+    integer(c_int32_t) :: max_per_stage_descriptor_storage_buffers = 0
     ! uint32_t
-    integer(c_int32_t) :: max_per_stage_descriptor_sampled_images
+    integer(c_int32_t) :: max_per_stage_descriptor_sampled_images = 0
     ! uint32_t
-    integer(c_int32_t) :: max_per_stage_descriptor_storage_images
+    integer(c_int32_t) :: max_per_stage_descriptor_storage_images = 0
     ! uint32_t
-    integer(c_int32_t) :: max_per_stage_descriptor_input_attachments
+    integer(c_int32_t) :: max_per_stage_descriptor_input_attachments = 0
     ! uint32_t
-    integer(c_int32_t) :: max_per_stage_resources
+    integer(c_int32_t) :: max_per_stage_resources = 0
     ! uint32_t
-    integer(c_int32_t) :: max_descriptor_set_samplers
+    integer(c_int32_t) :: max_descriptor_set_samplers = 0
     ! uint32_t
-    integer(c_int32_t) :: max_descriptor_set_uniform_buffers
+    integer(c_int32_t) :: max_descriptor_set_uniform_buffers = 0
     ! uint32_t
-    integer(c_int32_t) :: max_descriptor_set_uniform_buffers_dynamic
+    integer(c_int32_t) :: max_descriptor_set_uniform_buffers_dynamic = 0
     ! uint32_t
-    integer(c_int32_t) :: max_descriptor_set_storage_buffers
+    integer(c_int32_t) :: max_descriptor_set_storage_buffers = 0
     ! uint32_t
-    integer(c_int32_t) :: max_descriptor_set_storage_buffers_dynamic
+    integer(c_int32_t) :: max_descriptor_set_storage_buffers_dynamic = 0
     ! uint32_t
-    integer(c_int32_t) :: max_descriptor_set_sampled_images
+    integer(c_int32_t) :: max_descriptor_set_sampled_images = 0
     ! uint32_t
-    integer(c_int32_t) :: max_descriptor_set_storage_images
+    integer(c_int32_t) :: max_descriptor_set_storage_images = 0
     ! uint32_t
-    integer(c_int32_t) :: max_descriptor_set_input_attachments
+    integer(c_int32_t) :: max_descriptor_set_input_attachments = 0
     ! uint32_t
-    integer(c_int32_t) :: max_vertex_input_attributes
+    integer(c_int32_t) :: max_vertex_input_attributes = 0
     ! uint32_t
-    integer(c_int32_t) :: max_vertex_input_bindings
+    integer(c_int32_t) :: max_vertex_input_bindings = 0
     ! uint32_t
-    integer(c_int32_t) :: max_vertex_input_attribute_offset
+    integer(c_int32_t) :: max_vertex_input_attribute_offset = 0
     ! uint32_t
-    integer(c_int32_t) :: max_vertex_input_binding_stride
+    integer(c_int32_t) :: max_vertex_input_binding_stride = 0
     ! uint32_t
-    integer(c_int32_t) :: max_vertex_output_components
+    integer(c_int32_t) :: max_vertex_output_components = 0
     ! uint32_t
-    integer(c_int32_t) :: max_tesselation_generation_level
+    integer(c_int32_t) :: max_tesselation_generation_level = 0
     ! uint32_t
-    integer(c_int32_t) :: max_tesselation_patch_size
+    integer(c_int32_t) :: max_tesselation_patch_size = 0
     ! uint32_t
-    integer(c_int32_t) :: max_tesselation_control_per_vertex_input_components
+    integer(c_int32_t) :: max_tesselation_control_per_vertex_input_components = 0
     ! uint32_t
-    integer(c_int32_t) :: max_tesselation_control_per_vertex_output_components
+    integer(c_int32_t) :: max_tesselation_control_per_vertex_output_components = 0
     ! uint32_t
-    integer(c_int32_t) :: max_tesselation_control_per_patch_output_components
+    integer(c_int32_t) :: max_tesselation_control_per_patch_output_components = 0
     ! uint32_t
-    integer(c_int32_t) :: max_tesselation_control_total_output_components
+    integer(c_int32_t) :: max_tesselation_control_total_output_components = 0
     ! uint32_t
-    integer(c_int32_t) :: max_tesselation_evaluation_input_components
+    integer(c_int32_t) :: max_tesselation_evaluation_input_components = 0
     ! uint32_t
-    integer(c_int32_t) :: max_tesselation_evaluation_output_components
+    integer(c_int32_t) :: max_tesselation_evaluation_output_components = 0
     ! uint32_t
-    integer(c_int32_t) :: max_geometry_shader_invocations
+    integer(c_int32_t) :: max_geometry_shader_invocations = 0
     ! uint32_t
-    integer(c_int32_t) :: max_geometry_input_components
+    integer(c_int32_t) :: max_geometry_input_components = 0
     ! uint32_t
-    integer(c_int32_t) :: max_geometry_output_components
+    integer(c_int32_t) :: max_geometry_output_components = 0
     ! uint32_t
-    integer(c_int32_t) :: max_geometry_output_vertices
+    integer(c_int32_t) :: max_geometry_output_vertices = 0
     ! uint32_t
-    integer(c_int32_t) :: max_geometry_total_output_components
+    integer(c_int32_t) :: max_geometry_total_output_components = 0
     ! uint32_t
-    integer(c_int32_t) :: max_fragment_input_components
+    integer(c_int32_t) :: max_fragment_input_components = 0
     ! uint32_t
-    integer(c_int32_t) :: max_fragment_output_attachments
+    integer(c_int32_t) :: max_fragment_output_attachments = 0
     ! uint32_t
-    integer(c_int32_t) :: max_fragment_dual_src_attachments
+    integer(c_int32_t) :: max_fragment_dual_src_attachments = 0
     ! uint32_t
-    integer(c_int32_t) :: max_fragment_combined_output_resources
+    integer(c_int32_t) :: max_fragment_combined_output_resources = 0
     ! uint32_t
-    integer(c_int32_t) :: max_compute_shared_memory_size
+    integer(c_int32_t) :: max_compute_shared_memory_size = 0
     ! uint32_t[3]
-    integer(c_int32_t), dimension(3) :: max_compute_work_group_count
+    integer(c_int32_t), dimension(3) :: max_compute_work_group_count = 0
     ! uint32_t
-    integer(c_int32_t) :: max_compute_work_group_invocations
+    integer(c_int32_t) :: max_compute_work_group_invocations = 0
     ! uint32_t[3]
-    integer(c_int32_t), dimension(3) :: max_compute_work_group_size
+    integer(c_int32_t), dimension(3) :: max_compute_work_group_size = 0
     ! uint32_t
-    integer(c_int32_t) :: sub_pixel_precision_bits
+    integer(c_int32_t) :: sub_pixel_precision_bits = 0
     ! uint32_t
-    integer(c_int32_t) :: sub_texel_precision_bits
+    integer(c_int32_t) :: sub_texel_precision_bits = 0
     ! uint32_t
-    integer(c_int32_t) :: mipmap_precision_bits
+    integer(c_int32_t) :: mipmap_precision_bits = 0
     ! uint32_t
-    integer(c_int32_t) :: max_draw_indexed_index_value
+    integer(c_int32_t) :: max_draw_indexed_index_value = 0
     ! uint32_t
-    integer(c_int32_t) :: max_draw_indirect_count
+    integer(c_int32_t) :: max_draw_indirect_count = 0
     ! float
-    real(c_float) :: max_sampler_lod_bias
+    real(c_float) :: max_sampler_lod_bias = 0.0
     ! float
-    real(c_float) :: max_sampler_anisotropy
+    real(c_float) :: max_sampler_anisotropy = 0.0
     ! uint32_t
-    integer(c_int32_t) :: max_viewports
+    integer(c_int32_t) :: max_viewports = 0
     ! uint32_t[2]
-    integer(c_int32_t), dimension(2) :: max_viewport_dimensions
+    integer(c_int32_t), dimension(2) :: max_viewport_dimensions = 0
     ! uint32_t[2]
-    integer(c_int32_t), dimension(2) :: viewport_bounds_range
+    integer(c_int32_t), dimension(2) :: viewport_bounds_range = 0
     ! uint32_t
-    integer(c_int32_t) :: viewport_sub_pixel_bits
+    integer(c_int32_t) :: viewport_sub_pixel_bits = 0
     ! size_t
-    integer(c_size_t) :: min_memory_map_alignment
+    integer(c_size_t) :: min_memory_map_alignment = 0
     ! uint64_t [VkDeviceSize]
-    integer(c_int64_t) :: min_texel_buffer_offset_alignment
+    integer(c_int64_t) :: min_texel_buffer_offset_alignment = 0
     ! uint64_t [VkDeviceSize]
-    integer(c_int64_t) ::  min_uniform_buffer_offset_alignment
+    integer(c_int64_t) ::  min_uniform_buffer_offset_alignment = 0
     ! uint64_t [VkDeviceSize]
-    integer(c_int64_t) ::  min_storage_buffer_offset_alignment
+    integer(c_int64_t) ::  min_storage_buffer_offset_alignment = 0
     ! int32_t
-    integer(c_int32_t) :: min_texel_offset
+    integer(c_int32_t) :: min_texel_offset = 0
     ! uint32_t
-    integer(c_int32_t) ::  max_texel_offset
+    integer(c_int32_t) ::  max_texel_offset = 0
     ! int32_t
-    integer(c_int32_t) ::  min_texel_gather_offset
+    integer(c_int32_t) ::  min_texel_gather_offset = 0
     ! uint32_t
-    integer(c_int32_t) :: max_texel_gather_offset
+    integer(c_int32_t) :: max_texel_gather_offset = 0
     ! float
-    real(c_float) :: min_interpolation_offset
+    real(c_float) :: min_interpolation_offset = 0.0
     ! float
-    real(c_float) :: max_interpolation_offset
+    real(c_float) :: max_interpolation_offset = 0.0
     ! uint32_t
-    integer(c_int32_t) :: sub_pixel_interpolation_offset_bits
+    integer(c_int32_t) :: sub_pixel_interpolation_offset_bits = 0
     ! uint32_t
-    integer(c_int32_t) :: max_framebuffer_width
+    integer(c_int32_t) :: max_framebuffer_width = 0
     ! uint32_t
-    integer(c_int32_t) :: max_framebuffer_height
+    integer(c_int32_t) :: max_framebuffer_height = 0
     ! uint32_t
-    integer(c_int32_t) :: max_framebuffer_layers
+    integer(c_int32_t) :: max_framebuffer_layers = 0
     ! uint32_t [VkSampleCountFlags]
-    integer(c_int32_t) :: framebuffer_color_sample_counts
+    integer(c_int32_t) :: framebuffer_color_sample_counts = 0
     ! uint32_t [VkSampleCountFlags]
-    integer(c_int32_t) :: framebuffer_depth_sample_counts
+    integer(c_int32_t) :: framebuffer_depth_sample_counts = 0
     ! uint32_t [VkSampleCountFlags]
-    integer(c_int32_t) :: framebuffer_stencil_sample_counts
+    integer(c_int32_t) :: framebuffer_stencil_sample_counts = 0
     ! uint32_t [VkSampleCountFlags]
-    integer(c_int32_t) :: framebuffer_no_attachments_sample_counts
+    integer(c_int32_t) :: framebuffer_no_attachments_sample_counts = 0
     ! uint32_t
-    integer(c_int32_t) :: max_color_attachments
+    integer(c_int32_t) :: max_color_attachments = 0
     ! uint32_t [VkSampleCountFlags]
-    integer(c_int32_t) :: sampled_image_color_sample_counts
+    integer(c_int32_t) :: sampled_image_color_sample_counts = 0
     ! uint32_t [VkSampleCountFlags]
-    integer(c_int32_t) :: sampled_image_integer_sample_counts
+    integer(c_int32_t) :: sampled_image_integer_sample_counts = 0
     ! uint32_t [VkSampleCountFlags]
-    integer(c_int32_t) :: sampled_image_depth_sample_counts
+    integer(c_int32_t) :: sampled_image_depth_sample_counts = 0
     ! uint32_t [VkSampleCountFlags]
-    integer(c_int32_t) :: sampled_image_stencil_sample_counts
+    integer(c_int32_t) :: sampled_image_stencil_sample_counts = 0
     ! uint32_t [VkSampleCountFlags]
-    integer(c_int32_t) :: storage_image_sample_counts
+    integer(c_int32_t) :: storage_image_sample_counts = 0
     ! uint32_t
-    integer(c_int32_t) :: max_sample_mask_words
+    integer(c_int32_t) :: max_sample_mask_words = 0
     ! VkBool32
-    integer(c_int32_t) :: timestamp_compute_and_graphics
+    integer(c_int32_t) :: timestamp_compute_and_graphics = 0
     ! float
-    real(c_float) :: timestamp_period
+    real(c_float) :: timestamp_period = 0.0
     ! uint32_t
-    integer(c_int32_t) :: max_clip_distances
+    integer(c_int32_t) :: max_clip_distances = 0
     ! uint32_t
-    integer(c_int32_t) :: max_cull_distances
+    integer(c_int32_t) :: max_cull_distances = 0
     ! uint32_t
-    integer(c_int32_t) :: max_combined_clip_and_cull_distances
+    integer(c_int32_t) :: max_combined_clip_and_cull_distances = 0
     ! uint32_t
-    integer(c_int32_t) :: discrete_queue_priorities
+    integer(c_int32_t) :: discrete_queue_priorities = 0
     ! float[2]
-    real(c_float), dimension(2) :: point_size_range
+    real(c_float), dimension(2) :: point_size_range = 0.0
     ! float[2]
-    real(c_float), dimension(2) :: line_width_range
+    real(c_float), dimension(2) :: line_width_range = 0.0
     ! float
-    real(c_float) :: point_size_granularity
+    real(c_float) :: point_size_granularity = 0.0
     ! float
-    real(c_float) :: line_width_granularity
+    real(c_float) :: line_width_granularity = 0.0
     ! VkBool32
-    integer(c_int32_t) :: strict_lines
+    integer(c_int32_t) :: strict_lines = 0
     ! VkBool32
-    integer(c_int32_t) :: standard_sample_locations
+    integer(c_int32_t) :: standard_sample_locations = 0
     ! uint64_t [VkDeviceSize]
-    integer(c_int64_t) :: optimal_buffer_copy_offset_alignment
+    integer(c_int64_t) :: optimal_buffer_copy_offset_alignment = 0
     ! uint64_t [VkDeviceSize]
-    integer(c_int64_t) :: optimal_buffer_copy_row_pitch_alignment
+    integer(c_int64_t) :: optimal_buffer_copy_row_pitch_alignment = 0
     ! uint64_t [VkDeviceSize]
-    integer(c_int64_t) :: non_coherent_atom_size
+    integer(c_int64_t) :: non_coherent_atom_size = 0
   end type vk_physical_device_limits
 
 
   !? VkPhysicalDeviceSparseProperties.
   type, bind(c) :: vk_physical_device_sparse_properties
     ! VkBool32
-    integer(c_int32_t) :: residency_standard_2d_block_shape
+    integer(c_int32_t) :: residency_standard_2d_block_shape = 0
     ! VkBool32
-    integer(c_int32_t) :: residency_standard_2d_multisample_block_shape
+    integer(c_int32_t) :: residency_standard_2d_multisample_block_shape = 0
     ! VkBool32
-    integer(c_int32_t) :: residency_standard_3d_block_shape
+    integer(c_int32_t) :: residency_standard_3d_block_shape = 0
     ! VkBool32
-    integer(c_int32_t) :: residency_aligned_mip_size
+    integer(c_int32_t) :: residency_aligned_mip_size = 0
     ! VkBool32
-    integer(c_int32_t) :: residency_non_resident_strict
+    integer(c_int32_t) :: residency_non_resident_strict = 0
   end type vk_physical_device_sparse_properties
 
 
   !? VkPhysicalDeviceProperties.
   type, bind(c) :: vk_physical_device_properties
     ! uint32_t
-    integer(c_int32_t) :: api_version
+    integer(c_int32_t) :: api_version = 0
     ! uint32_t
-    integer(c_int32_t) :: driver_version
+    integer(c_int32_t) :: driver_version = 0
     ! uint32_t
-    integer(c_int32_t) :: vendor_id
+    integer(c_int32_t) :: vendor_id = 0
     ! uint32_t
-    integer(c_int32_t) :: device_id
+    integer(c_int32_t) :: device_id = 0
     ! VkPhysicalDeviceType. [uint32_t]
-    integer(c_int32_t) :: device_type
+    integer(c_int32_t) :: device_type = 0
     character(len = 1, kind = c_char), dimension(VK_MAX_PHYSICAL_DEVICE_NAME_SIZE) :: device_name
     ! uint_8[VK_UUID_SIZE]
-    integer(c_int8_t), dimension(VK_UUID_SIZE) :: pipeline_cache_uuid
+    integer(c_int8_t), dimension(VK_UUID_SIZE) :: pipeline_cache_uuid = 0
     ! VkPhysicalDeviceLimits
     type(vk_physical_device_limits) :: limits
     ! VkPhysicalDeviceSparseProperties
@@ -611,13 +611,13 @@ module forvulkan
     ! uint32_t
     integer(c_int32_t) :: max_image_array_layers = 0
     ! uint32_t [VkSurfaceTransformFlagsKHR]
-    integer(c_int32_t) :: supported_transforms
+    integer(c_int32_t) :: supported_transforms = 0
     ! uint32_t [VkSurfaceTransformFlagBitsKHR]
-    integer(c_int32_t) :: current_transform
+    integer(c_int32_t) :: current_transform = 0
     ! uint32_t [VkCompositeAlphaFlagsKHR]
-    integer(c_int32_t) :: supported_composite_alpha
+    integer(c_int32_t) :: supported_composite_alpha = 0
     ! uint32_t [VkImageUsageFlags]
-    integer(c_int32_t) :: supported_usage_flags
+    integer(c_int32_t) :: supported_usage_flags = 0
   end type vk_surface_capabilities_khr
 
 
