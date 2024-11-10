@@ -23,6 +23,9 @@ AKA: Don't blame me man I'm just trying to bring this thing into fortran.
 
 -----
 
+### This is not ready for testing, production, anything. I'm still writing it from the ground up!
+
+-----
 
 
 This program will probably blow up if you try to run it, but if you want to run it:
