@@ -103,15 +103,35 @@ contains
     integer(c_int64_t), intent(in), value :: physical_device
     ! VkSurfaceKHR
     integer(c_int64_t), intent(in), value :: window_surface
+    logical(c_bool) :: has_swap_chain_support
     type(forvulkan_swap_chain_support_details), pointer :: swap_chain_support_details
+    integer(c_int32_t) :: format_count
+
+    has_swap_chain_support = .true.
 
     allocate(swap_chain_support_details)
 
+    ! First, get device surface capabilities.
     if (vk_get_physical_device_surface_capabilities_khr(physical_device, window_surface, c_loc(swap_chain_support_details%capabilities)) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to get physical device surface capabilities."
     end if
 
-    print*,swap_chain_support_details%capabilities
+    ! Next, we must get the available device window surface formats.
+    if (vk_get_physical_device_surface_formats_khr(physical_device, window_surface, format_count, c_null_ptr) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to get available physical device surface formats."
+    end if
+
+    ! If it has none, well, we tried.
+    if (format_count == 0) then
+      print"(A)","[Vulkan]: Device has no surface formats."
+      has_swap_chain_support = .false.
+      return
+    end if
+
+
+
+
+
 
   end subroutine query_swap_chain_support
 
