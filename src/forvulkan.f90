@@ -589,9 +589,9 @@ module forvulkan
   !? VkExtent2D.
   type, bind(c) :: vk_extent_2d
     ! uint32_t
-    integer(c_int32_t) :: width
+    integer(c_int32_t) :: width = 0
     ! uint32_t
-    integer(c_int32_t) :: height
+    integer(c_int32_t) :: height = 0
   end type vk_extent_2d
   !? CUSTOM TYPES .===============================================================
 
