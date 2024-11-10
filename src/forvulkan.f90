@@ -878,6 +878,7 @@ module forvulkan
       integer(c_int32_t), intent(inout) :: p_surface_format_count
       ! VkSurfaceFormatKHR *
       type(c_ptr), intent(in), value :: p_surface_formats
+      integer(c_int32_t) :: vk_result
     end function vk_get_physical_device_surface_formats_khr
 
 
