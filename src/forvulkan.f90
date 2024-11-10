@@ -643,7 +643,7 @@ module forvulkan
   end type forvulkan_queue_family_indices
 
 
-  type, bind(c) :: forvulkan_swap_chain_support_details
+  type :: forvulkan_swap_chain_support_details
     type(vk_surface_capabilities_khr) :: capabilities
     ! VkSurfaceFormatKHR
     type(vec) :: formats
