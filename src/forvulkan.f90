@@ -624,9 +624,9 @@ module forvulkan
   !? VkSurfaceFormatKHR.
   type, bind(c) :: vk_surface_format_khr
     ! uint32_t [VkFormat]
-    integer(c_int32_t) :: format
+    integer(c_int32_t) :: format = 0
     ! uint32_t [VkColorSpaceKHR]
-    integer(c_int32_t) :: color_space
+    integer(c_int32_t) :: color_space = 0
   end type vk_surface_format_khr
 
 
@@ -644,7 +644,7 @@ module forvulkan
 
 
   type, bind(c) :: forvulkan_swap_chain_support_details
-    type(vk_surface_capabilities_khr) :: capabilities = 0
+    type(vk_surface_capabilities_khr) :: capabilities
     ! VkSurfaceFormatKHR
     type(vec) :: formats
     ! uint32_t [VkPresentModeKHR]
