@@ -1,6 +1,7 @@
 module forvulkan
   use, intrinsic :: iso_c_binding
   use :: forvulkan_parameters
+  use :: vector
   implicit none
 
 
@@ -640,6 +641,15 @@ module forvulkan
     integer(c_int32_t) :: present_family = 0
     logical(c_bool) :: present_family_has_value = .false.
   end type forvulkan_queue_family_indices
+
+
+  type, bind(c) :: forvulkan_swap_chain_support_details
+    type(vk_surface_capabilities_khr) :: capabilities = 0
+    ! VkSurfaceFormatKHR
+    type(vec) :: formats
+    ! uint32_t [VkPresentModeKHR]
+    type(vec) :: present_modes
+  end type forvulkan_swap_chain_support_details
 
 
 !* C FUNCTION INTERFACES. ===============================================================
