@@ -633,7 +633,7 @@ module forvulkan
   !? CUSTOM TYPES .===============================================================
 
 
-  type, bind(c) :: forvulkan_queue_family_indices
+  type :: forvulkan_queue_family_indices
     ! uint32_t
     integer(c_int32_t) :: graphics_family = 0
     logical(c_bool) :: graphics_family_has_value = .false.
