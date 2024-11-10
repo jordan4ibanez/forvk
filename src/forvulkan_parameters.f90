@@ -232,6 +232,437 @@ module forvulkan_parameters
   integer(c_int), parameter, public :: VK_IMAGE_USAGE_SHADING_RATE_IMAGE_BIT_NV = VK_IMAGE_USAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR
 
 
+  !? VkFormat.
+  
+
+  integer(c_int), parameter, public :: VK_FORMAT_UNDEFINED = 0
+  integer(c_int), parameter, public :: VK_FORMAT_R4G4_UNORM_PACK8 = 1
+  integer(c_int), parameter, public :: VK_FORMAT_R4G4B4A4_UNORM_PACK16 = 2
+  integer(c_int), parameter, public :: VK_FORMAT_B4G4R4A4_UNORM_PACK16 = 3
+  integer(c_int), parameter, public :: VK_FORMAT_R5G6B5_UNORM_PACK16 = 4
+  integer(c_int), parameter, public :: VK_FORMAT_B5G6R5_UNORM_PACK16 = 5
+  integer(c_int), parameter, public :: VK_FORMAT_R5G5B5A1_UNORM_PACK16 = 6
+  integer(c_int), parameter, public :: VK_FORMAT_B5G5R5A1_UNORM_PACK16 = 7
+  integer(c_int), parameter, public :: VK_FORMAT_A1R5G5B5_UNORM_PACK16 = 8
+  integer(c_int), parameter, public :: VK_FORMAT_R8_UNORM = 9
+  integer(c_int), parameter, public :: VK_FORMAT_R8_SNORM = 10
+  integer(c_int), parameter, public :: VK_FORMAT_R8_USCALED = 11
+  integer(c_int), parameter, public :: VK_FORMAT_R8_SSCALED = 12
+  integer(c_int), parameter, public :: VK_FORMAT_R8_UINT = 13
+  integer(c_int), parameter, public :: VK_FORMAT_R8_SINT = 14
+  integer(c_int), parameter, public :: VK_FORMAT_R8_SRGB = 15
+  integer(c_int), parameter, public :: VK_FORMAT_R8G8_UNORM = 16
+  integer(c_int), parameter, public :: VK_FORMAT_R8G8_SNORM = 17
+  integer(c_int), parameter, public :: VK_FORMAT_R8G8_USCALED = 18
+  integer(c_int), parameter, public :: VK_FORMAT_R8G8_SSCALED = 19
+  integer(c_int), parameter, public :: VK_FORMAT_R8G8_UINT = 20
+  integer(c_int), parameter, public :: VK_FORMAT_R8G8_SINT = 21
+  integer(c_int), parameter, public :: VK_FORMAT_R8G8_SRGB = 22
+  integer(c_int), parameter, public :: VK_FORMAT_R8G8B8_UNORM = 23
+  integer(c_int), parameter, public :: VK_FORMAT_R8G8B8_SNORM = 24
+  integer(c_int), parameter, public :: VK_FORMAT_R8G8B8_USCALED = 25
+  integer(c_int), parameter, public :: VK_FORMAT_R8G8B8_SSCALED = 26
+  integer(c_int), parameter, public :: VK_FORMAT_R8G8B8_UINT = 27
+  integer(c_int), parameter, public :: VK_FORMAT_R8G8B8_SINT = 28
+  integer(c_int), parameter, public :: VK_FORMAT_R8G8B8_SRGB = 29
+  integer(c_int), parameter, public :: VK_FORMAT_B8G8R8_UNORM = 30
+  integer(c_int), parameter, public :: VK_FORMAT_B8G8R8_SNORM = 31
+  integer(c_int), parameter, public :: VK_FORMAT_B8G8R8_USCALED = 32
+  integer(c_int), parameter, public :: VK_FORMAT_B8G8R8_SSCALED = 33
+  integer(c_int), parameter, public :: VK_FORMAT_B8G8R8_UINT = 34
+  integer(c_int), parameter, public :: VK_FORMAT_B8G8R8_SINT = 35
+  integer(c_int), parameter, public :: VK_FORMAT_B8G8R8_SRGB = 36
+  integer(c_int), parameter, public :: VK_FORMAT_R8G8B8A8_UNORM = 37
+  integer(c_int), parameter, public :: VK_FORMAT_R8G8B8A8_SNORM = 38
+  integer(c_int), parameter, public :: VK_FORMAT_R8G8B8A8_USCALED = 39
+  integer(c_int), parameter, public :: VK_FORMAT_R8G8B8A8_SSCALED = 40
+  integer(c_int), parameter, public :: VK_FORMAT_R8G8B8A8_UINT = 41
+  integer(c_int), parameter, public :: VK_FORMAT_R8G8B8A8_SINT = 42
+  integer(c_int), parameter, public :: VK_FORMAT_R8G8B8A8_SRGB = 43
+  integer(c_int), parameter, public :: VK_FORMAT_B8G8R8A8_UNORM = 44
+  integer(c_int), parameter, public :: VK_FORMAT_B8G8R8A8_SNORM = 45
+  integer(c_int), parameter, public :: VK_FORMAT_B8G8R8A8_USCALED = 46
+  integer(c_int), parameter, public :: VK_FORMAT_B8G8R8A8_SSCALED = 47
+  integer(c_int), parameter, public :: VK_FORMAT_B8G8R8A8_UINT = 48
+  integer(c_int), parameter, public :: VK_FORMAT_B8G8R8A8_SINT = 49
+  integer(c_int), parameter, public :: VK_FORMAT_B8G8R8A8_SRGB = 50
+  integer(c_int), parameter, public :: VK_FORMAT_A8B8G8R8_UNORM_PACK32 = 51
+  integer(c_int), parameter, public :: VK_FORMAT_A8B8G8R8_SNORM_PACK32 = 52
+  integer(c_int), parameter, public :: VK_FORMAT_A8B8G8R8_USCALED_PACK32 = 53
+  integer(c_int), parameter, public :: VK_FORMAT_A8B8G8R8_SSCALED_PACK32 = 54
+  integer(c_int), parameter, public :: VK_FORMAT_A8B8G8R8_UINT_PACK32 = 55
+  integer(c_int), parameter, public :: VK_FORMAT_A8B8G8R8_SINT_PACK32 = 56
+  integer(c_int), parameter, public :: VK_FORMAT_A8B8G8R8_SRGB_PACK32 = 57
+  integer(c_int), parameter, public :: VK_FORMAT_A2R10G10B10_UNORM_PACK32 = 58
+  integer(c_int), parameter, public :: VK_FORMAT_A2R10G10B10_SNORM_PACK32 = 59
+  integer(c_int), parameter, public :: VK_FORMAT_A2R10G10B10_USCALED_PACK32 = 60
+  integer(c_int), parameter, public :: VK_FORMAT_A2R10G10B10_SSCALED_PACK32 = 61
+  integer(c_int), parameter, public :: VK_FORMAT_A2R10G10B10_UINT_PACK32 = 62
+  integer(c_int), parameter, public :: VK_FORMAT_A2R10G10B10_SINT_PACK32 = 63
+  integer(c_int), parameter, public :: VK_FORMAT_A2B10G10R10_UNORM_PACK32 = 64
+  integer(c_int), parameter, public :: VK_FORMAT_A2B10G10R10_SNORM_PACK32 = 65
+  integer(c_int), parameter, public :: VK_FORMAT_A2B10G10R10_USCALED_PACK32 = 66
+  integer(c_int), parameter, public :: VK_FORMAT_A2B10G10R10_SSCALED_PACK32 = 67
+  integer(c_int), parameter, public :: VK_FORMAT_A2B10G10R10_UINT_PACK32 = 68
+  integer(c_int), parameter, public :: VK_FORMAT_A2B10G10R10_SINT_PACK32 = 69
+  integer(c_int), parameter, public :: VK_FORMAT_R16_UNORM = 70
+  integer(c_int), parameter, public :: VK_FORMAT_R16_SNORM = 71
+  integer(c_int), parameter, public :: VK_FORMAT_R16_USCALED = 72
+  integer(c_int), parameter, public :: VK_FORMAT_R16_SSCALED = 73
+  integer(c_int), parameter, public :: VK_FORMAT_R16_UINT = 74
+  integer(c_int), parameter, public :: VK_FORMAT_R16_SINT = 75
+  integer(c_int), parameter, public :: VK_FORMAT_R16_SFLOAT = 76
+  integer(c_int), parameter, public :: VK_FORMAT_R16G16_UNORM = 77
+  integer(c_int), parameter, public :: VK_FORMAT_R16G16_SNORM = 78
+  integer(c_int), parameter, public :: VK_FORMAT_R16G16_USCALED = 79
+  integer(c_int), parameter, public :: VK_FORMAT_R16G16_SSCALED = 80
+  integer(c_int), parameter, public :: VK_FORMAT_R16G16_UINT = 81
+  integer(c_int), parameter, public :: VK_FORMAT_R16G16_SINT = 82
+  integer(c_int), parameter, public :: VK_FORMAT_R16G16_SFLOAT = 83
+  integer(c_int), parameter, public :: VK_FORMAT_R16G16B16_UNORM = 84
+  integer(c_int), parameter, public :: VK_FORMAT_R16G16B16_SNORM = 85
+  integer(c_int), parameter, public :: VK_FORMAT_R16G16B16_USCALED = 86
+  integer(c_int), parameter, public :: VK_FORMAT_R16G16B16_SSCALED = 87
+  integer(c_int), parameter, public :: VK_FORMAT_R16G16B16_UINT = 88
+  integer(c_int), parameter, public :: VK_FORMAT_R16G16B16_SINT = 89
+  integer(c_int), parameter, public :: VK_FORMAT_R16G16B16_SFLOAT = 90
+  integer(c_int), parameter, public :: VK_FORMAT_R16G16B16A16_UNORM = 91
+  integer(c_int), parameter, public :: VK_FORMAT_R16G16B16A16_SNORM = 92
+  integer(c_int), parameter, public :: VK_FORMAT_R16G16B16A16_USCALED = 93
+  integer(c_int), parameter, public :: VK_FORMAT_R16G16B16A16_SSCALED = 94
+  integer(c_int), parameter, public :: VK_FORMAT_R16G16B16A16_UINT = 95
+  integer(c_int), parameter, public :: VK_FORMAT_R16G16B16A16_SINT = 96
+  integer(c_int), parameter, public :: VK_FORMAT_R16G16B16A16_SFLOAT = 97
+  integer(c_int), parameter, public :: VK_FORMAT_R32_UINT = 98
+  integer(c_int), parameter, public :: VK_FORMAT_R32_SINT = 99
+  integer(c_int), parameter, public :: VK_FORMAT_R32_SFLOAT = 100
+  integer(c_int), parameter, public :: VK_FORMAT_R32G32_UINT = 101
+  integer(c_int), parameter, public :: VK_FORMAT_R32G32_SINT = 102
+  integer(c_int), parameter, public :: VK_FORMAT_R32G32_SFLOAT = 103
+  integer(c_int), parameter, public :: VK_FORMAT_R32G32B32_UINT = 104
+  integer(c_int), parameter, public :: VK_FORMAT_R32G32B32_SINT = 105
+  integer(c_int), parameter, public :: VK_FORMAT_R32G32B32_SFLOAT = 106
+  integer(c_int), parameter, public :: VK_FORMAT_R32G32B32A32_UINT = 107
+  integer(c_int), parameter, public :: VK_FORMAT_R32G32B32A32_SINT = 108
+  integer(c_int), parameter, public :: VK_FORMAT_R32G32B32A32_SFLOAT = 109
+  integer(c_int), parameter, public :: VK_FORMAT_R64_UINT = 110
+  integer(c_int), parameter, public :: VK_FORMAT_R64_SINT = 111
+  integer(c_int), parameter, public :: VK_FORMAT_R64_SFLOAT = 112
+  integer(c_int), parameter, public :: VK_FORMAT_R64G64_UINT = 113
+  integer(c_int), parameter, public :: VK_FORMAT_R64G64_SINT = 114
+  integer(c_int), parameter, public :: VK_FORMAT_R64G64_SFLOAT = 115
+  integer(c_int), parameter, public :: VK_FORMAT_R64G64B64_UINT = 116
+  integer(c_int), parameter, public :: VK_FORMAT_R64G64B64_SINT = 117
+  integer(c_int), parameter, public :: VK_FORMAT_R64G64B64_SFLOAT = 118
+  integer(c_int), parameter, public :: VK_FORMAT_R64G64B64A64_UINT = 119
+  integer(c_int), parameter, public :: VK_FORMAT_R64G64B64A64_SINT = 120
+  integer(c_int), parameter, public :: VK_FORMAT_R64G64B64A64_SFLOAT = 121
+  integer(c_int), parameter, public :: VK_FORMAT_B10G11R11_UFLOAT_PACK32 = 122
+  integer(c_int), parameter, public :: VK_FORMAT_E5B9G9R9_UFLOAT_PACK32 = 123
+  integer(c_int), parameter, public :: VK_FORMAT_D16_UNORM = 124
+  integer(c_int), parameter, public :: VK_FORMAT_X8_D24_UNORM_PACK32 = 125
+  integer(c_int), parameter, public :: VK_FORMAT_D32_SFLOAT = 126
+  integer(c_int), parameter, public :: VK_FORMAT_S8_UINT = 127
+  integer(c_int), parameter, public :: VK_FORMAT_D16_UNORM_S8_UINT = 128
+  integer(c_int), parameter, public :: VK_FORMAT_D24_UNORM_S8_UINT = 129
+  integer(c_int), parameter, public :: VK_FORMAT_D32_SFLOAT_S8_UINT = 130
+  integer(c_int), parameter, public :: VK_FORMAT_BC1_RGB_UNORM_BLOCK = 131
+  integer(c_int), parameter, public :: VK_FORMAT_BC1_RGB_SRGB_BLOCK = 132
+  integer(c_int), parameter, public :: VK_FORMAT_BC1_RGBA_UNORM_BLOCK = 133
+  integer(c_int), parameter, public :: VK_FORMAT_BC1_RGBA_SRGB_BLOCK = 134
+  integer(c_int), parameter, public :: VK_FORMAT_BC2_UNORM_BLOCK = 135
+  integer(c_int), parameter, public :: VK_FORMAT_BC2_SRGB_BLOCK = 136
+  integer(c_int), parameter, public :: VK_FORMAT_BC3_UNORM_BLOCK = 137
+  integer(c_int), parameter, public :: VK_FORMAT_BC3_SRGB_BLOCK = 138
+  integer(c_int), parameter, public :: VK_FORMAT_BC4_UNORM_BLOCK = 139
+  integer(c_int), parameter, public :: VK_FORMAT_BC4_SNORM_BLOCK = 140
+  integer(c_int), parameter, public :: VK_FORMAT_BC5_UNORM_BLOCK = 141
+  integer(c_int), parameter, public :: VK_FORMAT_BC5_SNORM_BLOCK = 142
+  integer(c_int), parameter, public :: VK_FORMAT_BC6H_UFLOAT_BLOCK = 143
+  integer(c_int), parameter, public :: VK_FORMAT_BC6H_SFLOAT_BLOCK = 144
+  integer(c_int), parameter, public :: VK_FORMAT_BC7_UNORM_BLOCK = 145
+  integer(c_int), parameter, public :: VK_FORMAT_BC7_SRGB_BLOCK = 146
+  integer(c_int), parameter, public :: VK_FORMAT_ETC2_R8G8B8_UNORM_BLOCK = 147
+  integer(c_int), parameter, public :: VK_FORMAT_ETC2_R8G8B8_SRGB_BLOCK = 148
+  integer(c_int), parameter, public :: VK_FORMAT_ETC2_R8G8B8A1_UNORM_BLOCK = 149
+  integer(c_int), parameter, public :: VK_FORMAT_ETC2_R8G8B8A1_SRGB_BLOCK = 150
+  integer(c_int), parameter, public :: VK_FORMAT_ETC2_R8G8B8A8_UNORM_BLOCK = 151
+  integer(c_int), parameter, public :: VK_FORMAT_ETC2_R8G8B8A8_SRGB_BLOCK = 152
+  integer(c_int), parameter, public :: VK_FORMAT_EAC_R11_UNORM_BLOCK = 153
+  integer(c_int), parameter, public :: VK_FORMAT_EAC_R11_SNORM_BLOCK = 154
+  integer(c_int), parameter, public :: VK_FORMAT_EAC_R11G11_UNORM_BLOCK = 155
+  integer(c_int), parameter, public :: VK_FORMAT_EAC_R11G11_SNORM_BLOCK = 156
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_4x4_UNORM_BLOCK = 157
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_4x4_SRGB_BLOCK = 158
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_5x4_UNORM_BLOCK = 159
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_5x4_SRGB_BLOCK = 160
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_5x5_UNORM_BLOCK = 161
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_5x5_SRGB_BLOCK = 162
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_6x5_UNORM_BLOCK = 163
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_6x5_SRGB_BLOCK = 164
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_6x6_UNORM_BLOCK = 165
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_6x6_SRGB_BLOCK = 166
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_8x5_UNORM_BLOCK = 167
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_8x5_SRGB_BLOCK = 168
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_8x6_UNORM_BLOCK = 169
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_8x6_SRGB_BLOCK = 170
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_8x8_UNORM_BLOCK = 171
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_8x8_SRGB_BLOCK = 172
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_10x5_UNORM_BLOCK = 173
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_10x5_SRGB_BLOCK = 174
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_10x6_UNORM_BLOCK = 175
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_10x6_SRGB_BLOCK = 176
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_10x8_UNORM_BLOCK = 177
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_10x8_SRGB_BLOCK = 178
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_10x10_UNORM_BLOCK = 179
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_10x10_SRGB_BLOCK = 180
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_12x10_UNORM_BLOCK = 181
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_12x10_SRGB_BLOCK = 182
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_12x12_UNORM_BLOCK = 183
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_12x12_SRGB_BLOCK = 184
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_G8B8G8R8_422_UNORM = 1000156000
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_B8G8R8G8_422_UNORM = 1000156001
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM = 1000156002
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_G8_B8R8_2PLANE_420_UNORM = 1000156003
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM = 1000156004
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_G8_B8R8_2PLANE_422_UNORM = 1000156005
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_G8_B8_R8_3PLANE_444_UNORM = 1000156006
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_R10X6_UNORM_PACK16 = 1000156007
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_R10X6G10X6_UNORM_2PACK16 = 1000156008
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16 = 1000156009
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_G10X6B10X6G10X6R10X6_422_UNORM_4PACK16 = 1000156010
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_B10X6G10X6R10X6G10X6_422_UNORM_4PACK16 = 1000156011
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_420_UNORM_3PACK16 = 1000156012
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16 = 1000156013
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_422_UNORM_3PACK16 = 1000156014
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 = 1000156015
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_444_UNORM_3PACK16 = 1000156016
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_R12X4_UNORM_PACK16 = 1000156017
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_R12X4G12X4_UNORM_2PACK16 = 1000156018
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_R12X4G12X4B12X4A12X4_UNORM_4PACK16 = 1000156019
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_G12X4B12X4G12X4R12X4_422_UNORM_4PACK16 = 1000156020
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_B12X4G12X4R12X4G12X4_422_UNORM_4PACK16 = 1000156021
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_420_UNORM_3PACK16 = 1000156022
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_G12X4_B12X4R12X4_2PLANE_420_UNORM_3PACK16 = 1000156023
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_422_UNORM_3PACK16 = 1000156024
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_G12X4_B12X4R12X4_2PLANE_422_UNORM_3PACK16 = 1000156025
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_444_UNORM_3PACK16 = 1000156026
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_G16B16G16R16_422_UNORM = 1000156027
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_B16G16R16G16_422_UNORM = 1000156028
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_G16_B16_R16_3PLANE_420_UNORM = 1000156029
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_G16_B16R16_2PLANE_420_UNORM = 1000156030
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_G16_B16_R16_3PLANE_422_UNORM = 1000156031
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_G16_B16R16_2PLANE_422_UNORM = 1000156032
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_FORMAT_G16_B16_R16_3PLANE_444_UNORM = 1000156033
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_FORMAT_G8_B8R8_2PLANE_444_UNORM = 1000330000
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_444_UNORM_3PACK16 = 1000330001
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_FORMAT_G12X4_B12X4R12X4_2PLANE_444_UNORM_3PACK16 = 1000330002
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_FORMAT_G16_B16R16_2PLANE_444_UNORM = 1000330003
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_FORMAT_A4R4G4B4_UNORM_PACK16 = 1000340000
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_FORMAT_A4B4G4R4_UNORM_PACK16 = 1000340001
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_4x4_SFLOAT_BLOCK = 1000066000
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_5x4_SFLOAT_BLOCK = 1000066001
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_5x5_SFLOAT_BLOCK = 1000066002
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_6x5_SFLOAT_BLOCK = 1000066003
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_6x6_SFLOAT_BLOCK = 1000066004
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_8x5_SFLOAT_BLOCK = 1000066005
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_8x6_SFLOAT_BLOCK = 1000066006
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_8x8_SFLOAT_BLOCK = 1000066007
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_10x5_SFLOAT_BLOCK = 1000066008
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_10x6_SFLOAT_BLOCK = 1000066009
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_10x8_SFLOAT_BLOCK = 1000066010
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_10x10_SFLOAT_BLOCK = 1000066011
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_12x10_SFLOAT_BLOCK = 1000066012
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_12x12_SFLOAT_BLOCK = 1000066013
+  ! Provided by VK_IMG_format_pvrtc
+  integer(c_int), parameter, public :: VK_FORMAT_PVRTC1_2BPP_UNORM_BLOCK_IMG = 1000054000
+  ! Provided by VK_IMG_format_pvrtc
+  integer(c_int), parameter, public :: VK_FORMAT_PVRTC1_4BPP_UNORM_BLOCK_IMG = 1000054001
+  ! Provided by VK_IMG_format_pvrtc
+  integer(c_int), parameter, public :: VK_FORMAT_PVRTC2_2BPP_UNORM_BLOCK_IMG = 1000054002
+  ! Provided by VK_IMG_format_pvrtc
+  integer(c_int), parameter, public :: VK_FORMAT_PVRTC2_4BPP_UNORM_BLOCK_IMG = 1000054003
+  ! Provided by VK_IMG_format_pvrtc
+  integer(c_int), parameter, public :: VK_FORMAT_PVRTC1_2BPP_SRGB_BLOCK_IMG = 1000054004
+  ! Provided by VK_IMG_format_pvrtc
+  integer(c_int), parameter, public :: VK_FORMAT_PVRTC1_4BPP_SRGB_BLOCK_IMG = 1000054005
+  ! Provided by VK_IMG_format_pvrtc
+  integer(c_int), parameter, public :: VK_FORMAT_PVRTC2_2BPP_SRGB_BLOCK_IMG = 1000054006
+  ! Provided by VK_IMG_format_pvrtc
+  integer(c_int), parameter, public :: VK_FORMAT_PVRTC2_4BPP_SRGB_BLOCK_IMG = 1000054007
+  ! Provided by VK_NV_optical_flow
+  integer(c_int), parameter, public :: VK_FORMAT_R16G16_SFIXED5_NV = 1000464000
+  ! Provided by VK_KHR_maintenance5
+  integer(c_int), parameter, public :: VK_FORMAT_A1B5G5R5_UNORM_PACK16_KHR = 1000470000
+  ! Provided by VK_KHR_maintenance5
+  integer(c_int), parameter, public :: VK_FORMAT_A8_UNORM_KHR = 1000470001
+  ! Provided by VK_EXT_texture_compression_astc_hdr
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_4x4_SFLOAT_BLOCK_EXT = VK_FORMAT_ASTC_4x4_SFLOAT_BLOCK
+  ! Provided by VK_EXT_texture_compression_astc_hdr
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_5x4_SFLOAT_BLOCK_EXT = VK_FORMAT_ASTC_5x4_SFLOAT_BLOCK
+  ! Provided by VK_EXT_texture_compression_astc_hdr
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_5x5_SFLOAT_BLOCK_EXT = VK_FORMAT_ASTC_5x5_SFLOAT_BLOCK
+  ! Provided by VK_EXT_texture_compression_astc_hdr
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_6x5_SFLOAT_BLOCK_EXT = VK_FORMAT_ASTC_6x5_SFLOAT_BLOCK
+  ! Provided by VK_EXT_texture_compression_astc_hdr
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_6x6_SFLOAT_BLOCK_EXT = VK_FORMAT_ASTC_6x6_SFLOAT_BLOCK
+  ! Provided by VK_EXT_texture_compression_astc_hdr
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_8x5_SFLOAT_BLOCK_EXT = VK_FORMAT_ASTC_8x5_SFLOAT_BLOCK
+  ! Provided by VK_EXT_texture_compression_astc_hdr
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_8x6_SFLOAT_BLOCK_EXT = VK_FORMAT_ASTC_8x6_SFLOAT_BLOCK
+  ! Provided by VK_EXT_texture_compression_astc_hdr
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_8x8_SFLOAT_BLOCK_EXT = VK_FORMAT_ASTC_8x8_SFLOAT_BLOCK
+  ! Provided by VK_EXT_texture_compression_astc_hdr
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_10x5_SFLOAT_BLOCK_EXT = VK_FORMAT_ASTC_10x5_SFLOAT_BLOCK
+  ! Provided by VK_EXT_texture_compression_astc_hdr
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_10x6_SFLOAT_BLOCK_EXT = VK_FORMAT_ASTC_10x6_SFLOAT_BLOCK
+  ! Provided by VK_EXT_texture_compression_astc_hdr
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_10x8_SFLOAT_BLOCK_EXT = VK_FORMAT_ASTC_10x8_SFLOAT_BLOCK
+  ! Provided by VK_EXT_texture_compression_astc_hdr
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_10x10_SFLOAT_BLOCK_EXT = VK_FORMAT_ASTC_10x10_SFLOAT_BLOCK
+  ! Provided by VK_EXT_texture_compression_astc_hdr
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_12x10_SFLOAT_BLOCK_EXT = VK_FORMAT_ASTC_12x10_SFLOAT_BLOCK
+  ! Provided by VK_EXT_texture_compression_astc_hdr
+  integer(c_int), parameter, public :: VK_FORMAT_ASTC_12x12_SFLOAT_BLOCK_EXT = VK_FORMAT_ASTC_12x12_SFLOAT_BLOCK
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_G8B8G8R8_422_UNORM_KHR = VK_FORMAT_G8B8G8R8_422_UNORM
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_B8G8R8G8_422_UNORM_KHR = VK_FORMAT_B8G8R8G8_422_UNORM
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM_KHR = VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_G8_B8R8_2PLANE_420_UNORM_KHR = VK_FORMAT_G8_B8R8_2PLANE_420_UNORM
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM_KHR = VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_G8_B8R8_2PLANE_422_UNORM_KHR = VK_FORMAT_G8_B8R8_2PLANE_422_UNORM
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_G8_B8_R8_3PLANE_444_UNORM_KHR = VK_FORMAT_G8_B8_R8_3PLANE_444_UNORM
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_R10X6_UNORM_PACK16_KHR = VK_FORMAT_R10X6_UNORM_PACK16
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_R10X6G10X6_UNORM_2PACK16_KHR = VK_FORMAT_R10X6G10X6_UNORM_2PACK16
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16_KHR = VK_FORMAT_R10X6G10X6B10X6A10X6_UNORM_4PACK16
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_G10X6B10X6G10X6R10X6_422_UNORM_4PACK16_KHR = VK_FORMAT_G10X6B10X6G10X6R10X6_422_UNORM_4PACK16
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_B10X6G10X6R10X6G10X6_422_UNORM_4PACK16_KHR = VK_FORMAT_B10X6G10X6R10X6G10X6_422_UNORM_4PACK16
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_420_UNORM_3PACK16_KHR = VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_420_UNORM_3PACK16
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16_KHR = VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_422_UNORM_3PACK16_KHR = VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_422_UNORM_3PACK16
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16_KHR = VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_444_UNORM_3PACK16_KHR = VK_FORMAT_G10X6_B10X6_R10X6_3PLANE_444_UNORM_3PACK16
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_R12X4_UNORM_PACK16_KHR = VK_FORMAT_R12X4_UNORM_PACK16
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_R12X4G12X4_UNORM_2PACK16_KHR = VK_FORMAT_R12X4G12X4_UNORM_2PACK16
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_R12X4G12X4B12X4A12X4_UNORM_4PACK16_KHR = VK_FORMAT_R12X4G12X4B12X4A12X4_UNORM_4PACK16
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_G12X4B12X4G12X4R12X4_422_UNORM_4PACK16_KHR = VK_FORMAT_G12X4B12X4G12X4R12X4_422_UNORM_4PACK16
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_B12X4G12X4R12X4G12X4_422_UNORM_4PACK16_KHR = VK_FORMAT_B12X4G12X4R12X4G12X4_422_UNORM_4PACK16
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_420_UNORM_3PACK16_KHR = VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_420_UNORM_3PACK16
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_G12X4_B12X4R12X4_2PLANE_420_UNORM_3PACK16_KHR = VK_FORMAT_G12X4_B12X4R12X4_2PLANE_420_UNORM_3PACK16
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_422_UNORM_3PACK16_KHR = VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_422_UNORM_3PACK16
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_G12X4_B12X4R12X4_2PLANE_422_UNORM_3PACK16_KHR = VK_FORMAT_G12X4_B12X4R12X4_2PLANE_422_UNORM_3PACK16
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_444_UNORM_3PACK16_KHR = VK_FORMAT_G12X4_B12X4_R12X4_3PLANE_444_UNORM_3PACK16
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_G16B16G16R16_422_UNORM_KHR = VK_FORMAT_G16B16G16R16_422_UNORM
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_B16G16R16G16_422_UNORM_KHR = VK_FORMAT_B16G16R16G16_422_UNORM
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_G16_B16_R16_3PLANE_420_UNORM_KHR = VK_FORMAT_G16_B16_R16_3PLANE_420_UNORM
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_G16_B16R16_2PLANE_420_UNORM_KHR = VK_FORMAT_G16_B16R16_2PLANE_420_UNORM
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_G16_B16_R16_3PLANE_422_UNORM_KHR = VK_FORMAT_G16_B16_R16_3PLANE_422_UNORM
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_G16_B16R16_2PLANE_422_UNORM_KHR = VK_FORMAT_G16_B16R16_2PLANE_422_UNORM
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_FORMAT_G16_B16_R16_3PLANE_444_UNORM_KHR = VK_FORMAT_G16_B16_R16_3PLANE_444_UNORM
+  ! Provided by VK_EXT_ycbcr_2plane_444_formats
+  integer(c_int), parameter, public :: VK_FORMAT_G8_B8R8_2PLANE_444_UNORM_EXT = VK_FORMAT_G8_B8R8_2PLANE_444_UNORM
+  ! Provided by VK_EXT_ycbcr_2plane_444_formats
+  integer(c_int), parameter, public :: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_444_UNORM_3PACK16_EXT = VK_FORMAT_G10X6_B10X6R10X6_2PLANE_444_UNORM_3PACK16
+  ! Provided by VK_EXT_ycbcr_2plane_444_formats
+  integer(c_int), parameter, public :: VK_FORMAT_G12X4_B12X4R12X4_2PLANE_444_UNORM_3PACK16_EXT = VK_FORMAT_G12X4_B12X4R12X4_2PLANE_444_UNORM_3PACK16
+  ! Provided by VK_EXT_ycbcr_2plane_444_formats
+  integer(c_int), parameter, public :: VK_FORMAT_G16_B16R16_2PLANE_444_UNORM_EXT = VK_FORMAT_G16_B16R16_2PLANE_444_UNORM
+  ! Provided by VK_EXT_4444_formats
+  integer(c_int), parameter, public :: VK_FORMAT_A4R4G4B4_UNORM_PACK16_EXT = VK_FORMAT_A4R4G4B4_UNORM_PACK16
+  ! Provided by VK_EXT_4444_formats
+  integer(c_int), parameter, public :: VK_FORMAT_A4B4G4R4_UNORM_PACK16_EXT = VK_FORMAT_A4B4G4R4_UNORM_PACK16
+  ! Provided by VK_NV_optical_flow
+  ! VK_FORMAT_R16G16_S10_5_NV is a deprecated alias
+  integer(c_int), parameter, public :: VK_FORMAT_R16G16_S10_5_NV = VK_FORMAT_R16G16_SFIXED5_NV
+
+
   !? VkStructureType. ==========================================================================
 
 
