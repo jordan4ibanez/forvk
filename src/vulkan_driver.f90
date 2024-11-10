@@ -105,7 +105,7 @@ contains
     integer(c_int64_t), intent(in), value :: window_surface
     logical(c_bool) :: has_swap_chain_support
     type(forvulkan_swap_chain_support_details), pointer :: swap_chain_support_details
-    integer(c_int32_t) :: format_count
+    integer(c_int32_t) :: format_count, present_mode_count
     type(vk_surface_format_khr), pointer :: surface_format_pointer
 
 
@@ -141,11 +141,23 @@ contains
       error stop "[Vulkan] Error: Failed to get available physical device surface formats."
     end if
 
+    ! Now, we must get the present modes
+    if (vk_get_physical_device_surface_present_modes_khr(physical_device, window_surface, present_mode_count, c_null_ptr) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to get avilable physical device surface present modes."
+    end if
 
+    ! If it has no surface present modes, welp, I guess that's that.
+    if (present_mode_count == 0) then
+      print"(A)","[Vulkan]: Device has no surface present modes."
+      has_swap_chain_support = .false.
+      return
+    end if
 
+    ! Again, if it does, we can get all of them.
+    swap_chain_support_details%present_modes = new_vec(sizeof(0_4), 0_8)
+    call swap_chain_support_details%present_modes%resize(int(present_mode_count, c_int64_t), 0_4)
 
-
-
+    ! todo: something (very detailed)
   end subroutine query_swap_chain_support
 
 
