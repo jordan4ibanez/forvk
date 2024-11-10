@@ -852,6 +852,20 @@ module forvulkan
     end function vk_enumerate_device_extension_properties
 
 
+    function vk_get_physical_device_surface_capabilities_khr(physical_device, surface, p_surface_capabilities) result(vk_result) bind(c, name = "vkGetPhysicalDeviceSurfaceCapabilitiesKHR")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkPhysicalDevice
+      integer(c_int64_t), intent(in), value :: physical_device
+      ! VkSurfaceKHR
+      integer(c_int64_t), intent(in), value :: surface
+      ! VkSurfaceCapabilitiesKHR *
+      type(c_ptr), intent(in), value :: p_surface_capabilities
+      integer(c_int32_t) :: vk_result
+    end function vk_get_physical_device_surface_capabilities_khr
+
+
 !? FUNCTION BLUEPRINTS. ============================================================
 
 
