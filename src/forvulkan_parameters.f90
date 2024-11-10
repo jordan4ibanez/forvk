@@ -177,6 +177,20 @@ module forvulkan_parameters
   integer(c_int), parameter, public :: VK_QUEUE_OPTICAL_FLOW_BIT_NV = int(z"00000100")
 
 
+  !? VkSurfaceTransformFlagBitsKHR. ==========================================================================
+
+
+  integer(c_int), parameter, public :: VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR = int(z"00000001")
+  integer(c_int), parameter, public :: VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR = int(z"00000002")
+  integer(c_int), parameter, public :: VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR = int(z"00000004")
+  integer(c_int), parameter, public :: VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR = int(z"00000008")
+  integer(c_int), parameter, public :: VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_BIT_KHR = int(z"00000010")
+  integer(c_int), parameter, public :: VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_90_BIT_KHR = int(z"00000020")
+  integer(c_int), parameter, public :: VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR = int(z"00000040")
+  integer(c_int), parameter, public :: VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR = int(z"00000080")
+  integer(c_int), parameter, public :: VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR = int(z"00000100")
+
+
   !? VkStructureType. ==========================================================================
 
 
