@@ -586,6 +586,13 @@ module forvulkan
   end type vk_device_create_info
 
 
+  !? VkExtent2D.
+  type, bind(c) :: vk_extent_2d
+    ! uint32_t
+    integer(c_int32_t) :: width
+    ! uint32_t
+    integer(c_int32_t) :: height
+  end type vk_extent_2d
   !? CUSTOM TYPES .===============================================================
 
 
