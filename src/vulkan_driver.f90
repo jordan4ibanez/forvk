@@ -106,6 +106,8 @@ contains
     logical(c_bool) :: has_swap_chain_support
     type(forvulkan_swap_chain_support_details), pointer :: swap_chain_support_details
     integer(c_int32_t) :: format_count
+    type(vk_surface_format_khr), pointer :: surface_format_pointer
+
 
     has_swap_chain_support = .true.
 
@@ -126,6 +128,17 @@ contains
       print"(A)","[Vulkan]: Device has no surface formats."
       has_swap_chain_support = .false.
       return
+    end if
+
+    ! And if it does, we can get all of them.
+    allocate(surface_format_pointer)
+    swap_chain_support_details%formats = new_vec(sizeof(surface_format_pointer), 0_8)
+    call swap_chain_support_details%formats%resize(int(format_count, c_int64_t), surface_format_pointer)
+    deallocate(surface_format_pointer)
+
+    ! We're passing in the underlying C array pointer.
+    if (vk_get_physical_device_surface_formats_khr(physical_device, window_surface, format_count, swap_chain_support_details%formats%get(1_8)) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to get available physical device surface formats."
     end if
 
 
