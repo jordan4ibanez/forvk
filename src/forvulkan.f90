@@ -620,6 +620,15 @@ module forvulkan
   end type vk_surface_capabilities_khr
 
 
+  !? VkSurfaceFormatKHR.
+  type, bind(c) :: vk_surface_format_khr
+    ! uint32_t [VkFormat]
+    integer(c_int32_t) :: format
+    ! uint32_t [VkColorSpaceKHR]
+    integer(c_int32_t) :: color_space
+  end type vk_surface_format_khr
+
+
   !? CUSTOM TYPES .===============================================================
 
 
