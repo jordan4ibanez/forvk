@@ -90,7 +90,7 @@ contains
 
     call create_surface(vulkan_instance, window_surface)
 
-    call select_physical_device(vulkan_instance, physical_device, window_surface)
+    call select_physical_device(vulkan_instance, physical_device, window_surface, swap_chain_support_details)
 
     call create_logical_device(physical_device, logical_device, graphics_queue, present_queue, window_surface, DEBUG_MODE)
 
