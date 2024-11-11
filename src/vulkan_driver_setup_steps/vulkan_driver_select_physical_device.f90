@@ -288,6 +288,9 @@ contains
     swap_chain_support_details%present_modes = new_vec(sizeof(0_4), 0_8)
     call swap_chain_support_details%present_modes%resize(int(present_mode_count, c_int64_t), 0_4)
 
+    if (vk_get_physical_device_surface_present_modes_khr(physical_device, window_surface, present_mode_count, swap_chain_support_details%present_modes%get(1_8)) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to get avilable physical device surface present modes."
+    end if
   end function query_swap_chain_support
 
 
