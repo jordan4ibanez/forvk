@@ -280,7 +280,6 @@ contains
     swap_chain_support_details%present_modes = new_vec(sizeof(0_4), 0_8)
     call swap_chain_support_details%present_modes%resize(int(present_mode_count, c_int64_t), 0_4)
 
-    ! todo: something (very detailed)
   end function query_swap_chain_support
 
 
