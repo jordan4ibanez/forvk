@@ -74,14 +74,15 @@ contains
   end subroutine select_physical_device
 
 
-  function device_is_suitable(device_pointer, device_name, window_surface) result(suitable)
+  function device_is_suitable(device_pointer, window_surface, device_name, swap_chain_support_details) result(suitable)
     implicit none
 
     ! VkPhysicalDevice
     integer(c_int64_t), intent(inout), pointer :: device_pointer
-    character(len = :, kind = c_char), intent(inout), pointer :: device_name
     ! VkSurfaceKHR
     integer(c_int64_t), intent(in), value :: window_surface
+    character(len = :, kind = c_char), intent(inout), pointer :: device_name
+    type(forvulkan_swap_chain_support_details), intent(inout), pointer :: swap_chain_support_details
     type(forvulkan_queue_family_indices) :: queue_family_indices
     logical(c_bool) :: suitable
     type(vk_physical_device_properties), pointer :: device_properties
