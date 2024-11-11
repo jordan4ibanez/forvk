@@ -128,7 +128,7 @@ contains
       suitable = .false.
     end if
 
-    if (.not. check_device_extension_support(device_pointer)) then
+    if (.not. check_device_extension_support(device_pointer, window_surface, swap_chain_support_details)) then
       !! FIXME: this needs to list which extension!
       print"(A)", "[Vulkan]: Device is missing extension support."
       suitable = .false.
