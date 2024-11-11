@@ -14,7 +14,7 @@ module vulkan_driver_select_physical_device
 contains
 
 
-  subroutine select_physical_device(vulkan_instance, physical_device, window_surface)
+  subroutine select_physical_device(vulkan_instance, physical_device, window_surface, swap_chain_support_details)
     implicit none
 
     ! VkInstance
@@ -23,6 +23,7 @@ contains
     integer(c_int64_t), intent(inout) :: physical_device
     ! VkSurfaceKHR
     integer(c_int64_t), intent(in), value :: window_surface
+    type(forvulkan_swap_chain_support_details), intent(inout), pointer :: swap_chain_support_details
     integer(c_int32_t) :: device_count, i
     ! c_int64_t [VkPhysicalDevice]
     type(vec) :: available_devices
