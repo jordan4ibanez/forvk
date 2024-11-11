@@ -94,7 +94,11 @@ contains
 
     call create_logical_device(physical_device, logical_device, graphics_queue, present_queue, window_surface, DEBUG_MODE)
 
+
+
   end subroutine init_vulkan
+
+  
 
 
 !* MAIN LOOP. ====================================================================
