@@ -247,7 +247,6 @@ contains
     integer(c_int32_t) :: format_count, present_mode_count
     type(vk_surface_format_khr), pointer :: surface_format_pointer
 
-
     has_swap_chain_support = .true.
 
     allocate(swap_chain_support_details)
