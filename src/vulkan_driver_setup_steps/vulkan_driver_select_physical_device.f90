@@ -219,7 +219,7 @@ contains
   end function check_device_extension_support
 
 
-  subroutine query_swap_chain_support(physical_device, window_surface)
+  function query_swap_chain_support(physical_device, window_surface, swap_chain_support_details) result(has_swap_chain_support)
     implicit none
 
     ! VkPhysicalDevice
@@ -281,7 +281,7 @@ contains
     call swap_chain_support_details%present_modes%resize(int(present_mode_count, c_int64_t), 0_4)
 
     ! todo: something (very detailed)
-  end subroutine query_swap_chain_support
+  end function query_swap_chain_support
 
 
 end module vulkan_driver_select_physical_device
