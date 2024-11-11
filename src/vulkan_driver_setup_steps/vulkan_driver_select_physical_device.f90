@@ -139,11 +139,14 @@ contains
   end function device_is_suitable
 
 
-  function check_device_extension_support(physical_device) result(has_support)
+  function check_device_extension_support(physical_device, window_surface, swap_chain_support_details) result(has_support)
     implicit none
 
     !VkPhysicalDevice
     integer(c_int64_t), intent(in), value :: physical_device
+    ! VkSurfaceKHR
+    integer(c_int64_t), intent(in), value :: window_surface
+    type(forvulkan_swap_chain_support_details), intent(inout), pointer :: swap_chain_support_details
     logical(c_bool) :: has_support
     integer(c_int32_t) :: extension_count
     ! VkExtensionProperties
