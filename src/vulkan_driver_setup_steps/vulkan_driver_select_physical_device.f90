@@ -249,6 +249,8 @@ contains
 
     has_swap_chain_support = .true.
 
+    print"(A)","[Vulkan]: Checking for swap chain support."
+
     allocate(swap_chain_support_details)
 
     ! First, get device surface capabilities.
@@ -267,6 +269,8 @@ contains
       has_swap_chain_support = .false.
       return
     end if
+
+    print"(A)","[Vulkan]: Found ["//int_to_string(format_count)//"] supported physical device surface formats."
 
     ! And if it does, we can get all of them.
     allocate(surface_format_pointer)
@@ -290,6 +294,8 @@ contains
       has_swap_chain_support = .false.
       return
     end if
+
+    print"(A)","[Vulkan]: Found ["//int_to_string(present_mode_count)//"] supported physical device present modes."
 
     ! Again, if it does, we can get all of them.
     swap_chain_support_details%present_modes = new_vec(sizeof(0_4), 0_8)
