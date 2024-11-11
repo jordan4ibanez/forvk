@@ -40,7 +40,7 @@ module vulkan_driver
   integer(c_int64_t), target :: logical_device = VK_NULL_HANDLE
 
   ! Swap chain support information for physical device.
-  type(forvulkan_swap_chain_support_details) :: swap_chain_support_details
+  type(forvulkan_swap_chain_support_details), pointer :: swap_chain_support_details
 
   ! VkQueue
   integer(c_int64_t), target :: graphics_queue = VK_NULL_HANDLE
