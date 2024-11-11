@@ -224,6 +224,7 @@ contains
 
     ! So now we must query the swap chain support.
     ! If it has no swap chain support, then we can't use this device.
+    ! But we're only going to run this if the device passed all the other checks.
     if (has_support) then
       if (query_swap_chain_support(physical_device, window_surface, swap_chain_support_details)) then
 
