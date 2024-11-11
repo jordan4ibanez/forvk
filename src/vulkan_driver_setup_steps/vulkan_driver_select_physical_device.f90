@@ -227,7 +227,7 @@ contains
     ! VkSurfaceKHR
     integer(c_int64_t), intent(in), value :: window_surface
     logical(c_bool) :: has_swap_chain_support
-    type(forvulkan_swap_chain_support_details), pointer :: swap_chain_support_details
+    type(forvulkan_swap_chain_support_details), intent(inout), pointer :: swap_chain_support_details
     integer(c_int32_t) :: format_count, present_mode_count
     type(vk_surface_format_khr), pointer :: surface_format_pointer
 
