@@ -58,7 +58,7 @@ contains
 
       ! We found it, woo. That's our physical device.
       ! todo: Make a menu option to select another physical device.
-      if (device_is_suitable(device_pointer, device_name, window_surface)) then
+      if (device_is_suitable(device_pointer, window_surface, device_name, swap_chain_support_details)) then
         physical_device = device_pointer
         exit device_search
       end if
