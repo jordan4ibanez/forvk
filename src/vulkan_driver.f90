@@ -36,6 +36,9 @@ module vulkan_driver
   ! VkDevice
   integer(c_int64_t), target :: logical_device = VK_NULL_HANDLE
 
+  ! Swap chain support information for physical device.
+  type(forvulkan_swap_chain_support_details) :: swap_chain_support_details
+
   ! VkSurfaceKHR
   integer(c_int64_t), target :: window_surface = VK_NULL_HANDLE
 
@@ -90,8 +93,6 @@ contains
     call select_physical_device(vulkan_instance, physical_device, window_surface)
 
     call create_logical_device(physical_device, logical_device, graphics_queue, present_queue, window_surface, DEBUG_MODE)
-
-    call query_swap_chain_support(physical_device, window_surface)
 
   end subroutine init_vulkan
 
