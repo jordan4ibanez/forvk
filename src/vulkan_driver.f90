@@ -30,6 +30,9 @@ module vulkan_driver
   ! VkDebugUtilsMessengerEXT
   integer(c_int64_t), target :: debug_messenger = VK_NULL_HANDLE
 
+  ! VkSurfaceKHR
+  integer(c_int64_t), target :: window_surface = VK_NULL_HANDLE
+
   ! VkPhysicalDevice
   integer(c_int64_t), target :: physical_device = VK_NULL_HANDLE
 
@@ -38,9 +41,6 @@ module vulkan_driver
 
   ! Swap chain support information for physical device.
   type(forvulkan_swap_chain_support_details) :: swap_chain_support_details
-
-  ! VkSurfaceKHR
-  integer(c_int64_t), target :: window_surface = VK_NULL_HANDLE
 
   ! VkQueue
   integer(c_int64_t), target :: graphics_queue = VK_NULL_HANDLE
