@@ -21,6 +21,7 @@ contains
     type(vk_surface_format_khr), pointer :: selected_format_pointer
     ! VkPresentModeKHR
     integer(c_int32_t) :: selected_present_mode
+    type(vk_extent_2d) :: selected_extent
 
     print"(A)","[Vulkan]: Creating swap chain."
 
@@ -30,6 +31,7 @@ contains
 
     selected_format_pointer => select_swap_surface_format(swap_chain_support_details%formats)
     selected_present_mode = select_swap_present_mode(swap_chain_support_details%present_modes)
+    selected_extent = select_swap_extent(swap_chain_support_details%capabilities)
   end subroutine create_swap_chain
 
 
@@ -99,6 +101,21 @@ contains
 
     selected_present_mode = VK_PRESENT_MODE_FIFO_KHR
   end function select_swap_present_mode
+
+
+  function select_swap_extent(capabilities) result(selected_extent)
+    implicit none
+
+    type(vk_surface_capabilities_khr), intent(in) :: capabilities
+    type(vk_extent_2d) :: selected_extent
+
+    ! uint32 max goes into negatives using direct casting to int32.
+    ! In fact, it just equals -1. :)
+    if (capabilities%current_extent%width == -1) then
+      print*,"floop"
+    end if
+
+  end function select_swap_extent
 
 
 end module vulkan_driver_create_swap_chain
