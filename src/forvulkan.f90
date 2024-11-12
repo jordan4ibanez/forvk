@@ -637,36 +637,36 @@ module forvulkan
     ! const void *
     type(c_ptr) :: p_next = c_null_ptr
     ! uint32_t [VkSwapchainCreateFlagsKHR]
-    integer(c_int32_t) :: flags
+    integer(c_int32_t) :: flags = 0
     ! VkSurfaceKHR
-    integer(c_int64_t) :: surface
+    integer(c_int64_t) :: surface = 0
     ! uint32_t
-    integer(c_int32_t) :: min_image_count
+    integer(c_int32_t) :: min_image_count = 0
     ! uint32_t [VkFormat]
-    integer(c_int32_t) :: image_format
+    integer(c_int32_t) :: image_format = 0
     ! uint32_t [VkColorSpaceKHR]
-    integer(c_int32_t) :: image_color_space
+    integer(c_int32_t) :: image_color_space = 0
     type(vk_extent_2d) :: image_extent
     ! uint32_t
-    integer(c_int32_t) :: image_array_layers
+    integer(c_int32_t) :: image_array_layers = 0
     ! uint32_t [VkImageUsageFlags]
-    integer(c_int32_t) :: image_usage
+    integer(c_int32_t) :: image_usage = 0
     ! uint32_t [VkSharingMode]
-    integer(c_int32_t) :: image_sharing_mode
+    integer(c_int32_t) :: image_sharing_mode = 0
     ! uint32_t
-    integer(c_int32_t) :: queue_family_index_count
+    integer(c_int32_t) :: queue_family_index_count = 0
     ! const uint32_t*
-    type(c_ptr) :: p_queue_family_indices
+    type(c_ptr) :: p_queue_family_indices = c_null_ptr
     ! uint32_t [VkSurfaceTransformFlagBitsKHR]
-    integer(c_int32_t) :: pre_transform
+    integer(c_int32_t) :: pre_transform = 0
     ! uint32_t [VkCompositeAlphaFlagBitsKHR]
-    integer(c_int32_t) :: composite_alpha
+    integer(c_int32_t) :: composite_alpha = 0
     ! uint32_t [VkPresentModeKHR]
-    integer(c_int32_t) :: present_mode
+    integer(c_int32_t) :: present_mode = 0
     ! VkBool32
-    integer(c_int32_t) :: clipped
+    integer(c_int32_t) :: clipped = 0
     ! VkSwapchainKHR
-    integer(c_int64_t) :: old_swap_chain
+    integer(c_int64_t) :: old_swap_chain = 0
   end type vk_swapchain_create_info_khr
 
 
