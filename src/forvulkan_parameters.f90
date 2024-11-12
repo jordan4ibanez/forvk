@@ -727,6 +727,15 @@ module forvulkan_parameters
   integer(c_int), parameter, public :: VK_SHARING_MODE_CONCURRENT = 1
 
 
+  !? VkCompositeAlphaFlagBitsKHR.
+
+
+  integer(c_int), parameter, public :: VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR = int(z"00000001")
+  integer(c_int), parameter, public :: VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR = int(z"00000002")
+  integer(c_int), parameter, public :: VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR = int(z"00000004")
+  integer(c_int), parameter, public :: VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR = int(z"00000008")
+
+
   !? VkStructureType. ==========================================================================
 
 
