@@ -29,6 +29,7 @@ contains
     end if
 
     selected_format_pointer => select_swap_surface_format(swap_chain_support_details%formats)
+    selected_present_mode = select_swap_present_mode(swap_chain_support_details%present_modes)
   end subroutine create_swap_chain
 
 
@@ -67,16 +68,30 @@ contains
     allocate(selected_format_pointer)
     selected_format_pointer%color_space = available_format_pointer%color_space
     selected_format_pointer%format = available_format_pointer%format
-
   end function select_swap_surface_format
 
 
-  function select_swap_present_mode() result(selected_present_mode)
+  function select_swap_present_mode(available_present_modes) result(selected_present_mode)
     implicit none
 
     ! VkPresentModeKHR
+    type(vec) :: available_present_modes
+    ! VkPresentModeKHR
     integer(c_int32_t) :: selected_present_mode
+    integer(c_int32_t), pointer :: available_present_mode_pointer
+    integer(c_int64_t) :: i
 
+    ! We're going to try to find mailbox support.
+    do i = 1,available_present_modes%size()
+      call c_f_pointer(available_present_modes%get(i), available_present_mode_pointer)
+      if (available_present_mode_pointer == VK_PRESENT_MODE_MAILBOX_KHR) then
+        selected_present_mode = available_present_mode_pointer
+        return
+      end if
+    end do
+
+    ! If we didn't find mailbox support, just use FIFO.
+    selected_present_mode = VK_PRESENT_MODE_FIFO_KHR
   end function select_swap_present_mode
 
 
