@@ -81,16 +81,22 @@ contains
     integer(c_int32_t), pointer :: available_present_mode_pointer
     integer(c_int64_t) :: i
 
+    print"(A)","[Vulkan]: Searching for [mailbox] present mode."
+
     ! We're going to try to find mailbox support.
     do i = 1,available_present_modes%size()
       call c_f_pointer(available_present_modes%get(i), available_present_mode_pointer)
       if (available_present_mode_pointer == VK_PRESENT_MODE_MAILBOX_KHR) then
         selected_present_mode = available_present_mode_pointer
+        print"(A)","[Vulkan]: [mailbox] present mode is selected."
         return
       end if
     end do
 
     ! If we didn't find mailbox support, just use FIFO.
+
+    print"(A)","[Vulkan]: [mailbox] present mode not available. Defaulting to [fifo]"
+
     selected_present_mode = VK_PRESENT_MODE_FIFO_KHR
   end function select_swap_present_mode
 
