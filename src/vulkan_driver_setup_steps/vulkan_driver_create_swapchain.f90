@@ -31,10 +31,10 @@ contains
     type(forvulkan_queue_family_indices) :: queue_family_indices
     integer(c_int32_t), dimension(2), target :: queue_indices_array
 
-    print"(A)","[Vulkan]: Creating swap chain."
+    print"(A)","[Vulkan]: Creating swapchain."
 
     if (.not. query_swapchain_support(physical_device, window_surface, swap_chain_support_details)) then
-      error stop "[Vulkan] Severe Error: This physical device was already tested to have swap chain support, suddenly it does not."
+      error stop "[Vulkan] Severe Error: This physical device was already tested to have swapchain support, suddenly it does not."
     end if
 
     selected_format_pointer => select_swap_surface_format(swap_chain_support_details%formats)

@@ -24,7 +24,7 @@ contains
 
     has_swap_chain_support = .true.
 
-    print"(A)","[Vulkan]: Querying swap chain support information."
+    print"(A)","[Vulkan]: Querying swapchain support information."
 
     allocate(swap_chain_support_details)
 
