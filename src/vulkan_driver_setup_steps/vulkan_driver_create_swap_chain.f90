@@ -3,6 +3,7 @@ module vulkan_driver_create_swap_chain
   use :: vector
   use :: forvulkan
   use :: forvulkan_parameters
+  use :: vulkan_driver_query_swap_chain_support
   implicit none
 
 
