@@ -24,6 +24,7 @@ contains
     integer(c_int32_t) :: selected_present_mode
     type(vk_extent_2d) :: selected_extent
     integer(c_int32_t) :: selected_image_count
+    type(vk_swapchain_create_info_khr) :: create_info
 
     print"(A)","[Vulkan]: Creating swap chain."
 
@@ -36,7 +37,15 @@ contains
     selected_extent = select_swap_extent(swap_chain_support_details%capabilities)
     selected_image_count = select_image_count(swap_chain_support_details%capabilities)
 
-    
+    create_info%s_type = VK_STRUCTURE_TYPE%SWAPCHAIN_CREATE_INFO_KHR
+    create_info%surface = window_surface
+    create_info%min_image_count = selected_image_count
+    create_info%image_format = selected_format_pointer%format
+    create_info%image_color_space = selected_format_pointer%color_space
+    create_info%image_extent = selected_extent
+    create_info%image_array_layers = 1
+    create_info%image_usage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+
   end subroutine create_swap_chain
 
 
