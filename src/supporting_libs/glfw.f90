@@ -37,6 +37,7 @@ module glfw
   public :: glfw_init
   public :: glfw_terminate
   public :: glfw_create_window_surface
+  public :: glfw_get_framebuffer_size
   public :: glfw_get_window_pointer
   public :: glfw_create_window
   public :: glfw_make_context_current
@@ -548,6 +549,17 @@ module glfw
       integer(c_int64_t), intent(inout) :: window_surface
       integer(c_int32_t) :: vk_result
     end function glfw_create_window_surface
+
+
+    subroutine glfw_get_framebuffer_size(window, width, height) bind(c, name = "glfwGetFramebufferSize")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! GLFWwindow *
+      type(c_ptr), intent(in), value :: window
+      integer(c_int32_t), intent(inout) :: width
+      integer(c_int32_t), intent(inout) :: height
+    end subroutine glfw_get_framebuffer_size
 
 
   end interface
