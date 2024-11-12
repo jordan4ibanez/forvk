@@ -938,7 +938,7 @@ module forvulkan
     end function vk_get_physical_device_surface_present_modes_khr
 
 
-    function vk_create_swap_chain_khr(physical_device, p_create_info, p_allocator, p_swapchain) result(vk_result) bind(c, name = "vkCreateSwapchainKHR")
+    function vk_create_swapchain_khr(physical_device, p_create_info, p_allocator, p_swapchain) result(vk_result) bind(c, name = "vkCreateSwapchainKHR")
       use, intrinsic :: iso_c_binding
       implicit none
 
@@ -951,7 +951,7 @@ module forvulkan
       ! VkSwapchainKHR *
       integer(c_int64_t), intent(inout) :: p_swapchain
       integer(c_int32_t) :: vk_result
-    end function vk_create_swap_chain_khr
+    end function vk_create_swapchain_khr
 
 
 !? FUNCTION BLUEPRINTS. ============================================================
