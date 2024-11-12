@@ -954,6 +954,19 @@ module forvulkan
     end function vk_create_swapchain_khr
 
 
+    subroutine vk_destroy_swapchain_khr(logical_device, swapchain, p_allocator) bind(c, name = "vkDestroySwapchainKHR")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkDevice
+      integer(c_int64_t), intent(in), value :: logical_device
+      ! VkSwapchainKHR
+      integer(c_int64_t), intent(in), value :: swapchain
+      ! const VkAllocationCallbacks *
+      type(c_ptr), intent(in), value :: p_allocator
+    end subroutine vk_destroy_swapchain_khr
+
+
 !? FUNCTION BLUEPRINTS. ============================================================
 
 
