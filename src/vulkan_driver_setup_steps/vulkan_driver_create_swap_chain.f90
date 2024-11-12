@@ -19,6 +19,8 @@ contains
     integer(c_int64_t), intent(in), value :: window_surface
     type(forvulkan_swap_chain_support_details), pointer :: swap_chain_support_details
 
+    print"(A)","[Vulkan]: Creating swap chain."
+
   end subroutine create_swap_chain
 
 
