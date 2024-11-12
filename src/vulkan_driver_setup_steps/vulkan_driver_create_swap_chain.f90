@@ -54,21 +54,19 @@ contains
         selected_format_pointer%color_space = available_format_pointer%color_space
         selected_format_pointer%format = available_format_pointer%format
         print"(A)","[Vulkan]: [BGRA8] surface format is selected."
-        exit search
+        return
       end if
     end do search
 
-    ! If we didn't find any format that matched what we were looking for
-    ! the selected format pointer will be null. So we can use that to our advantage.
-    if (.not. associated(selected_format_pointer)) then
-      ! We will just select the first thing we have available.
-      print"(A)","[Vulkan]: Surface format [BGRA8] unavailable. Defaulting selection."
 
-      call c_f_pointer(available_formats%get(1_8), available_format_pointer)
-      allocate(selected_format_pointer)
-      selected_format_pointer%color_space = available_format_pointer%color_space
-      selected_format_pointer%format = available_format_pointer%format
-    end if
+    ! We will just select the first thing we have available.
+    print"(A)","[Vulkan]: Surface format [BGRA8] unavailable. Defaulting selection."
+
+    call c_f_pointer(available_formats%get(1_8), available_format_pointer)
+    allocate(selected_format_pointer)
+    selected_format_pointer%color_space = available_format_pointer%color_space
+    selected_format_pointer%format = available_format_pointer%format
+
   end function select_swap_surface_format
 
 
