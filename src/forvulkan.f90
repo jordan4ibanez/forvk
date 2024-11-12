@@ -683,13 +683,13 @@ module forvulkan
   end type forvulkan_queue_family_indices
 
 
-  type :: forvulkan_swap_chain_support_details
+  type :: forvulkan_swapchain_support_details
     type(vk_surface_capabilities_khr) :: capabilities
     ! VkSurfaceFormatKHR
     type(vec) :: formats
     ! uint32_t [VkPresentModeKHR]
     type(vec) :: present_modes
-  end type forvulkan_swap_chain_support_details
+  end type forvulkan_swapchain_support_details
 
 
 !* C FUNCTION INTERFACES. ===============================================================

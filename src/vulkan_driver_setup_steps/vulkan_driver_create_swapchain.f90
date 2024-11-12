@@ -21,7 +21,7 @@ contains
     integer(c_int64_t), intent(in), value :: window_surface
     ! VkSwapchainKHR
     integer(c_int64_t), intent(inout) :: swapchain
-    type(forvulkan_swap_chain_support_details), pointer :: swap_chain_support_details
+    type(forvulkan_swapchain_support_details), pointer :: swap_chain_support_details
     type(vk_surface_format_khr), pointer :: selected_format_pointer
     ! VkPresentModeKHR
     integer(c_int32_t) :: selected_present_mode
