@@ -10,7 +10,7 @@ module vulkan_driver_query_swap_chain_support
 contains
 
 
-  function query_swap_chain_support(physical_device, window_surface, swap_chain_support_details) result(has_swap_chain_support)
+  function query_swapchain_support(physical_device, window_surface, swap_chain_support_details) result(has_swap_chain_support)
     implicit none
 
     ! VkPhysicalDevice
@@ -79,7 +79,7 @@ contains
     if (vk_get_physical_device_surface_present_modes_khr(physical_device, window_surface, present_mode_count, swap_chain_support_details%present_modes%get(1_8)) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to get avilable physical device surface present modes."
     end if
-  end function query_swap_chain_support
+  end function query_swapchain_support
 
 
 end module vulkan_driver_query_swap_chain_support

@@ -225,7 +225,7 @@ contains
     ! If it has no swap chain support, then we can't use this device.
     ! But we're only going to run this if the device passed all the other checks.
     if (has_support) then
-      has_support = query_swap_chain_support(physical_device, window_surface, swap_chain_support_details)
+      has_support = query_swapchain_support(physical_device, window_surface, swap_chain_support_details)
 
       if (.not. has_support) then
         print"(A)", "[Vulkan]: Physical device is missing swap chain support. Skipping."
