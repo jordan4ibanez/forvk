@@ -21,6 +21,10 @@ contains
 
     print"(A)","[Vulkan]: Creating swap chain."
 
+
+    call select_swap_surface_format(swap_chain_support_details%formats)
+
+
   end subroutine create_swap_chain
 
 
