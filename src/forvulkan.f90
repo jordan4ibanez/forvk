@@ -630,6 +630,46 @@ module forvulkan
   end type vk_surface_format_khr
 
 
+  !? VkSwapchainCreateInfoKHR.
+  type, bind(c) :: vk_swapchain_create_info_khr
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! uint32_t [VkSwapchainCreateFlagsKHR]
+    integer(c_int32_t) :: flags
+    ! VkSurfaceKHR
+    integer(c_int64_t) :: surface
+    ! uint32_t
+    integer(c_int32_t) :: min_image_count
+    ! uint32_t [VkFormat]
+    integer(c_int32_t) :: image_format
+    ! uint32_t [VkColorSpaceKHR]
+    integer(c_int32_t) :: image_color_space
+    type(vk_extent_2d) :: image_extent
+    ! uint32_t
+    integer(c_int32_t) :: image_array_layers
+    ! uint32_t [VkImageUsageFlags]
+    integer(c_int32_t) :: image_usage
+    ! uint32_t [VkSharingMode]
+    integer(c_int32_t) :: image_sharing_mode
+    ! uint32_t
+    integer(c_int32_t) :: queue_family_index_count
+    ! const uint32_t*
+    type(c_ptr) :: p_queue_family_indices
+    ! uint32_t [VkSurfaceTransformFlagBitsKHR]
+    integer(c_int32_t) :: pre_transform
+    ! uint32_t [VkCompositeAlphaFlagBitsKHR]
+    integer(c_int32_t) :: composite_alpha
+    ! uint32_t [VkPresentModeKHR]
+    integer(c_int32_t) :: present_mode
+    ! VkBool32
+    integer(c_int32_t) :: clipped
+    ! VkSwapchainKHR
+    integer(c_int64_t) :: old_swap_chain
+  end type vk_swapchain_create_info_khr
+
+
   !? CUSTOM TYPES .===============================================================
 
 
