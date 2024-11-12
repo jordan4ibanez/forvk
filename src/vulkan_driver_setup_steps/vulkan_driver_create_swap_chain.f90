@@ -59,6 +59,7 @@ contains
     end do search
 
 
+    ! So, if we didn't find anything:
     ! We will just select the first thing we have available.
     print"(A)","[Vulkan]: Surface format [BGRA8] unavailable. Defaulting selection."
 
