@@ -720,6 +720,12 @@ module forvulkan_parameters
   integer(c_int), parameter, public :: VK_PRESENT_MODE_FIFO_LATEST_READY_EXT = 1000361000
 
 
+  !? VkSharingMode.
+
+  integer(c_int), parameter, public :: VK_SHARING_MODE_EXCLUSIVE = 0
+  integer(c_int), parameter, public :: VK_SHARING_MODE_CONCURRENT = 1
+
+
   !? VkStructureType. ==========================================================================
 
 
