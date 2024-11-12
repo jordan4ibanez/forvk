@@ -94,11 +94,16 @@ contains
 
     call create_logical_device(physical_device, logical_device, graphics_queue, present_queue, window_surface, DEBUG_MODE)
 
-
+    call select_swap_surface_format()
 
   end subroutine init_vulkan
 
-  
+
+  subroutine select_swap_surface_format()
+    implicit none
+
+  end subroutine select_swap_surface_format
+
 
 
 !* MAIN LOOP. ====================================================================
