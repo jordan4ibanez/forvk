@@ -121,6 +121,7 @@ contains
       selected_extent%width = clamp_i32(selected_extent%width, capabilities%min_image_extent%width, capabilities%max_image_extent%width)
       selected_extent%height = clamp_i32(selected_extent%height, capabilities%min_image_extent%height, capabilities%max_image_extent%height)
     else
+      ! If we didn't trigger that, we can just use it directly.
       selected_extent%width = capabilities%current_extent%width
       selected_extent%height = capabilities%current_extent%height
     end if
