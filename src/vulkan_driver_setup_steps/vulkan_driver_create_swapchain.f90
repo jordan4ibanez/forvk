@@ -12,11 +12,13 @@ module vulkan_driver_create_swapchain
 contains
 
 
-  subroutine create_swapchain(physical_device, window_surface, swapchain)
+  subroutine create_swapchain(physical_device, logical_device, window_surface, swapchain)
     implicit none
 
     ! VkPhysicalDevice
     integer(c_int64_t), intent(in), value :: physical_device
+    ! VkDevice
+    integer(c_int64_t), intent(in), value :: logical_device
     ! VkSurfaceKHR
     integer(c_int64_t), intent(in), value :: window_surface
     ! VkSwapchainKHR
