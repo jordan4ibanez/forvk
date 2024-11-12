@@ -67,7 +67,7 @@ contains
     create_info%pre_transform = swap_chain_support_details%capabilities%current_transform
     create_info%composite_alpha = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR
     create_info%present_mode = selected_present_mode
-    create_info%old_swap_chain = VK_NULL_HANDLE
+    create_info%old_swapchain = VK_NULL_HANDLE
 
     if (vk_create_swapchain_khr(physical_device, c_loc(create_info), c_null_ptr, swapchain) /= VK_SUCCESS) then
 

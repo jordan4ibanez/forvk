@@ -666,7 +666,7 @@ module forvulkan
     ! VkBool32
     integer(c_int32_t) :: clipped = 0
     ! VkSwapchainKHR
-    integer(c_int64_t) :: old_swap_chain = 0
+    integer(c_int64_t) :: old_swapchain = 0
   end type vk_swapchain_create_info_khr
 
 
