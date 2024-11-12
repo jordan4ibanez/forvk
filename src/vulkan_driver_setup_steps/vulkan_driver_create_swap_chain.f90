@@ -12,20 +12,22 @@ module vulkan_driver_create_swap_chain
 contains
 
 
-  subroutine create_swap_chain(physical_device, window_surface)
+  subroutine create_swap_chain(physical_device, window_surface, swapchain)
     implicit none
 
     ! VkPhysicalDevice
     integer(c_int64_t), intent(in), value :: physical_device
     ! VkSurfaceKHR
     integer(c_int64_t), intent(in), value :: window_surface
+    ! VkSwapchainKHR
+    integer(c_int64_t), intent(inout) :: swapchain
     type(forvulkan_swap_chain_support_details), pointer :: swap_chain_support_details
     type(vk_surface_format_khr), pointer :: selected_format_pointer
     ! VkPresentModeKHR
     integer(c_int32_t) :: selected_present_mode
     type(vk_extent_2d) :: selected_extent
     integer(c_int32_t) :: selected_image_count
-    type(vk_swapchain_create_info_khr) :: create_info
+    type(vk_swapchain_create_info_khr), target :: create_info
     type(forvulkan_queue_family_indices) :: queue_family_indices
     integer(c_int32_t), dimension(2), target :: queue_indices_array
 
@@ -66,6 +68,11 @@ contains
     create_info%composite_alpha = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR
     create_info%present_mode = selected_present_mode
     create_info%old_swap_chain = VK_NULL_HANDLE
+
+    if (vk_create_swapchain_khr(physical_device, c_loc(create_info), c_null_ptr, swapchain) /= VK_SUCCESS) then
+
+    end if
+
   end subroutine create_swap_chain
 
 
