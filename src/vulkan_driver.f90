@@ -121,6 +121,8 @@ contains
   subroutine clean_up()
     implicit none
 
+    call vk_destroy_swapchain_khr(logical_device, swapchain, c_null_ptr)
+
     call vk_destroy_surface_khr(vulkan_instance, window_surface, c_null_ptr)
 
     call vk_destroy_device(logical_device, c_null_ptr)
