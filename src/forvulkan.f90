@@ -938,12 +938,12 @@ module forvulkan
     end function vk_get_physical_device_surface_present_modes_khr
 
 
-    function vk_create_swapchain_khr(physical_device, p_create_info, p_allocator, p_swapchain) result(vk_result) bind(c, name = "vkCreateSwapchainKHR")
+    function vk_create_swapchain_khr(logical_device, p_create_info, p_allocator, p_swapchain) result(vk_result) bind(c, name = "vkCreateSwapchainKHR")
       use, intrinsic :: iso_c_binding
       implicit none
 
-      ! VkPhysicalDevice
-      integer(c_int64_t), intent(in), value :: physical_device
+      ! VkDevice
+      integer(c_int64_t), intent(in), value :: logical_device
       ! const VkSwapchainCreateInfoKHR *
       type(c_ptr), intent(in), value :: p_create_info
       ! const VkAllocationCallbacks *
