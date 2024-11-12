@@ -24,6 +24,8 @@ contains
 
     ! Sniff out those graphics queue families.
 
+    print"(A)","[Vulkan]: Finding queue families."
+
     call vk_get_physical_device_queue_family_properties(device, queue_family_count, c_null_ptr)
 
     allocate(properties)
