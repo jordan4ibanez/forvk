@@ -6,6 +6,7 @@ module vulkan_driver_select_physical_device
   use :: vulkan_driver_find_queue_families
   use :: string_f90
   use :: vulkan_driver_create_physical_device_extensions
+  use :: vulkan_driver_query_swap_chain_support
   use, intrinsic :: iso_c_binding
   implicit none
 
