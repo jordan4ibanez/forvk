@@ -19,6 +19,8 @@ contains
     integer(c_int64_t), intent(in), value :: window_surface
     type(forvulkan_swap_chain_support_details), pointer :: swap_chain_support_details
     type(vk_surface_format_khr), pointer :: selected_format_pointer
+    ! VkPresentModeKHR
+    integer(c_int32_t) :: selected_present_mode
 
     print"(A)","[Vulkan]: Creating swap chain."
 
@@ -68,6 +70,15 @@ contains
       selected_format_pointer%format = available_format_pointer%format
     end if
   end function select_swap_surface_format
+
+
+  function select_swap_present_mode() result(selected_present_mode)
+    implicit none
+
+    ! VkPresentModeKHR
+    integer(c_int32_t) :: selected_present_mode
+
+  end function select_swap_present_mode
 
 
 end module vulkan_driver_create_swap_chain
