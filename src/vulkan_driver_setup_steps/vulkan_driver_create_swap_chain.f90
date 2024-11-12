@@ -23,6 +23,7 @@ contains
     ! VkPresentModeKHR
     integer(c_int32_t) :: selected_present_mode
     type(vk_extent_2d) :: selected_extent
+    integer(c_int32_t) :: selected_image_count
 
     print"(A)","[Vulkan]: Creating swap chain."
 
@@ -33,6 +34,9 @@ contains
     selected_format_pointer => select_swap_surface_format(swap_chain_support_details%formats)
     selected_present_mode = select_swap_present_mode(swap_chain_support_details%present_modes)
     selected_extent = select_swap_extent(swap_chain_support_details%capabilities)
+    selected_image_count = select_image_count(swap_chain_support_details%capabilities)
+
+    
   end subroutine create_swap_chain
 
 
@@ -126,6 +130,20 @@ contains
       selected_extent%height = capabilities%current_extent%height
     end if
   end function select_swap_extent
+
+
+  function select_image_count(capabilities) result(selected_image_count)
+    implicit none
+
+    type(vk_surface_capabilities_khr), intent(in) :: capabilities
+    integer(c_int32_t) :: selected_image_count
+
+    selected_image_count = capabilities%min_image_count + 1
+
+    if (capabilities%max_image_count > 0 .and. selected_image_count > capabilities%max_image_count) then
+      selected_image_count = capabilities%max_image_count
+    end if
+  end function select_image_count
 
 
 end module vulkan_driver_create_swap_chain
