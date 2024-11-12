@@ -18,6 +18,7 @@ contains
     ! VkSurfaceKHR
     integer(c_int64_t), intent(in), value :: window_surface
     type(forvulkan_swap_chain_support_details), pointer :: swap_chain_support_details
+    type(vk_surface_format_khr), pointer :: selected_format_pointer
 
     print"(A)","[Vulkan]: Creating swap chain."
 
@@ -25,7 +26,7 @@ contains
       error stop "[Vulkan] Severe Error: This physical device was already tested to have swap chain support, suddenly it does not."
     end if
 
-    call select_swap_surface_format(swap_chain_support_details%formats)
+    selected_format_pointer => select_swap_surface_format(swap_chain_support_details%formats)
   end subroutine create_swap_chain
 
 
@@ -66,6 +67,7 @@ contains
       selected_format_pointer%color_space = available_format_pointer%color_space
       selected_format_pointer%format = available_format_pointer%format
     end if
+  end function select_swap_surface_format
 
 
 end module vulkan_driver_create_swap_chain
