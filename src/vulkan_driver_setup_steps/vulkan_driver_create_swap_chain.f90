@@ -4,6 +4,7 @@ module vulkan_driver_create_swap_chain
   use :: forvulkan
   use :: forvulkan_parameters
   use :: vulkan_driver_query_swap_chain_support
+  use :: vulkan_driver_find_queue_families
   use :: glfw
   implicit none
 
@@ -25,6 +26,8 @@ contains
     type(vk_extent_2d) :: selected_extent
     integer(c_int32_t) :: selected_image_count
     type(vk_swapchain_create_info_khr) :: create_info
+    type(forvulkan_queue_family_indices) :: queue_family_indices
+    integer(c_int32_t), dimension(2), target :: queue_indices_array
 
     print"(A)","[Vulkan]: Creating swap chain."
 
@@ -46,6 +49,23 @@ contains
     create_info%image_array_layers = 1
     create_info%image_usage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
 
+    queue_family_indices = find_queue_families(physical_device, window_surface)
+
+    if (queue_family_indices%graphics_family /= queue_family_indices%present_family) then
+      queue_indices_array = [queue_family_indices%graphics_family, queue_family_indices%present_family]
+      create_info%image_sharing_mode = VK_SHARING_MODE_CONCURRENT
+      create_info%queue_family_index_count = 2
+      create_info%p_queue_family_indices = c_loc(queue_indices_array)
+    else
+      create_info%image_sharing_mode = VK_SHARING_MODE_EXCLUSIVE
+      create_info%queue_family_index_count = 0
+      create_info%p_queue_family_indices = c_null_ptr
+    end if
+
+    create_info%pre_transform = swap_chain_support_details%capabilities%current_transform
+    create_info%composite_alpha = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR
+    create_info%present_mode = selected_present_mode
+    create_info%old_swap_chain = VK_NULL_HANDLE
   end subroutine create_swap_chain
 
 

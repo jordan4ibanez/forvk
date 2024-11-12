@@ -46,6 +46,9 @@ module vulkan_driver
   ! VkQueue
   integer(c_int64_t), target :: present_queue = VK_NULL_HANDLE
 
+  ! VkSwapchainKHR
+  integer(c_int64_t), target :: swap_chain = VK_NULL_HANDLE
+
   ! Controls debugging output.
   logical(c_bool), parameter :: DEBUG_MODE = .true.
 
