@@ -9,6 +9,13 @@ module vulkan_driver_create_swap_chain
 contains
 
 
+  subroutine create_swap_chain()
+    implicit none
+
+
+  end subroutine create_swap_chain
+
+
 
   subroutine select_swap_surface_format(available_formats)
     implicit none
