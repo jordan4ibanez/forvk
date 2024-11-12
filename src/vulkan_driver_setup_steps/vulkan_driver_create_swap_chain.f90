@@ -105,6 +105,7 @@ contains
 
 
   function select_swap_extent(capabilities) result(selected_extent)
+    use :: math_helpers
     implicit none
 
     type(vk_surface_capabilities_khr), intent(in) :: capabilities
@@ -117,7 +118,8 @@ contains
       ! The vulkan tutorial was using a whole bunch of variables but I'm just going to inline it and reuse.
       call glfw_get_framebuffer_size(glfw_get_window_pointer(), selected_extent%width, selected_extent%height)
 
-      
+      selected_extent%width = clamp_i32(selected_extent%width, capabilities%min_image_extent%width, capabilities%max_image_extent%width)
+      selected_extent%height = clamp_i32(selected_extent%height, capabilities%min_image_extent%height, capabilities%max_image_extent%height)
     else
       selected_extent%width = capabilities%current_extent%width
       selected_extent%height = capabilities%current_extent%height
