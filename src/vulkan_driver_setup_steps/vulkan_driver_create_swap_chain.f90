@@ -21,6 +21,9 @@ contains
 
     print"(A)","[Vulkan]: Creating swap chain."
 
+    if (.not. query_swap_chain_support(physical_device, window_surface, swap_chain_support_details)) then
+      error stop "[Vulkan] Severe Error: This physical device was already tested to have swap chain support, suddenly it does not."
+    end if
 
     call select_swap_surface_format(swap_chain_support_details%formats)
 
