@@ -722,6 +722,7 @@ module forvulkan_parameters
 
   !? VkSharingMode.
 
+
   integer(c_int), parameter, public :: VK_SHARING_MODE_EXCLUSIVE = 0
   integer(c_int), parameter, public :: VK_SHARING_MODE_CONCURRENT = 1
 
