@@ -6,7 +6,7 @@ module vulkan_driver_select_physical_device
   use :: vulkan_driver_find_queue_families
   use :: string_f90
   use :: vulkan_driver_create_physical_device_extensions
-  use :: vulkan_driver_query_swap_chain_support
+  use :: vulkan_driver_query_swapchain_support
   use, intrinsic :: iso_c_binding
   implicit none
 
@@ -147,7 +147,7 @@ contains
     integer(c_int64_t), intent(in), value :: physical_device
     ! VkSurfaceKHR
     integer(c_int64_t), intent(in), value :: window_surface
-    type(forvulkan_swapchain_support_details), pointer :: swap_chain_support_details
+    type(forvulkan_swapchain_support_details), pointer :: swapchain_support_details
     logical(c_bool) :: has_support
     integer(c_int32_t) :: extension_count
     ! VkExtensionProperties
@@ -225,7 +225,7 @@ contains
     ! If it has no swapchain support, then we can't use this device.
     ! But we're only going to run this if the device passed all the other checks.
     if (has_support) then
-      has_support = query_swapchain_support(physical_device, window_surface, swap_chain_support_details)
+      has_support = query_swapchain_support(physical_device, window_surface, swapchain_support_details)
 
       if (.not. has_support) then
         print"(A)", "[Vulkan]: Physical device is missing swapchain support. Skipping."

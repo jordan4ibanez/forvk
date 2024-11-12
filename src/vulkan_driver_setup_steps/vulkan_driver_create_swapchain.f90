@@ -3,7 +3,7 @@ module vulkan_driver_create_swapchain
   use :: vector
   use :: forvulkan
   use :: forvulkan_parameters
-  use :: vulkan_driver_query_swap_chain_support
+  use :: vulkan_driver_query_swapchain_support
   use :: vulkan_driver_find_queue_families
   use :: glfw
   implicit none
@@ -21,7 +21,7 @@ contains
     integer(c_int64_t), intent(in), value :: window_surface
     ! VkSwapchainKHR
     integer(c_int64_t), intent(inout) :: swapchain
-    type(forvulkan_swapchain_support_details), pointer :: swap_chain_support_details
+    type(forvulkan_swapchain_support_details), pointer :: swapchain_support_details
     type(vk_surface_format_khr), pointer :: selected_format_pointer
     ! VkPresentModeKHR
     integer(c_int32_t) :: selected_present_mode
@@ -33,14 +33,14 @@ contains
 
     print"(A)","[Vulkan]: Creating swapchain."
 
-    if (.not. query_swapchain_support(physical_device, window_surface, swap_chain_support_details)) then
+    if (.not. query_swapchain_support(physical_device, window_surface, swapchain_support_details)) then
       error stop "[Vulkan] Severe Error: This physical device was already tested to have swapchain support, suddenly it does not."
     end if
 
-    selected_format_pointer => select_swap_surface_format(swap_chain_support_details%formats)
-    selected_present_mode = select_swap_present_mode(swap_chain_support_details%present_modes)
-    selected_extent = select_swap_extent(swap_chain_support_details%capabilities)
-    selected_image_count = select_image_count(swap_chain_support_details%capabilities)
+    selected_format_pointer => select_swap_surface_format(swapchain_support_details%formats)
+    selected_present_mode = select_swap_present_mode(swapchain_support_details%present_modes)
+    selected_extent = select_swap_extent(swapchain_support_details%capabilities)
+    selected_image_count = select_image_count(swapchain_support_details%capabilities)
 
     create_info%s_type = VK_STRUCTURE_TYPE%SWAPCHAIN_CREATE_INFO_KHR
     create_info%surface = window_surface
@@ -64,7 +64,7 @@ contains
       create_info%p_queue_family_indices = c_null_ptr
     end if
 
-    create_info%pre_transform = swap_chain_support_details%capabilities%current_transform
+    create_info%pre_transform = swapchain_support_details%capabilities%current_transform
     create_info%composite_alpha = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR
     create_info%present_mode = selected_present_mode
     create_info%old_swapchain = VK_NULL_HANDLE
