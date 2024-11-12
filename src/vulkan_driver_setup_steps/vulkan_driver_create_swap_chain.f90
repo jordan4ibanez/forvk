@@ -26,12 +26,10 @@ contains
     end if
 
     call select_swap_surface_format(swap_chain_support_details%formats)
-
-
   end subroutine create_swap_chain
 
 
-  subroutine select_swap_surface_format(available_formats)
+  function select_swap_surface_format(available_formats) result(selected_format_pointer)
     implicit none
 
     type(vec), intent(inout) :: available_formats
@@ -68,7 +66,6 @@ contains
       selected_format_pointer%color_space = available_format_pointer%color_space
       selected_format_pointer%format = available_format_pointer%format
     end if
-  end subroutine select_swap_surface_format
 
 
 end module vulkan_driver_create_swap_chain
