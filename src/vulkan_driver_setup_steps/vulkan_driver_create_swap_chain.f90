@@ -31,7 +31,6 @@ contains
   end subroutine create_swap_chain
 
 
-
   subroutine select_swap_surface_format(available_formats)
     implicit none
 
