@@ -4,6 +4,7 @@ module vulkan_driver_create_swap_chain
   use :: forvulkan
   use :: forvulkan_parameters
   use :: vulkan_driver_query_swap_chain_support
+  use :: glfw
   implicit none
 
 
@@ -109,12 +110,18 @@ contains
     type(vk_surface_capabilities_khr), intent(in) :: capabilities
     type(vk_extent_2d) :: selected_extent
 
+    ! If this is wayland, or macos this will get triggered.
     ! uint32 max goes into negatives using direct casting to int32.
     ! In fact, it just equals -1. :)
     if (capabilities%current_extent%width == -1) then
-      print*,"floop"
-    end if
+      ! The vulkan tutorial was using a whole bunch of variables but I'm just going to inline it and reuse.
+      call glfw_get_framebuffer_size(glfw_get_window_pointer(), selected_extent%width, selected_extent%height)
 
+      
+    else
+      selected_extent%width = capabilities%current_extent%width
+      selected_extent%height = capabilities%current_extent%height
+    end if
   end function select_swap_extent
 
 
