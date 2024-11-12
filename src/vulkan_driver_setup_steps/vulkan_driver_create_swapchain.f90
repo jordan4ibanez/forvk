@@ -72,7 +72,7 @@ contains
     create_info%old_swapchain = VK_NULL_HANDLE
 
     if (vk_create_swapchain_khr(logical_device, c_loc(create_info), c_null_ptr, swapchain) /= VK_SUCCESS) then
-
+      error stop "[Vulkan] Error: Failed to create the swapchain."
     end if
 
   end subroutine create_swapchain
