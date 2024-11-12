@@ -14,7 +14,7 @@ module vulkan_driver
   use :: vulkan_driver_create_surface
   use :: vulkan_driver_select_physical_device
   use :: vulkan_driver_create_logical_device
-  use :: vulkan_driver_create_swap_chain
+  use :: vulkan_driver_create_swapchain
   implicit none
 
   ! https://github.com/KhronosGroup/Vulkan-Headers/blob/main/include/vulkan/vulkan_core.h
@@ -95,7 +95,7 @@ contains
 
     call create_logical_device(physical_device, logical_device, graphics_queue, present_queue, window_surface, DEBUG_MODE)
 
-    call create_swap_chain(physical_device, window_surface, swapchain)
+    call create_swapchain(physical_device, window_surface, swapchain)
 
   end subroutine init_vulkan
 

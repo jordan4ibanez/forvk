@@ -1,4 +1,4 @@
-module vulkan_driver_create_swap_chain
+module vulkan_driver_create_swapchain
   use, intrinsic :: iso_c_binding
   use :: vector
   use :: forvulkan
@@ -12,7 +12,7 @@ module vulkan_driver_create_swap_chain
 contains
 
 
-  subroutine create_swap_chain(physical_device, window_surface, swapchain)
+  subroutine create_swapchain(physical_device, window_surface, swapchain)
     implicit none
 
     ! VkPhysicalDevice
@@ -73,7 +73,7 @@ contains
 
     end if
 
-  end subroutine create_swap_chain
+  end subroutine create_swapchain
 
 
   function select_swap_surface_format(available_formats) result(selected_format_pointer)
@@ -182,4 +182,4 @@ contains
   end function select_image_count
 
 
-end module vulkan_driver_create_swap_chain
+end module vulkan_driver_create_swapchain
