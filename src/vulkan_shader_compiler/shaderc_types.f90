@@ -11,16 +11,16 @@ module shaderc_types
     ! a filesystem, then this name should be the absolute path of the file.
     ! For a failed inclusion, this string is empty.
     ! const char*
-    type(c_ptr) :: source_name
-    integer(c_size_t) :: source_name_length
+    type(c_ptr) :: source_name = c_null_ptr
+    integer(c_size_t) :: source_name_length = 0
     ! The text contents of the source file in the normal case.
     ! For a failed inclusion, this contains the error message.
     ! const char*
-    type(c_ptr) :: content
-    integer(c_size_t) :: content_length
+    type(c_ptr) :: content = c_null_ptr
+    integer(c_size_t) :: content_length = 0
     ! User data to be passed along with this request.
     ! void*
-    type(c_ptr) :: user_data
+    type(c_ptr) :: user_data = c_null_ptr
   end type shaderc_include_result
 
 
