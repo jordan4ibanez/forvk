@@ -53,6 +53,7 @@ contains
 
       call reader%read_file(shader_path)
 
+      print*,reader%file_string
 
       call reader%destroy()
       deallocate(shader_path)
