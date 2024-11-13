@@ -14,26 +14,6 @@ module shaderc_bindings
   integer(c_int32_t), parameter :: shaderc_glsl_fragment_shader = 1
 
 
-  !? shaderc_include_result.
-  type, bind(c) :: shaderc_include_result
-    ! The name of the source file.  The name should be fully resolved
-    ! in the sense that it should be a unique name in the context of the
-    ! includer.  For example, if the includer maps source names to files in
-    ! a filesystem, then this name should be the absolute path of the file.
-    ! For a failed inclusion, this string is empty.
-    ! const char*
-    type(c_ptr) :: source_name
-    integer(c_size_t) :: source_name_length
-    ! The text contents of the source file in the normal case.
-    ! For a failed inclusion, this contains the error message.
-    ! const char*
-    type(c_ptr) :: content
-    integer(c_size_t) :: content_length
-    ! User data to be passed along with this request.
-    ! void*
-    type(c_ptr) :: user_data
-  end type shaderc_include_result
-
   interface
 
 
@@ -80,7 +60,7 @@ module shaderc_bindings
       type(c_ptr), intent(in), value :: input_file_name
       type(c_ptr), intent(in), value :: entry_point_name
       type(c_ptr), intent(in), value :: additional_options
-      type(c_ptr) :: raw_data
+      type(shaderc_compilation_result_t) :: raw_data
     end function shaderc_compile_into_spv
 
 
