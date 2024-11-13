@@ -36,7 +36,7 @@ contains
       file_name_without_extension = string_get_left_of_character(file_name, ".")
 
       allocate(character(len = len("./shaders/") + len(file_name), kind = c_char) :: shader_path)
-      shader_path = "./shaders/"//reader%files(i)%get_pointer()
+      shader_path = "./shaders/"//file_name
 
       print*,shader_path
 
