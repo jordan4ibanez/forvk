@@ -21,7 +21,7 @@ contains
     character(len = :, kind = c_char), allocatable :: file_extension, file_name_without_extension
     type(c_ptr) :: compilation_result_ptr, raw_spir_v_data_ptr
     integer(c_size_t) :: raw_spir_v_data_size
-    integer(1), pointer :: raw_byte_data
+    integer(1), dimension(:), pointer :: raw_byte_data
 
 
     print"(A)","[ShaderC]: Compiling shaders from GLSL to SPIR-V."
@@ -85,6 +85,11 @@ contains
       if (.not. c_associated(raw_spir_v_data_ptr)) then
         error stop "[ShaderC] Error: The returned SPIR-V data pointer is null."
       end if
+
+      ! Why yes, we are just transfering this raw data into a byte array.
+      call c_f_pointer(raw_spir_v_data_ptr, raw_byte_data, [raw_spir_v_data_size])
+
+      print*,raw_byte_data
 
 
       call shaderc_result_release(compilation_result_ptr)
