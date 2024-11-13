@@ -15,6 +15,7 @@ module vulkan_driver
   use :: vulkan_driver_select_physical_device
   use :: vulkan_driver_create_logical_device
   use :: vulkan_driver_create_swapchain
+  use :: vulkan_driver_create_image_views
   implicit none
 
   ! https://github.com/KhronosGroup/Vulkan-Headers/blob/main/include/vulkan/vulkan_core.h
@@ -57,6 +58,9 @@ module vulkan_driver
 
   ! VkExtent2D
   type(vk_extent_2d) :: swapchain_extent
+
+  ! VkImageView Array
+  type(vec) :: swapchain_image_views
 
   ! Controls debugging output.
   logical(c_bool), parameter :: DEBUG_MODE = .true.
@@ -106,10 +110,9 @@ contains
 
     call create_swapchain(physical_device, logical_device, window_surface, swapchain, swapchain_images, swapchain_image_format, swapchain_extent)
 
+    call create_image_views(swapchain_images, swapchain_image_views)
+
   end subroutine init_vulkan
-
-
-
 
 
 !* MAIN LOOP. ====================================================================
