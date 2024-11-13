@@ -78,6 +78,16 @@ module shaderc_bindings
     end function shaderc_compile_into_spv
 
 
+    subroutine shaderc_result_release(raw_data) bind(c, name = "shaderc_result_release")
+      use, intrinsic :: iso_c_binding
+      use :: shaderc_types
+      implicit none
+
+      ! shaderc_include_result *
+      type(c_ptr), intent(in), value :: raw_data
+    end subroutine shaderc_result_release
+
+
   end interface
 
 
