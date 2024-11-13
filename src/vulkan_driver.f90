@@ -49,6 +49,9 @@ module vulkan_driver
   ! VkSwapchainKHR
   integer(c_int64_t), target :: swapchain = VK_NULL_HANDLE
 
+  ! VkImage Array
+  type(vec) :: swapchain_images
+
   ! Controls debugging output.
   logical(c_bool), parameter :: DEBUG_MODE = .true.
 
