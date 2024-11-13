@@ -7,6 +7,13 @@ module shaderc_bindings
   ! https://github.com/jbikker/lighthouse2/blob/master/lib/rendercore_vulkan_rt/vulkan_shader.cpp
   ! https://github.com/google/shaderc/blob/main/libshaderc/include/shaderc/shaderc.h
 
+  
+  ! These enums were manually translated from the enum struct.
+
+  integer(c_int32_t), parameter :: shaderc_glsl_vertex_shader = 0
+  integer(c_int32_t), parameter :: shaderc_glsl_fragment_shader = 1
+
+
   interface
 
 
