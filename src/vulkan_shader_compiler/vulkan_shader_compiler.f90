@@ -43,6 +43,8 @@ contains
       deallocate(shader_path)
     end do
 
+    call reader%deallocate_memory()
+
     call shaderc_compiler_release(shader_compiler_pointer)
   end subroutine compile_glsl_shaders
 
