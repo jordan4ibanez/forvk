@@ -158,7 +158,14 @@ contains
     call glfw_destroy_window()
 
     call glfw_terminate()
+
+    call create_graphics_pipeline()
   end subroutine clean_up
+
+
+  subroutine create_graphics_pipeline()
+
+  end subroutine create_graphics_pipeline
 
 
 end module vulkan_driver
