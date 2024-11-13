@@ -93,6 +93,8 @@ contains
   subroutine init_vulkan()
     implicit none
 
+    type(c_ptr) :: shader_compiler
+
     call create_glfw()
 
     call ensure_extensions_present(DEBUG_MODE)
@@ -113,9 +115,12 @@ contains
 
     call create_image_views(logical_device, swapchain_images, swapchain_image_views, swapchain_image_format)
 
-    if (shaderc_compile_into_spv() == 1) then
 
-    end if
+    shader_compiler = shaderc_compiler_initialize()
+
+    ! if (shaderc_compile_into_spv() == 1) then
+
+    ! end if
 
   end subroutine init_vulkan
 

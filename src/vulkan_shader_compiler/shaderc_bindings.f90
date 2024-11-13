@@ -9,12 +9,20 @@ module shaderc_bindings
 
   interface
 
-    function shaderc_compile_into_spv() result(unknown) bind(c, name = "shaderc_compile_into_spv")
+
+    function shaderc_compiler_initialize() result(shader_compiler_pointer) bind(c, name = "shaderc_compiler_initialize")
       use, intrinsic :: iso_c_binding
       implicit none
 
-      integer(c_int32_t) :: unknown
-    end function shaderc_compile_into_spv
+      type(c_ptr) :: shader_compiler_pointer
+    end function shaderc_compiler_initialize
+
+    ! function shaderc_compile_into_spv() result(unknown) bind(c, name = "shaderc_compile_into_spv")
+    !   use, intrinsic :: iso_c_binding
+    !   implicit none
+
+    !   integer(c_int32_t) :: unknown
+    ! end function shaderc_compile_into_spv
 
   end interface
 
