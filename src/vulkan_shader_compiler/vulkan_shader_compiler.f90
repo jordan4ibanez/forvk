@@ -1,6 +1,7 @@
 module vulkan_shader_compiler
   use, intrinsic :: iso_c_binding
   use :: shaderc_bindings
+  use :: shaderc_types
   use :: string_f90
   use :: directory
   use :: files_f90
@@ -19,11 +20,14 @@ contains
     integer(c_int32_t) :: i, shader_type
     character(len = :, kind = c_char), pointer :: shader_path, file_name, shader_text_data, entry_point
     character(len = :, kind = c_char), allocatable :: file_extension, file_name_without_extension
-    type(c_ptr) :: raw_shader
+    type(c_ptr) :: ptr_compilation_result
+    type(shaderc_include_result), pointer :: compilation_result_pointer
 
     print"(A)","[ShaderC]: Compiling shaders from GLSL to SPIR-V."
 
     shader_compiler_options_pointer = shaderc_compile_options_initialize()
+
+    call shaderc_compile_options_set_generate_debug_info(shader_compiler_options_pointer)
 
 
     shader_compiler_pointer = shaderc_compiler_initialize()
@@ -63,11 +67,12 @@ contains
       allocate(character(len = len(reader%file_string) + 1, kind = c_char) :: shader_text_data)
       shader_text_data = reader%file_string//achar(0)
 
-      raw_shader = c_null_ptr
+      ptr_compilation_result = shaderc_compile_into_spv(shader_compiler_pointer, c_loc(shader_text_data), int(len(shader_text_data), c_size_t), shader_type, c_loc(file_name), c_loc(entry_point), shader_compiler_options_pointer)
+      call c_f_pointer(ptr_compilation_result, compilation_result_pointer)
 
-      raw_shader = shaderc_compile_into_spv(shader_compiler_pointer, c_loc(shader_text_data), int(len(shader_text_data), c_size_t), shader_type, c_loc(file_name), c_loc(entry_point), c_null_ptr)
+      print*,string_from_c(compilation_result_pointer%content)
 
-      print*,raw_shader
+      ! print*,string_from_c(raw_shader%content)
 
       call reader%destroy()
       deallocate(shader_path)
