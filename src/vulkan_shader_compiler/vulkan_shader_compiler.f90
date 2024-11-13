@@ -19,7 +19,8 @@ contains
     integer(c_int32_t) :: i, shader_type
     character(len = :, kind = c_char), pointer :: shader_path, file_name, shader_text_data, entry_point, error_message
     character(len = :, kind = c_char), allocatable :: file_extension, file_name_without_extension
-    type(c_ptr) :: compilation_result_ptr
+    type(c_ptr) :: compilation_result_ptr, raw_spir_v_data_ptr
+    integer(c_size_t) :: raw_spir_v_data_size
 
 
     print"(A)","[ShaderC]: Compiling shaders from GLSL to SPIR-V."
@@ -67,7 +68,6 @@ contains
 
       compilation_result_ptr = shaderc_compile_into_spv(shader_compiler_pointer, c_loc(shader_text_data), int(len(shader_text_data), c_size_t) - 1, shader_type, c_loc(file_name), c_loc(entry_point), shader_compiler_options_pointer)
 
-
       if (shaderc_result_get_num_errors(compilation_result_ptr) /= 0) then
         error_message => string_from_c(shaderc_result_get_error_message(compilation_result_ptr))
         if (error_message /= "") then
@@ -77,6 +77,13 @@ contains
         end if
       end if
 
+      raw_spir_v_data_size = shaderc_result_get_length(compilation_result_ptr)
+
+      raw_spir_v_data_ptr = shaderc_result_get_bytes(compilation_result_ptr)
+
+      if (.not. c_associated(raw_spir_v_data_ptr)) then
+        error stop "[ShaderC] Error: The returned SPIR-V data pointer is null."
+      end if
 
 
       call shaderc_result_release(compilation_result_ptr)
