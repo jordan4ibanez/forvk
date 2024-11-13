@@ -95,9 +95,8 @@ contains
     end if
 
     ! Finally, set the module variables so we can reuse them.
-    swapchain_image_format = selected_surface_format_pointer%format 
-    ! swapChainImageFormat = surfaceFormat.format;
-    ! swapChainExtent = extent;
+    swapchain_image_format = selected_surface_format_pointer%format
+    swapchain_extent = selected_extent
   end subroutine create_swapchain
 
 
