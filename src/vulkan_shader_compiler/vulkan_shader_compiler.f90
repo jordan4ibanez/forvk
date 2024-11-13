@@ -48,6 +48,8 @@ contains
         cycle
       end if
 
+      print"(A)","[ShaderC]: Compiling ["//file_name//"]"
+
       file_name_without_extension = string_get_left_of_character(file_name, ".")
 
       allocate(character(len = len("./shaders/") + len(file_name), kind = c_char) :: shader_path)
@@ -130,6 +132,9 @@ contains
     call shaderc_compiler_release(shader_compiler_pointer)
 
     call shaderc_compile_options_release(shader_compiler_options_pointer)
+
+    print"(A)","[ShaderC]: Shader compilation completed."
+
   end subroutine compile_glsl_shaders
 
 
