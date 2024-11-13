@@ -16,6 +16,7 @@ module vulkan_driver
   use :: vulkan_driver_create_logical_device
   use :: vulkan_driver_create_swapchain
   use :: vulkan_driver_create_image_views
+  use :: shaderc_bindings
   implicit none
 
   ! https://github.com/KhronosGroup/Vulkan-Headers/blob/main/include/vulkan/vulkan_core.h
@@ -111,6 +112,10 @@ contains
     call create_swapchain(physical_device, logical_device, window_surface, swapchain, swapchain_images, swapchain_image_format, swapchain_extent)
 
     call create_image_views(logical_device, swapchain_images, swapchain_image_views, swapchain_image_format)
+
+    if (shaderc_compile_into_spv() == 1) then
+
+    end if
 
   end subroutine init_vulkan
 
