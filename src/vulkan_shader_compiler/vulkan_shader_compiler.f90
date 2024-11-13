@@ -18,7 +18,7 @@ contains
     character(len = :, kind = c_char), pointer :: shader_path, file_name
     character(len = :, kind = c_char), allocatable :: file_extension, file_name_without_extension
 
-    print"(A)","[Shaderc]: Compiling shaders from GLSL to SPIR-V."
+    print"(A)","[ShaderC]: Compiling shaders from GLSL to SPIR-V."
 
     shader_compiler_pointer = shaderc_compiler_initialize()
 
