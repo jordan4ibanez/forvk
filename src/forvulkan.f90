@@ -673,28 +673,28 @@ module forvulkan
   !? VkComponentMapping.
   type, bind(c) :: vk_component_mapping
     ! VkComponentSwizzle
-    integer(c_int32_t) :: r
+    integer(c_int32_t) :: r = 0
     ! VkComponentSwizzle
-    integer(c_int32_t) :: g
+    integer(c_int32_t) :: g = 0
     ! VkComponentSwizzle
-    integer(c_int32_t) :: b
+    integer(c_int32_t) :: b = 0
     ! VkComponentSwizzle
-    integer(c_int32_t) :: a
+    integer(c_int32_t) :: a = 0
   end type vk_component_mapping
 
 
   !? VkImageSubresourceRange.
   type, bind(c) :: vk_image_subresource_range
     ! uint32_t [VkImageAspectFlags]
-    integer(c_int32_t) :: aspect_mask
+    integer(c_int32_t) :: aspect_mask = 0
     ! uint32_t
-    integer(c_int32_t) :: base_mip_level
+    integer(c_int32_t) :: base_mip_level = 0
     ! uint32_t
-    integer(c_int32_t) :: level_count
+    integer(c_int32_t) :: level_count = 0
     ! uint32_t
-    integer(c_int32_t) :: base_array_layer
+    integer(c_int32_t) :: base_array_layer = 0
     ! uint32_t
-    integer(c_int32_t) :: layer_count
+    integer(c_int32_t) :: layer_count = 0
   end type vk_image_subresource_range
 
 
@@ -705,13 +705,13 @@ module forvulkan
     ! const void *
     type(c_ptr) :: p_next = c_null_ptr
     ! uint32_t [VkImageViewCreateFlags]
-    integer(c_int32_t) :: flags
+    integer(c_int32_t) :: flags = 0
     ! VkImage
-    integer(c_int64_t) :: image
+    integer(c_int64_t) :: image = 0
     ! VkImageViewType
-    integer(c_int32_t) :: view_type
+    integer(c_int32_t) :: view_type = 0
     ! VkFormat
-    integer(c_int32_t) :: format
+    integer(c_int32_t) :: format = 0
     ! VkComponentMapping
     type(vk_component_mapping) :: components
     ! VkImageSubresourceRange
