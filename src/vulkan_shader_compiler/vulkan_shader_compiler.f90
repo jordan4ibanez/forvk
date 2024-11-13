@@ -44,7 +44,7 @@ contains
        case("vert")
         shader_type = shaderc_glsl_vertex_shader
        case("frag")
-        shader_type =shaderc_glsl_fragment_shader
+        shader_type = shaderc_glsl_fragment_shader
        case default
         error stop "[ShaderC] Error: Wrong file type intake. ["//file_extension//"]"
       end select
