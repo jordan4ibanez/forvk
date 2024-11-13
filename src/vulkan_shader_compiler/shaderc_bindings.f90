@@ -73,7 +73,8 @@ module shaderc_bindings
       type(c_ptr), intent(in), value :: input_file_name
       type(c_ptr), intent(in), value :: entry_point_name
       type(c_ptr), intent(in), value :: additional_options
-      type(shaderc_include_result) :: raw_data
+      ! shaderc_include_result *
+      type(c_ptr) :: raw_data
     end function shaderc_compile_into_spv
 
 
