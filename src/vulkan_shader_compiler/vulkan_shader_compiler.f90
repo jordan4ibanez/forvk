@@ -1,6 +1,7 @@
 module vulkan_shader_compiler
   use, intrinsic :: iso_c_binding
   use :: shaderc_bindings
+  use :: string_f90
   use :: directory
   implicit none
 
@@ -15,14 +16,24 @@ contains
     type(directory_reader) :: reader
     integer(c_int32_t) :: i
     character(len = :, kind = c_char), pointer :: shader_path
+    character(len = :, kind = c_char), allocatable :: file_extension
 
     shader_compiler_pointer = shaderc_compiler_initialize()
-
 
     call reader%read_directory("./shaders/")
 
     do i = 1,reader%file_count
-      print*,reader%files(i)
+
+      file_extension = string_get_file_extension(reader%files(i)%get_pointer())
+
+      if (file_extension /= "vert" .and. file_extension /= "frag") then
+        cycle
+      end if
+
+      print*,file_extension
+
+
+
       allocate(character(len = len("./shaders/") + len(reader%files(i)%get_pointer()), kind = c_char) :: shader_path)
       shader_path = "./shaders/"//reader%files(i)%get_pointer()
 
