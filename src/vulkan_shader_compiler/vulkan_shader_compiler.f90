@@ -54,10 +54,11 @@ contains
       call reader%read_file(shader_path)
 
 
+      call reader%destroy()
       deallocate(shader_path)
     end do
 
-    call path_reader%deallocate_memory()
+    call path_reader%destroy()
 
     call shaderc_compiler_release(shader_compiler_pointer)
   end subroutine compile_glsl_shaders
