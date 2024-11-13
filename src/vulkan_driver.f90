@@ -93,8 +93,6 @@ contains
   subroutine init_vulkan()
     implicit none
 
-    type(c_ptr) :: shader_compiler
-
     call create_glfw()
 
     call ensure_extensions_present(DEBUG_MODE)
