@@ -2,6 +2,7 @@ module shaderc_types
   use, intrinsic :: iso_c_binding
   implicit none
 
+
   !? shaderc_include_result.
   type, bind(c) :: shaderc_include_result
     ! The name of the source file.  The name should be fully resolved
