@@ -63,6 +63,7 @@ module shaderc_bindings
 
     function shaderc_compile_into_spv(shader_compiler_pointer, source_text, source_text_size, shader_kind, input_file_name, entry_point_name, additional_options) result(raw_data) bind(c, name = "shaderc_compile_into_spv")
       use, intrinsic :: iso_c_binding
+      use :: shaderc_types
       implicit none
 
       type(c_ptr), intent(in), value :: shader_compiler_pointer
@@ -72,7 +73,7 @@ module shaderc_bindings
       type(c_ptr), intent(in), value :: input_file_name
       type(c_ptr), intent(in), value :: entry_point_name
       type(c_ptr), intent(in), value :: additional_options
-      type(shaderc_compilation_result_t) :: raw_data
+      type(shaderc_include_result) :: raw_data
     end function shaderc_compile_into_spv
 
 
