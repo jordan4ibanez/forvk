@@ -21,6 +21,7 @@ contains
     character(len = :, kind = c_char), allocatable :: file_extension, file_name_without_extension
     type(c_ptr) :: compilation_result_ptr, raw_spir_v_data_ptr
     integer(c_size_t) :: raw_spir_v_data_size
+    integer(1), pointer :: raw_byte_data
 
 
     print"(A)","[ShaderC]: Compiling shaders from GLSL to SPIR-V."
