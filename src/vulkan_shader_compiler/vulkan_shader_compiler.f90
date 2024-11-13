@@ -64,8 +64,8 @@ contains
 
       call reader%read_file(shader_path)
 
-      allocate(character(len = len(reader%file_string) + 1, kind = c_char) :: shader_text_data)
-      shader_text_data = reader%file_string//achar(0)
+      allocate(character(len = len(reader%file_string), kind = c_char) :: shader_text_data)
+      shader_text_data = reader%file_string
 
       ptr_compilation_result = shaderc_compile_into_spv(shader_compiler_pointer, c_loc(shader_text_data), int(len(shader_text_data), c_size_t), shader_type, c_loc(file_name), c_loc(entry_point), shader_compiler_options_pointer)
       call c_f_pointer(ptr_compilation_result, compilation_result_pointer)
