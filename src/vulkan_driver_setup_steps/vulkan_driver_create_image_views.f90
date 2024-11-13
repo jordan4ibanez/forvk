@@ -3,15 +3,18 @@ module vulkan_driver_create_image_views
   use :: vector
   use :: forvulkan
   use :: forvulkan_parameters
+  use :: string_f90
   implicit none
 
 
 contains
 
 
-  subroutine create_image_views(swapchain_images, swapchain_image_views, swapchain_image_format)
+  subroutine create_image_views(logical_device, swapchain_images, swapchain_image_views, swapchain_image_format)
     implicit none
 
+    ! VkDevice
+    integer(c_int64_t), intent(in), value :: logical_device
     ! VkImage Array
     type(vec), intent(inout) :: swapchain_images
     ! VkImageView Array
@@ -45,6 +48,10 @@ contains
       create_info%subresource_range%level_count = 1
       create_info%subresource_range%base_array_layer = 0
       create_info%subresource_range%layer_count = 1
+
+      if (vk_create_image_view(logical_device, c_loc(create_info), c_null_ptr, swapchain_image_views%get(i)) /= VK_SUCCESS) then
+        error stop "[Vulkan] Error: Failed to create image view. Index ["//int64_to_string(i)//"]"
+      end if
     end do
   end subroutine create_image_views
 
