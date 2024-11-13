@@ -14,7 +14,7 @@ contains
 
     type(c_ptr) :: shader_compiler_pointer
     type(directory_reader) :: reader
-    integer(c_int32_t) :: i
+    integer(c_int32_t) :: i, shader_type
     character(len = :, kind = c_char), pointer :: shader_path, file_name
     character(len = :, kind = c_char), allocatable :: file_extension, file_name_without_extension
 
@@ -40,7 +40,15 @@ contains
       allocate(character(len = len("./shaders/") + len(file_name), kind = c_char) :: shader_path)
       shader_path = "./shaders/"//file_name
 
-      print*,shader_path
+      select case(file_extension)
+       case("vert")
+        shader_type = shaderc_glsl_vertex_shader
+       case("frag")
+        shader_type =shaderc_glsl_fragment_shader
+       case default
+        error stop "[ShaderC] Error: Wrong file type intake. ["//file_extension//"]"
+      end select
+
 
       deallocate(shader_path)
     end do
