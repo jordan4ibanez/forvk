@@ -78,6 +78,8 @@ contains
       deallocate(shader_path)
     end do
 
+    deallocate(entry_point)
+
     call path_reader%destroy()
 
     call shaderc_compiler_release(shader_compiler_pointer)
