@@ -19,6 +19,7 @@ contains
     integer(c_int32_t) :: i, shader_type
     character(len = :, kind = c_char), pointer :: shader_path, file_name
     character(len = :, kind = c_char), allocatable :: file_extension, file_name_without_extension
+    type(c_ptr) :: raw_shader
 
     print"(A)","[ShaderC]: Compiling shaders from GLSL to SPIR-V."
 
@@ -54,6 +55,8 @@ contains
       call reader%read_file(shader_path)
 
       print*,reader%file_string
+
+      raw_shader = shaderc_compile_into_spv(shader_compiler_pointer, c_loc(reader%file_string))
 
       call reader%destroy()
       deallocate(shader_path)
