@@ -14,6 +14,9 @@ contains
 
     shader_compiler_pointer = shaderc_compiler_initialize()
 
+
+
+    call shaderc_compiler_release(shader_compiler_pointer)
   end subroutine compile_glsl_shaders
 
 
