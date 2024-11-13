@@ -63,19 +63,19 @@ contains
 
       call reader%read_file(shader_path)
 
-      allocate(character(len = len(reader%file_string), kind = c_char) :: shader_text_data)
-      shader_text_data = reader%file_string
+      allocate(character(len = len(reader%file_string) + 1, kind = c_char) :: shader_text_data)
+      shader_text_data = reader%file_string//achar(0)
 
-      ptr_compilation_result = shaderc_compile_into_spv(shader_compiler_pointer, c_loc(shader_text_data), int(len(shader_text_data), c_size_t), shader_type, c_loc(file_name), c_loc(entry_point), shader_compiler_options_pointer)
+      ptr_compilation_result = shaderc_compile_into_spv(shader_compiler_pointer, c_loc(shader_text_data), int(len(shader_text_data), c_size_t) - 1, shader_type, c_loc(file_name), c_loc(entry_point), shader_compiler_options_pointer)
       call c_f_pointer(ptr_compilation_result, compilation_result_pointer)
 
       if (string_from_c(compilation_result_pointer%content) /= "") then
         error stop "[ShaderC] Error: Shader compilation failed."//achar(10)//string_from_c(compilation_result_pointer%content)
       end if
 
-      print*,compilation_result_pointer%content
+      print*,compilation_result_pointer%content_length
 
-      ! print*,string_from_c(raw_shader%content)
+      call shaderc_result_release(ptr_compilation_result)
 
       call reader%destroy()
       deallocate(shader_path)
