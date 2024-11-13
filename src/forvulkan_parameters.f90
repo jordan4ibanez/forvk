@@ -736,6 +736,18 @@ module forvulkan_parameters
   integer(c_int), parameter, public :: VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR = int(z"00000008")
 
 
+  !? VkComponentSwizzle.
+
+
+  integer(c_int), parameter, public :: VK_COMPONENT_SWIZZLE_IDENTITY = 0
+  integer(c_int), parameter, public :: VK_COMPONENT_SWIZZLE_ZERO = 1
+  integer(c_int), parameter, public :: VK_COMPONENT_SWIZZLE_ONE = 2
+  integer(c_int), parameter, public :: VK_COMPONENT_SWIZZLE_R = 3
+  integer(c_int), parameter, public :: VK_COMPONENT_SWIZZLE_G = 4
+  integer(c_int), parameter, public :: VK_COMPONENT_SWIZZLE_B = 5
+  integer(c_int), parameter, public :: VK_COMPONENT_SWIZZLE_A = 6
+
+
   !? VkStructureType. ==========================================================================
 
 
