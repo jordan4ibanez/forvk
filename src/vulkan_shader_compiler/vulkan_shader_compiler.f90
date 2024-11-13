@@ -15,6 +15,7 @@ contains
 
     type(c_ptr) :: shader_compiler_pointer
     type(directory_reader) :: path_reader
+    type(file_reader) :: reader
     integer(c_int32_t) :: i, shader_type
     character(len = :, kind = c_char), pointer :: shader_path, file_name
     character(len = :, kind = c_char), allocatable :: file_extension, file_name_without_extension
@@ -49,6 +50,8 @@ contains
        case default
         error stop "[ShaderC] Error: Wrong file type intake. ["//file_extension//"]"
       end select
+
+      call reader%read_file(shader_path)
 
 
       deallocate(shader_path)
