@@ -61,9 +61,17 @@ module shaderc_bindings
     end subroutine shaderc_compiler_release
 
 
+    function shaderc_result_get_num_errors(raw_data) result(s) bind(c, name = "shaderc_result_get_num_errors")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      type(c_ptr), intent(in), value :: raw_data
+      integer(c_size_t) :: s
+    end function shaderc_result_get_num_errors
+
+
     function shaderc_compile_into_spv(shader_compiler_pointer, source_text, source_text_size, shader_kind, input_file_name, entry_point_name, additional_options) result(raw_data) bind(c, name = "shaderc_compile_into_spv")
       use, intrinsic :: iso_c_binding
-      use :: shaderc_types
       implicit none
 
       type(c_ptr), intent(in), value :: shader_compiler_pointer
