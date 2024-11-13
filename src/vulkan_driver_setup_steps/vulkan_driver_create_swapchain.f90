@@ -12,7 +12,7 @@ module vulkan_driver_create_swapchain
 contains
 
 
-  subroutine create_swapchain(physical_device, logical_device, window_surface, swapchain)
+  subroutine create_swapchain(physical_device, logical_device, window_surface, swapchain, swapchain_images)
     implicit none
 
     ! VkPhysicalDevice
@@ -23,6 +23,8 @@ contains
     integer(c_int64_t), intent(in), value :: window_surface
     ! VkSwapchainKHR
     integer(c_int64_t), intent(inout) :: swapchain
+    ! VkImage Array
+    type(vec) :: swapchain_images
     type(forvulkan_swapchain_support_details), pointer :: swapchain_support_details
     type(vk_surface_format_khr), pointer :: selected_format_pointer
     ! VkPresentModeKHR
@@ -32,6 +34,7 @@ contains
     type(vk_swapchain_create_info_khr), target :: create_info
     type(forvulkan_queue_family_indices) :: queue_family_indices
     integer(c_int32_t), dimension(2), target :: queue_indices_array
+    integer(c_int32_t) :: swappchain_image_count
 
     print"(A)","[Vulkan]: Creating swapchain."
 
@@ -75,6 +78,21 @@ contains
       error stop "[Vulkan] Error: Failed to create the swapchain."
     end if
 
+    ! And finally, we shall create the swapchain images.
+    if (vk_get_swapchain_images_khr(logical_device, swapchain, swappchain_image_count, c_null_ptr) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to get swapchain images."
+    end if
+
+    swapchain_images = new_vec(sizeof(0_8), 0_8)
+    call swapchain_images%resize(int(swappchain_image_count, c_int64_t), 0_8)
+
+    if (vk_get_swapchain_images_khr(logical_device, swapchain, swappchain_image_count, swapchain_images%get(1_8)) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to get swapchain images."
+    end if
+
+    ! todo: Turn these into module variables!
+    swapChainImageFormat = surfaceFormat.format;
+    swapChainExtent = extent;
   end subroutine create_swapchain
 
 

@@ -98,7 +98,7 @@ contains
 
     call create_logical_device(physical_device, logical_device, graphics_queue, present_queue, window_surface, DEBUG_MODE)
 
-    call create_swapchain(physical_device, logical_device, window_surface, swapchain)
+    call create_swapchain(physical_device, logical_device, window_surface, swapchain, swapchain_images)
 
   end subroutine init_vulkan
 
