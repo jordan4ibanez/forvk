@@ -69,8 +69,12 @@ contains
       ptr_compilation_result = shaderc_compile_into_spv(shader_compiler_pointer, c_loc(shader_text_data), int(len(shader_text_data), c_size_t) - 1, shader_type, c_loc(file_name), c_loc(entry_point), shader_compiler_options_pointer)
       call c_f_pointer(ptr_compilation_result, compilation_result_pointer)
 
-      if (string_from_c(compilation_result_pointer%content) /= "") then
-        error stop "[ShaderC] Error: Shader compilation failed."//achar(10)//string_from_c(compilation_result_pointer%content)
+      if (shaderc_result_get_num_errors(ptr_compilation_result) /= 0) then
+        if (string_from_c(compilation_result_pointer%content) /= "") then
+          error stop "[ShaderC] Error: Shader compilation failed."//achar(10)//string_from_c(compilation_result_pointer%content)
+        else
+          error stop "[ShaderC] Error: Could not transmit error!"
+        end if
       end if
 
       print*,compilation_result_pointer%content_length
