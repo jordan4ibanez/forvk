@@ -24,6 +24,7 @@ contains
 
     do i = 1,reader%file_count
 
+      ! This is so I don't have to keep typing this out lol. (No allocation happening)
       file_name => reader%files(i)%get_pointer()
 
       file_extension = string_get_file_extension(file_name)
@@ -33,10 +34,6 @@ contains
       end if
 
       file_name_without_extension = string_get_left_of_character(file_name, ".")
-
-      print*,file_name_without_extension
-
-
 
       allocate(character(len = len("./shaders/") + len(file_name), kind = c_char) :: shader_path)
       shader_path = "./shaders/"//reader%files(i)%get_pointer()
