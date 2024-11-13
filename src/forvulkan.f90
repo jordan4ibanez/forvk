@@ -683,6 +683,21 @@ module forvulkan
   end type vk_component_mapping
 
 
+  !? VkImageSubresourceRange.
+  type, bind(c) :: vk_image_subresource_range
+    ! uint32_t [VkImageAspectFlags]
+    integer(c_int32_t) :: aspect_mask
+    ! uint32_t
+    integer(c_int32_t) :: base_mip_level
+    ! uint32_t
+    integer(c_int32_t) :: level_count
+    ! uint32_t
+    integer(c_int32_t) :: base_array_layer
+    ! uint32_t
+    integer(c_int32_t) :: layer_count
+  end type vk_image_subresource_range
+
+
   !? CUSTOM TYPES .===============================================================
 
 
