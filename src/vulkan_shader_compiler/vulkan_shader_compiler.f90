@@ -13,7 +13,7 @@ contains
   subroutine compile_glsl_shaders()
     implicit none
 
-    type(c_ptr) :: shader_compiler_pointer
+    type(c_ptr) :: shader_compiler_options_pointer, shader_compiler_pointer
     type(directory_reader) :: path_reader
     type(file_reader) :: reader
     integer(c_int32_t) :: i, shader_type
@@ -22,6 +22,9 @@ contains
     type(c_ptr) :: raw_shader
 
     print"(A)","[ShaderC]: Compiling shaders from GLSL to SPIR-V."
+
+    shader_compiler_options_pointer = shaderc_compile_options_initialize()
+
 
     shader_compiler_pointer = shaderc_compiler_initialize()
 
@@ -73,6 +76,8 @@ contains
     call path_reader%destroy()
 
     call shaderc_compiler_release(shader_compiler_pointer)
+
+    call shaderc_compile_options_release(shader_compiler_options_pointer)
   end subroutine compile_glsl_shaders
 
 

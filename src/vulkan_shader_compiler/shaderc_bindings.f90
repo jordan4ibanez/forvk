@@ -16,6 +16,21 @@ module shaderc_bindings
 
   interface
 
+    function shaderc_compile_options_initialize() result(shader_options_pointer) bind(c, name = "shaderc_compile_options_initialize")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      type(c_ptr) :: shader_options_pointer
+    end function shaderc_compile_options_initialize
+
+
+    subroutine shaderc_compile_options_release(options) bind(c, name = "shaderc_compile_options_release")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      type(c_ptr), intent(in), value :: options
+    end subroutine shaderc_compile_options_release
+
 
     function shaderc_compiler_initialize() result(shader_compiler_pointer) bind(c, name = "shaderc_compiler_initialize")
       use, intrinsic :: iso_c_binding
