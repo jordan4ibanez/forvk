@@ -32,14 +32,6 @@ module shaderc_bindings
       type(c_ptr), intent(in), value :: shader_compiler_pointer
     end subroutine shaderc_compiler_release
 
-    ! const shaderc_compiler_t compiler,
-    ! const char* source_text,
-    ! size_t source_text_size,
-    ! shaderc_shader_kind shader_kind,
-    ! const char* input_file_name,
-    ! const char* entry_point_name,
-    ! const shaderc_compile_options_t additional_options
-
 
     function shaderc_compile_into_spv(shader_compiler_pointer, source_text, source_text_size, shader_kind, input_file_name, entry_point_name, additional_options) result(raw_data) bind(c, name = "shaderc_compile_into_spv")
       use, intrinsic :: iso_c_binding
