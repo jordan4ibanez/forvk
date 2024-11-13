@@ -19,6 +19,7 @@ string_f90 = { git = "https://github.com/jordan4ibanez/string_f90" }
 constants_f90 = { git = "https://github.com/jordan4ibanez/constants_f90" }
 fortran_vector = { git = "https://github.com/jordan4ibanez/fortran_vector" }
 integer_set = { git = "https://github.com/jordan4ibanez/integer_set" }
+files_f90 = { git = "https://github.com/jordan4ibanez/files_f90" }
 
 [install]
 library = false
