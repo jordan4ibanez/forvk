@@ -110,7 +110,7 @@ contains
 
     call create_swapchain(physical_device, logical_device, window_surface, swapchain, swapchain_images, swapchain_image_format, swapchain_extent)
 
-    call create_image_views(swapchain_images, swapchain_image_views)
+    call create_image_views(swapchain_images, swapchain_image_views, swapchain_image_format)
 
   end subroutine init_vulkan
 
