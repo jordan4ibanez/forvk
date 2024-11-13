@@ -76,6 +76,16 @@ module shaderc_bindings
     end function shaderc_result_get_error_message
 
 
+    !* Number of bytes in the compiled shader.
+    function shaderc_result_get_length(raw_data) result(s) bind(c, name = "shaderc_result_get_length")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      type(c_ptr), intent(in), value :: raw_data
+      integer(c_size_t) :: s
+    end function shaderc_result_get_length
+
+
     function shaderc_compile_into_spv(shader_compiler_pointer, source_text, source_text_size, shader_kind, input_file_name, entry_point_name, additional_options) result(raw_data) bind(c, name = "shaderc_compile_into_spv")
       use, intrinsic :: iso_c_binding
       implicit none
