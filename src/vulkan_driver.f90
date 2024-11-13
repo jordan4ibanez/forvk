@@ -133,6 +133,14 @@ contains
   subroutine clean_up()
     implicit none
 
+    integer(c_int64_t) :: i
+    integer(c_int64_t), pointer :: image_view
+
+    do i = 1,swapchain_image_views%size()
+      call c_f_pointer(swapchain_image_views%get(i), image_view)
+      call vk_destroy_image_view(logical_device, image_view, c_null_ptr)
+    end do
+
     call vk_destroy_swapchain_khr(logical_device, swapchain, c_null_ptr)
 
     call vk_destroy_surface_khr(vulkan_instance, window_surface, c_null_ptr)
