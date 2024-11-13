@@ -670,6 +670,19 @@ module forvulkan
   end type vk_swapchain_create_info_khr
 
 
+  !? VkComponentMapping.
+  type, bind(c) :: vk_component_mapping
+    ! VkComponentSwizzle
+    integer(c_int32_t) :: r
+    ! VkComponentSwizzle
+    integer(c_int32_t) :: g
+    ! VkComponentSwizzle
+    integer(c_int32_t) :: b
+    ! VkComponentSwizzle
+    integer(c_int32_t) :: a
+  end type vk_component_mapping
+
+
   !? CUSTOM TYPES .===============================================================
 
 
