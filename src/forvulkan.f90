@@ -967,6 +967,22 @@ module forvulkan
     end subroutine vk_destroy_swapchain_khr
 
 
+    function vk_get_swapchain_images_khr(logical_device, swapchain, p_swapchain_image_count, p_swapchain_images) result(vk_result) bind(c, name = "vkGetSwapchainImagesKHR")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkDevice
+      integer(c_int64_t), intent(in), value :: logical_device
+      ! VkSwapchainKHR
+      integer(c_int64_t), intent(in), value :: swapchain
+      ! uint32_t *
+      integer(c_int32_t), intent(inout) :: p_swapchain_image_count
+      ! VkImage *
+      type(c_ptr), intent(in), value :: p_swapchain_images
+      integer(c_int32_t) :: vk_result
+    end function vk_get_swapchain_images_khr
+
+
 !? FUNCTION BLUEPRINTS. ============================================================
 
 
