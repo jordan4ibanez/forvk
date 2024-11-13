@@ -30,7 +30,7 @@ contains
     ! VkExtent2D
     type(vk_extent_2d), intent(inout) :: swapchain_extent
     type(forvulkan_swapchain_support_details), pointer :: swapchain_support_details
-    type(vk_surface_format_khr), pointer :: selected_format_pointer
+    type(vk_surface_format_khr), pointer :: selected_surface_format_pointer
     ! VkPresentModeKHR
     integer(c_int32_t) :: selected_present_mode
     type(vk_extent_2d) :: selected_extent
@@ -46,7 +46,7 @@ contains
       error stop "[Vulkan] Severe Error: This physical device was already tested to have swapchain support, suddenly it does not."
     end if
 
-    selected_format_pointer => select_swap_surface_format(swapchain_support_details%formats)
+    selected_surface_format_pointer => select_swap_surface_format(swapchain_support_details%formats)
     selected_present_mode = select_swap_present_mode(swapchain_support_details%present_modes)
     selected_extent = select_swap_extent(swapchain_support_details%capabilities)
     selected_image_count = select_image_count(swapchain_support_details%capabilities)
@@ -54,8 +54,8 @@ contains
     create_info%s_type = VK_STRUCTURE_TYPE%SWAPCHAIN_CREATE_INFO_KHR
     create_info%surface = window_surface
     create_info%min_image_count = selected_image_count
-    create_info%image_format = selected_format_pointer%format
-    create_info%image_color_space = selected_format_pointer%color_space
+    create_info%image_format = selected_surface_format_pointer%format
+    create_info%image_color_space = selected_surface_format_pointer%color_space
     create_info%image_extent = selected_extent
     create_info%image_array_layers = 1
     create_info%image_usage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
@@ -95,21 +95,21 @@ contains
     end if
 
     ! Finally, set the module variables so we can reuse them.
-    swapchain_image_format = selected_format_pointer%format 
+    swapchain_image_format = selected_surface_format_pointer%format 
     ! swapChainImageFormat = surfaceFormat.format;
     ! swapChainExtent = extent;
   end subroutine create_swapchain
 
 
-  function select_swap_surface_format(available_formats) result(selected_format_pointer)
+  function select_swap_surface_format(available_formats) result(selected_surface_format_pointer)
     implicit none
 
     type(vec), intent(inout) :: available_formats
     integer(c_int64_t) :: i
     type(vk_surface_format_khr), pointer :: available_format_pointer
-    type(vk_surface_format_khr), pointer :: selected_format_pointer
+    type(vk_surface_format_khr), pointer :: selected_surface_format_pointer
 
-    selected_format_pointer => null()
+    selected_surface_format_pointer => null()
 
     print"(A)","[Vulkan]: Searching for [BGRA8] surface format availability."
 
@@ -119,9 +119,9 @@ contains
       ! We will prefer this format, BGRA8. But,
       ! TODO: look into RGBA8.
       if (available_format_pointer%format == VK_FORMAT_B8G8R8A8_SRGB .and. available_format_pointer%color_space == VK_COLOR_SPACE_SRGB_NONLINEAR_KHR) then
-        allocate(selected_format_pointer)
-        selected_format_pointer%color_space = available_format_pointer%color_space
-        selected_format_pointer%format = available_format_pointer%format
+        allocate(selected_surface_format_pointer)
+        selected_surface_format_pointer%color_space = available_format_pointer%color_space
+        selected_surface_format_pointer%format = available_format_pointer%format
         print"(A)","[Vulkan]: [BGRA8] surface format is selected."
         return
       end if
@@ -133,9 +133,9 @@ contains
     print"(A)","[Vulkan]: Surface format [BGRA8] unavailable. Defaulting selection."
 
     call c_f_pointer(available_formats%get(1_8), available_format_pointer)
-    allocate(selected_format_pointer)
-    selected_format_pointer%color_space = available_format_pointer%color_space
-    selected_format_pointer%format = available_format_pointer%format
+    allocate(selected_surface_format_pointer)
+    selected_surface_format_pointer%color_space = available_format_pointer%color_space
+    selected_surface_format_pointer%format = available_format_pointer%format
   end function select_swap_surface_format
 
 
