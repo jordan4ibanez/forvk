@@ -35,3 +35,6 @@ build/
 
 # Binary output
 /out/**
+
+# Shaders
+/shaders/*.*-spir-v
