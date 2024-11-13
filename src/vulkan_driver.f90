@@ -52,6 +52,12 @@ module vulkan_driver
   ! VkImage Array
   type(vec) :: swapchain_images
 
+  ! VkFormat
+  integer(c_int32_t) :: swapchain_image_format = 0
+
+  ! VkExtent2D
+  type(vk_extent_2d) :: swapchain_extent
+
   ! Controls debugging output.
   logical(c_bool), parameter :: DEBUG_MODE = .true.
 
@@ -98,7 +104,7 @@ contains
 
     call create_logical_device(physical_device, logical_device, graphics_queue, present_queue, window_surface, DEBUG_MODE)
 
-    call create_swapchain(physical_device, logical_device, window_surface, swapchain, swapchain_images)
+    call create_swapchain(physical_device, logical_device, window_surface, swapchain, swapchain_images, swapchain_image_format, swapchain_extent)
 
   end subroutine init_vulkan
 

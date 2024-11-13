@@ -12,7 +12,7 @@ module vulkan_driver_create_swapchain
 contains
 
 
-  subroutine create_swapchain(physical_device, logical_device, window_surface, swapchain, swapchain_images)
+  subroutine create_swapchain(physical_device, logical_device, window_surface, swapchain, swapchain_images, swapchain_image_format, swapchain_extent)
     implicit none
 
     ! VkPhysicalDevice
@@ -25,6 +25,10 @@ contains
     integer(c_int64_t), intent(inout) :: swapchain
     ! VkImage Array
     type(vec) :: swapchain_images
+    ! VkFormat
+    integer(c_int32_t), intent(inout) :: swapchain_image_format
+    ! VkExtent2D
+    type(vk_extent_2d), intent(inout) :: swapchain_extent
     type(forvulkan_swapchain_support_details), pointer :: swapchain_support_details
     type(vk_surface_format_khr), pointer :: selected_format_pointer
     ! VkPresentModeKHR
@@ -78,7 +82,7 @@ contains
       error stop "[Vulkan] Error: Failed to create the swapchain."
     end if
 
-    ! And finally, we shall create the swapchain images.
+    ! Now, we shall create the swapchain images.
     if (vk_get_swapchain_images_khr(logical_device, swapchain, swappchain_image_count, c_null_ptr) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to get swapchain images."
     end if
@@ -90,9 +94,10 @@ contains
       error stop "[Vulkan] Error: Failed to get swapchain images."
     end if
 
-    ! todo: Turn these into module variables!
-    swapChainImageFormat = surfaceFormat.format;
-    swapChainExtent = extent;
+    ! Finally, set the module variables so we can reuse them.
+    swapchain_image_format = selected_format_pointer%format 
+    ! swapChainImageFormat = surfaceFormat.format;
+    ! swapChainExtent = extent;
   end subroutine create_swapchain
 
 
