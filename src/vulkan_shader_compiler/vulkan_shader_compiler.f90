@@ -1,3 +1,3 @@
-module shader_compiler
+module vulkan_shader_compiler
 
-end module shader_compiler
+end module vulkan_shader_compiler
