@@ -3,6 +3,7 @@ module vulkan_shader_compiler
   use :: shaderc_bindings
   use :: string_f90
   use :: directory
+  use :: files_f90
   implicit none
 
 
@@ -13,7 +14,7 @@ contains
     implicit none
 
     type(c_ptr) :: shader_compiler_pointer
-    type(directory_reader) :: reader
+    type(directory_reader) :: path_reader
     integer(c_int32_t) :: i, shader_type
     character(len = :, kind = c_char), pointer :: shader_path, file_name
     character(len = :, kind = c_char), allocatable :: file_extension, file_name_without_extension
@@ -22,12 +23,12 @@ contains
 
     shader_compiler_pointer = shaderc_compiler_initialize()
 
-    call reader%read_directory("./shaders/")
+    call path_reader%read_directory("./shaders/")
 
-    do i = 1,reader%file_count
+    do i = 1,path_reader%file_count
 
       ! This is so I don't have to keep typing this out lol. (No allocation happening)
-      file_name => reader%files(i)%get_pointer()
+      file_name => path_reader%files(i)%get_pointer()
 
       file_extension = string_get_file_extension(file_name)
 
@@ -53,7 +54,7 @@ contains
       deallocate(shader_path)
     end do
 
-    call reader%deallocate_memory()
+    call path_reader%deallocate_memory()
 
     call shaderc_compiler_release(shader_compiler_pointer)
   end subroutine compile_glsl_shaders
