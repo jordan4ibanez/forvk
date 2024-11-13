@@ -17,7 +17,7 @@ contains
     type(directory_reader) :: path_reader
     type(file_reader) :: reader
     integer(c_int32_t) :: i, shader_type
-    character(len = :, kind = c_char), pointer :: shader_path, file_name
+    character(len = :, kind = c_char), pointer :: shader_path, file_name, shader_text_data, entry_point
     character(len = :, kind = c_char), allocatable :: file_extension, file_name_without_extension
     type(c_ptr) :: raw_shader
 
@@ -26,6 +26,9 @@ contains
     shader_compiler_pointer = shaderc_compiler_initialize()
 
     call path_reader%read_directory("./shaders/")
+
+    allocate(character(len = 5, kind = c_char) :: entry_point)
+    entry_point = "main"//achar(0)
 
     do i = 1,path_reader%file_count
 
@@ -54,9 +57,14 @@ contains
 
       call reader%read_file(shader_path)
 
-      print*,reader%file_string
+      allocate(character(len = len(reader%file_string) + 1, kind = c_char) :: shader_text_data)
+      shader_text_data = reader%file_string//achar(0)
 
-      raw_shader = shaderc_compile_into_spv(shader_compiler_pointer, c_loc(reader%file_string))
+      raw_shader = c_null_ptr
+
+      raw_shader = shaderc_compile_into_spv(shader_compiler_pointer, c_loc(shader_text_data), int(len(shader_text_data), c_size_t), shader_type, c_loc(file_name), c_loc(entry_point), c_null_ptr)
+
+      print*,raw_shader
 
       call reader%destroy()
       deallocate(shader_path)
