@@ -698,6 +698,27 @@ module forvulkan
   end type vk_image_subresource_range
 
 
+  !? VkImageViewCreateInfo.
+  type, bind(c) :: vk_image_view_create_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! uint32_t [VkImageViewCreateFlags]
+    integer(c_int32_t) :: flags
+    ! VkImage
+    integer(c_int64_t) :: image
+    ! VkImageViewType
+    integer(c_int32_t) :: view_type
+    ! VkFormat
+    integer(c_int32_t) :: format
+    ! VkComponentMapping
+    type(vk_component_mapping) :: components
+    ! VkImageSubresourceRange
+    type(vk_image_subresource_range) :: subresource_range
+  end type vk_image_view_create_info
+
+
   !? CUSTOM TYPES .===============================================================
 
 
