@@ -1048,6 +1048,19 @@ module forvulkan
     end function vk_create_image_view
 
 
+    subroutine vk_destroy_image_view(logical_device, image_view, p_allocator) bind(c, name = "vkDestroyImageView")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkDevice
+      integer(c_int64_t), intent(in), value :: logical_device
+      ! VkImageView
+      integer(c_int64_t), intent(in), value :: image_view
+      ! const VkAllocationCallbacks *
+      type(c_ptr), intent(in), value :: p_allocator
+    end subroutine vk_destroy_image_view
+
+
 !? FUNCTION BLUEPRINTS. ============================================================
 
 
