@@ -33,6 +33,14 @@ module shaderc_bindings
     end subroutine shaderc_compile_options_release
 
 
+    subroutine shaderc_compile_options_set_generate_debug_info(options) bind(c, name = "shaderc_compile_options_set_generate_debug_info")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      type(c_ptr), intent(in), value :: options
+    end subroutine shaderc_compile_options_set_generate_debug_info
+
+
     function shaderc_compiler_initialize() result(shader_compiler_pointer) bind(c, name = "shaderc_compiler_initialize")
       use, intrinsic :: iso_c_binding
       implicit none
