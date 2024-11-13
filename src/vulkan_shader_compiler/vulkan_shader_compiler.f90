@@ -16,8 +16,8 @@ contains
     type(c_ptr) :: shader_compiler_options_pointer, shader_compiler_pointer
     type(directory_reader) :: path_reader
     type(file_reader) :: reader
-    integer(c_int32_t) :: i, shader_type
-    character(len = :, kind = c_char), pointer :: shader_path, file_name, shader_text_data, entry_point, error_message
+    integer(c_int32_t) :: i, shader_type, writer_unit, input_output_status
+    character(len = :, kind = c_char), pointer :: shader_path, file_name, shader_text_data, entry_point, error_message, compiled_file_name
     character(len = :, kind = c_char), allocatable :: file_extension, file_name_without_extension
     type(c_ptr) :: compilation_result_ptr, raw_spir_v_data_ptr
     integer(c_size_t) :: raw_spir_v_data_size
@@ -89,8 +89,33 @@ contains
       ! Why yes, we are just transfering this raw data into a byte array.
       call c_f_pointer(raw_spir_v_data_ptr, raw_byte_data, [raw_spir_v_data_size])
 
-      print*,raw_byte_data
+      allocate(character(len = len(shader_path) + 7, kind = c_char) :: compiled_file_name)
+      compiled_file_name = shader_path//"-spir-v"
 
+      ! Now, we shall write the raw binary data.
+
+      open(unit = writer_unit, file = compiled_file_name, access='stream', status='replace', &
+        action='write', iostat = input_output_status)
+
+      if (input_output_status /= 0) then
+        error stop "[ShaderC] Error: Got status ["//int_to_string(input_output_status)//"] when trying to open ["//compiled_file_name//"]"
+      end if
+
+      write(writer_unit, iostat = input_output_status) raw_byte_data
+
+      if (input_output_status /= 0) then
+        error stop "[ShaderC] Error: Got status ["//int_to_string(input_output_status)//"] when trying to write ["//compiled_file_name//"]"
+      end if
+
+      close(writer_unit, iostat = input_output_status)
+
+      if (input_output_status /= 0) then
+        error stop "[ShaderC] Error: Got status ["//int_to_string(input_output_status)//"] when trying to close ["//compiled_file_name//"]"
+      end if
+
+      ! We are done writing.
+
+      deallocate(compiled_file_name)
 
       call shaderc_result_release(compilation_result_ptr)
 
