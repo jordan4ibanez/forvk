@@ -29,7 +29,6 @@ contains
 
     call shaderc_compile_options_set_generate_debug_info(shader_compiler_options_pointer)
 
-
     shader_compiler_pointer = shaderc_compiler_initialize()
 
     call path_reader%read_directory("./shaders/")
@@ -70,7 +69,11 @@ contains
       ptr_compilation_result = shaderc_compile_into_spv(shader_compiler_pointer, c_loc(shader_text_data), int(len(shader_text_data), c_size_t), shader_type, c_loc(file_name), c_loc(entry_point), shader_compiler_options_pointer)
       call c_f_pointer(ptr_compilation_result, compilation_result_pointer)
 
-      print*,string_from_c(compilation_result_pointer%content)
+      if (string_from_c(compilation_result_pointer%content) /= "") then
+        error stop "[ShaderC] Error: Shader compilation failed."//achar(10)//string_from_c(compilation_result_pointer%content)
+      end if
+
+      print*,compilation_result_pointer%content
 
       ! print*,string_from_c(raw_shader%content)
 
