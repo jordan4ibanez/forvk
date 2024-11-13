@@ -1,15 +1,11 @@
 module shaderc_bindings
   use, intrinsic :: iso_c_binding
-  use :: shaderc_types
   implicit none
 
   ! I did not figure this out on my own.
   ! https://www.reddit.com/r/vulkan/comments/ecnjn7/converting_shader_source_to_spirv_on_the_fly/
   ! https://github.com/jbikker/lighthouse2/blob/master/lib/rendercore_vulkan_rt/vulkan_shader.cpp
   ! https://github.com/google/shaderc/blob/main/libshaderc/include/shaderc/shaderc.h
-
-
-  public :: shaderc_include_result
 
 
   ! These enums were manually translated from the enum struct.
@@ -70,6 +66,16 @@ module shaderc_bindings
     end function shaderc_result_get_num_errors
 
 
+    function shaderc_result_get_error_message(raw_data) result(c) bind(c, name = "shaderc_result_get_error_message")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      type(c_ptr), intent(in), value :: raw_data
+      ! const char *
+      type(c_ptr) :: c
+    end function shaderc_result_get_error_message
+
+
     function shaderc_compile_into_spv(shader_compiler_pointer, source_text, source_text_size, shader_kind, input_file_name, entry_point_name, additional_options) result(raw_data) bind(c, name = "shaderc_compile_into_spv")
       use, intrinsic :: iso_c_binding
       implicit none
@@ -88,7 +94,6 @@ module shaderc_bindings
 
     subroutine shaderc_result_release(raw_data) bind(c, name = "shaderc_result_release")
       use, intrinsic :: iso_c_binding
-      use :: shaderc_types
       implicit none
 
       ! shaderc_include_result *

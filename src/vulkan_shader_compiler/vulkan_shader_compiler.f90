@@ -1,7 +1,6 @@
 module vulkan_shader_compiler
   use, intrinsic :: iso_c_binding
   use :: shaderc_bindings
-  use :: shaderc_types
   use :: string_f90
   use :: directory
   use :: files_f90
@@ -18,10 +17,10 @@ contains
     type(directory_reader) :: path_reader
     type(file_reader) :: reader
     integer(c_int32_t) :: i, shader_type
-    character(len = :, kind = c_char), pointer :: shader_path, file_name, shader_text_data, entry_point
+    character(len = :, kind = c_char), pointer :: shader_path, file_name, shader_text_data, entry_point, error_message
     character(len = :, kind = c_char), allocatable :: file_extension, file_name_without_extension
-    type(c_ptr) :: ptr_compilation_result
-    type(shaderc_include_result), pointer :: compilation_result_pointer
+    type(c_ptr) :: compilation_result_ptr
+
 
     print"(A)","[ShaderC]: Compiling shaders from GLSL to SPIR-V."
 
@@ -66,20 +65,21 @@ contains
       allocate(character(len = len(reader%file_string) + 1, kind = c_char) :: shader_text_data)
       shader_text_data = reader%file_string//achar(0)
 
-      ptr_compilation_result = shaderc_compile_into_spv(shader_compiler_pointer, c_loc(shader_text_data), int(len(shader_text_data), c_size_t) - 1, shader_type, c_loc(file_name), c_loc(entry_point), shader_compiler_options_pointer)
-      call c_f_pointer(ptr_compilation_result, compilation_result_pointer)
+      compilation_result_ptr = shaderc_compile_into_spv(shader_compiler_pointer, c_loc(shader_text_data), int(len(shader_text_data), c_size_t) - 1, shader_type, c_loc(file_name), c_loc(entry_point), shader_compiler_options_pointer)
 
-      if (shaderc_result_get_num_errors(ptr_compilation_result) /= 0) then
-        if (string_from_c(compilation_result_pointer%content) /= "") then
-          error stop "[ShaderC] Error: Shader compilation failed."//achar(10)//string_from_c(compilation_result_pointer%content)
+
+      if (shaderc_result_get_num_errors(compilation_result_ptr) /= 0) then
+        error_message => string_from_c(shaderc_result_get_error_message(compilation_result_ptr))
+        if (error_message /= "") then
+          error stop "[ShaderC] Error: Shader compilation failed."//achar(10)//error_message
         else
           error stop "[ShaderC] Error: Could not transmit error!"
         end if
       end if
 
-      print*,compilation_result_pointer%content_length
 
-      call shaderc_result_release(ptr_compilation_result)
+
+      call shaderc_result_release(compilation_result_ptr)
 
       call reader%destroy()
       deallocate(shader_path)
