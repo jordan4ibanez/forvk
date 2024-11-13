@@ -760,6 +760,39 @@ module forvulkan_parameters
   integer(c_int), parameter, public :: VK_IMAGE_VIEW_TYPE_CUBE_ARRAY = 6
 
 
+  !? VkImageAspectFlagBits.
+
+
+  integer(c_int), parameter, public :: VK_IMAGE_ASPECT_COLOR_BIT = int(z"00000001")
+  integer(c_int), parameter, public :: VK_IMAGE_ASPECT_DEPTH_BIT = int(z"00000002")
+  integer(c_int), parameter, public :: VK_IMAGE_ASPECT_STENCIL_BIT = int(z"00000004")
+  integer(c_int), parameter, public :: VK_IMAGE_ASPECT_METADATA_BIT = int(z"00000008")
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_IMAGE_ASPECT_PLANE_0_BIT = int(z"00000010")
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_IMAGE_ASPECT_PLANE_1_BIT = int(z"00000020")
+  ! Provided by VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_IMAGE_ASPECT_PLANE_2_BIT = int(z"00000040")
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_IMAGE_ASPECT_NONE = 0
+  ! Provided by VK_EXT_image_drm_format_modifier
+  integer(c_int), parameter, public :: VK_IMAGE_ASPECT_MEMORY_PLANE_0_BIT_EXT = int(z"00000080")
+  ! Provided by VK_EXT_image_drm_format_modifier
+  integer(c_int), parameter, public :: VK_IMAGE_ASPECT_MEMORY_PLANE_1_BIT_EXT = int(z"00000100")
+  ! Provided by VK_EXT_image_drm_format_modifier
+  integer(c_int), parameter, public :: VK_IMAGE_ASPECT_MEMORY_PLANE_2_BIT_EXT = int(z"00000200")
+  ! Provided by VK_EXT_image_drm_format_modifier
+  integer(c_int), parameter, public :: VK_IMAGE_ASPECT_MEMORY_PLANE_3_BIT_EXT = int(z"00000400")
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_IMAGE_ASPECT_PLANE_0_BIT_KHR = VK_IMAGE_ASPECT_PLANE_0_BIT
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_IMAGE_ASPECT_PLANE_1_BIT_KHR = VK_IMAGE_ASPECT_PLANE_1_BIT
+  ! Provided by VK_KHR_sampler_ycbcr_conversion
+  integer(c_int), parameter, public :: VK_IMAGE_ASPECT_PLANE_2_BIT_KHR = VK_IMAGE_ASPECT_PLANE_2_BIT
+  ! Provided by VK_KHR_maintenance4
+  integer(c_int), parameter, public :: VK_IMAGE_ASPECT_NONE_KHR = VK_IMAGE_ASPECT_NONE
+
+
   !? VkStructureType. ==========================================================================
 
 
