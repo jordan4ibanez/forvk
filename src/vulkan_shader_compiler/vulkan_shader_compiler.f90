@@ -15,8 +15,8 @@ contains
     type(c_ptr) :: shader_compiler_pointer
     type(directory_reader) :: reader
     integer(c_int32_t) :: i
-    character(len = :, kind = c_char), pointer :: shader_path
-    character(len = :, kind = c_char), allocatable :: file_extension
+    character(len = :, kind = c_char), pointer :: shader_path, file_name
+    character(len = :, kind = c_char), allocatable :: file_extension, file_name_without_extension
 
     shader_compiler_pointer = shaderc_compiler_initialize()
 
@@ -24,17 +24,21 @@ contains
 
     do i = 1,reader%file_count
 
-      file_extension = string_get_file_extension(reader%files(i)%get_pointer())
+      file_name => reader%files(i)%get_pointer()
+
+      file_extension = string_get_file_extension(file_name)
 
       if (file_extension /= "vert" .and. file_extension /= "frag") then
         cycle
       end if
 
-      print*,file_extension
+      file_name_without_extension = string_get_left_of_character(file_name, ".")
+
+      print*,file_name_without_extension
 
 
 
-      allocate(character(len = len("./shaders/") + len(reader%files(i)%get_pointer()), kind = c_char) :: shader_path)
+      allocate(character(len = len("./shaders/") + len(file_name), kind = c_char) :: shader_path)
       shader_path = "./shaders/"//reader%files(i)%get_pointer()
 
       print*,shader_path
