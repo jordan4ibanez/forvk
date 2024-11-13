@@ -1032,6 +1032,22 @@ module forvulkan
     end function vk_get_swapchain_images_khr
 
 
+    function vk_create_image_view(logical_device, p_create_info, p_allocator, p_view) result(vk_result) bind(c, name = "vkCreateImageView")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkDevice
+      integer(c_int64_t), intent(in), value :: logical_device
+      ! const VkImageViewCreateInfo *
+      type(c_ptr), intent(in), value :: p_create_info
+      ! const VkAllocationCallbacks *
+      type(c_ptr), intent(in), value :: p_allocator
+      ! VkImageView *
+      type(c_ptr), intent(in), value :: p_view
+      integer(c_int32_t) :: vk_result
+    end function vk_create_image_view
+
+
 !? FUNCTION BLUEPRINTS. ============================================================
 
 
