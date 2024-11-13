@@ -17,12 +17,22 @@ module shaderc_bindings
       type(c_ptr) :: shader_compiler_pointer
     end function shaderc_compiler_initialize
 
+
+    subroutine shaderc_compiler_release(shader_compiler_pointer) bind(c, name = "shaderc_compiler_release")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      type(c_ptr), intent(in), value :: shader_compiler_pointer
+    end subroutine shaderc_compiler_release
+
+
     ! function shaderc_compile_into_spv() result(unknown) bind(c, name = "shaderc_compile_into_spv")
     !   use, intrinsic :: iso_c_binding
     !   implicit none
 
     !   integer(c_int32_t) :: unknown
     ! end function shaderc_compile_into_spv
+
 
   end interface
 
