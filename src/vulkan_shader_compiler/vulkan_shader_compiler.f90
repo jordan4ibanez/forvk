@@ -10,9 +10,11 @@ module vulkan_shader_compiler
 contains
 
 
-  subroutine compile_glsl_shaders()
+  !* Compile a shader in the shaders folder.
+  subroutine compile_glsl_shaders(shader_name)
     implicit none
 
+    character(len = *, kind = c_char), intent(in) :: shader_name
     type(c_ptr) :: shader_compiler_options_pointer, shader_compiler_pointer
     type(directory_reader) :: path_reader
     type(file_reader) :: reader
@@ -24,15 +26,13 @@ contains
     integer(1), dimension(:), pointer :: raw_byte_data
 
 
-    print"(A)","[ShaderC]: Compiling shaders from GLSL to SPIR-V."
+    print"(A)","[ShaderC]: Compiling shader ["//shader_name//"] from GLSL to SPIR-V."
 
     shader_compiler_options_pointer = shaderc_compile_options_initialize()
 
     call shaderc_compile_options_set_generate_debug_info(shader_compiler_options_pointer)
 
     shader_compiler_pointer = shaderc_compiler_initialize()
-
-    call path_reader%read_directory("./shaders/")
 
     allocate(character(len = 5, kind = c_char) :: entry_point)
     entry_point = "main"//achar(0)
