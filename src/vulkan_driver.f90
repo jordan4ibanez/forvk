@@ -93,6 +93,8 @@ contains
   subroutine init_vulkan()
     implicit none
 
+    type(compiled_shader_code) :: debugging
+
     call create_glfw()
 
     call ensure_extensions_present(DEBUG_MODE)
@@ -113,7 +115,7 @@ contains
 
     call create_image_views(logical_device, swapchain_images, swapchain_image_views, swapchain_image_format)
 
-    call compile_glsl_shaders("vertex.vert")
+    debugging = compile_glsl_shaders("vertex.vert")
 
   end subroutine init_vulkan
 

@@ -6,15 +6,23 @@ module vulkan_shader_compiler
   use :: files_f90
   implicit none
 
+  ! We're going to do some weird C -> Fortran magic here.
+
+  type :: compiled_shader_code
+    integer(c_size_t) :: byte_size = 0
+    integer(1), dimension(:), pointer :: raw_data => null()
+  end type compiled_shader_code
+
 
 contains
 
 
   !* Compile a shader in the shaders folder.
-  subroutine compile_glsl_shaders(shader_file_name)
+  function compile_glsl_shaders(shader_file_name) result(result_struct)
     implicit none
 
     character(len = *, kind = c_char), intent(in) :: shader_file_name
+    type(compiled_shader_code) :: result_struct
     type(c_ptr) :: shader_compiler_options_pointer, shader_compiler_pointer
     type(file_reader) :: reader
     integer(c_int32_t) :: shader_type
@@ -22,6 +30,7 @@ contains
     character(len = :, kind = c_char), allocatable :: file_extension, file_name_without_extension
     type(c_ptr) :: compilation_result_ptr, raw_spir_v_data_ptr
     integer(c_size_t) :: raw_spir_v_data_size
+    integer(1), dimension(:), pointer :: raw_byte_data
 
     file_extension = string_get_file_extension(shader_file_name)
 
@@ -76,14 +85,23 @@ contains
     end if
 
     raw_spir_v_data_size = shaderc_result_get_length(compilation_result_ptr)
-
     raw_spir_v_data_ptr = shaderc_result_get_bytes(compilation_result_ptr)
 
     if (.not. c_associated(raw_spir_v_data_ptr)) then
       error stop "[ShaderC] Error: The returned SPIR-V data pointer is null."
     end if
 
-    ! todo: shader thing here.
+    ! Pack all this data into the result struct.
+    ! We're copying the bytes because it's about to get it's memory released.
+
+    call c_f_pointer(raw_spir_v_data_ptr, raw_byte_data, [raw_spir_v_data_size])
+
+    allocate(result_struct%raw_data(raw_spir_v_data_size))
+    result_struct%raw_data = raw_byte_data
+
+    result_struct%byte_size = raw_spir_v_data_size
+
+    ! We can now free everything, we have a fully Fortranified SPIR-V binary in memory.
 
     call shaderc_result_release(compilation_result_ptr)
 
@@ -98,8 +116,7 @@ contains
     call shaderc_compile_options_release(shader_compiler_options_pointer)
 
     print"(A)","[ShaderC]: Shader compilation completed."
-
-  end subroutine compile_glsl_shaders
+  end function compile_glsl_shaders
 
 
 end module vulkan_shader_compiler
