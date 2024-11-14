@@ -11,10 +11,10 @@ contains
 
 
   !* Compile a shader in the shaders folder.
-  subroutine compile_glsl_shaders(shader_name)
+  subroutine compile_glsl_shaders(shader_file_name)
     implicit none
 
-    character(len = *, kind = c_char), intent(in) :: shader_name
+    character(len = *, kind = c_char), intent(in) :: shader_file_name
     type(c_ptr) :: shader_compiler_options_pointer, shader_compiler_pointer
     type(file_reader) :: reader
     integer(c_int32_t) :: i, shader_type, writer_unit, input_output_status
@@ -25,7 +25,13 @@ contains
     integer(1), dimension(:), pointer :: raw_byte_data
 
 
-    print"(A)","[ShaderC]: Compiling shader ["//shader_name//"] from GLSL to SPIR-V."
+    file_extension = string_get_file_extension(file_name)
+
+    if (file_extension /= "vert" .and. file_extension /= "frag") then
+      error stop "[ShaderC]: File ["//shader_file_name//"] is not a shader."
+    end if
+
+    print"(A)","[ShaderC]: Compiling shader ["//shader_file_name//"] from GLSL to SPIR-V."
 
     shader_compiler_options_pointer = shaderc_compile_options_initialize()
 
@@ -35,16 +41,6 @@ contains
 
     allocate(character(len = 5, kind = c_char) :: entry_point)
     entry_point = "main"//achar(0)
-
-
-    ! This is so I don't have to keep typing this out lol. (No allocation happening)
-    file_name => path_reader%files(i)%get_pointer()
-
-    file_extension = string_get_file_extension(file_name)
-
-    if (file_extension /= "vert" .and. file_extension /= "frag") then
-      cycle
-    end if
 
     print"(A)","[ShaderC]: Compiling ["//file_name//"]"
 
@@ -92,29 +88,6 @@ contains
     allocate(character(len = len(shader_path) + 7, kind = c_char) :: compiled_file_name)
     compiled_file_name = shader_path//"-spir-v"
 
-    ! Now, we shall write the raw binary data.
-
-    open(unit = writer_unit, file = compiled_file_name, access='stream', status='replace', &
-      action='write', iostat = input_output_status)
-
-    if (input_output_status /= 0) then
-      error stop "[ShaderC] Error: Got status ["//int_to_string(input_output_status)//"] when trying to open ["//compiled_file_name//"]"
-    end if
-
-    write(writer_unit, iostat = input_output_status) raw_byte_data
-
-    if (input_output_status /= 0) then
-      error stop "[ShaderC] Error: Got status ["//int_to_string(input_output_status)//"] when trying to write ["//compiled_file_name//"]"
-    end if
-
-    close(writer_unit, iostat = input_output_status)
-
-    if (input_output_status /= 0) then
-      error stop "[ShaderC] Error: Got status ["//int_to_string(input_output_status)//"] when trying to close ["//compiled_file_name//"]"
-    end if
-
-    ! We are done writing.
-
     deallocate(compiled_file_name)
 
     call shaderc_result_release(compilation_result_ptr)
@@ -123,8 +96,6 @@ contains
     deallocate(shader_path)
 
     deallocate(entry_point)
-
-    call path_reader%destroy()
 
     call shaderc_compiler_release(shader_compiler_pointer)
 
