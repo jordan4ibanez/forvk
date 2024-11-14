@@ -18,20 +18,21 @@ contains
     type(c_ptr) :: shader_compiler_options_pointer, shader_compiler_pointer
     type(file_reader) :: reader
     integer(c_int32_t) :: shader_type
-    character(len = :, kind = c_char), pointer :: shader_path, file_name, shader_text_data, entry_point, error_message, compiled_file_name
+    character(len = :, kind = c_char), pointer :: shader_path, c_file_name_pointer, shader_text_data, entry_point, error_message
     character(len = :, kind = c_char), allocatable :: file_extension, file_name_without_extension
     type(c_ptr) :: compilation_result_ptr, raw_spir_v_data_ptr
     integer(c_size_t) :: raw_spir_v_data_size
-    integer(1), dimension(:), pointer :: raw_byte_data
 
-
-    file_extension = string_get_file_extension(file_name)
+    file_extension = string_get_file_extension(shader_file_name)
 
     if (file_extension /= "vert" .and. file_extension /= "frag") then
       error stop "[ShaderC]: File ["//shader_file_name//"] is not a shader."
     end if
 
     print"(A)","[ShaderC]: Compiling shader ["//shader_file_name//"] from GLSL to SPIR-V."
+
+    allocate(character(len = len(shader_file_name) + 1, kind = c_char) :: c_file_name_pointer)
+    c_file_name_pointer = shader_file_name//achar(0)
 
     shader_compiler_options_pointer = shaderc_compile_options_initialize()
 
@@ -42,12 +43,12 @@ contains
     allocate(character(len = 5, kind = c_char) :: entry_point)
     entry_point = "main"//achar(0)
 
-    print"(A)","[ShaderC]: Compiling ["//file_name//"]"
+    print"(A)","[ShaderC]: Compiling ["//c_file_name_pointer//"]"
 
-    file_name_without_extension = string_get_left_of_character(file_name, ".")
+    file_name_without_extension = string_get_left_of_character(c_file_name_pointer, ".")
 
-    allocate(character(len = len("./shaders/") + len(file_name), kind = c_char) :: shader_path)
-    shader_path = "./shaders/"//file_name
+    allocate(character(len = len("./shaders/") + len(c_file_name_pointer), kind = c_char) :: shader_path)
+    shader_path = "./shaders/"//c_file_name_pointer
 
     select case(file_extension)
      case("vert")
@@ -63,7 +64,7 @@ contains
     allocate(character(len = len(reader%file_string) + 1, kind = c_char) :: shader_text_data)
     shader_text_data = reader%file_string//achar(0)
 
-    compilation_result_ptr = shaderc_compile_into_spv(shader_compiler_pointer, c_loc(shader_text_data), int(len(shader_text_data), c_size_t) - 1, shader_type, c_loc(file_name), c_loc(entry_point), shader_compiler_options_pointer)
+    compilation_result_ptr = shaderc_compile_into_spv(shader_compiler_pointer, c_loc(shader_text_data), int(len(shader_text_data), c_size_t) - 1, shader_type, c_loc(c_file_name_pointer), c_loc(entry_point), shader_compiler_options_pointer)
 
     if (shaderc_result_get_num_errors(compilation_result_ptr) /= 0) then
       error_message => string_from_c(shaderc_result_get_error_message(compilation_result_ptr))
@@ -84,14 +85,12 @@ contains
 
     ! todo: shader thing here.
 
-
-    deallocate(compiled_file_name)
-
     call shaderc_result_release(compilation_result_ptr)
 
     call reader%destroy()
-    deallocate(shader_path)
 
+    deallocate(shader_path)
+    deallocate(c_file_name_pointer)
     deallocate(entry_point)
 
     call shaderc_compiler_release(shader_compiler_pointer)

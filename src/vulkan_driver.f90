@@ -113,7 +113,7 @@ contains
 
     call create_image_views(logical_device, swapchain_images, swapchain_image_views, swapchain_image_format)
 
-    call compile_glsl_shaders()
+    call compile_glsl_shaders("vertex.vert")
 
   end subroutine init_vulkan
 
