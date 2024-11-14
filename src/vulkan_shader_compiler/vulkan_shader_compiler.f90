@@ -82,11 +82,8 @@ contains
       error stop "[ShaderC] Error: The returned SPIR-V data pointer is null."
     end if
 
-    ! Why yes, we are just transfering this raw data into a byte array.
-    call c_f_pointer(raw_spir_v_data_ptr, raw_byte_data, [raw_spir_v_data_size])
+    ! todo: shader thing here.
 
-    allocate(character(len = len(shader_path) + 7, kind = c_char) :: compiled_file_name)
-    compiled_file_name = shader_path//"-spir-v"
 
     deallocate(compiled_file_name)
 
