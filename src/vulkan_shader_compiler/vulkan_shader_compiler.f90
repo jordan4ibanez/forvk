@@ -17,7 +17,7 @@ contains
     character(len = *, kind = c_char), intent(in) :: shader_file_name
     type(c_ptr) :: shader_compiler_options_pointer, shader_compiler_pointer
     type(file_reader) :: reader
-    integer(c_int32_t) :: i, shader_type, writer_unit, input_output_status
+    integer(c_int32_t) :: shader_type
     character(len = :, kind = c_char), pointer :: shader_path, file_name, shader_text_data, entry_point, error_message, compiled_file_name
     character(len = :, kind = c_char), allocatable :: file_extension, file_name_without_extension
     type(c_ptr) :: compilation_result_ptr, raw_spir_v_data_ptr
