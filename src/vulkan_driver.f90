@@ -120,7 +120,7 @@ contains
 
     call create_image_views(logical_device, swapchain_images, swapchain_image_views, swapchain_image_format)
 
-    call create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module)
+    call create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module, swapchain_extent)
 
   end subroutine init_vulkan
 
