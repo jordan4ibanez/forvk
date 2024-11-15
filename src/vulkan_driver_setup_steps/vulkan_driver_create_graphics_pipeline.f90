@@ -25,6 +25,7 @@ contains
     integer(c_int32_t), dimension(2), target :: dynamic_states
     type(vk_pipeline_dynamic_state_create_info) :: dynamic_state_create_info
     type(vk_pipeline_vertex_input_state_create_info) :: vertex_input_create_info
+    type(vk_pipeline_input_assembly_state_create_info) :: input_assembly_create_info
 
     ! First compile GLSL into shader modules.
     vertex_shader_module = compile_glsl_shaders(logical_device, "vertex.vert")
@@ -61,6 +62,10 @@ contains
     dynamic_state_create_info%dynamic_state_count = size(dynamic_states)
     dynamic_state_create_info%p_dynamic_states = c_loc(dynamic_states)
 
+    ! Set up the input assembly create info.
+    input_assembly_create_info%s_type = VK_STRUCTURE_TYPE%PIPELINE%INPUT_ASSEMBLY_STATE_CREATE_INFO
+    input_assembly_create_info%topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST
+    input_assembly_create_info%primitive_restart_enabled = VK_FALSE
 
 
 
