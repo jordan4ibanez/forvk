@@ -787,7 +787,7 @@ module forvulkan
   end type vk_pipeline_vertex_input_state_create_info
 
 
-  !? CUSTOM TYPES .===============================================================
+  !? CUSTOM TYPES. ===============================================================
 
 
   type :: forvulkan_queue_family_indices
