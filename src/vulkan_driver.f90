@@ -69,6 +69,9 @@ module vulkan_driver
   ! VkShaderModule
   integer(c_int64_t) :: fragment_shader_module
 
+  ! VkPipelineLayout
+  integer(c_int64_t) :: pipeline_layout
+
   ! Controls debugging output.
   logical(c_bool), parameter :: DEBUG_MODE = .true.
 
@@ -120,7 +123,7 @@ contains
 
     call create_image_views(logical_device, swapchain_images, swapchain_image_views, swapchain_image_format)
 
-    call create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module, swapchain_extent)
+    call create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module, swapchain_extent, pipeline_layout)
 
   end subroutine init_vulkan
 
