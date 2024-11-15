@@ -3538,4 +3538,178 @@ module forvulkan_parameters
   integer(c_int), parameter, public :: VK_SHADER_STAGE_MESH_BIT_NV = VK_SHADER_STAGE_MESH_BIT_EXT
 
 
+  !? VkDynamicState.
+
+
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_VIEWPORT = 0
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_SCISSOR = 1
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_LINE_WIDTH = 2
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_DEPTH_BIAS = 3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_BLEND_CONSTANTS = 4
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_DEPTH_BOUNDS = 5
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK = 6
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_STENCIL_WRITE_MASK = 7
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_STENCIL_REFERENCE = 8
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_CULL_MODE = 1000267000
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_FRONT_FACE = 1000267001
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY = 1000267002
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT = 1000267003
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT = 1000267004
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE = 1000267005
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE = 1000267006
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE = 1000267007
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_DEPTH_COMPARE_OP = 1000267008
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE = 1000267009
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE = 1000267010
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_STENCIL_OP = 1000267011
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE = 1000377001
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE = 1000377002
+  ! Provided by VK_VERSION_1_3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE = 1000377004
+  ! Provided by VK_NV_clip_space_w_scaling
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_NV = 1000087000
+  ! Provided by VK_EXT_discard_rectangles
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_DISCARD_RECTANGLE_EXT = 1000099000
+  ! Provided by VK_EXT_discard_rectangles
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_DISCARD_RECTANGLE_ENABLE_EXT = 1000099001
+  ! Provided by VK_EXT_discard_rectangles
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_DISCARD_RECTANGLE_MODE_EXT = 1000099002
+  ! Provided by VK_EXT_sample_locations
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_EXT = 1000143000
+  ! Provided by VK_KHR_ray_tracing_pipeline
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_RAY_TRACING_PIPELINE_STACK_SIZE_KHR = 1000347000
+  ! Provided by VK_NV_shading_rate_image
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_VIEWPORT_SHADING_RATE_PALETTE_NV = 1000164004
+  ! Provided by VK_NV_shading_rate_image
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_VIEWPORT_COARSE_SAMPLE_ORDER_NV = 1000164006
+  ! Provided by VK_NV_scissor_exclusive
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_ENABLE_NV = 1000205000
+  ! Provided by VK_NV_scissor_exclusive
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV = 1000205001
+  ! Provided by VK_KHR_fragment_shading_rate
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_FRAGMENT_SHADING_RATE_KHR = 1000226000
+  ! Provided by VK_EXT_vertex_input_dynamic_state
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_VERTEX_INPUT_EXT = 1000352000
+  ! Provided by VK_EXT_extended_dynamic_state2
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_PATCH_CONTROL_POINTS_EXT = 1000377000
+  ! Provided by VK_EXT_extended_dynamic_state2
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_LOGIC_OP_EXT = 1000377003
+  ! Provided by VK_EXT_color_write_enable
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT = 1000381000
+  ! Provided by VK_EXT_extended_dynamic_state3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_DEPTH_CLAMP_ENABLE_EXT = 1000455003
+  ! Provided by VK_EXT_extended_dynamic_state3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_POLYGON_MODE_EXT = 1000455004
+  ! Provided by VK_EXT_extended_dynamic_state3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_RASTERIZATION_SAMPLES_EXT = 1000455005
+  ! Provided by VK_EXT_extended_dynamic_state3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_SAMPLE_MASK_EXT = 1000455006
+  ! Provided by VK_EXT_extended_dynamic_state3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_ALPHA_TO_COVERAGE_ENABLE_EXT = 1000455007
+  ! Provided by VK_EXT_extended_dynamic_state3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_ALPHA_TO_ONE_ENABLE_EXT = 1000455008
+  ! Provided by VK_EXT_extended_dynamic_state3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_LOGIC_OP_ENABLE_EXT = 1000455009
+  ! Provided by VK_EXT_extended_dynamic_state3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_COLOR_BLEND_ENABLE_EXT = 1000455010
+  ! Provided by VK_EXT_extended_dynamic_state3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_COLOR_BLEND_EQUATION_EXT = 1000455011
+  ! Provided by VK_EXT_extended_dynamic_state3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_COLOR_WRITE_MASK_EXT = 1000455012
+  ! Provided by VK_EXT_extended_dynamic_state3 with VK_KHR_maintenance2 or VK_VERSION_1_1
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_TESSELLATION_DOMAIN_ORIGIN_EXT = 1000455002
+  ! Provided by VK_EXT_extended_dynamic_state3 with VK_EXT_transform_feedback
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_RASTERIZATION_STREAM_EXT = 1000455013
+  ! Provided by VK_EXT_conservative_rasterization with VK_EXT_extended_dynamic_state3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_CONSERVATIVE_RASTERIZATION_MODE_EXT = 1000455014
+  ! Provided by VK_EXT_conservative_rasterization with VK_EXT_extended_dynamic_state3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_EXTRA_PRIMITIVE_OVERESTIMATION_SIZE_EXT = 1000455015
+  ! Provided by VK_EXT_depth_clip_enable with VK_EXT_extended_dynamic_state3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_DEPTH_CLIP_ENABLE_EXT = 1000455016
+  ! Provided by VK_EXT_extended_dynamic_state3 with VK_EXT_sample_locations
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_SAMPLE_LOCATIONS_ENABLE_EXT = 1000455017
+  ! Provided by VK_EXT_blend_operation_advanced with VK_EXT_extended_dynamic_state3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_COLOR_BLEND_ADVANCED_EXT = 1000455018
+  ! Provided by VK_EXT_extended_dynamic_state3 with VK_EXT_provoking_vertex
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_PROVOKING_VERTEX_MODE_EXT = 1000455019
+  ! Provided by VK_EXT_extended_dynamic_state3 with VK_EXT_line_rasterization
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT = 1000455020
+  ! Provided by VK_EXT_extended_dynamic_state3 with VK_EXT_line_rasterization
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT = 1000455021
+  ! Provided by VK_EXT_depth_clip_control with VK_EXT_extended_dynamic_state3
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_DEPTH_CLIP_NEGATIVE_ONE_TO_ONE_EXT = 1000455022
+  ! Provided by VK_EXT_extended_dynamic_state3 with VK_NV_clip_space_w_scaling
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_VIEWPORT_W_SCALING_ENABLE_NV = 1000455023
+  ! Provided by VK_EXT_extended_dynamic_state3 with VK_NV_viewport_swizzle
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_VIEWPORT_SWIZZLE_NV = 1000455024
+  ! Provided by VK_EXT_extended_dynamic_state3 with VK_NV_fragment_coverage_to_color
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_ENABLE_NV = 1000455025
+  ! Provided by VK_EXT_extended_dynamic_state3 with VK_NV_fragment_coverage_to_color
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_COVERAGE_TO_COLOR_LOCATION_NV = 1000455026
+  ! Provided by VK_EXT_extended_dynamic_state3 with VK_NV_framebuffer_mixed_samples
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_COVERAGE_MODULATION_MODE_NV = 1000455027
+  ! Provided by VK_EXT_extended_dynamic_state3 with VK_NV_framebuffer_mixed_samples
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_ENABLE_NV = 1000455028
+  ! Provided by VK_EXT_extended_dynamic_state3 with VK_NV_framebuffer_mixed_samples
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_COVERAGE_MODULATION_TABLE_NV = 1000455029
+  ! Provided by VK_EXT_extended_dynamic_state3 with VK_NV_shading_rate_image
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_SHADING_RATE_IMAGE_ENABLE_NV = 1000455030
+  ! Provided by VK_EXT_extended_dynamic_state3 with VK_NV_representative_fragment_test
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_REPRESENTATIVE_FRAGMENT_TEST_ENABLE_NV = 1000455031
+  ! Provided by VK_EXT_extended_dynamic_state3 with VK_NV_coverage_reduction_mode
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_COVERAGE_REDUCTION_MODE_NV = 1000455032
+  ! Provided by VK_EXT_attachment_feedback_loop_dynamic_state
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_ATTACHMENT_FEEDBACK_LOOP_ENABLE_EXT = 1000524000
+  ! Provided by VK_KHR_line_rasterization
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_LINE_STIPPLE_KHR = 1000259000
+  ! Provided by VK_EXT_depth_clamp_control
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_DEPTH_CLAMP_RANGE_EXT = 1000582000
+  ! Provided by VK_EXT_line_rasterization
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_LINE_STIPPLE_EXT = VK_DYNAMIC_STATE_LINE_STIPPLE_KHR
+  ! Provided by VK_EXT_extended_dynamic_state
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_CULL_MODE_EXT = VK_DYNAMIC_STATE_CULL_MODE
+  ! Provided by VK_EXT_extended_dynamic_state
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_FRONT_FACE_EXT = VK_DYNAMIC_STATE_FRONT_FACE
+  ! Provided by VK_EXT_extended_dynamic_state
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY_EXT = VK_DYNAMIC_STATE_PRIMITIVE_TOPOLOGY
+  ! Provided by VK_EXT_extended_dynamic_state
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT_EXT = VK_DYNAMIC_STATE_VIEWPORT_WITH_COUNT
+  ! Provided by VK_EXT_extended_dynamic_state
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT_EXT = VK_DYNAMIC_STATE_SCISSOR_WITH_COUNT
+  ! Provided by VK_EXT_extended_dynamic_state
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE_EXT = VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE
+  ! Provided by VK_EXT_extended_dynamic_state
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE_EXT = VK_DYNAMIC_STATE_DEPTH_TEST_ENABLE
+  ! Provided by VK_EXT_extended_dynamic_state
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE_EXT = VK_DYNAMIC_STATE_DEPTH_WRITE_ENABLE
+  ! Provided by VK_EXT_extended_dynamic_state
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_DEPTH_COMPARE_OP_EXT = VK_DYNAMIC_STATE_DEPTH_COMPARE_OP
+  ! Provided by VK_EXT_extended_dynamic_state
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE_EXT = VK_DYNAMIC_STATE_DEPTH_BOUNDS_TEST_ENABLE
+  ! Provided by VK_EXT_extended_dynamic_state
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE_EXT = VK_DYNAMIC_STATE_STENCIL_TEST_ENABLE
+  ! Provided by VK_EXT_extended_dynamic_state
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_STENCIL_OP_EXT = VK_DYNAMIC_STATE_STENCIL_OP
+  ! Provided by VK_EXT_extended_dynamic_state2
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE_EXT = VK_DYNAMIC_STATE_RASTERIZER_DISCARD_ENABLE
+  ! Provided by VK_EXT_extended_dynamic_state2
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE_EXT = VK_DYNAMIC_STATE_DEPTH_BIAS_ENABLE
+  ! Provided by VK_EXT_extended_dynamic_state2
+  integer(c_int), parameter, public :: VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE_EXT = VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE
+
+
 end module forvulkan_parameters
