@@ -35,7 +35,7 @@ contains
     type(vk_pipeline_viewport_state_create_info) :: viewport_state_create_info
     type(vk_pipeline_rasterization_state_create_info) :: rasterization_state_create_info
     type(vk_pipeline_color_blend_attachment_state) :: color_blend_attachment
-    type(vk_pipeline_layout_create_info) :: pipeline_layout_create_info
+    type(vk_pipeline_layout_create_info), target :: pipeline_layout_create_info
 
     ! First compile GLSL into shader modules.
     vertex_shader_module = compile_glsl_shaders(logical_device, "vertex.vert")
@@ -128,8 +128,10 @@ contains
     pipeline_layout_create_info%push_constant_range_count = 0
     pipeline_layout_create_info%p_push_constant_ranges = c_null_ptr
 
-    
 
+    if (vk_create_pipeline_layout(logical_device, c_loc(pipeline_layout_create_info), c_null_ptr, pipeline_layout) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to create pipeline layout."
+    end if
 
 
     call vk_destroy_shader_module(logical_device, fragment_shader_module, c_null_ptr)
