@@ -3880,4 +3880,13 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_BLEND_OP_BLUE_EXT = 1000148045
 
 
+  !? VkColorComponentFlagBits.
+
+
+  integer(c_int32_t), parameter, public :: VK_COLOR_COMPONENT_R_BIT = int(z"00000001")
+  integer(c_int32_t), parameter, public :: VK_COLOR_COMPONENT_G_BIT = int(z"00000002")
+  integer(c_int32_t), parameter, public :: VK_COLOR_COMPONENT_B_BIT = int(z"00000004")
+  integer(c_int32_t), parameter, public :: VK_COLOR_COMPONENT_A_BIT = int(z"00000008")
+
+  
 end module forvulkan_parameters
