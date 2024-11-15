@@ -27,6 +27,7 @@ contains
     character(len = :, kind = c_char), allocatable :: file_extension, file_name_without_extension
     type(c_ptr) :: compilation_result_ptr, raw_spir_v_data_ptr
     integer(c_size_t) :: raw_spir_v_data_size
+    type(vk_shader_module_create_info), target :: create_info
 
     file_extension = string_get_file_extension(shader_file_name)
 
@@ -91,7 +92,7 @@ contains
 
     ! We shall now compile the SPIR-V code into a shader module.
 
-    if (vk_create_shader_module(logical_device, create_info, c_null_ptr, shader_module) /= VK_SUCCESS) then
+    if (vk_create_shader_module(logical_device, c_loc(create_info), c_null_ptr, shader_module) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to create shader module from SPIR-V code for file ["//shader_file_name//"]"
     end if
 
