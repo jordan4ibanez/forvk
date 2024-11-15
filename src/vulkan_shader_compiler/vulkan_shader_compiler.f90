@@ -90,8 +90,13 @@ contains
       error stop "[ShaderC] Error: The returned SPIR-V data pointer is null."
     end if
 
-    ! We shall now compile the SPIR-V code into a shader module.
+    ! Create the necessary create info.
 
+    create_info%s_type = VK_STRUCTURE_TYPE%SHADER_MODULE_CREATE_INFO
+    create_info%code_size = raw_spir_v_data_size
+    create_info%p_code = raw_spir_v_data_ptr
+
+    ! We shall now compile the SPIR-V code into a shader module.
     if (vk_create_shader_module(logical_device, c_loc(create_info), c_null_ptr, shader_module) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to create shader module from SPIR-V code for file ["//shader_file_name//"]"
     end if
