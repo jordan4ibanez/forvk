@@ -1309,7 +1309,7 @@ module forvulkan
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
       ! VkPipelineLayout *
-      type(c_ptr), intent(in), value :: p_pipeline_layout
+      integer(c_int64_t), intent(inout) :: p_pipeline_layout
       integer(c_int32_t) :: vk_result
     end function vk_create_pipeline_layout
 
