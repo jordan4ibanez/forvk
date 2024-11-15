@@ -9,7 +9,7 @@ module vulkan_driver_create_graphics_pipeline
 contains
 
 
-  subroutine create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module, swapchain_extent)
+  subroutine create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module, swapchain_extent, pipeline_layout)
     implicit none
 
     ! VkDevice
@@ -20,6 +20,8 @@ contains
     integer(c_int64_t), intent(inout) :: fragment_shader_module
     ! VkExtent2D
     type(vk_extent_2d), intent(in) :: swapchain_extent
+    ! VkPipelineLayout
+    integer(c_int64_t), intent(inout) :: pipeline_layout
     type(vk_pipeline_shader_stage_create_info) :: vertex_shader_stage_info, fragment_shader_stage_info
     character(len = 5, kind = c_char), target :: vert_p_name, frag_p_name
     type(vk_pipeline_shader_stage_create_info), dimension(2) :: shader_stages
@@ -91,7 +93,6 @@ contains
     viewport_state_create_info%viewport_count = 1
     viewport_state_create_info%scissor_count = 1
 
-
     rasterization_state_create_info%s_type = VK_STRUCTURE_TYPE%PIPELINE%RASTERIZATION_STATE_CREATE_INFO
     rasterization_state_create_info%depth_clamp_enable = VK_FALSE
     rasterization_state_create_info%rasterizer_discard_enable = VK_FALSE
@@ -115,6 +116,7 @@ contains
     color_blend_attachment%src_alpha_blend_factor = VK_BLEND_FACTOR_ONE
     color_blend_attachment%dst_alpha_blend_factor = VK_BLEND_FACTOR_ZERO
     color_blend_attachment%alpha_blend_op = VK_BLEND_OP_ADD
+
 
 
     call vk_destroy_shader_module(logical_device, fragment_shader_module, c_null_ptr)
