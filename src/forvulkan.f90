@@ -837,6 +837,25 @@ module forvulkan
   end type vk_rect_2d
 
 
+  !? VkPipelineViewportStateCreateInfo.
+  type, bind(c) :: vk_pipeline_viewport_state_create_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkPipelineViewportStateCreateFlags
+    integer(c_int32_t) :: flags
+    ! uint32_t
+    integer(c_int32_t) :: viewport_count
+    ! const VkViewport *
+    type(c_ptr) :: p_viewports
+    ! uint32_t
+    integer(c_int32_t) :: scissor_count
+    ! const VkRect2D*
+    type(c_ptr) :: p_scissors
+  end type vk_pipeline_viewport_state_create_info
+
+
   !? CUSTOM TYPES. ===============================================================
 
 
