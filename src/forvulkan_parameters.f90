@@ -3712,4 +3712,18 @@ module forvulkan_parameters
   integer(c_int), parameter, public :: VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE_EXT = VK_DYNAMIC_STATE_PRIMITIVE_RESTART_ENABLE
 
 
+  !? VkPrimitiveTopology.
+  integer(c_int), parameter, public :: VK_PRIMITIVE_TOPOLOGY_POINT_LIST = 0
+  integer(c_int), parameter, public :: VK_PRIMITIVE_TOPOLOGY_LINE_LIST = 1
+  integer(c_int), parameter, public :: VK_PRIMITIVE_TOPOLOGY_LINE_STRIP = 2
+  integer(c_int), parameter, public :: VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST = 3
+  integer(c_int), parameter, public :: VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP = 4
+  integer(c_int), parameter, public :: VK_PRIMITIVE_TOPOLOGY_TRIANGLE_FAN = 5
+  integer(c_int), parameter, public :: VK_PRIMITIVE_TOPOLOGY_LINE_LIST_WITH_ADJACENCY = 6
+  integer(c_int), parameter, public :: VK_PRIMITIVE_TOPOLOGY_LINE_STRIP_WITH_ADJACENCY = 7
+  integer(c_int), parameter, public :: VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST_WITH_ADJACENCY = 8
+  integer(c_int), parameter, public :: VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY = 9
+  integer(c_int), parameter, public :: VK_PRIMITIVE_TOPOLOGY_PATCH_LIST = 10
+
+
 end module forvulkan_parameters
