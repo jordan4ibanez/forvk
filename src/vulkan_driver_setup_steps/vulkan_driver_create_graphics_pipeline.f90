@@ -31,6 +31,7 @@ contains
     type(vk_viewport) :: viewport
     type(vk_rect_2d) :: scissor
     type(vk_pipeline_viewport_state_create_info) :: viewport_state_create_info
+    type(vk_pipeline_rasterization_state_create_info) :: rasterization_state_create_info
 
     ! First compile GLSL into shader modules.
     vertex_shader_module = compile_glsl_shaders(logical_device, "vertex.vert")
@@ -89,6 +90,23 @@ contains
     viewport_state_create_info%viewport_count = 1
     viewport_state_create_info%scissor_count = 1
 
+
+    rasterization_state_create_info%s_type = VK_STRUCTURE_TYPE%PIPELINE%RASTERIZATION_STATE_CREATE_INFO
+    rasterization_state_create_info%depth_clamp_enable = VK_FALSE
+    rasterization_state_create_info%rasterizer_discard_enable = VK_FALSE
+    rasterization_state_create_info%polygon_mode = VK_POLYGON_MODE_FILL
+    rasterization_state_create_info%line_width = 1.0
+    rasterization_state_create_info%cull_mode = VK_CULL_MODE_BACK_BIT
+    !! FIXME: ENABLE COUNTERCLOCKWISE!
+    rasterization_state_create_info%front_face = VK_FRONT_FACE_CLOCKWISE
+    rasterization_state_create_info%depth_bias_enable = VK_FALSE
+    rasterization_state_create_info%depth_bias_constant_factor = 0.0
+    rasterization_state_create_info%depth_bias_clamp = 0.0
+    rasterization_state_create_info%depth_bias_slope_factor = 0.0
+
+    ! todo: maybe enable multi sampling in the options. :D
+
+    
 
 
     call vk_destroy_shader_module(logical_device, fragment_shader_module, c_null_ptr)
