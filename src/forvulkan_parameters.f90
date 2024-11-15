@@ -3489,4 +3489,53 @@ module forvulkan_parameters
   integer(c_int), parameter, public :: VK_OBJECT_TYPE_PRIVATE_DATA_SLOT_EXT = VK_OBJECT_TYPE_PRIVATE_DATA_SLOT
 
 
+  !? VkShaderStageFlagBits.
+
+
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_VERTEX_BIT = int(z"00000001")
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT = int(z"00000002")
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT = int(z"00000004")
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_GEOMETRY_BIT = int(z"00000008")
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_FRAGMENT_BIT = int(z"00000010")
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_COMPUTE_BIT = int(z"00000020")
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_ALL_GRAPHICS = int(z"0000001F")
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_ALL = int(z"7FFFFFFF")
+  ! Provided by VK_KHR_ray_tracing_pipeline
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_RAYGEN_BIT_KHR = int(z"00000100")
+  ! Provided by VK_KHR_ray_tracing_pipeline
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_ANY_HIT_BIT_KHR = int(z"00000200")
+  ! Provided by VK_KHR_ray_tracing_pipeline
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR = int(z"00000400")
+  ! Provided by VK_KHR_ray_tracing_pipeline
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_MISS_BIT_KHR = int(z"00000800")
+  ! Provided by VK_KHR_ray_tracing_pipeline
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_INTERSECTION_BIT_KHR = int(z"00001000")
+  ! Provided by VK_KHR_ray_tracing_pipeline
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_CALLABLE_BIT_KHR = int(z"00002000")
+  ! Provided by VK_EXT_mesh_shader
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_TASK_BIT_EXT = int(z"00000040")
+  ! Provided by VK_EXT_mesh_shader
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_MESH_BIT_EXT = int(z"00000080")
+  ! Provided by VK_HUAWEI_subpass_shading
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_SUBPASS_SHADING_BIT_HUAWEI = int(z"00004000")
+  ! Provided by VK_HUAWEI_cluster_culling_shader
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_CLUSTER_CULLING_BIT_HUAWEI = int(z"00080000")
+  ! Provided by VK_NV_ray_tracing
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_RAYGEN_BIT_NV = VK_SHADER_STAGE_RAYGEN_BIT_KHR
+  ! Provided by VK_NV_ray_tracing
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_ANY_HIT_BIT_NV = VK_SHADER_STAGE_ANY_HIT_BIT_KHR
+  ! Provided by VK_NV_ray_tracing
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_CLOSEST_HIT_BIT_NV = VK_SHADER_STAGE_CLOSEST_HIT_BIT_KHR
+  ! Provided by VK_NV_ray_tracing
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_MISS_BIT_NV = VK_SHADER_STAGE_MISS_BIT_KHR
+  ! Provided by VK_NV_ray_tracing
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_INTERSECTION_BIT_NV = VK_SHADER_STAGE_INTERSECTION_BIT_KHR
+  ! Provided by VK_NV_ray_tracing
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_CALLABLE_BIT_NV = VK_SHADER_STAGE_CALLABLE_BIT_KHR
+  ! Provided by VK_NV_mesh_shader
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_TASK_BIT_NV = VK_SHADER_STAGE_TASK_BIT_EXT
+  ! Provided by VK_NV_mesh_shader
+  integer(c_int), parameter, public :: VK_SHADER_STAGE_MESH_BIT_NV = VK_SHADER_STAGE_MESH_BIT_EXT
+
+
 end module forvulkan_parameters
