@@ -56,6 +56,10 @@ contains
     allocate(character(len = len("./shaders/") + len(c_file_name_pointer), kind = c_char) :: shader_path)
     shader_path = "./shaders/"//c_file_name_pointer
 
+    if (.not. reader%read_file(shader_path)) then
+      error stop "[ShaderC] Error: File ["//shader_path//"] does not exist."
+    end if
+
     select case(file_extension)
      case("vert")
       shader_type = shaderc_glsl_vertex_shader
@@ -64,8 +68,6 @@ contains
      case default
       error stop "[ShaderC] Error: Wrong file type intake. ["//file_extension//"]"
     end select
-
-    call reader%read_file(shader_path)
 
     allocate(character(len = len(reader%file_string) + 1, kind = c_char) :: shader_text_data)
     shader_text_data = reader%file_string//achar(0)
