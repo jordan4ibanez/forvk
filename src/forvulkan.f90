@@ -856,6 +856,38 @@ module forvulkan
   end type vk_pipeline_viewport_state_create_info
 
 
+  !? VkPipelineRasterizationStateCreateInfo.
+  type, bind(c) :: vk_pipeline_rasterization_state_create_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkPipelineRasterizationStateCreateFlags
+    integer(c_int32_t) :: flags
+    ! VkBool32
+    integer(c_int32_t) :: depth_clamp_enable
+    ! VkBool32
+    integer(c_int32_t) :: rasterizer_discard_enable
+    ! VkPolygonMode
+    integer(c_int32_t) :: polygon_mode
+    ! VkCullModeFlags
+    integer(c_int32_t) :: cull_mode
+    ! VkFrontFace
+    integer(c_int32_t) :: front_face
+    ! VkBool32
+    integer(c_int32_t) :: depth_bias_enable
+    ! float
+    real(c_float) :: depth_bias_constant_factor
+    ! float
+    real(c_float) :: depth_bias_clamp
+    ! float
+    real(c_float) :: depth_bias_slope_factor
+    ! float
+    real(c_float) :: line_width
+  end type vk_pipeline_rasterization_state_create_info
+
+
+
   !? CUSTOM TYPES. ===============================================================
 
 
