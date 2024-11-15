@@ -896,7 +896,7 @@ module forvulkan
     ! VkBlendFactor
     integer(c_int32_t) :: dst_color_blend_factor = 0
     ! VkBlendOp
-    integer(c_int32_t) :: color_blen_op = 0
+    integer(c_int32_t) :: color_blend_op = 0
     ! VkBlendFactor
     integer(c_int32_t) :: src_alpha_blend_factor = 0
     ! VkBlendFactor
