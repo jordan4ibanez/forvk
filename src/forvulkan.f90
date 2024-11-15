@@ -768,6 +768,25 @@ module forvulkan
   end type vk_pipeline_dynamic_state_create_info
 
 
+  !? VkPipelineVertexInputStateCreateInfo.
+  type, bind(c) :: vk_pipeline_vertex_input_state_create_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkPipelineVertexInputStateCreateFlags
+    integer(c_int32_t) :: flags
+    ! uint32_t
+    integer(c_int32_t) :: vertex_binding_description_count
+    ! const VkVertexInputBindingDescription *
+    type(c_ptr) :: p_vertex_binding_descriptions
+    ! uint32_t
+    integer(c_int32_t) :: vertex_attribute_description_count
+    ! const VkVertexInputAttributeDescription *
+    type(c_ptr) :: p_vertex_attribute_descriptions
+  end type vk_pipeline_vertex_input_state_create_info
+
+
   !? CUSTOM TYPES .===============================================================
 
 
