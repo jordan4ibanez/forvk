@@ -887,6 +887,27 @@ module forvulkan
   end type vk_pipeline_rasterization_state_create_info
 
 
+  !? VkPipelineColorBlendAttachmentState.
+  type, bind(c) :: vk_pipeline_color_blend_attachment_state
+    ! VkBool32
+    integer(c_int32_t) :: blend_enable = 0
+    ! VkBlendFactor
+    integer(c_int32_t) :: src_color_blend_factor = 0
+    ! VkBlendFactor
+    integer(c_int32_t) :: dst_color_blend_factor = 0
+    ! VkBlendOp
+    integer(c_int32_t) :: color_blen_op = 0
+    ! VkBlendFactor
+    integer(c_int32_t) :: src_alpha_blend_factor = 0
+    ! VkBlendFactor
+    integer(c_int32_t) :: dst_alpha_blend_factor = 0
+    ! VkBlendOp
+    integer(c_int32_t) :: alpha_blend_op = 0
+    ! VkColorComponentFlags
+    integer(c_int32_t) :: color_write_mask = 0
+  end type vk_pipeline_color_blend_attachment_state
+
+
 
   !? CUSTOM TYPES. ===============================================================
 
