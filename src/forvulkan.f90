@@ -719,6 +719,21 @@ module forvulkan
   end type vk_image_view_create_info
 
 
+  !? VkShaderModuleCreateInfo.
+  type, bind(c) :: vk_shader_module_create_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkFlags
+    integer(c_int32_t) :: flags = 0
+    ! size_t
+    integer(c_size_t) :: code_size = 0
+    ! const uint32_t*
+    type(c_ptr) :: p_code = c_null_ptr
+  end type vk_shader_module_create_info
+
+
   !? CUSTOM TYPES .===============================================================
 
 
