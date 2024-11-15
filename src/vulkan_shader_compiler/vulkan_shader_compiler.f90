@@ -84,6 +84,8 @@ contains
       end if
     end if
 
+    print"(A)","[ShaderC]: Shader compilation completed."
+
     raw_spir_v_data_size = shaderc_result_get_length(compilation_result_ptr)
     raw_spir_v_data_ptr = shaderc_result_get_bytes(compilation_result_ptr)
 
@@ -98,8 +100,10 @@ contains
 
     ! We shall now compile the SPIR-V code into a shader module.
     if (vk_create_shader_module(logical_device, c_loc(create_info), c_null_ptr, shader_module) /= VK_SUCCESS) then
-      error stop "[Vulkan] Error: Failed to create shader module from SPIR-V code for file ["//shader_file_name//"]"
+      error stop "[ShaderC] Error: Failed to create shader module from SPIR-V code for file ["//shader_file_name//"]"
     end if
+
+    print"(A)","[ShaderC]: Shader has been converted into shader module."
 
     ! We can now free everything, we have a fully Fortranified SPIR-V binary in memory.
 
@@ -114,8 +118,6 @@ contains
     call shaderc_compiler_release(shader_compiler_pointer)
 
     call shaderc_compile_options_release(shader_compiler_options_pointer)
-
-    print"(A)","[ShaderC]: Shader compilation completed."
   end function compile_glsl_shaders
 
 

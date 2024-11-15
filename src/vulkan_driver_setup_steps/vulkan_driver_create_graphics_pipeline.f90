@@ -19,6 +19,10 @@ contains
 
     vertex_shader_module = compile_glsl_shaders(logical_device, "vertex.vert")
     fragment_shader_module = compile_glsl_shaders(logical_device, "fragment.frag")
+  
+
+    call vk_destroy_shader_module(logical_device, fragment_shader_module, c_null_ptr)
+    call vk_destroy_shader_module(logical_device, vertex_shader_module, c_null_ptr)
   end subroutine create_graphics_pipeline
 
 
