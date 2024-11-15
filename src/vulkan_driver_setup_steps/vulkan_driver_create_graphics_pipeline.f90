@@ -47,6 +47,13 @@ contains
     ! Put them into an array.
     shader_stages = [vertex_shader_stage_info, fragment_shader_stage_info]
 
+    ! Create vertex input create info.
+    vertex_input_create_info%s_type = VK_STRUCTURE_TYPE%PIPELINE%VERTEX_INPUT_STATE_CREATE_INFO
+    vertex_input_create_info%vertex_binding_description_count = 0
+    vertex_input_create_info%p_vertex_binding_descriptions = c_null_ptr
+    vertex_input_create_info%vertex_attribute_description_count = 0
+    vertex_input_create_info%p_vertex_attribute_descriptions = c_null_ptr
+
     ! Set up dynamic states for the pipeline.
     dynamic_states = [VK_DYNAMIC_STATE_VIEWPORT, VK_DYNAMIC_STATE_SCISSOR]
 
@@ -54,7 +61,7 @@ contains
     dynamic_state_create_info%dynamic_state_count = size(dynamic_states)
     dynamic_state_create_info%p_dynamic_states = c_loc(dynamic_states)
 
-    ! Create vertex input create info.
+
 
 
 
