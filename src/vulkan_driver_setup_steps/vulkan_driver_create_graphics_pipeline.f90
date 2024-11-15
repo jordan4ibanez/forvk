@@ -32,6 +32,7 @@ contains
     type(vk_rect_2d) :: scissor
     type(vk_pipeline_viewport_state_create_info) :: viewport_state_create_info
     type(vk_pipeline_rasterization_state_create_info) :: rasterization_state_create_info
+    type(vk_pipeline_color_blend_attachment_state) :: color_blend_attachment
 
     ! First compile GLSL into shader modules.
     vertex_shader_module = compile_glsl_shaders(logical_device, "vertex.vert")
@@ -106,7 +107,14 @@ contains
 
     ! todo: maybe enable multi sampling in the options. :D
 
-    
+    color_blend_attachment%color_write_mask = ior(VK_COLOR_COMPONENT_R_BIT, ior(VK_COLOR_COMPONENT_G_BIT, ior(VK_COLOR_COMPONENT_B_BIT, VK_COLOR_COMPONENT_A_BIT)))
+    color_blend_attachment%blend_enable = VK_FALSE
+    color_blend_attachment%src_color_blend_factor = VK_BLEND_FACTOR_ONE
+    color_blend_attachment%dst_color_blend_factor = VK_BLEND_FACTOR_ZERO
+    color_blend_attachment%color_blend_op = VK_BLEND_OP_ADD
+    color_blend_attachment%src_alpha_blend_factor = VK_BLEND_FACTOR_ONE
+    color_blend_attachment%dst_alpha_blend_factor = VK_BLEND_FACTOR_ZERO
+    color_blend_attachment%alpha_blend_op = VK_BLEND_OP_ADD
 
 
     call vk_destroy_shader_module(logical_device, fragment_shader_module, c_null_ptr)
