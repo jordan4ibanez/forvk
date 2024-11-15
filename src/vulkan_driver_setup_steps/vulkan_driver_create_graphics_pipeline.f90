@@ -35,6 +35,7 @@ contains
     type(vk_pipeline_viewport_state_create_info) :: viewport_state_create_info
     type(vk_pipeline_rasterization_state_create_info) :: rasterization_state_create_info
     type(vk_pipeline_color_blend_attachment_state) :: color_blend_attachment
+    type(vk_pipeline_layout_create_info) :: pipeline_layout_create_info
 
     ! First compile GLSL into shader modules.
     vertex_shader_module = compile_glsl_shaders(logical_device, "vertex.vert")
@@ -93,6 +94,7 @@ contains
     viewport_state_create_info%viewport_count = 1
     viewport_state_create_info%scissor_count = 1
 
+    ! Set up rasterization state create info.
     rasterization_state_create_info%s_type = VK_STRUCTURE_TYPE%PIPELINE%RASTERIZATION_STATE_CREATE_INFO
     rasterization_state_create_info%depth_clamp_enable = VK_FALSE
     rasterization_state_create_info%rasterizer_discard_enable = VK_FALSE
@@ -108,6 +110,7 @@ contains
 
     ! todo: maybe enable multi sampling in the options. :D
 
+    ! Set up color blend attachment.
     color_blend_attachment%color_write_mask = ior(VK_COLOR_COMPONENT_R_BIT, ior(VK_COLOR_COMPONENT_G_BIT, ior(VK_COLOR_COMPONENT_B_BIT, VK_COLOR_COMPONENT_A_BIT)))
     color_blend_attachment%blend_enable = VK_FALSE
     color_blend_attachment%src_color_blend_factor = VK_BLEND_FACTOR_ONE
@@ -116,6 +119,16 @@ contains
     color_blend_attachment%src_alpha_blend_factor = VK_BLEND_FACTOR_ONE
     color_blend_attachment%dst_alpha_blend_factor = VK_BLEND_FACTOR_ZERO
     color_blend_attachment%alpha_blend_op = VK_BLEND_OP_ADD
+
+
+    ! Set up the pipeline layout create info.
+    pipeline_layout_create_info%s_type = VK_STRUCTURE_TYPE%PIPELINE%LAYOUT_CREATE_INFO
+    pipeline_layout_create_info%set_layout_count = 0
+    pipeline_layout_create_info%p_set_layouts = c_null_ptr
+    pipeline_layout_create_info%push_constant_range_count = 0
+    pipeline_layout_create_info%p_push_constant_ranges = c_null_ptr
+
+    
 
 
 
