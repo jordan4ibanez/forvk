@@ -4,25 +4,22 @@ module vulkan_shader_compiler
   use :: string_f90
   use :: directory
   use :: files_f90
+  use :: forvulkan
+  use :: forvulkan_parameters
   implicit none
-
-  ! We're going to do some weird C -> Fortran magic here.
-
-  type :: compiled_shader_code
-    integer(c_size_t) :: byte_size = 0
-    integer(1), dimension(:), pointer :: raw_data => null()
-  end type compiled_shader_code
 
 
 contains
 
 
   !* Compile a shader in the shaders folder.
-  function compile_glsl_shaders(shader_file_name) result(result_struct)
+  function compile_glsl_shaders(logical_device, shader_file_name) result(shader_module)
     implicit none
 
+    ! VkDevice
+    integer(c_int64_t), intent(in), value :: logical_device
     character(len = *, kind = c_char), intent(in) :: shader_file_name
-    type(compiled_shader_code) :: result_struct
+    integer(c_int64_t) :: shader_module
     type(c_ptr) :: shader_compiler_options_pointer, shader_compiler_pointer
     type(file_reader) :: reader
     integer(c_int32_t) :: shader_type
@@ -30,7 +27,6 @@ contains
     character(len = :, kind = c_char), allocatable :: file_extension, file_name_without_extension
     type(c_ptr) :: compilation_result_ptr, raw_spir_v_data_ptr
     integer(c_size_t) :: raw_spir_v_data_size
-    integer(1), dimension(:), pointer :: raw_byte_data
 
     file_extension = string_get_file_extension(shader_file_name)
 
@@ -73,6 +69,8 @@ contains
     allocate(character(len = len(reader%file_string) + 1, kind = c_char) :: shader_text_data)
     shader_text_data = reader%file_string//achar(0)
 
+    ! Now we compile from GLSL -> SPIR-V binary data.
+
     compilation_result_ptr = shaderc_compile_into_spv(shader_compiler_pointer, c_loc(shader_text_data), int(len(shader_text_data), c_size_t) - 1, shader_type, c_loc(c_file_name_pointer), c_loc(entry_point), shader_compiler_options_pointer)
 
     if (shaderc_result_get_num_errors(compilation_result_ptr) /= 0) then
@@ -91,15 +89,11 @@ contains
       error stop "[ShaderC] Error: The returned SPIR-V data pointer is null."
     end if
 
-    ! Pack all this data into the result struct.
-    ! We're copying the bytes because it's about to get it's memory released.
+    ! We shall now compile the SPIR-V code into a shader module.
 
-    call c_f_pointer(raw_spir_v_data_ptr, raw_byte_data, [raw_spir_v_data_size])
-
-    allocate(result_struct%raw_data(raw_spir_v_data_size))
-    result_struct%raw_data = raw_byte_data
-
-    result_struct%byte_size = raw_spir_v_data_size
+    if (vk_create_shader_module(logical_device, create_info, c_null_ptr, shader_module) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to create shader module from SPIR-V code for file ["//shader_file_name//"]"
+    end if
 
     ! We can now free everything, we have a fully Fortranified SPIR-V binary in memory.
 
