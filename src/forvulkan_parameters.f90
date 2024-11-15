@@ -3737,4 +3737,13 @@ module forvulkan_parameters
   ! Provided by VK_NV_fill_rectangle
   integer(c_int32_t), parameter, public :: VK_POLYGON_MODE_FILL_RECTANGLE_NV = 1000153000
 
+
+  !? VkCullModeFlagBits.
+
+
+  integer(c_int32_t), parameter, public :: VK_CULL_MODE_NONE = 0
+  integer(c_int32_t), parameter, public :: VK_CULL_MODE_FRONT_BIT = int(z"00000001")
+  integer(c_int32_t), parameter, public :: VK_CULL_MODE_BACK_BIT = int(z"00000002")
+  integer(c_int32_t), parameter, public :: VK_CULL_MODE_FRONT_AND_BACK = int(z"00000003")
+
 end module forvulkan_parameters
