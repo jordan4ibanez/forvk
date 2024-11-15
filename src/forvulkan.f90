@@ -813,9 +813,9 @@ module forvulkan
     ! float
     real(c_float) :: height = 0.0
     ! float
-    real(c_float) :: minDepth = 0.0
+    real(c_float) :: min_depth = 0.0
     ! float
-    real(c_float) :: maxDepth = 0.0
+    real(c_float) :: max_depth = 0.0
   end type vk_viewport
 
 
