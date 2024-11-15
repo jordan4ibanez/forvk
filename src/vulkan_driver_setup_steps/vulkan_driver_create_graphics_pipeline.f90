@@ -21,6 +21,9 @@ contains
     type(vk_pipeline_shader_stage_create_info) :: vertex_shader_stage_info, fragment_shader_stage_info
     character(len = 5, kind = c_char), target :: vert_p_name, frag_p_name
     type(vk_pipeline_shader_stage_create_info), dimension(2) :: shader_stages
+    ! VkDynamicState
+    integer(c_int32_t), dimension(2), target :: dynamic_states
+    type(vk_pipeline_dynamic_state_create_info) :: dynamic_state_create_info
 
     vertex_shader_module = compile_glsl_shaders(logical_device, "vertex.vert")
     fragment_shader_module = compile_glsl_shaders(logical_device, "fragment.frag")
@@ -38,6 +41,14 @@ contains
     fragment_shader_stage_info%p_name = c_loc(frag_p_name)
 
     shader_stages = [vertex_shader_stage_info, fragment_shader_stage_info]
+
+    dynamic_states = [VK_DYNAMIC_STATE_VIEWPORT, VK_DYNAMIC_STATE_SCISSOR]
+
+    dynamic_state_create_info%s_type = VK_STRUCTURE_TYPE%PIPELINE%DYNAMIC_STATE_CREATE_INFO
+    dynamic_state_create_info%dynamic_state_count = size(dynamic_states)
+    dynamic_state_create_info%p_dynamic_states = c_loc(dynamic_states)
+
+    
 
 
     call vk_destroy_shader_module(logical_device, fragment_shader_module, c_null_ptr)
