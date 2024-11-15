@@ -16,7 +16,7 @@ module vulkan_driver
   use :: vulkan_driver_create_logical_device
   use :: vulkan_driver_create_swapchain
   use :: vulkan_driver_create_image_views
-  use :: vulkan_driver_create_shaders
+  use :: vulkan_driver_create_graphics_pipeline
   implicit none
 
   ! https://github.com/KhronosGroup/Vulkan-Headers/blob/main/include/vulkan/vulkan_core.h
@@ -114,15 +114,12 @@ contains
 
     call create_image_views(logical_device, swapchain_images, swapchain_image_views, swapchain_image_format)
 
-    call create_graphics_pipeline()
+    call create_graphics_pipeline(logical_device)
 
   end subroutine init_vulkan
 
 
-  subroutine create_graphics_pipeline()
-    implicit none
 
-  end subroutine create_graphics_pipeline
 
 
 !* MAIN LOOP. ====================================================================
