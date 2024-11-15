@@ -775,15 +775,15 @@ module forvulkan
     ! const void *
     type(c_ptr) :: p_next = c_null_ptr
     ! VkPipelineVertexInputStateCreateFlags
-    integer(c_int32_t) :: flags
+    integer(c_int32_t) :: flags = 0
     ! uint32_t
-    integer(c_int32_t) :: vertex_binding_description_count
+    integer(c_int32_t) :: vertex_binding_description_count = 0
     ! const VkVertexInputBindingDescription *
-    type(c_ptr) :: p_vertex_binding_descriptions
+    type(c_ptr) :: p_vertex_binding_descriptions = c_null_ptr
     ! uint32_t
-    integer(c_int32_t) :: vertex_attribute_description_count
+    integer(c_int32_t) :: vertex_attribute_description_count = 0
     ! const VkVertexInputAttributeDescription *
-    type(c_ptr) :: p_vertex_attribute_descriptions
+    type(c_ptr) :: p_vertex_attribute_descriptions = c_null_ptr
   end type vk_pipeline_vertex_input_state_create_info
 
 
@@ -794,28 +794,28 @@ module forvulkan
     ! const void *
     type(c_ptr) :: p_next = c_null_ptr
     ! VkPipelineInputAssemblyStateCreateFlags
-    integer(c_int32_t) :: flags
+    integer(c_int32_t) :: flags = 0
     ! VkPrimitiveTopology
-    integer(c_int32_t) :: topology
+    integer(c_int32_t) :: topology = 0
     ! VkBool32
-    integer(c_int32_t) :: primitive_restart_enabled
+    integer(c_int32_t) :: primitive_restart_enabled = 0
   end type vk_pipeline_input_assembly_state_create_info
 
 
   !? VkViewport.
   type, bind(c) :: vk_viewport
     ! float
-    real(c_float) :: x
+    real(c_float) :: x = 0.0
     ! float
-    real(c_float) :: y
+    real(c_float) :: y = 0.0
     ! float
-    real(c_float) :: width
+    real(c_float) :: width = 0.0
     ! float
-    real(c_float) :: height
+    real(c_float) :: height = 0.0
     ! float
-    real(c_float) :: minDepth
+    real(c_float) :: minDepth = 0.0
     ! float
-    real(c_float) :: maxDepth
+    real(c_float) :: maxDepth = 0.0
   end type vk_viewport
 
 
