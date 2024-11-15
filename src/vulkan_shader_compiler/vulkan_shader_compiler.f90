@@ -56,6 +56,7 @@ contains
     allocate(character(len = len("./shaders/") + len(c_file_name_pointer), kind = c_char) :: shader_path)
     shader_path = "./shaders/"//c_file_name_pointer
 
+    ! If the file does not exist, we can't do anything. We need shaders to run the game.
     if (.not. reader%read_file(shader_path)) then
       error stop "[ShaderC] Error: File ["//shader_path//"] does not exist."
     end if
