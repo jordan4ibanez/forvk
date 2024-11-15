@@ -729,7 +729,7 @@ module forvulkan
     integer(c_int32_t) :: flags = 0
     ! size_t
     integer(c_size_t) :: code_size = 0
-    ! const uint32_t*
+    ! const uint32_t *
     type(c_ptr) :: p_code = c_null_ptr
   end type vk_shader_module_create_info
 
@@ -748,7 +748,7 @@ module forvulkan
     integer(c_int64_t) :: module = 0
     ! const char*
     type(c_ptr) :: p_name = c_null_ptr
-    ! const VkSpecializationInfo*
+    ! const VkSpecializationInfo *
     type(c_ptr) :: p_specialization_info = c_null_ptr
   end type vk_pipeline_shader_stage_create_info
 

@@ -1,6 +1,8 @@
 module vulkan_driver_create_graphics_pipeline
   use, intrinsic :: iso_c_binding
   use :: vulkan_shader_compiler
+  use :: forvulkan
+  use :: forvulkan_parameters
   implicit none
 
 
