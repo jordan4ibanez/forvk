@@ -3713,6 +3713,8 @@ module forvulkan_parameters
 
 
   !? VkPrimitiveTopology.
+
+
   integer(c_int32_t), parameter, public :: VK_PRIMITIVE_TOPOLOGY_POINT_LIST = 0
   integer(c_int32_t), parameter, public :: VK_PRIMITIVE_TOPOLOGY_LINE_LIST = 1
   integer(c_int32_t), parameter, public :: VK_PRIMITIVE_TOPOLOGY_LINE_STRIP = 2
@@ -3725,5 +3727,14 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP_WITH_ADJACENCY = 9
   integer(c_int32_t), parameter, public :: VK_PRIMITIVE_TOPOLOGY_PATCH_LIST = 10
 
+
+  !? VkPolygonMode.
+
+
+  integer(c_int32_t), parameter, public :: VK_POLYGON_MODE_FILL = 0
+  integer(c_int32_t), parameter, public :: VK_POLYGON_MODE_LINE = 1
+  integer(c_int32_t), parameter, public :: VK_POLYGON_MODE_POINT = 2
+  ! Provided by VK_NV_fill_rectangle
+  integer(c_int32_t), parameter, public :: VK_POLYGON_MODE_FILL_RECTANGLE_NV = 1000153000
 
 end module forvulkan_parameters
