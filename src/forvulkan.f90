@@ -819,6 +819,15 @@ module forvulkan
   end type vk_viewport
 
 
+  !? VkOffset2D.
+  type, bind(c) :: vk_offset_2d
+    ! int32_t
+    integer(c_int32_t) :: x = 0
+    ! int32_t
+    integer(c_int32_t) :: y = 0
+  end type vk_offset_2d
+
+
   !? CUSTOM TYPES. ===============================================================
 
 
