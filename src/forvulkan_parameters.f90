@@ -3754,4 +3754,28 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_FRONT_FACE_CLOCKWISE = 1
 
 
+  !? VkBlendFactor.
+  
+
+  integer(c_int32_t), parameter, public :: VK_BLEND_FACTOR_ZERO = 0
+  integer(c_int32_t), parameter, public :: VK_BLEND_FACTOR_ONE = 1
+  integer(c_int32_t), parameter, public :: VK_BLEND_FACTOR_SRC_COLOR = 2
+  integer(c_int32_t), parameter, public :: VK_BLEND_FACTOR_ONE_MINUS_SRC_COLOR = 3
+  integer(c_int32_t), parameter, public :: VK_BLEND_FACTOR_DST_COLOR = 4
+  integer(c_int32_t), parameter, public :: VK_BLEND_FACTOR_ONE_MINUS_DST_COLOR = 5
+  integer(c_int32_t), parameter, public :: VK_BLEND_FACTOR_SRC_ALPHA = 6
+  integer(c_int32_t), parameter, public :: VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA = 7
+  integer(c_int32_t), parameter, public :: VK_BLEND_FACTOR_DST_ALPHA = 8
+  integer(c_int32_t), parameter, public :: VK_BLEND_FACTOR_ONE_MINUS_DST_ALPHA = 9
+  integer(c_int32_t), parameter, public :: VK_BLEND_FACTOR_CONSTANT_COLOR = 10
+  integer(c_int32_t), parameter, public :: VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_COLOR = 11
+  integer(c_int32_t), parameter, public :: VK_BLEND_FACTOR_CONSTANT_ALPHA = 12
+  integer(c_int32_t), parameter, public :: VK_BLEND_FACTOR_ONE_MINUS_CONSTANT_ALPHA = 13
+  integer(c_int32_t), parameter, public :: VK_BLEND_FACTOR_SRC_ALPHA_SATURATE = 14
+  integer(c_int32_t), parameter, public :: VK_BLEND_FACTOR_SRC1_COLOR = 15
+  integer(c_int32_t), parameter, public :: VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR = 16
+  integer(c_int32_t), parameter, public :: VK_BLEND_FACTOR_SRC1_ALPHA = 17
+  integer(c_int32_t), parameter, public :: VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA = 18
+
+
 end module forvulkan_parameters
