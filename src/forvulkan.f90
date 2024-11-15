@@ -753,6 +753,21 @@ module forvulkan
   end type vk_pipeline_shader_stage_create_info
 
 
+  !? VkPipelineDynamicStateCreateInfo.
+  type, bind(c) :: vk_pipeline_dynamic_state_create_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkPipelineDynamicStateCreateFlags
+    integer(c_int32_t) :: flags = 0
+    ! uint32_t
+    integer(c_int32_t) :: dynamic_state_count = 0
+    ! const VkDynamicState *
+    type(c_ptr) :: p_dynamic_states = c_null_ptr
+  end type vk_pipeline_dynamic_state_create_info
+
+
   !? CUSTOM TYPES .===============================================================
 
 
