@@ -908,6 +908,25 @@ module forvulkan
   end type vk_pipeline_color_blend_attachment_state
 
 
+  !? VkPipelineLayoutCreateInfo.
+  type, bind(c) :: vk_pipeline_layout_create_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkPipelineLayoutCreateFlags
+    integer(c_int32_t) :: flags = 0
+    ! uint32_t
+    integer(c_int32_t) :: set_layout_count = 0
+    ! const VkDescriptorSetLayout *
+    type(c_ptr) :: p_set_layouts = c_null_ptr
+    ! uint32_t
+    integer(c_int32_t) :: push_constant_range_count = 0
+    ! const VkPushConstantRange *
+    type(c_ptr) :: p_push_constant_ranges = c_null_ptr
+  end type vk_pipeline_layout_create_info
+
+
   !? CUSTOM TYPES. ===============================================================
 
 
