@@ -734,6 +734,25 @@ module forvulkan
   end type vk_shader_module_create_info
 
 
+  !? VkPipelineShaderStageCreateInfo.
+  type, bind(c) :: vk_pipeline_shader_stage_create_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkFlags
+    integer(c_int32_t) :: flags = 0
+    ! VkShaderStageFlagBits
+    integer(c_int32_t) :: stage = 0
+    ! VkShaderModule
+    integer(c_int64_t) :: module = 0
+    ! const char*
+    type(c_ptr) :: p_name = c_null_ptr
+    ! const VkSpecializationInfo*
+    type(c_ptr) :: p_specialization_info = c_null_ptr
+  end type vk_pipeline_shader_stage_create_info
+
+
   !? CUSTOM TYPES .===============================================================
 
 
