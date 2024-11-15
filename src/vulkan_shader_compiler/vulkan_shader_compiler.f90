@@ -49,8 +49,6 @@ contains
     allocate(character(len = 5, kind = c_char) :: entry_point)
     entry_point = "main"//achar(0)
 
-    print"(A)","[ShaderC]: Compiling ["//c_file_name_pointer//"]"
-
     file_name_without_extension = string_get_left_of_character(c_file_name_pointer, ".")
 
     allocate(character(len = len("./shaders/") + len(c_file_name_pointer), kind = c_char) :: shader_path)
