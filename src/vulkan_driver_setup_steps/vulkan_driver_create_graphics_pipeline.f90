@@ -9,7 +9,7 @@ module vulkan_driver_create_graphics_pipeline
 contains
 
 
-  subroutine create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module)
+  subroutine create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module, swapchain_extent)
     implicit none
 
     ! VkDevice
@@ -18,6 +18,8 @@ contains
     integer(c_int64_t), intent(inout) :: vertex_shader_module
     ! VkShaderModule
     integer(c_int64_t), intent(inout) :: fragment_shader_module
+    ! VkExtent2D
+    type(vk_extent_2d), intent(in) :: swapchain_extent
     type(vk_pipeline_shader_stage_create_info) :: vertex_shader_stage_info, fragment_shader_stage_info
     character(len = 5, kind = c_char), target :: vert_p_name, frag_p_name
     type(vk_pipeline_shader_stage_create_info), dimension(2) :: shader_stages
@@ -26,6 +28,7 @@ contains
     type(vk_pipeline_dynamic_state_create_info) :: dynamic_state_create_info
     type(vk_pipeline_vertex_input_state_create_info) :: vertex_input_create_info
     type(vk_pipeline_input_assembly_state_create_info) :: input_assembly_create_info
+    type(vk_viewport) :: viewport
 
     ! First compile GLSL into shader modules.
     vertex_shader_module = compile_glsl_shaders(logical_device, "vertex.vert")
@@ -66,6 +69,14 @@ contains
     input_assembly_create_info%s_type = VK_STRUCTURE_TYPE%PIPELINE%INPUT_ASSEMBLY_STATE_CREATE_INFO
     input_assembly_create_info%topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST
     input_assembly_create_info%primitive_restart_enabled = VK_FALSE
+
+    ! Set up the viewport.
+    viewport%x = 0.0
+    viewport%y = 0.0
+    viewport%width = swapchain_extent%width
+    viewport%height = swapchain_extent%height
+    viewport%min_depth = 0.0
+    viewport%max_depth = 1.0
 
 
 
