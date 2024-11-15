@@ -844,15 +844,15 @@ module forvulkan
     ! const void *
     type(c_ptr) :: p_next = c_null_ptr
     ! VkPipelineViewportStateCreateFlags
-    integer(c_int32_t) :: flags
+    integer(c_int32_t) :: flags = 0
     ! uint32_t
-    integer(c_int32_t) :: viewport_count
+    integer(c_int32_t) :: viewport_count = 0
     ! const VkViewport *
-    type(c_ptr) :: p_viewports
+    type(c_ptr) :: p_viewports = c_null_ptr
     ! uint32_t
-    integer(c_int32_t) :: scissor_count
+    integer(c_int32_t) :: scissor_count = 0
     ! const VkRect2D*
-    type(c_ptr) :: p_scissors
+    type(c_ptr) :: p_scissors = c_null_ptr
   end type vk_pipeline_viewport_state_create_info
 
 
