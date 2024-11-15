@@ -63,6 +63,12 @@ module vulkan_driver
   ! VkImageView Array
   type(vec) :: swapchain_image_views
 
+  ! VkShaderModule
+  integer(c_int64_t) :: vertex_shader_module
+
+  ! VkShaderModule
+  integer(c_int64_t) :: fragment_shader_module
+
   ! Controls debugging output.
   logical(c_bool), parameter :: DEBUG_MODE = .true.
 
@@ -114,7 +120,7 @@ contains
 
     call create_image_views(logical_device, swapchain_images, swapchain_image_views, swapchain_image_format)
 
-    call create_graphics_pipeline(logical_device)
+    call create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module)
 
   end subroutine init_vulkan
 

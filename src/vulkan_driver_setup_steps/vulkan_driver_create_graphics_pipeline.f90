@@ -7,16 +7,18 @@ module vulkan_driver_create_graphics_pipeline
 contains
 
 
-  subroutine create_graphics_pipeline(logical_device)
+  subroutine create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module)
     implicit none
 
     ! VkDevice
     integer(c_int64_t), intent(in), value :: logical_device
     ! VkShaderModule
-    integer(c_int64_t) :: vertex_shader_module
+    integer(c_int64_t), intent(inout) :: vertex_shader_module
+    ! VkShaderModule
+    integer(c_int64_t), intent(inout) :: fragment_shader_module
 
     vertex_shader_module = compile_glsl_shaders(logical_device, "vertex.vert")
-
+    fragment_shader_module = compile_glsl_shaders(logical_device, "fragment.vert")
   end subroutine create_graphics_pipeline
 
 
