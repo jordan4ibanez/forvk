@@ -114,9 +114,15 @@ contains
 
     call create_image_views(logical_device, swapchain_images, swapchain_image_views, swapchain_image_format)
 
-    call create_shaders()
+    call create_graphics_pipeline()
 
   end subroutine init_vulkan
+
+
+  subroutine create_graphics_pipeline()
+    implicit none
+
+  end subroutine create_graphics_pipeline
 
 
 !* MAIN LOOP. ====================================================================
@@ -163,13 +169,7 @@ contains
 
     call glfw_terminate()
 
-    call create_graphics_pipeline()
   end subroutine clean_up
-
-
-  subroutine create_graphics_pipeline()
-
-  end subroutine create_graphics_pipeline
 
 
 end module vulkan_driver
