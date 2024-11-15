@@ -91,7 +91,6 @@ contains
     end if
 
     ! Create the necessary create info.
-
     create_info%s_type = VK_STRUCTURE_TYPE%SHADER_MODULE_CREATE_INFO
     create_info%code_size = raw_spir_v_data_size
     create_info%p_code = raw_spir_v_data_ptr
