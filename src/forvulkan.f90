@@ -863,27 +863,27 @@ module forvulkan
     ! const void *
     type(c_ptr) :: p_next = c_null_ptr
     ! VkPipelineRasterizationStateCreateFlags
-    integer(c_int32_t) :: flags
+    integer(c_int32_t) :: flags = 0
     ! VkBool32
-    integer(c_int32_t) :: depth_clamp_enable
+    integer(c_int32_t) :: depth_clamp_enable = 0
     ! VkBool32
-    integer(c_int32_t) :: rasterizer_discard_enable
+    integer(c_int32_t) :: rasterizer_discard_enable = 0
     ! VkPolygonMode
-    integer(c_int32_t) :: polygon_mode
+    integer(c_int32_t) :: polygon_mode = 0
     ! VkCullModeFlags
-    integer(c_int32_t) :: cull_mode
+    integer(c_int32_t) :: cull_mode = 0
     ! VkFrontFace
-    integer(c_int32_t) :: front_face
+    integer(c_int32_t) :: front_face = 0
     ! VkBool32
-    integer(c_int32_t) :: depth_bias_enable
+    integer(c_int32_t) :: depth_bias_enable = 0
     ! float
-    real(c_float) :: depth_bias_constant_factor
+    real(c_float) :: depth_bias_constant_factor = 0.0
     ! float
-    real(c_float) :: depth_bias_clamp
+    real(c_float) :: depth_bias_clamp = 0.0
     ! float
-    real(c_float) :: depth_bias_slope_factor
+    real(c_float) :: depth_bias_slope_factor = 0.0
     ! float
-    real(c_float) :: line_width
+    real(c_float) :: line_width = 0.0
   end type vk_pipeline_rasterization_state_create_info
 
 
