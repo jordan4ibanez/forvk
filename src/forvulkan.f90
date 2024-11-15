@@ -802,6 +802,23 @@ module forvulkan
   end type vk_pipeline_input_assembly_state_create_info
 
 
+  !? VkViewport.
+  type, bind(c) :: vk_viewport
+    ! float
+    real(c_float) :: x
+    ! float
+    real(c_float) :: y
+    ! float
+    real(c_float) :: width
+    ! float
+    real(c_float) :: height
+    ! float
+    real(c_float) :: minDepth
+    ! float
+    real(c_float) :: maxDepth
+  end type vk_viewport
+
+
   !? CUSTOM TYPES. ===============================================================
 
 
