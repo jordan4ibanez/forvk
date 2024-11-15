@@ -828,6 +828,15 @@ module forvulkan
   end type vk_offset_2d
 
 
+  !? VkRect2D.
+  type, bind(c) :: vk_rect_2d
+    ! VkOffset2D
+    type(vk_offset_2d) :: offset
+    ! VkExtent2D
+    type(vk_extent_2d) :: extent
+  end type vk_rect_2d
+
+
   !? CUSTOM TYPES. ===============================================================
 
 
