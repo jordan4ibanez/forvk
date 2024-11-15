@@ -29,6 +29,8 @@ contains
     type(vk_pipeline_vertex_input_state_create_info) :: vertex_input_create_info
     type(vk_pipeline_input_assembly_state_create_info) :: input_assembly_create_info
     type(vk_viewport) :: viewport
+    type(vk_rect_2d) :: scissor
+    type(vk_pipeline_viewport_state_create_info) :: viewport_state_create_info
 
     ! First compile GLSL into shader modules.
     vertex_shader_module = compile_glsl_shaders(logical_device, "vertex.vert")
@@ -78,7 +80,14 @@ contains
     viewport%min_depth = 0.0
     viewport%max_depth = 1.0
 
+    ! Set up scissor.
+    scissor%offset = vk_offset_2d()
+    scissor%extent = swapchain_extent
 
+    ! Set up viewport state create info.
+    viewport_state_create_info%s_type = VK_STRUCTURE_TYPE%PIPELINE%VIEWPORT_STATE_CREATE_INFO
+    viewport_state_create_info%viewport_count = 1
+    viewport_state_create_info%scissor_count = 1
 
 
 
