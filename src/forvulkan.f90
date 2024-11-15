@@ -1061,6 +1061,22 @@ module forvulkan
     end subroutine vk_destroy_image_view
 
 
+    function vk_create_shader_module(logical_device, p_create_info, p_allocator, p_shader_module) result(vk_result) bind(c, name = "vkCreateShaderModule")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkDevice
+      integer(c_int64_t), intent(in), value :: logical_device
+      ! const VkShaderModuleCreateInfo *
+      type(c_ptr), intent(in), value :: p_create_info
+      ! const VkAllocationCallbacks *
+      type(c_ptr), intent(in), value :: p_allocator
+      ! VkShaderModule *
+      integer(c_int64_t), intent(inout) :: p_shader_module
+      integer(c_int32_t) :: vk_result
+    end function vk_create_shader_module
+
+
 !? FUNCTION BLUEPRINTS. ============================================================
 
 
