@@ -3746,4 +3746,12 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_CULL_MODE_BACK_BIT = int(z"00000002")
   integer(c_int32_t), parameter, public :: VK_CULL_MODE_FRONT_AND_BACK = int(z"00000003")
 
+
+  !? VkFrontFace.
+
+
+  integer(c_int32_t), parameter, public :: VK_FRONT_FACE_COUNTER_CLOCKWISE = 0
+  integer(c_int32_t), parameter, public :: VK_FRONT_FACE_CLOCKWISE = 1
+
+
 end module forvulkan_parameters
