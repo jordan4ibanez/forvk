@@ -18,7 +18,7 @@ contains
     integer(c_int64_t), intent(inout) :: fragment_shader_module
 
     vertex_shader_module = compile_glsl_shaders(logical_device, "vertex.vert")
-    fragment_shader_module = compile_glsl_shaders(logical_device, "fragment.vert")
+    fragment_shader_module = compile_glsl_shaders(logical_device, "fragment.frag")
   end subroutine create_graphics_pipeline
 
 
