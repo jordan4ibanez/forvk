@@ -93,6 +93,8 @@ contains
       error stop "[ShaderC] Error: The returned SPIR-V data pointer is null."
     end if
 
+    !? This is where we mishmash ShaderC and Vulkan SDK so it's a bit awkard with debug output lol. I simply decided to make it all output as module ShaderC. (Shader Compiler)
+
     ! Create the necessary create info.
     create_info%s_type = VK_STRUCTURE_TYPE%SHADER_MODULE_CREATE_INFO
     create_info%code_size = raw_spir_v_data_size
