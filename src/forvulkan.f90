@@ -908,7 +908,6 @@ module forvulkan
   end type vk_pipeline_color_blend_attachment_state
 
 
-
   !? CUSTOM TYPES. ===============================================================
 
 
