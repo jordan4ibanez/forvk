@@ -168,7 +168,6 @@ contains
       call vk_destroy_framebuffer(logical_device, framebuffer, c_null_ptr)
     end do
 
-
     call vk_destroy_pipeline(logical_device, graphics_pipeline, c_null_ptr)
 
     call vk_destroy_pipeline_layout(logical_device, pipeline_layout, c_null_ptr)
@@ -179,7 +178,6 @@ contains
       call c_f_pointer(swapchain_image_views%get(i), image_view)
       call vk_destroy_image_view(logical_device, image_view, c_null_ptr)
     end do
-
 
     call vk_destroy_swapchain_khr(logical_device, swapchain, c_null_ptr)
 
