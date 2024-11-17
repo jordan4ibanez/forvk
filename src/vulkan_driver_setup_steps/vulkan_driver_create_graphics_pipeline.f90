@@ -180,7 +180,6 @@ contains
       error stop "[Vulkan] Error: Failed to create graphics pipelines."
     end if
 
-
     call vk_destroy_shader_module(logical_device, fragment_shader_module, c_null_ptr)
     call vk_destroy_shader_module(logical_device, vertex_shader_module, c_null_ptr)
   end subroutine create_graphics_pipeline
