@@ -1052,7 +1052,7 @@ module forvulkan
     ! VkSampleCountFlagBits
     integer(c_int32_t) :: rasterization_samples = 0
     ! VkBool32
-    integer(c_int32_t) :: simple_shading_enable = 0
+    integer(c_int32_t) :: sample_shading_enable = 0
     ! float
     real(c_float) :: min_sample_shading = 0.0
     ! const VkSampleMask*
