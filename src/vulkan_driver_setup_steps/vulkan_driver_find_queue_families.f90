@@ -9,11 +9,11 @@ module vulkan_driver_find_queue_families
 contains
 
 
-  function find_queue_families(device, window_surface) result(queue_family_indices)
+  function find_queue_families(physical_device, window_surface) result(queue_family_indices)
     implicit none
 
     ! VkPhysicalDevice
-    integer(c_int64_t), intent(in), value :: device
+    integer(c_int64_t), intent(in), value :: physical_device
     ! VkSurfaceKHR
     integer(c_int64_t), intent(in), value :: window_surface
     type(forvulkan_queue_family_indices) :: queue_family_indices
@@ -26,14 +26,14 @@ contains
 
     print"(A)","[Vulkan]: Finding queue families."
 
-    call vk_get_physical_device_queue_family_properties(device, queue_family_count, c_null_ptr)
+    call vk_get_physical_device_queue_family_properties(physical_device, queue_family_count, c_null_ptr)
 
     allocate(properties)
     queue_families = new_vec(sizeof(properties), int(queue_family_count, c_int64_t))
     call queue_families%resize(int(queue_family_count, c_int64_t), properties)
     deallocate(properties)
 
-    call vk_get_physical_device_queue_family_properties(device, queue_family_count, queue_families%get(1_8))
+    call vk_get_physical_device_queue_family_properties(physical_device, queue_family_count, queue_families%get(1_8))
 
     do i = 1, queue_family_count
       ! We're just straight shooting this right from C into Fortran.
@@ -47,7 +47,7 @@ contains
       end if
 
       ! Check if we can actually present on this queue.
-      if (vk_get_physical_device_surface_support_khr(device, i - 1, window_surface, present_support) /= VK_SUCCESS) then
+      if (vk_get_physical_device_surface_support_khr(physical_device, i - 1, window_surface, present_support) /= VK_SUCCESS) then
         error stop "[Vulkan] Error: Failed to get physical device surface support."
       end if
 
