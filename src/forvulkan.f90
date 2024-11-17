@@ -1081,6 +1081,35 @@ module forvulkan
     ! uint32_t
     integer(c_int32_t) :: reference = 0
   end type vk_stencil_op_state
+
+
+  !? VkPipelineDepthStencilStateCreateInfo.
+  type, bind(c) :: vk_pipeline_depth_stencil_state_create_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkPipelineDepthStencilStateCreateFlags
+    integer(c_int32_t) :: flags = 0
+    ! VkBool32
+    integer(c_int32_t) :: depth_test_enable = 0
+    ! VkBool32
+    integer(c_int32_t) :: depth_write_enable = 0
+    ! VkCompareOp
+    integer(c_int32_t) :: depth_compare_op = 0
+    ! VkBool32
+    integer(c_int32_t) :: depth_bounds_test_enable = 0
+    ! VkBool32
+    integer(c_int32_t) :: stencil_test_enable = 0
+    ! VkStencilOpState
+    type(vk_stencil_op_state) :: front
+    ! VkStencilOpState
+    type(vk_stencil_op_state) :: back
+    ! float
+    real(c_float) :: min_depth_bounds = 0.0
+    ! float
+    real(c_float) :: max_depth_bounds = 0.0
+  end type vk_pipeline_depth_stencil_state_create_info
   !? CUSTOM TYPES. ===============================================================
 
 
