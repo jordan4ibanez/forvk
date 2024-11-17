@@ -1131,6 +1131,51 @@ module forvulkan
     ! float[4]
     real(c_float), dimension(4) :: blend_constants = [0.0, 0.0, 0.0, 0.0]
   end type vk_pipeline_color_blend_state_create_info
+
+
+  !? VkGraphicsPipelineCreateInfo.
+  type, bind(c) :: vk_graphics_pipeline_create_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkPipelineCreateFlags
+    integer(c_int32_t) :: flags = 0
+    ! uint32_t
+    integer(c_int32_t) :: stage_count = 0
+    ! const VkPipelineShaderStageCreateInfo *
+    type(c_ptr) :: p_stages = c_null_ptr
+    ! const VkPipelineVertexInputStateCreateInfo *
+    type(c_ptr) :: p_vertex_input_state = c_null_ptr
+    ! const VkPipelineInputAssemblyStateCreateInfo *
+    type(c_ptr) :: p_input_assembly_state = c_null_ptr
+    ! const VkPipelineTessellationStateCreateInfo *
+    type(c_ptr) :: p_tessellation_state = c_null_ptr
+    ! const VkPipelineViewportStateCreateInfo *
+    type(c_ptr) :: p_viewport_state = c_null_ptr
+    ! const VkPipelineRasterizationStateCreateInfo *
+    type(c_ptr) :: p_rasterization_state = c_null_ptr
+    ! const VkPipelineMultisampleStateCreateInfo *
+    type(c_ptr) :: p_multisample_state = c_null_ptr
+    ! const VkPipelineDepthStencilStateCreateInfo *
+    type(c_ptr) :: p_depth_stencil_state = c_null_ptr
+    ! const VkPipelineColorBlendStateCreateInfo *
+    type(c_ptr) :: p_color_blend_state = c_null_ptr
+    ! const VkPipelineDynamicStateCreateInfo*
+    type(c_ptr) :: p_dynamic_state = c_null_ptr
+    ! VkPipelineLayout
+    integer(c_int64_t) :: layout = 0
+    ! VkRenderPass
+    integer(c_int64_t) :: render_pass = 0
+    ! uint32_t
+    integer(c_int32_t) :: subpass = 0
+    ! VkPipeline
+    integer(c_int64_t) :: base_pipeline_handle = 0
+    ! int32_t
+    integer(c_int32_t) :: base_pipeline_index = 0
+  end type vk_graphics_pipeline_create_info
+
+
   !? CUSTOM TYPES. ===============================================================
 
 
