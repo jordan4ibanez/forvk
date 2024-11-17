@@ -927,6 +927,29 @@ module forvulkan
   end type vk_pipeline_layout_create_info
 
 
+  !? VkAttachmentDescription.
+  type, bind(c) :: vk_attachment_description
+    ! VkAttachmentDescriptionFlags
+    integer(c_int32_t) :: flags
+    ! VkFormat
+    integer(c_int32_t) :: format
+    ! VkSampleCountFlagBits
+    integer(c_int32_t) :: samples
+    ! VkAttachmentLoadOp
+    integer(c_int32_t) :: load_op
+    ! VkAttachmentStoreOp
+    integer(c_int32_t) :: store_op
+    ! VkAttachmentLoadOp
+    integer(c_int32_t) :: stencil_load_op
+    ! VkAttachmentStoreOp
+    integer(c_int32_t) :: stencil_store_op
+    ! VkImageLayout
+    integer(c_int32_t) :: initial_layout
+    ! VkImageLayout
+    integer(c_int32_t) :: final_layout
+  end type vk_attachment_description
+
+
   !? CUSTOM TYPES. ===============================================================
 
 
