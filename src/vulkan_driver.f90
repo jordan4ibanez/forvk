@@ -143,7 +143,7 @@ contains
 
     call create_framebuffers(logical_device, swapchain_framebuffers, swapchain_image_views, render_pass, swapchain_extent)
 
-    call create_command_pool()
+    call create_command_pool(physical_device, window_surface, logical_device, command_pool)
 
   end subroutine init_vulkan
 
