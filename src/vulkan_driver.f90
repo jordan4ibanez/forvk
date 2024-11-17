@@ -127,17 +127,20 @@ contains
 
     call create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module, swapchain_extent, pipeline_layout)
 
-    call create_render_pass()
+    call create_render_pass(render_pass)
 
   end subroutine init_vulkan
 
 
-  subroutine create_render_pass()
+  subroutine create_render_pass(render_pass)
     implicit none
 
+    ! VkRenderPass
+    integer(c_int64_t), intent(inout) :: render_pass
     type(vk_attachment_description), target :: color_attachment_description
     type(vk_attachment_reference), target :: color_attachment_reference
-    type(vk_subpass_description_t) :: subpass
+    type(vk_subpass_description_t), target :: subpass
+    type(vk_render_pass_create_info), target  :: render_pass_create_info
 
     color_attachment_description%format = swapchain_image_format
     color_attachment_description%samples = VK_SAMPLE_COUNT_1_BIT
@@ -155,6 +158,11 @@ contains
     subpass%color_attachment_count = 1
     subpass%p_color_attachments = c_loc(color_attachment_reference)
 
+    render_pass_create_info%s_type = VK_STRUCTURE_TYPE%RENDER_PASS_CREATE_INFO
+    render_pass_create_info%attachment_count = 1
+    render_pass_create_info%p_attachments = c_loc(color_attachment_description)
+    render_pass_create_info%subpass_count = 1
+    render_pass_create_info%p_subpasses = c_loc(subpass)
 
   end subroutine create_render_pass
 
