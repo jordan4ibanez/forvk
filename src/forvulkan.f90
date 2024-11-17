@@ -1281,6 +1281,8 @@ module forvulkan
 
   !! This is a hackjob.
 
+  !? VkClearColorValue.
+
   type, bind(c) :: vk_clear_color_value_f32
     real(c_float), dimension(4) :: data = [0.0, 0.0, 0.0, 0.0]
   end type
@@ -1290,6 +1292,15 @@ module forvulkan
   end type
 
   !! End hackjob.
+
+
+  !? VkClearDepthStencilValue
+  type, bind(c) :: vk_clear_depth_stencil_value
+    ! float
+    real(c_float) :: depth = 0.0
+    ! uint32_t
+    integer(c_int32_t) :: stencil = 0
+  end type vk_clear_depth_stencil_value
 
 
   ! todo: marker for end of structs.
