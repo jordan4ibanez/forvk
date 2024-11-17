@@ -28,6 +28,7 @@ contains
     integer(c_int64_t), pointer :: framebuffer
     type(vk_clear_color_value_f32), target :: clear_color
     type(vk_viewport), target :: viewport
+    type(vk_rect_2d), target :: scissor
 
 
     begin_info%s_type = VK_STRUCTURE_TYPE%COMMAND_BUFFER_BEGIN_INFO
@@ -54,14 +55,20 @@ contains
 
     call vk_cmd_bind_pipeline(command_buffer, VK_PIPELINE_BIND_POINT_GRAPHICS, graphics_pipeline)
 
-
     viewport%x = 0.0
     viewport%y = 0.0
     viewport%width = swapchain_extent%width
     viewport%height = swapchain_extent%height
     viewport%min_depth = 0.0
     viewport%max_depth = 1.0
+
+    call vk_cmd_set_viewport(command_buffer, 0, 1, c_loc(viewport))
+
+    scissor%offset%x = 0
+    scissor%offset%y = 0
+    scissor%extent = swapchain_extent
     
+
 
 
   end subroutine record_command_buffer
