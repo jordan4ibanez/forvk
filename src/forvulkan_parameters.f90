@@ -4395,4 +4395,30 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_QUERY_CONTROL_PRECISE_BIT = int(z"00000001")
 
 
+  !? VkQueryPipelineStatisticFlagBits.
+
+
+  type :: vk_query_pipeline_statistic_t
+    integer(c_int32_t) :: INPUT_ASSEMBLY_VERTICES_BIT = int(z"00000001")
+    integer(c_int32_t) :: INPUT_ASSEMBLY_PRIMITIVES_BIT = int(z"00000002")
+    integer(c_int32_t) :: VERTEX_SHADER_INVOCATIONS_BIT = int(z"00000004")
+    integer(c_int32_t) :: GEOMETRY_SHADER_INVOCATIONS_BIT = int(z"00000008")
+    integer(c_int32_t) :: GEOMETRY_SHADER_PRIMITIVES_BIT = int(z"00000010")
+    integer(c_int32_t) :: CLIPPING_INVOCATIONS_BIT = int(z"00000020")
+    integer(c_int32_t) :: CLIPPING_PRIMITIVES_BIT = int(z"00000040")
+    integer(c_int32_t) :: FRAGMENT_SHADER_INVOCATIONS_BIT = int(z"00000080")
+    integer(c_int32_t) :: TESSELLATION_CONTROL_SHADER_PATCHES_BIT = int(z"00000100")
+    integer(c_int32_t) :: TESSELLATION_EVALUATION_SHADER_INVOCATIONS_BIT = int(z"00000200")
+    integer(c_int32_t) :: COMPUTE_SHADER_INVOCATIONS_BIT = int(z"00000400")
+    ! Provided by VK_EXT_mesh_shader
+    integer(c_int32_t) :: TASK_SHADER_INVOCATIONS_BIT_EXT = int(z"00000800")
+    ! Provided by VK_EXT_mesh_shader
+    integer(c_int32_t) :: MESH_SHADER_INVOCATIONS_BIT_EXT = int(z"00001000")
+    ! Provided by VK_HUAWEI_cluster_culling_shader
+    integer(c_int32_t) :: CLUSTER_CULLING_SHADER_INVOCATIONS_BIT_HUAWEI = int(z"00002000")
+  end type vk_query_pipeline_statistic_t
+
+  type(vk_query_pipeline_statistic_t), parameter, public :: VK_QUERY_PIPELINE_STATISTIC = vk_query_pipeline_statistic_t()
+
+
 end module forvulkan_parameters
