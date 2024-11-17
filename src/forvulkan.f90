@@ -1909,6 +1909,22 @@ module forvulkan
     end subroutine vk_cmd_set_scissor
 
 
+    subroutine vk_cmd_draw(command_buffer, vertex_count, instance_count, first_vertex, first_instance) bind(c, name = "vkCmdDraw")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkCommandBuffer
+      integer(c_int64_t), intent(in), value :: command_buffer
+      ! uint32
+      integer(c_int32_t), intent(in), value :: vertex_count
+      ! uint32
+      integer(c_int32_t), intent(in), value :: instance_count
+      ! uint32
+      integer(c_int32_t), intent(in), value :: first_vertex
+      ! uint32
+      integer(c_int32_t), intent(in), value :: first_instance
+    end subroutine vk_cmd_draw
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
