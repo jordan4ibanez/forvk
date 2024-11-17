@@ -4421,4 +4421,15 @@ module forvulkan_parameters
   type(vk_query_pipeline_statistic_t), parameter, public :: VK_QUERY_PIPELINE_STATISTIC = vk_query_pipeline_statistic_t()
 
 
+  !? VkSubpassContents.
+
+
+  integer(c_int32_t), parameter, public :: VK_SUBPASS_CONTENTS_INLINE = 0
+  integer(c_int32_t), parameter, public :: VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS = 1
+  ! Provided by VK_KHR_maintenance7
+  integer(c_int32_t), parameter, public :: VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR = 1000451000
+  ! Provided by VK_EXT_nested_command_buffer
+  integer(c_int32_t), parameter, public :: VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_EXT = VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR
+
+
 end module forvulkan_parameters
