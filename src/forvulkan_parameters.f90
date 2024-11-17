@@ -4219,4 +4219,17 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_COMPARE_OP_ALWAYS = 7
 
 
+  !? VkStencilOp.
+
+
+  integer(c_int32_t), parameter, public :: VK_STENCIL_OP_KEEP = 0
+  integer(c_int32_t), parameter, public :: VK_STENCIL_OP_ZERO = 1
+  integer(c_int32_t), parameter, public :: VK_STENCIL_OP_REPLACE = 2
+  integer(c_int32_t), parameter, public :: VK_STENCIL_OP_INCREMENT_AND_CLAMP = 3
+  integer(c_int32_t), parameter, public :: VK_STENCIL_OP_DECREMENT_AND_CLAMP = 4
+  integer(c_int32_t), parameter, public :: VK_STENCIL_OP_INVERT = 5
+  integer(c_int32_t), parameter, public :: VK_STENCIL_OP_INCREMENT_AND_WRAP = 6
+  integer(c_int32_t), parameter, public :: VK_STENCIL_OP_DECREMENT_AND_WRAP = 7
+
+
 end module forvulkan_parameters
