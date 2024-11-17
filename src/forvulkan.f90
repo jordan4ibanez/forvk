@@ -1261,6 +1261,25 @@ module forvulkan
   end type vk_command_buffer_begin_info
 
 
+  !? VkRenderPassBeginInfo.
+  type, bind(c) :: vk_render_pass_begin_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkRenderPass
+    integer(c_int64_t) :: render_pass = 0
+    ! VkFramebuffer
+    integer(c_int64_t) :: framebuffer = 0
+    ! VkRect2D
+    type(vk_rect_2d) :: render_area
+    ! uint32_t
+    integer(c_int32_t) :: clear_value_count = 0
+    ! const VkClearValue * ! todo: I have no idea if this needs translation.
+    type(c_ptr) :: p_clear_values = c_null_ptr
+  end type vk_render_pass_begin_info
+
+
   ! todo: marker for end of structs.
 
 
