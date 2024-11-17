@@ -38,6 +38,7 @@ contains
     type(vk_rect_2d) :: scissor
     type(vk_pipeline_viewport_state_create_info), target :: viewport_state_create_info
     type(vk_pipeline_rasterization_state_create_info), target :: rasterization_state_create_info
+    type(vk_pipeline_multisample_state_create_info), target :: multisampling_create_info
     type(vk_pipeline_color_blend_attachment_state), target :: color_blend_attachment
     type(vk_pipeline_color_blend_state_create_info), target :: color_blending_create_info
     type(vk_pipeline_layout_create_info), target :: pipeline_layout_create_info
@@ -114,7 +115,14 @@ contains
     rasterization_state_create_info%depth_bias_clamp = 0.0
     rasterization_state_create_info%depth_bias_slope_factor = 0.0
 
-    ! todo: maybe enable multi sampling in the options. :D
+    ! We will have multisampling disabled for now.
+    multisampling_create_info%s_type = VK_STRUCTURE_TYPE%PIPELINE%MULTISAMPLE_STATE_CREATE_INFO
+    multisampling_create_info%sample_shading_enable = VK_FALSE
+    multisampling_create_info%rasterization_samples = VK_SAMPLE_COUNT_1_BIT
+    multisampling_create_info%min_sample_shading = 1.0
+    multisampling_create_info%p_sample_mask = c_null_ptr
+    multisampling_create_info%alpha_to_coverage_enable = VK_FALSE
+    multisampling_create_info%alpha_to_one_enable = VK_FALSE
 
     ! Set up color blend attachment.
     color_blend_attachment%color_write_mask = ior(VK_COLOR_COMPONENT_R_BIT, ior(VK_COLOR_COMPONENT_G_BIT, ior(VK_COLOR_COMPONENT_B_BIT, VK_COLOR_COMPONENT_A_BIT)))
@@ -156,7 +164,7 @@ contains
     graphics_pipeline_create_info%p_viewport_state = c_loc(viewport_state_create_info)
     graphics_pipeline_create_info%p_rasterization_state = c_loc(rasterization_state_create_info)
     ! todo: If not drawing, go back and make this.
-    graphics_pipeline_create_info%p_multisample_state = c_null_ptr
+    graphics_pipeline_create_info%p_multisample_state = c_loc(multisampling_create_info)
     graphics_pipeline_create_info%p_depth_stencil_state = c_null_ptr
     graphics_pipeline_create_info%p_color_blend_state = c_loc(color_blending_create_info)
     graphics_pipeline_create_info%p_dynamic_state = c_loc(dynamic_state_create_info)
