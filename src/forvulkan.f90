@@ -1199,6 +1199,19 @@ module forvulkan
   end type vk_framebuffer_create_info
 
 
+  !? VkCommandPoolCreateInfo.
+  type, bind(c) :: vk_command_pool_create_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkCommandPoolCreateFlags
+    integer(c_int32_t) :: flags = 0
+    ! uint32_t
+    integer(c_int32_t) :: queue_family_index = 0
+  end type vk_command_pool_create_info
+
+
   !? CUSTOM TYPES. ===============================================================
 
 
