@@ -960,7 +960,7 @@ module forvulkan
 
 
   !? VkSubpassDescription.
-  type, bind(c) :: vk_subpass_description
+  type, bind(c) :: vk_subpass_description_t
     ! VkSubpassDescriptionFlags
     integer(c_int32_t) :: flags = 0
     ! VkPipelineBindPoint
@@ -981,7 +981,7 @@ module forvulkan
     integer(c_int32_t) :: preserve_attachment_count = 0
     ! const uint32_t *
     type(c_ptr) :: p_preserve_attachments = c_null_ptr
-  end type vk_subpass_description
+  end type vk_subpass_description_t
 
 
   !? CUSTOM TYPES. ===============================================================
