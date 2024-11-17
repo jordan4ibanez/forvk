@@ -1110,6 +1110,27 @@ module forvulkan
     ! float
     real(c_float) :: max_depth_bounds = 0.0
   end type vk_pipeline_depth_stencil_state_create_info
+
+
+  !? VkPipelineColorBlendStateCreateInfo.
+  type, bind(c) :: vk_pipeline_color_blend_state_create_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkPipelineColorBlendStateCreateFlags
+    integer(c_int32_t) :: flags = 0
+    ! VkBool32
+    integer(c_int32_t) :: logical_op_enable = 0
+    ! VkLogicOp
+    integer(c_int32_t) :: logic_op = 0
+    ! uint32_t
+    integer(c_int32_t) :: attachment_count = 0
+    ! const VkPipelineColorBlendAttachmentState *
+    type(c_ptr) :: p_attachments = c_null_ptr
+    ! float[4]
+    real(c_float), dimension(4) :: blend_constants = [0.0, 0.0, 0.0, 0.0]
+  end type vk_pipeline_color_blend_state_create_info
   !? CUSTOM TYPES. ===============================================================
 
 
