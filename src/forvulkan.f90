@@ -1661,6 +1661,22 @@ module forvulkan
     end subroutine vk_destroy_pipeline
 
 
+    function vk_create_framebuffer(logical_device, p_create_info, p_allocator, p_framebuffer) result(vk_result) bind(c, name = "vkCreateFramebuffer")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkDevice
+      integer(c_int64_t), intent(in), value :: logical_device
+      ! const VkFramebufferCreateInfo *
+      type(c_ptr), intent(in), value :: p_create_info
+      ! const VkAllocationCallbacks *
+      type(c_ptr), intent(in), value :: p_allocator
+      ! VkFramebuffer *
+      integer(c_int64_t), intent(inout) :: p_framebuffer
+      integer(c_int32_t) :: vk_result
+    end function vk_create_framebuffer
+
+
 !? FUNCTION BLUEPRINTS. ============================================================
 
 
