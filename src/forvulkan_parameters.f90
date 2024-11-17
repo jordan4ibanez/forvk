@@ -4008,27 +4008,31 @@ module forvulkan_parameters
 
   !? VkSubpassDescriptionFlagBits.
 
-  ! Provided by VK_NVX_multiview_per_view_attributes
-  integer(c_int32_t), parameter, public :: VK_SUBPASS_DESCRIPTION_PER_VIEW_ATTRIBUTES_BIT_NVX = int(z"00000001")
-  ! Provided by VK_NVX_multiview_per_view_attributes
-  integer(c_int32_t), parameter, public :: VK_SUBPASS_DESCRIPTION_PER_VIEW_POSITION_X_ONLY_BIT_NVX = int(z"00000002")
-  ! Provided by VK_QCOM_render_pass_shader_resolve
-  integer(c_int32_t), parameter, public :: VK_SUBPASS_DESCRIPTION_FRAGMENT_REGION_BIT_QCOM = int(z"00000004")
-  ! Provided by VK_QCOM_render_pass_shader_resolve
-  integer(c_int32_t), parameter, public :: VK_SUBPASS_DESCRIPTION_SHADER_RESOLVE_BIT_QCOM = int(z"00000008")
-  ! Provided by VK_EXT_rasterization_order_attachment_access
-  integer(c_int32_t), parameter, public :: VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_COLOR_ACCESS_BIT_EXT = int(z"00000010")
-  ! Provided by VK_EXT_rasterization_order_attachment_access
-  integer(c_int32_t), parameter, public :: VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT = int(z"00000020")
-  ! Provided by VK_EXT_rasterization_order_attachment_access
-  integer(c_int32_t), parameter, public :: VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT = int(z"00000040")
-  ! Provided by VK_EXT_legacy_dithering
-  integer(c_int32_t), parameter, public :: VK_SUBPASS_DESCRIPTION_ENABLE_LEGACY_DITHERING_BIT_EXT = int(z"00000080")
-  ! Provided by VK_ARM_rasterization_order_attachment_access
-  integer(c_int32_t), parameter, public :: VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_COLOR_ACCESS_BIT_ARM = VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_COLOR_ACCESS_BIT_EXT
-  ! Provided by VK_ARM_rasterization_order_attachment_access
-  integer(c_int32_t), parameter, public :: VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_ARM = VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT
-  ! Provided by VK_ARM_rasterization_order_attachment_access
-  integer(c_int32_t), parameter, public :: VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_ARM = VK_SUBPASS_DESCRIPTION_RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT
+  type :: t_vk_subpass_description_flag_bits
+    ! Provided by VK_NVX_multiview_per_view_attributes
+    integer(c_int32_t) :: PER_VIEW_ATTRIBUTES_BIT_NVX = int(z"00000001")
+    ! Provided by VK_NVX_multiview_per_view_attributes
+    integer(c_int32_t) :: PER_VIEW_POSITION_X_ONLY_BIT_NVX = int(z"00000002")
+    ! Provided by VK_QCOM_render_pass_shader_resolve
+    integer(c_int32_t) :: FRAGMENT_REGION_BIT_QCOM = int(z"00000004")
+    ! Provided by VK_QCOM_render_pass_shader_resolve
+    integer(c_int32_t) :: SHADER_RESOLVE_BIT_QCOM = int(z"00000008")
+    ! Provided by VK_EXT_rasterization_order_attachment_access
+    integer(c_int32_t) :: RASTERIZATION_ORDER_ATTACHMENT_COLOR_ACCESS_BIT_EXT = int(z"00000010")
+    ! Provided by VK_EXT_rasterization_order_attachment_access
+    integer(c_int32_t) :: RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT = int(z"00000020")
+    ! Provided by VK_EXT_rasterization_order_attachment_access
+    integer(c_int32_t) :: RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT = int(z"00000040")
+    ! Provided by VK_EXT_legacy_dithering
+    integer(c_int32_t) :: ENABLE_LEGACY_DITHERING_BIT_EXT = int(z"00000080")
+    ! Provided by VK_ARM_rasterization_order_attachment_access
+    integer(c_int32_t) :: RASTERIZATION_ORDER_ATTACHMENT_COLOR_ACCESS_BIT_ARM = int(z"00000010")
+    ! Provided by VK_ARM_rasterization_order_attachment_access
+    integer(c_int32_t) :: RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_ARM = int(z"00000020")
+    ! Provided by VK_ARM_rasterization_order_attachment_access
+    integer(c_int32_t) :: RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_ARM = int(z"00000040")
+  end type
+
+  type(t_vk_subpass_description_flag_bits), parameter, public :: VK_SUBPASS_DESCRIPTION = t_vk_subpass_description_flag_bits()
 
 end module forvulkan_parameters
