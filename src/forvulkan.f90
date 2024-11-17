@@ -1246,6 +1246,9 @@ module forvulkan
     ! VkQueryPipelineStatisticFlags
     integer(c_int32_t) :: pipeline_statistics = 0
   end type vk_command_buffer_inheritence_info
+  ! todo: marker for end of structs.
+
+
   !? CUSTOM TYPES. ===============================================================
 
 
@@ -1778,6 +1781,9 @@ module forvulkan
       integer(c_int64_t), intent(inout) :: p_command_buffers
       integer(c_int32_t) :: vk_result
     end function vk_allocate_command_buffers
+
+
+    ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
 
