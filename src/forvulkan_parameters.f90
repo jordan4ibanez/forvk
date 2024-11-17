@@ -4189,4 +4189,20 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_DEPENDENCY_DEVICE_GROUP_BIT_KHR = VK_DEPENDENCY_DEVICE_GROUP_BIT
 
 
+  !? VkPipelineDepthStencilStateCreateFlagBits.
+
+
+  type :: vk_pipeline_depth_stencil_state_t
+    ! Provided by VK_EXT_rasterization_order_attachment_access
+    integer(c_int32_t) :: RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_EXT = int(z"00000001")
+    ! Provided by VK_EXT_rasterization_order_attachment_access
+    integer(c_int32_t) :: RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_EXT = int(z"00000002")
+    ! Provided by VK_ARM_rasterization_order_attachment_access
+    integer(c_int32_t) :: RASTERIZATION_ORDER_ATTACHMENT_DEPTH_ACCESS_BIT_ARM = int(z"00000001")
+    ! Provided by VK_ARM_rasterization_order_attachment_access
+    integer(c_int32_t) :: RASTERIZATION_ORDER_ATTACHMENT_STENCIL_ACCESS_BIT_ARM = int(z"00000002")
+  end type
+
+  type(vk_pipeline_depth_stencil_state_t), parameter, public :: VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE = vk_pipeline_depth_stencil_state_t()
+
 end module forvulkan_parameters
