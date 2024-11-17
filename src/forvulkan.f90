@@ -1625,6 +1625,19 @@ module forvulkan
     end function vk_create_graphics_pipelines
 
 
+    subroutine vk_destroy_pipeline(logical_device, pipeline, p_allocator) bind(c, name = "vkDestroyPipeline")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkDevice
+      integer(c_int64_t), intent(in), value :: logical_device
+      ! VkPipeline
+      integer(c_int64_t), intent(in), value :: pipeline
+      ! const VkAllocationCallbacks *
+      type(c_ptr), intent(in), value :: p_allocator
+    end subroutine vk_destroy_pipeline
+
+
 !? FUNCTION BLUEPRINTS. ============================================================
 
 
