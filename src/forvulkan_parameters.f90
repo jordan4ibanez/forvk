@@ -4381,4 +4381,12 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_COMMAND_BUFFER_LEVEL_SECONDARY = 1
 
 
+  !? VkCommandBufferUsageFlagBits.
+
+
+  integer(c_int32_t), parameter, public :: VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT = int(z"00000001")
+  integer(c_int32_t), parameter, public :: VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT = int(z"00000002")
+  integer(c_int32_t), parameter, public :: VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT = int(z"00000004")
+
+
 end module forvulkan_parameters
