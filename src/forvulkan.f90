@@ -1176,6 +1176,29 @@ module forvulkan
   end type vk_graphics_pipeline_create_info
 
 
+  !? VkFramebufferCreateInfo.
+  type, bind(c) :: vk_framebuffer_create_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkFramebufferCreateFlags
+    integer(c_int32_t) :: flags = 0
+    ! VkRenderPass
+    integer(c_int64_t) :: render_pass = 0
+    ! uint32_t
+    integer(c_int32_t) :: attachment_count = 0
+    ! const VkImageView *
+    type(c_ptr) :: p_attachments = c_null_ptr
+    ! uint32_t
+    integer(c_int32_t) :: width = 0
+    ! uint32_t
+    integer(c_int32_t) :: height = 0
+    ! uint32_t
+    integer(c_int32_t) :: layers = 0
+  end type vk_framebuffer_create_info
+
+
   !? CUSTOM TYPES. ===============================================================
 
 
