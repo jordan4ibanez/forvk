@@ -930,57 +930,57 @@ module forvulkan
   !? VkAttachmentDescription.
   type, bind(c) :: vk_attachment_description
     ! VkAttachmentDescriptionFlags
-    integer(c_int32_t) :: flags
+    integer(c_int32_t) :: flags = 0
     ! VkFormat
-    integer(c_int32_t) :: format
+    integer(c_int32_t) :: format = 0
     ! VkSampleCountFlagBits
-    integer(c_int32_t) :: samples
+    integer(c_int32_t) :: samples = 0
     ! VkAttachmentLoadOp
-    integer(c_int32_t) :: load_op
+    integer(c_int32_t) :: load_op = 0
     ! VkAttachmentStoreOp
-    integer(c_int32_t) :: store_op
+    integer(c_int32_t) :: store_op = 0
     ! VkAttachmentLoadOp
-    integer(c_int32_t) :: stencil_load_op
+    integer(c_int32_t) :: stencil_load_op = 0
     ! VkAttachmentStoreOp
-    integer(c_int32_t) :: stencil_store_op
+    integer(c_int32_t) :: stencil_store_op = 0
     ! VkImageLayout
-    integer(c_int32_t) :: initial_layout
+    integer(c_int32_t) :: initial_layout = 0
     ! VkImageLayout
-    integer(c_int32_t) :: final_layout
+    integer(c_int32_t) :: final_layout = 0
   end type vk_attachment_description
 
 
   !? VkAttachmentReference.
   type, bind(c) :: vk_attachment_reference
     ! uint32_t
-    integer(c_int32_t) :: attachment
+    integer(c_int32_t) :: attachment = 0
     ! VkImageLayout
-    integer(c_int32_t) :: layout
+    integer(c_int32_t) :: layout = 0
   end type vk_attachment_reference
 
 
   !? VkSubpassDescription.
   type, bind(c) :: vk_subpass_description
     ! VkSubpassDescriptionFlags
-    integer(c_int32_t) :: flags
+    integer(c_int32_t) :: flags = 0
     ! VkPipelineBindPoint
-    integer(c_int32_t) :: pipeline_bind_point
+    integer(c_int32_t) :: pipeline_bind_point = 0
     ! uint32_t
-    integer(c_int32_t) :: input_attachment_count
+    integer(c_int32_t) :: input_attachment_count = 0
     ! const VkAttachmentReference *
-    type(c_ptr) :: p_input_attachments
+    type(c_ptr) :: p_input_attachments = c_null_ptr
     ! uint32_t
-    integer(c_int32_t) :: color_attachment_count
+    integer(c_int32_t) :: color_attachment_count = 0
     ! const VkAttachmentReference *
-    type(c_ptr) :: p_color_attachments
+    type(c_ptr) :: p_color_attachments = c_null_ptr
     ! const VkAttachmentReference *
-    type(c_ptr) :: p_resolve_attachments
+    type(c_ptr) :: p_resolve_attachments = c_null_ptr
     ! const VkAttachmentReference *
-    type(c_ptr) :: p_depth_stencil_attachment
+    type(c_ptr) :: p_depth_stencil_attachment = c_null_ptr
     ! uint32_t
-    integer(c_int32_t) :: preserve_attachment_count
+    integer(c_int32_t) :: preserve_attachment_count = 0
     ! const uint32_t *
-    type(c_ptr) :: p_preserve_attachments
+    type(c_ptr) :: p_preserve_attachments = c_null_ptr
   end type vk_subpass_description
 
 
