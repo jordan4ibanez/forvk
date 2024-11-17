@@ -1719,6 +1719,20 @@ module forvulkan
     end function vk_create_command_pool
 
 
+    subroutine vk_destroy_command_pool(logical_device, command_pool, p_allocator) bind(c, name = "vkDestroyCommandPool")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkDevice
+      integer(c_int64_t), intent(in), value :: logical_device
+      ! VkCommandPool
+      integer(c_int64_t), intent(in), value :: command_pool
+      ! const VkAllocationCallbacks *
+      type(c_ptr), intent(in), value :: p_allocator
+    end subroutine vk_destroy_command_pool
+
+
+
 !? FUNCTION BLUEPRINTS. ============================================================
 
 
