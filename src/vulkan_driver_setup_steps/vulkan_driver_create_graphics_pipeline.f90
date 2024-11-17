@@ -141,6 +141,11 @@ contains
     pipeline_layout_create_info%push_constant_range_count = 0
     pipeline_layout_create_info%p_push_constant_ranges = c_null_ptr
 
+    ! Now, create the pipeline layout.
+    if (vk_create_pipeline_layout(logical_device, c_loc(pipeline_layout_create_info), c_null_ptr, pipeline_layout) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to create pipeline layout."
+    end if
+
     ! Set up the graphics pipeline create info.
     graphics_pipeline_create_info%s_type = VK_STRUCTURE_TYPE%GRAPHICS_PIPELINE_CREATE_INFO
     graphics_pipeline_create_info%stage_count = 2
@@ -163,11 +168,8 @@ contains
     graphics_pipeline_create_info%base_pipeline_handle = VK_NULL_HANDLE
     graphics_pipeline_create_info%base_pipeline_index = -1
 
-
-
-
-    if (vk_create_pipeline_layout(logical_device, c_loc(pipeline_layout_create_info), c_null_ptr, pipeline_layout) /= VK_SUCCESS) then
-      error stop "[Vulkan] Error: Failed to create pipeline layout."
+    if (vk_create_graphics_pipelines(logical_device, 0_8, 1, c_loc(graphics_pipeline_create_info), c_null_ptr, graphics_pipeline) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to create graphics pipelines."
     end if
 
 
