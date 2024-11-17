@@ -39,6 +39,7 @@ contains
     type(vk_pipeline_viewport_state_create_info), target :: viewport_state_create_info
     type(vk_pipeline_rasterization_state_create_info), target :: rasterization_state_create_info
     type(vk_pipeline_color_blend_attachment_state), target :: color_blend_attachment
+    type(vk_pipeline_color_blend_state_create_info), target :: color_blending_create_info
     type(vk_pipeline_layout_create_info), target :: pipeline_layout_create_info
     type(vk_graphics_pipeline_create_info), target :: graphics_pipeline_create_info
 
@@ -125,6 +126,13 @@ contains
     color_blend_attachment%dst_alpha_blend_factor = VK_BLEND_FACTOR_ZERO
     color_blend_attachment%alpha_blend_op = VK_BLEND_OP_ADD
 
+    ! Set up color blending create info.
+    color_blending_create_info%s_type = VK_STRUCTURE_TYPE%PIPELINE%COLOR_BLEND_STATE_CREATE_INFO
+    color_blending_create_info%logical_op_enable = VK_FALSE
+    color_blending_create_info%logic_op = VK_LOGIC_OP_COPY
+    color_blending_create_info%attachment_count = 1
+    color_blending_create_info%p_attachments = c_loc(color_blend_attachment)
+    color_blending_create_info%blend_constants = [0.0, 0.0, 0.0, 0.0]
 
     ! Set up the pipeline layout create info.
     pipeline_layout_create_info%s_type = VK_STRUCTURE_TYPE%PIPELINE%LAYOUT_CREATE_INFO
