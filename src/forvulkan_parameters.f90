@@ -4266,4 +4266,80 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_LOGIC_OP_SET = 15
 
 
+  !? VkPipelineCreateFlagBits.
+
+
+  type :: vk_pipeline_create_t
+    integer(c_int32_t) :: DISABLE_OPTIMIZATION_BIT = int(z"00000001")
+    integer(c_int32_t) :: ALLOW_DERIVATIVES_BIT = int(z"00000002")
+    integer(c_int32_t) :: DERIVATIVE_BIT = int(z"00000004")
+    ! Provided by VK_VERSION_1_1
+    integer(c_int32_t) :: VIEW_INDEX_FROM_DEVICE_INDEX_BIT = int(z"00000008")
+    ! Provided by VK_VERSION_1_1
+    integer(c_int32_t) :: DISPATCH_BASE_BIT = int(z"00000010")
+    ! Provided by VK_VERSION_1_3
+    integer(c_int32_t) :: FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT = int(z"00000100")
+    ! Provided by VK_VERSION_1_3
+    integer(c_int32_t) :: EARLY_RETURN_ON_FAILURE_BIT = int(z"00000200")
+    ! Provided by VK_KHR_ray_tracing_pipeline
+    integer(c_int32_t) :: RAY_TRACING_NO_NULL_ANY_HIT_SHADERS_BIT_KHR = int(z"00004000")
+    ! Provided by VK_KHR_ray_tracing_pipeline
+    integer(c_int32_t) :: RAY_TRACING_NO_NULL_CLOSEST_HIT_SHADERS_BIT_KHR = int(z"00008000")
+    ! Provided by VK_KHR_ray_tracing_pipeline
+    integer(c_int32_t) :: RAY_TRACING_NO_NULL_MISS_SHADERS_BIT_KHR = int(z"00010000")
+    ! Provided by VK_KHR_ray_tracing_pipeline
+    integer(c_int32_t) :: RAY_TRACING_NO_NULL_INTERSECTION_SHADERS_BIT_KHR = int(z"00020000")
+    ! Provided by VK_KHR_ray_tracing_pipeline
+    integer(c_int32_t) :: RAY_TRACING_SKIP_TRIANGLES_BIT_KHR = int(z"00001000")
+    ! Provided by VK_KHR_ray_tracing_pipeline
+    integer(c_int32_t) :: RAY_TRACING_SKIP_AABBS_BIT_KHR = int(z"00002000")
+    ! Provided by VK_KHR_ray_tracing_pipeline
+    integer(c_int32_t) :: RAY_TRACING_SHADER_GROUP_HANDLE_CAPTURE_REPLAY_BIT_KHR = int(z"00080000")
+    ! Provided by VK_NV_ray_tracing
+    integer(c_int32_t) :: DEFER_COMPILE_BIT_NV = int(z"00000020")
+    ! Provided by VK_EXT_fragment_density_map with VK_VERSION_1_3 or VK_KHR_dynamic_rendering
+    integer(c_int32_t) :: RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT = int(z"00400000")
+    ! Provided by VK_KHR_fragment_shading_rate with VK_VERSION_1_3 or VK_KHR_dynamic_rendering
+    integer(c_int32_t) :: RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR = int(z"00200000")
+    ! Provided by VK_KHR_pipeline_executable_properties
+    integer(c_int32_t) :: CAPTURE_STATISTICS_BIT_KHR = int(z"00000040")
+    ! Provided by VK_KHR_pipeline_executable_properties
+    integer(c_int32_t) :: CAPTURE_INTERNAL_REPRESENTATIONS_BIT_KHR = int(z"00000080")
+    ! Provided by VK_NV_device_generated_commands
+    integer(c_int32_t) :: INDIRECT_BINDABLE_BIT_NV = int(z"00040000")
+    ! Provided by VK_KHR_pipeline_library
+    integer(c_int32_t) :: LIBRARY_BIT_KHR = int(z"00000800")
+    ! Provided by VK_EXT_descriptor_buffer
+    integer(c_int32_t) :: DESCRIPTOR_BUFFER_BIT_EXT = int(z"20000000")
+    ! Provided by VK_EXT_graphics_pipeline_library
+    integer(c_int32_t) :: RETAIN_LINK_TIME_OPTIMIZATION_INFO_BIT_EXT = int(z"00800000")
+    ! Provided by VK_EXT_graphics_pipeline_library
+    integer(c_int32_t) :: LINK_TIME_OPTIMIZATION_BIT_EXT = int(z"00000400")
+    ! Provided by VK_NV_ray_tracing_motion_blur
+    integer(c_int32_t) :: RAY_TRACING_ALLOW_MOTION_BIT_NV = int(z"00100000")
+    ! Provided by VK_EXT_attachment_feedback_loop_layout
+    integer(c_int32_t) :: COLOR_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT = int(z"02000000")
+    ! Provided by VK_EXT_attachment_feedback_loop_layout
+    integer(c_int32_t) :: DEPTH_STENCIL_ATTACHMENT_FEEDBACK_LOOP_BIT_EXT = int(z"04000000")
+    ! Provided by VK_EXT_opacity_micromap
+    integer(c_int32_t) :: RAY_TRACING_OPACITY_MICROMAP_BIT_EXT = int(z"01000000")
+    ! Provided by VK_NV_displacement_micromap
+    integer(c_int32_t) :: RAY_TRACING_DISPLACEMENT_MICROMAP_BIT_NV = int(z"10000000")
+    ! Provided by VK_EXT_pipeline_protected_access
+    integer(c_int32_t) :: NO_PROTECTED_ACCESS_BIT_EXT = int(z"08000000")
+    ! Provided by VK_EXT_pipeline_protected_access
+    integer(c_int32_t) :: PROTECTED_ACCESS_ONLY_BIT_EXT = int(z"40000000")
+    ! Provided by VK_VERSION_1_1
+    integer(c_int32_t) :: DISPATCH_BASE = int(z"00000010")
+    ! Provided by VK_KHR_device_group
+    integer(c_int32_t) :: VIEW_INDEX_FROM_DEVICE_INDEX_BIT_KHR = int(z"00000008")
+    ! Provided by VK_KHR_device_group
+    integer(c_int32_t) :: DISPATCH_BASE_KHR = int(z"00000010")
+    ! Provided by VK_EXT_pipeline_creation_cache_control
+    integer(c_int32_t) :: FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT_EXT = int(z"00000100")
+    ! Provided by VK_EXT_pipeline_creation_cache_control
+    integer(c_int32_t) :: EARLY_RETURN_ON_FAILURE_BIT_EXT = int(z"00000200")
+  end type vk_pipeline_create_t
+
+  type(vk_pipeline_create_t), parameter, public :: VK_PIPELINE_CREATE = vk_pipeline_create_t()
 end module forvulkan_parameters
