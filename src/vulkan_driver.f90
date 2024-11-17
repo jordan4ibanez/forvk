@@ -133,6 +133,7 @@ contains
     implicit none
 
     type(vk_attachment_description) :: color_attachment_description
+    type(vk_attachment_reference) :: color_attachment_reference
 
     color_attachment_description%format = swapchain_image_format
     color_attachment_description%samples = VK_SAMPLE_COUNT_1_BIT
@@ -142,6 +143,9 @@ contains
     color_attachment_description%stencil_store_op = VK_ATTACHMENT_STORE_OP_DONT_CARE
     color_attachment_description%initial_layout = VK_IMAGE_LAYOUT_UNDEFINED
     color_attachment_description%final_layout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR
+
+    color_attachment_reference%attachment = 0
+    color_attachment_reference%layout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL
 
 
 
