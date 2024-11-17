@@ -4037,4 +4037,19 @@ module forvulkan_parameters
   type(t_vk_subpass_description_flag_bits), parameter, public :: VK_SUBPASS_DESCRIPTION = t_vk_subpass_description_flag_bits()
 
 
+  !? VkPipelineBindPoint.
+
+
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_BIND_POINT_GRAPHICS = 0
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_BIND_POINT_COMPUTE = 1
+  ! Provided by VK_AMDX_shader_enqueue
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_BIND_POINT_EXECUTION_GRAPH_AMDX = 1000134000
+  ! Provided by VK_KHR_ray_tracing_pipeline
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR = 1000165000
+  ! Provided by VK_HUAWEI_subpass_shading
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_BIND_POINT_SUBPASS_SHADING_HUAWEI = 1000369003
+  ! Provided by VK_NV_ray_tracing
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_BIND_POINT_RAY_TRACING_NV = VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR
+
+
 end module forvulkan_parameters
