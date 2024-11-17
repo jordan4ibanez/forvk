@@ -1605,6 +1605,26 @@ module forvulkan
     end subroutine vk_destroy_render_pass
 
 
+    function vk_create_graphics_pipelines(logical_device, pipeline_cache, create_info_count, p_create_infos, p_allocator, p_pipelines) result(vk_result) bind(c, name = "vkCreateGraphicsPipelines")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkDevice
+      integer(c_int64_t), intent(in), value :: logical_device
+      ! VkPipelineCache
+      integer(c_int64_t), intent(in), value :: pipeline_cache
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: create_info_count
+      ! const VkGraphicsPipelineCreateInfo *
+      type(c_ptr), intent(in), value :: p_create_infos
+      ! const VkAllocationCallbacks *
+      type(c_ptr), intent(in), value :: p_allocator
+      ! VkPipeline *
+      integer(c_int64_t), intent(inout) :: p_pipelines
+      integer(c_int32_t) :: vk_result
+    end function vk_create_graphics_pipelines
+
+
 !? FUNCTION BLUEPRINTS. ============================================================
 
 
