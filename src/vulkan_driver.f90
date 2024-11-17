@@ -18,6 +18,7 @@ module vulkan_driver
   use :: vulkan_driver_create_image_views
   use :: vulkan_driver_create_render_pass
   use :: vulkan_driver_create_graphics_pipeline
+  use :: vulkan_driver_create_framebuffers
   implicit none
 
   ! https://github.com/KhronosGroup/Vulkan-Headers/blob/main/include/vulkan/vulkan_core.h
@@ -61,7 +62,7 @@ module vulkan_driver
   ! VkExtent2D
   type(vk_extent_2d) :: swapchain_extent
 
-  ! VkImageView Array
+  ! VkImageView
   type(vec) :: swapchain_image_views
 
   ! VkShaderModule
@@ -78,6 +79,9 @@ module vulkan_driver
 
   ! VkPipeline
   integer(c_int64_t) :: graphics_pipeline
+
+  ! VkFramebuffer
+  type(vec) :: swapchain_framebuffers
 
   ! Controls debugging output.
   logical(c_bool), parameter :: DEBUG_MODE = .true.
@@ -132,6 +136,8 @@ contains
     call create_render_pass(logical_device, render_pass, swapchain_image_format)
 
     call create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module, swapchain_extent, pipeline_layout, render_pass, graphics_pipeline)
+
+    call create_framebuffers(swapchain_framebuffers, swapchain_image_views, render_pass, swapchain_extent)
 
   end subroutine init_vulkan
 
