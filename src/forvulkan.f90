@@ -1279,6 +1279,18 @@ module forvulkan
     type(c_ptr) :: p_clear_values = c_null_ptr
   end type vk_render_pass_begin_info
 
+  !! This is a hackjob.
+
+  type, bind(c) :: vk_clear_color_value_f32
+    real(c_float), dimension(4) :: data = [0.0, 0.0, 0.0, 0.0]
+  end type
+
+  type, bind(c) :: vk_clear_color_value_i32
+    integer(c_int32_t), dimension(4) :: data = [0, 0, 0, 0]
+  end type
+
+  !! End hackjob.
+
 
   ! todo: marker for end of structs.
 
