@@ -1879,6 +1879,21 @@ module forvulkan
     end subroutine vk_cmd_bind_pipeline
 
 
+    subroutine vk_cmd_set_viewport(command_buffer, first_viewport, viewport_count, p_viewports) bind(c, name = "vkCmdSetViewport")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkCommandBuffer
+      integer(c_int64_t), intent(in), value :: command_buffer
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: first_viewport
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: viewport_count
+      ! const VkViewport *
+      type(c_ptr), intent(in), value :: p_viewports
+    end subroutine vk_cmd_set_viewport
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
