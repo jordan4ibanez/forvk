@@ -4365,4 +4365,13 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT_KHR = VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT
 
 
+  !? VkCommandPoolCreateFlagBits.
+
+
+  integer(c_int32_t), parameter, public :: VK_COMMAND_POOL_CREATE_TRANSIENT_BIT = int(z"00000001")
+  integer(c_int32_t), parameter, public :: VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT = int(z"00000002")
+  ! Provided by VK_VERSION_1_1
+  integer(c_int32_t), parameter, public :: VK_COMMAND_POOL_CREATE_PROTECTED_BIT = int(z"00000004")
+
+
 end module forvulkan_parameters
