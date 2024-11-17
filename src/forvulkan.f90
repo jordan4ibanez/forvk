@@ -1005,6 +1005,29 @@ module forvulkan
   end type vk_subpass_dependency
 
 
+  !? VkRenderPassCreateInfo.
+  type, bind(c) :: vk_render_pass_create_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkRenderPassCreateFlags
+    integer(c_int32_t) :: flags = 0
+    ! uint32_t
+    integer(c_int32_t) :: attachment_count = 0
+    ! const VkAttachmentDescription *
+    type(c_ptr) :: p_attachments = c_null_ptr
+    ! uint32_t
+    integer(c_int32_t) :: subpass_count = 0
+    ! const VkSubpassDescription *
+    type(c_ptr) :: p_subpasses = c_null_ptr
+    ! uint32_t
+    integer(c_int32_t) :: dependency_count = 0
+    ! const VkSubpassDependency *
+    type(c_ptr) :: p_dependencies = c_null_ptr
+  end type vk_render_pass_create_info
+
+
   !? CUSTOM TYPES. ===============================================================
 
 
