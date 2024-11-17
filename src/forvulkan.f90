@@ -1444,6 +1444,19 @@ module forvulkan
     end function vk_create_render_pass
 
 
+    subroutine vk_destroy_render_pass(logical_device, render_pass, p_allocator) bind(c, name = "vkDestroyRenderPass")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkDevice
+      integer(c_int64_t), intent(in), value :: logical_device
+      ! VkRenderPass
+      integer(c_int64_t), intent(in), value :: render_pass
+      ! const VkAllocationCallbacks *
+      type(c_ptr), intent(in), value :: p_allocator
+    end subroutine vk_destroy_render_pass
+
+
 !? FUNCTION BLUEPRINTS. ============================================================
 
 
