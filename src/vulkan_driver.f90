@@ -127,14 +127,16 @@ contains
 
     call create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module, swapchain_extent, pipeline_layout)
 
-    call create_render_pass(render_pass)
+    call create_render_pass(logical_device, render_pass)
 
   end subroutine init_vulkan
 
 
-  subroutine create_render_pass(render_pass)
+  subroutine create_render_pass(logical_device, render_pass)
     implicit none
 
+    ! VkDevice
+    integer(c_int64_t), intent(in), value :: logical_device
     ! VkRenderPass
     integer(c_int64_t), intent(inout) :: render_pass
     type(vk_attachment_description), target :: color_attachment_description
@@ -164,6 +166,11 @@ contains
     render_pass_create_info%subpass_count = 1
     render_pass_create_info%p_subpasses = c_loc(subpass)
 
+    if (vk_create_render_pass(logical_device, c_loc(render_pass_create_info), c_null_ptr, render_pass) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to create render pass."
+    end if
+
+
   end subroutine create_render_pass
 
 
@@ -192,6 +199,8 @@ contains
     integer(c_int64_t), pointer :: image_view
 
     call vk_destroy_pipeline_layout(logical_device, pipeline_layout, c_null_ptr)
+
+    call vk_destroy_render_pass(logical_device, render_pass, c_null_ptr)
 
     do i = 1,swapchain_image_views%size()
       call c_f_pointer(swapchain_image_views%get(i), image_view)
