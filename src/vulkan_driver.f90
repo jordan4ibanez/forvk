@@ -132,8 +132,9 @@ contains
   subroutine create_render_pass()
     implicit none
 
-    type(vk_attachment_description) :: color_attachment_description
-    type(vk_attachment_reference) :: color_attachment_reference
+    type(vk_attachment_description), target :: color_attachment_description
+    type(vk_attachment_reference), target :: color_attachment_reference
+    type(vk_subpass_description_t) :: subpass
 
     color_attachment_description%format = swapchain_image_format
     color_attachment_description%samples = VK_SAMPLE_COUNT_1_BIT
@@ -147,8 +148,11 @@ contains
     color_attachment_reference%attachment = 0
     color_attachment_reference%layout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL
 
+    subpass%pipeline_bind_point = VK_PIPELINE_BIND_POINT_GRAPHICS
+    subpass%color_attachment_count = 1
+    subpass%p_color_attachments = c_loc(color_attachment_reference)
 
-
+    
   end subroutine create_render_pass
 
 
