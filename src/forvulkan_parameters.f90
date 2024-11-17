@@ -4232,4 +4232,17 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_STENCIL_OP_DECREMENT_AND_WRAP = 7
 
 
+  !? VkPipelineColorBlendStateCreateFlagBits.
+
+  
+  type :: vk_pipeline_color_blend_state_create_t
+    ! Provided by VK_EXT_rasterization_order_attachment_access
+    integer(c_int32_t) :: RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT = int(z"00000001")
+    ! Provided by VK_ARM_rasterization_order_attachment_access
+    integer(c_int32_t) :: RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_ARM = int(z"00000001")
+  end type vk_pipeline_color_blend_state_create_t
+
+  type(vk_pipeline_color_blend_state_create_t), parameter, public :: VK_PIPELINE_COLOR_BLEND_STATE_CREATE = vk_pipeline_color_blend_state_create_t()
+
+
 end module forvulkan_parameters
