@@ -1798,6 +1798,18 @@ module forvulkan
     end function vk_allocate_command_buffers
 
 
+    function vk_begin_command_buffer(command_buffer, p_begin_info) result(vk_result) bind(c, name = "vkBeginCommandBuffer")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkCommandBuffer
+      integer(c_int64_t), intent(in), value :: command_buffer
+      ! const VkCommandBufferBeginInfo *
+      type(c_ptr), intent(in), value :: p_begin_info
+      integer(c_int32_t) :: vk_result
+    end function vk_begin_command_buffer
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
