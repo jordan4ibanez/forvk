@@ -960,6 +960,8 @@ module forvulkan
 
 
   !? VkSubpassDescription.
+  !* I had to slap a [_t] on there because I had to modify the way the parameter for this runs.
+  !* The names conflicted.
   type, bind(c) :: vk_subpass_description_t
     ! VkSubpassDescriptionFlags
     integer(c_int32_t) :: flags = 0
