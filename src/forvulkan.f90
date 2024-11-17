@@ -1925,6 +1925,16 @@ module forvulkan
       integer(c_int32_t), intent(in), value :: first_instance
     end subroutine vk_cmd_draw
 
+
+    subroutine vk_cmd_end_render_pass(command_buffer) bind(c, name = "vkCmdEndRenderPass")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkCommandBuffer
+      integer(c_int64_t), intent(in), value :: command_buffer
+    end subroutine vk_cmd_end_render_pass
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
