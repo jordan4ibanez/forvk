@@ -3895,4 +3895,16 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT = int(z"00000001")
 
 
+  !? VkSampleCountFlagBits.
+
+
+  integer(c_int32_t), parameter, public :: VK_SAMPLE_COUNT_1_BIT = int(z"00000001")
+  integer(c_int32_t), parameter, public :: VK_SAMPLE_COUNT_2_BIT = int(z"00000002")
+  integer(c_int32_t), parameter, public :: VK_SAMPLE_COUNT_4_BIT = int(z"00000004")
+  integer(c_int32_t), parameter, public :: VK_SAMPLE_COUNT_8_BIT = int(z"00000008")
+  integer(c_int32_t), parameter, public :: VK_SAMPLE_COUNT_16_BIT = int(z"00000010")
+  integer(c_int32_t), parameter, public :: VK_SAMPLE_COUNT_32_BIT = int(z"00000020")
+  integer(c_int32_t), parameter, public :: VK_SAMPLE_COUNT_64_BIT = int(z"00000040")
+
+
 end module forvulkan_parameters
