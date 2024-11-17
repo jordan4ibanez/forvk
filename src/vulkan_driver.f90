@@ -82,7 +82,7 @@ module vulkan_driver
   integer(c_int64_t) :: graphics_pipeline = VK_NULL_HANDLE
 
   ! VkCommandPool
-  integer(c_int64_t) :: command_pool
+  integer(c_int64_t) :: command_pool = VK_NULL_HANDLE
 
   ! VkFramebuffer
   type(vec) :: swapchain_framebuffers
