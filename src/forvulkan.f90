@@ -1035,9 +1035,9 @@ module forvulkan
     ! const void *
     type(c_ptr) :: p_next = c_null_ptr
     ! VkPipelineTessellationStateCreateFlags
-    integer(c_int32_t) :: flags
+    integer(c_int32_t) :: flags = 0
     ! uint32_t
-    integer(c_int32_t) :: patch_control_points
+    integer(c_int32_t) :: patch_control_points = 0
   end type vk_pipeline_tesselation_state_create_info
   !? CUSTOM TYPES. ===============================================================
 
