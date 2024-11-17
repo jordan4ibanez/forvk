@@ -3934,4 +3934,76 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_ATTACHMENT_STORE_OP_NONE_EXT = VK_ATTACHMENT_STORE_OP_NONE
 
 
+  !? VkImageLayout.
+
+
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_UNDEFINED = 0
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_GENERAL = 1
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL = 2
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL = 3
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL = 4
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL = 5
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL = 6
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL = 7
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_PREINITIALIZED = 8
+  ! Provided by VK_VERSION_1_1
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL = 1000117000
+  ! Provided by VK_VERSION_1_1
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL = 1000117001
+  ! Provided by VK_VERSION_1_2
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL = 1000241000
+  ! Provided by VK_VERSION_1_2
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL = 1000241001
+  ! Provided by VK_VERSION_1_2
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL = 1000241002
+  ! Provided by VK_VERSION_1_2
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL = 1000241003
+  ! Provided by VK_VERSION_1_3
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL = 1000314000
+  ! Provided by VK_VERSION_1_3
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL = 1000314001
+  ! Provided by VK_KHR_swapchain
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_PRESENT_SRC_KHR = 1000001002
+  ! Provided by VK_KHR_video_decode_queue
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_VIDEO_DECODE_DST_KHR = 1000024000
+  ! Provided by VK_KHR_video_decode_queue
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_VIDEO_DECODE_SRC_KHR = 1000024001
+  ! Provided by VK_KHR_video_decode_queue
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR = 1000024002
+  ! Provided by VK_KHR_shared_presentable_image
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR = 1000111000
+  ! Provided by VK_EXT_fragment_density_map
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT = 1000218000
+  ! Provided by VK_KHR_fragment_shading_rate
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR = 1000164003
+  ! Provided by VK_KHR_dynamic_rendering_local_read
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ_KHR = 1000232000
+  ! Provided by VK_KHR_video_encode_queue
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_VIDEO_ENCODE_DST_KHR = 1000299000
+  ! Provided by VK_KHR_video_encode_queue
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_VIDEO_ENCODE_SRC_KHR = 1000299001
+  ! Provided by VK_KHR_video_encode_queue
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_VIDEO_ENCODE_DPB_KHR = 1000299002
+  ! Provided by VK_EXT_attachment_feedback_loop_layout
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT = 1000339000
+  ! Provided by VK_KHR_maintenance2
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL_KHR = VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL
+  ! Provided by VK_KHR_maintenance2
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL_KHR = VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL
+  ! Provided by VK_NV_shading_rate_image
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_SHADING_RATE_OPTIMAL_NV = VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR
+  ! Provided by VK_KHR_separate_depth_stencil_layouts
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL_KHR = VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL
+  ! Provided by VK_KHR_separate_depth_stencil_layouts
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL_KHR = VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL
+  ! Provided by VK_KHR_separate_depth_stencil_layouts
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL_KHR = VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL
+  ! Provided by VK_KHR_separate_depth_stencil_layouts
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL_KHR = VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL
+  ! Provided by VK_KHR_synchronization2
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL_KHR = VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL
+  ! Provided by VK_KHR_synchronization2
+  integer(c_int32_t), parameter, public :: VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL_KHR = VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL
+
+
 end module forvulkan_parameters
