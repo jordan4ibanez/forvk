@@ -4342,4 +4342,17 @@ module forvulkan_parameters
   end type vk_pipeline_create_t
 
   type(vk_pipeline_create_t), parameter, public :: VK_PIPELINE_CREATE = vk_pipeline_create_t()
+
+  ! These names were too long and didn't follow the pattern so I jammed them into here.
+  type :: vk_pipeline_rasterization_state_t
+    ! Provided by VK_EXT_fragment_density_map with VK_VERSION_1_3 or VK_KHR_dynamic_rendering
+    ! VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT is a deprecated alias
+    integer(c_int32_t) :: CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT = int(z"00400000")
+    ! Provided by VK_KHR_fragment_shading_rate with VK_VERSION_1_3 or VK_KHR_dynamic_rendering
+    ! VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR is a deprecated alias
+    integer(c_int32_t) :: CREATE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR = int(z"00200000")
+  end type vk_pipeline_rasterization_state_t
+
+  type(vk_pipeline_rasterization_state_t), parameter, public :: VK_PIPELINE_RASTERIZATION_STATE = vk_pipeline_rasterization_state_t()
+
 end module forvulkan_parameters
