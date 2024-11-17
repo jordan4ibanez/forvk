@@ -149,7 +149,7 @@ contains
 
     call create_command_pool(physical_device, window_surface, logical_device, command_pool)
 
-    call create_command_buffer(command_pool)
+    call create_command_buffer(logical_device, command_pool, command_buffer)
 
   end subroutine init_vulkan
 
