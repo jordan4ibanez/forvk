@@ -15,7 +15,7 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_API_VERSION_1_2 = 4202496
   integer(c_int32_t), parameter, public :: VK_API_VERSION_1_3 = 4206592
 
-  integer(c_int32_t), parameter, public :: VK_NULL_HANDLE = 0
+  integer(c_int64_t), parameter, public :: VK_NULL_HANDLE = 0
   integer(c_int32_t), parameter, public :: VK_ATTACHMENT_UNUSED = not(0)
   integer(c_int32_t), parameter, public :: VK_FALSE = 0
   real(c_float), parameter, public :: VK_LOD_CLAMP_NONE = 1000.0

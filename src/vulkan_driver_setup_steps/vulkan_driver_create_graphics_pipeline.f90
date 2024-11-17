@@ -176,7 +176,7 @@ contains
     graphics_pipeline_create_info%base_pipeline_handle = VK_NULL_HANDLE
     graphics_pipeline_create_info%base_pipeline_index = -1
 
-    if (vk_create_graphics_pipelines(logical_device, 0_8, 1, c_loc(graphics_pipeline_create_info), c_null_ptr, graphics_pipeline) /= VK_SUCCESS) then
+    if (vk_create_graphics_pipelines(logical_device, VK_NULL_HANDLE, 1, c_loc(graphics_pipeline_create_info), c_null_ptr, graphics_pipeline) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to create graphics pipelines."
     end if
 
