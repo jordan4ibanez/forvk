@@ -137,7 +137,7 @@ contains
 
     call create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module, swapchain_extent, pipeline_layout, render_pass, graphics_pipeline)
 
-    call create_framebuffers(swapchain_framebuffers, swapchain_image_views, render_pass, swapchain_extent)
+    call create_framebuffers(logical_device, swapchain_framebuffers, swapchain_image_views, render_pass, swapchain_extent)
 
   end subroutine init_vulkan
 
