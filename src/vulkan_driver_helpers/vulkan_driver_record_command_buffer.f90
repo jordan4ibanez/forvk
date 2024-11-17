@@ -67,9 +67,16 @@ contains
     scissor%offset%x = 0
     scissor%offset%y = 0
     scissor%extent = swapchain_extent
-    
 
+    call vk_cmd_set_scissor(command_buffer, 0, 1, c_loc(scissor))
 
+    call vk_cmd_draw(command_buffer, 3, 1, 0, 0)
+
+    call vk_cmd_end_render_pass(command_buffer)
+
+    if (vk_end_command_buffer(command_buffer) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to record command buffer."
+    end if
 
   end subroutine record_command_buffer
 
