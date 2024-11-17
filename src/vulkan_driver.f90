@@ -30,28 +30,28 @@ module vulkan_driver
 
 
   ! VkInstance
-  integer(c_int64_t), target :: vulkan_instance = VK_NULL_HANDLE
+  integer(c_int64_t) :: vulkan_instance = VK_NULL_HANDLE
 
   ! VkDebugUtilsMessengerEXT
-  integer(c_int64_t), target :: debug_messenger = VK_NULL_HANDLE
+  integer(c_int64_t) :: debug_messenger = VK_NULL_HANDLE
 
   ! VkSurfaceKHR
-  integer(c_int64_t), target :: window_surface = VK_NULL_HANDLE
+  integer(c_int64_t) :: window_surface = VK_NULL_HANDLE
 
   ! VkPhysicalDevice
-  integer(c_int64_t), target :: physical_device = VK_NULL_HANDLE
+  integer(c_int64_t) :: physical_device = VK_NULL_HANDLE
 
   ! VkDevice
-  integer(c_int64_t), target :: logical_device = VK_NULL_HANDLE
+  integer(c_int64_t) :: logical_device = VK_NULL_HANDLE
 
   ! VkQueue
-  integer(c_int64_t), target :: graphics_queue = VK_NULL_HANDLE
+  integer(c_int64_t) :: graphics_queue = VK_NULL_HANDLE
 
   ! VkQueue
-  integer(c_int64_t), target :: present_queue = VK_NULL_HANDLE
+  integer(c_int64_t) :: present_queue = VK_NULL_HANDLE
 
   ! VkSwapchainKHR
-  integer(c_int64_t), target :: swapchain = VK_NULL_HANDLE
+  integer(c_int64_t) :: swapchain = VK_NULL_HANDLE
 
   ! VkImage Array
   type(vec) :: swapchain_images
