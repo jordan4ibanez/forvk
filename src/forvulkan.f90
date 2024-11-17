@@ -1039,6 +1039,30 @@ module forvulkan
     ! uint32_t
     integer(c_int32_t) :: patch_control_points = 0
   end type vk_pipeline_tesselation_state_create_info
+
+
+  !? VkPipelineMultisampleStateCreateInfo.
+  type, bind(c) :: vk_pipeline_multisample_state_create_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkPipelineMultisampleStateCreateFlags
+    integer(c_int32_t) :: flags = 0
+    ! VkSampleCountFlagBits
+    integer(c_int32_t) :: rasterization_samples = 0
+    ! VkBool32
+    integer(c_int32_t) :: simple_shading_enable = 0
+    ! float
+    real(c_float) :: min_sample_shading = 0.0
+    ! const VkSampleMask*
+    type(c_ptr) :: p_sample_mask = c_null_ptr
+    ! VkBool32
+    integer(c_int32_t) :: alpha_to_coverage_enable = 0
+    ! VkBool32
+    integer(c_int32_t) :: alpha_to_one_enable = 0
+  end type vk_pipeline_multisample_state_create_info
+
   !? CUSTOM TYPES. ===============================================================
 
 
