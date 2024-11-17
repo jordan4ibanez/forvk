@@ -1246,6 +1246,21 @@ module forvulkan
     ! VkQueryPipelineStatisticFlags
     integer(c_int32_t) :: pipeline_statistics = 0
   end type vk_command_buffer_inheritence_info
+
+
+  !? VkCommandBufferBeginInfo.
+  type, bind(c) :: vk_command_buffer_begin_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkCommandBufferUsageFlags
+    integer(c_int32_t) :: flags = 0
+    ! const VkCommandBufferInheritanceInfo *
+    type(c_ptr) :: p_inheritence_info = c_null_ptr
+  end type vk_command_buffer_begin_info
+
+
   ! todo: marker for end of structs.
 
 
