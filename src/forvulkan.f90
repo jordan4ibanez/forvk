@@ -1291,9 +1291,6 @@ module forvulkan
     integer(c_int32_t), dimension(4) :: data = [0, 0, 0, 0]
   end type
 
-  !! End hackjob.
-
-
   !? VkClearDepthStencilValue
   type, bind(c) :: vk_clear_depth_stencil_value
     ! float
@@ -1301,6 +1298,10 @@ module forvulkan
     ! uint32_t
     integer(c_int32_t) :: stencil = 0
   end type vk_clear_depth_stencil_value
+
+  !* IMPLEMENTATION NOTE: You will have to use one or the other when using: [VkClearValue]
+
+  !! End hackjob.
 
 
   ! todo: marker for end of structs.
