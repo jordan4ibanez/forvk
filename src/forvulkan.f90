@@ -989,19 +989,19 @@ module forvulkan
   !? VkSubpassDependency.
   type, bind(c) :: vk_subpass_dependency
     ! uint32_t
-    integer(c_int32_t) :: src_subpass
+    integer(c_int32_t) :: src_subpass = 0
     ! uint32_t
-    integer(c_int32_t) :: dst_subpass
+    integer(c_int32_t) :: dst_subpass = 0
     ! VkPipelineStageFlags
-    integer(c_int32_t) :: src_stage_mask
+    integer(c_int32_t) :: src_stage_mask = 0
     ! VkPipelineStageFlags
-    integer(c_int32_t) :: dst_stage_mask
+    integer(c_int32_t) :: dst_stage_mask = 0
     ! VkAccessFlags
-    integer(c_int32_t) :: src_access_mask
+    integer(c_int32_t) :: src_access_mask = 0
     ! VkAccessFlags
-    integer(c_int32_t) :: dst_access_mask
+    integer(c_int32_t) :: dst_access_mask = 0
     ! VkDependencyFlags
-    integer(c_int32_t) :: dependency_flags
+    integer(c_int32_t) :: dependency_flags = 0
   end type vk_subpass_dependency
 
 
