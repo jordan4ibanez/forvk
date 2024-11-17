@@ -4115,4 +4115,62 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_EXT = VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV
 
 
+  !? VkAccessFlagBits.
+
+
+  integer(c_int32_t), parameter, public :: VK_ACCESS_INDIRECT_COMMAND_READ_BIT = int(z"00000001")
+  integer(c_int32_t), parameter, public :: VK_ACCESS_INDEX_READ_BIT = int(z"00000002")
+  integer(c_int32_t), parameter, public :: VK_ACCESS_VERTEX_ATTRIBUTE_READ_BIT = int(z"00000004")
+  integer(c_int32_t), parameter, public :: VK_ACCESS_UNIFORM_READ_BIT = int(z"00000008")
+  integer(c_int32_t), parameter, public :: VK_ACCESS_INPUT_ATTACHMENT_READ_BIT = int(z"00000010")
+  integer(c_int32_t), parameter, public :: VK_ACCESS_SHADER_READ_BIT = int(z"00000020")
+  integer(c_int32_t), parameter, public :: VK_ACCESS_SHADER_WRITE_BIT = int(z"00000040")
+  integer(c_int32_t), parameter, public :: VK_ACCESS_COLOR_ATTACHMENT_READ_BIT = int(z"00000080")
+  integer(c_int32_t), parameter, public :: VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT = int(z"00000100")
+  integer(c_int32_t), parameter, public :: VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_READ_BIT = int(z"00000200")
+  integer(c_int32_t), parameter, public :: VK_ACCESS_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT = int(z"00000400")
+  integer(c_int32_t), parameter, public :: VK_ACCESS_TRANSFER_READ_BIT = int(z"00000800")
+  integer(c_int32_t), parameter, public :: VK_ACCESS_TRANSFER_WRITE_BIT = int(z"00001000")
+  integer(c_int32_t), parameter, public :: VK_ACCESS_HOST_READ_BIT = int(z"00002000")
+  integer(c_int32_t), parameter, public :: VK_ACCESS_HOST_WRITE_BIT = int(z"00004000")
+  integer(c_int32_t), parameter, public :: VK_ACCESS_MEMORY_READ_BIT = int(z"00008000")
+  integer(c_int32_t), parameter, public :: VK_ACCESS_MEMORY_WRITE_BIT = int(z"00010000")
+  ! Provided by VK_VERSION_1_3
+  integer(c_int32_t), parameter, public :: VK_ACCESS_NONE = 0
+  ! Provided by VK_EXT_transform_feedback
+  integer(c_int32_t), parameter, public :: VK_ACCESS_TRANSFORM_FEEDBACK_WRITE_BIT_EXT = int(z"02000000")
+  ! Provided by VK_EXT_transform_feedback
+  integer(c_int32_t), parameter, public :: VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT = int(z"04000000")
+  ! Provided by VK_EXT_transform_feedback
+  integer(c_int32_t), parameter, public :: VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT = int(z"08000000")
+  ! Provided by VK_EXT_conditional_rendering
+  integer(c_int32_t), parameter, public :: VK_ACCESS_CONDITIONAL_RENDERING_READ_BIT_EXT = int(z"00100000")
+  ! Provided by VK_EXT_blend_operation_advanced
+  integer(c_int32_t), parameter, public :: VK_ACCESS_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT = int(z"00080000")
+  ! Provided by VK_KHR_acceleration_structure
+  integer(c_int32_t), parameter, public :: VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR = int(z"00200000")
+  ! Provided by VK_KHR_acceleration_structure
+  integer(c_int32_t), parameter, public :: VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_KHR = int(z"00400000")
+  ! Provided by VK_EXT_fragment_density_map
+  integer(c_int32_t), parameter, public :: VK_ACCESS_FRAGMENT_DENSITY_MAP_READ_BIT_EXT = int(z"01000000")
+  ! Provided by VK_KHR_fragment_shading_rate
+  integer(c_int32_t), parameter, public :: VK_ACCESS_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR = int(z"00800000")
+  ! Provided by VK_NV_device_generated_commands
+  integer(c_int32_t), parameter, public :: VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_NV = int(z"00020000")
+  ! Provided by VK_NV_device_generated_commands
+  integer(c_int32_t), parameter, public :: VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_NV = int(z"00040000")
+  ! Provided by VK_NV_shading_rate_image
+  integer(c_int32_t), parameter, public :: VK_ACCESS_SHADING_RATE_IMAGE_READ_BIT_NV = VK_ACCESS_FRAGMENT_SHADING_RATE_ATTACHMENT_READ_BIT_KHR
+  ! Provided by VK_NV_ray_tracing
+  integer(c_int32_t), parameter, public :: VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_NV = VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_KHR
+  ! Provided by VK_NV_ray_tracing
+  integer(c_int32_t), parameter, public :: VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_NV = VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_KHR
+  ! Provided by VK_KHR_synchronization2
+  integer(c_int32_t), parameter, public :: VK_ACCESS_NONE_KHR = VK_ACCESS_NONE
+  ! Provided by VK_EXT_device_generated_commands
+  integer(c_int32_t), parameter, public :: VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_EXT = VK_ACCESS_COMMAND_PREPROCESS_READ_BIT_NV
+  ! Provided by VK_EXT_device_generated_commands
+  integer(c_int32_t), parameter, public :: VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_EXT = VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_NV
+
+
 end module forvulkan_parameters
