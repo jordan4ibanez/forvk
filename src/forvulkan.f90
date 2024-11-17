@@ -1063,6 +1063,24 @@ module forvulkan
     integer(c_int32_t) :: alpha_to_one_enable = 0
   end type vk_pipeline_multisample_state_create_info
 
+
+  !? VkStencilOpState.
+  type, bind(c) :: vk_stencil_op_state
+    ! VkStencilOp
+    integer(c_int32_t) :: fail_op = 0
+    ! VkStencilOp
+    integer(c_int32_t) :: pass_op = 0
+    ! VkStencilOp
+    integer(c_int32_t) :: depth_fail_op = 0
+    ! VkCompareOp
+    integer(c_int32_t) :: compare_op = 0
+    ! uint32_t
+    integer(c_int32_t) :: compare_mask = 0
+    ! uint32_t
+    integer(c_int32_t) :: write_mask = 0
+    ! uint32_t
+    integer(c_int32_t) :: reference = 0
+  end type vk_stencil_op_state
   !? CUSTOM TYPES. ===============================================================
 
 
