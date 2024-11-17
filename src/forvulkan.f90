@@ -1866,6 +1866,19 @@ module forvulkan
     end subroutine vk_cmd_begin_render_pass
 
 
+    subroutine vk_cmd_bind_pipeline(command_buffer, pipeline_bind_point, pipeline) bind(c, name = "vkCmdBindPipeline")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkCommandBuffer
+      integer(c_int64_t), intent(in), value :: command_buffer
+      ! VkPipelineBindPoint
+      integer(c_int32_t), intent(in), value :: pipeline_bind_point
+      ! VkPipeline
+      integer(c_int64_t), intent(in), value :: pipeline
+    end subroutine vk_cmd_bind_pipeline
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
