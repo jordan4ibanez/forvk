@@ -4059,4 +4059,60 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM = int(z"00000002")
 
 
+  !? VkPipelineStageFlagBits.
+
+
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT = int(z"00000001")
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT = int(z"00000002")
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_VERTEX_INPUT_BIT = int(z"00000004")
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_VERTEX_SHADER_BIT = int(z"00000008")
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_TESSELLATION_CONTROL_SHADER_BIT = int(z"00000010")
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_TESSELLATION_EVALUATION_SHADER_BIT = int(z"00000020")
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT = int(z"00000040")
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT = int(z"00000080")
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_EARLY_FRAGMENT_TESTS_BIT = int(z"00000100")
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_LATE_FRAGMENT_TESTS_BIT = int(z"00000200")
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT = int(z"00000400")
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT = int(z"00000800")
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_TRANSFER_BIT = int(z"00001000")
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT = int(z"00002000")
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_HOST_BIT = int(z"00004000")
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT = int(z"00008000")
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_ALL_COMMANDS_BIT = int(z"00010000")
+  ! Provided by VK_VERSION_1_3
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_NONE = 0
+  ! Provided by VK_EXT_transform_feedback
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_TRANSFORM_FEEDBACK_BIT_EXT = int(z"01000000")
+  ! Provided by VK_EXT_conditional_rendering
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_CONDITIONAL_RENDERING_BIT_EXT = int(z"00040000")
+  ! Provided by VK_KHR_acceleration_structure
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR = int(z"02000000")
+  ! Provided by VK_KHR_ray_tracing_pipeline
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR = int(z"00200000")
+  ! Provided by VK_EXT_fragment_density_map
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_FRAGMENT_DENSITY_PROCESS_BIT_EXT = int(z"00800000")
+  ! Provided by VK_KHR_fragment_shading_rate
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR = int(z"00400000")
+  ! Provided by VK_NV_device_generated_commands
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV = int(z"00020000")
+  ! Provided by VK_EXT_mesh_shader
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT = int(z"00080000")
+  ! Provided by VK_EXT_mesh_shader
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT = int(z"00100000")
+  ! Provided by VK_NV_shading_rate_image
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_SHADING_RATE_IMAGE_BIT_NV = VK_PIPELINE_STAGE_FRAGMENT_SHADING_RATE_ATTACHMENT_BIT_KHR
+  ! Provided by VK_NV_ray_tracing
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_NV = VK_PIPELINE_STAGE_RAY_TRACING_SHADER_BIT_KHR
+  ! Provided by VK_NV_ray_tracing
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_NV = VK_PIPELINE_STAGE_ACCELERATION_STRUCTURE_BUILD_BIT_KHR
+  ! Provided by VK_NV_mesh_shader
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_TASK_SHADER_BIT_NV = VK_PIPELINE_STAGE_TASK_SHADER_BIT_EXT
+  ! Provided by VK_NV_mesh_shader
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_MESH_SHADER_BIT_NV = VK_PIPELINE_STAGE_MESH_SHADER_BIT_EXT
+  ! Provided by VK_KHR_synchronization2
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_NONE_KHR = VK_PIPELINE_STAGE_NONE
+  ! Provided by VK_EXT_device_generated_commands
+  integer(c_int32_t), parameter, public :: VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_EXT = VK_PIPELINE_STAGE_COMMAND_PREPROCESS_BIT_NV
+
+
 end module forvulkan_parameters
