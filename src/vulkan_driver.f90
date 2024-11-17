@@ -66,19 +66,19 @@ module vulkan_driver
   type(vec) :: swapchain_image_views
 
   ! VkShaderModule
-  integer(c_int64_t) :: vertex_shader_module
+  integer(c_int64_t) :: vertex_shader_module = VK_NULL_HANDLE
 
   ! VkShaderModule
-  integer(c_int64_t) :: fragment_shader_module
+  integer(c_int64_t) :: fragment_shader_module = VK_NULL_HANDLE
 
   ! VkPipelineLayout
-  integer(c_int64_t) :: pipeline_layout
+  integer(c_int64_t) :: pipeline_layout = VK_NULL_HANDLE
 
   ! VkRenderPass
-  integer(c_int64_t) :: render_pass
+  integer(c_int64_t) :: render_pass = VK_NULL_HANDLE
 
   ! VkPipeline
-  integer(c_int64_t) :: graphics_pipeline
+  integer(c_int64_t) :: graphics_pipeline = VK_NULL_HANDLE
 
   ! VkFramebuffer
   type(vec) :: swapchain_framebuffers
