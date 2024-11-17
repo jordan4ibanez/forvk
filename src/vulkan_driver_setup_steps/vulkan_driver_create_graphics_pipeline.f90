@@ -12,6 +12,8 @@ contains
   subroutine create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module, swapchain_extent, pipeline_layout, render_pass, graphics_pipeline)
     implicit none
 
+    ! TODO: Break this monstrosity up.
+
     ! VkDevice
     integer(c_int64_t), intent(in), value :: logical_device
     ! VkShaderModule
