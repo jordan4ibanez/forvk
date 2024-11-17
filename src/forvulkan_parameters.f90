@@ -4234,7 +4234,7 @@ module forvulkan_parameters
 
   !? VkPipelineColorBlendStateCreateFlagBits.
 
-  
+
   type :: vk_pipeline_color_blend_state_create_t
     ! Provided by VK_EXT_rasterization_order_attachment_access
     integer(c_int32_t) :: RASTERIZATION_ORDER_ATTACHMENT_ACCESS_BIT_EXT = int(z"00000001")
@@ -4243,6 +4243,27 @@ module forvulkan_parameters
   end type vk_pipeline_color_blend_state_create_t
 
   type(vk_pipeline_color_blend_state_create_t), parameter, public :: VK_PIPELINE_COLOR_BLEND_STATE_CREATE = vk_pipeline_color_blend_state_create_t()
+
+
+  !? VkLogicOp.
+
+
+  integer(c_int32_t), parameter, public :: VK_LOGIC_OP_CLEAR = 0
+  integer(c_int32_t), parameter, public :: VK_LOGIC_OP_AND = 1
+  integer(c_int32_t), parameter, public :: VK_LOGIC_OP_AND_REVERSE = 2
+  integer(c_int32_t), parameter, public :: VK_LOGIC_OP_COPY = 3
+  integer(c_int32_t), parameter, public :: VK_LOGIC_OP_AND_INVERTED = 4
+  integer(c_int32_t), parameter, public :: VK_LOGIC_OP_NO_OP = 5
+  integer(c_int32_t), parameter, public :: VK_LOGIC_OP_XOR = 6
+  integer(c_int32_t), parameter, public :: VK_LOGIC_OP_OR = 7
+  integer(c_int32_t), parameter, public :: VK_LOGIC_OP_NOR = 8
+  integer(c_int32_t), parameter, public :: VK_LOGIC_OP_EQUIVALENT = 9
+  integer(c_int32_t), parameter, public :: VK_LOGIC_OP_INVERT = 10
+  integer(c_int32_t), parameter, public :: VK_LOGIC_OP_OR_REVERSE = 11
+  integer(c_int32_t), parameter, public :: VK_LOGIC_OP_COPY_INVERTED = 12
+  integer(c_int32_t), parameter, public :: VK_LOGIC_OP_OR_INVERTED = 13
+  integer(c_int32_t), parameter, public :: VK_LOGIC_OP_NAND = 14
+  integer(c_int32_t), parameter, public :: VK_LOGIC_OP_SET = 15
 
 
 end module forvulkan_parameters
