@@ -76,6 +76,9 @@ module vulkan_driver
   ! VkRenderPass
   integer(c_int64_t) :: render_pass
 
+  ! VkPipeline
+  integer(c_int64_t) :: graphics_pipeline
+
   ! Controls debugging output.
   logical(c_bool), parameter :: DEBUG_MODE = .true.
 
@@ -128,7 +131,7 @@ contains
 
     call create_render_pass(logical_device, render_pass, swapchain_image_format)
 
-    call create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module, swapchain_extent, pipeline_layout)
+    call create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module, swapchain_extent, pipeline_layout, render_pass, graphics_pipeline)
 
   end subroutine init_vulkan
 
