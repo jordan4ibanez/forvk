@@ -163,6 +163,8 @@ contains
     integer(c_int64_t) :: i
     integer(c_int64_t), pointer :: image_view
 
+    call vk_destroy_pipeline(logical_device, graphics_pipeline, c_null_ptr)
+
     call vk_destroy_pipeline_layout(logical_device, pipeline_layout, c_null_ptr)
 
     call vk_destroy_render_pass(logical_device, render_pass, c_null_ptr)
