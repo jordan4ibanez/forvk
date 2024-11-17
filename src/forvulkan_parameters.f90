@@ -4374,4 +4374,11 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_COMMAND_POOL_CREATE_PROTECTED_BIT = int(z"00000004")
 
 
+  !? VkCommandBufferLevel.
+
+
+  integer(c_int32_t), parameter, public :: VK_COMMAND_BUFFER_LEVEL_PRIMARY = 0
+  integer(c_int32_t), parameter, public :: VK_COMMAND_BUFFER_LEVEL_SECONDARY = 1
+
+
 end module forvulkan_parameters
