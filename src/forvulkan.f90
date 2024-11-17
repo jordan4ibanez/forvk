@@ -1227,6 +1227,25 @@ module forvulkan
   end type vk_command_buffer_allocate_info
 
 
+  !? VkCommandBufferInheritanceInfo.
+  type, bind(c) :: vk_command_buffer_inheritence_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkRenderPass
+    integer(c_int64_t) :: render_pass = 0
+    ! uint32_t
+    integer(c_int32_t) :: subpass = 0
+    ! VkFramebuffer
+    integer(c_int64_t) :: framebuffer = 0
+    ! VkBool32
+    integer(c_int32_t) :: occlusion_query_enable = 0
+    ! VkQueryControlFlags
+    integer(c_int32_t) :: query_flags = 0
+    ! VkQueryPipelineStatisticFlags
+    integer(c_int32_t) :: pipeline_statistics = 0
+  end type vk_command_buffer_inheritence_info
   !? CUSTOM TYPES. ===============================================================
 
 
