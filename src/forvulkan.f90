@@ -1853,6 +1853,19 @@ module forvulkan
     end function vk_begin_command_buffer
 
 
+    subroutine vk_cmd_begin_render_pass(command_buffer, p_render_pass_begin, contents) bind(c, name = "vkCmdBeginRenderPass")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkCommandBuffer
+      integer(c_int64_t), intent(in), value :: command_buffer
+      ! const VkRenderPassBeginInfo *
+      type(c_ptr), intent(in), value :: p_render_pass_begin
+      ! VkSubpassContents
+      integer(c_int32_t), intent(in), value :: contents
+    end subroutine vk_cmd_begin_render_pass
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
