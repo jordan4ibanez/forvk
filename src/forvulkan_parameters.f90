@@ -4173,4 +4173,20 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_EXT = VK_ACCESS_COMMAND_PREPROCESS_WRITE_BIT_NV
 
 
+  !? VkDependencyFlagBits.
+
+
+  integer(c_int32_t), parameter, public :: VK_DEPENDENCY_BY_REGION_BIT = int(z"00000001")
+  ! Provided by VK_VERSION_1_1
+  integer(c_int32_t), parameter, public :: VK_DEPENDENCY_DEVICE_GROUP_BIT = int(z"00000004")
+  ! Provided by VK_VERSION_1_1
+  integer(c_int32_t), parameter, public :: VK_DEPENDENCY_VIEW_LOCAL_BIT = int(z"00000002")
+  ! Provided by VK_EXT_attachment_feedback_loop_layout
+  integer(c_int32_t), parameter, public :: VK_DEPENDENCY_FEEDBACK_LOOP_BIT_EXT = int(z"00000008")
+  ! Provided by VK_KHR_multiview
+  integer(c_int32_t), parameter, public :: VK_DEPENDENCY_VIEW_LOCAL_BIT_KHR = VK_DEPENDENCY_VIEW_LOCAL_BIT
+  ! Provided by VK_KHR_device_group
+  integer(c_int32_t), parameter, public :: VK_DEPENDENCY_DEVICE_GROUP_BIT_KHR = VK_DEPENDENCY_DEVICE_GROUP_BIT
+
+
 end module forvulkan_parameters
