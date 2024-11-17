@@ -4389,4 +4389,10 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT = int(z"00000004")
 
 
+  !? VkQueryControlFlagBits.
+
+
+  integer(c_int32_t), parameter, public :: VK_QUERY_CONTROL_PRECISE_BIT = int(z"00000001")
+
+
 end module forvulkan_parameters
