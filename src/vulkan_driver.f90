@@ -19,6 +19,7 @@ module vulkan_driver
   use :: vulkan_driver_create_render_pass
   use :: vulkan_driver_create_graphics_pipeline
   use :: vulkan_driver_create_framebuffers
+  use :: vulkan_driver_create_command_pool
   implicit none
 
   ! https://github.com/KhronosGroup/Vulkan-Headers/blob/main/include/vulkan/vulkan_core.h
@@ -141,6 +142,8 @@ contains
     call create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module, swapchain_extent, pipeline_layout, render_pass, graphics_pipeline)
 
     call create_framebuffers(logical_device, swapchain_framebuffers, swapchain_image_views, render_pass, swapchain_extent)
+
+    call create_command_pool()
 
   end subroutine init_vulkan
 
