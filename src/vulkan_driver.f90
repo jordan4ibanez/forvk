@@ -20,6 +20,7 @@ module vulkan_driver
   use :: vulkan_driver_create_graphics_pipeline
   use :: vulkan_driver_create_framebuffers
   use :: vulkan_driver_create_command_pool
+  use :: vulkan_driver_create_command_buffer
   implicit none
 
   ! https://github.com/KhronosGroup/Vulkan-Headers/blob/main/include/vulkan/vulkan_core.h
@@ -147,6 +148,8 @@ contains
     call create_framebuffers(logical_device, swapchain_framebuffers, swapchain_image_views, render_pass, swapchain_extent)
 
     call create_command_pool(physical_device, window_surface, logical_device, command_pool)
+
+    call create_command_buffer()
 
   end subroutine init_vulkan
 
