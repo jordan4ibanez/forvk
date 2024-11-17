@@ -1284,7 +1284,7 @@ module forvulkan
   !? VkClearColorValue.
 
   type, bind(c) :: vk_clear_color_value_f32
-    real(c_float), dimension(4) :: data = [0.0, 0.0, 0.0, 0.0]
+    real(c_float), dimension(4) :: data = [0.0, 0.0, 0.0, 1.0]
   end type
 
   type, bind(c) :: vk_clear_color_value_i32
