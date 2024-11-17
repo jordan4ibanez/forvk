@@ -950,6 +950,15 @@ module forvulkan
   end type vk_attachment_description
 
 
+  !? VkAttachmentReference.
+  type, bind(c) :: vk_attachment_reference
+    ! uint32_t
+    integer(c_int32_t) :: attachment
+    ! VkImageLayout
+    integer(c_int32_t) :: layout
+  end type vk_attachment_reference
+
+
   !? CUSTOM TYPES. ===============================================================
 
 
