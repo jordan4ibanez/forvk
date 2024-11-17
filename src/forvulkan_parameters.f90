@@ -4008,6 +4008,7 @@ module forvulkan_parameters
 
   !? VkSubpassDescriptionFlagBits.
 
+
   type :: t_vk_subpass_description_flag_bits
     ! Provided by VK_NVX_multiview_per_view_attributes
     integer(c_int32_t) :: PER_VIEW_ATTRIBUTES_BIT_NVX = int(z"00000001")
@@ -4034,5 +4035,6 @@ module forvulkan_parameters
   end type
 
   type(t_vk_subpass_description_flag_bits), parameter, public :: VK_SUBPASS_DESCRIPTION = t_vk_subpass_description_flag_bits()
+
 
 end module forvulkan_parameters
