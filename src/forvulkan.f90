@@ -959,6 +959,31 @@ module forvulkan
   end type vk_attachment_reference
 
 
+  !? VkSubpassDescription.
+  type, bind(c) :: vk_subpass_description
+    ! VkSubpassDescriptionFlags
+    integer(c_int32_t) :: flags
+    ! VkPipelineBindPoint
+    integer(c_int32_t) :: pipeline_bind_point
+    ! uint32_t
+    integer(c_int32_t) :: input_attachment_count
+    ! const VkAttachmentReference *
+    type(c_ptr) :: p_input_attachments
+    ! uint32_t
+    integer(c_int32_t) :: color_attachment_count
+    ! const VkAttachmentReference *
+    type(c_ptr) :: p_color_attachments
+    ! const VkAttachmentReference *
+    type(c_ptr) :: p_resolve_attachments
+    ! const VkAttachmentReference *
+    type(c_ptr) :: p_depth_stencil_attachment
+    ! uint32_t
+    integer(c_int32_t) :: preserve_attachment_count
+    ! const uint32_t *
+    type(c_ptr) :: p_preserve_attachments
+  end type vk_subpass_description
+
+
   !? CUSTOM TYPES. ===============================================================
 
 
