@@ -169,6 +169,8 @@ contains
     integer(c_int64_t) :: i
     integer(c_int64_t), pointer :: image_view, framebuffer
 
+    call vk_destroy_command_pool(logical_device, command_pool, c_null_ptr)
+
     do i = 1,swapchain_framebuffers%size()
       call c_f_pointer(swapchain_framebuffers%get(i), framebuffer)
       call vk_destroy_framebuffer(logical_device, framebuffer, c_null_ptr)
