@@ -72,6 +72,9 @@ module vulkan_driver
   ! VkPipelineLayout
   integer(c_int64_t) :: pipeline_layout
 
+  ! VkRenderPass
+  integer(c_int64_t) :: render_pass
+
   ! Controls debugging output.
   logical(c_bool), parameter :: DEBUG_MODE = .true.
 
@@ -152,7 +155,7 @@ contains
     subpass%color_attachment_count = 1
     subpass%p_color_attachments = c_loc(color_attachment_reference)
 
-    
+
   end subroutine create_render_pass
 
 
