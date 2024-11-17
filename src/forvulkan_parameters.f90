@@ -3907,4 +3907,16 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_SAMPLE_COUNT_64_BIT = int(z"00000040")
 
 
+  !? VkAttachmentLoadOp.
+
+
+  integer(c_int32_t), parameter, public :: VK_ATTACHMENT_LOAD_OP_LOAD = 0
+  integer(c_int32_t), parameter, public :: VK_ATTACHMENT_LOAD_OP_CLEAR = 1
+  integer(c_int32_t), parameter, public :: VK_ATTACHMENT_LOAD_OP_DONT_CARE = 2
+  ! Provided by VK_KHR_load_store_op_none
+  integer(c_int32_t), parameter, public :: VK_ATTACHMENT_LOAD_OP_NONE_KHR = 1000400000
+  ! Provided by VK_EXT_load_store_op_none
+  integer(c_int32_t), parameter, public :: VK_ATTACHMENT_LOAD_OP_NONE_EXT = VK_ATTACHMENT_LOAD_OP_NONE_KHR
+
+
 end module forvulkan_parameters
