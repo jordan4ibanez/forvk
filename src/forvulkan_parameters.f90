@@ -3888,5 +3888,11 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_COLOR_COMPONENT_B_BIT = int(z"00000004")
   integer(c_int32_t), parameter, public :: VK_COLOR_COMPONENT_A_BIT = int(z"00000008")
 
-  
+
+  !? VkAttachmentDescriptionFlagBits.
+
+
+  integer(c_int32_t), parameter, public :: VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT = int(z"00000001")
+
+
 end module forvulkan_parameters
