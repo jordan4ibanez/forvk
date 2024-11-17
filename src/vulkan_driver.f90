@@ -153,6 +153,8 @@ contains
 
     call create_command_buffer(logical_device, command_pool, command_buffer)
 
+    call record_command_buffer(command_buffer, 1, render_pass, swapchain_framebuffers, swapchain_extent)
+
   end subroutine init_vulkan
 
 
