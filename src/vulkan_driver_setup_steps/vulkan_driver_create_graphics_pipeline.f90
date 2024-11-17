@@ -153,7 +153,7 @@ contains
     ! todo: If not drawing, go back and make this.
     graphics_pipeline_create_info%p_multisample_state = c_null_ptr
     graphics_pipeline_create_info%p_depth_stencil_state = c_null_ptr
-    graphics_pipeline_create_info%p_color_blend_state = c_loc(color_blend_attachment)
+    graphics_pipeline_create_info%p_color_blend_state = c_loc(color_blending_create_info)
     graphics_pipeline_create_info%p_dynamic_state = c_loc(dynamic_state_create_info)
 
     graphics_pipeline_create_info%layout = pipeline_layout
