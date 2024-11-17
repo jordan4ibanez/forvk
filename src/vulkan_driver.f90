@@ -102,7 +102,6 @@ contains
   subroutine init_vulkan()
     implicit none
 
-
     call create_glfw()
 
     call ensure_extensions_present(DEBUG_MODE)
@@ -125,7 +124,28 @@ contains
 
     call create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module, swapchain_extent, pipeline_layout)
 
+    call create_render_pass()
+
   end subroutine init_vulkan
+
+
+  subroutine create_render_pass()
+    implicit none
+
+    type(vk_attachment_description) :: color_attachment_description
+
+    color_attachment_description%format = swapchain_image_format
+    color_attachment_description%samples = VK_SAMPLE_COUNT_1_BIT
+    color_attachment_description%load_op = VK_ATTACHMENT_LOAD_OP_CLEAR
+    color_attachment_description%store_op = VK_ATTACHMENT_STORE_OP_STORE
+    color_attachment_description%stencil_load_op = VK_ATTACHMENT_LOAD_OP_DONT_CARE
+    color_attachment_description%stencil_store_op = VK_ATTACHMENT_STORE_OP_DONT_CARE
+    color_attachment_description%initial_layout = VK_IMAGE_LAYOUT_UNDEFINED
+    color_attachment_description%final_layout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR
+
+
+
+  end subroutine create_render_pass
 
 
 
