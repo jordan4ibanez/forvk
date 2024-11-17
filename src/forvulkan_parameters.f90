@@ -4205,4 +4205,18 @@ module forvulkan_parameters
 
   type(vk_pipeline_depth_stencil_state_t), parameter, public :: VK_PIPELINE_DEPTH_STENCIL_STATE_CREATE = vk_pipeline_depth_stencil_state_t()
 
+
+  !? VkCompareOp.
+
+
+  integer(c_int32_t), parameter, public :: VK_COMPARE_OP_NEVER = 0
+  integer(c_int32_t), parameter, public :: VK_COMPARE_OP_LESS = 1
+  integer(c_int32_t), parameter, public :: VK_COMPARE_OP_EQUAL = 2
+  integer(c_int32_t), parameter, public :: VK_COMPARE_OP_LESS_OR_EQUAL = 3
+  integer(c_int32_t), parameter, public :: VK_COMPARE_OP_GREATER = 4
+  integer(c_int32_t), parameter, public :: VK_COMPARE_OP_NOT_EQUAL = 5
+  integer(c_int32_t), parameter, public :: VK_COMPARE_OP_GREATER_OR_EQUAL = 6
+  integer(c_int32_t), parameter, public :: VK_COMPARE_OP_ALWAYS = 7
+
+
 end module forvulkan_parameters
