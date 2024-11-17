@@ -9,7 +9,7 @@ module vulkan_driver_create_graphics_pipeline
 contains
 
 
-  subroutine create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module, swapchain_extent, pipeline_layout)
+  subroutine create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module, swapchain_extent, pipeline_layout, render_pass, graphics_pipeline)
     implicit none
 
     ! VkDevice
@@ -22,20 +22,25 @@ contains
     type(vk_extent_2d), intent(in) :: swapchain_extent
     ! VkPipelineLayout
     integer(c_int64_t), intent(inout) :: pipeline_layout
+    ! VkRenderPass
+    integer(c_int64_t), intent(in), value :: render_pass
+    ! VkPipeline
+    integer(c_int64_t), intent(inout) :: graphics_pipeline
     type(vk_pipeline_shader_stage_create_info) :: vertex_shader_stage_info, fragment_shader_stage_info
     character(len = 5, kind = c_char), target :: vert_p_name, frag_p_name
-    type(vk_pipeline_shader_stage_create_info), dimension(2) :: shader_stages
+    type(vk_pipeline_shader_stage_create_info), dimension(2), target :: shader_stages
     ! VkDynamicState
     integer(c_int32_t), dimension(2), target :: dynamic_states
-    type(vk_pipeline_dynamic_state_create_info) :: dynamic_state_create_info
-    type(vk_pipeline_vertex_input_state_create_info) :: vertex_input_create_info
-    type(vk_pipeline_input_assembly_state_create_info) :: input_assembly_create_info
+    type(vk_pipeline_dynamic_state_create_info), target :: dynamic_state_create_info
+    type(vk_pipeline_vertex_input_state_create_info), target :: vertex_input_create_info
+    type(vk_pipeline_input_assembly_state_create_info), target :: input_assembly_create_info
     type(vk_viewport) :: viewport
     type(vk_rect_2d) :: scissor
-    type(vk_pipeline_viewport_state_create_info) :: viewport_state_create_info
-    type(vk_pipeline_rasterization_state_create_info) :: rasterization_state_create_info
-    type(vk_pipeline_color_blend_attachment_state) :: color_blend_attachment
+    type(vk_pipeline_viewport_state_create_info), target :: viewport_state_create_info
+    type(vk_pipeline_rasterization_state_create_info), target :: rasterization_state_create_info
+    type(vk_pipeline_color_blend_attachment_state), target :: color_blend_attachment
     type(vk_pipeline_layout_create_info), target :: pipeline_layout_create_info
+    type(vk_graphics_pipeline_create_info), target :: graphics_pipeline_create_info
 
     ! First compile GLSL into shader modules.
     vertex_shader_module = compile_glsl_shaders(logical_device, "vertex.vert")
@@ -127,6 +132,30 @@ contains
     pipeline_layout_create_info%p_set_layouts = c_null_ptr
     pipeline_layout_create_info%push_constant_range_count = 0
     pipeline_layout_create_info%p_push_constant_ranges = c_null_ptr
+
+    ! Set up the graphics pipeline create info.
+    graphics_pipeline_create_info%s_type = VK_STRUCTURE_TYPE%GRAPHICS_PIPELINE_CREATE_INFO
+    graphics_pipeline_create_info%stage_count = 2
+    graphics_pipeline_create_info%p_stages = c_loc(shader_stages)
+
+    graphics_pipeline_create_info%p_vertex_input_state = c_loc(vertex_input_create_info)
+    graphics_pipeline_create_info%p_input_assembly_state = c_loc(input_assembly_create_info)
+    graphics_pipeline_create_info%p_viewport_state = c_loc(viewport_state_create_info)
+    graphics_pipeline_create_info%p_rasterization_state = c_loc(rasterization_state_create_info)
+    ! todo: If not drawing, go back and make this.
+    graphics_pipeline_create_info%p_multisample_state = c_null_ptr
+    graphics_pipeline_create_info%p_depth_stencil_state = c_null_ptr
+    graphics_pipeline_create_info%p_color_blend_state = c_loc(color_blend_attachment)
+    graphics_pipeline_create_info%p_dynamic_state = c_loc(dynamic_state_create_info)
+
+    graphics_pipeline_create_info%layout = pipeline_layout
+    graphics_pipeline_create_info%render_pass = render_pass
+    graphics_pipeline_create_info%subpass = 0
+
+    graphics_pipeline_create_info%base_pipeline_handle = VK_NULL_HANDLE
+    graphics_pipeline_create_info%base_pipeline_index = -1
+
+
 
 
     if (vk_create_pipeline_layout(logical_device, c_loc(pipeline_layout_create_info), c_null_ptr, pipeline_layout) /= VK_SUCCESS) then
