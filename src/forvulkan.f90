@@ -1212,6 +1212,21 @@ module forvulkan
   end type vk_command_pool_create_info
 
 
+  !? VkCommandBufferAllocateInfo.
+  type, bind(c) :: vk_command_buffer_allocate_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkCommandPool
+    integer(c_int64_t) :: command_pool = 0
+    ! VkCommandBufferLevel
+    integer(c_int32_t) :: level = 0
+    ! uint32_t
+    integer(c_int32_t) :: command_buffer_count = 0
+  end type vk_command_buffer_allocate_info
+
+
   !? CUSTOM TYPES. ===============================================================
 
 
