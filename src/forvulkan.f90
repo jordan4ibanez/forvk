@@ -986,6 +986,25 @@ module forvulkan
   end type vk_subpass_description_t
 
 
+  !? VkSubpassDependency.
+  type, bind(c) :: vk_subpass_dependency
+    ! uint32_t
+    integer(c_int32_t) :: src_subpass
+    ! uint32_t
+    integer(c_int32_t) :: dst_subpass
+    ! VkPipelineStageFlags
+    integer(c_int32_t) :: src_stage_mask
+    ! VkPipelineStageFlags
+    integer(c_int32_t) :: dst_stage_mask
+    ! VkAccessFlags
+    integer(c_int32_t) :: src_access_mask
+    ! VkAccessFlags
+    integer(c_int32_t) :: dst_access_mask
+    ! VkDependencyFlags
+    integer(c_int32_t) :: dependency_flags
+  end type vk_subpass_dependency
+
+
   !? CUSTOM TYPES. ===============================================================
 
 
