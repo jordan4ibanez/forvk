@@ -4355,4 +4355,14 @@ module forvulkan_parameters
 
   type(vk_pipeline_rasterization_state_t), parameter, public :: VK_PIPELINE_RASTERIZATION_STATE = vk_pipeline_rasterization_state_t()
 
+
+  !? VkFramebufferCreateFlagBits.
+
+
+  ! Provided by VK_VERSION_1_2
+  integer(c_int32_t), parameter, public :: VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT = int(z"00000001")
+  ! Provided by VK_KHR_imageless_framebuffer
+  integer(c_int32_t), parameter, public :: VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT_KHR = VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT
+
+
 end module forvulkan_parameters
