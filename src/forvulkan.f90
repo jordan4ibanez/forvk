@@ -1756,7 +1756,7 @@ module forvulkan
       ! const VkCommandBufferAllocateInfo *
       type(c_ptr), intent(in), value :: p_allocate_info
       ! VkCommandBuffer *
-      type(c_ptr), intent(in), value :: p_command_buffers
+      integer(c_int64_t), intent(inout) :: p_command_buffers
       integer(c_int32_t) :: vk_result
     end function vk_allocate_command_buffers
 
