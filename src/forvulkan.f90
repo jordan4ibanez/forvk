@@ -1028,6 +1028,17 @@ module forvulkan
   end type vk_render_pass_create_info
 
 
+  !? VkPipelineTessellationStateCreateInfo.
+  type, bind(c) :: vk_pipeline_tesselation_state_create_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkPipelineTessellationStateCreateFlags
+    integer(c_int32_t) :: flags
+    ! uint32_t
+    integer(c_int32_t) :: patch_control_points
+  end type vk_pipeline_tesselation_state_create_info
   !? CUSTOM TYPES. ===============================================================
 
 
