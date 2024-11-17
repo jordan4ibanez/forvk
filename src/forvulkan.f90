@@ -1894,6 +1894,21 @@ module forvulkan
     end subroutine vk_cmd_set_viewport
 
 
+    subroutine vk_cmd_set_scissor(command_buffer, first_scissor, scissor_count, p_scissors) bind(c, name = "vkCmdSetScissor")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkCommandBuffer
+      integer(c_int64_t), intent(in), value :: command_buffer
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: first_scissor
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: scissor_count
+      ! const VkRect2D *
+      type(c_ptr), intent(in), value :: p_scissors
+    end subroutine vk_cmd_set_scissor
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
