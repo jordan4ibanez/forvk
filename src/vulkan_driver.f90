@@ -21,6 +21,8 @@ module vulkan_driver
   use :: vulkan_driver_create_framebuffers
   use :: vulkan_driver_create_command_pool
   use :: vulkan_driver_create_command_buffer
+  !? Then after this, it's just helpers.
+  use :: vulkan_driver_record_command_buffer
   implicit none
 
   ! https://github.com/KhronosGroup/Vulkan-Headers/blob/main/include/vulkan/vulkan_core.h
