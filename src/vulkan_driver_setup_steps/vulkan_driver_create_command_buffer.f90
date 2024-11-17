@@ -11,7 +11,8 @@ contains
   subroutine create_command_buffer(command_pool)
     implicit none
 
-    
+    ! VkCommandPool
+    integer(c_int64_t), intent(in), value :: command_pool
     type(vk_command_buffer_allocate_info), target :: command_buffer_allocate_info
 
     command_buffer_allocate_info%s_type = VK_STRUCTURE_TYPE%COMMAND_BUFFER_ALLOCATE_INFO
