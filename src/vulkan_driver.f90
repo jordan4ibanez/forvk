@@ -81,14 +81,14 @@ module vulkan_driver
   ! VkPipeline
   integer(c_int64_t) :: graphics_pipeline = VK_NULL_HANDLE
 
+  ! VkFramebuffer
+  type(vec) :: swapchain_framebuffers
+
   ! VkCommandPool
   integer(c_int64_t) :: command_pool = VK_NULL_HANDLE
 
   ! VkCommandBuffer
   integer(c_int64_t) :: command_buffer = VK_NULL_HANDLE
-
-  ! VkFramebuffer
-  type(vec) :: swapchain_framebuffers
 
   ! Controls debugging output.
   logical(c_bool), parameter :: DEBUG_MODE = .true.
