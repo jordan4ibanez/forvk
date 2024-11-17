@@ -27,7 +27,6 @@ contains
     if (vk_allocate_command_buffers(logical_device, c_loc(command_buffer_allocate_info), command_buffer) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to create command buffers."
     end if
-
   end subroutine create_command_buffer
 
 
