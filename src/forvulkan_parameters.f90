@@ -4052,4 +4052,11 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_PIPELINE_BIND_POINT_RAY_TRACING_NV = VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR
 
 
+  !? VkRenderPassCreateFlagBits.
+
+
+  ! Provided by VK_QCOM_render_pass_transform
+  integer(c_int32_t), parameter, public :: VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM = int(z"00000002")
+
+
 end module forvulkan_parameters
