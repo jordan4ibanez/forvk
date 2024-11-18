@@ -166,9 +166,17 @@ contains
 
     ! do while(.not. glfw_window_should_close())
     !   call glfw_poll_events()
+
+    !   call draw_frame()
     ! end do
 
   end subroutine main_loop
+
+
+  subroutine draw_frame()
+    implicit none
+
+  end subroutine draw_frame
 
 
 !* CLEAN UP. ====================================================================
