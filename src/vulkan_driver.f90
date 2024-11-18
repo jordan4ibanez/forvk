@@ -93,6 +93,15 @@ module vulkan_driver
   ! VkCommandBuffer
   integer(c_int64_t) :: command_buffer = VK_NULL_HANDLE
 
+  ! VkSemaphore
+  integer(c_int64_t) :: image_available_semaphore = VK_NULL_HANDLE
+
+  ! VkSemaphore
+  integer(c_int64_t) :: render_finished_semaphore = VK_NULL_HANDLE
+
+  ! VkFence
+  integer(c_int64_t) :: in_flight_fence = VK_NULL_HANDLE
+
   ! Controls debugging output.
   logical(c_bool), parameter :: DEBUG_MODE = .true.
 
