@@ -185,12 +185,6 @@ contains
   end subroutine main_loop
 
 
-  subroutine draw_frame()
-    implicit none
-
-  end subroutine draw_frame
-
-
 !* CLEAN UP. ====================================================================
 
   subroutine clean_up()
