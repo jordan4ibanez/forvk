@@ -1304,6 +1304,15 @@ module forvulkan
   !! End hackjob.
 
 
+  !? VkSemaphoreCreateInfo.
+  type, bind(c) :: vk_semaphore_create_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkSemaphoreCreateFlags
+    integer(c_int32_t) :: flags = 0
+  end type vk_semaphore_create_info
 
 
   ! todo: marker for end of structs.
