@@ -2025,6 +2025,24 @@ module forvulkan
     end subroutine vk_destroy_fence
 
 
+    function vk_wait_for_fences(logical_device, fence_count, p_fences, wait_all, timeout) result(vk_result) bind(c, name = "vkWaitForFences")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkDevice
+      integer(c_int64_t), intent(in), value :: logical_device
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: fence_count
+      ! const VkFence *
+      type(c_ptr), intent(in), value :: p_fences
+      ! VkBool32
+      integer(c_int32_t), intent(in), value :: wait_all
+      ! uint64_t
+      integer(c_int64_t), intent(in), value :: timeout
+      integer(c_int32_t) :: vk_result
+    end function vk_wait_for_fences
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
