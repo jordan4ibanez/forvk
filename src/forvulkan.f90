@@ -2112,6 +2112,22 @@ module forvulkan
     end function vk_reset_command_buffer
 
 
+    function vk_queue_submit(queue, submit_count, p_submits, fence) result(vk_result) bind(c, name = "vkQueueSubmit")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkQueue
+      integer(c_int64_t), intent(in), value :: queue
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: submit_count
+      ! const VkSubmitInfo *
+      type(c_ptr), intent(in), value :: p_submits
+      ! VkFence
+      integer(c_int64_t), intent(in), value :: fence
+      integer(c_int32_t) :: vk_result
+    end function vk_queue_submit
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
