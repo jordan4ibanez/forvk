@@ -2149,6 +2149,18 @@ module forvulkan
     end function vk_queue_submit
 
 
+    function vk_queue_present_khr(queue, p_present_info) result(vk_result) bind(c, name = "vkQueuePresentKHR")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkQueue
+      integer(c_int64_t), intent(in), value :: queue
+      ! const VkPresentInfoKHR *
+      type(c_ptr), intent(in), value :: p_present_info
+      integer(c_int32_t) :: vk_result
+    end function vk_queue_present_khr
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
