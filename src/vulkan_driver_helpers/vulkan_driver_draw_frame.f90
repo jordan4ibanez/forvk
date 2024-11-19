@@ -38,13 +38,21 @@ contains
       error stop "[Vulkan] Error: Failed to wait for fences."
     end if
 
-    if (vk_acquire_next_image_khr(logical_device, swapchain, -1_8, image_available_semaphore, VK_NULL_HANDLE, c_loc(image_index)) /= VK_SUCCESS) then
+    if (vk_acquire_next_image_khr(logical_device, swapchain, -1_8, image_available_semaphore, VK_NULL_HANDLE, image_index) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to aqcuire next image."
     end if
 
-    
+    ! We now translate this to Fortran indexing.
+    ! todo: make this into a helper function.
+    image_index = image_index + 1
 
-    ! call record_command_buffer(command_buffer, image_index, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline)
+
+    if (vk_reset_command_buffer(command_buffer, 0) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Faield to reset command buffer."
+    end if
+
+
+    call record_command_buffer(command_buffer, image_index, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline)
 
   end subroutine draw_frame
 
