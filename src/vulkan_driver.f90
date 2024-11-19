@@ -24,6 +24,7 @@ module vulkan_driver
   use :: vulkan_driver_create_sync_objects
   !? Then after this, it's just helpers.
   use :: vulkan_driver_record_command_buffer
+  use :: vulkan_driver_draw_frame
   implicit none
 
   ! https://github.com/KhronosGroup/Vulkan-Headers/blob/main/include/vulkan/vulkan_core.h
@@ -166,6 +167,8 @@ contains
     call record_command_buffer(command_buffer, 1, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline)
 
     call create_sync_objects(logical_device, image_available_semaphore, render_finished_semaphore, in_flight_fence)
+
+    call draw_frame(logical_device, in_flight_fence)
 
   end subroutine init_vulkan
 
