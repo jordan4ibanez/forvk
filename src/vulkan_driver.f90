@@ -168,8 +168,6 @@ contains
 
     call create_sync_objects(logical_device, image_available_semaphore, render_finished_semaphore, in_flight_fence)
 
-    call draw_frame(logical_device, in_flight_fence, image_available_semaphore, swapchain, command_buffer, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, render_finished_semaphore, graphics_queue, present_queue)
-
   end subroutine init_vulkan
 
 
@@ -179,11 +177,14 @@ contains
   subroutine main_loop()
     implicit none
 
-    ! do while(.not. glfw_window_should_close())
-    !   call glfw_poll_events()
+    do while(.not. glfw_window_should_close())
+      call glfw_poll_events()
+      call draw_frame(logical_device, in_flight_fence, image_available_semaphore, swapchain, command_buffer, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, render_finished_semaphore, graphics_queue, present_queue)
+    end do
 
-    !   call draw_frame()
-    ! end do
+    if (vk_device_wait_idle(logical_device) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to wait idle on logical device."
+    end if
 
   end subroutine main_loop
 
