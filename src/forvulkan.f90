@@ -1326,6 +1326,29 @@ module forvulkan
   end type vk_fence_create_info
 
 
+  !? VkSubmitInfo.
+  type, bind(c) :: vk_submit_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! uint32_t
+    integer(c_int32_t) :: wait_semaphore_count = 0
+    ! const VkSemaphore *
+    type(c_ptr) :: p_wait_semaphores = c_null_ptr
+    ! const VkPipelineStageFlags *
+    type(c_ptr) :: p_wait_dst_stage_mask = c_null_ptr
+    ! uint32_t
+    integer(c_int32_t) :: command_buffer_count = 0
+    ! const VkCommandBuffer *
+    type(c_ptr) :: p_command_buffers = c_null_ptr
+    ! uint32_t
+    integer(c_int32_t) :: signal_semaphore_count = 0
+    ! const VkSemaphore *
+    type(c_ptr) :: p_signal_semaphores = c_null_ptr
+  end type vk_submit_info
+
+
   ! todo: marker for end of structs.
 
 
