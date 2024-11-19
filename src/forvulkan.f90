@@ -1349,6 +1349,27 @@ module forvulkan
   end type vk_submit_info
 
 
+  !? VkPresentInfoKHR.
+  type, bind(c) :: vk_present_info_khr
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! uint32_t
+    integer(c_int32_t) :: wait_semaphore_count = 0
+    ! const VkSemaphore *
+    type(c_ptr) :: p_wait_semaphores = c_null_ptr
+    ! uint32_t
+    integer(c_int32_t) :: swapchain_count = 0
+    ! const VkSwapchainKHR *
+    type(c_ptr) :: p_swapchains = c_null_ptr
+    ! const uint32_t *
+    type(c_ptr) :: p_image_indices = c_null_ptr
+    ! VkResult *
+    type(c_ptr) :: p_results = c_null_ptr
+  end type vk_present_info_khr
+
+
   ! todo: marker for end of structs.
 
 
