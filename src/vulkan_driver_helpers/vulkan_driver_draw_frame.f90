@@ -84,6 +84,9 @@ contains
     submit_info%signal_semaphore_count = 1
     submit_info%p_signal_semaphores = c_loc(signal_semaphores)
 
+    if (vk_queue_submit(graphics_queue, 1, c_loc(submit_info), in_flight_fence) /= VK_SUCCESS) then
+      error stop
+    end if
 
   end subroutine draw_frame
 
