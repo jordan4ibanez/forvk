@@ -2161,6 +2161,16 @@ module forvulkan
     end function vk_queue_present_khr
 
 
+    function vk_device_wait_idle(logical_device) result(vk_result) bind(c, name = "vkDeviceWaitIdle")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkDevice
+      integer(c_int64_t), intent(in), value :: logical_device
+      integer(c_int32_t) :: vk_result
+    end function
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
