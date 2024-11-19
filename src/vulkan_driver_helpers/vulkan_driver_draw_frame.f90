@@ -49,6 +49,10 @@ contains
       error stop "[Vulkan] Error: Failed to wait for fences."
     end if
 
+    if (vk_reset_fences(logical_device, 1, c_loc(in_flight_fence)) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to reset in flight fence."
+    end if
+
     if (vk_acquire_next_image_khr(logical_device, swapchain, -1_8, image_available_semaphore, VK_NULL_HANDLE, image_index) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to aqcuire next image."
     end if
