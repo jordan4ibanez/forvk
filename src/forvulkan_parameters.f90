@@ -4432,4 +4432,11 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_EXT = VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR
 
 
+  !? VkFenceCreateFlagBits.
+
+
+  ! Provided by VK_VERSION_1_0
+  integer(c_int32_t), parameter, public :: VK_FENCE_CREATE_SIGNALED_BIT = int(z"00000001")
+
+
 end module forvulkan_parameters
