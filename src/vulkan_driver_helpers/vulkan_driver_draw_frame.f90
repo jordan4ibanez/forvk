@@ -112,11 +112,8 @@ contains
     present_info%p_results = c_null_ptr
 
     if (vk_queue_present_khr(present_queue, c_loc(present_info)) /= VK_SUCCESS) then
-
+      error stop "[Vulkan] Error: Failed to present queue."
     end if
-
-
-
   end subroutine draw_frame
 
 end module vulkan_driver_draw_frame
