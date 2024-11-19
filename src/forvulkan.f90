@@ -2077,6 +2077,18 @@ module forvulkan
     end function vk_acquire_next_image_khr
 
 
+    function vk_reset_command_buffer(command_buffer, flags) result(vk_result) bind(c, name = "vkResetCommandBuffer")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkCommandBufferKHR
+      integer(c_int64_t), intent(in), value :: command_buffer
+      ! VkCommandBufferResetFlags
+      integer(c_int32_t), intent(in), value :: flags
+      integer(c_int32_t) :: vk_result
+    end function vk_reset_command_buffer
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
