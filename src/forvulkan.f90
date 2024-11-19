@@ -1983,6 +1983,22 @@ module forvulkan
     end function vk_create_semaphore
 
 
+    function vk_create_fence(logical_device, p_create_info, p_allocator, p_fence) result(vk_result) bind(c, name = "vkCreateFence")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkDevice
+      integer(c_int64_t), intent(in), value :: logical_device
+      ! const VkFenceCreateInfo *
+      type(c_ptr), intent(in), value :: p_create_info
+      ! const VkAllocationCallbacks *
+      type(c_ptr), intent(in), value :: p_allocator
+      ! VkFence *
+      integer(c_int64_t), intent(inout) :: p_fence
+      integer(c_int32_t) :: vk_result
+    end function vk_create_fence
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
