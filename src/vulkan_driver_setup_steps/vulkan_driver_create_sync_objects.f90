@@ -25,7 +25,7 @@ contains
     semaphore_create_info%s_type = VK_STRUCTURE_TYPE%SEMAPHORE_CREATE_INFO
 
     fence_create_info%s_type = VK_STRUCTURE_TYPE%FENCE_CREATE_INFO
-
+    fence_create_info%flags = VK_FENCE_CREATE_SIGNALED_BIT
 
     if (vk_create_semaphore(logical_device, c_loc(semaphore_create_info), c_null_ptr, image_available_semaphore) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to create image available semaphore"
