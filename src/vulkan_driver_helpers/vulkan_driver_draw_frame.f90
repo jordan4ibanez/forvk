@@ -9,7 +9,7 @@ module vulkan_driver_draw_frame
 contains
 
 
-  subroutine draw_frame(logical_device, in_flight_fence, image_available_semaphore, swapchain, command_buffer, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, render_finished_semaphore, graphics_queue)
+  subroutine draw_frame(logical_device, in_flight_fence, image_available_semaphore, swapchain, command_buffer, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, render_finished_semaphore, graphics_queue, present_queue)
     implicit none
 
     ! VkDevice
@@ -34,6 +34,8 @@ contains
     integer(c_int64_t), intent(in), value :: render_finished_semaphore
     ! VkQueue
     integer(c_int64_t), intent(in), value :: graphics_queue
+    ! VkQueue
+    integer(c_int64_t), intent(in), value, target :: present_queue
     ! uint32_t
     integer(c_int32_t), target :: image_index
     type(vk_submit_info), target :: submit_info
@@ -43,6 +45,9 @@ contains
     integer(c_int32_t), dimension(1), target :: wait_stages
     ! VkSemaphore[]
     integer(c_int64_t), dimension(1), target :: signal_semaphores
+    type(vk_present_info_khr), target :: present_info
+    ! VkSwapchainKHR[]
+    integer(c_int64_t), dimension(1), target :: swapchains
 
     ! -1 is UINT64_MAX, aka, unlimited timeout.
     if (vk_wait_for_fences(logical_device, 1, c_loc(in_flight_fence), VK_TRUE, -1_8) /= VK_SUCCESS) then
@@ -87,6 +92,30 @@ contains
     if (vk_queue_submit(graphics_queue, 1, c_loc(submit_info), in_flight_fence) /= VK_SUCCESS) then
       error stop
     end if
+
+
+    present_info%s_type = VK_STRUCTURE_TYPE%PRESENT_INFO_KHR
+
+    present_info%wait_semaphore_count = 1
+    present_info%p_wait_semaphores = c_loc(signal_semaphores)
+
+    swapchains = [swapchain]
+
+    ! Now move it back.
+    ! todo: this needs to be removed!
+    image_index = image_index - 1
+
+    present_info%swapchain_count = 1
+    present_info%p_swapchains = c_loc(swapchains)
+    present_info%p_image_indices = c_loc(image_index)
+
+    present_info%p_results = c_null_ptr
+
+    if (vk_queue_present_khr(present_queue, c_loc(present_info)) /= VK_SUCCESS) then
+
+    end if
+
+
 
   end subroutine draw_frame
 
