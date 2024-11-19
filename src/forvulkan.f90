@@ -2057,6 +2057,26 @@ module forvulkan
     end function vk_reset_fences
 
 
+    function vk_acquire_next_image_khr(logical_device, swapchain, timeout, semaphore, fence, p_image_index) result(vk_result) bind(c, name = "vkAcquireNextImageKHR")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkDevice
+      integer(c_int64_t), intent(in), value :: logical_device
+      ! VkSwapchainKHR
+      integer(c_int64_t), intent(in), value :: swapchain
+      ! uint64_t
+      integer(c_int64_t), intent(in), value :: timeout
+      ! VkSemaphore
+      integer(c_int64_t), intent(in), value :: semaphore
+      ! VkFence
+      integer(c_int64_t), intent(in), value :: fence
+      ! uint32_t *
+      type(c_ptr), intent(in), value :: p_image_index
+      integer(c_int32_t) :: vk_result
+    end function vk_acquire_next_image_khr
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
