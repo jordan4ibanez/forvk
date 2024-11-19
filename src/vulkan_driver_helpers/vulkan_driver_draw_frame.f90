@@ -9,7 +9,7 @@ module vulkan_driver_draw_frame
 contains
 
 
-  subroutine draw_frame(logical_device, in_flight_fence, image_available_semaphore, swapchain, command_buffer, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, render_finished_semaphore)
+  subroutine draw_frame(logical_device, in_flight_fence, image_available_semaphore, swapchain, command_buffer, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, render_finished_semaphore, graphics_queue)
     implicit none
 
     ! VkDevice
@@ -32,6 +32,8 @@ contains
     integer(c_int64_t), intent(in), value :: graphics_pipeline
     ! VkSemaphore
     integer(c_int64_t), intent(in), value :: render_finished_semaphore
+    ! VkQueue
+    integer(c_int64_t), intent(in), value :: graphics_queue
     ! uint32_t
     integer(c_int32_t), target :: image_index
     type(vk_submit_info), target :: submit_info
