@@ -1999,6 +1999,19 @@ module forvulkan
     end function vk_create_fence
 
 
+    subroutine vk_destroy_semaphore(logical_device, semaphore, p_allocator) bind(c, name = "vkDestroySemaphore")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! VkDevice
+      integer(c_int64_t), intent(in), value :: logical_device
+      ! VkSemaphore
+      integer(c_int64_t), intent(in), value :: semaphore
+      ! const VkAllocationCallbacks *
+      type(c_ptr), intent(in), value :: p_allocator
+    end subroutine vk_destroy_semaphore
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
