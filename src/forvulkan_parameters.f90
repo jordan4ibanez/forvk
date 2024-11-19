@@ -4439,4 +4439,10 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_FENCE_CREATE_SIGNALED_BIT = int(z"00000001")
 
 
+  !? VkCommandBufferResetFlagBits.
+
+
+  integer(c_int32_t), parameter, public :: VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT = int(z"00000001")
+
+
 end module forvulkan_parameters
