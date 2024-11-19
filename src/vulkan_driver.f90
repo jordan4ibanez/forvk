@@ -165,6 +165,8 @@ contains
 
     call record_command_buffer(command_buffer, 1, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline)
 
+    call create_sync_objects()
+
   end subroutine init_vulkan
 
 

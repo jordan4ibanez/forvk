@@ -11,6 +11,10 @@ contains
   subroutine create_sync_objects()
     implicit none
 
+    type(vk_semaphore_create_info), target :: semaphore_create_info
+
+    
+
 
 
   end subroutine create_sync_objects
