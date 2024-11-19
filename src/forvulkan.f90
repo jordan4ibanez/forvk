@@ -1299,9 +1299,11 @@ module forvulkan
     integer(c_int32_t) :: stencil = 0
   end type vk_clear_depth_stencil_value
 
-  !* IMPLEMENTATION NOTE: You will have to use one or the other when using: [VkClearValue]
+  !* IMPLEMENTATION NOTE: This is a C union. You will have to use one or the other when using: [VkClearValue]
 
   !! End hackjob.
+
+
 
 
   ! todo: marker for end of structs.
