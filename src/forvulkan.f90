@@ -2072,7 +2072,7 @@ module forvulkan
       ! VkFence
       integer(c_int64_t), intent(in), value :: fence
       ! uint32_t *
-      type(c_ptr), intent(in), value :: p_image_index
+      integer(c_int32_t), intent(inout) :: p_image_index
       integer(c_int32_t) :: vk_result
     end function vk_acquire_next_image_khr
 
