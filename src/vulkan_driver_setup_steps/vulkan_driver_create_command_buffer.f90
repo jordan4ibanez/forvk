@@ -30,7 +30,7 @@ contains
     command_buffer_allocate_info%command_buffer_count = int(MAX_FRAMES_IN_FLIGHT, c_int32_t)
 
     if (vk_allocate_command_buffers(logical_device, c_loc(command_buffer_allocate_info), command_buffers%get(1_8)) /= VK_SUCCESS) then
-      error stop "[Vulkan] Error: Failed to create command buffers."
+      error stop "[Vulkan] Error: Failed to allocate command buffers."
     end if
   end subroutine create_command_buffers
 
