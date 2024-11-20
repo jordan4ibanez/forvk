@@ -21,9 +21,9 @@ contains
     integer(c_int64_t), intent(inout) :: vulkan_instance
     logical(c_bool), intent(in), value :: DEBUG_MODE
     ! VkInstanceCreateInfo
-    type(vk_instance_create_info), pointer :: vulkan_create_info
+    type(vk_instance_create_info), target :: vulkan_create_info
     ! VkApplicationInfo
-    type(vk_application_info), pointer :: app_info
+    type(vk_application_info), target :: app_info
     type(vk_debug_utils_messenger_create_info_ext) :: before_init_messenger_create_info
     integer(c_int) :: result
 
@@ -48,8 +48,8 @@ contains
   subroutine create_vulkan_instance_create_info(vulkan_create_info, app_info, before_init_messenger_create_info, DEBUG_MODE)
     implicit none
 
-    type(vk_instance_create_info), intent(inout), pointer :: vulkan_create_info
-    type(vk_application_info), intent(in), pointer :: app_info
+    type(vk_instance_create_info), intent(inout) :: vulkan_create_info
+    type(vk_application_info), intent(in), target :: app_info
     type(vk_debug_utils_messenger_create_info_ext), intent(inout), target :: before_init_messenger_create_info
     type(vec) :: required_validation_layers
     type(vec) :: required_extensions
@@ -59,8 +59,6 @@ contains
 
     call create_required_extensions(required_extensions, DEBUG_MODE)
     call create_required_validation_layers(required_validation_layers, DEBUG_MODE)
-
-    allocate(vulkan_create_info)
 
     vulkan_create_info%flags = or(vulkan_create_info%flags, VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR)
 
