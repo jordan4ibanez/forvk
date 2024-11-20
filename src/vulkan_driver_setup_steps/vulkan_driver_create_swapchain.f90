@@ -29,7 +29,7 @@ contains
     integer(c_int32_t), intent(inout) :: swapchain_image_format
     ! VkExtent2D
     type(vk_extent_2d), intent(inout) :: swapchain_extent
-    type(forvulkan_swapchain_support_details), pointer :: swapchain_support_details
+    type(forvulkan_swapchain_support_details), target :: swapchain_support_details
     type(vk_surface_format_khr) :: selected_surface_format
     ! VkPresentModeKHR
     integer(c_int32_t) :: selected_present_mode

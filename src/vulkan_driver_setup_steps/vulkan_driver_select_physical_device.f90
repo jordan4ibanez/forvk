@@ -147,7 +147,7 @@ contains
     integer(c_int64_t), intent(in), value :: physical_device
     ! VkSurfaceKHR
     integer(c_int64_t), intent(in), value :: window_surface
-    type(forvulkan_swapchain_support_details), pointer :: swapchain_support_details
+    type(forvulkan_swapchain_support_details), target :: swapchain_support_details
     logical(c_bool) :: has_support
     integer(c_int32_t) :: extension_count
     ! VkExtensionProperties
