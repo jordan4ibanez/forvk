@@ -9,11 +9,12 @@ module vulkan_driver_draw_frame
 contains
 
 
-  subroutine draw_frame(logical_device, in_flight_fences, image_available_semaphores, render_finished_semaphores, swapchain, command_buffer, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue)
+  subroutine draw_frame(logical_device, current_frame, in_flight_fences, image_available_semaphores, render_finished_semaphores, swapchain, command_buffer, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue)
     implicit none
 
     ! VkDevice
     integer(c_int64_t), intent(in), value :: logical_device
+    integer(c_int32_t), intent(inout) :: current_frame
     ! VkFence
     type(vec), intent(in), value, target :: in_flight_fences
     ! VkSemaphore
