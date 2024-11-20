@@ -87,6 +87,7 @@ contains
     end do
 
     call available_layer_array%destroy()
+    call required_validation_layers%destroy()
 
     print"(A)","[Vulkan]: Found all required validation layers."
   end subroutine ensure_validation_layer_support
