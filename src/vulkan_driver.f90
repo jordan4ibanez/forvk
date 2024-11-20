@@ -120,7 +120,7 @@ contains
     implicit none
 
     call init_vulkan()
-    ! call main_loop()
+    call main_loop()
     call clean_up()
   end subroutine vulkan_run
 
