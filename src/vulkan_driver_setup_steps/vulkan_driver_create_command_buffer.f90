@@ -8,7 +8,7 @@ module vulkan_driver_create_command_buffer
 contains
 
 
-  subroutine create_command_buffer(logical_device, command_pool, command_buffer)
+  subroutine create_command_buffers(logical_device, command_pool, command_buffer)
     implicit none
 
     ! VkDevice
@@ -27,7 +27,7 @@ contains
     if (vk_allocate_command_buffers(logical_device, c_loc(command_buffer_allocate_info), command_buffer) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to create command buffers."
     end if
-  end subroutine create_command_buffer
+  end subroutine create_command_buffers
 
 
 end module vulkan_driver_create_command_buffer

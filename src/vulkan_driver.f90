@@ -165,7 +165,7 @@ contains
 
     call create_command_pool(physical_device, window_surface, logical_device, command_pool)
 
-    call create_command_buffer(logical_device, command_pool, command_buffer)
+    call create_command_buffers(logical_device, command_pool, command_buffer)
 
     call create_sync_objects(logical_device, MAX_FRAMES_IN_FLIGHT, image_available_semaphores, render_finished_semaphores, in_flight_fences)
 
