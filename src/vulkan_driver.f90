@@ -104,9 +104,8 @@ module vulkan_driver
   ! VkFence
   type(vec) :: in_flight_fences
 
-
   !? How many frames should be processed concurrently.
-  integer(c_int32_t), parameter :: MAX_FRAMES_IN_FLIGHT = 2
+  integer(c_int64_t), parameter :: MAX_FRAMES_IN_FLIGHT = 2
 
   ! Controls debugging output.
   logical(c_bool), parameter :: DEBUG_MODE = .true.
@@ -168,7 +167,7 @@ contains
 
     call create_command_buffer(logical_device, command_pool, command_buffer)
 
-    call create_sync_objects(logical_device, image_available_semaphores, render_finished_semaphores, in_flight_fences)
+    call create_sync_objects(logical_device, MAX_FRAMES_IN_FLIGHT, image_available_semaphores, render_finished_semaphores, in_flight_fences)
 
   end subroutine init_vulkan
 

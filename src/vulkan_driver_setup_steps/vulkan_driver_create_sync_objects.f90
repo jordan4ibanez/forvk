@@ -8,11 +8,12 @@ module vulkan_driver_create_sync_objects
 contains
 
 
-  subroutine create_sync_objects(logical_device, image_available_semaphores, render_finished_semaphores, in_flight_fences)
+  subroutine create_sync_objects(logical_device, MAX_FRAMES_IN_FLIGHT, image_available_semaphores, render_finished_semaphores, in_flight_fences)
     implicit none
 
     ! VkDevice
     integer(c_int64_t), intent(in), value :: logical_device
+    integer(c_int64_t), intent(in), value :: MAX_FRAMES_IN_FLIGHT
     ! VkSemaphore
     type(vec), intent(inout) :: image_available_semaphores
     ! VkSemaphore
@@ -38,8 +39,6 @@ contains
     if (vk_create_fence(logical_device, c_loc(fence_create_info), c_null_ptr, in_flight_fence) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to create in flight fence"
     end if
-
-
   end subroutine create_sync_objects
 
 
