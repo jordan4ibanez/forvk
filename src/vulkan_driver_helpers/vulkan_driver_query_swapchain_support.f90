@@ -18,15 +18,13 @@ contains
     ! VkSurfaceKHR
     integer(c_int64_t), intent(in), value :: window_surface
     logical(c_bool) :: has_swapchain_support
-    type(forvulkan_swapchain_support_details), intent(inout), pointer :: swapchain_support_details
+    type(forvulkan_swapchain_support_details), intent(inout), target :: swapchain_support_details
     integer(c_int32_t) :: format_count, present_mode_count
     type(vk_surface_format_khr), pointer :: surface_format_pointer
 
     has_swapchain_support = .true.
 
     print"(A)","[Vulkan]: Querying swapchain support information."
-
-    allocate(swapchain_support_details)
 
     ! First, get device surface capabilities.
     if (vk_get_physical_device_surface_capabilities_khr(physical_device, window_surface, c_loc(swapchain_support_details%capabilities)) /= VK_SUCCESS) then
