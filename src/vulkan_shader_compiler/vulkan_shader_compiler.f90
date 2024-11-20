@@ -84,6 +84,8 @@ contains
       end if
     end if
 
+    deallocate(shader_text_data)
+
     print"(A)","[ShaderC]: Shader compilation completed."
 
     raw_spir_v_data_size = shaderc_result_get_length(compilation_result_ptr)
