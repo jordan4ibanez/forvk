@@ -164,8 +164,6 @@ contains
 
     call create_command_buffer(logical_device, command_pool, command_buffer)
 
-    ! call record_command_buffer(command_buffer, 1, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline)
-
     call create_sync_objects(logical_device, image_available_semaphore, render_finished_semaphore, in_flight_fence)
 
   end subroutine init_vulkan
