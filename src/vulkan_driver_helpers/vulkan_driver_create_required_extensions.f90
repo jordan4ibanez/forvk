@@ -66,8 +66,6 @@ contains
     type(c_ptr), pointer :: raw_c_ptr
     character(len = :, kind = c_char), pointer :: str
 
-    print*,"hello from required extension vec gc"
-
     call c_f_pointer(raw_c_ptr_ptr, raw_c_ptr)
     str => string_from_c(raw_c_ptr)
 
