@@ -97,6 +97,9 @@ contains
     ! Finally, set the module variables so we can reuse them.
     swapchain_image_format = selected_surface_format%format
     swapchain_extent = selected_extent
+
+    call swapchain_support_details%formats%destroy()
+    call swapchain_support_details%present_modes%destroy()
   end subroutine create_swapchain
 
 
