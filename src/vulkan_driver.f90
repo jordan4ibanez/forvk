@@ -96,13 +96,17 @@ module vulkan_driver
   integer(c_int64_t) :: command_buffer = VK_NULL_HANDLE
 
   ! VkSemaphore
-  integer(c_int64_t) :: image_available_semaphore = VK_NULL_HANDLE
+  type(vec) :: image_available_semaphores
 
   ! VkSemaphore
-  integer(c_int64_t) :: render_finished_semaphore = VK_NULL_HANDLE
+  type(vec) :: render_finished_semaphores
 
   ! VkFence
-  integer(c_int64_t) :: in_flight_fence = VK_NULL_HANDLE
+  type(vec) :: in_flight_fences
+
+
+  !? How many frames should be processed concurrently.
+  integer(c_int32_t), parameter :: MAX_FRAMES_IN_FLIGHT = 2
 
   ! Controls debugging output.
   logical(c_bool), parameter :: DEBUG_MODE = .true.
