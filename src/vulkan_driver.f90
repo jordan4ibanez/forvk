@@ -105,7 +105,7 @@ module vulkan_driver
   type(vec) :: in_flight_fences
 
   !? This is the frame we're currently on.
-  integer(c_int32_t) :: current_frame = 1
+  integer(c_int64_t) :: current_frame = 1
 
   !? How many frames should be processed concurrently.
   integer(c_int64_t), parameter :: MAX_FRAMES_IN_FLIGHT = 2
