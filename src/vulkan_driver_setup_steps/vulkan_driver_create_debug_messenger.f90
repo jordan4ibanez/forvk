@@ -16,7 +16,7 @@ contains
     integer(c_int64_t), intent(inout) :: vulkan_instance
     integer(c_int64_t), intent(inout) :: debug_messenger
     logical(c_bool), intent(in), value :: DEBUG_MODE
-    type(vk_debug_utils_messenger_create_info_ext), pointer :: debug_messenger_create_info !validation_create_info
+    type(vk_debug_utils_messenger_create_info_ext), target :: debug_messenger_create_info
 
     ! Don't need this if we're not in debug mode.
     if (.not. DEBUG_MODE) then
@@ -25,7 +25,6 @@ contains
 
     print"(A)","[Vulkan]: Setting up debug messenger."
 
-    allocate(debug_messenger_create_info)
     call create_debug_messenger_struct(debug_messenger_create_info, DEBUG_MODE)
 
     if (forvulkan_create_debug_utils_messenger_ext(vulkan_instance, c_loc(debug_messenger_create_info), c_null_ptr, debug_messenger) /= VK_SUCCESS) then
