@@ -19,7 +19,7 @@ contains
     logical(c_bool), intent(in), value :: DEBUG_MODE
     type(vec) :: required_extensions
     integer(c_int) :: result, extension_count
-    type(vec) :: available_extensions_array
+    type(vec) :: available_extensions
     type(vk_extension_properties) :: blank
     integer(c_int) :: i, j
     type(c_ptr), pointer :: raw_c_ptr_ptr
@@ -38,10 +38,10 @@ contains
       error stop "[Vulkan]: Failed to enumrate instance extension properties. Error code ["//int_to_string(result)//"]"
     end if
 
-    available_extensions_array = new_vec(sizeof(blank), int(extension_count, c_int64_t))
-    call available_extensions_array%resize(int(extension_count, c_int64_t), blank)
+    available_extensions = new_vec(sizeof(blank), int(extension_count, c_int64_t))
+    call available_extensions%resize(int(extension_count, c_int64_t), blank)
 
-    result = vk_enumerate_instance_extension_properties(c_null_ptr, extension_count, available_extensions_array%get(1_8))
+    result = vk_enumerate_instance_extension_properties(c_null_ptr, extension_count, available_extensions%get(1_8))
 
     print"(A)","[Vulkan]: Ensuring required extensions are present."
 
@@ -58,7 +58,7 @@ contains
       do i = 1,int(extension_count)
 
         ! Transfer the VkExtensionProperties pointer into Fortran.
-        call c_f_pointer(available_extensions_array%get(int(i, c_int64_t)), extension_properties)
+        call c_f_pointer(available_extensions%get(int(i, c_int64_t)), extension_properties)
 
         ! Let us convert the extension name from a char array into a string.
         temp => character_array_to_string_pointer(extension_properties%extension_name)
@@ -81,7 +81,7 @@ contains
       end if
     end do
 
-    call available_extensions_array%destroy()
+    call available_extensions%destroy()
 
     print"(A)","[Vulkan]: All required extensions are present."
   end subroutine ensure_extensions_present
