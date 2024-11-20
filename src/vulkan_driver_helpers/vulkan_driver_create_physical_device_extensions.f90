@@ -20,7 +20,7 @@ contains
     type(vec), intent(inout) :: required_device_extensions
     character(len = :, kind = c_char), pointer :: required_extension
 
-    required_device_extensions = new_vec(sizeof(c_null_ptr), 0_8)
+    required_device_extensions = new_vec(sizeof(c_null_ptr), 0_8, device_extensions_vec_gc)
 
     allocate(character(len = len(VK_KHR_SWAPCHAIN_EXTENSION_NAME), kind = c_char) :: required_extension)
     required_extension = VK_KHR_SWAPCHAIN_EXTENSION_NAME
@@ -37,8 +37,6 @@ contains
     type(c_ptr), intent(in), value :: raw_c_ptr_ptr
     type(c_ptr), pointer :: raw_c_ptr
     character(len = :, kind = c_char), pointer :: str
-
-    print*,"hello from required physical extensions gc"
 
     call c_f_pointer(raw_c_ptr_ptr, raw_c_ptr)
     str => string_from_c(raw_c_ptr)
