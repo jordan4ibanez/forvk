@@ -28,8 +28,14 @@ contains
     integer(c_int) :: result
     type(vec) :: required_extensions
     type(vec) :: required_validation_layers
+    character(len = :, kind = c_char), pointer :: app_name, engine_name
 
-    call create_app_info(app_info)
+    allocate(character(len = 10, kind = c_char) :: app_name)
+    app_name = "ForVulkan"//achar(0)
+    allocate(character(len = 8, kind = c_char) :: engine_name)
+    engine_name = "Formine"//achar(0)
+
+    call create_app_info(app_info, app_name, engine_name)
 
     call create_vulkan_instance_create_info(vulkan_create_info, app_info, before_init_messenger_create_info, DEBUG_MODE, required_extensions, required_validation_layers)
 
@@ -45,6 +51,8 @@ contains
       error stop "[Vulkan] Error: Failed to create Vulkan instance. Error code: ["//int_to_string(result)//"]"
     end if
 
+    deallocate(app_name)
+    deallocate(engine_name)
     call required_extensions%destroy()
     call required_validation_layers%destroy()
   end subroutine create_vulkan_instance
