@@ -219,6 +219,8 @@ contains
     !! fixme: this thing needs a GC.
     call required_device_extensions%destroy()
 
+    call available_extensions%destroy()
+
     has_support = found
 
     ! So now we must query the swapchain support.
