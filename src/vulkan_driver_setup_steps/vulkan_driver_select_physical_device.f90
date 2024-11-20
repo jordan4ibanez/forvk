@@ -72,6 +72,8 @@ contains
       print"(A)","[Vulkan]: Using physical device ["//device_name//"]"
       deallocate(device_name)
     end if
+
+    call available_devices%destroy()
   end subroutine select_physical_device
 
 
