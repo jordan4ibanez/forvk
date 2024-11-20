@@ -12,12 +12,10 @@ contains
   subroutine create_app_info(app_info)
     implicit none
 
-    type(vk_application_info), intent(inout), pointer :: app_info
+    type(vk_application_info), intent(inout) :: app_info
     character(len = :, kind = c_char), pointer :: app_name, engine_name
 
     print"(A)","[Vulkan]: Creating app info."
-
-    allocate(app_info)
 
     app_info%s_type = VK_STRUCTURE_TYPE%APPLICATION_INFO
 
