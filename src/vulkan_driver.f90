@@ -196,11 +196,18 @@ contains
     implicit none
 
     integer(c_int64_t) :: i
-    integer(c_int64_t), pointer :: image_view, framebuffer
+    integer(c_int64_t), pointer :: image_view, framebuffer, semaphore, fence
 
-    call vk_destroy_semaphore(logical_device, image_available_semaphore, c_null_ptr)
-    call vk_destroy_semaphore(logical_device, render_finished_semaphore, c_null_ptr)
-    call vk_destroy_fence(logical_device, in_flight_fence, c_null_ptr)
+    do i = 1,MAX_FRAMES_IN_FLIGHT
+      call c_f_pointer(image_available_semaphores%get(i), semaphore)
+      call vk_destroy_semaphore(logical_device, semaphore, c_null_ptr)
+
+      call c_f_pointer(render_finished_semaphores%get(i), semaphore)
+      call vk_destroy_semaphore(logical_device, semaphore, c_null_ptr)
+
+      call c_f_pointer(in_flight_fences%get(i), fence)
+      call vk_destroy_fence(logical_device, fence, c_null_ptr)
+    end do
 
     call vk_destroy_command_pool(logical_device, command_pool, c_null_ptr)
 
