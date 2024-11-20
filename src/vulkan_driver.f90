@@ -168,7 +168,7 @@ contains
 
     call create_command_buffer(logical_device, command_pool, command_buffer)
 
-    call create_sync_objects(logical_device, image_available_semaphore, render_finished_semaphore, in_flight_fence)
+    call create_sync_objects(logical_device, image_available_semaphores, render_finished_semaphores, in_flight_fences)
 
   end subroutine init_vulkan
 
@@ -181,7 +181,7 @@ contains
 
     do while(.not. glfw_window_should_close())
       call glfw_poll_events()
-      call draw_frame(logical_device, in_flight_fence, image_available_semaphore, swapchain, command_buffer, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, render_finished_semaphore, graphics_queue, present_queue)
+      call draw_frame(logical_device, in_flight_fence, image_available_semaphore, render_finished_semaphores, swapchain, command_buffer, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue)
     end do
 
     if (vk_device_wait_idle(logical_device) /= VK_SUCCESS) then
