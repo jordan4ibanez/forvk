@@ -94,6 +94,8 @@ contains
     call vk_get_device_queue(logical_device, physical_queue_family_indices%present_family, 0, present_queue)
 
     call logical_device_queue_create_infos%destroy()
+    call required_validation_layers%destroy()
+    call required_physical_device_extensions%destroy()
   end subroutine create_logical_device
 
 
