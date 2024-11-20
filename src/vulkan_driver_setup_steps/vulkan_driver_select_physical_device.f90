@@ -229,6 +229,9 @@ contains
     if (has_support) then
       has_support = query_swapchain_support(physical_device, window_surface, swapchain_support_details)
 
+      call swapchain_support_details%formats%destroy()
+      call swapchain_support_details%present_modes%destroy()
+
       if (.not. has_support) then
         print"(A)", "[Vulkan]: Physical device is missing swapchain support. Skipping."
       end if
