@@ -29,7 +29,7 @@ contains
 
     ! Grabble the extension string pointers from C.
     temp => null()
-    required_extensions = new_vec(sizeof(c_null_ptr), 0_8)
+    required_extensions = new_vec(sizeof(c_null_ptr), 0_8, required_extensions_vec_gc)
 
     call c_f_pointer(c_glfw_extension_array_pointer, c_extension_name_pointer_array, [glfw_extension_count])
 
@@ -57,6 +57,22 @@ contains
       call required_extensions%push_back(c_loc(output))
     end if
   end subroutine create_required_extensions
+
+
+  subroutine required_extensions_vec_gc(raw_c_ptr_ptr)
+    implicit none
+
+    type(c_ptr), intent(in), value :: raw_c_ptr_ptr
+    type(c_ptr), pointer :: raw_c_ptr
+    character(len = :, kind = c_char), pointer :: str
+
+    print*,"hello from required extension vec gc"
+
+    call c_f_pointer(raw_c_ptr_ptr, raw_c_ptr)
+    str => string_from_c(raw_c_ptr)
+
+    deallocate(str)
+  end subroutine required_extensions_vec_gc
 
 
 end module vulkan_driver_create_required_extensions
