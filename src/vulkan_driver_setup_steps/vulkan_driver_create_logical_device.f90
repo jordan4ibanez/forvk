@@ -29,10 +29,10 @@ contains
     ! const char **
     type(vec) :: required_validation_layers
     type(vk_device_queue_create_info) :: logical_device_queue_create_info
-    real(c_float), pointer :: queue_priority
+    real(c_float), target :: queue_priority
     type(vk_physical_device_features), target :: physical_device_features
     type(vec) :: logical_device_queue_create_infos
-    type(vk_device_create_info), pointer :: logical_device_create_info
+    type(vk_device_create_info), target :: logical_device_create_info
     type(forvulkan_queue_family_indices) :: physical_queue_family_indices
     type(int32_set) :: physical_device_unique_queue_families
     integer(c_int32_t) :: i
@@ -47,11 +47,11 @@ contains
     physical_device_unique_queue_families = new_int32_set()
     call physical_device_unique_queue_families%push_array([physical_queue_family_indices%graphics_family, physical_queue_family_indices%present_family])
 
-    ! Now iterate to create the queue info.
-    do i = 1,physical_device_unique_queue_families%size
-      allocate(queue_priority)
-      queue_priority = 1.0
 
+    ! Now iterate to create the queue info.
+    queue_priority = 1.0
+
+    do i = 1,physical_device_unique_queue_families%size
       logical_device_queue_create_info%s_type = VK_STRUCTURE_TYPE%DEVICE%QUEUE_CREATE_INFO
       logical_device_queue_create_info%queue_family_index = physical_device_unique_queue_families%data(i)
       logical_device_queue_create_info%queue_count = 1
@@ -68,8 +68,6 @@ contains
     ! Create the create info for the logical device.
 
     call create_required_physical_device_extensions(required_physical_device_extensions)
-
-    allocate(logical_device_create_info)
 
     logical_device_create_info%s_type = VK_STRUCTURE_TYPE%DEVICE%CREATE_INFO
     logical_device_create_info%queue_create_info_count = int(logical_device_queue_create_infos%size())
