@@ -81,6 +81,8 @@ contains
       end if
     end do
 
+    call available_extensions_array%destroy()
+
     print"(A)","[Vulkan]: All required extensions are present."
   end subroutine ensure_extensions_present
 
