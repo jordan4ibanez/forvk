@@ -28,7 +28,7 @@ contains
     ! c_int64_t [VkPhysicalDevice]
     type(vec) :: available_devices
     ! VkPhysicalDevice *
-    integer(c_int64_t), pointer :: device_pointer
+    integer(c_int64_t), pointer :: physical_device_pointer
     character(len = :, kind = c_char), pointer :: device_name
 
     print"(A)","[Vulkan]: Selecting physical device."
@@ -55,12 +55,12 @@ contains
     ! Let's find a device that's suitable.
     device_search: do i = 1,int(available_devices%size())
       ! We're inlining transfering the device pointer from the interal C array into Fortran.
-      call c_f_pointer(available_devices%get(int(i, c_int64_t)), device_pointer)
+      call c_f_pointer(available_devices%get(int(i, c_int64_t)), physical_device_pointer)
 
       ! We found it, woo. That's our physical device.
       ! todo: Make a menu option to select another physical device.
-      if (device_is_suitable(device_pointer, window_surface, device_name)) then
-        physical_device = device_pointer
+      if (device_is_suitable(physical_device_pointer, window_surface, device_name)) then
+        physical_device = physical_device_pointer
         exit device_search
       end if
     end do device_search
@@ -75,11 +75,11 @@ contains
   end subroutine select_physical_device
 
 
-  function device_is_suitable(device_pointer, window_surface, device_name) result(suitable)
+  function device_is_suitable(physical_device_pointer, window_surface, device_name) result(suitable)
     implicit none
 
     ! VkPhysicalDevice
-    integer(c_int64_t), intent(inout), pointer :: device_pointer
+    integer(c_int64_t), intent(inout), pointer :: physical_device_pointer
     ! VkSurfaceKHR
     integer(c_int64_t), intent(in), value :: window_surface
     character(len = :, kind = c_char), intent(inout), pointer :: device_name
@@ -91,10 +91,10 @@ contains
     suitable = .false.
 
     allocate(device_properties)
-    call vk_get_physical_device_properties(device_pointer, c_loc(device_properties))
+    call vk_get_physical_device_properties(physical_device_pointer, c_loc(device_properties))
 
     allocate(device_features)
-    call vk_get_physical_device_features(device_pointer, c_loc(device_features))
+    call vk_get_physical_device_features(physical_device_pointer, c_loc(device_features))
 
     ! Check if we have the bare minimum to run with.
     ! todo: score GPUs.
@@ -110,7 +110,7 @@ contains
     device_name => character_array_to_string_pointer(device_properties%device_name)
 
     ! Check our queue families.
-    queue_family_indices = find_queue_families(device_pointer, window_surface)
+    queue_family_indices = find_queue_families(physical_device_pointer, window_surface)
 
     print"(A)","[Vulkan]: Found physical device ["//device_name//"]"
 
@@ -129,7 +129,7 @@ contains
       suitable = .false.
     end if
 
-    if (.not. check_device_extension_support(device_pointer, window_surface)) then
+    if (.not. check_device_extension_support(physical_device_pointer, window_surface)) then
       !! FIXME: this needs to list which extension!
       print"(A)", "[Vulkan]: Device is missing extension support."
       suitable = .false.
