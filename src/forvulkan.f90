@@ -2242,6 +2242,8 @@ contains
 
     function_pointer = vk_get_instance_proc_addr(instance, c_loc(function_name))
 
+    deallocate(function_name)
+
     ! If it's not available, we cannot continue in debug mode.
     if (.not. c_associated(function_pointer)) then
       vk_result = VK_ERROR_EXTENSION_NOT_PRESENT
@@ -2273,6 +2275,8 @@ contains
     function_name = "vkDestroyDebugUtilsMessengerEXT"//achar(0)
 
     function_pointer = vk_get_instance_proc_addr(instance, c_loc(function_name))
+
+    deallocate(function_name)
 
     ! If it's not available, we cannot continue in debug mode.
     if (.not. c_associated(function_pointer)) then
