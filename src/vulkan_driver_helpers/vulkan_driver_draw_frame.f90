@@ -49,17 +49,20 @@ contains
     type(vk_present_info_khr), target :: present_info
     ! VkSwapchainKHR[]
     integer(c_int64_t), dimension(1), target :: swapchains
+    ! VkSemaphore
+    integer(c_int64_t), pointer :: semaphore
 
     ! -1 is UINT64_MAX, aka, unlimited timeout.
-    if (vk_wait_for_fences(logical_device, 1, c_loc(in_flight_fence), VK_TRUE, -1_8) /= VK_SUCCESS) then
+    if (vk_wait_for_fences(logical_device, 1, in_flight_fences%get(current_frame), VK_TRUE, -1_8) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to wait for fences."
     end if
 
-    if (vk_reset_fences(logical_device, 1, c_loc(in_flight_fence)) /= VK_SUCCESS) then
+    if (vk_reset_fences(logical_device, 1, in_flight_fences%get(current_frame)) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to reset in flight fence."
     end if
 
-    if (vk_acquire_next_image_khr(logical_device, swapchain, -1_8, image_available_semaphore, VK_NULL_HANDLE, image_index) /= VK_SUCCESS) then
+    call c_f_pointer(image_available_semaphores%get(current_frame), semaphore)
+    if (vk_acquire_next_image_khr(logical_device, swapchain, -1_8, semaphore, VK_NULL_HANDLE, image_index) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to aqcuire next image."
     end if
 
