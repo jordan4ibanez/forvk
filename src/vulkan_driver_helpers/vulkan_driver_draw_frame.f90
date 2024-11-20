@@ -14,13 +14,13 @@ contains
 
     ! VkDevice
     integer(c_int64_t), intent(in), value :: logical_device
-    integer(c_int32_t), intent(inout) :: current_frame
+    integer(c_int64_t), intent(inout) :: current_frame
     ! VkFence
-    type(vec), intent(in), value, target :: in_flight_fences
+    type(vec), intent(inout) :: in_flight_fences
     ! VkSemaphore
-    type(vec), intent(in), value :: image_available_semaphores
+    type(vec), intent(inout) :: image_available_semaphores
     ! VkSemaphore
-    type(vec), intent(in), value :: render_finished_semaphores
+    type(vec), intent(inout) :: render_finished_semaphores
     ! VkSwapchainKHR
     integer(c_int64_t), intent(in), value :: swapchain
     ! VkCommandBuffer
