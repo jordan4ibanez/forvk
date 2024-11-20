@@ -27,10 +27,11 @@ contains
     type(vk_debug_utils_messenger_create_info_ext) :: before_init_messenger_create_info
     integer(c_int) :: result
     type(vec) :: required_extensions
+    type(vec) :: required_validation_layers
 
     call create_app_info(app_info)
 
-    call create_vulkan_instance_create_info(vulkan_create_info, app_info, before_init_messenger_create_info, DEBUG_MODE, required_extensions)
+    call create_vulkan_instance_create_info(vulkan_create_info, app_info, before_init_messenger_create_info, DEBUG_MODE, required_extensions, required_validation_layers)
 
     print"(A)", "[Vulkan]: Creating instance."
 
@@ -45,18 +46,19 @@ contains
     end if
 
     call required_extensions%destroy()
+    call required_validation_layers%destroy()
   end subroutine create_vulkan_instance
 
 
-  subroutine create_vulkan_instance_create_info(vulkan_create_info, app_info, before_init_messenger_create_info, DEBUG_MODE, required_extensions)
+  subroutine create_vulkan_instance_create_info(vulkan_create_info, app_info, before_init_messenger_create_info, DEBUG_MODE, required_extensions, required_validation_layers)
     implicit none
 
     type(vk_instance_create_info), intent(inout) :: vulkan_create_info
     type(vk_application_info), intent(in), target :: app_info
     type(vk_debug_utils_messenger_create_info_ext), intent(inout), target :: before_init_messenger_create_info
-    type(vec) :: required_validation_layers
     logical(c_bool), intent(in), value :: DEBUG_MODE
     type(vec), intent(inout) :: required_extensions
+    type(vec), intent(inout) :: required_validation_layers
 
     print"(A)","[Vulkan]: Creating create info."
 
