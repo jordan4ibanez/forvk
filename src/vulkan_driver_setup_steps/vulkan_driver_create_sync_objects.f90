@@ -8,17 +8,17 @@ module vulkan_driver_create_sync_objects
 contains
 
 
-  subroutine create_sync_objects(logical_device, image_available_semaphore, render_finished_semaphore, in_flight_fence)
+  subroutine create_sync_objects(logical_device, image_available_semaphores, render_finished_semaphores, in_flight_fences)
     implicit none
 
     ! VkDevice
     integer(c_int64_t), intent(in), value :: logical_device
     ! VkSemaphore
-    integer(c_int64_t), intent(inout) :: image_available_semaphore
+    type(vec), intent(inout) :: image_available_semaphores
     ! VkSemaphore
-    integer(c_int64_t), intent(inout) :: render_finished_semaphore
+    type(vec), intent(inout) :: render_finished_semaphores
     ! VkFence
-    integer(c_int64_t), intent(inout) :: in_flight_fence
+    type(vec), intent(inout) :: in_flight_fences
     type(vk_semaphore_create_info), target :: semaphore_create_info
     type(vk_fence_create_info), target :: fence_create_info
 

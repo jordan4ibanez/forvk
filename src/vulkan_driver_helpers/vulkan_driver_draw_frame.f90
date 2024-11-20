@@ -9,15 +9,17 @@ module vulkan_driver_draw_frame
 contains
 
 
-  subroutine draw_frame(logical_device, in_flight_fence, image_available_semaphore, swapchain, command_buffer, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, render_finished_semaphore, graphics_queue, present_queue)
+  subroutine draw_frame(logical_device, in_flight_fences, image_available_semaphores, render_finished_semaphores, swapchain, command_buffer, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue)
     implicit none
 
     ! VkDevice
     integer(c_int64_t), intent(in), value :: logical_device
     ! VkFence
-    integer(c_int64_t), intent(in), value, target :: in_flight_fence
+    type(vec), intent(in), value, target :: in_flight_fences
     ! VkSemaphore
-    integer(c_int64_t), intent(in), value :: image_available_semaphore
+    type(vec), intent(in), value :: image_available_semaphores
+    ! VkSemaphore
+    type(vec), intent(in), value :: render_finished_semaphores
     ! VkSwapchainKHR
     integer(c_int64_t), intent(in), value :: swapchain
     ! VkCommandBuffer
@@ -30,8 +32,6 @@ contains
     type(vk_extent_2d), intent(in), value :: swapchain_extent
     ! VkPipeline
     integer(c_int64_t), intent(in), value :: graphics_pipeline
-    ! VkSemaphore
-    integer(c_int64_t), intent(in), value :: render_finished_semaphore
     ! VkQueue
     integer(c_int64_t), intent(in), value :: graphics_queue
     ! VkQueue
