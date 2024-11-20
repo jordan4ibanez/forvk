@@ -29,7 +29,7 @@ contains
     call image_available_semaphores%resize(MAX_FRAMES_IN_FLIGHT, VK_NULL_HANDLE)
 
     render_finished_semaphores = new_vec(sizeof(VK_NULL_HANDLE), MAX_FRAMES_IN_FLIGHT)
-    call image_available_semaphores%resize(MAX_FRAMES_IN_FLIGHT, VK_NULL_HANDLE)
+    call render_finished_semaphores%resize(MAX_FRAMES_IN_FLIGHT, VK_NULL_HANDLE)
 
     in_flight_fences = new_vec(sizeof(VK_NULL_HANDLE), MAX_FRAMES_IN_FLIGHT)
     call in_flight_fences%resize(MAX_FRAMES_IN_FLIGHT, VK_NULL_HANDLE)
