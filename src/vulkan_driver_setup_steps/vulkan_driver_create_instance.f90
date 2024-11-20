@@ -34,8 +34,6 @@ contains
 
     print"(A)", "[Vulkan]: Creating instance."
 
-    print*,c_loc(vulkan_create_info)
-
     result = vk_create_instance(c_loc(vulkan_create_info), c_null_ptr, vulkan_instance)
 
     if (result /= VK_SUCCESS) then
@@ -45,6 +43,8 @@ contains
       end if
       error stop "[Vulkan] Error: Failed to create Vulkan instance. Error code: ["//int_to_string(result)//"]"
     end if
+
+    call required_extensions%destroy()
   end subroutine create_vulkan_instance
 
 
