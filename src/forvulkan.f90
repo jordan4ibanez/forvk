@@ -2022,7 +2022,7 @@ module forvulkan
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
       ! VkSemaphore *
-      integer(c_int64_t), intent(inout) :: p_semaphore
+      type(c_ptr), intent(in), value :: p_semaphore
       integer(c_int32_t) :: vk_result
     end function vk_create_semaphore
 
@@ -2038,7 +2038,7 @@ module forvulkan
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
       ! VkFence *
-      integer(c_int64_t), intent(inout) :: p_fence
+      type(c_ptr), intent(in), value :: p_fence
       integer(c_int32_t) :: vk_result
     end function vk_create_fence
 
