@@ -92,6 +92,8 @@ contains
     ! Now we can create the graphics queues so the logical devices can control the physical device queues.
     call vk_get_device_queue(logical_device, physical_queue_family_indices%graphics_family, 0, graphics_queue)
     call vk_get_device_queue(logical_device, physical_queue_family_indices%present_family, 0, present_queue)
+
+    call logical_device_queue_create_infos%destroy()
   end subroutine create_logical_device
 
 
