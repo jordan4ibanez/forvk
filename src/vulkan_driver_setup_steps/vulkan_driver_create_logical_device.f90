@@ -38,6 +38,8 @@ contains
     integer(c_int32_t) :: i
     type(vec) :: required_physical_device_extensions
 
+    print"(A)","[Vulkan]: Creating logical device."
+
     ! Physical and logical devices can have multiple queues.
     physical_queue_family_indices = find_queue_families(physical_device, window_surface)
 
@@ -46,7 +48,6 @@ contains
     ! We condense them down if they overlap.
     physical_device_unique_queue_families = new_int32_set()
     call physical_device_unique_queue_families%push_array([physical_queue_family_indices%graphics_family, physical_queue_family_indices%present_family])
-
 
     ! Now iterate to create the queue info.
     queue_priority = 1.0
