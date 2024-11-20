@@ -2,7 +2,7 @@
 
 MALLOC_CHECK_=2 fpm build --flag -g --flag -lmcheck --c-flag -g --c-flag -lmcheck
 
-location=$(find ./build/ -type f -name "Formine")
+location=$(find ./build/ -type f -name "forvulkan")
 
 if [ "$location" == "" ]; then
   echo "Script error, blank!"
