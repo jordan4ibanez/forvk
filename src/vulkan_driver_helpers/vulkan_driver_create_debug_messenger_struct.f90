@@ -12,7 +12,7 @@ contains
   subroutine create_debug_messenger_struct(messenger_create_info, DEBUG_MODE)
     implicit none
 
-    type(vk_debug_utils_messenger_create_info_ext), intent(inout), target :: messenger_create_info!validation_create_info
+    type(vk_debug_utils_messenger_create_info_ext), intent(inout) :: messenger_create_info
     logical(c_bool), intent(in), value :: DEBUG_MODE
 
     if (.not. DEBUG_MODE) then
