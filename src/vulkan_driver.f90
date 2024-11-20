@@ -93,7 +93,7 @@ module vulkan_driver
   integer(c_int64_t) :: command_pool = VK_NULL_HANDLE
 
   ! VkCommandBuffer
-  integer(c_int64_t) :: command_buffer = VK_NULL_HANDLE
+  type(vec) :: command_buffers = VK_NULL_HANDLE
 
   ! VkSemaphore
   type(vec) :: image_available_semaphores
@@ -165,7 +165,7 @@ contains
 
     call create_command_pool(physical_device, window_surface, logical_device, command_pool)
 
-    call create_command_buffers(logical_device, command_pool, command_buffer)
+    call create_command_buffers(logical_device, MAX_FRAMES_IN_FLIGHT, command_pool, command_buffers)
 
     call create_sync_objects(logical_device, MAX_FRAMES_IN_FLIGHT, image_available_semaphores, render_finished_semaphores, in_flight_fences)
 
@@ -180,7 +180,7 @@ contains
 
     do while(.not. glfw_window_should_close())
       call glfw_poll_events()
-      call draw_frame(logical_device, in_flight_fence, image_available_semaphore, render_finished_semaphores, swapchain, command_buffer, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue)
+      call draw_frame(logical_device, in_flight_fence, image_available_semaphore, render_finished_semaphores, swapchain, command_buffers, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue)
     end do
 
     if (vk_device_wait_idle(logical_device) /= VK_SUCCESS) then
