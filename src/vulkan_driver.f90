@@ -93,7 +93,7 @@ module vulkan_driver
   integer(c_int64_t) :: command_pool = VK_NULL_HANDLE
 
   ! VkCommandBuffer
-  type(vec) :: command_buffers = VK_NULL_HANDLE
+  type(vec) :: command_buffers
 
   ! VkSemaphore
   type(vec) :: image_available_semaphores
