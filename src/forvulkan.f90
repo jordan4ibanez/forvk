@@ -1395,6 +1395,11 @@ module forvulkan
   end type forvulkan_swapchain_support_details
 
 
+  ! These types allow less confusion when you're using Forvulkan.
+
+  
+
+
 !* C FUNCTION INTERFACES. ===============================================================
 
 
