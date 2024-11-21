@@ -177,6 +177,8 @@ contains
     do while(.not. glfw_window_should_close())
       call glfw_poll_events()
       call draw_frame(logical_device, current_frame, MAX_FRAMES_IN_FLIGHT, in_flight_fences, image_available_semaphores, render_finished_semaphores, swapchain, command_buffers, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue)
+
+      call glfw_close_window()
     end do
 
     if (vk_device_wait_idle(logical_device) /= VK_SUCCESS) then
