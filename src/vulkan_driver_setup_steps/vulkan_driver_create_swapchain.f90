@@ -20,8 +20,7 @@ contains
     type(vk_swapchain_khr), intent(inout) :: swapchain
     ! VkImage Array
     type(vec) :: swapchain_images
-    ! VkFormat
-    integer(c_int32_t), intent(inout) :: swapchain_image_format
+    type(vk_format), intent(inout) :: swapchain_image_format
     ! VkExtent2D
     type(vk_extent_2d), intent(inout) :: swapchain_extent
     type(forvulkan_swapchain_support_details), target :: swapchain_support_details
@@ -90,7 +89,7 @@ contains
     end if
 
     ! Finally, set the module variables so we can reuse them.
-    swapchain_image_format = selected_surface_format%format
+    swapchain_image_format%data = selected_surface_format%format
     swapchain_extent = selected_extent
 
     call swapchain_support_details%formats%destroy()

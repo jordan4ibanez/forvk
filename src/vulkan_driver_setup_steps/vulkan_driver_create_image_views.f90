@@ -17,8 +17,7 @@ contains
     type(vec), intent(inout) :: swapchain_images
     ! VkImageView Array
     type(vec), intent(inout) :: swapchain_image_views
-    ! VkFormat
-    integer(c_int32_t), intent(in), value :: swapchain_image_format
+    type(vk_format), intent(in), value :: swapchain_image_format
     integer(c_int64_t) :: i
     integer(c_int64_t), pointer :: image_pointer
     type(vk_image_view_create_info), target :: image_view_create_info

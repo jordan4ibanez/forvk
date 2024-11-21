@@ -52,6 +52,13 @@ module forvulkan_types
     integer(c_int64_t) :: data = VK_NULL_HANDLE
   end type vk_swapchain_khr
 
+
+  !? VkFormat.
+  type, bind(c) :: vk_format
+    integer(c_int32_t) :: data = 0
+  end type vk_format
+
+
 !? REGULAR TYPES. ===============================================================
 
 
@@ -747,8 +754,7 @@ module forvulkan_types
     integer(c_int64_t) :: image = 0
     ! VkImageViewType
     integer(c_int32_t) :: view_type = 0
-    ! VkFormat
-    integer(c_int32_t) :: format = 0
+    type(vk_format) :: format
     ! VkComponentMapping
     type(vk_component_mapping) :: components
     ! VkImageSubresourceRange
@@ -968,8 +974,7 @@ module forvulkan_types
   type, bind(c) :: vk_attachment_description
     ! VkAttachmentDescriptionFlags
     integer(c_int32_t) :: flags = 0
-    ! VkFormat
-    integer(c_int32_t) :: format = 0
+    type(vk_format) :: format
     ! VkSampleCountFlagBits
     integer(c_int32_t) :: samples = 0
     ! VkAttachmentLoadOp

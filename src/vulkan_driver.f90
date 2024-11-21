@@ -51,8 +51,7 @@ module vulkan_driver
   ! VkImage Vector
   type(vec) :: swapchain_images
 
-  ! VkFormat
-  integer(c_int32_t) :: swapchain_image_format = 0
+  type(vk_format) :: swapchain_image_format
 
   ! VkExtent2D
   type(vk_extent_2d) :: swapchain_extent
