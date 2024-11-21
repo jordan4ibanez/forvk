@@ -1373,6 +1373,17 @@ module forvulkan
   ! todo: marker for end of structs.
 
 
+  ! These types allow less confusion and static typing when you're using Forvulkan.
+  ! The naming inside does not matter, you're never supposed to touch it. It's an opaque data shell.
+
+
+  type, bind(c) :: vk_instance
+    private
+    integer(c_int64_t) :: a = VK_NULL_HANDLE
+  end type vk_instance
+
+
+
   !? CUSTOM TYPES. ===============================================================
 
 
@@ -1393,11 +1404,6 @@ module forvulkan
     ! uint32_t [VkPresentModeKHR]
     type(vec) :: present_modes
   end type forvulkan_swapchain_support_details
-
-
-  ! These types allow less confusion when you're using Forvulkan.
-
-  
 
 
 !* C FUNCTION INTERFACES. ===============================================================
