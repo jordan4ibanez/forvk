@@ -20,8 +20,7 @@ contains
     type(vec), intent(inout) :: image_available_semaphores
     ! VkSemaphore
     type(vec), intent(inout) :: render_finished_semaphores
-    ! VkSwapchainKHR
-    integer(c_int64_t), intent(in), value :: swapchain
+    type(vk_swapchain_khr), intent(in), value :: swapchain
     ! VkCommandBuffer
     type(vec), intent(inout) :: command_buffers
     ! VkRenderPass
@@ -44,8 +43,7 @@ contains
     ! VkSemaphore[]
     integer(c_int64_t), dimension(1), target :: signal_semaphores
     type(vk_present_info_khr), target :: present_info
-    ! VkSwapchainKHR[]
-    integer(c_int64_t), dimension(1), target :: swapchains
+    type(vk_swapchain_khr), dimension(1), target :: swapchains
     integer(c_int64_t), pointer :: semaphore, fence, command_buffer
 
     ! -1 is UINT64_MAX, aka, unlimited timeout.

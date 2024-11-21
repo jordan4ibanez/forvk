@@ -46,6 +46,12 @@ module forvulkan_types
     integer(c_int64_t) :: data = VK_NULL_HANDLE
   end type vk_queue
 
+
+  !? VkSwapchainKHR.
+  type, bind(c) :: vk_swapchain_khr
+    integer(c_int64_t) :: data = VK_NULL_HANDLE
+  end type vk_swapchain_khr
+
 !? REGULAR TYPES. ===============================================================
 
 
@@ -697,8 +703,7 @@ module forvulkan_types
     integer(c_int32_t) :: present_mode = 0
     ! VkBool32
     integer(c_int32_t) :: clipped = 0
-    ! VkSwapchainKHR
-    integer(c_int64_t) :: old_swapchain = 0
+    type(vk_swapchain_khr) :: old_swapchain
   end type vk_swapchain_create_info_khr
 
 

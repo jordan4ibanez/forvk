@@ -46,8 +46,7 @@ module vulkan_driver
 
   type(vk_queue) :: present_queue
 
-  ! VkSwapchainKHR
-  integer(c_int64_t) :: swapchain = VK_NULL_HANDLE
+  type(vk_swapchain_khr) :: swapchain
 
   ! VkImage Array
   type(vec) :: swapchain_images

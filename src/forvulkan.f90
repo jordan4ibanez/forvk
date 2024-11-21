@@ -270,8 +270,7 @@ module forvulkan
       type(c_ptr), intent(in), value :: p_create_info
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
-      ! VkSwapchainKHR *
-      integer(c_int64_t), intent(inout) :: p_swapchain
+      type(vk_swapchain_khr), intent(inout) :: p_swapchain
       integer(c_int32_t) :: vk_result
     end function vk_create_swapchain_khr
 
@@ -282,8 +281,7 @@ module forvulkan
       implicit none
 
       type(vk_device), intent(in), value :: logical_device
-      ! VkSwapchainKHR
-      integer(c_int64_t), intent(in), value :: swapchain
+      type(vk_swapchain_khr), intent(in), value :: swapchain
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
     end subroutine vk_destroy_swapchain_khr
@@ -295,8 +293,7 @@ module forvulkan
       implicit none
 
       type(vk_device), intent(in), value :: logical_device
-      ! VkSwapchainKHR
-      integer(c_int64_t), intent(in), value :: swapchain
+      type(vk_swapchain_khr), intent(in), value :: swapchain
       ! uint32_t *
       integer(c_int32_t), intent(inout) :: p_swapchain_image_count
       ! VkImage *
@@ -734,8 +731,7 @@ module forvulkan
       implicit none
 
       type(vk_device), intent(in), value :: logical_device
-      ! VkSwapchainKHR
-      integer(c_int64_t), intent(in), value :: swapchain
+      type(vk_swapchain_khr), intent(in), value :: swapchain
       ! uint64_t
       integer(c_int64_t), intent(in), value :: timeout
       ! VkSemaphore

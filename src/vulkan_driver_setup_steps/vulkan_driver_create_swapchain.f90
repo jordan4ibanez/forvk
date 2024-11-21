@@ -17,8 +17,7 @@ contains
     type(vk_physical_device), intent(in), value :: physical_device
     type(vk_device), intent(in), value :: logical_device
     type(vk_surface_khr), intent(in), value :: window_surface
-    ! VkSwapchainKHR
-    integer(c_int64_t), intent(inout) :: swapchain
+    type(vk_swapchain_khr), intent(inout) :: swapchain
     ! VkImage Array
     type(vec) :: swapchain_images
     ! VkFormat
@@ -72,7 +71,7 @@ contains
     create_info%pre_transform = swapchain_support_details%capabilities%current_transform
     create_info%composite_alpha = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR
     create_info%present_mode = selected_present_mode
-    create_info%old_swapchain = VK_NULL_HANDLE
+    create_info%old_swapchain%data = VK_NULL_HANDLE
 
     if (vk_create_swapchain_khr(logical_device, c_loc(create_info), c_null_ptr, swapchain) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to create the swapchain."
