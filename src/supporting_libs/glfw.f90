@@ -562,6 +562,16 @@ module glfw
     end subroutine glfw_get_framebuffer_size
 
 
+    subroutine internal_glfw_set_window_title(window, title) bind(c, name = "glfwSetWindowTitle")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! GLFWwindow *
+      type(c_ptr), intent(in), value :: window
+      type(c_ptr), intent(in), value :: title
+    end subroutine internal_glfw_set_window_title
+
+
   end interface
 
 
