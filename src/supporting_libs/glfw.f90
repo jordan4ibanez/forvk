@@ -47,6 +47,7 @@ module glfw
   public :: glfw_swap_buffers
   public :: glfw_poll_events
   public :: glfw_destroy_window
+  public :: glfw_set_window_title
   public :: glfw_set_error_callback
   public :: glfw_window_hint
   public :: glfw_set_window_size_callback
