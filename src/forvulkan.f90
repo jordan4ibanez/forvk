@@ -810,8 +810,7 @@ module forvulkan
       type(c_ptr), intent(in), value :: p_create_info
       ! const VkAllocationCallbacks *
       type(c_funptr), intent(in), value :: p_allocator
-      ! VkDebugUtilsMessengerEXT *
-      integer(c_int64_t), intent(inout) :: p_messenger
+      type(vk_debug_utils_messenger_ext), intent(inout) :: p_messenger
       integer(c_int32_t) :: vk_result
     end function pfn_vk_create_debug_utils_messenger_ext
 
@@ -822,8 +821,7 @@ module forvulkan
       implicit none
 
       type(vk_instance), intent(in), value :: instance
-      ! VkDebugUtilsMessengerEXT
-      integer(c_int64_t), intent(in), value :: messenger
+      type(vk_debug_utils_messenger_ext), intent(in), value :: messenger
       ! const VkAllocationCallbacks *
       type(c_funptr), intent(in), value :: p_allocator
     end subroutine pfn_vk_destroy_debug_utils_messenger_ext
@@ -853,8 +851,7 @@ contains
     type(c_ptr), intent(in), value :: p_create_info
     ! const VkAllocationCallbacks *
     type(c_funptr), intent(in), value :: p_allocator
-    ! VkDebugUtilsMessengerEXT *
-    integer(c_int64_t), intent(inout) :: p_debug_messenger
+    type(vk_debug_utils_messenger_ext), intent(inout) :: p_debug_messenger
     integer(c_int32_t) :: vk_result
     character(len = :, kind = c_char), pointer :: function_name
     type(c_funptr) :: function_pointer
@@ -886,8 +883,7 @@ contains
     implicit none
 
     type(vk_instance), intent(in), value :: instance
-    ! VkDebugUtilsMessengerEXT
-    integer(c_int64_t), intent(in), value :: debug_messenger
+    type(vk_debug_utils_messenger_ext), intent(in), value :: debug_messenger
     ! const VkAllocationCallbacks *
     type(c_funptr), intent(in), value :: p_allocator
     character(len = :, kind = c_char), pointer :: function_name

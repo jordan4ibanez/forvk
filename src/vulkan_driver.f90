@@ -35,8 +35,7 @@ module vulkan_driver
 
   type(vk_instance) :: vulkan_instance
 
-  ! VkDebugUtilsMessengerEXT
-  integer(c_int64_t) :: debug_messenger = VK_NULL_HANDLE
+  type(vk_debug_utils_messenger_ext) :: debug_messenger
 
   ! VkSurfaceKHR
   integer(c_int64_t) :: window_surface = VK_NULL_HANDLE

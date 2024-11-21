@@ -14,7 +14,7 @@ contains
     implicit none
 
     type(vk_instance), intent(in), value :: vulkan_instance
-    integer(c_int64_t), intent(inout) :: debug_messenger
+    type(vk_debug_utils_messenger_ext), intent(inout) :: debug_messenger
     logical(c_bool), intent(in), value :: DEBUG_MODE
     type(vk_debug_utils_messenger_create_info_ext), target :: debug_messenger_create_info
 

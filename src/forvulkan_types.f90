@@ -1362,9 +1362,11 @@ module forvulkan_types
   ! todo: marker for end of structs.
 
 
+!? FORTRANIFIED OPAQUE TYPES. ===============================================================
+
+
   ! These types allow less confusion and static typing when you're using Forvulkan.
   ! The naming inside does not matter, you're never supposed to touch it. It's an opaque data shell.
-
 
   type, bind(c) :: vk_instance
     private
@@ -1372,7 +1374,13 @@ module forvulkan_types
   end type vk_instance
 
 
-  !? CUSTOM TYPES. ===============================================================
+  type, bind(c) :: vk_debug_utils_messenger_ext
+    private
+    integer(c_int64_t) :: a = VK_NULL_HANDLE
+  end type vk_debug_utils_messenger_ext
+
+
+!? CUSTOM TYPES. ===============================================================
 
 
   type :: forvulkan_queue_family_indices
