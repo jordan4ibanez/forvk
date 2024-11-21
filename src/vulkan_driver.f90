@@ -39,8 +39,7 @@ module vulkan_driver
 
   type(vk_surface_khr) :: window_surface
 
-  ! VkPhysicalDevice
-  integer(c_int64_t) :: physical_device = VK_NULL_HANDLE
+  type(vk_physical_device) :: physical_device
 
   ! VkDevice
   integer(c_int64_t) :: logical_device = VK_NULL_HANDLE

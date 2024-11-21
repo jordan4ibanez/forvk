@@ -18,14 +18,12 @@ contains
     implicit none
 
     type(vk_instance), intent(in), value :: vulkan_instance
-    ! VkPhysicalDevice
-    integer(c_int64_t), intent(inout) :: physical_device
+    type(vk_physical_device), intent(inout) :: physical_device
     type(vk_surface_khr), intent(in), value :: window_surface
     integer(c_int32_t) :: device_count, i
     ! c_int64_t [VkPhysicalDevice]
     type(vec) :: available_devices
-    ! VkPhysicalDevice *
-    integer(c_int64_t), pointer :: physical_device_pointer
+    type(vk_physical_device), pointer :: physical_device_pointer
     character(len = :, kind = c_char), pointer :: device_name
 
     print"(A)","[Vulkan]: Selecting physical device."
@@ -62,7 +60,7 @@ contains
       end if
     end do device_search
 
-    if (physical_device == VK_NULL_HANDLE) then
+    if (physical_device%data == VK_NULL_HANDLE) then
       error stop "[Vulkan] Error: No suitable GPU available."
     else
       ! todo: can put these devices in some kind of array instead of just destroying the pointers.
@@ -77,8 +75,7 @@ contains
   function device_is_suitable(physical_device_pointer, window_surface, device_name) result(suitable)
     implicit none
 
-    ! VkPhysicalDevice
-    integer(c_int64_t), intent(inout), pointer :: physical_device_pointer
+    type(vk_physical_device), intent(inout), pointer :: physical_device_pointer
     type(vk_surface_khr), intent(in), value :: window_surface
     character(len = :, kind = c_char), intent(inout), pointer :: device_name
     type(forvulkan_queue_family_indices) :: queue_family_indices
@@ -141,8 +138,7 @@ contains
   function check_device_extension_support(physical_device, window_surface) result(has_support)
     implicit none
 
-    !VkPhysicalDevice
-    integer(c_int64_t), intent(in), value :: physical_device
+    type(vk_physical_device), intent(in), value :: physical_device
     type(vk_surface_khr), intent(in), value :: window_surface
     type(forvulkan_swapchain_support_details) :: swapchain_support_details
     logical(c_bool) :: has_support

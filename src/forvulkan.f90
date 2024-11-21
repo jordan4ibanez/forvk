@@ -99,10 +99,10 @@ module forvulkan
 
     subroutine vk_get_physical_device_properties(physical_device, p_properties) bind(c, name = "vkGetPhysicalDeviceProperties")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkPhysicalDevice
-      integer(c_int64_t), intent(in), value :: physical_device
+      type(vk_physical_device), intent(in), value :: physical_device
       ! VkPhysicalDeviceProperties *
       type(c_ptr), intent(in), value :: p_properties
     end subroutine vk_get_physical_device_properties
@@ -110,10 +110,10 @@ module forvulkan
 
     subroutine vk_get_physical_device_features(physical_device, p_features) bind(c, name = "vkGetPhysicalDeviceFeatures")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkPhysicalDevice
-      integer(c_int64_t), intent(in), value :: physical_device
+      type(vk_physical_device), intent(in), value :: physical_device
       ! VkPhysicalDeviceFeatures *
       type(c_ptr), intent(in), value :: p_features
     end subroutine vk_get_physical_device_features
@@ -121,10 +121,10 @@ module forvulkan
 
     subroutine vk_get_physical_device_queue_family_properties(physical_device, p_queue_family_property_count, p_queue_family_properties) bind(c, name = "vkGetPhysicalDeviceQueueFamilyProperties")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkPhysicalDevice
-      integer(c_int64_t), intent(in), value :: physical_device
+      type(vk_physical_device), intent(in), value :: physical_device
       ! uint32_t *
       integer(c_int32_t), intent(inout) :: p_queue_family_property_count
       ! VkQueueFamilyProperties *
@@ -134,10 +134,10 @@ module forvulkan
 
     function vk_create_device(physical_device, p_create_info, p_allocator, p_logical_device) result(vk_result) bind(c, name = "vkCreateDevice")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkPhysicalDevice
-      integer(c_int64_t), intent(in), value :: physical_device
+      type(vk_physical_device), intent(in), value :: physical_device
       ! const VkDeviceCreateInfo *
       type(c_ptr), intent(in), value :: p_create_info
       ! const VkAllocationCallbacks *
@@ -191,8 +191,7 @@ module forvulkan
       use :: forvulkan_types
       implicit none
 
-      ! VkPhysicalDevice
-      integer(c_int64_t), intent(in), value :: physical_device
+      type(vk_physical_device), intent(in), value :: physical_device
       ! uint32_t
       integer(c_int32_t), intent(in), value :: queue_family_index
       type(vk_surface_khr), intent(in), value :: window_surface
@@ -204,10 +203,10 @@ module forvulkan
 
     function vk_enumerate_device_extension_properties(physical_device, p_layer_name, p_property_count, p_properties) result(vk_result) bind(c, name = "vkEnumerateDeviceExtensionProperties")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkPhysicalDevice
-      integer(c_int64_t), intent(in), value :: physical_device
+      type(vk_physical_device), intent(in), value :: physical_device
       ! const char *
       type(c_ptr), intent(in), value :: p_layer_name
       ! uint32 *
@@ -223,8 +222,7 @@ module forvulkan
       use :: forvulkan_types
       implicit none
 
-      ! VkPhysicalDevice
-      integer(c_int64_t), intent(in), value :: physical_device
+      type(vk_physical_device), intent(in), value :: physical_device
       type(vk_surface_khr), intent(in), value :: surface
       ! VkSurfaceCapabilitiesKHR *
       type(c_ptr), intent(in), value :: p_surface_capabilities
@@ -237,8 +235,7 @@ module forvulkan
       use :: forvulkan_types
       implicit none
 
-      ! VkPhysicalDevice
-      integer(c_int64_t), intent(in), value :: physical_device
+      type(vk_physical_device), intent(in), value :: physical_device
       type(vk_surface_khr), intent(in), value :: surface
       ! uint32_t *
       integer(c_int32_t), intent(inout) :: p_surface_format_count
@@ -253,8 +250,7 @@ module forvulkan
       use :: forvulkan_types
       implicit none
 
-      ! VkPhysicalDevice
-      integer(c_int64_t), intent(in), value :: physical_device
+      type(vk_physical_device), intent(in), value :: physical_device
       type(vk_surface_khr), intent(in), value :: surface
       ! uint32_t *
       integer(c_int32_t), intent(inout) :: p_present_mode_count

@@ -15,7 +15,7 @@ contains
   subroutine create_logical_device(physical_device, logical_device, graphics_queue, present_queue, window_surface, DEBUG_MODE)
     implicit none
 
-    integer(c_int64_t), intent(in), value :: physical_device
+    type(vk_physical_device), intent(in), value :: physical_device
     integer(c_int64_t), intent(inout), target :: logical_device
     ! VkQueue
     integer(c_int64_t), intent(inout) :: graphics_queue

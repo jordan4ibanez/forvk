@@ -12,8 +12,7 @@ contains
   function query_swapchain_support(physical_device, window_surface, swapchain_support_details) result(has_swapchain_support)
     implicit none
 
-    ! VkPhysicalDevice
-    integer(c_int64_t), intent(in), value :: physical_device
+    type(vk_physical_device), intent(in), value :: physical_device
     type(vk_surface_khr), intent(in), value :: window_surface
     logical(c_bool) :: has_swapchain_support
     type(forvulkan_swapchain_support_details), intent(inout), target :: swapchain_support_details

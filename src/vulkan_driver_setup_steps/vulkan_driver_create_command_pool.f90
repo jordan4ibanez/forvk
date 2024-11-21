@@ -1,7 +1,6 @@
 module vulkan_driver_create_command_pool
   use, intrinsic :: iso_c_binding
   use :: forvulkan
-  use :: forvulkan_parameters
   use :: vulkan_driver_find_queue_families
   implicit none
 
@@ -12,8 +11,7 @@ contains
   subroutine create_command_pool(physical_device, window_surface, logical_device, command_pool)
     implicit none
 
-    ! VkPhysicalDevice
-    integer(c_int64_t), intent(in), value :: physical_device
+    type(vk_physical_device), intent(in), value :: physical_device
     type(vk_surface_khr), intent(in), value :: window_surface
     ! VkDevice
     integer(c_int64_t), intent(in), value :: logical_device

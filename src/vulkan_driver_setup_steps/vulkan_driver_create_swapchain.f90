@@ -14,8 +14,7 @@ contains
   subroutine create_swapchain(physical_device, logical_device, window_surface, swapchain, swapchain_images, swapchain_image_format, swapchain_extent)
     implicit none
 
-    ! VkPhysicalDevice
-    integer(c_int64_t), intent(in), value :: physical_device
+    type(vk_physical_device), intent(in), value :: physical_device
     ! VkDevice
     integer(c_int64_t), intent(in), value :: logical_device
     type(vk_surface_khr), intent(in), value :: window_surface

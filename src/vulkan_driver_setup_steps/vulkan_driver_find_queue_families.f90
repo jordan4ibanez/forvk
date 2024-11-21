@@ -11,8 +11,7 @@ contains
   function find_queue_families(physical_device, window_surface) result(queue_family_indices)
     implicit none
 
-    ! VkPhysicalDevice
-    integer(c_int64_t), intent(in), value :: physical_device
+    type(vk_physical_device), intent(in), value :: physical_device
     type(vk_surface_khr), intent(in), value :: window_surface
     type(forvulkan_queue_family_indices) :: queue_family_indices
     integer(c_int32_t) :: queue_family_count, i, present_support
