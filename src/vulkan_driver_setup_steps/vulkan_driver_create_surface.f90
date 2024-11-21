@@ -12,8 +12,7 @@ contains
     implicit none
 
     type(vk_instance), intent(in), value :: vulkan_instance
-    ! VkSurfaceKHR
-    integer(c_int64_t), intent(inout) :: window_surface
+    type(vk_surface_khr), intent(inout) :: window_surface
     type(c_ptr) :: window_pointer
 
     window_pointer = glfw_get_window_pointer()

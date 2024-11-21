@@ -4,6 +4,36 @@ module forvulkan_types
   use :: vector
   implicit none
 
+!? FORTRANIFIED OPAQUE TYPES. ===============================================================
+
+
+  ! These types allow less confusion and static typing when you're using Forvulkan.
+  ! The naming inside does not matter, you're never supposed to touch it. It's an opaque data shell.
+
+
+  !? VkInstance.
+  type, bind(c) :: vk_instance
+    private
+    integer(c_int64_t) :: a = VK_NULL_HANDLE
+  end type vk_instance
+
+
+  !? VkDebugUtilsMessengerEXT.
+  type, bind(c) :: vk_debug_utils_messenger_ext
+    private
+    integer(c_int64_t) :: a = VK_NULL_HANDLE
+  end type vk_debug_utils_messenger_ext
+
+
+  !? VkSurfaceKHR.
+  type, bind(c) :: vk_surface_khr
+    private
+    integer(c_int64_t) :: a = VK_NULL_HANDLE
+  end type vk_surface_khr
+
+
+!? REGULAR TYPES. ===============================================================
+
 
   !? VkExtensionProperties.
   type, bind(c) :: vk_extension_properties
@@ -627,8 +657,7 @@ module forvulkan_types
     type(c_ptr) :: p_next = c_null_ptr
     ! uint32_t [VkSwapchainCreateFlagsKHR]
     integer(c_int32_t) :: flags = 0
-    ! VkSurfaceKHR
-    integer(c_int64_t) :: surface = 0
+    type(vk_surface_khr) :: surface
     ! uint32_t
     integer(c_int32_t) :: min_image_count = 0
     ! uint32_t [VkFormat]
@@ -1360,25 +1389,6 @@ module forvulkan_types
 
 
   ! todo: marker for end of structs.
-
-
-!? FORTRANIFIED OPAQUE TYPES. ===============================================================
-
-
-  ! These types allow less confusion and static typing when you're using Forvulkan.
-  ! The naming inside does not matter, you're never supposed to touch it. It's an opaque data shell.
-
-  !? VkInstance.
-  type, bind(c) :: vk_instance
-    private
-    integer(c_int64_t) :: a = VK_NULL_HANDLE
-  end type vk_instance
-
-  !? VkDebugUtilsMessengerEXT.
-  type, bind(c) :: vk_debug_utils_messenger_ext
-    private
-    integer(c_int64_t) :: a = VK_NULL_HANDLE
-  end type vk_debug_utils_messenger_ext
 
 
 !? CUSTOM TYPES. ===============================================================

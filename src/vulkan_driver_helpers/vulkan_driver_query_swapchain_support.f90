@@ -1,7 +1,6 @@
 module vulkan_driver_query_swapchain_support
   use, intrinsic :: iso_c_binding
   use :: forvulkan
-  use :: forvulkan_parameters
   use :: string_f90
   use :: vector
   implicit none
@@ -15,8 +14,7 @@ contains
 
     ! VkPhysicalDevice
     integer(c_int64_t), intent(in), value :: physical_device
-    ! VkSurfaceKHR
-    integer(c_int64_t), intent(in), value :: window_surface
+    type(vk_surface_khr), intent(in), value :: window_surface
     logical(c_bool) :: has_swapchain_support
     type(forvulkan_swapchain_support_details), intent(inout), target :: swapchain_support_details
     integer(c_int32_t) :: format_count, present_mode_count

@@ -37,8 +37,7 @@ module vulkan_driver
 
   type(vk_debug_utils_messenger_ext) :: debug_messenger
 
-  ! VkSurfaceKHR
-  integer(c_int64_t) :: window_surface = VK_NULL_HANDLE
+  type(vk_surface_khr) :: window_surface
 
   ! VkPhysicalDevice
   integer(c_int64_t) :: physical_device = VK_NULL_HANDLE

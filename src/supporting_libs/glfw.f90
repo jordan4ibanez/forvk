@@ -546,8 +546,7 @@ module glfw
       type(c_ptr), intent(in), value :: window
       ! const VkAllocationCallbacks *
       type(c_funptr), intent(in), value :: allocator
-      ! VkSurfaceKHR *
-      integer(c_int64_t), intent(inout) :: window_surface
+      type(vk_surface_khr), intent(inout) :: window_surface
       integer(c_int32_t) :: vk_result
     end function glfw_create_window_surface
 

@@ -1,7 +1,6 @@
 module vulkan_driver_create_logical_device
   use, intrinsic :: iso_c_binding
   use :: forvulkan
-  use :: forvulkan_parameters
   use :: vulkan_driver_find_queue_families
   use :: vector
   use :: integer32_set
@@ -18,13 +17,11 @@ contains
 
     integer(c_int64_t), intent(in), value :: physical_device
     integer(c_int64_t), intent(inout), target :: logical_device
-    ! type(forvulkan_queue_family_indices), intent(in) :: queue_indices
     ! VkQueue
     integer(c_int64_t), intent(inout) :: graphics_queue
     ! VkQueue
     integer(c_int64_t), intent(inout) :: present_queue
-    ! VkSurfaceKHR
-    integer(c_int64_t), intent(in), value :: window_surface
+    type(vk_surface_khr), intent(in), value :: window_surface
     logical(c_bool), intent(in), value :: DEBUG_MODE
     ! const char **
     type(vec) :: required_validation_layers

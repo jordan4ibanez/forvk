@@ -2,7 +2,6 @@ module vulkan_driver_create_swapchain
   use, intrinsic :: iso_c_binding
   use :: vector
   use :: forvulkan
-  use :: forvulkan_parameters
   use :: vulkan_driver_query_swapchain_support
   use :: vulkan_driver_find_queue_families
   use :: glfw
@@ -19,8 +18,7 @@ contains
     integer(c_int64_t), intent(in), value :: physical_device
     ! VkDevice
     integer(c_int64_t), intent(in), value :: logical_device
-    ! VkSurfaceKHR
-    integer(c_int64_t), intent(in), value :: window_surface
+    type(vk_surface_khr), intent(in), value :: window_surface
     ! VkSwapchainKHR
     integer(c_int64_t), intent(inout) :: swapchain
     ! VkImage Array

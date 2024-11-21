@@ -180,8 +180,7 @@ module forvulkan
       implicit none
 
       type(vk_instance), intent(in), value :: instance
-      ! VkSurfaceKHR
-      integer(c_int64_t), intent(in), value :: window_surface
+      type(vk_surface_khr), intent(in), value :: window_surface
       ! const VkAllocationCallbacks *
       type(c_funptr), intent(in), value :: p_allocator
     end subroutine vk_destroy_surface_khr
@@ -189,14 +188,14 @@ module forvulkan
 
     function vk_get_physical_device_surface_support_khr(physical_device, queue_family_index, window_surface, p_supported) result(vk_result) bind(c, name = "vkGetPhysicalDeviceSurfaceSupportKHR")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
       ! VkPhysicalDevice
       integer(c_int64_t), intent(in), value :: physical_device
       ! uint32_t
       integer(c_int32_t), intent(in), value :: queue_family_index
-      ! VkSurfaceKHR
-      integer(c_int64_t), intent(in), value :: window_surface
+      type(vk_surface_khr), intent(in), value :: window_surface
       ! VkBool32 *
       integer(c_int32_t), intent(inout) :: p_supported
       integer(c_int32_t) :: vk_result
@@ -221,12 +220,12 @@ module forvulkan
 
     function vk_get_physical_device_surface_capabilities_khr(physical_device, surface, p_surface_capabilities) result(vk_result) bind(c, name = "vkGetPhysicalDeviceSurfaceCapabilitiesKHR")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
       ! VkPhysicalDevice
       integer(c_int64_t), intent(in), value :: physical_device
-      ! VkSurfaceKHR
-      integer(c_int64_t), intent(in), value :: surface
+      type(vk_surface_khr), intent(in), value :: surface
       ! VkSurfaceCapabilitiesKHR *
       type(c_ptr), intent(in), value :: p_surface_capabilities
       integer(c_int32_t) :: vk_result
@@ -235,12 +234,12 @@ module forvulkan
 
     function vk_get_physical_device_surface_formats_khr(physical_device, surface, p_surface_format_count, p_surface_formats) result(vk_result) bind(c, name = "vkGetPhysicalDeviceSurfaceFormatsKHR")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
       ! VkPhysicalDevice
       integer(c_int64_t), intent(in), value :: physical_device
-      ! VkSurfaceKHR
-      integer(c_int64_t), intent(in), value :: surface
+      type(vk_surface_khr), intent(in), value :: surface
       ! uint32_t *
       integer(c_int32_t), intent(inout) :: p_surface_format_count
       ! VkSurfaceFormatKHR *
@@ -251,12 +250,12 @@ module forvulkan
 
     function vk_get_physical_device_surface_present_modes_khr(physical_device, surface, p_present_mode_count, p_present_modes) result(vk_result) bind(c, name = "vkGetPhysicalDeviceSurfacePresentModesKHR")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
       ! VkPhysicalDevice
       integer(c_int64_t), intent(in), value :: physical_device
-      ! VkSurfaceKHR
-      integer(c_int64_t), intent(in), value :: surface
+      type(vk_surface_khr), intent(in), value :: surface
       ! uint32_t *
       integer(c_int32_t), intent(inout) :: p_present_mode_count
       ! VkPresentModeKHR *

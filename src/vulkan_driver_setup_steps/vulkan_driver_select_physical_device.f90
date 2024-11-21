@@ -20,8 +20,7 @@ contains
     type(vk_instance), intent(in), value :: vulkan_instance
     ! VkPhysicalDevice
     integer(c_int64_t), intent(inout) :: physical_device
-    ! VkSurfaceKHR
-    integer(c_int64_t), intent(in), value :: window_surface
+    type(vk_surface_khr), intent(in), value :: window_surface
     integer(c_int32_t) :: device_count, i
     ! c_int64_t [VkPhysicalDevice]
     type(vec) :: available_devices
@@ -80,8 +79,7 @@ contains
 
     ! VkPhysicalDevice
     integer(c_int64_t), intent(inout), pointer :: physical_device_pointer
-    ! VkSurfaceKHR
-    integer(c_int64_t), intent(in), value :: window_surface
+    type(vk_surface_khr), intent(in), value :: window_surface
     character(len = :, kind = c_char), intent(inout), pointer :: device_name
     type(forvulkan_queue_family_indices) :: queue_family_indices
     logical(c_bool) :: suitable
@@ -145,8 +143,7 @@ contains
 
     !VkPhysicalDevice
     integer(c_int64_t), intent(in), value :: physical_device
-    ! VkSurfaceKHR
-    integer(c_int64_t), intent(in), value :: window_surface
+    type(vk_surface_khr), intent(in), value :: window_surface
     type(forvulkan_swapchain_support_details) :: swapchain_support_details
     logical(c_bool) :: has_support
     integer(c_int32_t) :: extension_count

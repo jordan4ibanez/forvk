@@ -1,7 +1,6 @@
 module vulkan_driver_find_queue_families
   use, intrinsic :: iso_c_binding
   use :: forvulkan
-  use :: forvulkan_parameters
   use :: vector
   implicit none
 
@@ -14,8 +13,7 @@ contains
 
     ! VkPhysicalDevice
     integer(c_int64_t), intent(in), value :: physical_device
-    ! VkSurfaceKHR
-    integer(c_int64_t), intent(in), value :: window_surface
+    type(vk_surface_khr), intent(in), value :: window_surface
     type(forvulkan_queue_family_indices) :: queue_family_indices
     integer(c_int32_t) :: queue_family_count, i, present_support
     ! VkQueueFamilyProperties

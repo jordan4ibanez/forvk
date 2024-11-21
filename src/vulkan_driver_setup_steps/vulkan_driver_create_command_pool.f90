@@ -14,8 +14,7 @@ contains
 
     ! VkPhysicalDevice
     integer(c_int64_t), intent(in), value :: physical_device
-    ! VkSurfaceKHR
-    integer(c_int64_t), intent(in), value :: window_surface
+    type(vk_surface_khr), intent(in), value :: window_surface
     ! VkDevice
     integer(c_int64_t), intent(in), value :: logical_device
     ! VkCommandPool
