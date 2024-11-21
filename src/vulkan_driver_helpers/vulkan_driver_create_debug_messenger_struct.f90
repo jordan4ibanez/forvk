@@ -1,7 +1,6 @@
 module vulkan_driver_create_debug_messenger_struct
   use, intrinsic :: iso_c_binding
   use :: forvulkan
-  use :: forvulkan_parameters
   use :: string_f90
   implicit none
 

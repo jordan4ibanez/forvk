@@ -2,7 +2,6 @@ module vulkan_driver_ensure_validation_layers
   use, intrinsic :: iso_c_binding
   use :: vector
   use :: forvulkan
-  use :: forvulkan_parameters
   use :: string_f90
   use :: vulkan_driver_create_validation_layers
   implicit none

@@ -1,7 +1,6 @@
 module vulkan_driver_recreate_swapchain
   use, intrinsic :: iso_c_binding
   use :: forvulkan
-  use :: forvulkan_parameters
   implicit none
 
 

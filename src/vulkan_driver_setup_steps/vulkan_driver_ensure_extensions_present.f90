@@ -4,7 +4,6 @@ module vulkan_driver_ensure_extensions_present
   use :: string_f90
   use :: glfw
   use :: forvulkan
-  use :: forvulkan_parameters
   use :: vulkan_driver_create_required_extensions
   implicit none
 

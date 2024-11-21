@@ -5,7 +5,6 @@ module vulkan_shader_compiler
   use :: directory
   use :: files_f90
   use :: forvulkan
-  use :: forvulkan_parameters
   implicit none
 
 

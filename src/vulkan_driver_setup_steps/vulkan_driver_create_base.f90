@@ -1,7 +1,6 @@
 module vulkan_driver_create_base
   use, intrinsic :: iso_c_binding
   use :: glfw
-  use :: forvulkan_parameters
   use :: forvulkan
   implicit none
 

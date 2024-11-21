@@ -1,7 +1,6 @@
 module vulkan_driver_create_render_pass
   use, intrinsic :: iso_c_binding
   use :: forvulkan
-  use :: forvulkan_parameters
   implicit none
 
 
