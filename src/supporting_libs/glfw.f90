@@ -348,7 +348,7 @@ module glfw
       use, intrinsic :: iso_c_binding
       implicit none
       integer(c_int), intent(in), value :: width, height
-      character(len = 1, kind = c_char), intent(in), optional :: title
+      type(c_ptr), intent(in), value :: title
       type(c_ptr), intent(in), optional :: monitor, share
       type(c_ptr) :: new_window_pointer
     end function internal_glfw_create_window
