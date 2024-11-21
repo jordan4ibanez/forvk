@@ -37,9 +37,10 @@ module forvulkan
 
     subroutine vk_destroy_instance(instance, p_allocator) bind(c, name = "vkDestroyInstance")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      integer(c_int64_t), intent(in), value :: instance
+      type(vk_instance), intent(in), value :: instance
       type(c_ptr), intent(in), value :: p_allocator
     end subroutine vk_destroy_instance
 
@@ -72,10 +73,10 @@ module forvulkan
     !* Note: This is for getting Vulkan function pointers.
     function vk_get_instance_proc_addr(instance, p_name) result(pfn_vk_void_function) bind(c, name = "vkGetInstanceProcAddr")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkInstance
-      integer(c_int64_t), intent(in), value :: instance
+      type(vk_instance), intent(in), value :: instance
       ! const char *
       type(c_ptr), intent(in), value :: p_name
       type(c_funptr) :: pfn_vk_void_function
@@ -84,10 +85,10 @@ module forvulkan
 
     function vk_enumerate_physical_devices(instance, p_physical_device_count, p_physical_devices) result(vk_result) bind(c, name = "vkEnumeratePhysicalDevices")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkInstance
-      integer(c_int64_t), intent(in), value :: instance
+      type(vk_instance), intent(in), value :: instance
       ! uint32_t *
       integer(c_int32_t), intent(inout) :: p_physical_device_count
       ! VkPhysicalDevice *
@@ -175,10 +176,10 @@ module forvulkan
 
     subroutine vk_destroy_surface_khr(instance, window_surface, p_allocator) bind(c, name = "vkDestroySurfaceKHR")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkInstance
-      integer(c_int64_t), intent(in), value :: instance
+      type(vk_instance), intent(in), value :: instance
       ! VkSurfaceKHR
       integer(c_int64_t), intent(in), value :: window_surface
       ! const VkAllocationCallbacks *
@@ -801,10 +802,10 @@ module forvulkan
 
     function pfn_vk_create_debug_utils_messenger_ext(instance, p_create_info, p_allocator, p_messenger) result(vk_result) bind(c)
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkInstance
-      integer(c_int64_t), intent(in), value :: instance
+      type(vk_instance), intent(in), value :: instance
       ! const VkDebugUtilsMessengerCreateInfoEXT*
       type(c_ptr), intent(in), value :: p_create_info
       ! const VkAllocationCallbacks *
@@ -817,10 +818,10 @@ module forvulkan
 
     subroutine pfn_vk_destroy_debug_utils_messenger_ext(instance, messenger, p_allocator) bind(c)
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkInstance
-      integer(c_int64_t), intent(in), value :: instance
+      type(vk_instance), intent(in), value :: instance
       ! VkDebugUtilsMessengerEXT
       integer(c_int64_t), intent(in), value :: messenger
       ! const VkAllocationCallbacks *
@@ -847,7 +848,7 @@ contains
   function forvulkan_create_debug_utils_messenger_ext(instance, p_create_info, p_allocator, p_debug_messenger) result(vk_result)
     implicit none
 
-    integer(c_int64_t), intent(in), value :: instance
+    type(vk_instance), intent(in), value :: instance
     ! const VkDebugUtilsMessengerCreateInfoEXT *
     type(c_ptr), intent(in), value :: p_create_info
     ! const VkAllocationCallbacks *
@@ -884,7 +885,7 @@ contains
   subroutine forvulkan_destroy_debug_utils_messenger_ext(instance, debug_messenger, p_allocator)
     implicit none
 
-    integer(c_int64_t), intent(in), value :: instance
+    type(vk_instance), intent(in), value :: instance
     ! VkDebugUtilsMessengerEXT
     integer(c_int64_t), intent(in), value :: debug_messenger
     ! const VkAllocationCallbacks *

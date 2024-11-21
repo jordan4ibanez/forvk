@@ -1,6 +1,5 @@
 module vulkan_driver_select_physical_device
   use :: forvulkan
-  use :: forvulkan_parameters
   use :: vector
   use :: integer32_set
   use :: vulkan_driver_find_queue_families
@@ -18,8 +17,7 @@ contains
   subroutine select_physical_device(vulkan_instance, physical_device, window_surface)
     implicit none
 
-    ! VkInstance
-    integer(c_int64_t), intent(in), value :: vulkan_instance
+    type(vk_instance), intent(in), value :: vulkan_instance
     ! VkPhysicalDevice
     integer(c_int64_t), intent(inout) :: physical_device
     ! VkSurfaceKHR

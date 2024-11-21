@@ -538,10 +538,10 @@ module glfw
 
     function glfw_create_window_surface(instance, window, allocator, window_surface) result(vk_result) bind(c, name = "glfwCreateWindowSurface")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkInstance
-      integer(c_int64_t), intent(in), value :: instance
+      type(vk_instance), intent(in), value :: instance
       ! GLFWwindow *
       type(c_ptr), intent(in), value :: window
       ! const VkAllocationCallbacks *

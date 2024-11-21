@@ -1,7 +1,7 @@
 module vulkan_driver_create_surface
   use, intrinsic :: iso_c_binding
   use :: glfw
-  use :: forvulkan_parameters
+  use :: forvulkan
   implicit none
 
 
@@ -11,8 +11,7 @@ contains
   subroutine create_surface(vulkan_instance, window_surface)
     implicit none
 
-    ! VkInstance
-    integer(c_int64_t), intent(in), value :: vulkan_instance
+    type(vk_instance), intent(in), value :: vulkan_instance
     ! VkSurfaceKHR
     integer(c_int64_t), intent(inout) :: window_surface
     type(c_ptr) :: window_pointer
