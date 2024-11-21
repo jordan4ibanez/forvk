@@ -142,18 +142,17 @@ module forvulkan
       type(c_ptr), intent(in), value :: p_create_info
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
-      ! VkDevice *
-      integer(c_int64_t), intent(inout) :: p_logical_device
+      type(vk_device), intent(inout) :: p_logical_device
       integer(c_int32_t) :: vk_result
     end function vk_create_device
 
 
     subroutine vk_destroy_device(logical_device, p_allocator) bind(c, name = "vkDestroyDevice")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
     end subroutine vk_destroy_device
@@ -161,10 +160,10 @@ module forvulkan
 
     subroutine vk_get_device_queue(logical_device, queue_family_index, queue_index, p_queue) bind(c, name = "vkGetDeviceQueue")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! uint32_t
       integer(c_int32_t), intent(in), value :: queue_family_index
       ! uint32_t
@@ -262,10 +261,10 @@ module forvulkan
 
     function vk_create_swapchain_khr(logical_device, p_create_info, p_allocator, p_swapchain) result(vk_result) bind(c, name = "vkCreateSwapchainKHR")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! const VkSwapchainCreateInfoKHR *
       type(c_ptr), intent(in), value :: p_create_info
       ! const VkAllocationCallbacks *
@@ -278,10 +277,10 @@ module forvulkan
 
     subroutine vk_destroy_swapchain_khr(logical_device, swapchain, p_allocator) bind(c, name = "vkDestroySwapchainKHR")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! VkSwapchainKHR
       integer(c_int64_t), intent(in), value :: swapchain
       ! const VkAllocationCallbacks *
@@ -291,10 +290,10 @@ module forvulkan
 
     function vk_get_swapchain_images_khr(logical_device, swapchain, p_swapchain_image_count, p_swapchain_images) result(vk_result) bind(c, name = "vkGetSwapchainImagesKHR")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! VkSwapchainKHR
       integer(c_int64_t), intent(in), value :: swapchain
       ! uint32_t *
@@ -307,10 +306,10 @@ module forvulkan
 
     function vk_create_image_view(logical_device, p_create_info, p_allocator, p_view) result(vk_result) bind(c, name = "vkCreateImageView")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! const VkImageViewCreateInfo *
       type(c_ptr), intent(in), value :: p_create_info
       ! const VkAllocationCallbacks *
@@ -323,10 +322,10 @@ module forvulkan
 
     subroutine vk_destroy_image_view(logical_device, image_view, p_allocator) bind(c, name = "vkDestroyImageView")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! VkImageView
       integer(c_int64_t), intent(in), value :: image_view
       ! const VkAllocationCallbacks *
@@ -336,10 +335,10 @@ module forvulkan
 
     function vk_create_shader_module(logical_device, p_create_info, p_allocator, p_shader_module) result(vk_result) bind(c, name = "vkCreateShaderModule")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! const VkShaderModuleCreateInfo *
       type(c_ptr), intent(in), value :: p_create_info
       ! const VkAllocationCallbacks *
@@ -352,10 +351,10 @@ module forvulkan
 
     subroutine vk_destroy_shader_module(logical_device, shader_module, p_allocator) bind(c, name = "vkDestroyShaderModule")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! VkShaderModule
       integer(c_int64_t), intent(in), value :: shader_module
       ! const VkAllocationCallbacks *
@@ -365,10 +364,10 @@ module forvulkan
 
     function vk_create_pipeline_layout(logical_device, p_create_info, p_allocator, p_pipeline_layout) result(vk_result) bind(c, name = "vkCreatePipelineLayout")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! const VkPipelineLayoutCreateInfo *
       type(c_ptr), intent(in), value :: p_create_info
       ! const VkAllocationCallbacks *
@@ -381,10 +380,10 @@ module forvulkan
 
     subroutine vk_destroy_pipeline_layout(logical_device, pipeline_layout, p_allocator) bind(c, name = "vkDestroyPipelineLayout")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! VkPipelineLayout
       integer(c_int64_t), intent(in), value :: pipeline_layout
       ! const VkAllocationCallbacks *
@@ -394,10 +393,10 @@ module forvulkan
 
     function vk_create_render_pass(logical_device, p_create_info, p_allocator, p_render_pass) result(vk_result) bind(c, name = "vkCreateRenderPass")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! const VkRenderPassCreateInfo *
       type(c_ptr), intent(in), value :: p_create_info
       ! const VkAllocationCallbacks *
@@ -410,10 +409,10 @@ module forvulkan
 
     subroutine vk_destroy_render_pass(logical_device, render_pass, p_allocator) bind(c, name = "vkDestroyRenderPass")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! VkRenderPass
       integer(c_int64_t), intent(in), value :: render_pass
       ! const VkAllocationCallbacks *
@@ -423,10 +422,10 @@ module forvulkan
 
     function vk_create_graphics_pipelines(logical_device, pipeline_cache, create_info_count, p_create_infos, p_allocator, p_pipelines) result(vk_result) bind(c, name = "vkCreateGraphicsPipelines")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! VkPipelineCache
       integer(c_int64_t), intent(in), value :: pipeline_cache
       ! uint32_t
@@ -443,10 +442,10 @@ module forvulkan
 
     subroutine vk_destroy_pipeline(logical_device, pipeline, p_allocator) bind(c, name = "vkDestroyPipeline")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! VkPipeline
       integer(c_int64_t), intent(in), value :: pipeline
       ! const VkAllocationCallbacks *
@@ -456,10 +455,10 @@ module forvulkan
 
     function vk_create_framebuffer(logical_device, p_create_info, p_allocator, p_framebuffer) result(vk_result) bind(c, name = "vkCreateFramebuffer")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! const VkFramebufferCreateInfo *
       type(c_ptr), intent(in), value :: p_create_info
       ! const VkAllocationCallbacks *
@@ -472,10 +471,10 @@ module forvulkan
 
     subroutine vk_destroy_framebuffer(logical_device, framebuffer, p_allocator) bind(c, name = "vkDestroyFramebuffer")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! VkFramebuffer
       integer(c_int64_t), intent(in), value :: framebuffer
       ! const VkAllocationCallbacks *
@@ -485,10 +484,10 @@ module forvulkan
 
     function vk_create_command_pool(logical_device, p_create_info, p_allocator, p_command_pool) result(vk_result) bind(c, name = "vkCreateCommandPool")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! const VkCommandPoolCreateInfo *
       type(c_ptr), intent(in), value :: p_create_info
       ! const VkAllocationCallbacks *
@@ -501,10 +500,10 @@ module forvulkan
 
     subroutine vk_destroy_command_pool(logical_device, command_pool, p_allocator) bind(c, name = "vkDestroyCommandPool")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! VkCommandPool
       integer(c_int64_t), intent(in), value :: command_pool
       ! const VkAllocationCallbacks *
@@ -514,10 +513,10 @@ module forvulkan
 
     function vk_allocate_command_buffers(logical_device, p_allocate_info, p_command_buffers) result(vk_result) bind(c, name = "vkAllocateCommandBuffers")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! const VkCommandBufferAllocateInfo *
       type(c_ptr), intent(in), value :: p_allocate_info
       ! VkCommandBuffer *
@@ -632,10 +631,10 @@ module forvulkan
 
     function vk_create_semaphore(logical_device, p_create_info, p_allocator, p_semaphore) result(vk_result) bind(c, name = "vkCreateSemaphore")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! const VkSemaphoreCreateInfo *
       type(c_ptr), intent(in), value :: p_create_info
       ! const VkAllocationCallbacks *
@@ -648,10 +647,10 @@ module forvulkan
 
     function vk_create_fence(logical_device, p_create_info, p_allocator, p_fence) result(vk_result) bind(c, name = "vkCreateFence")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! const VkFenceCreateInfo *
       type(c_ptr), intent(in), value :: p_create_info
       ! const VkAllocationCallbacks *
@@ -664,10 +663,10 @@ module forvulkan
 
     subroutine vk_destroy_semaphore(logical_device, semaphore, p_allocator) bind(c, name = "vkDestroySemaphore")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! VkSemaphore
       integer(c_int64_t), intent(in), value :: semaphore
       ! const VkAllocationCallbacks *
@@ -677,10 +676,10 @@ module forvulkan
 
     subroutine vk_destroy_fence(logical_device, fence, p_allocator) bind(c, name = "vkDestroyFence")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! VkFence
       integer(c_int64_t), intent(in), value :: fence
       ! const VkAllocationCallbacks *
@@ -690,10 +689,10 @@ module forvulkan
 
     function vk_wait_for_fences(logical_device, fence_count, p_fences, wait_all, timeout) result(vk_result) bind(c, name = "vkWaitForFences")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! uint32_t
       integer(c_int32_t), intent(in), value :: fence_count
       ! const VkFence *
@@ -708,10 +707,10 @@ module forvulkan
 
     function vk_reset_fences(logical_device, fence_count, p_fences) result(vk_result) bind(c, name = "vkResetFences")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! uint32_t
       integer(c_int32_t), intent(in), value :: fence_count
       ! const VkFence *
@@ -722,10 +721,10 @@ module forvulkan
 
     function vk_acquire_next_image_khr(logical_device, swapchain, timeout, semaphore, fence, p_image_index) result(vk_result) bind(c, name = "vkAcquireNextImageKHR")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       ! VkSwapchainKHR
       integer(c_int64_t), intent(in), value :: swapchain
       ! uint64_t
@@ -782,10 +781,10 @@ module forvulkan
 
     function vk_device_wait_idle(logical_device) result(vk_result) bind(c, name = "vkDeviceWaitIdle")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
-      ! VkDevice
-      integer(c_int64_t), intent(in), value :: logical_device
+      type(vk_device), intent(in), value :: logical_device
       integer(c_int32_t) :: vk_result
     end function
 

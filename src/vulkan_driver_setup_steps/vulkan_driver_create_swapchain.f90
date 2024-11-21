@@ -15,8 +15,7 @@ contains
     implicit none
 
     type(vk_physical_device), intent(in), value :: physical_device
-    ! VkDevice
-    integer(c_int64_t), intent(in), value :: logical_device
+    type(vk_device), intent(in), value :: logical_device
     type(vk_surface_khr), intent(in), value :: window_surface
     ! VkSwapchainKHR
     integer(c_int64_t), intent(inout) :: swapchain

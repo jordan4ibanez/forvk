@@ -11,8 +11,7 @@ contains
   subroutine create_framebuffers(logical_device, swapchain_framebuffers, swapchain_image_views, render_pass, swapchain_extent)
     implicit none
 
-    ! VkDevice
-    integer(c_int64_t), intent(in), value :: logical_device
+    type(vk_device), intent(in), value :: logical_device
     ! VkFramebuffer
     type(vec), intent(inout) :: swapchain_framebuffers
     ! VkImageView

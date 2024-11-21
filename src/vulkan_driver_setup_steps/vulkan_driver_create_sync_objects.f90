@@ -11,8 +11,7 @@ contains
   subroutine create_sync_objects(logical_device, MAX_FRAMES_IN_FLIGHT, image_available_semaphores, render_finished_semaphores, in_flight_fences)
     implicit none
 
-    ! VkDevice
-    integer(c_int64_t), intent(in), value :: logical_device
+    type(vk_device), intent(in), value :: logical_device
     integer(c_int64_t), intent(in), value :: MAX_FRAMES_IN_FLIGHT
     ! VkSemaphore
     type(vec), intent(inout) :: image_available_semaphores

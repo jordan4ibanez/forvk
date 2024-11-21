@@ -11,8 +11,7 @@ contains
   subroutine draw_frame(logical_device, current_frame, MAX_FRAMES_IN_FLIGHT, in_flight_fences, image_available_semaphores, render_finished_semaphores, swapchain, command_buffers, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue)
     implicit none
 
-    ! VkDevice
-    integer(c_int64_t), intent(in), value :: logical_device
+    type(vk_device), intent(in), value :: logical_device
     integer(c_int64_t), intent(inout) :: current_frame
     integer(c_int64_t), intent(in), value :: MAX_FRAMES_IN_FLIGHT
     ! VkFence

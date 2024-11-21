@@ -13,8 +13,7 @@ contains
 
     ! TODO: Break this monstrosity up.
 
-    ! VkDevice
-    integer(c_int64_t), intent(in), value :: logical_device
+    type(vk_device), intent(in), value :: logical_device
     ! VkShaderModule
     integer(c_int64_t), intent(inout) :: vertex_shader_module
     ! VkShaderModule

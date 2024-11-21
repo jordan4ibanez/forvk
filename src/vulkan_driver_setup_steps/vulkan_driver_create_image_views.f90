@@ -12,8 +12,7 @@ contains
   subroutine create_image_views(logical_device, swapchain_images, swapchain_image_views, swapchain_image_format)
     implicit none
 
-    ! VkDevice
-    integer(c_int64_t), intent(in), value :: logical_device
+    type(vk_device), intent(in), value :: logical_device
     ! VkImage Array
     type(vec), intent(inout) :: swapchain_images
     ! VkImageView Array

@@ -11,8 +11,7 @@ contains
   subroutine create_command_buffers(logical_device, MAX_FRAMES_IN_FLIGHT, command_pool, command_buffers)
     implicit none
 
-    ! VkDevice
-    integer(c_int64_t), intent(in), value :: logical_device
+    type(vk_device), intent(in), value :: logical_device
     integer(c_int64_t), intent(in), value :: MAX_FRAMES_IN_FLIGHT
     ! VkCommandPool
     integer(c_int64_t), intent(in), value :: command_pool

@@ -41,8 +41,7 @@ module vulkan_driver
 
   type(vk_physical_device) :: physical_device
 
-  ! VkDevice
-  integer(c_int64_t) :: logical_device = VK_NULL_HANDLE
+  type(vk_device) :: logical_device
 
   ! VkQueue
   integer(c_int64_t) :: graphics_queue = VK_NULL_HANDLE

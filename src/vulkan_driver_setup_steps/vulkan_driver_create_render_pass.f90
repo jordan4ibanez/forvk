@@ -9,8 +9,7 @@ contains
   subroutine create_render_pass(logical_device, render_pass, swapchain_image_format)
     implicit none
 
-    ! VkDevice
-    integer(c_int64_t), intent(in), value :: logical_device
+    type(vk_device), intent(in), value :: logical_device
     ! VkRenderPass
     integer(c_int64_t), intent(inout) :: render_pass
     ! VkFormat

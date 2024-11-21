@@ -15,8 +15,7 @@ contains
   function compile_glsl_shaders(logical_device, shader_file_name) result(shader_module)
     implicit none
 
-    ! VkDevice
-    integer(c_int64_t), intent(in), value :: logical_device
+    type(vk_device), intent(in), value :: logical_device
     character(len = *, kind = c_char), intent(in) :: shader_file_name
     integer(c_int64_t) :: shader_module
     type(c_ptr) :: shader_compiler_options_pointer, shader_compiler_pointer
