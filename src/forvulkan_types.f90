@@ -13,23 +13,26 @@ module forvulkan_types
 
   !? VkInstance.
   type, bind(c) :: vk_instance
-    private
-    integer(c_int64_t) :: a = VK_NULL_HANDLE
+    integer(c_int64_t) :: data = VK_NULL_HANDLE
   end type vk_instance
 
 
   !? VkDebugUtilsMessengerEXT.
   type, bind(c) :: vk_debug_utils_messenger_ext
-    private
-    integer(c_int64_t) :: a = VK_NULL_HANDLE
+    integer(c_int64_t) :: data = VK_NULL_HANDLE
   end type vk_debug_utils_messenger_ext
 
 
   !? VkSurfaceKHR.
   type, bind(c) :: vk_surface_khr
-    private
-    integer(c_int64_t) :: a = VK_NULL_HANDLE
+    integer(c_int64_t) :: data = VK_NULL_HANDLE
   end type vk_surface_khr
+
+
+  !? VkPhysicalDevice.
+  type, bind(c) :: vk_physical_device
+    integer(c_int64_t) :: data = VK_NULL_HANDLE
+  end type vk_physical_device
 
 
 !? REGULAR TYPES. ===============================================================
