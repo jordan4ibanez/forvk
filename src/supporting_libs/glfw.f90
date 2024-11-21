@@ -636,7 +636,7 @@ contains
     allocate(character(len = len(title) + 1, kind = c_char) :: window_title)
     window_title = title//achar(0)
 
-    window_pointer = internal_glfw_create_window(width, height, window_title, null(), null())
+    window_pointer = internal_glfw_create_window(width, height, c_loc(window_title), null(), null())
 
     ! Then we check if the window pointer is null.
     success = c_associated(window_pointer)
