@@ -1378,7 +1378,7 @@ module forvulkan
 
 
   type, bind(c) :: vk_instance
-    ! private
+    private
     integer(c_int64_t) :: a = VK_NULL_HANDLE
   end type vk_instance
 
@@ -1418,7 +1418,7 @@ module forvulkan
 
       ! const VkInstanceCreateInfo *, const VkAllocationCallbacks *, VkInstance *
       type(c_ptr), intent(in), value :: p_create_info, p_allocator
-      integer(c_int64_t), intent(inout) :: p_instance
+      type(vk_instance), intent(inout) :: p_instance
       integer(c_int32_t) :: res
     end function vk_create_instance
 

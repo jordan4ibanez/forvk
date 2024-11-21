@@ -17,8 +17,7 @@ contains
   subroutine create_vulkan_instance(vulkan_instance, DEBUG_MODE)
     implicit none
 
-    ! VkInstance
-    integer(c_int64_t), intent(inout) :: vulkan_instance
+    type(vk_instance), intent(inout) :: vulkan_instance
     logical(c_bool), intent(in), value :: DEBUG_MODE
     ! VkInstanceCreateInfo
     type(vk_instance_create_info), target :: vulkan_create_info
