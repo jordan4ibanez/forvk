@@ -31,12 +31,9 @@ module vulkan_driver
 
   ! Treating this thing as a class to follow the vulkan tutorial.
   ! todo: in formine this will have a pointer struct which inherits from a base class, to direct traffic flow to these functions.
-  !
-  ! todo: this has a lot of memory leaks which will need to be tested with valgrind to fix.
 
 
-  ! VkInstance
-  integer(c_int64_t) :: vulkan_instance = VK_NULL_HANDLE
+  type(vk_instance) :: vulkan_instance
 
   ! VkDebugUtilsMessengerEXT
   integer(c_int64_t) :: debug_messenger = VK_NULL_HANDLE

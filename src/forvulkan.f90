@@ -1378,7 +1378,7 @@ module forvulkan
 
 
   type, bind(c) :: vk_instance
-    private
+    ! private
     integer(c_int64_t) :: a = VK_NULL_HANDLE
   end type vk_instance
 
