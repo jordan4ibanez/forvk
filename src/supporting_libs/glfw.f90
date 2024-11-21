@@ -16,7 +16,7 @@ module glfw
 
   ! Fortran side.
 
-  character(len = :), allocatable :: window_title
+  character(len = :, kind = c_char), pointer :: window_title
   type(vec2i) :: window_size
 
   logical(c_bool) :: framebuffer_scaling_enabled = .false.
@@ -633,7 +633,8 @@ contains
     integer(c_int) :: width, height
     character(len = *, kind = c_char) :: title
 
-    window_title = into_c_string(title)
+    allocate(character(len = len(title) + 1, kind = c_char) :: window_title)
+    window_title = title//achar(0)
 
     window_pointer = internal_glfw_create_window(width, height, window_title, null(), null())
 
@@ -710,6 +711,9 @@ contains
     implicit none
 
     call internal_glfw_destroy_window(window_pointer)
+
+    deallocate(window_title)
+
     print"(A)","[GLFW]: Window destroyed successfully."
   end subroutine glfw_destroy_window
 
