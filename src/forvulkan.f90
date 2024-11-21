@@ -47,6 +47,7 @@ module forvulkan
 
     function vk_enumerate_instance_extension_properties(p_layer_name, p_property_count, p_properties) result(vk_result) bind(c, name = "vkEnumerateInstanceExtensionProperties")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
       ! char*, uint32_t*, VkExtensionProperties*
@@ -59,6 +60,7 @@ module forvulkan
 
     function vk_enumerate_instance_layer_properties(p_property_count, p_properties) result (vk_result) bind(c, name = "vkEnumerateInstanceLayerProperties")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
       ! uint32 *
@@ -527,6 +529,7 @@ module forvulkan
 
     function vk_begin_command_buffer(command_buffer, p_begin_info) result(vk_result) bind(c, name = "vkBeginCommandBuffer")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
       ! VkCommandBuffer
@@ -539,6 +542,7 @@ module forvulkan
 
     subroutine vk_cmd_begin_render_pass(command_buffer, p_render_pass_begin, contents) bind(c, name = "vkCmdBeginRenderPass")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
       ! VkCommandBuffer
@@ -552,6 +556,7 @@ module forvulkan
 
     subroutine vk_cmd_bind_pipeline(command_buffer, pipeline_bind_point, pipeline) bind(c, name = "vkCmdBindPipeline")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
       ! VkCommandBuffer
@@ -565,6 +570,7 @@ module forvulkan
 
     subroutine vk_cmd_set_viewport(command_buffer, first_viewport, viewport_count, p_viewports) bind(c, name = "vkCmdSetViewport")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
       ! VkCommandBuffer
@@ -580,6 +586,7 @@ module forvulkan
 
     subroutine vk_cmd_set_scissor(command_buffer, first_scissor, scissor_count, p_scissors) bind(c, name = "vkCmdSetScissor")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
       ! VkCommandBuffer
@@ -595,6 +602,7 @@ module forvulkan
 
     subroutine vk_cmd_draw(command_buffer, vertex_count, instance_count, first_vertex, first_instance) bind(c, name = "vkCmdDraw")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
       ! VkCommandBuffer
@@ -612,6 +620,7 @@ module forvulkan
 
     subroutine vk_cmd_end_render_pass(command_buffer) bind(c, name = "vkCmdEndRenderPass")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
       ! VkCommandBuffer
@@ -621,6 +630,7 @@ module forvulkan
 
     function vk_end_command_buffer(command_buffer) result(vk_result) bind(c, name = "vkEndCommandBuffer")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
       ! VkCommandBuffer
@@ -741,6 +751,7 @@ module forvulkan
 
     function vk_reset_command_buffer(command_buffer, flags) result(vk_result) bind(c, name = "vkResetCommandBuffer")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
       ! VkCommandBufferKHR
@@ -753,6 +764,7 @@ module forvulkan
 
     function vk_queue_submit(queue, submit_count, p_submits, fence) result(vk_result) bind(c, name = "vkQueueSubmit")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
       ! VkQueue
@@ -769,6 +781,7 @@ module forvulkan
 
     function vk_queue_present_khr(queue, p_present_info) result(vk_result) bind(c, name = "vkQueuePresentKHR")
       use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
       implicit none
 
       ! VkQueue
