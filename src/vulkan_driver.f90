@@ -48,7 +48,7 @@ module vulkan_driver
 
   type(vk_swapchain_khr) :: swapchain
 
-  ! VkImage Array
+  ! VkImage Vector
   type(vec) :: swapchain_images
 
   ! VkFormat
