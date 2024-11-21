@@ -728,6 +728,21 @@ contains
   end subroutine glfw_destroy_window
 
 
+  subroutine glfw_set_window_title(new_title)
+    implicit none
+
+    character(len = *, kind = c_char), intent(in) :: new_title
+
+    ! Reallocation.
+    deallocate(window_title)
+    allocate(character(len = len(new_title) + 1, kind = c_char) :: window_title)
+
+    window_title = new_title//achar(0)
+
+    call internal_glfw_set_window_title(window_pointer, c_loc(window_title))
+  end subroutine glfw_set_window_title
+
+
   !* NOTE: C is passing Fortran data here!
   !* NOTE: This function passed into C as a pointer!
   subroutine error_callback(i, char_pointer)
