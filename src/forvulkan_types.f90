@@ -41,6 +41,11 @@ module forvulkan_types
   end type vk_device
 
 
+  !? VkQueue.
+  type, bind(c) :: vk_queue
+    integer(c_int64_t) :: data = VK_NULL_HANDLE
+  end type vk_queue
+
 !? REGULAR TYPES. ===============================================================
 
 

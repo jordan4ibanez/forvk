@@ -32,10 +32,8 @@ contains
     type(vk_extent_2d), intent(in), value :: swapchain_extent
     ! VkPipeline
     integer(c_int64_t), intent(in), value :: graphics_pipeline
-    ! VkQueue
-    integer(c_int64_t), intent(in), value :: graphics_queue
-    ! VkQueue
-    integer(c_int64_t), intent(in), value, target :: present_queue
+    type(vk_queue), intent(in), value :: graphics_queue
+    type(vk_queue), intent(in), value, target :: present_queue
     ! uint32_t
     integer(c_int32_t), target :: image_index
     type(vk_submit_info), target :: submit_info

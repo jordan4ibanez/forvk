@@ -4,7 +4,6 @@ module vulkan_driver
   use :: string_f90
   use :: vector
   use :: forvulkan
-  use :: forvulkan_parameters
   !? These are imported in the order of the steps this takes.
   use :: vulkan_driver_create_base
   use :: vulkan_driver_ensure_extensions_present
@@ -43,11 +42,9 @@ module vulkan_driver
 
   type(vk_device) :: logical_device
 
-  ! VkQueue
-  integer(c_int64_t) :: graphics_queue = VK_NULL_HANDLE
+  type(vk_queue) :: graphics_queue
 
-  ! VkQueue
-  integer(c_int64_t) :: present_queue = VK_NULL_HANDLE
+  type(vk_queue) :: present_queue
 
   ! VkSwapchainKHR
   integer(c_int64_t) :: swapchain = VK_NULL_HANDLE

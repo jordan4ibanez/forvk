@@ -170,8 +170,7 @@ module forvulkan
       integer(c_int32_t), intent(in), value :: queue_family_index
       ! uint32_t
       integer(c_int32_t), intent(in), value ::  queue_index
-      ! VkQueue *
-      integer(c_int64_t), intent(inout) :: p_queue
+      type(vk_queue), intent(inout) :: p_queue
     end subroutine vk_get_device_queue
 
 
@@ -767,8 +766,7 @@ module forvulkan
       use :: forvulkan_types
       implicit none
 
-      ! VkQueue
-      integer(c_int64_t), intent(in), value :: queue
+      type(vk_queue), intent(in), value :: queue
       ! uint32_t
       integer(c_int32_t), intent(in), value :: submit_count
       ! const VkSubmitInfo *
@@ -784,8 +782,7 @@ module forvulkan
       use :: forvulkan_types
       implicit none
 
-      ! VkQueue
-      integer(c_int64_t), intent(in), value :: queue
+      type(vk_queue), intent(in), value :: queue
       ! const VkPresentInfoKHR *
       type(c_ptr), intent(in), value :: p_present_info
       integer(c_int32_t) :: vk_result

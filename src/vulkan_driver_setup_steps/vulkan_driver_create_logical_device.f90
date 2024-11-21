@@ -17,10 +17,8 @@ contains
 
     type(vk_physical_device), intent(in), value :: physical_device
     type(vk_device), intent(inout), target :: logical_device
-    ! VkQueue
-    integer(c_int64_t), intent(inout) :: graphics_queue
-    ! VkQueue
-    integer(c_int64_t), intent(inout) :: present_queue
+    type(vk_queue), intent(inout) :: graphics_queue
+    type(vk_queue), intent(inout) :: present_queue
     type(vk_surface_khr), intent(in), value :: window_surface
     logical(c_bool), intent(in), value :: DEBUG_MODE
     ! const char **
