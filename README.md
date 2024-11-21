@@ -15,6 +15,8 @@ Join my discord for questions: https://discord.gg/D95q7BHUE4
 
 -----
 
+This needs gfortran 14+. :T
+
 So GCC Gfortran is stuck at a 63 character variable name limit.
 
 I had to get creative to allow the Vulkan constants to be accessed in the same manor you can get them in the C docs.
