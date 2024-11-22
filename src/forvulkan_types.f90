@@ -113,6 +113,13 @@ module forvulkan_types
   end type vk_command_buffer
 
 
+  !? VkSemaphore.
+  type, bind(c) :: vk_semaphore
+    integer(c_int64_t) :: data = VK_NULL_HANDLE
+  end type vk_semaphore
+
+
+
 !? REGULAR TYPES. ===============================================================
 
 

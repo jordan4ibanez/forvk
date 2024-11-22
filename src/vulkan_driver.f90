@@ -76,10 +76,10 @@ module vulkan_driver
   ! Vk CommandBuffer Vector
   type(vec) :: command_buffers
 
-  ! VkSemaphore
+  ! Vk Semaphore Vector
   type(vec) :: image_available_semaphores
 
-  ! VkSemaphore
+  ! Vk Semaphore Vector
   type(vec) :: render_finished_semaphores
 
   ! VkFence
@@ -192,14 +192,15 @@ contains
     integer(c_int64_t) :: i
     type(vk_image_view), pointer :: image_view_pointer
     type(vk_framebuffer), pointer :: framebuffer_pointer
-    integer(c_int64_t), pointer :: semaphore, fence
+    type(vk_semaphore), pointer :: semaphore_pointer
+    integer(c_int64_t), pointer :: fence
 
     do i = 1,MAX_FRAMES_IN_FLIGHT
-      call c_f_pointer(image_available_semaphores%get(i), semaphore)
-      call vk_destroy_semaphore(logical_device, semaphore, c_null_ptr)
+      call c_f_pointer(image_available_semaphores%get(i), semaphore_pointer)
+      call vk_destroy_semaphore(logical_device, semaphore_pointer, c_null_ptr)
 
-      call c_f_pointer(render_finished_semaphores%get(i), semaphore)
-      call vk_destroy_semaphore(logical_device, semaphore, c_null_ptr)
+      call c_f_pointer(render_finished_semaphores%get(i), semaphore_pointer)
+      call vk_destroy_semaphore(logical_device, semaphore_pointer, c_null_ptr)
 
       call c_f_pointer(in_flight_fences%get(i), fence)
       call vk_destroy_fence(logical_device, fence, c_null_ptr)

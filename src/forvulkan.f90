@@ -624,8 +624,7 @@ module forvulkan
       type(c_ptr), intent(in), value :: p_create_info
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
-      ! VkSemaphore *
-      type(c_ptr), intent(in), value :: p_semaphore
+      type(vk_semaphore), intent(in) :: p_semaphore
       integer(c_int32_t) :: vk_result
     end function vk_create_semaphore
 
@@ -652,8 +651,7 @@ module forvulkan
       implicit none
 
       type(vk_device), intent(in), value :: logical_device
-      ! VkSemaphore
-      integer(c_int64_t), intent(in), value :: semaphore
+      type(vk_semaphore), intent(in), value :: semaphore
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
     end subroutine vk_destroy_semaphore
@@ -713,8 +711,7 @@ module forvulkan
       type(vk_swapchain_khr), intent(in), value :: swapchain
       ! uint64_t
       integer(c_int64_t), intent(in), value :: timeout
-      ! VkSemaphore
-      integer(c_int64_t), intent(in), value :: semaphore
+      type(vk_semaphore), intent(in), value :: semaphore
       ! VkFence
       integer(c_int64_t), intent(in), value :: fence
       ! uint32_t *

@@ -13,15 +13,16 @@ contains
 
     type(vk_device), intent(in), value :: logical_device
     integer(c_int64_t), intent(in), value :: MAX_FRAMES_IN_FLIGHT
-    ! VkSemaphore
+    ! Vk Semaphore Vector
     type(vec), intent(inout) :: image_available_semaphores
-    ! VkSemaphore
+    ! Vk Semaphore Vector
     type(vec), intent(inout) :: render_finished_semaphores
     ! VkFence
     type(vec), intent(inout) :: in_flight_fences
     type(vk_semaphore_create_info), target :: semaphore_create_info
     type(vk_fence_create_info), target :: fence_create_info
     integer(c_int64_t) :: i
+    type(vk_semaphore), pointer :: semaphore_pointer
 
     image_available_semaphores = new_vec(sizeof(VK_NULL_HANDLE), MAX_FRAMES_IN_FLIGHT)
     call image_available_semaphores%resize(MAX_FRAMES_IN_FLIGHT, VK_NULL_HANDLE)
@@ -38,11 +39,13 @@ contains
     fence_create_info%flags = VK_FENCE_CREATE_SIGNALED_BIT
 
     do i = 1,MAX_FRAMES_IN_FLIGHT
-      if (vk_create_semaphore(logical_device, c_loc(semaphore_create_info), c_null_ptr, image_available_semaphores%get(i)) /= VK_SUCCESS) then
+      call c_f_pointer(image_available_semaphores%get(i), semaphore_pointer)
+      if (vk_create_semaphore(logical_device, c_loc(semaphore_create_info), c_null_ptr, semaphore_pointer) /= VK_SUCCESS) then
         error stop "[Vulkan] Error: Failed to create image available semaphore"
       end if
 
-      if (vk_create_semaphore(logical_device, c_loc(semaphore_create_info), c_null_ptr, render_finished_semaphores%get(i)) /= VK_SUCCESS) then
+      call c_f_pointer(render_finished_semaphores%get(i), semaphore_pointer)
+      if (vk_create_semaphore(logical_device, c_loc(semaphore_create_info), c_null_ptr, semaphore_pointer) /= VK_SUCCESS) then
         error stop "[Vulkan] Error: Failed to create render finished semaphore"
       end if
 

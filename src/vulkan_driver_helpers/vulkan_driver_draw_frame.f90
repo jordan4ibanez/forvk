@@ -16,9 +16,9 @@ contains
     integer(c_int64_t), intent(in), value :: MAX_FRAMES_IN_FLIGHT
     ! VkFence
     type(vec), intent(inout) :: in_flight_fences
-    ! VkSemaphore
+    ! Vk Semaphore Vector
     type(vec), intent(inout) :: image_available_semaphores
-    ! VkSemaphore
+    ! Vk Semaphore Vector
     type(vec), intent(inout) :: render_finished_semaphores
     type(vk_swapchain_khr), intent(in), value :: swapchain
     ! Vk CommandBuffer Vector
@@ -33,15 +33,16 @@ contains
     ! uint32_t
     integer(c_int32_t), target :: image_index
     type(vk_submit_info), target :: submit_info
-    ! VkSemaphore[]
-    integer(c_int64_t), dimension(1), target :: wait_semaphores
+    ! Vk Semaphore[]
+    type(vk_semaphore), dimension(1), target :: wait_semaphores
     ! VkPipelineStageFlags[]
     integer(c_int32_t), dimension(1), target :: wait_stages
-    ! VkSemaphore[]
-    integer(c_int64_t), dimension(1), target :: signal_semaphores
+    ! Vk Semaphore[]
+    type(vk_semaphore), dimension(1), target :: signal_semaphores
     type(vk_present_info_khr), target :: present_info
     type(vk_swapchain_khr), dimension(1), target :: swapchains
-    integer(c_int64_t), pointer :: semaphore, fence
+    integer(c_int64_t), pointer :: fence
+    type(vk_semaphore), pointer :: semaphore_pointer
     type(vk_command_buffer), pointer :: command_buffer_pointer
 
     ! -1 is UINT64_MAX, aka, unlimited timeout.
@@ -53,8 +54,8 @@ contains
       error stop "[Vulkan] Error: Failed to reset in flight fence."
     end if
 
-    call c_f_pointer(image_available_semaphores%get(current_frame), semaphore)
-    if (vk_acquire_next_image_khr(logical_device, swapchain, -1_8, semaphore, VK_NULL_HANDLE, image_index) /= VK_SUCCESS) then
+    call c_f_pointer(image_available_semaphores%get(current_frame), semaphore_pointer)
+    if (vk_acquire_next_image_khr(logical_device, swapchain, -1_8, semaphore_pointer, VK_NULL_HANDLE, image_index) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to aqcuire next image."
     end if
 
@@ -72,8 +73,8 @@ contains
 
     submit_info%s_type = VK_STRUCTURE_TYPE%SUBMIT_INFO
 
-    call c_f_pointer(image_available_semaphores%get(current_frame), semaphore)
-    wait_semaphores = [semaphore]
+    call c_f_pointer(image_available_semaphores%get(current_frame), semaphore_pointer)
+    wait_semaphores = [semaphore_pointer]
 
     wait_stages = [VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT]
 
@@ -83,8 +84,8 @@ contains
     submit_info%command_buffer_count = 1
     submit_info%p_command_buffers = c_loc(command_buffer_pointer)
 
-    call c_f_pointer(render_finished_semaphores%get(current_frame), semaphore)
-    signal_semaphores = [semaphore]
+    call c_f_pointer(render_finished_semaphores%get(current_frame), semaphore_pointer)
+    signal_semaphores = [semaphore_pointer]
     submit_info%signal_semaphore_count = 1
     submit_info%p_signal_semaphores = c_loc(signal_semaphores)
 
