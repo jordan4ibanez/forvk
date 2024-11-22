@@ -818,12 +818,12 @@ contains
   !   call glfw_update_window_gui_scale()
   ! end subroutine size_callback
 
+  !! FIXME: THIS NEEDS TO BE ADDED INTO THE OPENGL DRIVER!
+  ! subroutine glfw_set_window_size_callback()
+  !   implicit none
 
-  subroutine glfw_set_window_size_callback()
-    implicit none
-
-    call internal_glfw_set_window_size_callback(window_pointer, c_funloc(size_callback))
-  end subroutine glfw_set_window_size_callback
+  !   call internal_glfw_set_window_size_callback(window_pointer, c_funloc(size_callback))
+  ! end subroutine glfw_set_window_size_callback
 
 
   !* This is totally a glfw function, trust me bro.
