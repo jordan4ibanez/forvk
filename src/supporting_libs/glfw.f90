@@ -74,6 +74,7 @@ module glfw
   public :: glfw_set_window_icon
   public :: glfw_set_content_scale_callback
   public :: glfw_set_framebuffer_size_callback
+  public :: glfw_wait_events
 
 
   public :: glfw_image
@@ -581,6 +582,13 @@ module glfw
       type(c_ptr), intent(in), value :: window
       type(c_funptr), intent(in), value :: cb_fun
     end subroutine internal_glfw_set_framebuffer_size_callback
+
+
+    subroutine glfw_wait_events() bind(c, name = "glfwWaitEvents")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+    end subroutine
 
 
   end interface
