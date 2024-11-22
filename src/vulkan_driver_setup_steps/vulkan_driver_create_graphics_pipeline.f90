@@ -16,7 +16,6 @@ contains
     type(vk_device), intent(in), value :: logical_device
     type(vk_shader_module), intent(inout) :: vertex_shader_module
     type(vk_shader_module), intent(inout) :: fragment_shader_module
-    ! VkExtent2D
     type(vk_extent_2d), intent(in) :: swapchain_extent
     ! VkPipelineLayout
     integer(c_int64_t), intent(inout) :: pipeline_layout

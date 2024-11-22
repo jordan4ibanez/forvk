@@ -21,7 +21,6 @@ contains
     ! Vk Image vector
     type(vec) :: swapchain_images
     type(vk_format), intent(inout) :: swapchain_image_format
-    ! VkExtent2D
     type(vk_extent_2d), intent(inout) :: swapchain_extent
     type(forvulkan_swapchain_support_details), target :: swapchain_support_details
     type(vk_surface_format_khr) :: selected_surface_format

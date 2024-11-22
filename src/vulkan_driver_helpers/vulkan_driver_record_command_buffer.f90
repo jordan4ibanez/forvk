@@ -18,7 +18,6 @@ contains
     integer(c_int64_t), intent(in), value :: render_pass
     ! VkFramebuffer
     type(vec), intent(inout) :: swapchain_framebuffers
-    ! VkExtent2D
     type(vk_extent_2d), intent(in) :: swapchain_extent
     ! VkPipeline
     integer(c_int64_t), intent(in), value :: graphics_pipeline

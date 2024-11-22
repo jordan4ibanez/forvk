@@ -25,9 +25,8 @@ contains
     type(vec), intent(inout) :: command_buffers
     ! VkRenderPass
     integer(c_int64_t), intent(in), value :: render_pass
-    ! VkFramebuffer
+    ! VkFramebuffer vector
     type(vec), intent(inout) :: swapchain_framebuffers
-    ! VkExtent2D
     type(vk_extent_2d), intent(in), value :: swapchain_extent
     ! VkPipeline
     integer(c_int64_t), intent(in), value :: graphics_pipeline

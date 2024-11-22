@@ -17,7 +17,6 @@ contains
     type(vec), intent(inout) :: swapchain_image_views
     ! VkRenderPass
     integer(c_int64_t), intent(in), value :: render_pass
-    ! VkExtent2D
     type(vk_extent_2d), intent(in) :: swapchain_extent
     integer(c_int64_t) :: i
     type(vk_image_view), dimension(1), target :: attachments

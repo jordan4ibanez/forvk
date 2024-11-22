@@ -667,11 +667,8 @@ module forvulkan_types
     integer(c_int32_t) :: min_image_count = 0
     ! uint32_t
     integer(c_int32_t) :: max_image_count = 0
-    ! VkExtent2D
     type(vk_extent_2d) :: current_extent
-    ! VkExtent2D
     type(vk_extent_2d) :: min_image_extent
-    ! VkExtent2D
     type(vk_extent_2d) :: max_image_extent
     ! uint32_t
     integer(c_int32_t) :: max_image_array_layers = 0
@@ -892,7 +889,6 @@ module forvulkan_types
   type, bind(c) :: vk_rect_2d
     ! VkOffset2D
     type(vk_offset_2d) :: offset
-    ! VkExtent2D
     type(vk_extent_2d) :: extent
   end type vk_rect_2d
 
