@@ -73,7 +73,7 @@ module vulkan_driver
 
   type(vk_command_pool) :: command_pool
 
-  ! VkCommandBuffer
+  ! Vk CommandBuffer Vector
   type(vec) :: command_buffers
 
   ! VkSemaphore

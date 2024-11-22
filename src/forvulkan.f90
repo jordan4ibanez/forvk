@@ -505,7 +505,7 @@ module forvulkan
       type(vk_device), intent(in), value :: logical_device
       ! const VkCommandBufferAllocateInfo *
       type(c_ptr), intent(in), value :: p_allocate_info
-      ! VkCommandBuffer *
+      ! Vk CommandBuffer * (Array of command buffers.)
       type(c_ptr), intent(in), value :: p_command_buffers
       integer(c_int32_t) :: vk_result
     end function vk_allocate_command_buffers
@@ -516,8 +516,7 @@ module forvulkan
       use :: forvulkan_types
       implicit none
 
-      ! VkCommandBuffer
-      integer(c_int64_t), intent(in), value :: command_buffer
+      type(vk_command_buffer), intent(in), value :: command_buffer
       ! const VkCommandBufferBeginInfo *
       type(c_ptr), intent(in), value :: p_begin_info
       integer(c_int32_t) :: vk_result
@@ -529,8 +528,7 @@ module forvulkan
       use :: forvulkan_types
       implicit none
 
-      ! VkCommandBuffer
-      integer(c_int64_t), intent(in), value :: command_buffer
+      type(vk_command_buffer), intent(in), value :: command_buffer
       ! const VkRenderPassBeginInfo *
       type(c_ptr), intent(in), value :: p_render_pass_begin
       ! VkSubpassContents
@@ -543,8 +541,7 @@ module forvulkan
       use :: forvulkan_types
       implicit none
 
-      ! VkCommandBuffer
-      integer(c_int64_t), intent(in), value :: command_buffer
+      type(vk_command_buffer), intent(in), value :: command_buffer
       ! VkPipelineBindPoint
       integer(c_int32_t), intent(in), value :: pipeline_bind_point
       type(vk_pipeline), intent(in), value :: pipeline
@@ -556,8 +553,7 @@ module forvulkan
       use :: forvulkan_types
       implicit none
 
-      ! VkCommandBuffer
-      integer(c_int64_t), intent(in), value :: command_buffer
+      type(vk_command_buffer), intent(in), value :: command_buffer
       ! uint32_t
       integer(c_int32_t), intent(in), value :: first_viewport
       ! uint32_t
@@ -572,8 +568,7 @@ module forvulkan
       use :: forvulkan_types
       implicit none
 
-      ! VkCommandBuffer
-      integer(c_int64_t), intent(in), value :: command_buffer
+      type(vk_command_buffer), intent(in), value :: command_buffer
       ! uint32_t
       integer(c_int32_t), intent(in), value :: first_scissor
       ! uint32_t
@@ -588,8 +583,7 @@ module forvulkan
       use :: forvulkan_types
       implicit none
 
-      ! VkCommandBuffer
-      integer(c_int64_t), intent(in), value :: command_buffer
+      type(vk_command_buffer), intent(in), value :: command_buffer
       ! uint32
       integer(c_int32_t), intent(in), value :: vertex_count
       ! uint32
@@ -606,8 +600,7 @@ module forvulkan
       use :: forvulkan_types
       implicit none
 
-      ! VkCommandBuffer
-      integer(c_int64_t), intent(in), value :: command_buffer
+      type(vk_command_buffer), intent(in), value :: command_buffer
     end subroutine vk_cmd_end_render_pass
 
 
@@ -616,8 +609,7 @@ module forvulkan
       use :: forvulkan_types
       implicit none
 
-      ! VkCommandBuffer
-      integer(c_int64_t), intent(in), value :: command_buffer
+      type(vk_command_buffer), intent(in), value :: command_buffer
       integer(c_int32_t) :: vk_result
     end function vk_end_command_buffer
 
@@ -736,8 +728,7 @@ module forvulkan
       use :: forvulkan_types
       implicit none
 
-      ! VkCommandBufferKHR
-      integer(c_int64_t), intent(in), value :: command_buffer
+      type(vk_command_buffer), intent(in), value :: command_buffer
       ! VkCommandBufferResetFlags
       integer(c_int32_t), intent(in), value :: flags
       integer(c_int32_t) :: vk_result

@@ -21,7 +21,7 @@ contains
     ! VkSemaphore
     type(vec), intent(inout) :: render_finished_semaphores
     type(vk_swapchain_khr), intent(in), value :: swapchain
-    ! VkCommandBuffer
+    ! Vk CommandBuffer Vector
     type(vec), intent(inout) :: command_buffers
     type(vk_render_pass), intent(in), value :: render_pass
     ! Vk Framebuffer Vector
@@ -41,7 +41,8 @@ contains
     integer(c_int64_t), dimension(1), target :: signal_semaphores
     type(vk_present_info_khr), target :: present_info
     type(vk_swapchain_khr), dimension(1), target :: swapchains
-    integer(c_int64_t), pointer :: semaphore, fence, command_buffer
+    integer(c_int64_t), pointer :: semaphore, fence
+    type(vk_command_buffer), pointer :: command_buffer_pointer
 
     ! -1 is UINT64_MAX, aka, unlimited timeout.
     if (vk_wait_for_fences(logical_device, 1, in_flight_fences%get(current_frame), VK_TRUE, -1_8) /= VK_SUCCESS) then
@@ -62,12 +63,12 @@ contains
     image_index = image_index + 1
 
 
-    call c_f_pointer(command_buffers%get(current_frame), command_buffer)
-    if (vk_reset_command_buffer(command_buffer, 0) /= VK_SUCCESS) then
+    call c_f_pointer(command_buffers%get(current_frame), command_buffer_pointer)
+    if (vk_reset_command_buffer(command_buffer_pointer, 0) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Faield to reset command buffer."
     end if
 
-    call record_command_buffer(command_buffer, image_index, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline)
+    call record_command_buffer(command_buffer_pointer, image_index, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline)
 
     submit_info%s_type = VK_STRUCTURE_TYPE%SUBMIT_INFO
 
@@ -80,7 +81,7 @@ contains
     submit_info%p_wait_semaphores = c_loc(wait_semaphores)
     submit_info%p_wait_dst_stage_mask = c_loc(wait_stages)
     submit_info%command_buffer_count = 1
-    submit_info%p_command_buffers = c_loc(command_buffer)
+    submit_info%p_command_buffers = c_loc(command_buffer_pointer)
 
     call c_f_pointer(render_finished_semaphores%get(current_frame), semaphore)
     signal_semaphores = [semaphore]

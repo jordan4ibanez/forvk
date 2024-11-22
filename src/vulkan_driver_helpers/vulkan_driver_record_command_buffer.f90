@@ -10,8 +10,7 @@ contains
   subroutine record_command_buffer(command_buffer, image_index, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline)
     implicit none
 
-    ! VkCommandBuffer
-    integer(c_int64_t), intent(in), value :: command_buffer
+    type(vk_command_buffer), intent(in), value :: command_buffer
     ! uint32_t
     integer(c_int32_t), intent(in), value :: image_index
     type(vk_render_pass), intent(in), value :: render_pass
