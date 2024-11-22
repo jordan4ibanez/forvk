@@ -56,6 +56,7 @@ module vulkan_driver
   ! VkExtent2D
   type(vk_extent_2d) :: swapchain_extent
 
+  ! Vk ImageView Vector
   type(vec) :: swapchain_image_views
 
   type(vk_shader_module) :: vertex_shader_module
