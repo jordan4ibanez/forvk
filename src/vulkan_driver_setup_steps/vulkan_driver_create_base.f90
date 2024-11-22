@@ -11,12 +11,16 @@ module vulkan_driver_create_base
 
 contains
 
-  subroutine create_glfw()
+  subroutine create_glfw(framebuffer_resized)
     implicit none
+
+    logical(c_bool), intent(inout), target :: framebuffer_resized
 
     if (.not. glfw_init()) then
       error stop "[Vulkan] Error: Failed to initialize GLFW."
     end if
+
+    resized_loc = c_loc(framebuffer_resized)
 
     call glfw_window_hint(GLFW_SCALE_FRAMEBUFFER, GLFW_TRUE)
     call glfw_window_hint(GLFW_CLIENT_API, GLFW_NO_API)
@@ -36,8 +40,14 @@ contains
 
     type(c_ptr), intent(in), value :: window
     integer(c_int32_t), intent(in), value :: width, height
+    logical(c_bool), pointer :: framebuffer_resized_pointer
 
-    print*,"hello!"
+    if (.false.) then
+      print*,window, width, height
+    end if
+
+    call c_f_pointer(resized_loc, framebuffer_resized_pointer)
+    framebuffer_resized_pointer = .true.
   end subroutine framebuffer_size_callback
 
 end module vulkan_driver_create_base
