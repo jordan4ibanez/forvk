@@ -366,8 +366,7 @@ module forvulkan
       type(c_ptr), intent(in), value :: p_create_info
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
-      ! VkPipelineLayout *
-      integer(c_int64_t), intent(inout) :: p_pipeline_layout
+      type(vk_pipeline_layout), intent(inout) :: p_pipeline_layout
       integer(c_int32_t) :: vk_result
     end function vk_create_pipeline_layout
 
@@ -378,8 +377,7 @@ module forvulkan
       implicit none
 
       type(vk_device), intent(in), value :: logical_device
-      ! VkPipelineLayout
-      integer(c_int64_t), intent(in), value :: pipeline_layout
+      type(vk_pipeline_layout), intent(in), value :: pipeline_layout
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
     end subroutine vk_destroy_pipeline_layout

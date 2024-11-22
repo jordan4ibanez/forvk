@@ -77,6 +77,11 @@ module forvulkan_types
   end type vk_image_view
 
 
+  !? VkPipelineLayout.
+  type, bind(c) :: vk_pipeline_layout
+    integer(c_int64_t) :: data = VK_NULL_HANDLE
+  end type vk_pipeline_layout
+
 
 !? REGULAR TYPES. ===============================================================
 
@@ -1218,8 +1223,7 @@ module forvulkan_types
     type(c_ptr) :: p_color_blend_state = c_null_ptr
     ! const VkPipelineDynamicStateCreateInfo*
     type(c_ptr) :: p_dynamic_state = c_null_ptr
-    ! VkPipelineLayout
-    integer(c_int64_t) :: layout = 0
+    type(vk_pipeline_layout) :: layout
     ! VkRenderPass
     integer(c_int64_t) :: render_pass = 0
     ! uint32_t

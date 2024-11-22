@@ -62,8 +62,7 @@ module vulkan_driver
 
   type(vk_shader_module) :: fragment_shader_module
 
-  ! VkPipelineLayout
-  integer(c_int64_t) :: pipeline_layout = VK_NULL_HANDLE
+  type(vk_pipeline_layout) :: pipeline_layout
 
   ! VkRenderPass
   integer(c_int64_t) :: render_pass = VK_NULL_HANDLE

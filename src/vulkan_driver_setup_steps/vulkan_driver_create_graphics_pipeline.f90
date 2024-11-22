@@ -17,8 +17,7 @@ contains
     type(vk_shader_module), intent(inout) :: vertex_shader_module
     type(vk_shader_module), intent(inout) :: fragment_shader_module
     type(vk_extent_2d), intent(in) :: swapchain_extent
-    ! VkPipelineLayout
-    integer(c_int64_t), intent(inout) :: pipeline_layout
+    type(vk_pipeline_layout), intent(inout) :: pipeline_layout
     ! VkRenderPass
     integer(c_int64_t), intent(in), value :: render_pass
     ! VkPipeline
