@@ -53,7 +53,6 @@ module vulkan_driver
 
   type(vk_format) :: swapchain_image_format
 
-  ! VkExtent2D
   type(vk_extent_2d) :: swapchain_extent
 
   ! Vk ImageView Vector
