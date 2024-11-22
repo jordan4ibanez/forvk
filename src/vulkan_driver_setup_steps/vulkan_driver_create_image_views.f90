@@ -13,7 +13,7 @@ contains
     implicit none
 
     type(vk_device), intent(in), value :: logical_device
-    ! VkImage Array
+    ! Vk Image vector
     type(vec), intent(inout) :: swapchain_images
     type(vec), intent(inout) :: swapchain_image_views
     type(vk_format), intent(in), value :: swapchain_image_format

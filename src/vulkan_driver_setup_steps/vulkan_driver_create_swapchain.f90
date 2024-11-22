@@ -18,7 +18,7 @@ contains
     type(vk_device), intent(in), value :: logical_device
     type(vk_surface_khr), intent(in), value :: window_surface
     type(vk_swapchain_khr), intent(inout) :: swapchain
-    ! VkImage Array
+    ! Vk Image vector
     type(vec) :: swapchain_images
     type(vk_format), intent(inout) :: swapchain_image_format
     ! VkExtent2D
