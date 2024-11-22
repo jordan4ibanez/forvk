@@ -2,13 +2,14 @@ module vulkan_driver_draw_frame
   use, intrinsic :: iso_c_binding
   use :: forvulkan
   use :: vulkan_driver_record_command_buffer
+  use :: vulkan_driver_recreate_swapchain
   implicit none
 
 
 contains
 
 
-  subroutine draw_frame(logical_device, current_frame, MAX_FRAMES_IN_FLIGHT, in_flight_fences, image_available_semaphores, render_finished_semaphores, swapchain, command_buffers, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue)
+  subroutine draw_frame(logical_device, current_frame, MAX_FRAMES_IN_FLIGHT, in_flight_fences, image_available_semaphores, render_finished_semaphores, swapchain, command_buffers, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue, physical_device, window_surface, swapchain_images, swapchain_image_format, swapchain_image_views)
     implicit none
 
     type(vk_device), intent(in), value :: logical_device
@@ -20,16 +21,24 @@ contains
     type(vec), intent(inout) :: image_available_semaphores
     ! Vk Semaphore Vector
     type(vec), intent(inout) :: render_finished_semaphores
-    type(vk_swapchain_khr), intent(in), value :: swapchain
+    type(vk_swapchain_khr), intent(inout) :: swapchain
     ! Vk CommandBuffer Vector
     type(vec), intent(inout) :: command_buffers
     type(vk_render_pass), intent(in), value :: render_pass
     ! Vk Framebuffer Vector
     type(vec), intent(inout) :: swapchain_framebuffers
-    type(vk_extent_2d), intent(in), value :: swapchain_extent
+    type(vk_extent_2d), intent(inout) :: swapchain_extent
     type(vk_pipeline), intent(in), value :: graphics_pipeline
     type(vk_queue), intent(in), value :: graphics_queue
     type(vk_queue), intent(in), value, target :: present_queue
+    type(vk_physical_device), intent(in), value :: physical_device
+    type(vk_surface_khr), intent(inout) :: window_surface
+    ! Vk Image Vector
+    type(vec), intent(inout) :: swapchain_images
+    type(vk_format), intent(inout) :: swapchain_image_format
+    ! Vk ImageView Vector
+    type(vec), intent(inout) :: swapchain_image_views
+
     ! uint32_t
     integer(c_int32_t), target :: image_index
     type(vk_submit_info), target :: submit_info
@@ -44,6 +53,7 @@ contains
     type(vk_fence), pointer :: fence_pointer
     type(vk_semaphore), pointer :: semaphore_pointer
     type(vk_command_buffer), pointer :: command_buffer_pointer
+    integer(c_int32_t) :: acquire_result
 
     ! -1 is UINT64_MAX, aka, unlimited timeout.
     if (vk_wait_for_fences(logical_device, 1, in_flight_fences%get(current_frame), VK_TRUE, -1_8) /= VK_SUCCESS) then
@@ -55,8 +65,11 @@ contains
     end if
 
     call c_f_pointer(image_available_semaphores%get(current_frame), semaphore_pointer)
-    if (vk_acquire_next_image_khr(logical_device, swapchain, -1_8, semaphore_pointer, vk_fence(VK_NULL_HANDLE), image_index) /= VK_SUCCESS) then
-      error stop "[Vulkan] Error: Failed to aqcuire next image."
+    acquire_result = vk_acquire_next_image_khr(logical_device, swapchain, -1_8, semaphore_pointer, vk_fence(VK_NULL_HANDLE), image_index)
+    if (acquire_result == VK_ERROR_OUT_OF_DATE_KHR) then
+      call recreate_swapchain(logical_device, physical_device, window_surface, swapchain, swapchain_images, swapchain_image_format, swapchain_extent, swapchain_image_views, swapchain_framebuffers, render_pass)
+    else if (acquire_result /= VK_SUCCESS .and. acquire_result /= VK_SUBOPTIMAL_KHR) then
+      error stop "[Vulkan] Error: Failed to aqcuire next swapchain image."
     end if
 
     ! We now translate this to Fortran indexing.
