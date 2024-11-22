@@ -66,8 +66,7 @@ module vulkan_driver
 
   type(vk_render_pass) :: render_pass
 
-  ! VkPipeline
-  integer(c_int64_t) :: graphics_pipeline = VK_NULL_HANDLE
+  type(vk_pipeline) :: graphics_pipeline
 
   ! VkFramebuffer
   type(vec) :: swapchain_framebuffers

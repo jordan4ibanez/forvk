@@ -89,6 +89,12 @@ module forvulkan_types
   end type vk_render_pass
 
 
+  !? VkPipeline.
+  type, bind(c) :: vk_pipeline
+    integer(c_int64_t) :: data = VK_NULL_HANDLE
+  end type vk_pipeline
+
+
 !? REGULAR TYPES. ===============================================================
 
 
@@ -1233,8 +1239,7 @@ module forvulkan_types
     type(vk_render_pass) :: render_pass
     ! uint32_t
     integer(c_int32_t) :: subpass = 0
-    ! VkPipeline
-    integer(c_int64_t) :: base_pipeline_handle = 0
+    type(vk_pipeline) :: base_pipeline_handle
     ! int32_t
     integer(c_int32_t) :: base_pipeline_index = 0
   end type vk_graphics_pipeline_create_info

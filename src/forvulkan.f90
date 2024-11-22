@@ -424,8 +424,9 @@ module forvulkan
       type(c_ptr), intent(in), value :: p_create_infos
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
-      ! VkPipeline *
-      integer(c_int64_t), intent(inout) :: p_pipelines
+      !? Implementation note: I only use one graphics pipeline at the moment.
+      !? This can be modified to accept a more generic if needed c_ptr.
+      type(vk_pipeline), intent(inout) :: p_pipelines
       integer(c_int32_t) :: vk_result
     end function vk_create_graphics_pipelines
 
@@ -436,8 +437,7 @@ module forvulkan
       implicit none
 
       type(vk_device), intent(in), value :: logical_device
-      ! VkPipeline
-      integer(c_int64_t), intent(in), value :: pipeline
+      type(vk_pipeline), intent(in), value :: pipeline
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
     end subroutine vk_destroy_pipeline
@@ -551,8 +551,7 @@ module forvulkan
       integer(c_int64_t), intent(in), value :: command_buffer
       ! VkPipelineBindPoint
       integer(c_int32_t), intent(in), value :: pipeline_bind_point
-      ! VkPipeline
-      integer(c_int64_t), intent(in), value :: pipeline
+      type(vk_pipeline), intent(in), value :: pipeline
     end subroutine vk_cmd_bind_pipeline
 
 

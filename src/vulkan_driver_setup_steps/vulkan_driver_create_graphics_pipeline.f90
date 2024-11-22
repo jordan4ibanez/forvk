@@ -19,8 +19,7 @@ contains
     type(vk_extent_2d), intent(in) :: swapchain_extent
     type(vk_pipeline_layout), intent(inout) :: pipeline_layout
     type(vk_render_pass), intent(in), value :: render_pass
-    ! VkPipeline
-    integer(c_int64_t), intent(inout) :: graphics_pipeline
+    type(vk_pipeline), intent(inout) :: graphics_pipeline
     type(vk_pipeline_shader_stage_create_info) :: vertex_shader_stage_info, fragment_shader_stage_info
     character(len = 5, kind = c_char), target :: vert_p_name, frag_p_name
     type(vk_pipeline_shader_stage_create_info), dimension(2), target :: shader_stages
@@ -168,7 +167,7 @@ contains
     graphics_pipeline_create_info%render_pass = render_pass
     graphics_pipeline_create_info%subpass = 0
 
-    graphics_pipeline_create_info%base_pipeline_handle = VK_NULL_HANDLE
+    graphics_pipeline_create_info%base_pipeline_handle%data = VK_NULL_HANDLE
     graphics_pipeline_create_info%base_pipeline_index = -1
 
     if (vk_create_graphics_pipelines(logical_device, VK_NULL_HANDLE, 1, c_loc(graphics_pipeline_create_info), c_null_ptr, graphics_pipeline) /= VK_SUCCESS) then

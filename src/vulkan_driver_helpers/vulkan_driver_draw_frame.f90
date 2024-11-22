@@ -27,8 +27,7 @@ contains
     ! VkFramebuffer vector
     type(vec), intent(inout) :: swapchain_framebuffers
     type(vk_extent_2d), intent(in), value :: swapchain_extent
-    ! VkPipeline
-    integer(c_int64_t), intent(in), value :: graphics_pipeline
+    type(vk_pipeline), intent(in), value :: graphics_pipeline
     type(vk_queue), intent(in), value :: graphics_queue
     type(vk_queue), intent(in), value, target :: present_queue
     ! uint32_t

@@ -18,8 +18,7 @@ contains
     ! VkFramebuffer
     type(vec), intent(inout) :: swapchain_framebuffers
     type(vk_extent_2d), intent(in) :: swapchain_extent
-    ! VkPipeline
-    integer(c_int64_t), intent(in), value :: graphics_pipeline
+    type(vk_pipeline), intent(in), value :: graphics_pipeline
     type(vk_command_buffer_begin_info), target :: begin_info
     type(vk_render_pass_begin_info), target :: render_pass_info
     integer(c_int64_t), pointer :: framebuffer
