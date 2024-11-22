@@ -56,7 +56,6 @@ module vulkan_driver
   ! VkExtent2D
   type(vk_extent_2d) :: swapchain_extent
 
-  ! VkImageView
   type(vec) :: swapchain_image_views
 
   type(vk_shader_module) :: vertex_shader_module
@@ -187,7 +186,8 @@ contains
     implicit none
 
     integer(c_int64_t) :: i
-    integer(c_int64_t), pointer :: image_view, framebuffer, semaphore, fence
+    type(vk_image_view), pointer :: image_view_pointer
+    integer(c_int64_t), pointer :: framebuffer, semaphore, fence
 
     do i = 1,MAX_FRAMES_IN_FLIGHT
       call c_f_pointer(image_available_semaphores%get(i), semaphore)
@@ -214,8 +214,8 @@ contains
     call vk_destroy_render_pass(logical_device, render_pass, c_null_ptr)
 
     do i = 1,swapchain_image_views%size()
-      call c_f_pointer(swapchain_image_views%get(i), image_view)
-      call vk_destroy_image_view(logical_device, image_view, c_null_ptr)
+      call c_f_pointer(swapchain_image_views%get(i), image_view_pointer)
+      call vk_destroy_image_view(logical_device, image_view_pointer, c_null_ptr)
     end do
 
     call vk_destroy_swapchain_khr(logical_device, swapchain, c_null_ptr)

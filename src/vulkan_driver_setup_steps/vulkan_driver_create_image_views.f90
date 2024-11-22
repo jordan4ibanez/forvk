@@ -15,11 +15,11 @@ contains
     type(vk_device), intent(in), value :: logical_device
     ! VkImage Array
     type(vec), intent(inout) :: swapchain_images
-    ! VkImageView Array
     type(vec), intent(inout) :: swapchain_image_views
     type(vk_format), intent(in), value :: swapchain_image_format
     integer(c_int64_t) :: i
     integer(c_int64_t), pointer :: image_pointer
+    type(vk_image_view), pointer :: image_view_pointer
     type(vk_image_view_create_info), target :: image_view_create_info
 
     swapchain_image_views = new_vec(sizeof(0_8), 0_8)
@@ -45,7 +45,9 @@ contains
       image_view_create_info%subresource_range%base_array_layer = 0
       image_view_create_info%subresource_range%layer_count = 1
 
-      if (vk_create_image_view(logical_device, c_loc(image_view_create_info), c_null_ptr, swapchain_image_views%get(i)) /= VK_SUCCESS) then
+      call c_f_pointer(swapchain_image_views%get(i), image_view_pointer)
+
+      if (vk_create_image_view(logical_device, c_loc(image_view_create_info), c_null_ptr, image_view_pointer) /= VK_SUCCESS) then
         error stop "[Vulkan] Error: Failed to create image view. Index ["//int64_to_string(i)//"]"
       end if
     end do

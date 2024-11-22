@@ -14,15 +14,13 @@ contains
     type(vk_device), intent(in), value :: logical_device
     ! VkFramebuffer
     type(vec), intent(inout) :: swapchain_framebuffers
-    ! VkImageView
     type(vec), intent(inout) :: swapchain_image_views
     ! VkRenderPass
     integer(c_int64_t), intent(in), value :: render_pass
     ! VkExtent2D
     type(vk_extent_2d), intent(in) :: swapchain_extent
     integer(c_int64_t) :: i
-    ! VkImageView
-    integer(c_int64_t), dimension(1), target :: attachments
+    type(vk_image_view), dimension(1), target :: attachments
     integer(c_int64_t), pointer :: image_view, framebuffer
     type(vk_framebuffer_create_info), target :: frame_buffer_create_info
 
@@ -33,7 +31,7 @@ contains
 
       call c_f_pointer(swapchain_image_views%get(i), image_view)
 
-      attachments(1) = image_view
+      attachments(1)%data = image_view
 
       frame_buffer_create_info%s_type = VK_STRUCTURE_TYPE%FRAMEBUFFER_CREATE_INFO
       frame_buffer_create_info%render_pass = render_pass

@@ -64,6 +64,11 @@ module forvulkan_types
     integer(c_int64_t) :: data = VK_NULL_HANDLE
   end type vk_shader_module
 
+  !? VkImageView.
+  type, bind(c) :: vk_image_view
+    integer(c_int64_t) :: data = VK_NULL_HANDLE
+  end type vk_image_view
+
 
 !? REGULAR TYPES. ===============================================================
 
@@ -758,7 +763,7 @@ module forvulkan_types
     integer(c_int32_t) :: flags = 0
     ! VkImage
     integer(c_int64_t) :: image = 0
-    ! VkImageViewType
+    ! Vk ImageViewType
     integer(c_int32_t) :: view_type = 0
     type(vk_format) :: format
     ! VkComponentMapping

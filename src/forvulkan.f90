@@ -312,8 +312,7 @@ module forvulkan
       type(c_ptr), intent(in), value :: p_create_info
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
-      ! VkImageView *
-      type(c_ptr), intent(in), value :: p_view
+      type(vk_image_view), intent(inout) :: p_view
       integer(c_int32_t) :: vk_result
     end function vk_create_image_view
 
@@ -324,8 +323,7 @@ module forvulkan
       implicit none
 
       type(vk_device), intent(in), value :: logical_device
-      ! VkImageView
-      integer(c_int64_t), intent(in), value :: image_view
+      type(vk_image_view), intent(in), value :: image_view
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
     end subroutine vk_destroy_image_view
