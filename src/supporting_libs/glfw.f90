@@ -73,6 +73,7 @@ module glfw
   ! public :: glfw_get_window_scale_height_f64
   public :: glfw_set_window_icon
   public :: glfw_set_content_scale_callback
+  public :: glfw_set_framebuffer_size_callback
 
 
   public :: glfw_image
@@ -572,14 +573,14 @@ module glfw
     end subroutine internal_glfw_set_window_title
 
 
-    subroutine glfw_set_framebuffer_size_callback(window, cb_fun) bind(c, name = "glfwSetFramebufferSizeCallback")
+    subroutine internal_glfw_set_framebuffer_size_callback(window, cb_fun) bind(c, name = "glfwSetFramebufferSizeCallback")
       use, intrinsic :: iso_c_binding
       implicit none
 
       ! GLFWwindow *
       type(c_ptr), intent(in), value :: window
       type(c_funptr), intent(in), value :: cb_fun
-    end subroutine glfw_set_framebuffer_size_callback
+    end subroutine internal_glfw_set_framebuffer_size_callback
 
 
   end interface
@@ -1047,6 +1048,15 @@ contains
     window_scale%x = x_scale
     window_scale%y = y_scale
   end subroutine content_scale_callback
+
+
+  subroutine glfw_set_framebuffer_size_callback(callback)
+    implicit none
+
+    type(c_funptr), intent(in), value :: callback
+
+    call internal_glfw_set_framebuffer_size_callback(window_pointer, callback)
+  end subroutine glfw_set_framebuffer_size_callback
 
 
 end module glfw
