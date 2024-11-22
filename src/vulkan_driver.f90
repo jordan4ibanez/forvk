@@ -92,6 +92,8 @@ module vulkan_driver
   !? How many frames should be processed concurrently.
   integer(c_int64_t), parameter :: MAX_FRAMES_IN_FLIGHT = 2
 
+  logical(c_bool) :: framebuffer_resized = .false.
+
   ! Controls debugging output.
   logical(c_bool), parameter :: DEBUG_MODE = .true.
 
@@ -169,10 +171,10 @@ contains
 
     do while(.not. glfw_window_should_close())
       call glfw_poll_events()
-      call draw_frame(logical_device, current_frame, MAX_FRAMES_IN_FLIGHT, in_flight_fences, image_available_semaphores, render_finished_semaphores, swapchain, command_buffers, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue, physical_device, window_surface, swapchain_images, swapchain_image_format, swapchain_image_views)
+      call draw_frame(logical_device, current_frame, MAX_FRAMES_IN_FLIGHT, in_flight_fences, image_available_semaphores, render_finished_semaphores, swapchain, command_buffers, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue, physical_device, window_surface, swapchain_images, swapchain_image_format, swapchain_image_views, framebuffer_resized)
 
       if (a >= 100) then
-        call glfw_close_window()
+        ! call glfw_close_window()
       end if
 
       a = a + 1

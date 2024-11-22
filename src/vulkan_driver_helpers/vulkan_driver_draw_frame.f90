@@ -9,7 +9,7 @@ module vulkan_driver_draw_frame
 contains
 
 
-  subroutine draw_frame(logical_device, current_frame, MAX_FRAMES_IN_FLIGHT, in_flight_fences, image_available_semaphores, render_finished_semaphores, swapchain, command_buffers, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue, physical_device, window_surface, swapchain_images, swapchain_image_format, swapchain_image_views)
+  subroutine draw_frame(logical_device, current_frame, MAX_FRAMES_IN_FLIGHT, in_flight_fences, image_available_semaphores, render_finished_semaphores, swapchain, command_buffers, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue, physical_device, window_surface, swapchain_images, swapchain_image_format, swapchain_image_views, framebuffer_resized)
     implicit none
 
     type(vk_device), intent(in), value :: logical_device
@@ -38,7 +38,7 @@ contains
     type(vk_format), intent(inout) :: swapchain_image_format
     ! Vk ImageView Vector
     type(vec), intent(inout) :: swapchain_image_views
-
+    logical(c_bool), intent(inout) :: framebuffer_resized
     ! uint32_t
     integer(c_int32_t), target :: image_index
     type(vk_submit_info), target :: submit_info
@@ -63,11 +63,13 @@ contains
     call c_f_pointer(image_available_semaphores%get(current_frame), semaphore_pointer)
     acquire_result = vk_acquire_next_image_khr(logical_device, swapchain, -1_8, semaphore_pointer, vk_fence(VK_NULL_HANDLE), image_index)
 
-    if (acquire_result == VK_ERROR_OUT_OF_DATE_KHR) then
+    if (acquire_result == VK_ERROR_OUT_OF_DATE_KHR .or. acquire_result == VK_SUBOPTIMAL_KHR .or. framebuffer_resized) then
       call recreate_swapchain(logical_device, physical_device, window_surface, swapchain, swapchain_images, swapchain_image_format, swapchain_extent, swapchain_image_views, swapchain_framebuffers, render_pass)
+      framebuffer_resized = .false.
+      print*,"recreating swap chain"
       ! This early return prevents a deadlock.
       return
-    else if (acquire_result /= VK_SUCCESS .and. acquire_result /= VK_SUBOPTIMAL_KHR) then
+    else if (acquire_result /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to aqcuire next swapchain image."
     end if
 
