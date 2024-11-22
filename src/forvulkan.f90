@@ -296,7 +296,7 @@ module forvulkan
       type(vk_swapchain_khr), intent(in), value :: swapchain
       ! uint32_t *
       integer(c_int32_t), intent(inout) :: p_swapchain_image_count
-      ! VkImage *
+      ! Vk Image * (this is an array.)
       type(c_ptr), intent(in), value :: p_swapchain_images
       integer(c_int32_t) :: vk_result
     end function vk_get_swapchain_images_khr

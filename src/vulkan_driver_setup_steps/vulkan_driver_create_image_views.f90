@@ -18,7 +18,7 @@ contains
     type(vec), intent(inout) :: swapchain_image_views
     type(vk_format), intent(in), value :: swapchain_image_format
     integer(c_int64_t) :: i
-    integer(c_int64_t), pointer :: image_pointer
+    type(vk_image), pointer :: image_pointer
     type(vk_image_view), pointer :: image_view_pointer
     type(vk_image_view_create_info), target :: image_view_create_info
 
