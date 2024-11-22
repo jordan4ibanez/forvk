@@ -172,7 +172,7 @@ contains
     ! In fact, it just equals -1. :)
     if (capabilities%current_extent%width == -1) then
       ! The vulkan tutorial was using a whole bunch of variables but I'm just going to inline it and reuse.
-      call glfw_get_framebuffer_size(glfw_get_window_pointer(), selected_extent%width, selected_extent%height)
+      call glfw_get_framebuffer_size(selected_extent%width, selected_extent%height)
 
       selected_extent%width = clamp_i32(selected_extent%width, capabilities%min_image_extent%width, capabilities%max_image_extent%width)
       selected_extent%height = clamp_i32(selected_extent%height, capabilities%min_image_extent%height, capabilities%max_image_extent%height)

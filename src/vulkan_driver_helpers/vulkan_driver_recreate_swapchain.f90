@@ -34,9 +34,11 @@ contains
       error stop "[Vulkan] Error: Failed to wait for logical device."
     end if
 
-    call glfw_get_framebuffer_size()
+    call glfw_get_framebuffer_size(width, height)
     do while (width == 0 .or. height == 0)
-
+      print*,"waiting"
+      call glfw_get_framebuffer_size(width, height)
+      call glfw_wait_events()
     end do
 
     call clean_up_swapchain(logical_device, swapchain_framebuffers, swapchain_image_views, swapchain)
