@@ -572,6 +572,16 @@ module glfw
     end subroutine internal_glfw_set_window_title
 
 
+    subroutine glfw_set_framebuffer_size_callback(window, cb_fun) bind(c, name = "glfwSetFramebufferSizeCallback")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! GLFWwindow *
+      type(c_ptr), intent(in), value :: window
+      type(c_funptr), intent(in), value :: cb_fun
+    end subroutine glfw_set_framebuffer_size_callback
+
+
   end interface
 
 
