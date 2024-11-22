@@ -83,6 +83,12 @@ module forvulkan_types
   end type vk_pipeline_layout
 
 
+  !? VkRenderPass.
+  type, bind(c) :: vk_render_pass
+    integer(c_int64_t) :: data = VK_NULL_HANDLE
+  end type vk_render_pass
+
+
 !? REGULAR TYPES. ===============================================================
 
 
@@ -1224,8 +1230,7 @@ module forvulkan_types
     ! const VkPipelineDynamicStateCreateInfo*
     type(c_ptr) :: p_dynamic_state = c_null_ptr
     type(vk_pipeline_layout) :: layout
-    ! VkRenderPass
-    integer(c_int64_t) :: render_pass = 0
+    type(vk_render_pass) :: render_pass
     ! uint32_t
     integer(c_int32_t) :: subpass = 0
     ! VkPipeline
@@ -1243,8 +1248,7 @@ module forvulkan_types
     type(c_ptr) :: p_next = c_null_ptr
     ! VkFramebufferCreateFlags
     integer(c_int32_t) :: flags = 0
-    ! VkRenderPass
-    integer(c_int64_t) :: render_pass = 0
+    type(vk_render_pass) :: render_pass
     ! uint32_t
     integer(c_int32_t) :: attachment_count = 0
     ! const VkImageView *
@@ -1292,8 +1296,7 @@ module forvulkan_types
     integer(c_int32_t) :: s_type = 0
     ! const void *
     type(c_ptr) :: p_next = c_null_ptr
-    ! VkRenderPass
-    integer(c_int64_t) :: render_pass = 0
+    type(vk_render_pass) :: render_pass
     ! uint32_t
     integer(c_int32_t) :: subpass = 0
     ! VkFramebuffer
@@ -1326,8 +1329,7 @@ module forvulkan_types
     integer(c_int32_t) :: s_type = 0
     ! const void *
     type(c_ptr) :: p_next = c_null_ptr
-    ! VkRenderPass
-    integer(c_int64_t) :: render_pass = 0
+    type(vk_render_pass) :: render_pass
     ! VkFramebuffer
     integer(c_int64_t) :: framebuffer = 0
     ! VkRect2D

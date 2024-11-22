@@ -14,8 +14,7 @@ contains
     integer(c_int64_t), intent(in), value :: command_buffer
     ! uint32_t
     integer(c_int32_t), intent(in), value :: image_index
-    ! VkRenderPass
-    integer(c_int64_t), intent(in), value :: render_pass
+    type(vk_render_pass), intent(in), value :: render_pass
     ! VkFramebuffer
     type(vec), intent(inout) :: swapchain_framebuffers
     type(vk_extent_2d), intent(in) :: swapchain_extent

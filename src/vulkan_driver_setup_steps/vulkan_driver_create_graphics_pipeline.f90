@@ -18,8 +18,7 @@ contains
     type(vk_shader_module), intent(inout) :: fragment_shader_module
     type(vk_extent_2d), intent(in) :: swapchain_extent
     type(vk_pipeline_layout), intent(inout) :: pipeline_layout
-    ! VkRenderPass
-    integer(c_int64_t), intent(in), value :: render_pass
+    type(vk_render_pass), intent(in), value :: render_pass
     ! VkPipeline
     integer(c_int64_t), intent(inout) :: graphics_pipeline
     type(vk_pipeline_shader_stage_create_info) :: vertex_shader_stage_info, fragment_shader_stage_info

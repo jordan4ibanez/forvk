@@ -10,8 +10,7 @@ contains
     implicit none
 
     type(vk_device), intent(in), value :: logical_device
-    ! VkRenderPass
-    integer(c_int64_t), intent(inout) :: render_pass
+    type(vk_render_pass), intent(inout) :: render_pass
     type(vk_format), intent(in), value :: swapchain_image_format
     type(vk_attachment_description), target :: color_attachment_description
     type(vk_attachment_reference), target :: color_attachment_reference

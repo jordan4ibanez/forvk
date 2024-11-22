@@ -64,8 +64,7 @@ module vulkan_driver
 
   type(vk_pipeline_layout) :: pipeline_layout
 
-  ! VkRenderPass
-  integer(c_int64_t) :: render_pass = VK_NULL_HANDLE
+  type(vk_render_pass) :: render_pass
 
   ! VkPipeline
   integer(c_int64_t) :: graphics_pipeline = VK_NULL_HANDLE

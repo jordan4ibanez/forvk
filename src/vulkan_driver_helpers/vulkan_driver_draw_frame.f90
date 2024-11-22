@@ -23,8 +23,7 @@ contains
     type(vk_swapchain_khr), intent(in), value :: swapchain
     ! VkCommandBuffer
     type(vec), intent(inout) :: command_buffers
-    ! VkRenderPass
-    integer(c_int64_t), intent(in), value :: render_pass
+    type(vk_render_pass), intent(in), value :: render_pass
     ! VkFramebuffer vector
     type(vec), intent(inout) :: swapchain_framebuffers
     type(vk_extent_2d), intent(in), value :: swapchain_extent

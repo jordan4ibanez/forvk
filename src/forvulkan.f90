@@ -393,8 +393,7 @@ module forvulkan
       type(c_ptr), intent(in), value :: p_create_info
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
-      ! VkRenderPass *
-      integer(c_int64_t), intent(inout) :: p_render_pass
+      type(vk_render_pass), intent(inout) :: p_render_pass
       integer(c_int32_t) :: vk_result
     end function vk_create_render_pass
 
@@ -405,8 +404,7 @@ module forvulkan
       implicit none
 
       type(vk_device), intent(in), value :: logical_device
-      ! VkRenderPass
-      integer(c_int64_t), intent(in), value :: render_pass
+      type(vk_render_pass), intent(in), value :: render_pass
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
     end subroutine vk_destroy_render_pass
