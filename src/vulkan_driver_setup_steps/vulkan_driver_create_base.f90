@@ -5,8 +5,11 @@ module vulkan_driver_create_base
   implicit none
 
 
-contains
+  ! This is a trick to pass the mutable boolean to the framebuffer resize callback.
+  type(c_ptr) :: resized_loc
 
+
+contains
 
   subroutine create_glfw()
     implicit none
@@ -22,7 +25,19 @@ contains
     if (.not. glfw_create_window(500, 500, "forvulkan")) then
       error stop "[Vulkan]: Failed to create window."
     end if
+
+
+    call glfw_set_framebuffer_size_callback(c_funloc(framebuffer_size_callback))
   end subroutine create_glfw
 
+
+  recursive subroutine framebuffer_size_callback(window, width, height) bind(c)
+    implicit none
+
+    type(c_ptr), intent(in), value :: window
+    integer(c_int32_t), intent(in), value :: width, height
+
+    print*,"hello!"
+  end subroutine framebuffer_size_callback
 
 end module vulkan_driver_create_base
