@@ -68,6 +68,8 @@ contains
     acquire_result = vk_acquire_next_image_khr(logical_device, swapchain, -1_8, semaphore_pointer, vk_fence(VK_NULL_HANDLE), image_index)
     if (acquire_result == VK_ERROR_OUT_OF_DATE_KHR) then
       call recreate_swapchain(logical_device, physical_device, window_surface, swapchain, swapchain_images, swapchain_image_format, swapchain_extent, swapchain_image_views, swapchain_framebuffers, render_pass)
+      ! This early return prevents a deadlock.
+      return
     else if (acquire_result /= VK_SUCCESS .and. acquire_result /= VK_SUBOPTIMAL_KHR) then
       error stop "[Vulkan] Error: Failed to aqcuire next swapchain image."
     end if
