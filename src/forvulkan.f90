@@ -639,8 +639,7 @@ module forvulkan
       type(c_ptr), intent(in), value :: p_create_info
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
-      ! VkFence *
-      type(c_ptr), intent(in), value :: p_fence
+      type(vk_fence), intent(inout) :: p_fence
       integer(c_int32_t) :: vk_result
     end function vk_create_fence
 
@@ -663,8 +662,7 @@ module forvulkan
       implicit none
 
       type(vk_device), intent(in), value :: logical_device
-      ! VkFence
-      integer(c_int64_t), intent(in), value :: fence
+      type(vk_fence), intent(in), value :: fence
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
     end subroutine vk_destroy_fence
@@ -712,8 +710,7 @@ module forvulkan
       ! uint64_t
       integer(c_int64_t), intent(in), value :: timeout
       type(vk_semaphore), intent(in), value :: semaphore
-      ! VkFence
-      integer(c_int64_t), intent(in), value :: fence
+      type(vk_fence), intent(in), value :: fence
       ! uint32_t *
       integer(c_int32_t), intent(inout) :: p_image_index
       integer(c_int32_t) :: vk_result
@@ -742,8 +739,7 @@ module forvulkan
       integer(c_int32_t), intent(in), value :: submit_count
       ! const VkSubmitInfo *
       type(c_ptr), intent(in), value :: p_submits
-      ! VkFence
-      integer(c_int64_t), intent(in), value :: fence
+      type(vk_fence), intent(in), value :: fence
       integer(c_int32_t) :: vk_result
     end function vk_queue_submit
 

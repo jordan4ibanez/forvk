@@ -17,12 +17,13 @@ contains
     type(vec), intent(inout) :: image_available_semaphores
     ! Vk Semaphore Vector
     type(vec), intent(inout) :: render_finished_semaphores
-    ! VkFence
+    ! Vk Fence Vector
     type(vec), intent(inout) :: in_flight_fences
     type(vk_semaphore_create_info), target :: semaphore_create_info
     type(vk_fence_create_info), target :: fence_create_info
     integer(c_int64_t) :: i
     type(vk_semaphore), pointer :: semaphore_pointer
+    type(vk_fence), pointer :: fence_pointer
 
     image_available_semaphores = new_vec(sizeof(VK_NULL_HANDLE), MAX_FRAMES_IN_FLIGHT)
     call image_available_semaphores%resize(MAX_FRAMES_IN_FLIGHT, VK_NULL_HANDLE)
@@ -49,7 +50,8 @@ contains
         error stop "[Vulkan] Error: Failed to create render finished semaphore"
       end if
 
-      if (vk_create_fence(logical_device, c_loc(fence_create_info), c_null_ptr, in_flight_fences%get(i)) /= VK_SUCCESS) then
+      call c_f_pointer(in_flight_fences%get(i), fence_pointer)
+      if (vk_create_fence(logical_device, c_loc(fence_create_info), c_null_ptr, fence_pointer) /= VK_SUCCESS) then
         error stop "[Vulkan] Error: Failed to create in flight fence"
       end if
     end do

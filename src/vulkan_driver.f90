@@ -82,7 +82,7 @@ module vulkan_driver
   ! Vk Semaphore Vector
   type(vec) :: render_finished_semaphores
 
-  ! VkFence
+  ! Vk Fence Vector
   type(vec) :: in_flight_fences
 
   !? This is the frame we're currently on.
@@ -193,7 +193,7 @@ contains
     type(vk_image_view), pointer :: image_view_pointer
     type(vk_framebuffer), pointer :: framebuffer_pointer
     type(vk_semaphore), pointer :: semaphore_pointer
-    integer(c_int64_t), pointer :: fence
+    type(vk_fence), pointer :: fence_pointer
 
     do i = 1,MAX_FRAMES_IN_FLIGHT
       call c_f_pointer(image_available_semaphores%get(i), semaphore_pointer)
@@ -202,8 +202,8 @@ contains
       call c_f_pointer(render_finished_semaphores%get(i), semaphore_pointer)
       call vk_destroy_semaphore(logical_device, semaphore_pointer, c_null_ptr)
 
-      call c_f_pointer(in_flight_fences%get(i), fence)
-      call vk_destroy_fence(logical_device, fence, c_null_ptr)
+      call c_f_pointer(in_flight_fences%get(i), fence_pointer)
+      call vk_destroy_fence(logical_device, fence_pointer, c_null_ptr)
     end do
 
     call vk_destroy_command_pool(logical_device, command_pool, c_null_ptr)

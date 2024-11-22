@@ -14,7 +14,7 @@ contains
     type(vk_device), intent(in), value :: logical_device
     integer(c_int64_t), intent(inout) :: current_frame
     integer(c_int64_t), intent(in), value :: MAX_FRAMES_IN_FLIGHT
-    ! VkFence
+    ! Vk Fence Vector
     type(vec), intent(inout) :: in_flight_fences
     ! Vk Semaphore Vector
     type(vec), intent(inout) :: image_available_semaphores
@@ -41,7 +41,7 @@ contains
     type(vk_semaphore), dimension(1), target :: signal_semaphores
     type(vk_present_info_khr), target :: present_info
     type(vk_swapchain_khr), dimension(1), target :: swapchains
-    integer(c_int64_t), pointer :: fence
+    type(vk_fence), pointer :: fence_pointer
     type(vk_semaphore), pointer :: semaphore_pointer
     type(vk_command_buffer), pointer :: command_buffer_pointer
 
@@ -55,7 +55,7 @@ contains
     end if
 
     call c_f_pointer(image_available_semaphores%get(current_frame), semaphore_pointer)
-    if (vk_acquire_next_image_khr(logical_device, swapchain, -1_8, semaphore_pointer, VK_NULL_HANDLE, image_index) /= VK_SUCCESS) then
+    if (vk_acquire_next_image_khr(logical_device, swapchain, -1_8, semaphore_pointer, vk_fence(VK_NULL_HANDLE), image_index) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to aqcuire next image."
     end if
 
@@ -89,8 +89,8 @@ contains
     submit_info%signal_semaphore_count = 1
     submit_info%p_signal_semaphores = c_loc(signal_semaphores)
 
-    call c_f_pointer(in_flight_fences%get(current_frame), fence)
-    if (vk_queue_submit(graphics_queue, 1, c_loc(submit_info), fence) /= VK_SUCCESS) then
+    call c_f_pointer(in_flight_fences%get(current_frame), fence_pointer)
+    if (vk_queue_submit(graphics_queue, 1, c_loc(submit_info), fence_pointer) /= VK_SUCCESS) then
       error stop
     end if
 
