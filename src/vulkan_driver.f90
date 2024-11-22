@@ -24,6 +24,7 @@ module vulkan_driver
   !? Then after this, it's just helpers.
   use :: vulkan_driver_record_command_buffer
   use :: vulkan_driver_draw_frame
+  use :: vulkan_driver_clean_up_swapchain
   implicit none
 
   ! https://github.com/KhronosGroup/Vulkan-Headers/blob/main/include/vulkan/vulkan_core.h
@@ -190,10 +191,10 @@ contains
     implicit none
 
     integer(c_int64_t) :: i
-    type(vk_image_view), pointer :: image_view_pointer
-    type(vk_framebuffer), pointer :: framebuffer_pointer
     type(vk_semaphore), pointer :: semaphore_pointer
     type(vk_fence), pointer :: fence_pointer
+
+    call clean_up_swapchain(logical_device, swapchain_framebuffers, swapchain_image_views, swapchain)
 
     do i = 1,MAX_FRAMES_IN_FLIGHT
       call c_f_pointer(image_available_semaphores%get(i), semaphore_pointer)
@@ -208,23 +209,11 @@ contains
 
     call vk_destroy_command_pool(logical_device, command_pool, c_null_ptr)
 
-    do i = 1,swapchain_framebuffers%size()
-      call c_f_pointer(swapchain_framebuffers%get(i), framebuffer_pointer)
-      call vk_destroy_framebuffer(logical_device, framebuffer_pointer, c_null_ptr)
-    end do
-
     call vk_destroy_pipeline(logical_device, graphics_pipeline, c_null_ptr)
 
     call vk_destroy_pipeline_layout(logical_device, pipeline_layout, c_null_ptr)
 
     call vk_destroy_render_pass(logical_device, render_pass, c_null_ptr)
-
-    do i = 1,swapchain_image_views%size()
-      call c_f_pointer(swapchain_image_views%get(i), image_view_pointer)
-      call vk_destroy_image_view(logical_device, image_view_pointer, c_null_ptr)
-    end do
-
-    call vk_destroy_swapchain_khr(logical_device, swapchain, c_null_ptr)
 
     call vk_destroy_surface_khr(vulkan_instance, window_surface, c_null_ptr)
 
