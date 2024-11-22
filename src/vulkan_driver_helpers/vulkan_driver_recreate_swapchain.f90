@@ -4,14 +4,9 @@ module vulkan_driver_recreate_swapchain
   use :: vulkan_driver_create_swapchain
   use :: vulkan_driver_create_image_views
   use :: vulkan_driver_create_framebuffers
+  use :: vulkan_driver_clean_up_swapchain
   use :: vector
   implicit none
-
-
-  private
-
-
-  public :: recreate_swapchain
 
 
 contains
@@ -45,34 +40,6 @@ contains
     call create_framebuffers(logical_device, swapchain_framebuffers, swapchain_image_views, render_pass, swapchain_extent)
 
   end subroutine recreate_swapchain
-
-
-  subroutine clean_up_swapchain(logical_device, swapchain_framebuffers, swapchain_image_views, swapchain)
-    implicit none
-
-    type(vk_device), intent(in), value :: logical_device
-    ! Vk Framebuffer Vector
-    type(vec), intent(inout) :: swapchain_framebuffers
-    ! Vk ImageView Vector
-    type(vec), intent(inout) :: swapchain_image_views
-    integer(c_int64_t) :: i
-    type(vk_framebuffer), pointer :: framebuffer_pointer
-    type(vk_image_view), pointer :: image_view_pointer
-    type(vk_swapchain_khr), intent(inout) :: swapchain
-
-    do i = 1,swapchain_framebuffers%size()
-      call c_f_pointer(swapchain_framebuffers%get(i), framebuffer_pointer)
-      call vk_destroy_framebuffer(logical_device, framebuffer_pointer, c_null_ptr)
-    end do
-
-    do i = 1,swapchain_image_views%size()
-      call c_f_pointer(swapchain_image_views%get(i), image_view_pointer)
-      call vk_destroy_image_view(logical_device, image_view_pointer, c_null_ptr)
-    end do
-
-    call vk_destroy_swapchain_khr(logical_device, swapchain, c_null_ptr)
-
-  end subroutine clean_up_swapchain
 
 
 end module vulkan_driver_recreate_swapchain
