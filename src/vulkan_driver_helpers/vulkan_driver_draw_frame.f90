@@ -60,10 +60,6 @@ contains
       error stop "[Vulkan] Error: Failed to wait for fences."
     end if
 
-    if (vk_reset_fences(logical_device, 1, in_flight_fences%get(current_frame)) /= VK_SUCCESS) then
-      error stop "[Vulkan] Error: Failed to reset in flight fence."
-    end if
-
     call c_f_pointer(image_available_semaphores%get(current_frame), semaphore_pointer)
     acquire_result = vk_acquire_next_image_khr(logical_device, swapchain, -1_8, semaphore_pointer, vk_fence(VK_NULL_HANDLE), image_index)
     if (acquire_result == VK_ERROR_OUT_OF_DATE_KHR) then
@@ -74,10 +70,14 @@ contains
       error stop "[Vulkan] Error: Failed to aqcuire next swapchain image."
     end if
 
+    ! Only reset the fence if we are submitting work.
+    if (vk_reset_fences(logical_device, 1, in_flight_fences%get(current_frame)) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to reset in flight fence."
+    end if
+
     ! We now translate this to Fortran indexing.
     ! todo: make this into a helper function.
     image_index = image_index + 1
-
 
     call c_f_pointer(command_buffers%get(current_frame), command_buffer_pointer)
     if (vk_reset_command_buffer(command_buffer_pointer, 0) /= VK_SUCCESS) then
