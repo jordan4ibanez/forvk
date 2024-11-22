@@ -95,6 +95,12 @@ module forvulkan_types
   end type vk_pipeline
 
 
+  !? VkFramebuffer.
+  type, bind(c) :: vk_framebuffer
+    integer(c_int64_t) :: data = VK_NULL_HANDLE
+  end type vk_framebuffer
+
+
 !? REGULAR TYPES. ===============================================================
 
 
@@ -1304,8 +1310,7 @@ module forvulkan_types
     type(vk_render_pass) :: render_pass
     ! uint32_t
     integer(c_int32_t) :: subpass = 0
-    ! VkFramebuffer
-    integer(c_int64_t) :: framebuffer = 0
+    type(vk_framebuffer) :: framebuffer
     ! VkBool32
     integer(c_int32_t) :: occlusion_query_enable = 0
     ! VkQueryControlFlags
@@ -1335,8 +1340,7 @@ module forvulkan_types
     ! const void *
     type(c_ptr) :: p_next = c_null_ptr
     type(vk_render_pass) :: render_pass
-    ! VkFramebuffer
-    integer(c_int64_t) :: framebuffer = 0
+    type(vk_framebuffer) :: framebuffer
     ! VkRect2D
     type(vk_rect_2d) :: render_area
     ! uint32_t

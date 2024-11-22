@@ -24,7 +24,7 @@ contains
     ! VkCommandBuffer
     type(vec), intent(inout) :: command_buffers
     type(vk_render_pass), intent(in), value :: render_pass
-    ! VkFramebuffer vector
+    ! Vk Framebuffer Vector
     type(vec), intent(inout) :: swapchain_framebuffers
     type(vk_extent_2d), intent(in), value :: swapchain_extent
     type(vk_pipeline), intent(in), value :: graphics_pipeline

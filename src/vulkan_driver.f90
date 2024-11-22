@@ -68,7 +68,7 @@ module vulkan_driver
 
   type(vk_pipeline) :: graphics_pipeline
 
-  ! VkFramebuffer
+  ! Vk Framebuffer Vector
   type(vec) :: swapchain_framebuffers
 
   ! VkCommandPool
@@ -192,7 +192,8 @@ contains
 
     integer(c_int64_t) :: i
     type(vk_image_view), pointer :: image_view_pointer
-    integer(c_int64_t), pointer :: framebuffer, semaphore, fence
+    type(vk_framebuffer), pointer :: framebuffer_pointer
+    integer(c_int64_t), pointer :: semaphore, fence
 
     do i = 1,MAX_FRAMES_IN_FLIGHT
       call c_f_pointer(image_available_semaphores%get(i), semaphore)
@@ -208,8 +209,8 @@ contains
     call vk_destroy_command_pool(logical_device, command_pool, c_null_ptr)
 
     do i = 1,swapchain_framebuffers%size()
-      call c_f_pointer(swapchain_framebuffers%get(i), framebuffer)
-      call vk_destroy_framebuffer(logical_device, framebuffer, c_null_ptr)
+      call c_f_pointer(swapchain_framebuffers%get(i), framebuffer_pointer)
+      call vk_destroy_framebuffer(logical_device, framebuffer_pointer, c_null_ptr)
     end do
 
     call vk_destroy_pipeline(logical_device, graphics_pipeline, c_null_ptr)

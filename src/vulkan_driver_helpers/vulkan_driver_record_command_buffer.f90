@@ -15,13 +15,13 @@ contains
     ! uint32_t
     integer(c_int32_t), intent(in), value :: image_index
     type(vk_render_pass), intent(in), value :: render_pass
-    ! VkFramebuffer
+    ! Vk Framebuffer Vector
     type(vec), intent(inout) :: swapchain_framebuffers
     type(vk_extent_2d), intent(in) :: swapchain_extent
     type(vk_pipeline), intent(in), value :: graphics_pipeline
     type(vk_command_buffer_begin_info), target :: begin_info
     type(vk_render_pass_begin_info), target :: render_pass_info
-    integer(c_int64_t), pointer :: framebuffer
+    type(vk_framebuffer), pointer :: framebuffer
     type(vk_clear_color_value_f32), target :: clear_color
     type(vk_viewport), target :: viewport
     type(vk_rect_2d), target :: scissor

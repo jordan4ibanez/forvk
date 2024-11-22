@@ -12,14 +12,15 @@ contains
     implicit none
 
     type(vk_device), intent(in), value :: logical_device
-    ! VkFramebuffer
+    ! Vk Framebuffer Vector
     type(vec), intent(inout) :: swapchain_framebuffers
     type(vec), intent(inout) :: swapchain_image_views
     type(vk_render_pass), intent(in), value :: render_pass
     type(vk_extent_2d), intent(in) :: swapchain_extent
     integer(c_int64_t) :: i
     type(vk_image_view), dimension(1), target :: attachments
-    integer(c_int64_t), pointer :: image_view, framebuffer
+    integer(c_int64_t), pointer :: image_view
+    type(vk_framebuffer), pointer :: framebuffer_pointer
     type(vk_framebuffer_create_info), target :: frame_buffer_create_info
 
     swapchain_framebuffers = new_vec(sizeof(0_8), swapchain_image_views%size())
@@ -40,9 +41,9 @@ contains
       frame_buffer_create_info%layers = 1
 
       ! We're pointing this into the array from the driver.
-      call c_f_pointer(swapchain_framebuffers%get(i), framebuffer)
+      call c_f_pointer(swapchain_framebuffers%get(i), framebuffer_pointer)
 
-      if (vk_create_framebuffer(logical_device, c_loc(frame_buffer_create_info), c_null_ptr, framebuffer) /= VK_SUCCESS) then
+      if (vk_create_framebuffer(logical_device, c_loc(frame_buffer_create_info), c_null_ptr, framebuffer_pointer) /= VK_SUCCESS) then
         error stop "[Vulkan] Error: Failed to create framebuffer."
       end if
     end do

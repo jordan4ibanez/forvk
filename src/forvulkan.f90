@@ -453,8 +453,7 @@ module forvulkan
       type(c_ptr), intent(in), value :: p_create_info
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
-      ! VkFramebuffer *
-      integer(c_int64_t), intent(inout) :: p_framebuffer
+      type(vk_framebuffer), intent(inout) :: p_framebuffer
       integer(c_int32_t) :: vk_result
     end function vk_create_framebuffer
 
@@ -465,8 +464,7 @@ module forvulkan
       implicit none
 
       type(vk_device), intent(in), value :: logical_device
-      ! VkFramebuffer
-      integer(c_int64_t), intent(in), value :: framebuffer
+      type(vk_framebuffer), intent(in), value :: framebuffer
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
     end subroutine vk_destroy_framebuffer
