@@ -62,6 +62,7 @@ contains
 
     call c_f_pointer(image_available_semaphores%get(current_frame), semaphore_pointer)
     acquire_result = vk_acquire_next_image_khr(logical_device, swapchain, -1_8, semaphore_pointer, vk_fence(VK_NULL_HANDLE), image_index)
+
     if (acquire_result == VK_ERROR_OUT_OF_DATE_KHR) then
       call recreate_swapchain(logical_device, physical_device, window_surface, swapchain, swapchain_images, swapchain_image_format, swapchain_extent, swapchain_image_views, swapchain_framebuffers, render_pass)
       ! This early return prevents a deadlock.
