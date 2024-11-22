@@ -480,8 +480,7 @@ module forvulkan
       type(c_ptr), intent(in), value :: p_create_info
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
-      ! VkCommandPool *
-      integer(c_int64_t), intent(inout) :: p_command_pool
+      type(vk_command_pool), intent(inout) :: p_command_pool
       integer(c_int32_t) :: vk_result
     end function vk_create_command_pool
 
@@ -492,8 +491,7 @@ module forvulkan
       implicit none
 
       type(vk_device), intent(in), value :: logical_device
-      ! VkCommandPool
-      integer(c_int64_t), intent(in), value :: command_pool
+      type(vk_command_pool), intent(in), value :: command_pool
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
     end subroutine vk_destroy_command_pool

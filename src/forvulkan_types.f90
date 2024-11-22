@@ -101,6 +101,12 @@ module forvulkan_types
   end type vk_framebuffer
 
 
+  !? VkCommandPool.
+  type, bind(c) :: vk_command_pool
+    integer(c_int64_t) :: data = VK_NULL_HANDLE
+  end type vk_command_pool
+
+
 !? REGULAR TYPES. ===============================================================
 
 
@@ -1292,8 +1298,7 @@ module forvulkan_types
     integer(c_int32_t) :: s_type = 0
     ! const void *
     type(c_ptr) :: p_next = c_null_ptr
-    ! VkCommandPool
-    integer(c_int64_t) :: command_pool = 0
+    type(vk_command_pool) :: command_pool
     ! VkCommandBufferLevel
     integer(c_int32_t) :: level = 0
     ! uint32_t

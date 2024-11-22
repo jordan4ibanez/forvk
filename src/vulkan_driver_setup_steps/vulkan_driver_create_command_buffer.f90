@@ -13,8 +13,7 @@ contains
 
     type(vk_device), intent(in), value :: logical_device
     integer(c_int64_t), intent(in), value :: MAX_FRAMES_IN_FLIGHT
-    ! VkCommandPool
-    integer(c_int64_t), intent(in), value :: command_pool
+    type(vk_command_pool), intent(in), value :: command_pool
     ! VkCommandBuffer
     type(vec), intent(inout) :: command_buffers
     type(vk_command_buffer_allocate_info), target :: allocate_info

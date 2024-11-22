@@ -14,8 +14,7 @@ contains
     type(vk_physical_device), intent(in), value :: physical_device
     type(vk_surface_khr), intent(in), value :: window_surface
     type(vk_device), intent(in), value :: logical_device
-    ! VkCommandPool
-    integer(c_int64_t), intent(inout) :: command_pool
+    type(vk_command_pool), intent(inout) :: command_pool
     type(forvulkan_queue_family_indices) :: queue_family_indices
     type(vk_command_pool_create_info), target :: command_pool_create_info
 

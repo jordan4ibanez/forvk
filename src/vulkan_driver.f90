@@ -71,8 +71,7 @@ module vulkan_driver
   ! Vk Framebuffer Vector
   type(vec) :: swapchain_framebuffers
 
-  ! VkCommandPool
-  integer(c_int64_t) :: command_pool = VK_NULL_HANDLE
+  type(vk_command_pool) :: command_pool
 
   ! VkCommandBuffer
   type(vec) :: command_buffers
