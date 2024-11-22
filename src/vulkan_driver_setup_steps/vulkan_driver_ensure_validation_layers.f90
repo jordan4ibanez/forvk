@@ -81,7 +81,11 @@ contains
 
       ! If we're missing a required validation layer, we literally can't debug.
       if (.not. found) then
-        error stop "[Vulkan] Error: Did not find required validation layer ["//required_layer//"]"
+        if (required_layer == "VK_LAYER_KHRONOS_validation") then
+          error stop "[Vulkan] Error: Did not find required validation layer ["//required_layer//"]. (Is the Vulkan SDK installed?)"
+        else
+          error stop "[Vulkan] Error: Did not find required validation layer ["//required_layer//"]"
+        end if
       end if
     end do
 
