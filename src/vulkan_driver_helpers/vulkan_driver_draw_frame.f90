@@ -63,17 +63,6 @@ contains
     call c_f_pointer(image_available_semaphores%get(current_frame), semaphore_pointer)
     acquire_result = vk_acquire_next_image_khr(logical_device, swapchain, -1_8, semaphore_pointer, vk_fence(VK_NULL_HANDLE), image_index)
 
-    if (acquire_result == VK_ERROR_OUT_OF_DATE_KHR .or. acquire_result == VK_SUBOPTIMAL_KHR .or. framebuffer_resized) then
-      call recreate_swapchain(logical_device, physical_device, window_surface, swapchain, swapchain_images, swapchain_image_format, swapchain_extent, swapchain_image_views, swapchain_framebuffers, render_pass)
-      framebuffer_resized = .false.
-      print*,"recreating swap chain"
-      ! This early return prevents a deadlock.
-      return
-    else if (acquire_result /= VK_SUCCESS) then
-      error stop "[Vulkan] Error: Failed to aqcuire next swapchain image."
-    end if
-
-    ! Only reset the fence if we are submitting work.
     if (vk_reset_fences(logical_device, 1, in_flight_fences%get(current_frame)) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to reset in flight fence."
     end if
@@ -131,6 +120,18 @@ contains
 
     if (vk_queue_present_khr(present_queue, c_loc(present_info)) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to present queue."
+    end if
+
+    ! The Vulkan tutorial is very vague on this part.
+    ! If you're reading this, this part was supposed to be split up like so lol.
+    if (acquire_result == VK_ERROR_OUT_OF_DATE_KHR .or. acquire_result == VK_SUBOPTIMAL_KHR .or. framebuffer_resized) then
+      call recreate_swapchain(logical_device, physical_device, window_surface, swapchain, swapchain_images, swapchain_image_format, swapchain_extent, swapchain_image_views, swapchain_framebuffers, render_pass)
+      framebuffer_resized = .false.
+      print*,"recreating swap chain"
+      ! This early return prevents a deadlock.
+      return
+    else if (acquire_result /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to aqcuire next swapchain image."
     end if
 
     ! Tick and cycle frames.

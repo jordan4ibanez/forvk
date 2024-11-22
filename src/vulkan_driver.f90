@@ -124,7 +124,7 @@ contains
   subroutine init_vulkan()
     implicit none
 
-    call create_glfw()
+    call create_glfw(framebuffer_resized)
 
     call ensure_extensions_present(DEBUG_MODE)
 
