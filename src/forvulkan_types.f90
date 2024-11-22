@@ -59,6 +59,12 @@ module forvulkan_types
   end type vk_format
 
 
+  !? VkShaderModule.
+  type, bind(c) :: vk_shader_module
+    integer(c_int64_t) :: data = VK_NULL_HANDLE
+  end type vk_shader_module
+
+
 !? REGULAR TYPES. ===============================================================
 
 
@@ -787,8 +793,7 @@ module forvulkan_types
     integer(c_int32_t) :: flags = 0
     ! VkShaderStageFlagBits
     integer(c_int32_t) :: stage = 0
-    ! VkShaderModule
-    integer(c_int64_t) :: module = 0
+    type(vk_shader_module) :: module
     ! const char*
     type(c_ptr) :: p_name = c_null_ptr
     ! const VkSpecializationInfo *

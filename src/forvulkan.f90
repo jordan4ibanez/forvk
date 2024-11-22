@@ -341,8 +341,7 @@ module forvulkan
       type(c_ptr), intent(in), value :: p_create_info
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
-      ! VkShaderModule *
-      integer(c_int64_t), intent(inout) :: p_shader_module
+      type(vk_shader_module), intent(inout) :: p_shader_module
       integer(c_int32_t) :: vk_result
     end function vk_create_shader_module
 
@@ -353,8 +352,7 @@ module forvulkan
       implicit none
 
       type(vk_device), intent(in), value :: logical_device
-      ! VkShaderModule
-      integer(c_int64_t), intent(in), value :: shader_module
+      type(vk_shader_module), intent(in), value :: shader_module
       ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
     end subroutine vk_destroy_shader_module

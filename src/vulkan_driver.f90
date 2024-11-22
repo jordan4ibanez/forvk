@@ -59,11 +59,9 @@ module vulkan_driver
   ! VkImageView
   type(vec) :: swapchain_image_views
 
-  ! VkShaderModule
-  integer(c_int64_t) :: vertex_shader_module = VK_NULL_HANDLE
+  type(vk_shader_module) :: vertex_shader_module
 
-  ! VkShaderModule
-  integer(c_int64_t) :: fragment_shader_module = VK_NULL_HANDLE
+  type(vk_shader_module) :: fragment_shader_module
 
   ! VkPipelineLayout
   integer(c_int64_t) :: pipeline_layout = VK_NULL_HANDLE

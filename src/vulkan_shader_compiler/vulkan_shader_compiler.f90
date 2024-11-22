@@ -17,7 +17,7 @@ contains
 
     type(vk_device), intent(in), value :: logical_device
     character(len = *, kind = c_char), intent(in) :: shader_file_name
-    integer(c_int64_t) :: shader_module
+    type(vk_shader_module) :: shader_module
     type(c_ptr) :: shader_compiler_options_pointer, shader_compiler_pointer
     type(file_reader) :: reader
     integer(c_int32_t) :: shader_type
