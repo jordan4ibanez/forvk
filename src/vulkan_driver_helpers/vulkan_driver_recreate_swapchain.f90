@@ -28,10 +28,16 @@ contains
     ! Vk Framebuffer Vector
     type(vec), intent(inout) :: swapchain_framebuffers
     type(vk_render_pass), intent(in) :: render_pass
+    integer(c_int32_t) :: width, height
 
     if (vk_device_wait_idle(logical_device) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to wait for logical device."
     end if
+
+    call glfw_get_framebuffer_size()
+    do while (width == 0 .or. height == 0)
+
+    end do
 
     call clean_up_swapchain(logical_device, swapchain_framebuffers, swapchain_image_views, swapchain)
 

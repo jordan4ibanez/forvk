@@ -552,7 +552,7 @@ module glfw
     end function glfw_create_window_surface
 
 
-    subroutine glfw_get_framebuffer_size(window, width, height) bind(c, name = "glfwGetFramebufferSize")
+    subroutine internal_glfw_get_framebuffer_size(window, width, height) bind(c, name = "glfwGetFramebufferSize")
       use, intrinsic :: iso_c_binding
       implicit none
 
@@ -560,7 +560,7 @@ module glfw
       type(c_ptr), intent(in), value :: window
       integer(c_int32_t), intent(inout) :: width
       integer(c_int32_t), intent(inout) :: height
-    end subroutine glfw_get_framebuffer_size
+    end subroutine internal_glfw_get_framebuffer_size
 
 
     subroutine internal_glfw_set_window_title(window, title) bind(c, name = "glfwSetWindowTitle")
@@ -1057,6 +1057,15 @@ contains
 
     call internal_glfw_set_framebuffer_size_callback(window_pointer, callback)
   end subroutine glfw_set_framebuffer_size_callback
+
+
+  subroutine glfw_get_framebuffer_size(width, height)
+    implicit none
+
+    integer(c_int32_t), intent(inout) :: width, height
+
+    call internal_glfw_get_framebuffer_size(window_pointer, width, height)
+  end subroutine glfw_get_framebuffer_size
 
 
 end module glfw
