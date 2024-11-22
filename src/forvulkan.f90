@@ -694,7 +694,7 @@ module forvulkan
       type(vk_device), intent(in), value :: logical_device
       ! uint32_t
       integer(c_int32_t), intent(in), value :: fence_count
-      ! const VkFence *
+      ! const VkFence * (Array of fences.)
       type(c_ptr), intent(in), value :: p_fences
       integer(c_int32_t) :: vk_result
     end function vk_reset_fences

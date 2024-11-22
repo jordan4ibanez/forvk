@@ -53,12 +53,6 @@ module forvulkan_types
   end type vk_swapchain_khr
 
 
-  !? VkFormat.
-  type, bind(c) :: vk_format
-    integer(c_int32_t) :: data = 0
-  end type vk_format
-
-
   !? VkShaderModule.
   type, bind(c) :: vk_shader_module
     integer(c_int64_t) :: data = VK_NULL_HANDLE
@@ -123,6 +117,18 @@ module forvulkan_types
   type, bind(c) :: vk_fence
     integer(c_int64_t) :: data = VK_NULL_HANDLE
   end type vk_fence
+
+
+!? FORTRANIFIED DATA TYPES. ===============================================================
+
+
+  ! Data types are like opaque types, but it's okay to modify the internals.
+
+
+  !? VkFormat.
+  type, bind(c) :: vk_format
+    integer(c_int32_t) :: data = 0
+  end type vk_format
 
 
 !? REGULAR TYPES. ===============================================================
