@@ -1,4 +1,4 @@
-module temp_vertex_understanding
+module vulkan_vertex
   use, intrinsic :: iso_c_binding
   use :: forvulkan
   use :: vector_3f
@@ -50,4 +50,4 @@ contains
   end function
 
 
-end module temp_vertex_understanding
+end module vulkan_vertex
