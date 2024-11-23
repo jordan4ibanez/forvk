@@ -1363,6 +1363,7 @@ module forvulkan_types
 
 
   !! START HACKJOB.
+
   ! I have bunched these together so you can read with more of a context.
 
   !? VkClearValue.
