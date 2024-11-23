@@ -766,6 +766,21 @@ module forvulkan
     end function
 
 
+    function vk_create_buffer(logical_device, p_create_info, p_allocator, p_buffer) result(vk_result) bind(c, name = "vkCreateBuffer")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_device), intent(in), value :: logical_device
+      ! const VkBufferCreateInfo*
+      type(c_ptr), intent(in), value :: p_create_info
+      ! const VkAllocationCallbacks*
+      type(c_ptr), intent(in), value :: p_allocator
+      type(vk_buffer), intent(inout) :: p_buffer
+      integer(c_int32_t) :: vk_result
+    end function vk_create_buffer
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
