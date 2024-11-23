@@ -25,6 +25,8 @@ module vulkan_driver
   use :: vulkan_driver_record_command_buffer
   use :: vulkan_driver_draw_frame
   use :: vulkan_driver_clean_up_swapchain
+  !! THIS IS TEMPORARY
+  use :: temp_vertex_understanding
   implicit none
 
   ! https://github.com/KhronosGroup/Vulkan-Headers/blob/main/include/vulkan/vulkan_core.h
