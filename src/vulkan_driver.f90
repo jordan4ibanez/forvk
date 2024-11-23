@@ -215,6 +215,8 @@ contains
 
     call clean_up_swapchain(logical_device, swapchain_framebuffers, swapchain_image_views, swapchain)
 
+    call vk_destroy_buffer(logical_device, vertex_buffer, c_null_ptr)
+
     do i = 1,MAX_FRAMES_IN_FLIGHT
       call c_f_pointer(image_available_semaphores%get(i), semaphore_pointer)
       call vk_destroy_semaphore(logical_device, semaphore_pointer, c_null_ptr)
