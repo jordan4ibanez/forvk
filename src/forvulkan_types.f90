@@ -1553,6 +1553,20 @@ module forvulkan_types
     integer(c_int32_t) :: flags = 0
   end type vk_memory_heap
 
+
+  !? VkPhysicalDeviceMemoryProperties.
+  type, bind(c) :: vk_physical_device_memory_properties
+    ! uint32_t
+    integer(c_int32_t) :: memory_type_count = 0
+    ! VkMemoryType[VK_MAX_MEMORY_TYPES]
+    type(vk_memory_type), dimension(VK_MAX_MEMORY_TYPES) :: memory_types
+    ! uint32_t
+    integer(c_int32_t) :: memory_heap_count = 0
+    ! VkMemoryHeap[VK_MAX_MEMORY_HEAPS]
+    type(vk_memory_heap), dimension(VK_MAX_MEMORY_HEAPS) :: memory_heaps
+  end type vk_physical_device_memory_properties
+
+
 !? CUSTOM TYPES. ===============================================================
 
 
