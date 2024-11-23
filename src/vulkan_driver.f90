@@ -4,6 +4,8 @@ module vulkan_driver
   use :: string_f90
   use :: vector
   use :: forvulkan
+  use :: vector_3f
+  use :: vector_2f
   !? These are imported in the order of the steps this takes.
   use :: vulkan_driver_create_base
   use :: vulkan_driver_ensure_extensions_present
@@ -95,6 +97,9 @@ module vulkan_driver
   !? How many frames should be processed concurrently.
   integer(c_int64_t), parameter :: MAX_FRAMES_IN_FLIGHT = 2
 
+  !! This part is temporary.
+  type(vk_buffer) :: vertex_buffer
+
   logical(c_bool) :: framebuffer_resized = .false.
 
   ! Controls debugging output.
@@ -127,6 +132,12 @@ contains
   subroutine init_vulkan()
     implicit none
 
+    type(vertex), dimension(3) :: vertex_data
+
+    vertex_data(1) = vertex(vec2f(0.0, -0.5), vec3f(1.0, 0.0, 0.0))
+    vertex_data(2) = vertex(vec2f(0.5,  0.5), vec3f(0.0, 1.0, 0.0))
+    vertex_data(3) = vertex(vec2f(-0.5, 0.0), vec3f(0.0, 0.0, 1.0))
+
     call create_glfw(framebuffer_resized)
 
     call ensure_extensions_present(DEBUG_MODE)
@@ -155,7 +166,7 @@ contains
 
     call create_command_pool(physical_device, window_surface, logical_device, command_pool)
 
-    call create_vertex_buffer()
+    call create_vertex_buffer(logical_device, vertex_data, vertex_buffer)
 
     call create_command_buffers(logical_device, MAX_FRAMES_IN_FLIGHT, command_pool, command_buffers)
 
