@@ -772,9 +772,9 @@ module forvulkan
       implicit none
 
       type(vk_device), intent(in), value :: logical_device
-      ! const VkBufferCreateInfo*
+      ! const VkBufferCreateInfo *
       type(c_ptr), intent(in), value :: p_create_info
-      ! const VkAllocationCallbacks*
+      ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
       type(vk_buffer), intent(inout) :: p_buffer
       integer(c_int32_t) :: vk_result
@@ -788,7 +788,7 @@ module forvulkan
 
       type(vk_device), intent(in), value :: logical_device
       type(vk_buffer), intent(in), value :: buffer
-      ! const VkAllocationCallbacks*
+      ! const VkAllocationCallbacks *
       type(c_ptr), intent(in), value :: p_allocator
     end subroutine vk_destroy_buffer
 
@@ -803,6 +803,17 @@ module forvulkan
       ! VkMemoryRequirements *
       type(c_ptr), intent(in), value :: p_memory_requirements
     end subroutine vk_get_buffer_memory_requirements
+
+
+    subroutine vk_get_physical_device_memory_properties(physical_device, p_memory_properties) bind(c, name = "vkGetPhysicalDeviceMemoryProperties")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_physical_device), intent(in), value :: physical_device
+      ! VkPhysicalDeviceMemoryProperties *
+      type(c_ptr), intent(in), value :: p_memory_properties
+    end subroutine vk_get_physical_device_memory_properties
 
 
     ! todo: marker for end of functions.
