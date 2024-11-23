@@ -125,6 +125,12 @@ module forvulkan_types
   end type vk_buffer
 
 
+  !? VkDeviceMemory.
+  type, bind(c) :: vk_device_memory
+    integer(c_int64_t) :: data = VK_NULL_HANDLE
+  end type vk_device_memory
+
+
 !? FORTRANIFIED DATA TYPES. ===============================================================
 
 

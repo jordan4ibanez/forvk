@@ -24,6 +24,8 @@ contains
     if (vk_create_buffer(logical_device, c_loc(buffer_info), c_null_ptr, vertex_buffer) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to create buffer."
     end if
+
+    
   end subroutine create_vertex_buffer
 
 
