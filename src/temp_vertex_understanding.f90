@@ -4,7 +4,7 @@ module temp_vertex_understanding
   use :: vector_3f
   implicit none
 
-  type, bind(c) :: vertex
+  type :: vertex
     type(vec3f) :: position
   end type vertex
 
