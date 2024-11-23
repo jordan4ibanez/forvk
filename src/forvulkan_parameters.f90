@@ -4545,4 +4545,14 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_MEMORY_PROPERTY_RDMA_CAPABLE_BIT_NV = int(z"00000100")
 
 
+  !? VkMemoryHeapFlagBits.
+
+
+  integer(c_int32_t), parameter, public :: VK_MEMORY_HEAP_DEVICE_LOCAL_BIT = int(z"00000001")
+  ! Provided by VK_VERSION_1_1
+  integer(c_int32_t), parameter, public :: VK_MEMORY_HEAP_MULTI_INSTANCE_BIT = int(z"00000002")
+  ! Provided by VK_KHR_device_group_creation
+  integer(c_int32_t), parameter, public :: VK_MEMORY_HEAP_MULTI_INSTANCE_BIT_KHR = VK_MEMORY_HEAP_MULTI_INSTANCE_BIT
+
+
 end module forvulkan_parameters
