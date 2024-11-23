@@ -1573,6 +1573,19 @@ module forvulkan_types
   end type vk_physical_device_memory_properties
 
 
+  !? VkMemoryAllocateInfo.
+  type, bind(c) :: vk_memory_allocate_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkDeviceSize
+    integer(c_int64_t) :: allocation_size = 0
+    ! uint32_t
+    integer(c_int32_t) :: memory_type_index = 0
+  end type vk_memory_allocate_info
+
+
 !? CUSTOM TYPES. ===============================================================
 
 

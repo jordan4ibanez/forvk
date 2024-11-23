@@ -8,12 +8,14 @@ module vulkan_driver_create_vertex_buffer
 contains
 
 
-  subroutine create_vertex_buffer(logical_device, vertex_data, vertex_buffer)
+  subroutine create_vertex_buffer(physical_device, logical_device, vertex_data, vertex_buffer, vertex_buffer_memory)
     implicit none
 
+    type(vk_physical_device), intent(in), value :: physical_device
     type(vk_device), intent(in), value :: logical_device
     type(vertex), dimension(:), intent(in) :: vertex_data
     type(vk_buffer), intent(inout) :: vertex_buffer
+    type(vk_device_memory), intent(inout) :: vertex_buffer_memory
     type(vk_buffer_create_info), target :: buffer_info
 
     buffer_info%s_type = VK_STRUCTURE_TYPE%BUFFER_CREATE_INFO

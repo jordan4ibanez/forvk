@@ -99,6 +99,7 @@ module vulkan_driver
 
   !! This part is temporary.
   type(vk_buffer) :: vertex_buffer
+  type(vk_device_memory) :: vertex_buffer_memory
 
   logical(c_bool) :: framebuffer_resized = .false.
 
@@ -166,7 +167,7 @@ contains
 
     call create_command_pool(physical_device, window_surface, logical_device, command_pool)
 
-    call create_vertex_buffer(logical_device, vertex_data, vertex_buffer)
+    call create_vertex_buffer(physical_device, logical_device, vertex_data, vertex_buffer, vertex_buffer_memory)
 
     call create_command_buffers(logical_device, MAX_FRAMES_IN_FLIGHT, command_pool, command_buffers)
 
