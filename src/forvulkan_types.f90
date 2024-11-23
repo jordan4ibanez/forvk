@@ -1525,6 +1525,17 @@ module forvulkan_types
   end type vk_buffer_create_info
 
 
+  !? VkMemoryRequirements.
+  type, bind(c) :: vk_memory_requirements
+    ! VkDeviceSize
+    integer(c_int64_t) :: size = 0
+    ! VkDeviceSize
+    integer(c_int64_t) :: alignment = 0
+    ! uint32_t
+    integer(c_int32_t) :: memory_type_bits = 0
+  end type vk_memory_requirements
+
+
 !? CUSTOM TYPES. ===============================================================
 
 
