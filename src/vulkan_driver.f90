@@ -29,7 +29,7 @@ module vulkan_driver
   use :: vulkan_driver_clean_up_swapchain
   use :: vulkan_driver_create_vertex_buffer
   !! THIS IS TEMPORARY
-  use :: temp_vertex_understanding
+  use :: vulkan_vertex
   implicit none
 
   ! https://github.com/KhronosGroup/Vulkan-Headers/blob/main/include/vulkan/vulkan_core.h

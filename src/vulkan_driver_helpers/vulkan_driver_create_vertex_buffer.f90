@@ -1,7 +1,7 @@
 module vulkan_driver_create_vertex_buffer
   use, intrinsic :: iso_c_binding
   use :: forvulkan
-  use :: temp_vertex_understanding
+  use :: vulkan_vertex
   implicit none
 
 
@@ -25,7 +25,7 @@ contains
       error stop "[Vulkan] Error: Failed to create buffer."
     end if
 
-    
+
   end subroutine create_vertex_buffer
 
 
