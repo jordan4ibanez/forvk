@@ -4445,4 +4445,11 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT = int(z"00000001")
 
 
+  !? VkVertexInputRate.
+
+
+  integer(c_int32_t), parameter, public :: VK_VERTEX_INPUT_RATE_VERTEX = 0
+  integer(c_int32_t), parameter, public :: VK_VERTEX_INPUT_RATE_INSTANCE = 1
+
+
 end module forvulkan_parameters
