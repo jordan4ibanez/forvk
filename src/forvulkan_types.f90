@@ -1543,6 +1543,16 @@ module forvulkan_types
     ! uint32_t
     integer(c_int32_t) :: heap_index = 0
   end type vk_memory_type
+
+
+  !? VkMemoryHeap.
+  type, bind(c) :: vk_memory_heap
+    ! VkDeviceSize
+    integer(c_int64_t) :: size = 0
+    ! VkMemoryHeapFlags
+    integer(c_int32_t) :: flags = 0
+  end type vk_memory_heap
+
 !? CUSTOM TYPES. ===============================================================
 
 
