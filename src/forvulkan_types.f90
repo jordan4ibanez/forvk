@@ -1498,7 +1498,25 @@ module forvulkan_types
   end type vk_present_info_khr
 
 
-
+  !? VkBufferCreateInfo.
+  type, bind(c) :: vk_buffer_create_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkBufferCreateFlags
+    integer(c_int32_t) :: flags = 0
+    ! VkDeviceSize
+    integer(c_int64_t) :: size = 0
+    ! VkBufferUsageFlags
+    integer(c_int32_t) :: usage = 0
+    ! VkSharingMode
+    integer(c_int32_t) :: sharing_mode = 0
+    ! uint32_t
+    integer(c_int32_t) :: queue_family_index_count = 0
+    ! const uint32_t*
+    type(c_ptr) :: p_queue_family_indices = c_null_ptr
+  end type vk_buffer_create_info
 
 
 !? CUSTOM TYPES. ===============================================================
