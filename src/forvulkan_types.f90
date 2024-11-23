@@ -878,6 +878,17 @@ module forvulkan_types
   end type vk_pipeline_dynamic_state_create_info
 
 
+  !? VkVertexInputBindingDescription.
+  type, bind(c) :: vk_vertex_input_binding_description
+    ! uint32_t
+    integer(c_int32_t) :: binding = 0
+    ! uint32_t
+    integer(c_int32_t) :: stride = 0
+    ! VkVertexInputRate
+    integer(c_int32_t) :: inputRate = 0
+  end type vk_vertex_input_binding_description
+
+
   !? VkPipelineVertexInputStateCreateInfo.
   type, bind(c) :: vk_pipeline_vertex_input_state_create_info
     ! uint32_t [VkStructureType]
