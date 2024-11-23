@@ -18,14 +18,12 @@ contains
 
     call vk_get_physical_device_memory_properties(physical_device, c_loc(mem_properties))
 
-    do i = 1,mem_properties%memory_type_count
-
+    do i = 0,mem_properties%memory_type_count - 1
+      if (iand(type_filter, shiftl(1, i)) == 1 .and. iand(mem_properties%memory_types(i + 1)%property_flags, properties) == 1) then
+        t = i
+        return
+      end if
     end do
-
-
-
-
-
   end function find_memory_type
 
 end module vulkan_driver_find_memory_type
