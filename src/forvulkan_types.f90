@@ -1362,6 +1362,35 @@ module forvulkan_types
   end type vk_command_buffer_begin_info
 
 
+  !! START HACKJOB.
+  ! I have bunched these together so you can read with more of a context.
+
+  !? VkClearValue.
+  !* IMPLEMENTATION NOTE: vk_clear_* is a C union. You have to pick one of these (3): [VkClearValue]
+
+  !? VkClearColorValue.
+  !* IMPLEMENTATION NOTE: vk_clear_color_* is a C union. You will have to pick one of these (2): [VkClearColorValue]
+  type, bind(c) :: vk_clear_color_value_f32
+    real(c_float), dimension(4) :: data = [0.0, 0.0, 0.0, 1.0]
+  end type
+  type, bind(c) :: vk_clear_color_value_i32
+    integer(c_int32_t), dimension(4) :: data = [0, 0, 0, 0]
+  end type
+  !* END NOTE ON: vk_clear_color* [VkClearColorValue]
+
+  !? VkClearDepthStencilValue
+  type, bind(c) :: vk_clear_depth_stencil_value
+    ! float
+    real(c_float) :: depth = 0.0
+    ! uint32_t
+    integer(c_int32_t) :: stencil = 0
+  end type vk_clear_depth_stencil_value
+
+  !* END NOTE ON: vk_clear_* [VkClearValue]
+
+  !! END HACKJOB
+
+
   !? VkRenderPassBeginInfo.
   type, bind(c) :: vk_render_pass_begin_info
     ! uint32_t [VkStructureType]
@@ -1377,30 +1406,6 @@ module forvulkan_types
     ! const VkClearValue * ! todo: I have no idea if this needs translation.
     type(c_ptr) :: p_clear_values = c_null_ptr
   end type vk_render_pass_begin_info
-
-  !! This is a hackjob.
-
-  !? VkClearColorValue.
-
-  type, bind(c) :: vk_clear_color_value_f32
-    real(c_float), dimension(4) :: data = [0.0, 0.0, 0.0, 1.0]
-  end type
-
-  type, bind(c) :: vk_clear_color_value_i32
-    integer(c_int32_t), dimension(4) :: data = [0, 0, 0, 0]
-  end type
-
-  !? VkClearDepthStencilValue
-  type, bind(c) :: vk_clear_depth_stencil_value
-    ! float
-    real(c_float) :: depth = 0.0
-    ! uint32_t
-    integer(c_int32_t) :: stencil = 0
-  end type vk_clear_depth_stencil_value
-
-  !* IMPLEMENTATION NOTE: This is a C union. You will have to use one or the other when using: [VkClearValue]
-
-  !! End hackjob.
 
 
   !? VkSemaphoreCreateInfo.
@@ -1469,7 +1474,7 @@ module forvulkan_types
   end type vk_present_info_khr
 
 
-  ! todo: marker for end of structs.
+
 
 
 !? CUSTOM TYPES. ===============================================================
