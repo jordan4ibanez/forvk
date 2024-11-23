@@ -885,7 +885,7 @@ module forvulkan_types
     ! uint32_t
     integer(c_int32_t) :: stride = 0
     ! VkVertexInputRate
-    integer(c_int32_t) :: inputRate = 0
+    integer(c_int32_t) :: input_rate = 0
   end type vk_vertex_input_binding_description
 
 
