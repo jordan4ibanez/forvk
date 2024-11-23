@@ -6,6 +6,7 @@ module vulkan_driver_find_memory_type
 
 contains
 
+
   function find_memory_type(physical_device, type_filter, properties) result(t)
     implicit none
 
@@ -24,6 +25,9 @@ contains
         return
       end if
     end do
+
+    error stop "[Vulkan] Error: Failed to find suitable memory type."
   end function find_memory_type
+
 
 end module vulkan_driver_find_memory_type
