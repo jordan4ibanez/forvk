@@ -6,13 +6,9 @@ module temp_vertex_understanding
   implicit none
 
 
-
   type :: vertex
     type(vec2f) :: position
     type(vec3f) :: color
-  contains
-    procedure, nopass :: get_binding_description => vertex_get_binding_description
-    procedure, nopass :: get_attribute_descriptions => vertex_get_attribute_descriptions
   end type vertex
 
 
