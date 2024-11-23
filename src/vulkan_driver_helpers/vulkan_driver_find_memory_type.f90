@@ -6,10 +6,24 @@ module vulkan_driver_find_memory_type
 
 contains
 
-  function find_memory_type(type_filter, properties) result(t)
+  function find_memory_type(physical_device, type_filter, properties) result(t)
     implicit none
 
+    type(vk_physical_device), intent(in), value :: physical_device
     integer(c_int32_t), intent(in), value :: type_filter
+    integer(c_int32_t), intent(in), value :: properties
+    integer(c_int32_t) :: t
+    integer(c_int32_t) :: i
+    type(vk_physical_device_memory_properties), target :: mem_properties
+
+    call vk_get_physical_device_memory_properties(physical_device, c_loc(mem_properties))
+
+    do i = 1,mem_properties%memory_type_count
+
+    end do
+
+
+
 
 
   end function find_memory_type
