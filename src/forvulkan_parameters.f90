@@ -4470,6 +4470,61 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT = VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT
   ! Provided by VK_KHR_buffer_device_address
   integer(c_int32_t), parameter, public :: VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR = VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT
-  
+
+
+  !? VkBufferUsageFlagBits.
+
+
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_TRANSFER_SRC_BIT = int(z"00000001")
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_TRANSFER_DST_BIT = int(z"00000002")
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT = int(z"00000004")
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT = int(z"00000008")
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT = int(z"00000010")
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_STORAGE_BUFFER_BIT = int(z"00000020")
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_INDEX_BUFFER_BIT = int(z"00000040")
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_VERTEX_BUFFER_BIT = int(z"00000080")
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT = int(z"00000100")
+  ! Provided by VK_VERSION_1_2
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT = int(z"00020000")
+  ! Provided by VK_KHR_video_decode_queue
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_VIDEO_DECODE_SRC_BIT_KHR = int(z"00002000")
+  ! Provided by VK_KHR_video_decode_queue
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_VIDEO_DECODE_DST_BIT_KHR = int(z"00004000")
+  ! Provided by VK_EXT_transform_feedback
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_BUFFER_BIT_EXT = int(z"00000800")
+  ! Provided by VK_EXT_transform_feedback
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_TRANSFORM_FEEDBACK_COUNTER_BUFFER_BIT_EXT = int(z"00001000")
+  ! Provided by VK_EXT_conditional_rendering
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_CONDITIONAL_RENDERING_BIT_EXT = int(z"00000200")
+  ! Provided by VK_AMDX_shader_enqueue
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_EXECUTION_GRAPH_SCRATCH_BIT_AMDX = int(z"02000000")
+  ! Provided by VK_KHR_acceleration_structure
+  ! I don't feel like turning this into a custom static struct just for this one.
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLYBIT = int(z"00080000")
+  ! Provided by VK_KHR_acceleration_structure
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_STORAGE_BIT_KHR = int(z"00100000")
+  ! Provided by VK_KHR_ray_tracing_pipeline
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR = int(z"00000400")
+  ! Provided by VK_KHR_video_encode_queue
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_VIDEO_ENCODE_DST_BIT_KHR = int(z"00008000")
+  ! Provided by VK_KHR_video_encode_queue
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_VIDEO_ENCODE_SRC_BIT_KHR = int(z"00010000")
+  ! Provided by VK_EXT_descriptor_buffer
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_SAMPLER_DESCRIPTOR_BUFFER_BIT_EXT = int(z"00200000")
+  ! Provided by VK_EXT_descriptor_buffer
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_RESOURCE_DESCRIPTOR_BUFFER_BIT_EXT = int(z"00400000")
+  ! Provided by VK_EXT_descriptor_buffer
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_PUSH_DESCRIPTORS_DESCRIPTOR_BUFFER_BIT_EXT = int(z"04000000")
+  ! Provided by VK_EXT_opacity_micromap
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_MICROMAP_BUILD_INPUT_READ_ONLY_BIT_EXT = int(z"00800000")
+  ! Provided by VK_EXT_opacity_micromap
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_MICROMAP_STORAGE_BIT_EXT = int(z"01000000")
+  ! Provided by VK_NV_ray_tracing
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_RAY_TRACING_BIT_NV = VK_BUFFER_USAGE_SHADER_BINDING_TABLE_BIT_KHR
+  ! Provided by VK_EXT_buffer_device_address
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT_EXT = VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT
+  ! Provided by VK_KHR_buffer_device_address
+  integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT_KHR = VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT
+
 
 end module forvulkan_parameters
