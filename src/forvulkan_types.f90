@@ -1536,6 +1536,13 @@ module forvulkan_types
   end type vk_memory_requirements
 
 
+  !? VkMemoryType.
+  type, bind(c) :: vk_memory_type
+    ! VkMemoryPropertyFlags
+    integer(c_int32_t) :: property_flags = 0
+    ! uint32_t
+    integer(c_int32_t) :: heap_index = 0
+  end type vk_memory_type
 !? CUSTOM TYPES. ===============================================================
 
 
