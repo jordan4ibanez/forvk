@@ -4452,4 +4452,24 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_VERTEX_INPUT_RATE_INSTANCE = 1
 
 
+  !? VkBufferCreateFlagBits.
+
+
+  integer(c_int32_t), parameter, public :: VK_BUFFER_CREATE_SPARSE_BINDING_BIT = int(z"00000001")
+  integer(c_int32_t), parameter, public :: VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT = int(z"00000002")
+  integer(c_int32_t), parameter, public :: VK_BUFFER_CREATE_SPARSE_ALIASED_BIT = int(z"00000004")
+  ! Provided by VK_VERSION_1_1
+  integer(c_int32_t), parameter, public :: VK_BUFFER_CREATE_PROTECTED_BIT = int(z"00000008")
+  ! Provided by VK_VERSION_1_2
+  integer(c_int32_t), parameter, public :: VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT = int(z"00000010")
+  ! Provided by VK_EXT_descriptor_buffer
+  integer(c_int32_t), parameter, public :: VK_BUFFER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT = int(z"00000020")
+  ! Provided by VK_KHR_video_maintenance1
+  integer(c_int32_t), parameter, public :: VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR = int(z"00000040")
+  ! Provided by VK_EXT_buffer_device_address
+  integer(c_int32_t), parameter, public :: VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT = VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT
+  ! Provided by VK_KHR_buffer_device_address
+  integer(c_int32_t), parameter, public :: VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_KHR = VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT
+  
+
 end module forvulkan_parameters
