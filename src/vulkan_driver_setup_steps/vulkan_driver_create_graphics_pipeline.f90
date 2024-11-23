@@ -2,6 +2,7 @@ module vulkan_driver_create_graphics_pipeline
   use, intrinsic :: iso_c_binding
   use :: vulkan_shader_compiler
   use :: forvulkan
+  use :: temp_vertex_understanding
   implicit none
 
 
@@ -37,6 +38,8 @@ contains
     type(vk_pipeline_color_blend_state_create_info), target :: color_blending_create_info
     type(vk_pipeline_layout_create_info), target :: pipeline_layout_create_info
     type(vk_graphics_pipeline_create_info), target :: graphics_pipeline_create_info
+    type(vk_vertex_input_binding_description), target :: binding_description
+    type(vk_vertex_input_attribute_description), dimension(2), target :: attribute_descriptions
 
     ! First compile GLSL into shader modules.
     vertex_shader_module = compile_glsl_shaders(logical_device, "vertex.vert")
@@ -60,11 +63,15 @@ contains
     shader_stages = [vertex_shader_stage_info, fragment_shader_stage_info]
 
     ! Create vertex input create info.
+
+    binding_description = vertex_get_binding_description()
+    attribute_descriptions = vertex_get_attribute_descriptions()
+
     vertex_input_create_info%s_type = VK_STRUCTURE_TYPE%PIPELINE%VERTEX_INPUT_STATE_CREATE_INFO
-    vertex_input_create_info%vertex_binding_description_count = 0
-    vertex_input_create_info%p_vertex_binding_descriptions = c_null_ptr
-    vertex_input_create_info%vertex_attribute_description_count = 0
-    vertex_input_create_info%p_vertex_attribute_descriptions = c_null_ptr
+    vertex_input_create_info%vertex_binding_description_count = 1
+    vertex_input_create_info%vertex_attribute_description_count = size(attribute_descriptions)
+    vertex_input_create_info%p_vertex_binding_descriptions = c_loc(binding_description)
+    vertex_input_create_info%p_vertex_attribute_descriptions = c_loc(attribute_descriptions)
 
     ! Set up dynamic states for the pipeline.
     dynamic_states = [VK_DYNAMIC_STATE_VIEWPORT, VK_DYNAMIC_STATE_SCISSOR]
