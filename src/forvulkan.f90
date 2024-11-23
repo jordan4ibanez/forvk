@@ -793,6 +793,18 @@ module forvulkan
     end subroutine vk_destroy_buffer
 
 
+    subroutine vk_get_buffer_memory_requirements(logical_device, buffer, p_memory_requirements) bind(c, name = "vkGetBufferMemoryRequirements")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_device), intent(in), value :: logical_device
+      type(vk_buffer), intent(in), value :: buffer
+      ! VkMemoryRequirements *
+      type(c_ptr), intent(in), value :: p_memory_requirements
+    end subroutine vk_get_buffer_memory_requirements
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
