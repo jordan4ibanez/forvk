@@ -4527,4 +4527,22 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT_KHR = VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT
 
 
+  !? VkMemoryPropertyFlagBits.
+
+
+  integer(c_int32_t), parameter, public :: VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT = int(z"00000001")
+  integer(c_int32_t), parameter, public :: VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT = int(z"00000002")
+  integer(c_int32_t), parameter, public :: VK_MEMORY_PROPERTY_HOST_COHERENT_BIT = int(z"00000004")
+  integer(c_int32_t), parameter, public :: VK_MEMORY_PROPERTY_HOST_CACHED_BIT = int(z"00000008")
+  integer(c_int32_t), parameter, public :: VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT = int(z"00000010")
+  ! Provided by VK_VERSION_1_1
+  integer(c_int32_t), parameter, public :: VK_MEMORY_PROPERTY_PROTECTED_BIT = int(z"00000020")
+  ! Provided by VK_AMD_device_coherent_memory
+  integer(c_int32_t), parameter, public :: VK_MEMORY_PROPERTY_DEVICE_COHERENT_BIT_AMD = int(z"00000040")
+  ! Provided by VK_AMD_device_coherent_memory
+  integer(c_int32_t), parameter, public :: VK_MEMORY_PROPERTY_DEVICE_UNCACHED_BIT_AMD = int(z"00000080")
+  ! Provided by VK_NV_external_memory_rdma
+  integer(c_int32_t), parameter, public :: VK_MEMORY_PROPERTY_RDMA_CAPABLE_BIT_NV = int(z"00000100")
+
+
 end module forvulkan_parameters
