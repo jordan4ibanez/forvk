@@ -25,6 +25,7 @@ module vulkan_driver
   use :: vulkan_driver_record_command_buffer
   use :: vulkan_driver_draw_frame
   use :: vulkan_driver_clean_up_swapchain
+  use :: vulkan_driver_create_vertex_buffer
   !! THIS IS TEMPORARY
   use :: temp_vertex_understanding
   implicit none
@@ -154,11 +155,14 @@ contains
 
     call create_command_pool(physical_device, window_surface, logical_device, command_pool)
 
+    call create_vertex_buffer()
+
     call create_command_buffers(logical_device, MAX_FRAMES_IN_FLIGHT, command_pool, command_buffers)
 
     call create_sync_objects(logical_device, MAX_FRAMES_IN_FLIGHT, image_available_semaphores, render_finished_semaphores, in_flight_fences)
 
   end subroutine init_vulkan
+
 
 
 !* MAIN LOOP. ====================================================================
