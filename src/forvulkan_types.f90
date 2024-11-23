@@ -1403,7 +1403,7 @@ module forvulkan_types
     type(vk_rect_2d) :: render_area
     ! uint32_t
     integer(c_int32_t) :: clear_value_count = 0
-    ! const VkClearValue * ! todo: I have no idea if this needs translation.
+    ! const VkClearValue * !* Please read the note at: [VkClearValue]
     type(c_ptr) :: p_clear_values = c_null_ptr
   end type vk_render_pass_begin_info
 
