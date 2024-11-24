@@ -34,7 +34,7 @@ contains
       error stop "[Vulkan] Error: Failed to map memory."
     end if
 
-    call totally_not_memcpy_vertex(data, vertices)
+    call totally_not_memcpy_vertices(data, vertices)
 
     call vk_unmap_memory(logical_device, staging_buffer_memory)
 
@@ -47,7 +47,7 @@ contains
   end subroutine create_vertex_buffer
 
 
-  subroutine totally_not_memcpy_vertex(data, vertices)
+  subroutine totally_not_memcpy_vertices(data, vertices)
     implicit none
 
     type(c_ptr), intent(in), value :: data
@@ -56,7 +56,7 @@ contains
 
     call c_f_pointer(data, data_in_buffer, [size(vertices)])
     data_in_buffer = vertices
-  end subroutine totally_not_memcpy_vertex
+  end subroutine totally_not_memcpy_vertices
 
 
 end module vulkan_driver_create_vertex_buffer
