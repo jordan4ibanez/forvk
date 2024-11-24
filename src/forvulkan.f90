@@ -951,6 +951,25 @@ module forvulkan
     end subroutine vk_cmd_bind_index_buffer
 
 
+    subroutine vk_cmd_draw_indexed(command_buffer, index_count, instance_count, first_index, vertex_offset, first_instance) bind(c, name = "vkCmdDrawIndexed")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_command_buffer), intent(in), value :: command_buffer
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: index_count
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: instance_count
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: first_index
+      ! int32_t
+      integer(c_int32_t), intent(in), value :: vertex_offset
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: first_instance
+    end subroutine vk_cmd_draw_indexed
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
