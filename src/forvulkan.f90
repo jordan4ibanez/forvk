@@ -845,6 +845,17 @@ module forvulkan
     end function vk_bind_buffer_memory
 
 
+    subroutine vk_free_memory(logical_device, memory, p_allocator) bind(c, name = "vkFreeMemory")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_device), intent(in), value :: logical_device
+      type(vk_device_memory), intent(in), value :: memory
+      ! const VkAllocationCallbacks *
+      type(c_ptr), intent(in), value :: p_allocator
+    end subroutine vk_free_memory
+
 
     ! todo: marker for end of functions.
 
