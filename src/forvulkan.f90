@@ -938,6 +938,19 @@ module forvulkan
     end subroutine vk_free_command_buffers
 
 
+    subroutine vk_cmd_bind_index_buffer(command_buffer, buffer, offset, index_type) bind(c, name = "vkCmdBindIndexBuffer")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_command_buffer), intent(in), value :: command_buffer
+      type(vk_buffer), intent(in), value :: buffer
+      type(vk_device_size), intent(in), value :: offset
+      ! VkIndexType
+      integer(c_int32_t), intent(in), value :: index_type
+    end subroutine vk_cmd_bind_index_buffer
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
