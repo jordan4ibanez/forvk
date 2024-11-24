@@ -886,6 +886,23 @@ module forvulkan
     end subroutine vk_unmap_memory
 
 
+    subroutine vk_cmd_bind_vertex_buffers(command_buffer, first_binding, binding_count, p_buffers, p_offsets) bind(c, name = "vkCmdBindVertexBuffers")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_buffer), intent(in), value :: command_buffer
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: first_binding
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: binding_count
+      ! const VkBuffer *
+      type(c_ptr), intent(in), value :: p_buffers
+      ! const VkDeviceSize *
+      type(c_ptr), intent(in), value :: p_offsets
+    end subroutine vk_cmd_bind_vertex_buffers
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
