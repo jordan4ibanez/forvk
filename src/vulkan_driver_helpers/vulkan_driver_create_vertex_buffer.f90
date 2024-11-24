@@ -114,7 +114,4 @@ contains
   end subroutine totally_not_memcpy
 
 
-
-
-
 end module vulkan_driver_create_vertex_buffer
