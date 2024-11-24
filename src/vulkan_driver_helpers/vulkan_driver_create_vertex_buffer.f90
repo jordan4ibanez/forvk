@@ -2,7 +2,6 @@ module vulkan_driver_create_vertex_buffer
   use, intrinsic :: iso_c_binding
   use :: forvulkan
   use :: vulkan_vertex
-  use :: vulkan_driver_find_memory_type
   use :: vulkan_driver_copy_buffer
   use :: vulkan_driver_create_buffer
   implicit none
