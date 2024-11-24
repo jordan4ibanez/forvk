@@ -8,7 +8,7 @@ module vulkan_driver_create_buffer
 contains
 
 
-  subroutine create_buffer(physical_device, logical_device, buffer_size, usage, properties, buffer, buffer_memory, buffer_info)
+  subroutine create_buffer(physical_device, logical_device, buffer_size, usage, properties, buffer, buffer_memory)
     implicit none
 
     type(vk_physical_device), intent(in), value :: physical_device
@@ -19,7 +19,7 @@ contains
     integer(c_int32_t), intent(in), value :: properties
     type(vk_buffer), intent(inout) :: buffer
     type(vk_device_memory), intent(inout) :: buffer_memory
-    type(vk_buffer_create_info), intent(inout), target :: buffer_info
+    type(vk_buffer_create_info), target :: buffer_info
     ! VkDeviceSize
     integer(c_int64_t), intent(in), value :: buffer_size
     type(vk_memory_allocate_info), target :: alloc_info

@@ -18,7 +18,6 @@ contains
     type(vertex), dimension(:), intent(in) :: vertices
     type(vk_buffer), intent(inout) :: vertex_buffer
     type(vk_device_memory), intent(inout) :: vertex_buffer_memory
-    type(vk_buffer_create_info), target :: buffer_info
     ! VkDeviceSize
     integer(c_int64_t) :: buffer_size
     ! void *
@@ -27,9 +26,12 @@ contains
     type(vk_device_memory) :: staging_buffer_memory
 
     buffer_size = sizeof(vertices(1)) * size(vertices)
-    call create_buffer(physical_device, logical_device, buffer_size, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, ior(VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT, VK_MEMORY_PROPERTY_HOST_COHERENT_BIT), vertex_buffer, vertex_buffer_memory, buffer_info)
 
-    if (vk_map_memory(logical_device, vertex_buffer_memory, 0_8, buffer_info%size, 0, data) /= VK_SUCCESS) then
+    ! call create_buffer(physical_device, logical_device, buffer_size, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, ior(VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT, VK_MEMORY_PROPERTY_HOST_COHERENT_BIT), staging_buffer, staging_buffer_memory)
+
+    call create_buffer(physical_device, logical_device, buffer_size, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, ior(VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT, VK_MEMORY_PROPERTY_HOST_COHERENT_BIT), vertex_buffer, vertex_buffer_memory)
+
+    if (vk_map_memory(logical_device, vertex_buffer_memory, 0_8, buffer_size, 0, data) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to map memory."
     end if
 
