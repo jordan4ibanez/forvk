@@ -46,8 +46,8 @@ contains
     attribute_descriptions(2)%binding = 0
     attribute_descriptions(2)%location = 1
     attribute_descriptions(2)%format = vk_format(VK_FORMAT_R32G32B32_SFLOAT)
-    ! 3 elements * 4 byte float = 12 bytes
-    attribute_descriptions(2)%offset = 12
+    ! vec2 elements * 4 byte float = 8 bytes
+    attribute_descriptions(2)%offset = 8
   end function
 
 
