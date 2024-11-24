@@ -831,6 +831,21 @@ module forvulkan
     end function vk_allocate_memory
 
 
+    function vk_bind_buffer_memory(logical_device, buffer, memory, memory_offset) result(vk_result) bind(c, name = "vkBindBufferMemory")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_device), intent(in), value :: logical_device
+      type(vk_buffer), intent(in), value :: buffer
+      type(vk_device_memory), intent(in), value :: memory
+      ! VkDeviceSize
+      integer(c_int64_t), intent(in), value :: memory_offset
+      integer(c_int32_t) :: vk_result
+    end function vk_bind_buffer_memory
+
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
