@@ -11,10 +11,11 @@ module vulkan_driver_create_base
 
 contains
 
-  subroutine create_glfw(framebuffer_resized)
+  subroutine create_glfw(framebuffer_resized, window_width, window_height)
     implicit none
 
     logical(c_bool), intent(inout), target :: framebuffer_resized
+    integer(c_int32_t), intent(in), value :: window_width, window_height
 
     if (.not. glfw_init()) then
       error stop "[Vulkan] Error: Failed to initialize GLFW."
@@ -26,7 +27,7 @@ contains
     call glfw_window_hint(GLFW_CLIENT_API, GLFW_NO_API)
     call glfw_window_hint(GLFW_RESIZABLE, GLFW_TRUE)
 
-    if (.not. glfw_create_window(500, 500, "forvulkan")) then
+    if (.not. glfw_create_window(window_width, window_height, "forvulkan")) then
       error stop "[Vulkan]: Failed to create window."
     end if
 
