@@ -133,11 +133,11 @@ contains
   subroutine init_vulkan()
     implicit none
 
-    type(vertex), dimension(3) :: vertex_data
+    type(vertex), dimension(3) :: vertices
 
-    vertex_data(1) = vertex(vec2f(0.0, -0.5), vec3f(1.0, 0.0, 0.0))
-    vertex_data(2) = vertex(vec2f(0.5,  0.5), vec3f(0.0, 1.0, 0.0))
-    vertex_data(3) = vertex(vec2f(-0.5, 0.0), vec3f(0.0, 0.0, 1.0))
+    vertices(1) = vertex(vec2f(0.0, -0.5), vec3f(1.0, 0.0, 0.0))
+    vertices(2) = vertex(vec2f(0.5,  0.5), vec3f(0.0, 1.0, 0.0))
+    vertices(3) = vertex(vec2f(-0.5, 0.0), vec3f(0.0, 0.0, 1.0))
 
     call create_glfw(framebuffer_resized)
 
@@ -167,7 +167,7 @@ contains
 
     call create_command_pool(physical_device, window_surface, logical_device, command_pool)
 
-    call create_vertex_buffer(physical_device, logical_device, vertex_data, vertex_buffer, vertex_buffer_memory)
+    call create_vertex_buffer(physical_device, logical_device, vertices, vertex_buffer, vertex_buffer_memory)
 
     call create_command_buffers(logical_device, MAX_FRAMES_IN_FLIGHT, command_pool, command_buffers)
 
