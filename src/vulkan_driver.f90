@@ -139,7 +139,7 @@ contains
     vertices(2) = vertex(vec2f(0.5,  0.5), vec3f(0.0, 1.0, 0.0))
     vertices(3) = vertex(vec2f(-0.5, 0.5), vec3f(0.0, 0.0, 1.0))
 
-    call create_glfw(framebuffer_resized, 500, 500)
+    call create_glfw(framebuffer_resized, 800, 600)
 
     call ensure_extensions_present(DEBUG_MODE)
 
