@@ -100,6 +100,8 @@ module vulkan_driver
   !! This part is temporary.
   type(vk_buffer) :: vertex_buffer
   type(vk_device_memory) :: vertex_buffer_memory
+  type(vk_buffer) :: index_buffer
+  type(vk_device_memory) :: index_buffer_memory
 
   logical(c_bool) :: framebuffer_resized = .false.
 
@@ -133,11 +135,15 @@ contains
   subroutine init_vulkan()
     implicit none
 
-    type(vertex), dimension(3) :: vertices
+    type(vertex), dimension(4) :: vertices
+    integer(c_int32_t), dimension(6) :: indices
 
-    vertices(1) = vertex(vec2f(0.0, -0.5), vec3f(1.0, 1.0, 1.0))
-    vertices(2) = vertex(vec2f(0.5,  0.5), vec3f(0.0, 1.0, 0.0))
-    vertices(3) = vertex(vec2f(-0.5, 0.5), vec3f(0.0, 0.0, 1.0))
+    vertices(1) = vertex(vec2f(-0.5, -0.5), vec3f(1.0, 1.0, 1.0))
+    vertices(2) = vertex(vec2f(0.5,  -0.5), vec3f(0.0, 1.0, 0.0))
+    vertices(3) = vertex(vec2f(0.5,   0.5), vec3f(0.0, 0.0, 1.0))
+    vertices(4) = vertex(vec2f(-0.5,  0.5), vec3f(1.0, 1.0, 1.0))
+
+    indices = [0,1,2,2,3,0]
 
     call create_glfw(framebuffer_resized, 800, 600)
 
