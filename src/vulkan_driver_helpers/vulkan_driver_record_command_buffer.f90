@@ -7,7 +7,7 @@ module vulkan_driver_record_command_buffer
 contains
 
 
-  subroutine record_command_buffer(command_buffer, image_index, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, vertex_buffer)
+  subroutine record_command_buffer(command_buffer, image_index, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, vertex_buffer, index_buffer)
     implicit none
 
     type(vk_command_buffer), intent(in), value :: command_buffer
@@ -19,6 +19,7 @@ contains
     type(vk_extent_2d), intent(in) :: swapchain_extent
     type(vk_pipeline), intent(in), value :: graphics_pipeline
     type(vk_buffer), intent(in), value :: vertex_buffer
+    type(vk_buffer), intent(in), value :: index_buffer
     type(vk_command_buffer_begin_info), target :: begin_info
     type(vk_render_pass_begin_info), target :: render_pass_info
     type(vk_framebuffer), pointer :: framebuffer
