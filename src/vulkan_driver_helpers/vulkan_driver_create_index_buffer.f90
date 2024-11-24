@@ -10,8 +10,6 @@ contains
   subroutine create_index_buffer()
     implicit none
 
-      
-
   end subroutine create_index_buffer
 
 end module vulkan_driver_create_index_buffer
