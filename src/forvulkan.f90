@@ -927,6 +927,20 @@ module forvulkan
     end function vk_queue_wait_idle
 
 
+    subroutine vk_free_command_buffers(logical_device, command_pool, command_buffer_count, p_command_buffers) bind(c, name = "vkFreeCommandBuffers")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_device), intent(in), value :: logical_device
+      type(vk_command_pool), intent(in), value :: command_pool
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: command_buffer_count
+      ! const VkCommandBuffer *
+      type(c_ptr), intent(in), value :: p_command_buffers
+    end subroutine vk_free_command_buffers
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
