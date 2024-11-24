@@ -9,7 +9,7 @@ module vulkan_driver_draw_frame
 contains
 
 
-  subroutine draw_frame(logical_device, current_frame, MAX_FRAMES_IN_FLIGHT, in_flight_fences, image_available_semaphores, render_finished_semaphores, swapchain, command_buffers, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue, physical_device, window_surface, swapchain_images, swapchain_image_format, swapchain_image_views, framebuffer_resized, vertex_buffer)
+  subroutine draw_frame(logical_device, current_frame, MAX_FRAMES_IN_FLIGHT, in_flight_fences, image_available_semaphores, render_finished_semaphores, swapchain, command_buffers, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue, physical_device, window_surface, swapchain_images, swapchain_image_format, swapchain_image_views, framebuffer_resized, vertex_buffer, index_buffer)
     implicit none
 
     type(vk_device), intent(in), value :: logical_device
@@ -40,6 +40,7 @@ contains
     type(vec), intent(inout) :: swapchain_image_views
     logical(c_bool), intent(inout) :: framebuffer_resized
     type(vk_buffer), intent(in), value :: vertex_buffer
+    type(vk_buffer), intent(in), value :: index_buffer
     ! uint32_t
     integer(c_int32_t), target :: image_index
     type(vk_submit_info), target :: submit_info
@@ -77,7 +78,7 @@ contains
       error stop "[Vulkan] Error: Faield to reset command buffer."
     end if
 
-    call record_command_buffer(command_buffer_pointer, image_index, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, vertex_buffer)
+    call record_command_buffer(command_buffer_pointer, image_index, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, vertex_buffer, index_buffer)
 
     submit_info%s_type = VK_STRUCTURE_TYPE%SUBMIT_INFO
 
