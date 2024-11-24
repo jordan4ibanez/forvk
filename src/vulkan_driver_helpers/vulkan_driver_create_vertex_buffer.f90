@@ -20,6 +20,8 @@ contains
     type(vk_buffer_create_info), target :: buffer_info
     type(vk_memory_requirements), target :: mem_requirements
     type(vk_memory_allocate_info), target :: alloc_info
+    ! void *
+    type(c_ptr) :: data
 
     buffer_info%s_type = VK_STRUCTURE_TYPE%BUFFER_CREATE_INFO
     buffer_info%size = sizeof(vertices(1)) * size(vertices)
@@ -44,6 +46,12 @@ contains
     if (vk_bind_buffer_memory(logical_device, vertex_buffer, vertex_buffer_memory, 0_8) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to bind vertex buffer memory."
     end if
+
+    if (vk_map_memory(logical_device, vertex_buffer_memory, 0_8, buffer_info%size, 0, data) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to map memory."
+    end if
+
+    call totally_not_memcpy(data, vertices, size(vertices))
 
   end subroutine create_vertex_buffer
 
