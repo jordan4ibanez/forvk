@@ -17,28 +17,15 @@ contains
     type(vertex), dimension(:), intent(in) :: vertices
     type(vk_buffer), intent(inout) :: vertex_buffer
     type(vk_device_memory), intent(inout) :: vertex_buffer_memory
-    
-    type(vk_memory_requirements), target :: mem_requirements
-    type(vk_memory_allocate_info), target :: alloc_info
+    type(vk_buffer_create_info), target :: buffer_info
+
     ! void *
     type(c_ptr) :: data
 
-    
 
-    call vk_get_buffer_memory_requirements(logical_device, vertex_buffer, c_loc(mem_requirements))
-
-    alloc_info%s_type = VK_STRUCTURE_TYPE%MEMORY%ALLOCATE_INFO
-    alloc_info%allocation_size = mem_requirements%size
-    alloc_info%memory_type_index = find_memory_type(physical_device, mem_requirements%memory_type_bits, ior(VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT, VK_MEMORY_PROPERTY_HOST_COHERENT_BIT))
-
-    if (vk_allocate_memory(logical_device, c_loc(alloc_info), c_null_ptr, vertex_buffer_memory) /= VK_SUCCESS) then
-      error stop "[Vulkan] Error: Failed to allocate vertex buffer memory."
-    end if
-
-    ! todo: put this thing into a more generic function or module, lol. This is horrible.
-    if (vk_bind_buffer_memory(logical_device, vertex_buffer, vertex_buffer_memory, 0_8) /= VK_SUCCESS) then
-      error stop "[Vulkan] Error: Failed to bind vertex buffer memory."
-    end if
+    ! sizeof(vertices(1)) * size(vertices)
+    ! VK_BUFFER_USAGE_VERTEX_BUFFER_BIT
+    ! ior(VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT, VK_MEMORY_PROPERTY_HOST_COHERENT_BIT)
 
     if (vk_map_memory(logical_device, vertex_buffer_memory, 0_8, buffer_info%size, 0, data) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to map memory."
