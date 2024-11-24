@@ -54,7 +54,7 @@ contains
     call vk_cmd_bind_pipeline(command_buffer, VK_PIPELINE_BIND_POINT_GRAPHICS, graphics_pipeline)
 
     vertex_buffers = [vertex_buffer]
-    offsets = [0_8]
+    offsets = [vk_device_size(0_8)]
 
     call vk_cmd_bind_vertex_buffers(command_buffer, 0, 1, c_loc(vertex_buffers), c_loc(offsets))
 

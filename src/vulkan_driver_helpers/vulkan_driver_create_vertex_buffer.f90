@@ -25,11 +25,11 @@ contains
     type(vk_buffer) :: staging_buffer
     type(vk_device_memory) :: staging_buffer_memory
 
-    buffer_size = sizeof(vertices(1)) * size(vertices)
+    buffer_size%data = sizeof(vertices(1)) * size(vertices)
 
     call create_buffer(physical_device, logical_device, buffer_size, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, ior(VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT, VK_MEMORY_PROPERTY_HOST_COHERENT_BIT), staging_buffer, staging_buffer_memory)
 
-    if (vk_map_memory(logical_device, staging_buffer_memory, 0_8, buffer_size, 0, data) /= VK_SUCCESS) then
+    if (vk_map_memory(logical_device, staging_buffer_memory, vk_device_size(0_8), buffer_size, 0, data) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to map memory."
     end if
 
@@ -76,8 +76,8 @@ contains
       error stop "[Vulkan] Error: Failed to start command buffer."
     end if
 
-    copy_region%src_offset = 0
-    copy_region%dst_offset = 0
+    copy_region%src_offset%data = 0
+    copy_region%dst_offset%data = 0
     copy_region%size = buffer_size
 
     call vk_cmd_copy_buffer(command_buffer, src_buffer, dst_buffer, 1, c_loc(copy_region))
@@ -151,7 +151,7 @@ contains
     end if
 
     ! todo: put this thing into a more generic function or module, lol. This is horrible.
-    if (vk_bind_buffer_memory(logical_device, buffer, buffer_memory, 0_8) /= VK_SUCCESS) then
+    if (vk_bind_buffer_memory(logical_device, buffer, buffer_memory, vk_device_size(0_8)) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to bind buffer memory."
     end if
   end subroutine create_buffer
