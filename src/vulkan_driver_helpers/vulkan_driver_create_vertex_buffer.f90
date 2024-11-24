@@ -42,19 +42,18 @@ contains
   end subroutine create_vertex_buffer
 
 
-  subroutine copy_buffer(logical_device, src_buffer, dst_buffer, device_size, command_pool)
+  subroutine copy_buffer(logical_device, src_buffer, dst_buffer, buffer_size, command_pool)
     implicit none
 
     type(vk_device), intent(in), value :: logical_device
     type(vk_buffer), intent(in), value :: src_buffer, dst_buffer
     ! VkDeviceSize
-    integer(c_int64_t), intent(in), value :: device_size
+    integer(c_int64_t), intent(in), value :: buffer_size
     type(vk_command_pool), intent(in), value :: command_pool
     type(vk_command_buffer_allocate_info), target :: alloc_info
     type(vk_command_buffer), target :: command_buffer
     type(vk_command_buffer_begin_info), target :: begin_info
-    
-
+    type(vk_buffer_copy), target :: copy_region
 
     alloc_info%s_type = VK_STRUCTURE_TYPE%COMMAND_BUFFER_ALLOCATE_INFO
     alloc_info%level = VK_COMMAND_BUFFER_LEVEL_PRIMARY
@@ -72,11 +71,11 @@ contains
       error stop "[Vulkan] Error: Failed to start command buffer."
     end if
 
+    copy_region%src_offset = 0
+    copy_region%dst_offset = 0
+    copy_region%size = buffer_size
 
-
-
-
-
+    
 
   end subroutine
 
