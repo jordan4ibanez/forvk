@@ -7,7 +7,7 @@ module vulkan_driver_record_command_buffer
 contains
 
 
-  subroutine record_command_buffer(command_buffer, image_index, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline)
+  subroutine record_command_buffer(command_buffer, image_index, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, vertex_buffer)
     implicit none
 
     type(vk_command_buffer), intent(in), value :: command_buffer
@@ -18,12 +18,16 @@ contains
     type(vec), intent(inout) :: swapchain_framebuffers
     type(vk_extent_2d), intent(in) :: swapchain_extent
     type(vk_pipeline), intent(in), value :: graphics_pipeline
+    type(vk_buffer), intent(in), value :: vertex_buffer
     type(vk_command_buffer_begin_info), target :: begin_info
     type(vk_render_pass_begin_info), target :: render_pass_info
     type(vk_framebuffer), pointer :: framebuffer
     type(vk_clear_color_value_f32), target :: clear_color
     type(vk_viewport), target :: viewport
     type(vk_rect_2d), target :: scissor
+    type(vk_buffer), dimension(1), target :: vertex_buffers
+    ! VkDeviceSize
+    integer(c_int64_t), dimension(1), target :: offsets
 
 
     begin_info%s_type = VK_STRUCTURE_TYPE%COMMAND_BUFFER_BEGIN_INFO
@@ -49,6 +53,11 @@ contains
     call vk_cmd_begin_render_pass(command_buffer, c_loc(render_pass_info), VK_SUBPASS_CONTENTS_INLINE)
 
     call vk_cmd_bind_pipeline(command_buffer, VK_PIPELINE_BIND_POINT_GRAPHICS, graphics_pipeline)
+
+    vertex_buffers = [vertex_buffer]
+    offsets = [0_8]
+
+    call vk_cmd_bind_vertex_buffers(command_buffer, 0, 1, c_loc(vertex_buffers), c_loc(offsets))
 
     viewport%x = 0.0
     viewport%y = 0.0
