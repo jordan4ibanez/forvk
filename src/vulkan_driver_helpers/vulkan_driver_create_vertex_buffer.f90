@@ -44,6 +44,8 @@ contains
     if (vk_bind_buffer_memory(logical_device, vertex_buffer, vertex_buffer_memory, 0_8) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to bind vertex buffer memory."
     end if
+
+
   end subroutine create_vertex_buffer
 
 
