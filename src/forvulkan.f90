@@ -903,6 +903,20 @@ module forvulkan
     end subroutine vk_cmd_bind_vertex_buffers
 
 
+    subroutine vk_cmd_copy_buffer(command_buffer, src_buffer, dst_buffer, region_count, p_regions) bind(c, name = "vkCmdCopyBuffer")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_command_buffer), intent(in), value :: command_buffer
+      type(vk_buffer), intent(in), value :: src_buffer, dst_buffer
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: region_count
+      ! const VkBufferCopy *
+      type(c_ptr), intent(in), value :: p_regions
+    end subroutine vk_cmd_copy_buffer
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
