@@ -19,7 +19,6 @@ contains
     type(vk_device_memory), intent(inout) :: vertex_buffer_memory
     type(vk_buffer_create_info), target :: buffer_info
     type(vk_memory_requirements), target :: mem_requirements
-    type(vk_physical_device_memory_properties), target :: mem_properties
     type(vk_memory_allocate_info), target :: alloc_info
 
     buffer_info%s_type = VK_STRUCTURE_TYPE%BUFFER_CREATE_INFO
