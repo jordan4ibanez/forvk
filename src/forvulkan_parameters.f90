@@ -4562,4 +4562,19 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_MEMORY_MAP_PLACED_BIT_EXT = int(z"00000001")
 
 
+  !? VkIndexType.
+
+
+  integer(c_int32_t), parameter, public :: VK_INDEX_TYPE_UINT16 = 0
+  integer(c_int32_t), parameter, public :: VK_INDEX_TYPE_UINT32 = 1
+  ! Provided by VK_KHR_acceleration_structure
+  integer(c_int32_t), parameter, public :: VK_INDEX_TYPE_NONE_KHR = 1000165000
+  ! Provided by VK_KHR_index_type_uint8
+  integer(c_int32_t), parameter, public :: VK_INDEX_TYPE_UINT8_KHR = 1000265000
+  ! Provided by VK_NV_ray_tracing
+  integer(c_int32_t), parameter, public :: VK_INDEX_TYPE_NONE_NV = VK_INDEX_TYPE_NONE_KHR
+  ! Provided by VK_EXT_index_type_uint8
+  integer(c_int32_t), parameter, public :: VK_INDEX_TYPE_UINT8_EXT = VK_INDEX_TYPE_UINT8_KHR
+
+
 end module forvulkan_parameters
