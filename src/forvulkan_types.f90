@@ -1525,8 +1525,7 @@ module forvulkan_types
     type(c_ptr) :: p_next = c_null_ptr
     ! VkBufferCreateFlags
     integer(c_int32_t) :: flags = 0
-    ! VkDeviceSize
-    integer(c_int64_t) :: size = 0
+    type(vk_device_size) :: size
     ! VkBufferUsageFlags
     integer(c_int32_t) :: usage = 0
     ! VkSharingMode
@@ -1540,10 +1539,8 @@ module forvulkan_types
 
   !? VkMemoryRequirements.
   type, bind(c) :: vk_memory_requirements
-    ! VkDeviceSize
-    integer(c_int64_t) :: size = 0
-    ! VkDeviceSize
-    integer(c_int64_t) :: alignment = 0
+    type(vk_device_size) :: size
+    type(vk_device_size) :: alignment
     ! uint32_t
     integer(c_int32_t) :: memory_type_bits = 0
   end type vk_memory_requirements
@@ -1560,8 +1557,7 @@ module forvulkan_types
 
   !? VkMemoryHeap.
   type, bind(c) :: vk_memory_heap
-    ! VkDeviceSize
-    integer(c_int64_t) :: size = 0
+    type(vk_device_size) :: size
     ! VkMemoryHeapFlags
     integer(c_int32_t) :: flags = 0
   end type vk_memory_heap
@@ -1586,8 +1582,7 @@ module forvulkan_types
     integer(c_int32_t) :: s_type = 0
     ! const void *
     type(c_ptr) :: p_next = c_null_ptr
-    ! VkDeviceSize
-    integer(c_int64_t) :: allocation_size = 0
+    type(vk_device_size) :: allocation_size
     ! uint32_t
     integer(c_int32_t) :: memory_type_index = 0
   end type vk_memory_allocate_info
@@ -1595,12 +1590,9 @@ module forvulkan_types
 
   !? VkBufferCopy.
   type, bind(c) :: vk_buffer_copy
-    ! VkDeviceSize
-    integer(c_int64_t) :: src_offset = 0
-    ! VkDeviceSize
-    integer(c_int64_t) :: dst_offset = 0
-    ! VkDeviceSize
-    integer(c_int64_t) :: size = 0
+    type(vk_device_size) :: src_offset
+    type(vk_device_size) :: dst_offset
+    type(vk_device_size) :: size
   end type vk_buffer_copy
 
 
