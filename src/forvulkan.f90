@@ -917,6 +917,16 @@ module forvulkan
     end subroutine vk_cmd_copy_buffer
 
 
+    function vk_queue_wait_idle(queue) result(vk_result) bind(c, name = "vkQueueWaitIdle")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_queue), intent(in), value :: queue
+      integer(c_int32_t) :: vk_result
+    end function vk_queue_wait_idle
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
