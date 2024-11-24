@@ -7,7 +7,9 @@ module vulkan_driver_record_command_buffer
 contains
 
 
-  subroutine record_command_buffer(command_buffer, image_index, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, vertex_buffer, index_buffer)
+  !* Implementation note: indices_size needs to be baked into the hashmap.
+  !* It is currently a hackjob.
+  subroutine record_command_buffer(command_buffer, image_index, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, vertex_buffer, index_buffer, indices_size)
     implicit none
 
     type(vk_command_buffer), intent(in), value :: command_buffer
@@ -20,6 +22,7 @@ contains
     type(vk_pipeline), intent(in), value :: graphics_pipeline
     type(vk_buffer), intent(in), value :: vertex_buffer
     type(vk_buffer), intent(in), value :: index_buffer
+    integer(c_int32_t), intent(in), value :: indices_size
     type(vk_command_buffer_begin_info), target :: begin_info
     type(vk_render_pass_begin_info), target :: render_pass_info
     type(vk_framebuffer), pointer :: framebuffer
@@ -28,7 +31,6 @@ contains
     type(vk_rect_2d), target :: scissor
     type(vk_buffer), dimension(1), target :: vertex_buffers
     type(vk_device_size), dimension(1), target :: offsets
-
 
     begin_info%s_type = VK_STRUCTURE_TYPE%COMMAND_BUFFER_BEGIN_INFO
     begin_info%flags = 0
@@ -59,6 +61,8 @@ contains
 
     call vk_cmd_bind_vertex_buffers(command_buffer, 0, 1, c_loc(vertex_buffers), c_loc(offsets))
 
+    call vk_cmd_bind_index_buffer(command_buffer, index_buffer, vk_device_size(0_8), VK_INDEX_TYPE_UINT32)
+
     viewport%x = 0.0
     viewport%y = 0.0
     viewport%width = swapchain_extent%width
@@ -74,7 +78,8 @@ contains
 
     call vk_cmd_set_scissor(command_buffer, 0, 1, c_loc(scissor))
 
-    call vk_cmd_draw(command_buffer, 3, 1, 0, 0)
+    ! call vk_cmd_draw(command_buffer, 3, 1, 0, 0)
+    call vk_cmd_draw_indexed(command_buffer, indices_size, 1, 0, 0, 0)
 
     call vk_cmd_end_render_pass(command_buffer)
 
