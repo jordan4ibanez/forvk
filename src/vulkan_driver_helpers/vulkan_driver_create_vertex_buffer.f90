@@ -29,17 +29,13 @@ contains
     buffer_size%data = sizeof(vertices(1)) * size(vertices)
 
     call create_buffer(physical_device, logical_device, buffer_size, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, ior(VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT, VK_MEMORY_PROPERTY_HOST_COHERENT_BIT), staging_buffer, staging_buffer_memory)
-
     if (vk_map_memory(logical_device, staging_buffer_memory, vk_device_size(0_8), buffer_size, 0, data) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to map memory."
     end if
-
     call totally_not_memcpy_vertices(data, vertices)
-
     call vk_unmap_memory(logical_device, staging_buffer_memory)
 
     call create_buffer(physical_device, logical_device, buffer_size, ior(VK_BUFFER_USAGE_TRANSFER_DST_BIT, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT), VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, vertex_buffer, vertex_buffer_memory)
-
     call copy_buffer(logical_device, staging_buffer, vertex_buffer, buffer_size, command_pool, graphics_queue)
 
     call vk_destroy_buffer(logical_device, staging_buffer, c_null_ptr)
