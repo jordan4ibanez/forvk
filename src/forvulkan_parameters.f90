@@ -4555,4 +4555,11 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_MEMORY_HEAP_MULTI_INSTANCE_BIT_KHR = VK_MEMORY_HEAP_MULTI_INSTANCE_BIT
 
 
+  !? VkMemoryMapFlagBits.
+
+
+  ! Provided by VK_EXT_map_memory_placed
+  integer(c_int32_t), parameter, public :: VK_MEMORY_MAP_PLACED_BIT_EXT = int(z"00000001")
+
+
 end module forvulkan_parameters
