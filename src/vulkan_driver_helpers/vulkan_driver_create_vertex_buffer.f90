@@ -19,8 +19,7 @@ contains
     type(vk_device_memory), intent(inout) :: vertex_buffer_memory
     type(vk_command_pool), intent(in), value :: command_pool
     type(vk_queue), intent(in), value :: graphics_queue
-    ! VkDeviceSize
-    integer(c_int64_t) :: buffer_size
+    type(vk_device_size) :: buffer_size
     ! void *
     type(c_ptr) :: data
     type(vk_buffer) :: staging_buffer
@@ -52,8 +51,7 @@ contains
 
     type(vk_device), intent(in), value :: logical_device
     type(vk_buffer), intent(in), value :: src_buffer, dst_buffer
-    ! VkDeviceSize
-    integer(c_int64_t), intent(in), value :: buffer_size
+    type(vk_device_size), intent(in), value :: buffer_size
     type(vk_command_pool), intent(in), value :: command_pool
     type(vk_queue), intent(in), value :: graphics_queue
     type(vk_command_buffer_allocate_info), target :: alloc_info
@@ -129,8 +127,7 @@ contains
     type(vk_buffer), intent(inout) :: buffer
     type(vk_device_memory), intent(inout) :: buffer_memory
     type(vk_buffer_create_info), target :: buffer_info
-    ! VkDeviceSize
-    integer(c_int64_t), intent(in), value :: buffer_size
+    type(vk_device_size), intent(in), value :: buffer_size
     type(vk_memory_allocate_info), target :: alloc_info
     type(vk_memory_requirements), target :: mem_requirements
 
