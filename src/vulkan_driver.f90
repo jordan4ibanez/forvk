@@ -139,7 +139,7 @@ contains
     type(vertex), dimension(4) :: vertices
     integer(c_int32_t), dimension(6) :: indices
 
-    vertices(1) = vertex(vec2f(-0.5, -0.5), vec3f(1.0, 1.0, 1.0))
+    vertices(1) = vertex(vec2f(-0.5, -0.5), vec3f(1.0, 0.0, 0.0))
     vertices(2) = vertex(vec2f(0.5,  -0.5), vec3f(0.0, 1.0, 0.0))
     vertices(3) = vertex(vec2f(0.5,   0.5), vec3f(0.0, 0.0, 1.0))
     vertices(4) = vertex(vec2f(-0.5,  0.5), vec3f(1.0, 1.0, 1.0))
@@ -202,7 +202,7 @@ contains
       call draw_frame(logical_device, current_frame, MAX_FRAMES_IN_FLIGHT, in_flight_fences, image_available_semaphores, render_finished_semaphores, swapchain, command_buffers, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue, physical_device, window_surface, swapchain_images, swapchain_image_format, swapchain_image_views, framebuffer_resized, vertex_buffer, index_buffer, indices_size)
 
       if (a >= 100) then
-        call glfw_close_window()
+        ! call glfw_close_window()
       end if
 
       a = a + 1
