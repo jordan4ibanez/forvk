@@ -42,6 +42,8 @@ contains
 
     call copy_buffer(logical_device, staging_buffer, vertex_buffer, buffer_size, command_pool, graphics_queue)
 
+    call vk_destroy_buffer(logical_device, staging_buffer, c_null_ptr)
+    call vk_free_memory(logical_device, staging_buffer_memory, c_null_ptr)
   end subroutine create_vertex_buffer
 
 
