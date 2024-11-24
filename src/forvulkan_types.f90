@@ -131,6 +131,13 @@ module forvulkan_types
   end type vk_device_memory
 
 
+  !? VkDeviceSize.
+  type, bind(c) :: vk_device_size
+    ! uint64_t
+    integer(c_int64_t) :: data = 0
+  end type vk_device_size
+
+
 !? FORTRANIFIED DATA TYPES. ===============================================================
 
 
