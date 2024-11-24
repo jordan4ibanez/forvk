@@ -3,7 +3,6 @@ module vulkan_driver_create_vertex_buffer
   use :: forvulkan
   use :: vulkan_vertex
   use :: vulkan_driver_find_memory_type
-  use :: vulkan_driver_create_buffer
   implicit none
 
 
@@ -42,8 +41,14 @@ contains
   end subroutine create_vertex_buffer
 
 
-  subroutine copy_buffer()
+  subroutine copy_buffer(src_buffer, dst_buffer, device_size)
     implicit none
+
+    type(vk_buffer), intent(in), value :: src_buffer, dst_buffer
+    ! VkDeviceSize
+    integer(c_int64_t), intent(in), value :: device_size
+
+
 
   end subroutine
 
