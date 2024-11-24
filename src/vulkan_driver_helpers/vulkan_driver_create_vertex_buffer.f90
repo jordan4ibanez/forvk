@@ -92,8 +92,11 @@ contains
       error stop "[Vulkan] Error: Failed to submit queue."
     end if
 
-    call vk_queue_wait_idle(graphics_queue)
+    if (vk_queue_wait_idle(graphics_queue) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to wait idle on queue."
+    end if
 
+    call vk_free_command_buffers(logical_device, command_pool, 1, c_loc(command_buffer))
   end subroutine
 
 
