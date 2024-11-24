@@ -51,16 +51,21 @@ contains
       error stop "[Vulkan] Error: Failed to map memory."
     end if
 
-    call totally_not_memcpy(data, vertices, size(vertices))
+    call totally_not_memcpy(data, vertices)
 
+    call vk_unmap_memory(logical_device, vertex_buffer_memory)
   end subroutine create_vertex_buffer
 
 
-  subroutine totally_not_memcpy()
+  subroutine totally_not_memcpy(data, vertices)
     implicit none
 
+    type(c_ptr), intent(in), value :: data
+    type(vertex), dimension(:), intent(in) :: vertices
+    type(vertex), dimension(:), pointer :: data_in_buffer
 
-
+    call c_f_pointer(data, data_in_buffer, [size(vertices)])
+    data_in_buffer = vertices
   end subroutine totally_not_memcpy
 
 
