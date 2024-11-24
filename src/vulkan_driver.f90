@@ -181,7 +181,6 @@ contains
     call create_command_buffers(logical_device, MAX_FRAMES_IN_FLIGHT, command_pool, command_buffers)
 
     call create_sync_objects(logical_device, MAX_FRAMES_IN_FLIGHT, image_available_semaphores, render_finished_semaphores, in_flight_fences)
-
   end subroutine init_vulkan
 
 
@@ -224,6 +223,9 @@ contains
     type(vk_fence), pointer :: fence_pointer
 
     call clean_up_swapchain(logical_device, swapchain_framebuffers, swapchain_image_views, swapchain)
+
+    call vk_destroy_buffer(logical_device, index_buffer, c_null_ptr)
+    call vk_free_memory(logical_device, index_buffer_memory, c_null_ptr)
 
     call vk_destroy_buffer(logical_device, vertex_buffer, c_null_ptr)
     call vk_free_memory(logical_device, vertex_buffer_memory, c_null_ptr)
