@@ -6,6 +6,7 @@ module vulkan_vertex
   implicit none
 
 
+  ! Vertex data is interleaved.
   type :: vertex
     type(vec2f) :: position
     type(vec3f) :: color
