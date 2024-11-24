@@ -891,7 +891,7 @@ module forvulkan
       use :: forvulkan_types
       implicit none
 
-      type(vk_buffer), intent(in), value :: command_buffer
+      type(vk_command_buffer), intent(in), value :: command_buffer
       ! uint32_t
       integer(c_int32_t), intent(in), value :: first_binding
       ! uint32_t
