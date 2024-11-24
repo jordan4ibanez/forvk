@@ -816,6 +816,21 @@ module forvulkan
     end subroutine vk_get_physical_device_memory_properties
 
 
+    function vk_allocate_memory(logical_device, p_allocate_info, p_allocator, p_memory) result(vk_result) bind(c, name = "vkAllocateMemory")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_device), intent(in), value :: logical_device
+      ! const VkMemoryAllocateInfo *
+      type(c_ptr), intent(in), value :: p_allocate_info
+      ! const VkAllocationCallbacks *
+      type(c_ptr), intent(in), value :: p_allocator
+      type(vk_device_memory), intent(inout) :: p_memory
+      integer(c_int32_t) :: vk_result
+    end function vk_allocate_memory
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
