@@ -81,7 +81,6 @@ contains
     if (vk_end_command_buffer(command_buffer) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to record command buffer."
     end if
-
   end subroutine record_command_buffer
 
 
