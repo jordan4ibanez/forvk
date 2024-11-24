@@ -23,6 +23,8 @@ contains
     integer(c_int64_t) :: buffer_size
     ! void *
     type(c_ptr) :: data
+    type(vk_buffer) :: staging_buffer
+    type(vk_device_memory) :: staging_buffer_memory
 
     buffer_size = sizeof(vertices(1)) * size(vertices)
     call create_buffer(physical_device, logical_device, buffer_size, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, ior(VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT, VK_MEMORY_PROPERTY_HOST_COHERENT_BIT), vertex_buffer, vertex_buffer_memory, buffer_info)
