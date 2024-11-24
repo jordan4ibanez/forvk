@@ -28,6 +28,7 @@ module vulkan_driver
   use :: vulkan_driver_draw_frame
   use :: vulkan_driver_clean_up_swapchain
   use :: vulkan_driver_create_vertex_buffer
+  use :: vulkan_driver_create_index_buffer
   !! THIS IS TEMPORARY
   use :: vulkan_vertex
   implicit none
@@ -174,6 +175,8 @@ contains
     call create_command_pool(physical_device, window_surface, logical_device, command_pool)
 
     call create_vertex_buffer(physical_device, logical_device, vertices, vertex_buffer, vertex_buffer_memory, command_pool, graphics_queue)
+
+    call create_index_buffer(physical_device, logical_device, indices, index_buffer, index_buffer_memory, command_pool, graphics_queue)
 
     call create_command_buffers(logical_device, MAX_FRAMES_IN_FLIGHT, command_pool, command_buffers)
 
