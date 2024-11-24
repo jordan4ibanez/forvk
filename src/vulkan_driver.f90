@@ -103,6 +103,7 @@ module vulkan_driver
   type(vk_device_memory) :: vertex_buffer_memory
   type(vk_buffer) :: index_buffer
   type(vk_device_memory) :: index_buffer_memory
+  integer(c_int32_t) :: indices_size
 
   logical(c_bool) :: framebuffer_resized = .false.
 
@@ -145,6 +146,8 @@ contains
     vertices(4) = vertex(vec2f(-0.5,  0.5), vec3f(1.0, 1.0, 1.0))
 
     indices = [0,1,2,2,3,0]
+
+    indices_size = size(indices)
 
     call create_glfw(framebuffer_resized, 800, 600)
 
