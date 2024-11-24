@@ -110,7 +110,6 @@ module vulkan_driver
   ! Controls debugging output.
   logical(c_bool), parameter :: DEBUG_MODE = .true.
 
-
 contains
 
   subroutine vulkan_run()
@@ -200,7 +199,7 @@ contains
 
     do while(.not. glfw_window_should_close())
       call glfw_poll_events()
-      call draw_frame(logical_device, current_frame, MAX_FRAMES_IN_FLIGHT, in_flight_fences, image_available_semaphores, render_finished_semaphores, swapchain, command_buffers, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue, physical_device, window_surface, swapchain_images, swapchain_image_format, swapchain_image_views, framebuffer_resized, vertex_buffer, index_buffer)
+      call draw_frame(logical_device, current_frame, MAX_FRAMES_IN_FLIGHT, in_flight_fences, image_available_semaphores, render_finished_semaphores, swapchain, command_buffers, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue, physical_device, window_surface, swapchain_images, swapchain_image_format, swapchain_image_views, framebuffer_resized, vertex_buffer, index_buffer, indices_size)
 
       if (a >= 100) then
         call glfw_close_window()
