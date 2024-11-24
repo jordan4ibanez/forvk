@@ -9,7 +9,7 @@ module vulkan_driver_create_vertex_buffer
 contains
 
 
-  subroutine create_vertex_buffer(physical_device, logical_device, vertices, vertex_buffer, vertex_buffer_memory)
+  subroutine create_vertex_buffer(physical_device, logical_device, vertices, vertex_buffer, vertex_buffer_memory, command_pool)
     implicit none
 
     type(vk_physical_device), intent(in), value :: physical_device
@@ -17,6 +17,7 @@ contains
     type(vertex), dimension(:), intent(in) :: vertices
     type(vk_buffer), intent(inout) :: vertex_buffer
     type(vk_device_memory), intent(inout) :: vertex_buffer_memory
+    type(vk_command_pool), intent(in), value :: command_pool
     ! VkDeviceSize
     integer(c_int64_t) :: buffer_size
     ! void *
@@ -41,12 +42,39 @@ contains
   end subroutine create_vertex_buffer
 
 
-  subroutine copy_buffer(src_buffer, dst_buffer, device_size)
+  subroutine copy_buffer(logical_device, src_buffer, dst_buffer, device_size, command_pool)
     implicit none
 
+    type(vk_device), intent(in), value :: logical_device
     type(vk_buffer), intent(in), value :: src_buffer, dst_buffer
     ! VkDeviceSize
     integer(c_int64_t), intent(in), value :: device_size
+    type(vk_command_pool), intent(in), value :: command_pool
+    type(vk_command_buffer_allocate_info), target :: alloc_info
+    type(vk_command_buffer), target :: command_buffer
+    type(vk_command_buffer_begin_info), target :: begin_info
+    
+
+
+    alloc_info%s_type = VK_STRUCTURE_TYPE%COMMAND_BUFFER_ALLOCATE_INFO
+    alloc_info%level = VK_COMMAND_BUFFER_LEVEL_PRIMARY
+    alloc_info%command_pool = command_pool
+    alloc_info%command_buffer_count = 1
+
+    if (vk_allocate_command_buffers(logical_device, c_loc(alloc_info), c_loc(command_buffer)) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to allocate command buffer."
+    end if
+
+    begin_info%s_type = VK_STRUCTURE_TYPE%COMMAND_BUFFER_BEGIN_INFO
+    begin_info%flags = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT
+
+    if (vk_begin_command_buffer(command_buffer, c_loc(begin_info)) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to start command buffer."
+    end if
+
+
+
+
 
 
 
