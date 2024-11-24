@@ -876,6 +876,16 @@ module forvulkan
     end function vk_map_memory
 
 
+    subroutine vk_unmap_memory(logical_device, memory) bind(c, name = "vkUnmapMemory")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_device), intent(in), value :: logical_device
+      type(vk_device_memory), intent(in), value :: memory
+    end subroutine vk_unmap_memory
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
