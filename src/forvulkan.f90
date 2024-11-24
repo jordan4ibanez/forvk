@@ -839,8 +839,7 @@ module forvulkan
       type(vk_device), intent(in), value :: logical_device
       type(vk_buffer), intent(in), value :: buffer
       type(vk_device_memory), intent(in), value :: memory
-      ! VkDeviceSize
-      integer(c_int64_t), intent(in), value :: memory_offset
+      type(vk_device_size), intent(in), value :: memory_offset
       integer(c_int32_t) :: vk_result
     end function vk_bind_buffer_memory
 
@@ -864,10 +863,8 @@ module forvulkan
 
       type(vk_device), intent(in), value :: logical_device
       type(vk_device_memory), intent(in), value :: memory
-      ! VkDeviceSize
-      integer(c_int64_t), intent(in), value :: offset
-      ! VkDeviceSize
-      integer(c_int64_t), intent(in), value :: size
+      type(vk_device_size), intent(in), value :: offset
+      type(vk_device_size), intent(in), value :: size
       ! VkMemoryMapFlags
       integer(c_int32_t), intent(in), value :: flags
       ! void **
