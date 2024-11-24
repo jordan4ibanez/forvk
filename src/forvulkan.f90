@@ -857,6 +857,25 @@ module forvulkan
     end subroutine vk_free_memory
 
 
+    function vk_map_memory(logical_device, memory, offset, size, flags, pp_data) result(vk_result) bind(c, name = "vkMapMemory")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_device), intent(in), value :: logical_device
+      type(vk_device_memory), intent(in), value :: memory
+      ! VkDeviceSize
+      integer(c_int64_t), intent(in), value :: offset
+      ! VkDeviceSize
+      integer(c_int64_t), intent(in), value :: size
+      ! VkMemoryMapFlags
+      integer(c_int32_t), intent(in), value :: flags
+      ! void **
+      type(c_ptr), intent(inout) :: pp_data
+      integer(c_int32_t) :: vk_result
+    end function vk_map_memory
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
