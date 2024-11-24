@@ -1586,6 +1586,17 @@ module forvulkan_types
   end type vk_memory_allocate_info
 
 
+  !? VkBufferCopy.
+  type, bind(c) :: vk_buffer_copy
+    ! VkDeviceSize
+    integer(c_int64_t) :: src_offset = 0
+    ! VkDeviceSize
+    integer(c_int64_t) :: dst_offset = 0
+    ! VkDeviceSize
+    integer(c_int64_t) :: size = 0
+  end type vk_buffer_copy
+
+
 !? CUSTOM TYPES. ===============================================================
 
 
