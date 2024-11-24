@@ -3,6 +3,7 @@ module vulkan_driver_create_vertex_buffer
   use :: forvulkan
   use :: vulkan_vertex
   use :: vulkan_driver_find_memory_type
+  use :: vulkan_driver_create_buffer
   implicit none
 
 
@@ -18,14 +19,13 @@ contains
     type(vk_buffer), intent(inout) :: vertex_buffer
     type(vk_device_memory), intent(inout) :: vertex_buffer_memory
     type(vk_buffer_create_info), target :: buffer_info
-
+    ! VkDeviceSize
+    integer(c_int64_t) :: buffer_size
     ! void *
     type(c_ptr) :: data
 
-
-    ! sizeof(vertices(1)) * size(vertices)
-    ! VK_BUFFER_USAGE_VERTEX_BUFFER_BIT
-    ! ior(VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT, VK_MEMORY_PROPERTY_HOST_COHERENT_BIT)
+    buffer_size = sizeof(vertices(1)) * size(vertices)
+    call create_buffer(physical_device, logical_device, buffer_size, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, ior(VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT, VK_MEMORY_PROPERTY_HOST_COHERENT_BIT), vertex_buffer, vertex_buffer_memory, buffer_info)
 
     if (vk_map_memory(logical_device, vertex_buffer_memory, 0_8, buffer_info%size, 0, data) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to map memory."
