@@ -26,8 +26,7 @@ contains
     type(vk_viewport), target :: viewport
     type(vk_rect_2d), target :: scissor
     type(vk_buffer), dimension(1), target :: vertex_buffers
-    ! VkDeviceSize
-    integer(c_int64_t), dimension(1), target :: offsets
+    type(vk_device_size), dimension(1), target :: offsets
 
 
     begin_info%s_type = VK_STRUCTURE_TYPE%COMMAND_BUFFER_BEGIN_INFO
