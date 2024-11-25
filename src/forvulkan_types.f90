@@ -1625,6 +1625,21 @@ module forvulkan_types
   end type vk_descriptor_set_layout_binding
 
 
+  !? VkDescriptorSetLayoutCreateInfo.
+  type, bind(c) :: vk_descriptor_set_layout_create_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkDescriptorSetLayoutCreateFlags
+    integer(c_int32_t) :: flags = 0
+    ! uint32_t
+    integer(c_int32_t) :: binding_count = 0
+    ! const VkDescriptorSetLayoutBinding *
+    type(c_ptr) :: p_bindings = c_null_ptr
+  end type vk_descriptor_set_layout_create_info
+
+
 !? CUSTOM TYPES. ===============================================================
 
 
