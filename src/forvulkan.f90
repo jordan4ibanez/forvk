@@ -970,6 +970,22 @@ module forvulkan
     end subroutine vk_cmd_draw_indexed
 
 
+    function vk_create_descriptor_set_layout(logical_device, p_create_info, p_allocator, p_set_layout) result(vk_result) bind(c, name = "vkCreateDescriptorSetLayout")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_device), intent(in), value :: logical_device
+      ! const VkDescriptorSetLayoutCreateInfo *
+      type(c_ptr), intent(in), value :: p_create_info
+      ! const VkAllocationCallbacks *
+      type(c_ptr), intent(in), value :: p_allocator
+      ! VkDescriptorSetLayout *
+      type(vk_descriptor_set_layout), intent(inout) :: p_set_layout
+      integer(c_int32_t) :: vk_result
+    end function vk_create_descriptor_set_layout
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
