@@ -174,9 +174,9 @@ contains
 
     call create_render_pass(logical_device, render_pass, swapchain_image_format)
 
-    call create_descriptor_set_layout()
+    call create_descriptor_set_layout(logical_device, descriptor_set_layout)
 
-    call create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module, swapchain_extent, pipeline_layout, render_pass, graphics_pipeline)
+    call create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module, swapchain_extent, pipeline_layout, render_pass, graphics_pipeline, descriptor_set_layout)
 
     call create_framebuffers(logical_device, swapchain_framebuffers, swapchain_image_views, render_pass, swapchain_extent)
 
@@ -231,6 +231,8 @@ contains
     type(vk_fence), pointer :: fence_pointer
 
     call clean_up_swapchain(logical_device, swapchain_framebuffers, swapchain_image_views, swapchain)
+
+    call vk_destroy_descriptor_set_layout(logical_device, descriptor_set_layout, c_null_ptr)
 
     call vk_destroy_buffer(logical_device, index_buffer, c_null_ptr)
     call vk_free_memory(logical_device, index_buffer_memory, c_null_ptr)

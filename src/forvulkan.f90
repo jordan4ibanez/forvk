@@ -986,6 +986,18 @@ module forvulkan
     end function vk_create_descriptor_set_layout
 
 
+    subroutine vk_destroy_descriptor_set_layout(logical_device, descriptor_set_layout, p_allocator) bind(c, name = "vkDestroyDescriptorSetLayout")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_device), intent(in), value :: logical_device
+      type(vk_descriptor_set_layout), intent(in), value :: descriptor_set_layout
+      ! const VkAllocationCallbacks *
+      type(c_ptr), intent(in), value :: p_allocator
+    end subroutine vk_destroy_descriptor_set_layout
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================

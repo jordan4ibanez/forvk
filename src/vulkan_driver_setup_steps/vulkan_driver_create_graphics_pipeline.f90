@@ -9,7 +9,7 @@ module vulkan_driver_create_graphics_pipeline
 contains
 
 
-  subroutine create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module, swapchain_extent, pipeline_layout, render_pass, graphics_pipeline)
+  subroutine create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module, swapchain_extent, pipeline_layout, render_pass, graphics_pipeline, descriptor_set_layout)
     implicit none
 
     ! TODO: Break this monstrosity up.
@@ -21,6 +21,7 @@ contains
     type(vk_pipeline_layout), intent(inout) :: pipeline_layout
     type(vk_render_pass), intent(in), value :: render_pass
     type(vk_pipeline), intent(inout) :: graphics_pipeline
+    type(vk_descriptor_set_layout), intent(in), value, target :: descriptor_set_layout
     type(vk_pipeline_shader_stage_create_info) :: vertex_shader_stage_info, fragment_shader_stage_info
     character(len = 5, kind = c_char), target :: vert_p_name, frag_p_name
     type(vk_pipeline_shader_stage_create_info), dimension(2), target :: shader_stages
@@ -145,8 +146,8 @@ contains
 
     ! Set up the pipeline layout create info.
     pipeline_layout_create_info%s_type = VK_STRUCTURE_TYPE%PIPELINE%LAYOUT_CREATE_INFO
-    pipeline_layout_create_info%set_layout_count = 0
-    pipeline_layout_create_info%p_set_layouts = c_null_ptr
+    pipeline_layout_create_info%set_layout_count = 1
+    pipeline_layout_create_info%p_set_layouts = c_loc(descriptor_set_layout)
     pipeline_layout_create_info%push_constant_range_count = 0
     pipeline_layout_create_info%p_push_constant_ranges = c_null_ptr
 
