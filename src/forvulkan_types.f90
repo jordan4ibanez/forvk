@@ -138,6 +138,13 @@ module forvulkan_types
   end type vk_device_size
 
 
+  !? VkSampler.
+  type, bind(c) :: vk_sampler
+    ! uint64_t
+    integer(c_int64_t) :: data = 0
+  end type vk_sampler
+  
+
 !? FORTRANIFIED DATA TYPES. ===============================================================
 
 
