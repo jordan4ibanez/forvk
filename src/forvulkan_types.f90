@@ -143,7 +143,14 @@ module forvulkan_types
     ! uint64_t
     integer(c_int64_t) :: data = 0
   end type vk_sampler
-  
+
+
+  !? VkDescriptorSetLayout.
+  type, bind(c) :: vk_descriptor_set_layout
+    ! uint64_t
+    integer(c_int64_t) :: data = 0
+  end type vk_descriptor_set_layout
+
 
 !? FORTRANIFIED DATA TYPES. ===============================================================
 
