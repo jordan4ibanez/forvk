@@ -4609,4 +4609,27 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_DESCRIPTOR_TYPE_MUTABLE_VALVE = VK_DESCRIPTOR_TYPE_MUTABLE_EXT
 
 
+  !? VkDescriptorSetLayoutCreateFlagBits.
+
+
+  ! Provided by VK_VERSION_1_2
+  integer(c_int32_t), parameter, public :: VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT = int(z"00000002")
+  ! Provided by VK_KHR_push_descriptor
+  integer(c_int32_t), parameter, public :: VK_DESCRIPTOR_SET_LAYOUT_CREATE_PUSH_DESCRIPTOR_BIT_KHR = int(z"00000001")
+  ! Provided by VK_EXT_descriptor_buffer
+  integer(c_int32_t), parameter, public :: VK_DESCRIPTOR_SET_LAYOUT_CREATE_DESCRIPTOR_BUFFER_BIT_EXT = int(z"00000010")
+  ! Provided by VK_EXT_descriptor_buffer
+  ! VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT = int(z"00000020")
+  ! Provided by VK_NV_device_generated_commands_compute
+  integer(c_int32_t), parameter, public :: VK_DESCRIPTOR_SET_LAYOUT_CREATE_INDIRECT_BINDABLE_BIT_NV = int(z"00000080")
+  ! Provided by VK_EXT_mutable_descriptor_type
+  integer(c_int32_t), parameter, public :: VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT = int(z"00000004")
+  ! Provided by VK_NV_per_stage_descriptor_set
+  integer(c_int32_t), parameter, public :: VK_DESCRIPTOR_SET_LAYOUT_CREATE_PER_STAGE_BIT_NV = int(z"00000040")
+  ! Provided by VK_EXT_descriptor_indexing
+  integer(c_int32_t), parameter, public :: VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT = VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT
+  ! Provided by VK_VALVE_mutable_descriptor_type
+  integer(c_int32_t), parameter, public :: VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_VALVE = VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT
+
+
 end module forvulkan_parameters
