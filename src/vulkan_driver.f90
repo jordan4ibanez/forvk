@@ -31,6 +31,7 @@ module vulkan_driver
   use :: vulkan_driver_create_index_buffer
   !! THIS IS TEMPORARY
   use :: vulkan_vertex
+  use :: vulkan_driver_uniform_buffer
   implicit none
 
   ! https://github.com/KhronosGroup/Vulkan-Headers/blob/main/include/vulkan/vulkan_core.h
