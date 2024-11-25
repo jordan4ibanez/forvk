@@ -1603,6 +1603,21 @@ module forvulkan_types
   end type vk_buffer_copy
 
 
+  !? VkDescriptorSetLayoutBinding.
+  type, bind(c) :: vk_descriptor_set_layout_binding
+    ! uint32_t
+    integer(c_int32_t) :: binding = 0
+    ! VkDescriptorType
+    integer(c_int32_t) :: descriptor_type = 0
+    ! uint32_t
+    integer(c_int32_t) :: descriptor_count = 0
+    ! VkShaderStageFlags
+    integer(c_int32_t) :: stage_flags = 0
+    ! const VkSampler *
+    type(c_ptr) :: p_immutable_samplers = c_null_ptr
+  end type vk_descriptor_set_layout_binding
+
+
 !? CUSTOM TYPES. ===============================================================
 
 
