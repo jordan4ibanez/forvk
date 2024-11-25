@@ -71,6 +71,8 @@ module vulkan_driver
 
   type(vk_shader_module) :: fragment_shader_module
 
+  type(vk_descriptor_set_layout) :: descriptor_set_layout
+
   type(vk_pipeline_layout) :: pipeline_layout
 
   type(vk_render_pass) :: render_pass
