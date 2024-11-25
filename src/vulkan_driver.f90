@@ -32,6 +32,7 @@ module vulkan_driver
   !! THIS IS TEMPORARY
   use :: vulkan_vertex
   use :: vulkan_driver_uniform_buffer
+  use :: vulkan_driver_create_descriptor_set_layout
   implicit none
 
   ! https://github.com/KhronosGroup/Vulkan-Headers/blob/main/include/vulkan/vulkan_core.h
