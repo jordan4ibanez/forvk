@@ -32,7 +32,9 @@ AKA: Don't blame me man I'm just trying to bring this thing into fortran.
 
 This program will probably blow up if you try to run it, but if you want to run it:
 
-### Arch
+# Install instructions I guess.
+
+## Arch
 
 ```
 yay -S vulkan-devel glfw shaderc
@@ -43,6 +45,38 @@ If you have an amd gpu:
 ```
 yay -S vulkan-radeon
 ```
+
+## Ubuntu 24.10 Arm64 - (raspberry pi 5)
+
+You're gonna have to build fpm from source! But it works without any trouble.
+
+```
+git clone https://github.com/fortran-lang/fpm
+```
+
+Then you will just have to install:
+
+```
+sudo apt install gfortran
+```
+
+Then you will have to run the install script in the root of the fpm folder:
+
+```
+./install.sh
+```
+
+Then just move it to the /usr/bin/ folder so you don't have to deal with any nonsense.
+
+Now we can get to the actual dependency installs.
+
+```
+sudo apt install libglfw3-dev vulkan-tools libvulkan-dev vulkan-validationlayers spirv-tools libshaderc-dev
+```
+
+Switch the link settings from arch to ubuntu arm64 in the fpm.toml
+
+-----
 
 Probably missing something there.
 
