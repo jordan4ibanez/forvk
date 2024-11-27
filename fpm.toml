@@ -11,6 +11,11 @@ auto-tests = true
 auto-examples = true
 module-naming = false
 
+
+# Ubuntu Arm64
+# link = ["glfw", "vulkan", "shaderc"]
+
+# Arch
 link = ["glfw", "vulkan", "shaderc_shared"]
 
 [dependencies]
