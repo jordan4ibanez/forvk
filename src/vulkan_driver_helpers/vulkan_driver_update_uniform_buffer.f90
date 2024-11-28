@@ -18,15 +18,23 @@ contains
     ! void * Vector
     type(vec), intent(inout) :: uniform_buffers_mapped
     type(uniform_buffer_object) :: ubo
+    type(c_ptr), pointer :: raw_c_ptr_ptr
     type(uniform_buffer_object), pointer :: ubo_pointer
 
     time = time + 0.0001
 
+    ! Why the HELL does this have 3 matrices?!
+    call ubo%model%identity()
+    call ubo%proj%identity()
+    call ubo%view%identity()
+
     ! todo: do things here and stuff.
 
+    ! **thing
+    call c_f_pointer(uniform_buffers_mapped%get(current_image), raw_c_ptr_ptr)
+    call c_f_pointer(raw_c_ptr_ptr, ubo_pointer)
 
-
-
+    ubo_pointer = ubo
   end subroutine update_uniform_buffer
 
 
