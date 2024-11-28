@@ -109,6 +109,14 @@ module vulkan_driver
   type(vk_device_memory) :: index_buffer_memory
   integer(c_int32_t) :: indices_size
 
+  !? This is the storage for the uniform buffer data.
+  ! Vk Buffer Vector
+  type(vec) :: uniform_buffers
+  ! Vk DeviceMemory Vector
+  type(vec) :: uniform_buffers_memory
+  ! void * Vector
+  type(vec) :: uniform_buffers_mapped
+
   logical(c_bool) :: framebuffer_resized = .false.
 
   ! Controls debugging output.
