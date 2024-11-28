@@ -29,6 +29,7 @@ module vulkan_driver
   use :: vulkan_driver_clean_up_swapchain
   use :: vulkan_driver_create_vertex_buffer
   use :: vulkan_driver_create_index_buffer
+  use :: vulkan_driver_create_uniform_buffers
   !! THIS IS TEMPORARY
   use :: vulkan_vertex
   use :: vulkan_driver_uniform_buffer
@@ -194,7 +195,7 @@ contains
 
     call create_index_buffer(physical_device, logical_device, indices, index_buffer, index_buffer_memory, command_pool, graphics_queue)
 
-    call create_uniform_buffers()
+    call create_uniform_buffers(physical_device, logical_device, MAX_FRAMES_IN_FLIGHT, uniform_buffers, uniform_buffers_memory, uniform_buffers_mapped)
 
     call create_command_buffers(logical_device, MAX_FRAMES_IN_FLIGHT, command_pool, command_buffers)
 
