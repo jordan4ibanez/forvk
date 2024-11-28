@@ -1668,7 +1668,7 @@ module forvulkan_types
     integer(c_int32_t) :: max_sets = 0
     ! uint32_t
     integer(c_int32_t) :: pool_size_count = 0
-    ! const VkDescriptorPoolSize*
+    ! const VkDescriptorPoolSize *
     type(c_ptr) :: p_pool_sizes = c_null_ptr
   end type vk_descriptor_pool_create_info
 
