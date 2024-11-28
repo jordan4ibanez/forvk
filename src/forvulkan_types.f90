@@ -1673,6 +1673,20 @@ module forvulkan_types
   end type vk_descriptor_pool_create_info
 
 
+  !? VkDescriptorSetAllocateInfo.
+  type, bind(c) :: vk_descriptor_set_allocate_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    type(vk_descriptor_pool) :: descriptor_pool
+    ! uint32_t
+    integer(c_int32_t) :: descriptor_set_count = 0
+    ! const VkDescriptorSetLayout *
+    type(c_ptr) :: p_set_layouts = c_null_ptr
+  end type vk_descriptor_set_allocate_info
+
+
 !? CUSTOM TYPES. ===============================================================
 
 
