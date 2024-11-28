@@ -34,6 +34,7 @@ contains
     call c_f_pointer(uniform_buffers_mapped%get(current_image), raw_c_ptr_ptr)
     call c_f_pointer(raw_c_ptr_ptr, ubo_pointer)
 
+    ! We have memcpy at home.
     ubo_pointer = ubo
   end subroutine update_uniform_buffer
 
