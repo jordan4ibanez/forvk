@@ -4632,4 +4632,22 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_VALVE = VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT
 
 
+  !? VkDescriptorPoolCreateFlagBits.
+
+
+  integer(c_int32_t), parameter, public :: VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT = int(z"00000001")
+  ! Provided by VK_VERSION_1_2
+  integer(c_int32_t), parameter, public :: VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT = int(z"00000002")
+  ! Provided by VK_EXT_mutable_descriptor_type
+  integer(c_int32_t), parameter, public :: VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT = int(z"00000004")
+  ! Provided by VK_NV_descriptor_pool_overallocation
+  integer(c_int32_t), parameter, public :: VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_SETS_BIT_NV = int(z"00000008")
+  ! Provided by VK_NV_descriptor_pool_overallocation
+  integer(c_int32_t), parameter, public :: VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_POOLS_BIT_NV = int(z"00000010")
+  ! Provided by VK_EXT_descriptor_indexing
+  integer(c_int32_t), parameter, public :: VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT_EXT = VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT
+  ! Provided by VK_VALVE_mutable_descriptor_type
+  integer(c_int32_t), parameter, public :: VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_VALVE = VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT
+
+
 end module forvulkan_parameters
