@@ -1027,6 +1027,18 @@ module forvulkan
     end function vk_allocate_descriptor_sets
 
 
+    subroutine vk_destroy_descriptor_pool(logical_device, descriptor_pool, p_allocator) bind(c, name = "vkDestroyDescriptorPool")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_device), intent(in), value :: logical_device
+      type(vk_descriptor_pool), intent(in), value :: descriptor_pool
+      ! const VkAllocationCallbacks *
+      type(c_ptr), intent(in), value :: p_allocator
+    end subroutine vk_destroy_descriptor_pool
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
