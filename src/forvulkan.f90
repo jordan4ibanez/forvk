@@ -998,6 +998,21 @@ module forvulkan
     end subroutine vk_destroy_descriptor_set_layout
 
 
+    function vk_create_descriptor_pool(logical_device, p_create_info, p_allocator, p_description_pool) result(vk_result) bind(c, name = "vkCreateDescriptorPool")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_device), intent(in), value :: logical_device
+      ! const VkDescriptorPoolCreateInfo *
+      type(c_ptr), intent(in), value :: p_create_info
+      ! const VkAllocationCallbacks *
+      type(c_ptr), intent(in), value :: p_allocator
+      type(vk_descriptor_pool), intent(inout) :: p_description_pool
+      integer(c_int32_t) :: vk_result
+    end function vk_create_descriptor_pool
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
