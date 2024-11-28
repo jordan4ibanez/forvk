@@ -1039,6 +1039,24 @@ module forvulkan
     end subroutine vk_destroy_descriptor_pool
 
 
+
+    subroutine vk_update_descriptor_sets(logical_device, descriptor_write_count, p_descriptor_writes, descriptor_copy_count, p_descriptor_copies) bind(c, name = "vkUpdateDescriptorSets")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_device), intent(in), value :: logical_device
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: descriptor_write_count
+      ! const VkWriteDescriptorSet *
+      type(c_ptr), intent(in), value :: p_descriptor_writes
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: descriptor_copy_count
+      !  const VkCopyDescriptorSet *
+      type(c_ptr), intent(in), value :: p_descriptor_copies
+    end subroutine vk_update_descriptor_sets
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
