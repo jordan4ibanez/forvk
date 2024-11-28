@@ -3,6 +3,7 @@ module vulkan_driver_draw_frame
   use :: forvulkan
   use :: vulkan_driver_record_command_buffer
   use :: vulkan_driver_recreate_swapchain
+  use :: vulkan_driver_update_uniform_buffer
   implicit none
 
 
