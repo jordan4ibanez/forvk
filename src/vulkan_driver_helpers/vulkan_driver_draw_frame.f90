@@ -11,7 +11,8 @@ contains
 
   !* Implementation note: indices_size needs to be baked into the hashmap.
   !* It is currently a hackjob.
-  subroutine draw_frame(logical_device, current_frame, MAX_FRAMES_IN_FLIGHT, in_flight_fences, image_available_semaphores, render_finished_semaphores, swapchain, command_buffers, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue, physical_device, window_surface, swapchain_images, swapchain_image_format, swapchain_image_views, framebuffer_resized, vertex_buffer, index_buffer, indices_size)
+!! FIXME: WHY ARE THERE SO MANY DUMMY VARS AHHH
+  subroutine draw_frame(logical_device, current_frame, MAX_FRAMES_IN_FLIGHT, in_flight_fences, image_available_semaphores, render_finished_semaphores, swapchain, command_buffers, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue, physical_device, window_surface, swapchain_images, swapchain_image_format, swapchain_image_views, framebuffer_resized, vertex_buffer, index_buffer, indices_size, uniform_buffers_mapped)
     implicit none
 
     type(vk_device), intent(in), value :: logical_device
@@ -44,6 +45,8 @@ contains
     type(vk_buffer), intent(in), value :: vertex_buffer
     type(vk_buffer), intent(in), value :: index_buffer
     integer(c_int32_t), intent(in), value :: indices_size
+    ! void * Vector
+    type(vec), intent(inout) :: uniform_buffers_mapped
     ! uint32_t
     integer(c_int32_t), target :: image_index
     type(vk_submit_info), target :: submit_info

@@ -11,15 +11,20 @@ module vulkan_driver_update_uniform_buffer
 contains
 
 
-  subroutine update_uniform_buffer(current_image)
+  subroutine update_uniform_buffer(current_image, uniform_buffers_mapped)
     implicit none
 
     integer(c_int64_t), intent(in), value :: current_image
+    ! void * Vector
+    type(vec), intent(inout) :: uniform_buffers_mapped
+    type(uniform_buffer_object) :: ubo
     type(uniform_buffer_object), pointer :: ubo_pointer
 
     time = time + 0.0001
 
     ! todo: do things here and stuff.
+
+
 
 
   end subroutine update_uniform_buffer
