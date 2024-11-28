@@ -1057,6 +1057,28 @@ module forvulkan
     end subroutine vk_update_descriptor_sets
 
 
+    subroutine vk_cmd_bind_descriptor_sets(command_buffer, pipeline_bind_point, layout, first_set, descriptor_set_count, p_descriptor_sets, dynamic_offset_count, p_dynamic_offsets) bind(c, name = "vkCmdBindDescriptorSets")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_command_buffer), intent(in), value :: command_buffer
+      ! VkPipelineBindPoint
+      integer(c_int32_t), intent(in), value :: pipeline_bind_point
+      type(vk_pipeline_layout), intent(in), value :: layout
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: first_set
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: descriptor_set_count
+      !  const VkDescriptorSet *
+      type(c_ptr), intent(in), value :: p_descriptor_sets
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: dynamic_offset_count
+      ! const uint32_t *
+      type(c_ptr), intent(in), value :: p_dynamic_offsets
+    end subroutine vk_cmd_bind_descriptor_sets
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
