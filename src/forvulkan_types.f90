@@ -1640,6 +1640,15 @@ module forvulkan_types
   end type vk_descriptor_set_layout_create_info
 
 
+  !? VkDescriptorPoolSize.
+  type, bind(c) :: vk_descriptor_pool_size
+    ! VkDescriptorType
+    integer(c_int32_t) :: type = 0
+    ! uint32_t
+    integer(c_int32_t) :: descriptor_count = 0
+  end type vk_descriptor_pool_size
+
+
 !? CUSTOM TYPES. ===============================================================
 
 
