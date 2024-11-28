@@ -152,6 +152,13 @@ module forvulkan_types
   end type vk_descriptor_set_layout
 
 
+  !? VkDescriptorPool.
+  type, bind(c) :: vk_descriptor_pool
+    ! uint64_t
+    integer(c_int64_t) :: data = 0
+  end type vk_descriptor_pool
+
+
 !? FORTRANIFIED DATA TYPES. ===============================================================
 
 
