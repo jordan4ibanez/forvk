@@ -1013,6 +1013,20 @@ module forvulkan
     end function vk_create_descriptor_pool
 
 
+    function vk_allocate_descriptor_sets(logical_device, p_allocate_info, p_descriptor_sets) result(vk_result) bind(c, name = "vkAllocateDescriptorSets")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_device), intent(in), value :: logical_device
+      ! const VkDescriptorSetAllocateInfo *
+      type(c_ptr), intent(in), value :: p_allocate_info
+      ! VkDescriptorSet *
+      type(c_ptr), intent(in), value :: p_descriptor_sets
+      integer(c_int32_t) :: vk_result
+    end function vk_allocate_descriptor_sets
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
