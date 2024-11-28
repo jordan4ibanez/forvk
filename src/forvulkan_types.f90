@@ -1694,6 +1694,14 @@ module forvulkan_types
   end type vk_descriptor_set_allocate_info
 
 
+  !? VkDescriptorBufferInfo.
+  type, bind(c) :: vk_descriptor_buffer_info
+    type(vk_buffer) :: buffer
+    type(vk_device_size) :: offset
+    type(vk_device_size) :: range
+  end type vk_descriptor_buffer_info
+
+
 !? CUSTOM TYPES. ===============================================================
 
 
