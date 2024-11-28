@@ -1649,6 +1649,23 @@ module forvulkan_types
   end type vk_descriptor_pool_size
 
 
+  !? VkDescriptorPoolCreateInfo.
+  type, bind(c) :: vk_descriptor_pool_create_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkDescriptorPoolCreateFlags
+    integer(c_int32_t) :: flags = 0
+    ! uint32_t
+    integer(c_int32_t) :: max_sets = 0
+    ! uint32_t
+    integer(c_int32_t) :: pool_size_count = 0
+    ! const VkDescriptorPoolSize*
+    type(c_ptr) :: p_pool_sizes = c_null_ptr
+  end type vk_descriptor_pool_create_info
+
+
 !? CUSTOM TYPES. ===============================================================
 
 
