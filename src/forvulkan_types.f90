@@ -1702,6 +1702,30 @@ module forvulkan_types
   end type vk_descriptor_buffer_info
 
 
+  !? VkWriteDescriptorSet.
+  type, bind(c) :: vk_write_descriptor_set
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    type(vk_descriptor_set) :: dst_set
+    ! uint32_t
+    integer(c_int32_t) :: dst_binding = 0
+    ! uint32_t
+    integer(c_int32_t) :: dst_array_element = 0
+    ! uint32_t
+    integer(c_int32_t) :: descriptor_count = 0
+    ! VkDescriptorType
+    integer(c_int32_t) :: descriptor_type = 0
+    ! const VkDescriptorImageInfo *
+    type(c_ptr) :: p_image_info = c_null_ptr
+    ! const VkDescriptorImageInfo *
+    type(c_ptr) :: p_buffer_info = c_null_ptr
+    ! const VkBufferView *
+    type(c_ptr) :: p_texel_buffer_view = c_null_ptr
+  end type vk_write_descriptor_set
+
+
 !? CUSTOM TYPES. ===============================================================
 
 
