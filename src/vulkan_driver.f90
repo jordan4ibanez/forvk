@@ -240,8 +240,18 @@ contains
     integer(c_int64_t) :: i
     type(vk_semaphore), pointer :: semaphore_pointer
     type(vk_fence), pointer :: fence_pointer
+    type(vk_buffer), pointer :: uniform_buffer_pointer
+    type(vk_device_memory), pointer :: uniform_buffer_memory_pointer
 
     call clean_up_swapchain(logical_device, swapchain_framebuffers, swapchain_image_views, swapchain)
+
+    do i = 1,MAX_FRAMES_IN_FLIGHT
+      call c_f_pointer(uniform_buffers%get(i), uniform_buffer_pointer)
+      call vk_destroy_buffer(logical_device, uniform_buffer_pointer, c_null_ptr)
+
+      call c_f_pointer(uniform_buffers_memory%get(i), uniform_buffer_memory_pointer)
+      call vk_free_memory(logical_device, uniform_buffer_memory_pointer, c_null_ptr)
+    end do
 
     call vk_destroy_descriptor_set_layout(logical_device, descriptor_set_layout, c_null_ptr)
 
