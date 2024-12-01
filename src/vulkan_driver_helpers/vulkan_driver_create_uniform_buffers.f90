@@ -27,7 +27,7 @@ contains
     type(vk_device_size) :: buffer_size
     type(vk_buffer), pointer :: buffer_pointer
     type(vk_device_memory), pointer :: buffer_memory_pointer
-    type(c_ptr), pointer :: raw_c_ptr_ptr
+    type(c_ptr) :: mapped_buffer_ptr
 
     buffer_size = vk_device_size(sizeof(uniform_buffer_object()))
 
@@ -37,8 +37,8 @@ contains
     uniform_buffers_memory = new_vec(sizeof(vk_device_memory()), MAX_FRAMES_IN_FLIGHT)
     call uniform_buffers_memory%resize(MAX_FRAMES_IN_FLIGHT, vk_device_memory())
 
-    uniform_buffers_mapped = new_vec(sizeof(c_null_ptr), MAX_FRAMES_IN_FLIGHT)
-    call uniform_buffers_mapped%resize(MAX_FRAMES_IN_FLIGHT, c_null_ptr)
+    uniform_buffers_mapped = new_vec(buffer_size%data, MAX_FRAMES_IN_FLIGHT)
+    call uniform_buffers_mapped%resize(MAX_FRAMES_IN_FLIGHT, uniform_buffer_object())
 
     do i = 1,MAX_FRAMES_IN_FLIGHT
 
@@ -47,8 +47,8 @@ contains
 
       call create_buffer(physical_device, logical_device, buffer_size, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, ior(VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT, VK_MEMORY_PROPERTY_HOST_COHERENT_BIT), buffer_pointer, buffer_memory_pointer)
 
-      call c_f_pointer(uniform_buffers_mapped%get(i), raw_c_ptr_ptr)
-      if (vk_map_memory(logical_device, buffer_memory_pointer, vk_device_size(0_8), buffer_size, 0, raw_c_ptr_ptr) /= VK_SUCCESS) then
+      mapped_buffer_ptr = uniform_buffers_memory%get(i)
+      if (vk_map_memory(logical_device, buffer_memory_pointer, vk_device_size(0_8), buffer_size, 0, mapped_buffer_ptr) /= VK_SUCCESS) then
         error stop "[Vulkan] Error: Failed to map uniform buffer memory."
       end if
     end do
