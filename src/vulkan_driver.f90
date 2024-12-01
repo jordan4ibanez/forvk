@@ -101,6 +101,9 @@ module vulkan_driver
 
   type(vk_descriptor_pool) :: descriptor_pool
 
+  ! Vk DescriptorSet Vector
+  type(vec) :: descriptor_sets
+
   !? This is the frame we're currently on.
   integer(c_int64_t) :: current_frame = 1
 
@@ -113,6 +116,7 @@ module vulkan_driver
   type(vk_buffer) :: index_buffer
   type(vk_device_memory) :: index_buffer_memory
   integer(c_int32_t) :: indices_size
+  !! End temporary.
 
   !? This is the storage for the uniform buffer data.
   ! Vk Buffer Vector
@@ -203,7 +207,7 @@ contains
 
     call create_descriptor_pool(logical_device, descriptor_pool, MAX_FRAMES_IN_FLIGHT)
 
-    call create_descriptor_sets(descriptor_set_layout)
+    call create_descriptor_sets(descriptor_sets, descriptor_set_layout, descriptor_pool, MAX_FRAMES_IN_FLIGHT)
 
     call create_command_buffers(logical_device, MAX_FRAMES_IN_FLIGHT, command_pool, command_buffers)
 
