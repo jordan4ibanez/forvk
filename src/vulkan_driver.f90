@@ -207,7 +207,7 @@ contains
 
     call create_descriptor_pool(logical_device, descriptor_pool, MAX_FRAMES_IN_FLIGHT)
 
-    call create_descriptor_sets(descriptor_sets, descriptor_set_layout, descriptor_pool, MAX_FRAMES_IN_FLIGHT)
+    call create_descriptor_sets(logical_device, descriptor_sets, descriptor_set_layout, descriptor_pool, MAX_FRAMES_IN_FLIGHT)
 
     call create_command_buffers(logical_device, MAX_FRAMES_IN_FLIGHT, command_pool, command_buffers)
 
@@ -256,6 +256,10 @@ contains
     type(vk_device_memory), pointer :: uniform_buffer_memory_pointer
 
     call clean_up_swapchain(logical_device, swapchain_framebuffers, swapchain_image_views, swapchain)
+
+    call vk_destroy_descriptor_pool(logical_device, descriptor_pool, c_null_ptr)
+
+    call vk_destroy_descriptor_set_layout(logical_device, descriptor_set_layout, c_null_ptr)
 
     do i = 1,MAX_FRAMES_IN_FLIGHT
       call c_f_pointer(uniform_buffers%get(i), uniform_buffer_pointer)
