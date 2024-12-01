@@ -22,22 +22,17 @@ contains
 
     time = time + 0.0001
 
-    ! Why the HELL does this have 3 matrices?!
-    call ubo%model%identity()
-    call ubo%proj%identity()
-    call ubo%view%identity()
+    call ubo%camera_matrix%identity()
+    call ubo%object_matrix%identity()
 
     ! todo: do things here and stuff.
-
-    ! todo: stop using this stupid 3 matrix design.
 
 
     call c_f_pointer(uniform_buffers_mapped%get(current_image), ubo_pointer)
 
     ! We have memcpy at home.
-    ubo_pointer%model = ubo%model
-    ubo_pointer%proj = ubo%proj
-    ubo_pointer%view = ubo%view
+    ubo_pointer%camera_matrix = ubo%camera_matrix
+    ubo_pointer%object_matrix = ubo%object_matrix
   end subroutine update_uniform_buffer
 
 
