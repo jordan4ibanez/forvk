@@ -12,7 +12,7 @@ contains
   !* Implementation note: indices_size needs to be baked into the hashmap.
   !* It is currently a hackjob.
 !! FIXME: WHY ARE THERE SO MANY DUMMY VARS AHHH
-  subroutine draw_frame(logical_device, current_frame, MAX_FRAMES_IN_FLIGHT, in_flight_fences, image_available_semaphores, render_finished_semaphores, swapchain, command_buffers, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue, physical_device, window_surface, swapchain_images, swapchain_image_format, swapchain_image_views, framebuffer_resized, vertex_buffer, index_buffer, indices_size, uniform_buffers_mapped)
+  subroutine draw_frame(logical_device, current_frame, MAX_FRAMES_IN_FLIGHT, in_flight_fences, image_available_semaphores, render_finished_semaphores, swapchain, command_buffers, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue, physical_device, window_surface, swapchain_images, swapchain_image_format, swapchain_image_views, framebuffer_resized, vertex_buffer, index_buffer, indices_size, uniform_buffers_mapped, descriptor_sets, pipeline_layout)
     implicit none
 
     type(vk_device), intent(in), value :: logical_device
@@ -47,6 +47,9 @@ contains
     integer(c_int32_t), intent(in), value :: indices_size
     ! void * Vector
     type(vec), intent(inout) :: uniform_buffers_mapped
+    ! Vk DescriptorSet Vector
+    type(vec), intent(inout) :: descriptor_sets
+    type(vk_pipeline_layout), intent(in), value :: pipeline_layout
     ! uint32_t
     integer(c_int32_t), target :: image_index
     type(vk_submit_info), target :: submit_info
@@ -84,7 +87,7 @@ contains
       error stop "[Vulkan] Error: Faield to reset command buffer."
     end if
 
-    call record_command_buffer(command_buffer_pointer, image_index, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, vertex_buffer, index_buffer, indices_size)
+    call record_command_buffer(command_buffer_pointer, image_index, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, vertex_buffer, index_buffer, indices_size, descriptor_sets, current_frame, pipeline_layout)
 
     submit_info%s_type = VK_STRUCTURE_TYPE%SUBMIT_INFO
 

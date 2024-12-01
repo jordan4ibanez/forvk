@@ -9,7 +9,7 @@ contains
 
   !* Implementation note: indices_size needs to be baked into the hashmap.
   !* It is currently a hackjob.
-  subroutine record_command_buffer(command_buffer, image_index, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, vertex_buffer, index_buffer, indices_size)
+  subroutine record_command_buffer(command_buffer, image_index, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, vertex_buffer, index_buffer, indices_size, descriptor_sets, current_frame, pipeline_layout)
     implicit none
 
     type(vk_command_buffer), intent(in), value :: command_buffer
@@ -23,6 +23,10 @@ contains
     type(vk_buffer), intent(in), value :: vertex_buffer
     type(vk_buffer), intent(in), value :: index_buffer
     integer(c_int32_t), intent(in), value :: indices_size
+    ! Vk DescriptorSet Vector
+    type(vec), intent(inout) :: descriptor_sets
+    integer(c_int64_t), intent(in), value :: current_frame
+    type(vk_pipeline_layout), intent(in), value :: pipeline_layout
     type(vk_command_buffer_begin_info), target :: begin_info
     type(vk_render_pass_begin_info), target :: render_pass_info
     type(vk_framebuffer), pointer :: framebuffer
@@ -77,6 +81,8 @@ contains
     scissor%extent = swapchain_extent
 
     call vk_cmd_set_scissor(command_buffer, 0, 1, c_loc(scissor))
+
+    call vk_cmd_bind_descriptor_sets(command_buffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline_layout, 0, 1, descriptor_sets%get(current_frame), 0, c_null_ptr)
 
     ! call vk_cmd_draw(command_buffer, 3, 1, 0, 0)
     call vk_cmd_draw_indexed(command_buffer, indices_size, 1, 0, 0, 0)
