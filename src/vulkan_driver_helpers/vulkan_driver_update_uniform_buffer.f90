@@ -29,6 +29,8 @@ contains
 
     ! todo: do things here and stuff.
 
+    ! todo: stop using this stupid 3 matrix design.
+
 
     call c_f_pointer(uniform_buffers_mapped%get(current_image), ubo_pointer)
 
