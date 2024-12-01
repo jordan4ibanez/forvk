@@ -31,6 +31,7 @@ module vulkan_driver
   use :: vulkan_driver_create_index_buffer
   use :: vulkan_driver_create_uniform_buffers
   use :: vulkan_driver_create_descriptor_pool
+  use :: vulkan_driver_create_descriptor_sets
   !! THIS IS TEMPORARY
   use :: vulkan_vertex
   use :: vulkan_driver_uniform_buffer
