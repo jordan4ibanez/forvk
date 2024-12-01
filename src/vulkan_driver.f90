@@ -98,6 +98,8 @@ module vulkan_driver
   ! Vk Fence Vector
   type(vec) :: in_flight_fences
 
+  type(vk_descriptor_pool) :: descriptor_pool
+
   !? This is the frame we're currently on.
   integer(c_int64_t) :: current_frame = 1
 
@@ -198,7 +200,7 @@ contains
 
     call create_uniform_buffers(physical_device, logical_device, MAX_FRAMES_IN_FLIGHT, uniform_buffers, uniform_buffers_memory, uniform_buffers_mapped)
 
-    call create_descriptor_pool()
+    call create_descriptor_pool(logical_device, descriptor_pool, MAX_FRAMES_IN_FLIGHT)
 
     call create_command_buffers(logical_device, MAX_FRAMES_IN_FLIGHT, command_pool, command_buffers)
 
