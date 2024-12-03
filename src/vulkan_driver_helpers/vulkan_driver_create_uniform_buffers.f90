@@ -47,10 +47,11 @@ contains
 
       call create_buffer(physical_device, logical_device, buffer_size, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, ior(VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT, VK_MEMORY_PROPERTY_HOST_COHERENT_BIT), buffer_pointer, buffer_memory_pointer)
 
-      mapped_buffer_ptr = uniform_buffers_memory%get(i)
       if (vk_map_memory(logical_device, buffer_memory_pointer, vk_device_size(0_8), buffer_size, 0, mapped_buffer_ptr) /= VK_SUCCESS) then
         error stop "[Vulkan] Error: Failed to map uniform buffer memory."
       end if
+      ! We got the mapped buffer memory location, set it in the vector. This is an awkard way to do this but my brain is too fried to think about a better way.
+      call uniform_buffers_mapped%set(i, mapped_buffer_ptr)
     end do
   end subroutine create_uniform_buffers
 
