@@ -109,9 +109,8 @@ contains
     rasterization_state_create_info%rasterizer_discard_enable = VK_FALSE
     rasterization_state_create_info%polygon_mode = VK_POLYGON_MODE_FILL
     rasterization_state_create_info%line_width = 1.0
-    rasterization_state_create_info%cull_mode = VK_CULL_MODE_BACK_BIT
-    !! FIXME: ENABLE COUNTERCLOCKWISE!
-    rasterization_state_create_info%front_face = VK_FRONT_FACE_CLOCKWISE
+    rasterization_state_create_info%cull_mode = VK_CULL_MODE_NONE! VK_CULL_MODE_BACK_BIT
+    rasterization_state_create_info%front_face = VK_FRONT_FACE_COUNTER_CLOCKWISE
     rasterization_state_create_info%depth_bias_enable = VK_FALSE
     rasterization_state_create_info%depth_bias_constant_factor = 0.0
     rasterization_state_create_info%depth_bias_clamp = 0.0
