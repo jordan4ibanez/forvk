@@ -15,7 +15,7 @@ contains
     implicit none
 
     integer(c_int64_t), intent(in), value :: current_image
-    ! void * (C pure generic Vector)
+    ! void * Vector (Vector of raw pointers to [currently] uniform_buffer_object)
     type(vec), intent(inout) :: uniform_buffers_mapped
     type(uniform_buffer_object) :: ubo
     type(uniform_buffer_object), pointer :: ubo_pointer

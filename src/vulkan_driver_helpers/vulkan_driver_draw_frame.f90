@@ -45,7 +45,6 @@ contains
     type(vk_buffer), intent(in), value :: vertex_buffer
     type(vk_buffer), intent(in), value :: index_buffer
     integer(c_int32_t), intent(in), value :: indices_size
-    ! void * (C pure generic Vector)
     type(vec), intent(inout) :: uniform_buffers_mapped
     ! Vk DescriptorSet Vector
     type(vec), intent(inout) :: descriptor_sets

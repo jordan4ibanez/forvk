@@ -123,7 +123,7 @@ module vulkan_driver
   type(vec) :: uniform_buffers
   ! Vk DeviceMemory Vector
   type(vec) :: uniform_buffers_memory
-  ! void * (C pure generic Vector)
+  ! void * Vector (Vector of raw pointers to [currently] uniform_buffer_object)
   type(vec) :: uniform_buffers_mapped
 
   logical(c_bool) :: framebuffer_resized = .false.

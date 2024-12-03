@@ -21,7 +21,7 @@ contains
     type(vec), intent(inout) :: uniform_buffers
     ! Vk DeviceMemory Vector
     type(vec), intent(inout) :: uniform_buffers_memory
-    ! void * (C pure generic Vector)
+    ! void * Vector (Vector of raw pointers to [currently] uniform_buffer_object)
     type(vec), intent(inout) :: uniform_buffers_mapped
     integer(c_int64_t) :: i
     type(vk_device_size) :: buffer_size
