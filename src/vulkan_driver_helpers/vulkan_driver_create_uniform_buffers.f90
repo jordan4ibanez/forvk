@@ -38,7 +38,7 @@ contains
     call uniform_buffers_memory%resize(MAX_FRAMES_IN_FLIGHT, vk_device_memory())
 
     uniform_buffers_mapped = new_vec(buffer_size%data, MAX_FRAMES_IN_FLIGHT)
-    call uniform_buffers_mapped%resize(MAX_FRAMES_IN_FLIGHT, uniform_buffer_object())
+    call uniform_buffers_mapped%resize(MAX_FRAMES_IN_FLIGHT, c_null_ptr)
 
     do i = 1,MAX_FRAMES_IN_FLIGHT
 
