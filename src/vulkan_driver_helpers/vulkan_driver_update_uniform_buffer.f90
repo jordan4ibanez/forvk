@@ -30,7 +30,7 @@ contains
 
     call ubo%camera_matrix%perspective_left_handed(to_radians_f32(60.0), real(swapchain_extent%width) / real(swapchain_extent%height), 0.01, 1000.0, .true.)
 
-    call ubo%object_matrix%translate(cos(time / 2.0), 0.0, 3.0)
+    call ubo%object_matrix%translate(cos(time / 1.7), sin(time / 3.0), 3.0)
     call ubo%object_matrix%rotate_y(time)
 
     call c_f_pointer(uniform_buffers_mapped%get(current_image), raw_c_ptr_ptr)
