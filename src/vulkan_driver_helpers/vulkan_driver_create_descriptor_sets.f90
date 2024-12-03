@@ -2,6 +2,7 @@ module vulkan_driver_create_descriptor_sets
   use, intrinsic :: iso_c_binding
   use :: forvulkan
   use :: vector
+  use :: vulkan_driver_uniform_buffer
   implicit none
 
 
@@ -51,8 +52,7 @@ contains
 
       buffer_info%buffer = buffer_pointer
       buffer_info%offset = vk_device_size(0)
-      buffer_info%range = vk_device_size(sizeof(vk_buffer()))
-
+      buffer_info%range = vk_device_size(sizeof(uniform_buffer_object()))
 
       call c_f_pointer(descriptor_sets%get(i), descriptor_pointer)
 
