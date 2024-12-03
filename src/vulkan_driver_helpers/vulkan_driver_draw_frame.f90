@@ -96,7 +96,7 @@ contains
 
     wait_stages = [VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT]
 
-    call update_uniform_buffer(current_frame, uniform_buffers_mapped)
+    call update_uniform_buffer(current_frame, uniform_buffers_mapped, swapchain_extent)
 
     submit_info%wait_semaphore_count = 1
     submit_info%p_wait_semaphores = c_loc(wait_semaphores)
