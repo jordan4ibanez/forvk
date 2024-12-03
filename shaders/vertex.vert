@@ -11,6 +11,6 @@ layout(binding = 0) uniform UniformBufferObject {
 } ubo;
 
 void main() {
-    gl_Position = ubo.camera_matrix * ubo.object_matrix * vec4(inPosition, 0.0, 1.0);
+    gl_Position = vec4(inPosition.x + ubo.object_matrix[3][3], inPosition.y, 0.0, 1.0);
     fragColor = inColor;
 }
