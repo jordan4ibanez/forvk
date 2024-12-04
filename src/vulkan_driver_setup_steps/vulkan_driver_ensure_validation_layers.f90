@@ -46,6 +46,10 @@ contains
     call available_layer_array%resize(int(available_layer_count, c_int64_t), layer)
     deallocate(layer)
 
+    if (available_layer_array%size() == 0) then
+      error stop "[Vulkan] Error: No validation layers were found. Is the Vulkan SDK installed?"
+    end if
+
     ! This is sending in the vector as if it were a C array.
     if (vk_enumerate_instance_layer_properties(available_layer_count, available_layer_array%get(1_8)) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to enumerate instance layer properties."
