@@ -64,7 +64,7 @@ contains
     type(vk_fence), pointer :: fence_pointer
     type(vk_semaphore), pointer :: semaphore_pointer
     type(vk_command_buffer), pointer :: command_buffer_pointer
-    integer(c_int32_t) :: acquire_result
+    integer(c_int32_t) :: acquire_result, error_result
 
     ! -1 is UINT64_MAX, aka, unlimited timeout.
     if (vk_wait_for_fences(logical_device, 1, in_flight_fences%get(current_frame), VK_TRUE, -1_8) /= VK_SUCCESS) then
@@ -131,7 +131,9 @@ contains
 
     present_info%p_results = c_null_ptr
 
-    if (vk_queue_present_khr(present_queue, c_loc(present_info)) /= VK_SUCCESS) then
+    error_result = vk_queue_present_khr(present_queue, c_loc(present_info))
+    if (error_result /= VK_SUCCESS .and. error_result /= VK_SUBOPTIMAL_KHR) then
+      print*,error_result
       error stop "[Vulkan] Error: Failed to present queue."
     end if
 
