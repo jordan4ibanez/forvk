@@ -337,7 +337,6 @@ contains
   end subroutine vk_driver_framebuffer_size_callback
 
 
-
   subroutine vk_driver_ensure_extensions_present(DEBUG_MODE)
     implicit none
 
