@@ -100,6 +100,8 @@ module vulkan_driver
     logical(c_bool) :: DEBUG_MODE = .true.
   contains
     procedure :: init => vk_driver_init
+    !! fixme: this is temporary!
+    procedure :: main => vk_driver_main_loop
     procedure :: create_glfw => vk_driver_create_glfw
   end type vk_driver
 
@@ -115,7 +117,6 @@ contains
   subroutine vulkan_run()
     implicit none
 
-    call init_vulkan()
     call main_loop()
     call clean_up()
   end subroutine vulkan_run
@@ -199,9 +200,10 @@ contains
 !* MAIN LOOP. ====================================================================
 
 
-  subroutine main_loop()
+  subroutine vk_driver_main_loop(this)
     implicit none
 
+    class(vk_driver), intent(inout) :: this
     ! integer(c_int32_t) :: a
 
     ! a = 0
@@ -220,8 +222,7 @@ contains
     ! if (vk_device_wait_idle(logical_device) /= VK_SUCCESS) then
     !   error stop "[Vulkan] Error: Failed to wait idle on logical device."
     ! end if
-
-  end subroutine main_loop
+  end subroutine vk_driver_main_loop
 
 
 !* CLEAN UP. ====================================================================

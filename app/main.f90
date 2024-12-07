@@ -6,5 +6,6 @@ program main
   type(vk_driver) :: drv
 
   call drv%init()
+  call drv%main()
 
 end program main
