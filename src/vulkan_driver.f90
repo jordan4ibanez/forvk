@@ -296,7 +296,7 @@ contains
   !! If you value your sanity do not scroll any further down.
 
 
-  subroutine create_glfw(framebuffer_resized, window_width, window_height)
+  subroutine vk_driver_create_glfw(framebuffer_resized, window_width, window_height)
     implicit none
 
     logical(c_bool), intent(inout), target :: framebuffer_resized
@@ -317,11 +317,11 @@ contains
     end if
 
 
-    call glfw_set_framebuffer_size_callback(c_funloc(framebuffer_size_callback))
-  end subroutine create_glfw
+    call glfw_set_framebuffer_size_callback(c_funloc(vk_driver_framebuffer_size_callback))
+  end subroutine vk_driver_create_glfw
 
 
-  recursive subroutine framebuffer_size_callback(window, width, height) bind(c)
+  recursive subroutine vk_driver_framebuffer_size_callback(window, width, height) bind(c)
     implicit none
 
     type(c_ptr), intent(in), value :: window
@@ -334,7 +334,7 @@ contains
 
     call c_f_pointer(resized_loc, framebuffer_resized_pointer)
     framebuffer_resized_pointer = .true.
-  end subroutine framebuffer_size_callback
+  end subroutine vk_driver_framebuffer_size_callback
 
 
 end module vulkan_driver
