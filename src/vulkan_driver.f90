@@ -7,7 +7,6 @@ module vulkan_driver
   ! use :: vector_3f
   ! use :: vector_2f
   ! !? These are imported in the order of the steps this takes.
-  use :: vulkan_driver_ensure_extensions_present
   ! use :: vulkan_driver_ensure_validation_layers
   ! use :: vulkan_driver_create_instance
   ! use :: vulkan_driver_create_debug_messenger
