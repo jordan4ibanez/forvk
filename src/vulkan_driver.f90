@@ -317,7 +317,6 @@ contains
       error stop "[Vulkan]: Failed to create window."
     end if
 
-
     call glfw_set_framebuffer_size_callback(c_funloc(vk_driver_framebuffer_size_callback))
   end subroutine vk_driver_create_glfw
 
