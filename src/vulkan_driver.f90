@@ -98,8 +98,12 @@ module vulkan_driver
     logical(c_bool) :: framebuffer_resized = .false.
     ! Controls debugging output. ! todo: make this hidden with private
     logical(c_bool) :: DEBUG_MODE = .true.
+  contains
+    procedure :: create_glfw => vk_driver_create_glfw
   end type vk_driver
 
+
+  !! TODO: This stuff should probably be part of the type
 
   ! This is a trick to pass the mutable boolean to the framebuffer resize callback.
   type(c_ptr) :: resized_loc
@@ -296,17 +300,17 @@ contains
   !* If you value your sanity do not scroll any further down.
 
 
-  subroutine vk_driver_create_glfw(framebuffer_resized, window_width, window_height)
+  subroutine vk_driver_create_glfw(this, window_width, window_height)
     implicit none
 
-    logical(c_bool), intent(inout), target :: framebuffer_resized
+    class(vk_driver), intent(inout), target :: this
     integer(c_int32_t), intent(in), value :: window_width, window_height
 
     if (.not. glfw_init()) then
       error stop "[Vulkan] Error: Failed to initialize GLFW."
     end if
 
-    resized_loc = c_loc(framebuffer_resized)
+    resized_loc = c_loc(this%framebuffer_resized)
 
     call glfw_window_hint(GLFW_SCALE_FRAMEBUFFER, GLFW_TRUE)
     call glfw_window_hint(GLFW_CLIENT_API, GLFW_NO_API)
