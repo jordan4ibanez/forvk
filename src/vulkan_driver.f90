@@ -289,7 +289,12 @@ contains
 
   end subroutine clean_up
 
+
 !* DERIVED TYPE IMPLEMENTATION. ====================================================================
+
+
+  !! If you value your sanity do not scroll any further down.
+
 
   subroutine create_glfw(framebuffer_resized, window_width, window_height)
     implicit none
