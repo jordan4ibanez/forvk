@@ -7,7 +7,7 @@ module vulkan_driver
   ! use :: vector_3f
   ! use :: vector_2f
   ! !? These are imported in the order of the steps this takes.
-  ! use :: vulkan_driver_create_base
+  use :: vulkan_driver_create_base
   ! use :: vulkan_driver_ensure_extensions_present
   ! use :: vulkan_driver_ensure_validation_layers
   ! use :: vulkan_driver_create_instance
@@ -101,6 +101,11 @@ module vulkan_driver
     ! Controls debugging output. ! todo: make this hidden with private
     logical(c_bool) :: DEBUG_MODE = .true.
   end type vk_driver
+
+
+  ! This is a trick to pass the mutable boolean to the framebuffer resize callback.
+  type(c_ptr) :: resized_loc
+
 
 contains
 
@@ -217,6 +222,7 @@ contains
 
 !* CLEAN UP. ====================================================================
 
+
   subroutine clean_up()
     ! implicit none
 
@@ -282,6 +288,48 @@ contains
     ! call glfw_terminate()
 
   end subroutine clean_up
+
+!* DERIVED TYPE IMPLEMENTATION. ====================================================================
+
+  subroutine create_glfw(framebuffer_resized, window_width, window_height)
+    implicit none
+
+    logical(c_bool), intent(inout), target :: framebuffer_resized
+    integer(c_int32_t), intent(in), value :: window_width, window_height
+
+    if (.not. glfw_init()) then
+      error stop "[Vulkan] Error: Failed to initialize GLFW."
+    end if
+
+    resized_loc = c_loc(framebuffer_resized)
+
+    call glfw_window_hint(GLFW_SCALE_FRAMEBUFFER, GLFW_TRUE)
+    call glfw_window_hint(GLFW_CLIENT_API, GLFW_NO_API)
+    call glfw_window_hint(GLFW_RESIZABLE, GLFW_TRUE)
+
+    if (.not. glfw_create_window(window_width, window_height, "forvulkan")) then
+      error stop "[Vulkan]: Failed to create window."
+    end if
+
+
+    call glfw_set_framebuffer_size_callback(c_funloc(framebuffer_size_callback))
+  end subroutine create_glfw
+
+
+  recursive subroutine framebuffer_size_callback(window, width, height) bind(c)
+    implicit none
+
+    type(c_ptr), intent(in), value :: window
+    integer(c_int32_t), intent(in), value :: width, height
+    logical(c_bool), pointer :: framebuffer_resized_pointer
+
+    if (.false.) then
+      print*,window, width, height
+    end if
+
+    call c_f_pointer(resized_loc, framebuffer_resized_pointer)
+    framebuffer_resized_pointer = .true.
+  end subroutine framebuffer_size_callback
 
 
 end module vulkan_driver
