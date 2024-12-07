@@ -126,63 +126,63 @@ contains
 
 
   subroutine init_vulkan()
-    implicit none
+    ! implicit none
 
-    type(vertex), dimension(4) :: vertices
-    integer(c_int32_t), dimension(6) :: indices
+    ! type(vertex), dimension(4) :: vertices
+    ! integer(c_int32_t), dimension(6) :: indices
 
-    vertices(1) = vertex(vec2f(-0.5, -0.5), vec3f(1.0, 0.0, 0.0))
-    vertices(2) = vertex(vec2f(0.5,  -0.5), vec3f(0.0, 1.0, 0.0))
-    vertices(3) = vertex(vec2f(0.5,   0.5), vec3f(0.0, 0.0, 1.0))
-    vertices(4) = vertex(vec2f(-0.5,  0.5), vec3f(1.0, 1.0, 1.0))
+    ! vertices(1) = vertex(vec2f(-0.5, -0.5), vec3f(1.0, 0.0, 0.0))
+    ! vertices(2) = vertex(vec2f(0.5,  -0.5), vec3f(0.0, 1.0, 0.0))
+    ! vertices(3) = vertex(vec2f(0.5,   0.5), vec3f(0.0, 0.0, 1.0))
+    ! vertices(4) = vertex(vec2f(-0.5,  0.5), vec3f(1.0, 1.0, 1.0))
 
-    indices = [0,1,2,2,3,0]
+    ! indices = [0,1,2,2,3,0]
 
-    indices_size = size(indices)
+    ! indices_size = size(indices)
 
-    call create_glfw(framebuffer_resized, 800, 600)
+    ! call create_glfw(framebuffer_resized, 800, 600)
 
-    call ensure_extensions_present(DEBUG_MODE)
+    ! call ensure_extensions_present(DEBUG_MODE)
 
-    call ensure_validation_layer_support(DEBUG_MODE)
+    ! call ensure_validation_layer_support(DEBUG_MODE)
 
-    call create_vulkan_instance(vulkan_instance, DEBUG_MODE)
+    ! call create_vulkan_instance(vulkan_instance, DEBUG_MODE)
 
-    call setup_debug_messenger(vulkan_instance, debug_messenger, DEBUG_MODE)
+    ! call setup_debug_messenger(vulkan_instance, debug_messenger, DEBUG_MODE)
 
-    call create_surface(vulkan_instance, window_surface)
+    ! call create_surface(vulkan_instance, window_surface)
 
-    call select_physical_device(vulkan_instance, physical_device, window_surface)
+    ! call select_physical_device(vulkan_instance, physical_device, window_surface)
 
-    call create_logical_device(physical_device, logical_device, graphics_queue, present_queue, window_surface, DEBUG_MODE)
+    ! call create_logical_device(physical_device, logical_device, graphics_queue, present_queue, window_surface, DEBUG_MODE)
 
-    call create_swapchain(physical_device, logical_device, window_surface, swapchain, swapchain_images, swapchain_image_format, swapchain_extent)
+    ! call create_swapchain(physical_device, logical_device, window_surface, swapchain, swapchain_images, swapchain_image_format, swapchain_extent)
 
-    call create_image_views(logical_device, swapchain_images, swapchain_image_views, swapchain_image_format)
+    ! call create_image_views(logical_device, swapchain_images, swapchain_image_views, swapchain_image_format)
 
-    call create_render_pass(logical_device, render_pass, swapchain_image_format)
+    ! call create_render_pass(logical_device, render_pass, swapchain_image_format)
 
-    call create_descriptor_set_layout(logical_device, descriptor_set_layout)
+    ! call create_descriptor_set_layout(logical_device, descriptor_set_layout)
 
-    call create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module, swapchain_extent, pipeline_layout, render_pass, graphics_pipeline, descriptor_set_layout)
+    ! call create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module, swapchain_extent, pipeline_layout, render_pass, graphics_pipeline, descriptor_set_layout)
 
-    call create_framebuffers(logical_device, swapchain_framebuffers, swapchain_image_views, render_pass, swapchain_extent)
+    ! call create_framebuffers(logical_device, swapchain_framebuffers, swapchain_image_views, render_pass, swapchain_extent)
 
-    call create_command_pool(physical_device, window_surface, logical_device, command_pool)
+    ! call create_command_pool(physical_device, window_surface, logical_device, command_pool)
 
-    call create_vertex_buffer(physical_device, logical_device, vertices, vertex_buffer, vertex_buffer_memory, command_pool, graphics_queue)
+    ! call create_vertex_buffer(physical_device, logical_device, vertices, vertex_buffer, vertex_buffer_memory, command_pool, graphics_queue)
 
-    call create_index_buffer(physical_device, logical_device, indices, index_buffer, index_buffer_memory, command_pool, graphics_queue)
+    ! call create_index_buffer(physical_device, logical_device, indices, index_buffer, index_buffer_memory, command_pool, graphics_queue)
 
-    call create_uniform_buffers(physical_device, logical_device, MAX_FRAMES_IN_FLIGHT, uniform_buffers, uniform_buffers_memory, uniform_buffers_mapped)
+    ! call create_uniform_buffers(physical_device, logical_device, MAX_FRAMES_IN_FLIGHT, uniform_buffers, uniform_buffers_memory, uniform_buffers_mapped)
 
-    call create_descriptor_pool(logical_device, descriptor_pool, MAX_FRAMES_IN_FLIGHT)
+    ! call create_descriptor_pool(logical_device, descriptor_pool, MAX_FRAMES_IN_FLIGHT)
 
-    call create_descriptor_sets(logical_device, descriptor_sets, descriptor_set_layout, descriptor_pool, MAX_FRAMES_IN_FLIGHT, uniform_buffers)
+    ! call create_descriptor_sets(logical_device, descriptor_sets, descriptor_set_layout, descriptor_pool, MAX_FRAMES_IN_FLIGHT, uniform_buffers)
 
-    call create_command_buffers(logical_device, MAX_FRAMES_IN_FLIGHT, command_pool, command_buffers)
+    ! call create_command_buffers(logical_device, MAX_FRAMES_IN_FLIGHT, command_pool, command_buffers)
 
-    call create_sync_objects(logical_device, MAX_FRAMES_IN_FLIGHT, image_available_semaphores, render_finished_semaphores, in_flight_fences)
+    ! call create_sync_objects(logical_device, MAX_FRAMES_IN_FLIGHT, image_available_semaphores, render_finished_semaphores, in_flight_fences)
   end subroutine init_vulkan
 
 
@@ -193,24 +193,24 @@ contains
   subroutine main_loop()
     implicit none
 
-    integer(c_int32_t) :: a
+    ! integer(c_int32_t) :: a
 
-    a = 0
+    ! a = 0
 
-    do while(.not. glfw_window_should_close())
-      call glfw_poll_events()
-      call draw_frame(logical_device, current_frame, MAX_FRAMES_IN_FLIGHT, in_flight_fences, image_available_semaphores, render_finished_semaphores, swapchain, command_buffers, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue, physical_device, window_surface, swapchain_images, swapchain_image_format, swapchain_image_views, framebuffer_resized, vertex_buffer, index_buffer, indices_size, uniform_buffers_mapped, descriptor_sets, pipeline_layout)
+    ! do while(.not. glfw_window_should_close())
+    !   call glfw_poll_events()
+    !   call draw_frame(logical_device, current_frame, MAX_FRAMES_IN_FLIGHT, in_flight_fences, image_available_semaphores, render_finished_semaphores, swapchain, command_buffers, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue, physical_device, window_surface, swapchain_images, swapchain_image_format, swapchain_image_views, framebuffer_resized, vertex_buffer, index_buffer, indices_size, uniform_buffers_mapped, descriptor_sets, pipeline_layout)
 
-      if (a >= 100) then
-        ! call glfw_close_window()
-      end if
+    !   if (a >= 100) then
+    !     ! call glfw_close_window()
+    !   end if
 
-      a = a + 1
-    end do
+    !   a = a + 1
+    ! end do
 
-    if (vk_device_wait_idle(logical_device) /= VK_SUCCESS) then
-      error stop "[Vulkan] Error: Failed to wait idle on logical device."
-    end if
+    ! if (vk_device_wait_idle(logical_device) /= VK_SUCCESS) then
+    !   error stop "[Vulkan] Error: Failed to wait idle on logical device."
+    ! end if
 
   end subroutine main_loop
 
@@ -218,68 +218,68 @@ contains
 !* CLEAN UP. ====================================================================
 
   subroutine clean_up()
-    implicit none
+    ! implicit none
 
-    integer(c_int64_t) :: i
-    type(vk_semaphore), pointer :: semaphore_pointer
-    type(vk_fence), pointer :: fence_pointer
-    type(vk_buffer), pointer :: uniform_buffer_pointer
-    type(vk_device_memory), pointer :: uniform_buffer_memory_pointer
+    ! integer(c_int64_t) :: i
+    ! type(vk_semaphore), pointer :: semaphore_pointer
+    ! type(vk_fence), pointer :: fence_pointer
+    ! type(vk_buffer), pointer :: uniform_buffer_pointer
+    ! type(vk_device_memory), pointer :: uniform_buffer_memory_pointer
 
-    call clean_up_swapchain(logical_device, swapchain_framebuffers, swapchain_image_views, swapchain)
+    ! call clean_up_swapchain(logical_device, swapchain_framebuffers, swapchain_image_views, swapchain)
 
-    do i = 1,MAX_FRAMES_IN_FLIGHT
-      call c_f_pointer(uniform_buffers%get(i), uniform_buffer_pointer)
-      call vk_destroy_buffer(logical_device, uniform_buffer_pointer, c_null_ptr)
+    ! do i = 1,MAX_FRAMES_IN_FLIGHT
+    !   call c_f_pointer(uniform_buffers%get(i), uniform_buffer_pointer)
+    !   call vk_destroy_buffer(logical_device, uniform_buffer_pointer, c_null_ptr)
 
-      call c_f_pointer(uniform_buffers_memory%get(i), uniform_buffer_memory_pointer)
-      call vk_free_memory(logical_device, uniform_buffer_memory_pointer, c_null_ptr)
-    end do
+    !   call c_f_pointer(uniform_buffers_memory%get(i), uniform_buffer_memory_pointer)
+    !   call vk_free_memory(logical_device, uniform_buffer_memory_pointer, c_null_ptr)
+    ! end do
 
-    call vk_destroy_descriptor_pool(logical_device, descriptor_pool, c_null_ptr)
+    ! call vk_destroy_descriptor_pool(logical_device, descriptor_pool, c_null_ptr)
 
-    call vk_destroy_descriptor_set_layout(logical_device, descriptor_set_layout, c_null_ptr)
+    ! call vk_destroy_descriptor_set_layout(logical_device, descriptor_set_layout, c_null_ptr)
 
-    call vk_destroy_buffer(logical_device, index_buffer, c_null_ptr)
-    call vk_free_memory(logical_device, index_buffer_memory, c_null_ptr)
+    ! call vk_destroy_buffer(logical_device, index_buffer, c_null_ptr)
+    ! call vk_free_memory(logical_device, index_buffer_memory, c_null_ptr)
 
-    call vk_destroy_buffer(logical_device, vertex_buffer, c_null_ptr)
-    call vk_free_memory(logical_device, vertex_buffer_memory, c_null_ptr)
+    ! call vk_destroy_buffer(logical_device, vertex_buffer, c_null_ptr)
+    ! call vk_free_memory(logical_device, vertex_buffer_memory, c_null_ptr)
 
-    do i = 1,MAX_FRAMES_IN_FLIGHT
-      call c_f_pointer(image_available_semaphores%get(i), semaphore_pointer)
-      call vk_destroy_semaphore(logical_device, semaphore_pointer, c_null_ptr)
+    ! do i = 1,MAX_FRAMES_IN_FLIGHT
+    !   call c_f_pointer(image_available_semaphores%get(i), semaphore_pointer)
+    !   call vk_destroy_semaphore(logical_device, semaphore_pointer, c_null_ptr)
 
-      call c_f_pointer(render_finished_semaphores%get(i), semaphore_pointer)
-      call vk_destroy_semaphore(logical_device, semaphore_pointer, c_null_ptr)
+    !   call c_f_pointer(render_finished_semaphores%get(i), semaphore_pointer)
+    !   call vk_destroy_semaphore(logical_device, semaphore_pointer, c_null_ptr)
 
-      call c_f_pointer(in_flight_fences%get(i), fence_pointer)
-      call vk_destroy_fence(logical_device, fence_pointer, c_null_ptr)
-    end do
+    !   call c_f_pointer(in_flight_fences%get(i), fence_pointer)
+    !   call vk_destroy_fence(logical_device, fence_pointer, c_null_ptr)
+    ! end do
 
-    call vk_destroy_command_pool(logical_device, command_pool, c_null_ptr)
+    ! call vk_destroy_command_pool(logical_device, command_pool, c_null_ptr)
 
-    call vk_destroy_pipeline(logical_device, graphics_pipeline, c_null_ptr)
+    ! call vk_destroy_pipeline(logical_device, graphics_pipeline, c_null_ptr)
 
-    call vk_destroy_pipeline_layout(logical_device, pipeline_layout, c_null_ptr)
+    ! call vk_destroy_pipeline_layout(logical_device, pipeline_layout, c_null_ptr)
 
-    call vk_destroy_render_pass(logical_device, render_pass, c_null_ptr)
+    ! call vk_destroy_render_pass(logical_device, render_pass, c_null_ptr)
 
-    call vk_destroy_surface_khr(vulkan_instance, window_surface, c_null_ptr)
+    ! call vk_destroy_surface_khr(vulkan_instance, window_surface, c_null_ptr)
 
-    call vk_destroy_device(logical_device, c_null_ptr)
+    ! call vk_destroy_device(logical_device, c_null_ptr)
 
-    if (DEBUG_MODE) then
-      call forvulkan_destroy_debug_utils_messenger_ext(vulkan_instance, debug_messenger, c_null_ptr)
-    end if
+    ! if (DEBUG_MODE) then
+    !   call forvulkan_destroy_debug_utils_messenger_ext(vulkan_instance, debug_messenger, c_null_ptr)
+    ! end if
 
-    print"(A)","[Vulkan]: Destroying instance."
+    ! print"(A)","[Vulkan]: Destroying instance."
 
-    call vk_destroy_instance(vulkan_instance, c_null_ptr)
+    ! call vk_destroy_instance(vulkan_instance, c_null_ptr)
 
-    call glfw_destroy_window()
+    ! call glfw_destroy_window()
 
-    call glfw_terminate()
+    ! call glfw_terminate()
 
   end subroutine clean_up
 
