@@ -45,71 +45,44 @@ module vulkan_driver
 
   type :: vk_driver
     type(vk_instance) :: vulkan_instance
-
     type(vk_debug_utils_messenger_ext) :: debug_messenger
-
     type(vk_surface_khr) :: window_surface
-
     type(vk_physical_device) :: physical_device
-
     type(vk_device) :: logical_device
-
     type(vk_queue) :: graphics_queue
-
     type(vk_queue) :: present_queue
-
     type(vk_swapchain_khr) :: swapchain
-
     ! Vk Image Vector
     type(vec) :: swapchain_images
-
     type(vk_format) :: swapchain_image_format
-
     type(vk_extent_2d) :: swapchain_extent
-
     ! Vk ImageView Vector
     type(vec) :: swapchain_image_views
-
     type(vk_shader_module) :: vertex_shader_module
-
     type(vk_shader_module) :: fragment_shader_module
-
     type(vk_descriptor_set_layout) :: descriptor_set_layout
-
     type(vk_pipeline_layout) :: pipeline_layout
-
     type(vk_render_pass) :: render_pass
-
     type(vk_pipeline) :: graphics_pipeline
-
     ! Vk Framebuffer Vector
     type(vec) :: swapchain_framebuffers
-
     type(vk_command_pool) :: command_pool
-
     ! Vk CommandBuffer Vector
     type(vec) :: command_buffers
-
     ! Vk Semaphore Vector
     type(vec) :: image_available_semaphores
-
     ! Vk Semaphore Vector
     type(vec) :: render_finished_semaphores
-
     ! Vk Fence Vector
     type(vec) :: in_flight_fences
-
     type(vk_descriptor_pool) :: descriptor_pool
-
     ! Vk DescriptorSet Vector
     type(vec) :: descriptor_sets
-
     !? This is the frame we're currently on.
     integer(c_int64_t) :: current_frame = 1
-
     !? How many frames should be processed concurrently.
-    integer(c_int64_t), parameter :: MAX_FRAMES_IN_FLIGHT = 2
-
+    ! todo: make this hidden with private
+    integer(c_int64_t) :: MAX_FRAMES_IN_FLIGHT = 2
     !! This part is temporary.
     type(vk_buffer) :: vertex_buffer
     type(vk_device_memory) :: vertex_buffer_memory
@@ -117,7 +90,6 @@ module vulkan_driver
     type(vk_device_memory) :: index_buffer_memory
     integer(c_int32_t) :: indices_size
     !! End temporary.
-
     !? This is the storage for the uniform buffer data.
     ! Vk Buffer Vector
     type(vec) :: uniform_buffers
@@ -125,11 +97,9 @@ module vulkan_driver
     type(vec) :: uniform_buffers_memory
     ! void * Vector (Vector of raw pointers to [currently] uniform_buffer_object)
     type(vec) :: uniform_buffers_mapped
-
     logical(c_bool) :: framebuffer_resized = .false.
-
-    ! Controls debugging output.
-    logical(c_bool), parameter :: DEBUG_MODE = .true.
+    ! Controls debugging output. ! todo: make this hidden with private
+    logical(c_bool) :: DEBUG_MODE = .true.
   end type vk_driver
 
 contains
