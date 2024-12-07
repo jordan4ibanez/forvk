@@ -7,5 +7,6 @@ program main
 
   call drv%init()
   call drv%main()
+  call drv%destroy()
 
 end program main

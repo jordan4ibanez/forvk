@@ -103,6 +103,7 @@ module vulkan_driver
     !! fixme: this is temporary!
     procedure :: main => vk_driver_main_loop
     procedure :: create_glfw => vk_driver_create_glfw
+    procedure :: destroy => vk_driver_destroy
   end type vk_driver
 
 
@@ -113,13 +114,6 @@ module vulkan_driver
 
 
 contains
-
-  subroutine vulkan_run()
-    implicit none
-
-    call main_loop()
-    call clean_up()
-  end subroutine vulkan_run
 
 
 !? This is how to get from these vectors. (char ** array underneath)
@@ -228,9 +222,10 @@ contains
 !* CLEAN UP. ====================================================================
 
 
-  subroutine clean_up()
-    ! implicit none
+  subroutine vk_driver_destroy(this)
+    implicit none
 
+    class(vk_driver), intent(inout) :: this
     ! integer(c_int64_t) :: i
     ! type(vk_semaphore), pointer :: semaphore_pointer
     ! type(vk_fence), pointer :: fence_pointer
@@ -292,7 +287,7 @@ contains
 
     ! call glfw_terminate()
 
-  end subroutine clean_up
+  end subroutine vk_driver_destroy
 
 
 !* DERIVED TYPE IMPLEMENTATION. ====================================================================
