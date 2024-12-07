@@ -99,6 +99,7 @@ module vulkan_driver
     ! Controls debugging output. ! todo: make this hidden with private
     logical(c_bool) :: DEBUG_MODE = .true.
   contains
+    procedure :: init => vk_driver_init
     procedure :: create_glfw => vk_driver_create_glfw
   end type vk_driver
 
@@ -132,9 +133,10 @@ contains
 !* INITIALIZATION. ====================================================================
 
 
-  subroutine init_vulkan()
-    ! implicit none
+  subroutine vk_driver_init(this)
+    implicit none
 
+    class(vk_driver), intent(inout) :: this
     ! type(vertex), dimension(4) :: vertices
     ! integer(c_int32_t), dimension(6) :: indices
 
@@ -190,7 +192,7 @@ contains
     ! call create_command_buffers(logical_device, MAX_FRAMES_IN_FLIGHT, command_pool, command_buffers)
 
     ! call create_sync_objects(logical_device, MAX_FRAMES_IN_FLIGHT, image_available_semaphores, render_finished_semaphores, in_flight_fences)
-  end subroutine init_vulkan
+  end subroutine vk_driver_init
 
 
 
@@ -340,10 +342,10 @@ contains
   end subroutine vk_driver_framebuffer_size_callback
 
 
-  subroutine vk_driver_ensure_extensions_present(DEBUG_MODE)
+  subroutine vk_driver_ensure_extensions_present(this)
     implicit none
 
-    logical(c_bool), intent(in), value :: DEBUG_MODE
+    class(vk_driver), intent(inout) :: this
     type(vec) :: required_extensions
     integer(c_int) :: result, extension_count
     type(vec) :: available_extensions
@@ -357,7 +359,7 @@ contains
 
     print"(A)","[Vulkan]: Gathering available extensions."
 
-    call create_required_extensions(required_extensions, DEBUG_MODE)
+    call create_required_extensions(required_extensions, this%DEBUG_MODE)
 
     result = vk_enumerate_instance_extension_properties(c_null_ptr, extension_count, c_null_ptr)
 

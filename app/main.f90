@@ -3,6 +3,8 @@ program main
   use, intrinsic :: iso_c_binding
   implicit none
 
-  call vulkan_run()
+  type(vk_driver) :: drv
+
+  call drv%init()
 
 end program main
