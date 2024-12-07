@@ -226,66 +226,66 @@ contains
     implicit none
 
     class(vk_driver), intent(inout) :: this
-    ! integer(c_int64_t) :: i
-    ! type(vk_semaphore), pointer :: semaphore_pointer
-    ! type(vk_fence), pointer :: fence_pointer
-    ! type(vk_buffer), pointer :: uniform_buffer_pointer
-    ! type(vk_device_memory), pointer :: uniform_buffer_memory_pointer
+    integer(c_int64_t) :: i
+    type(vk_semaphore), pointer :: semaphore_pointer
+    type(vk_fence), pointer :: fence_pointer
+    type(vk_buffer), pointer :: uniform_buffer_pointer
+    type(vk_device_memory), pointer :: uniform_buffer_memory_pointer
 
-    ! call clean_up_swapchain(logical_device, swapchain_framebuffers, swapchain_image_views, swapchain)
+    call clean_up_swapchain(this%logical_device, this%swapchain_framebuffers, this%swapchain_image_views, this%swapchain)
 
-    ! do i = 1,MAX_FRAMES_IN_FLIGHT
-    !   call c_f_pointer(uniform_buffers%get(i), uniform_buffer_pointer)
-    !   call vk_destroy_buffer(logical_device, uniform_buffer_pointer, c_null_ptr)
+    do i = 1,this%MAX_FRAMES_IN_FLIGHT
+      call c_f_pointer(this%uniform_buffers%get(i), uniform_buffer_pointer)
+      call vk_destroy_buffer(this%logical_device, uniform_buffer_pointer, c_null_ptr)
 
-    !   call c_f_pointer(uniform_buffers_memory%get(i), uniform_buffer_memory_pointer)
-    !   call vk_free_memory(logical_device, uniform_buffer_memory_pointer, c_null_ptr)
-    ! end do
+      call c_f_pointer(this%uniform_buffers_memory%get(i), uniform_buffer_memory_pointer)
+      call vk_free_memory(this%logical_device, uniform_buffer_memory_pointer, c_null_ptr)
+    end do
 
-    ! call vk_destroy_descriptor_pool(logical_device, descriptor_pool, c_null_ptr)
+    call vk_destroy_descriptor_pool(this%logical_device, this%descriptor_pool, c_null_ptr)
 
-    ! call vk_destroy_descriptor_set_layout(logical_device, descriptor_set_layout, c_null_ptr)
+    call vk_destroy_descriptor_set_layout(this%logical_device, this%descriptor_set_layout, c_null_ptr)
 
-    ! call vk_destroy_buffer(logical_device, index_buffer, c_null_ptr)
-    ! call vk_free_memory(logical_device, index_buffer_memory, c_null_ptr)
+    call vk_destroy_buffer(this%logical_device, this%index_buffer, c_null_ptr)
+    call vk_free_memory(this%logical_device, this%index_buffer_memory, c_null_ptr)
 
-    ! call vk_destroy_buffer(logical_device, vertex_buffer, c_null_ptr)
-    ! call vk_free_memory(logical_device, vertex_buffer_memory, c_null_ptr)
+    call vk_destroy_buffer(this%logical_device, this%vertex_buffer, c_null_ptr)
+    call vk_free_memory(this%logical_device, this%vertex_buffer_memory, c_null_ptr)
 
-    ! do i = 1,MAX_FRAMES_IN_FLIGHT
-    !   call c_f_pointer(image_available_semaphores%get(i), semaphore_pointer)
-    !   call vk_destroy_semaphore(logical_device, semaphore_pointer, c_null_ptr)
+    do i = 1,this%MAX_FRAMES_IN_FLIGHT
+      call c_f_pointer(this%image_available_semaphores%get(i), semaphore_pointer)
+      call vk_destroy_semaphore(this%logical_device, semaphore_pointer, c_null_ptr)
 
-    !   call c_f_pointer(render_finished_semaphores%get(i), semaphore_pointer)
-    !   call vk_destroy_semaphore(logical_device, semaphore_pointer, c_null_ptr)
+      call c_f_pointer(this%render_finished_semaphores%get(i), semaphore_pointer)
+      call vk_destroy_semaphore(this%logical_device, semaphore_pointer, c_null_ptr)
 
-    !   call c_f_pointer(in_flight_fences%get(i), fence_pointer)
-    !   call vk_destroy_fence(logical_device, fence_pointer, c_null_ptr)
-    ! end do
+      call c_f_pointer(this%in_flight_fences%get(i), fence_pointer)
+      call vk_destroy_fence(this%logical_device, fence_pointer, c_null_ptr)
+    end do
 
-    ! call vk_destroy_command_pool(logical_device, command_pool, c_null_ptr)
+    call vk_destroy_command_pool(this%logical_device, this%command_pool, c_null_ptr)
 
-    ! call vk_destroy_pipeline(logical_device, graphics_pipeline, c_null_ptr)
+    call vk_destroy_pipeline(this%logical_device, this%graphics_pipeline, c_null_ptr)
 
-    ! call vk_destroy_pipeline_layout(logical_device, pipeline_layout, c_null_ptr)
+    call vk_destroy_pipeline_layout(this%logical_device, this%pipeline_layout, c_null_ptr)
 
-    ! call vk_destroy_render_pass(logical_device, render_pass, c_null_ptr)
+    call vk_destroy_render_pass(this%logical_device, this%render_pass, c_null_ptr)
 
-    ! call vk_destroy_surface_khr(vulkan_instance, window_surface, c_null_ptr)
+    call vk_destroy_surface_khr(this%vulkan_instance, this%window_surface, c_null_ptr)
 
-    ! call vk_destroy_device(logical_device, c_null_ptr)
+    call vk_destroy_device(this%logical_device, c_null_ptr)
 
-    ! if (DEBUG_MODE) then
-    !   call forvulkan_destroy_debug_utils_messenger_ext(vulkan_instance, debug_messenger, c_null_ptr)
-    ! end if
+    if (this%DEBUG_MODE) then
+      call forvulkan_destroy_debug_utils_messenger_ext(this%vulkan_instance, this%debug_messenger, c_null_ptr)
+    end if
 
-    ! print"(A)","[Vulkan]: Destroying instance."
+    print"(A)","[Vulkan]: Destroying instance."
 
-    ! call vk_destroy_instance(vulkan_instance, c_null_ptr)
+    call vk_destroy_instance(this%vulkan_instance, c_null_ptr)
 
-    ! call glfw_destroy_window()
+    call glfw_destroy_window()
 
-    ! call glfw_terminate()
+    call glfw_terminate()
 
   end subroutine vk_driver_destroy
 
