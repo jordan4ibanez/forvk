@@ -5,7 +5,6 @@ module vulkan_driver_create_logical_device
   use :: vector
   use :: integer32_set
   use :: vulkan_driver_create_physical_device_extensions
-  use :: vulkan_driver_create_validation_layers
   implicit none
 
 

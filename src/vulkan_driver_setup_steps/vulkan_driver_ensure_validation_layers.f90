@@ -3,7 +3,6 @@ module vulkan_driver_ensure_validation_layers
   use :: vector
   use :: forvulkan
   use :: string_f90
-  use :: vulkan_driver_create_validation_layers
   implicit none
 
 
