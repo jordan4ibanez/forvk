@@ -104,6 +104,7 @@ module vulkan_driver
     procedure :: main => vk_driver_main_loop
     procedure :: create_glfw => vk_driver_create_glfw
     procedure :: destroy => vk_driver_destroy
+    procedure :: create_required_exensions => vk_driver_create_required_extensions
   end type vk_driver
 
 
@@ -415,11 +416,11 @@ contains
   end subroutine vk_driver_ensure_extensions_present
 
 
-  subroutine vk_driver_create_required_extensions(required_extensions, DEBUG_MODE)
+  subroutine vk_driver_create_required_extensions(this, required_extensions)
     implicit none
 
+    class(vk_driver), intent(inout) :: this
     type(vec), intent(inout) :: required_extensions
-    logical(c_bool), intent(in), value :: DEBUG_MODE
     integer(c_int) :: glfw_extension_count
     type(c_ptr) :: c_glfw_extension_array_pointer
     character(len = :, kind = c_char), pointer :: temp, output
@@ -455,7 +456,7 @@ contains
 
     ! We need this for debug messaging in debug mode.
 
-    if (DEBUG_MODE) then
+    if (this%DEBUG_MODE) then
       allocate(character(len = len(VK_EXT_DEBUG_UTILS_EXTENSION_NAME), kind = c_char) :: output)
       output = VK_EXT_DEBUG_UTILS_EXTENSION_NAME
       call required_extensions%push_back(c_loc(output))
