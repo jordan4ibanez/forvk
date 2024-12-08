@@ -359,7 +359,7 @@ contains
 
     print"(A)","[Vulkan]: Gathering available extensions."
 
-    call create_required_extensions(required_extensions, this%DEBUG_MODE)
+    call this%create_required_extensions(required_extensions)
 
     result = vk_enumerate_instance_extension_properties(c_null_ptr, extension_count, c_null_ptr)
 
