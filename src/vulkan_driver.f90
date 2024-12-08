@@ -110,6 +110,7 @@ module vulkan_driver
     procedure :: create_vulkan_instance_create_info => vk_driver_create_vulkan_instance_create_info
     procedure :: create_required_validation_layers => vk_driver_create_required_validation_layers
     procedure :: create_debug_messenger_struct => vk_driver_create_debug_messenger_struct
+    procedure :: create_app_info => vk_driver_create_app_info
   end type vk_driver
 
 
@@ -504,7 +505,7 @@ contains
     allocate(character(len = 8, kind = c_char) :: engine_name)
     engine_name = "Formine"//achar(0)
 
-    call create_app_info(app_info, app_name, engine_name)
+    call this%create_app_info(app_info, app_name, engine_name)
 
     call create_vulkan_instance_create_info(vulkan_create_info, app_info, before_init_messenger_create_info, DEBUG_MODE, required_extensions, required_validation_layers)
 
@@ -648,5 +649,24 @@ contains
 
     vk_bool_32 = VK_FALSE
   end function debug_callback
+
+
+  subroutine vk_driver_create_app_info(this, app_info, app_name, engine_name)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+    type(vk_application_info), intent(inout) :: app_info
+    character(len = :, kind = c_char), intent(in), pointer :: app_name, engine_name
+
+    print"(A)","[Vulkan]: Creating app info."
+
+    app_info%s_type = VK_STRUCTURE_TYPE%APPLICATION_INFO
+
+    app_info%p_application_name = c_loc(app_name)
+    app_info%application_version = vk_make_api_version(0,1,0,0)
+    app_info%p_engine_name = c_loc(engine_name)
+    app_info%engine_version = vk_make_api_version(0,1,0,0)
+    app_info%api_version = VK_API_VERSION_1_0
+  end subroutine vk_driver_create_app_info
 
 end module vulkan_driver
