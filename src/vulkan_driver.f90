@@ -105,7 +105,10 @@ module vulkan_driver
     procedure :: create_glfw => vk_driver_create_glfw
     procedure :: destroy => vk_driver_destroy
     procedure :: ensure_extensions_present => vk_driver_ensure_extensions_present
-    procedure :: create_required_exensions => vk_driver_create_required_extensions
+    procedure :: create_required_extensions => vk_driver_create_required_extensions
+    procedure :: create_vulkan_instance => vk_driver_create_vulkan_instance
+    procedure :: create_vulkan_instance_create_info => vk_driver_create_vulkan_instance_create_info
+    procedure :: create_required_validation_layers => vk_driver_create_required_validation_layers
   end type vk_driver
 
 
@@ -479,10 +482,10 @@ contains
   end subroutine required_extensions_vec_gc
 
 
-
-  subroutine create_vulkan_instance(vulkan_instance, DEBUG_MODE)
+  subroutine vk_driver_create_vulkan_instance(this, vulkan_instance, DEBUG_MODE)
     implicit none
 
+    class(vk_driver), intent(inout) :: this
     type(vk_instance), intent(inout) :: vulkan_instance
     logical(c_bool), intent(in), value :: DEBUG_MODE
     ! VkInstanceCreateInfo
@@ -520,12 +523,13 @@ contains
     deallocate(engine_name)
     call required_extensions%destroy()
     call required_validation_layers%destroy()
-  end subroutine create_vulkan_instance
+  end subroutine vk_driver_create_vulkan_instance
 
 
-  subroutine create_vulkan_instance_create_info(vulkan_create_info, app_info, before_init_messenger_create_info, DEBUG_MODE, required_extensions, required_validation_layers)
+  subroutine vk_driver_create_vulkan_instance_create_info(this, vulkan_create_info, app_info, before_init_messenger_create_info, DEBUG_MODE, required_extensions, required_validation_layers)
     implicit none
 
+    class(vk_driver), intent(inout) :: this
     type(vk_instance_create_info), intent(inout) :: vulkan_create_info
     type(vk_application_info), intent(in), target :: app_info
     type(vk_debug_utils_messenger_create_info_ext), intent(inout), target :: before_init_messenger_create_info
@@ -535,8 +539,8 @@ contains
 
     print"(A)","[Vulkan]: Creating create info."
 
-    call create_required_extensions(required_extensions, DEBUG_MODE)
-    call create_required_validation_layers(required_validation_layers, DEBUG_MODE)
+    call this%create_required_extensions(required_extensions)
+    call this%create_required_validation_layers(required_validation_layers)
 
     vulkan_create_info%flags = or(vulkan_create_info%flags, VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR)
 
@@ -552,12 +556,51 @@ contains
       vulkan_create_info%enabled_layer_count = int(required_validation_layers%size())
       vulkan_create_info%pp_enabled_layer_names = required_validation_layers%get(1_8)
 
-      call create_debug_messenger_struct(before_init_messenger_create_info, DEBUG_MODE)
+      call this%create_debug_messenger_struct(before_init_messenger_create_info, DEBUG_MODE)
       vulkan_create_info%p_next = c_loc(before_init_messenger_create_info)
     else
       vulkan_create_info%enabled_layer_count = 0
     end if
-  end subroutine create_vulkan_instance_create_info
+  end subroutine vk_driver_create_vulkan_instance_create_info
 
+
+  subroutine vk_driver_create_required_validation_layers(this, required_validation_layers)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+    ! const char *
+    type(vec), intent(inout) :: required_validation_layers
+    character(len = :, kind = c_char), pointer :: layer_name
+
+    ! If we're not in debug mode, don't bother with this.
+    if (.not. this%DEBUG_MODE) then
+      return
+    end if
+
+    ! Create validation layers that we need.
+
+    print"(A)","[Vulkan]: Creating required validation layers."
+
+    layer_name => null()
+    required_validation_layers = new_vec(sizeof(c_null_ptr), 0_8, validation_layers_vector_gc)
+
+    allocate(character(len = 28, kind = c_char) :: layer_name)
+    layer_name = "VK_LAYER_KHRONOS_validation"//achar(0)
+    call required_validation_layers%push_back(c_loc(layer_name))
+  end subroutine vk_driver_create_required_validation_layers
+
+
+  subroutine validation_layers_vector_gc(raw_c_ptr_ptr)
+    implicit none
+
+    type(c_ptr), intent(in), value :: raw_c_ptr_ptr
+    type(c_ptr), pointer :: raw_c_ptr
+    character(len = :, kind = c_char), pointer :: str
+
+    call c_f_pointer(raw_c_ptr_ptr, raw_c_ptr)
+    str => string_from_c(raw_c_ptr)
+
+    deallocate(str)
+  end subroutine validation_layers_vector_gc
 
 end module vulkan_driver
