@@ -109,6 +109,7 @@ module vulkan_driver
     procedure :: create_vulkan_instance => vk_driver_create_vulkan_instance
     procedure :: create_vulkan_instance_create_info => vk_driver_create_vulkan_instance_create_info
     procedure :: create_required_validation_layers => vk_driver_create_required_validation_layers
+    procedure :: create_debug_messenger_struct => vk_driver_create_debug_messenger_struct
   end type vk_driver
 
 
@@ -604,9 +605,10 @@ contains
   end subroutine validation_layers_vector_gc
 
 
-  subroutine create_debug_messenger_struct(messenger_create_info, DEBUG_MODE)
+  subroutine vk_driver_create_debug_messenger_struct(this, messenger_create_info, DEBUG_MODE)
     implicit none
 
+    class(vk_driver), intent(inout) :: this
     type(vk_debug_utils_messenger_create_info_ext), intent(inout) :: messenger_create_info
     logical(c_bool), intent(in), value :: DEBUG_MODE
 
@@ -619,7 +621,7 @@ contains
     messenger_create_info%message_type = or(VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT, or(VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT, VK_DEBUG_UTILS_MESSAGE_TYPE_PERFORMANCE_BIT_EXT))
     messenger_create_info%pfn_user_callback = c_funloc(debug_callback)
     messenger_create_info%p_user_data = c_null_ptr ! Optional.
-  end subroutine create_debug_messenger_struct
+  end subroutine vk_driver_create_debug_messenger_struct
 
 
   ! This is the debug output.
