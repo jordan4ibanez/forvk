@@ -415,7 +415,7 @@ contains
   end subroutine vk_driver_ensure_extensions_present
 
 
-  subroutine create_required_extensions(required_extensions, DEBUG_MODE)
+  subroutine vk_driver_create_required_extensions(required_extensions, DEBUG_MODE)
     implicit none
 
     type(vec), intent(inout) :: required_extensions
@@ -460,7 +460,7 @@ contains
       output = VK_EXT_DEBUG_UTILS_EXTENSION_NAME
       call required_extensions%push_back(c_loc(output))
     end if
-  end subroutine create_required_extensions
+  end subroutine vk_driver_create_required_extensions
 
 
   subroutine required_extensions_vec_gc(raw_c_ptr_ptr)
