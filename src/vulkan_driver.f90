@@ -505,7 +505,7 @@ contains
 
     call this%create_app_info(app_info, app_name, engine_name)
 
-    call create_vulkan_instance_create_info(vulkan_create_info, app_info, before_init_messenger_create_info, this%DEBUG_MODE, required_extensions, required_validation_layers)
+    call this%create_vulkan_instance_create_info(vulkan_create_info, app_info, before_init_messenger_create_info, this%DEBUG_MODE, required_extensions, required_validation_layers)
 
     print"(A)", "[Vulkan]: Creating instance."
 
