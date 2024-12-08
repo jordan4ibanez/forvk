@@ -484,12 +484,10 @@ contains
   end subroutine required_extensions_vec_gc
 
 
-  subroutine vk_driver_create_vulkan_instance(this, vulkan_instance, DEBUG_MODE)
+  subroutine vk_driver_create_vulkan_instance(this)
     implicit none
 
     class(vk_driver), intent(inout) :: this
-    type(vk_instance), intent(inout) :: vulkan_instance
-    logical(c_bool), intent(in), value :: DEBUG_MODE
     ! VkInstanceCreateInfo
     type(vk_instance_create_info), target :: vulkan_create_info
     ! VkApplicationInfo
@@ -507,11 +505,11 @@ contains
 
     call this%create_app_info(app_info, app_name, engine_name)
 
-    call create_vulkan_instance_create_info(vulkan_create_info, app_info, before_init_messenger_create_info, DEBUG_MODE, required_extensions, required_validation_layers)
+    call create_vulkan_instance_create_info(vulkan_create_info, app_info, before_init_messenger_create_info, this%DEBUG_MODE, required_extensions, required_validation_layers)
 
     print"(A)", "[Vulkan]: Creating instance."
 
-    result = vk_create_instance(c_loc(vulkan_create_info), c_null_ptr, vulkan_instance)
+    result = vk_create_instance(c_loc(vulkan_create_info), c_null_ptr, this%vulkan_instance)
 
     if (result /= VK_SUCCESS) then
       ! Shove driver check in.
