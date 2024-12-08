@@ -104,6 +104,7 @@ module vulkan_driver
     procedure :: main => vk_driver_main_loop
     procedure :: create_glfw => vk_driver_create_glfw
     procedure :: destroy => vk_driver_destroy
+    procedure :: ensure_extensions_present => vk_driver_ensure_extensions_present
     procedure :: create_required_exensions => vk_driver_create_required_extensions
   end type vk_driver
 
