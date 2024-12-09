@@ -710,7 +710,6 @@ contains
 
     call this%create_required_validation_layers(required_validation_layers)
 
-
     ! If we're not in debug mode, don't bother with this.
     if (.not. this%DEBUG_MODE) then
       return
