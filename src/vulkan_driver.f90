@@ -152,11 +152,11 @@ contains
 
     ! indices_size = size(indices)
 
-    ! call create_glfw(framebuffer_resized, 800, 600)
+    call this%create_glfw(800, 600)
 
-    ! call ensure_extensions_present(DEBUG_MODE)
+    call this%ensure_extensions_present()
 
-    ! call ensure_validation_layer_support(DEBUG_MODE)
+    call this%ensure_validation_layer_support()
 
     ! call create_vulkan_instance(vulkan_instance, DEBUG_MODE)
 
