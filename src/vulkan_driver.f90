@@ -867,7 +867,7 @@ contains
 
       ! We found it, woo. That's our physical device.
       ! todo: Make a menu option to select another physical device.
-      if (this%device_is_suitable(physical_device_pointer, this%window_surface, device_name)) then
+      if (this%device_is_suitable(physical_device_pointer, device_name)) then
         this%physical_device = physical_device_pointer
         exit device_search
       end if
