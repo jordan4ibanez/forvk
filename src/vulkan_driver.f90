@@ -867,7 +867,7 @@ contains
 
       ! We found it, woo. That's our physical device.
       ! todo: Make a menu option to select another physical device.
-      if (device_is_suitable(physical_device_pointer, this%window_surface, device_name)) then
+      if (this%device_is_suitable(physical_device_pointer, this%window_surface, device_name)) then
         this%physical_device = physical_device_pointer
         exit device_search
       end if
@@ -918,7 +918,7 @@ contains
     device_name => character_array_to_string_pointer(device_properties%device_name)
 
     ! Check our queue families.
-    queue_family_indices = this%find_queue_families(physical_device_pointer, this%window_surface)
+    queue_family_indices = this%find_queue_families(physical_device_pointer)
 
     print"(A)","[Vulkan]: Found physical device ["//device_name//"]"
 
@@ -1032,7 +1032,7 @@ contains
     ! If it has no swapchain support, then we can't use this device.
     ! But we're only going to run this if the device passed all the other checks.
     if (has_support) then
-      has_support = this%query_swapchain_support(this%physical_device, this%window_surface, swapchain_support_details)
+      has_support = this%query_swapchain_support(swapchain_support_details)
 
       call swapchain_support_details%formats%destroy()
       call swapchain_support_details%present_modes%destroy()
@@ -1079,10 +1079,11 @@ contains
   end subroutine device_extensions_vec_gc
 
 
-  function vk_driver_find_queue_families(this) result(queue_family_indices)
+  function vk_driver_find_queue_families(this, physical_device) result(queue_family_indices)
     implicit none
 
     class(vk_driver), intent(inout) :: this
+    type(vk_physical_device), intent(in), value :: physical_device
     type(forvulkan_queue_family_indices) :: queue_family_indices
     integer(c_int32_t) :: queue_family_count, i, present_support
     ! VkQueueFamilyProperties
@@ -1093,14 +1094,14 @@ contains
 
     print"(A)","[Vulkan]: Finding queue families."
 
-    call vk_get_physical_device_queue_family_properties(this%physical_device, queue_family_count, c_null_ptr)
+    call vk_get_physical_device_queue_family_properties(physical_device, queue_family_count, c_null_ptr)
 
     allocate(properties)
     queue_families = new_vec(sizeof(properties), int(queue_family_count, c_int64_t))
     call queue_families%resize(int(queue_family_count, c_int64_t), properties)
     deallocate(properties)
 
-    call vk_get_physical_device_queue_family_properties(this%physical_device, queue_family_count, queue_families%get(1_8))
+    call vk_get_physical_device_queue_family_properties(physical_device, queue_family_count, queue_families%get(1_8))
 
     do i = 1, queue_family_count
       ! We're just straight shooting this right from C into Fortran.
@@ -1114,7 +1115,7 @@ contains
       end if
 
       ! Check if we can actually present on this queue.
-      if (vk_get_physical_device_surface_support_khr(this%physical_device, i - 1, this%window_surface, present_support) /= VK_SUCCESS) then
+      if (vk_get_physical_device_surface_support_khr(physical_device, i - 1, this%window_surface, present_support) /= VK_SUCCESS) then
         error stop "[Vulkan] Error: Failed to get physical device surface support."
       end if
 
@@ -1153,7 +1154,7 @@ contains
     print"(A)","[Vulkan]: Creating logical device."
 
     ! Physical and logical devices can have multiple queues.
-    physical_queue_family_indices = this%find_queue_families()
+    physical_queue_family_indices = this%find_queue_families(this%physical_device)
 
     logical_device_queue_create_infos = new_vec(sizeof(logical_device_queue_create_info), 0_8)
 
@@ -1180,7 +1181,7 @@ contains
 
     ! Create the create info for the logical device.
 
-    call create_required_physical_device_extensions(required_physical_device_extensions)
+    call this%create_required_physical_device_extensions(required_physical_device_extensions)
 
     logical_device_create_info%s_type = VK_STRUCTURE_TYPE%DEVICE%CREATE_INFO
     logical_device_create_info%queue_create_info_count = int(logical_device_queue_create_infos%size())
@@ -1190,7 +1191,7 @@ contains
     logical_device_create_info%pp_enabled_extension_names = required_physical_device_extensions%get(1_8)
 
     if (this%DEBUG_MODE) then
-      call create_required_validation_layers(required_validation_layers, this%DEBUG_MODE)
+      call this%create_required_validation_layers(required_validation_layers)
       logical_device_create_info%enabled_layer_count = int(required_validation_layers%size())
       ! Passing in the underlying C array.
       logical_device_create_info%pp_enabled_layer_names = required_validation_layers%get(1_8)
