@@ -111,6 +111,7 @@ module vulkan_driver
     procedure :: create_required_validation_layers => vk_driver_create_required_validation_layers
     procedure :: create_debug_messenger_struct => vk_driver_create_debug_messenger_struct
     procedure :: create_app_info => vk_driver_create_app_info
+    procedure :: clean_up_swapchain => vk_driver_clean_up_swapchain
   end type vk_driver
 
 
@@ -239,7 +240,7 @@ contains
     type(vk_buffer), pointer :: uniform_buffer_pointer
     type(vk_device_memory), pointer :: uniform_buffer_memory_pointer
 
-    call clean_up_swapchain(this%logical_device, this%swapchain_framebuffers, this%swapchain_image_views, this%swapchain)
+    call this%clean_up_swapchain()
 
     do i = 1,this%MAX_FRAMES_IN_FLIGHT
       call c_f_pointer(this%uniform_buffers%get(i), uniform_buffer_pointer)
@@ -666,5 +667,28 @@ contains
     app_info%engine_version = vk_make_api_version(0,1,0,0)
     app_info%api_version = VK_API_VERSION_1_0
   end subroutine vk_driver_create_app_info
+
+
+  subroutine vk_driver_clean_up_swapchain(this)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+    integer(c_int64_t) :: i
+    type(vk_framebuffer), pointer :: framebuffer_pointer
+    type(vk_image_view), pointer :: image_view_pointer
+
+    do i = 1,this%swapchain_framebuffers%size()
+      call c_f_pointer(this%swapchain_framebuffers%get(i), framebuffer_pointer)
+      call vk_destroy_framebuffer(this%logical_device, framebuffer_pointer, c_null_ptr)
+    end do
+
+    do i = 1,this%swapchain_image_views%size()
+      call c_f_pointer(this%swapchain_image_views%get(i), image_view_pointer)
+      call vk_destroy_image_view(this%logical_device, image_view_pointer, c_null_ptr)
+    end do
+
+    call vk_destroy_swapchain_khr(this%logical_device, this%swapchain, c_null_ptr)
+  end subroutine vk_driver_clean_up_swapchain
+
 
 end module vulkan_driver
