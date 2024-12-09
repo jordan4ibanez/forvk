@@ -113,6 +113,7 @@ module vulkan_driver
     procedure :: create_app_info => vk_driver_create_app_info
     procedure :: clean_up_swapchain => vk_driver_clean_up_swapchain
     procedure :: ensure_validation_layer_support => vk_driver_ensure_validation_layer_support
+    procedure :: setup_debug_messenger => vk_driver_setup_debug_messenger
   end type vk_driver
 
 
@@ -141,6 +142,8 @@ contains
     implicit none
 
     class(vk_driver), intent(inout) :: this
+    ! This will go out of scope at the end of the init.
+    type(vk_debug_utils_messenger_ext) :: debug_messenger
     ! type(vertex), dimension(4) :: vertices
     ! integer(c_int32_t), dimension(6) :: indices
 
@@ -161,7 +164,7 @@ contains
 
     call this%create_vulkan_instance()
 
-    ! call setup_debug_messenger(vulkan_instance, debug_messenger, DEBUG_MODE)
+    call this%setup_debug_messenger(debug_messenger)
 
     ! call create_surface(vulkan_instance, window_surface)
 
@@ -778,6 +781,28 @@ contains
 
     print"(A)","[Vulkan]: Found all required validation layers."
   end subroutine vk_driver_ensure_validation_layer_support
+
+
+  subroutine vk_driver_setup_debug_messenger(this, debug_messenger)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+    type(vk_debug_utils_messenger_ext), intent(inout) :: debug_messenger
+    type(vk_debug_utils_messenger_create_info_ext), target :: debug_messenger_create_info
+
+    ! Don't need this if we're not in debug mode.
+    if (.not. this%DEBUG_MODE) then
+      return
+    end if
+
+    print"(A)","[Vulkan]: Setting up debug messenger."
+
+    call this%create_debug_messenger_struct(debug_messenger_create_info)
+
+    if (forvulkan_create_debug_utils_messenger_ext(this%vulkan_instance, c_loc(debug_messenger_create_info), c_null_ptr, debug_messenger) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to set up debug messenger."
+    end if
+  end subroutine vk_driver_setup_debug_messenger
 
 
 end module vulkan_driver
