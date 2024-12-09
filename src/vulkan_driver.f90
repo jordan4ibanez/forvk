@@ -117,6 +117,7 @@ module vulkan_driver
     procedure :: setup_debug_messenger => vk_driver_setup_debug_messenger
     procedure :: create_surface => vk_driver_create_surface
     procedure :: select_physical_device => vk_driver_select_physical_device
+    procedure :: device_is_suitable => vk_driver_device_is_suitable
   end type vk_driver
 
 
@@ -879,11 +880,11 @@ contains
   end subroutine vk_driver_select_physical_device
 
 
-  function device_is_suitable(physical_device_pointer, window_surface, device_name) result(suitable)
+  function vk_driver_device_is_suitable(this, physical_device_pointer, device_name) result(suitable)
     implicit none
 
+    class(vk_driver), intent(inout) :: this
     type(vk_physical_device), intent(inout), pointer :: physical_device_pointer
-    type(vk_surface_khr), intent(in), value :: window_surface
     character(len = :, kind = c_char), intent(inout), pointer :: device_name
     type(forvulkan_queue_family_indices) :: queue_family_indices
     logical(c_bool) :: suitable
@@ -912,7 +913,7 @@ contains
     device_name => character_array_to_string_pointer(device_properties%device_name)
 
     ! Check our queue families.
-    queue_family_indices = find_queue_families(physical_device_pointer, window_surface)
+    queue_family_indices = this%find_queue_families(physical_device_pointer, this%window_surface)
 
     print"(A)","[Vulkan]: Found physical device ["//device_name//"]"
 
@@ -939,7 +940,7 @@ contains
 
     deallocate(device_properties)
     deallocate(device_features)
-  end function device_is_suitable
+  end function vk_driver_device_is_suitable
 
 
   function check_device_extension_support(physical_device, window_surface) result(has_support)
@@ -963,7 +964,7 @@ contains
     has_support = .false.
 
     ! First we create our required device extensions.
-    call create_required_physical_device_extensions(required_device_extensions)
+    call this%create_required_physical_device_extensions(required_device_extensions)
 
     ! Now, let us store the vector of available device extensions.
     if (vk_enumerate_device_extension_properties(physical_device, c_null_ptr, extension_count, c_null_ptr) /= VK_SUCCESS) then
