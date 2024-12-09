@@ -3,7 +3,6 @@ module vulkan_driver_create_swapchain
   use :: vector
   use :: forvulkan
   use :: vulkan_driver_query_swapchain_support
-  use :: vulkan_driver_find_queue_families
   use :: glfw
   implicit none
 
