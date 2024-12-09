@@ -2,7 +2,6 @@ module vulkan_driver_create_swapchain
   use, intrinsic :: iso_c_binding
   use :: vector
   use :: forvulkan
-  use :: vulkan_driver_query_swapchain_support
   use :: glfw
   implicit none
 
