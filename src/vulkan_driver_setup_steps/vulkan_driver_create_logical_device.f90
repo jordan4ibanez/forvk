@@ -4,7 +4,6 @@ module vulkan_driver_create_logical_device
   use :: vulkan_driver_find_queue_families
   use :: vector
   use :: integer32_set
-  use :: vulkan_driver_create_physical_device_extensions
   implicit none
 
 
