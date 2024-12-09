@@ -119,6 +119,7 @@ module vulkan_driver
     procedure :: select_physical_device => vk_driver_select_physical_device
     procedure :: device_is_suitable => vk_driver_device_is_suitable
     procedure :: check_device_extension_support => vk_driver_check_device_extension_support
+    procedure :: create_required_physical_device_extensions => vk_driver_create_required_physical_device_extensions
   end type vk_driver
 
 
@@ -1038,5 +1039,41 @@ contains
       end if
     end if
   end function vk_driver_check_device_extension_support
+
+  ! We use this to check the physical device has everything.
+  ! Then we enable it in the logical device.
+  ! This allows for it to be passed around by using this one function
+  subroutine vk_driver_create_required_physical_device_extensions(this, required_device_extensions)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+    ! character **
+    type(vec), intent(inout) :: required_device_extensions
+    character(len = :, kind = c_char), pointer :: required_extension
+
+    required_device_extensions = new_vec(sizeof(c_null_ptr), 0_8, device_extensions_vec_gc)
+
+    allocate(character(len = len(VK_KHR_SWAPCHAIN_EXTENSION_NAME), kind = c_char) :: required_extension)
+    required_extension = VK_KHR_SWAPCHAIN_EXTENSION_NAME
+
+    call required_device_extensions%push_back(c_loc(required_extension))
+
+    call required_device_extensions%shrink_to_fit()
+  end subroutine vk_driver_create_required_physical_device_extensions
+
+
+  subroutine device_extensions_vec_gc(raw_c_ptr_ptr)
+    implicit none
+
+    type(c_ptr), intent(in), value :: raw_c_ptr_ptr
+    type(c_ptr), pointer :: raw_c_ptr
+    character(len = :, kind = c_char), pointer :: str
+
+    call c_f_pointer(raw_c_ptr_ptr, raw_c_ptr)
+    str => string_from_c(raw_c_ptr)
+
+    deallocate(str)
+  end subroutine device_extensions_vec_gc
+
 
 end module vulkan_driver
