@@ -6,6 +6,7 @@ module vulkan_driver
   use :: forvulkan
   use :: vector_3f
   use :: vector_2f
+  use :: integer32_set
   ! !? These are imported in the order of the steps this takes.
   ! use :: vulkan_driver_ensure_validation_layers
   ! use :: vulkan_driver_create_instance
