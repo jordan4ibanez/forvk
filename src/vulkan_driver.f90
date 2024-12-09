@@ -7,30 +7,7 @@ module vulkan_driver
   use :: vector_3f
   use :: vector_2f
   use :: integer32_set
-  ! !? These are imported in the order of the steps this takes.
-  ! use :: vulkan_driver_ensure_validation_layers
-  ! use :: vulkan_driver_create_instance
-  ! use :: vulkan_driver_create_debug_messenger
-  ! use :: vulkan_driver_create_surface
-  ! use :: vulkan_driver_select_physical_device
-  ! use :: vulkan_driver_create_logical_device
-  ! use :: vulkan_driver_create_swapchain
-  ! use :: vulkan_driver_create_image_views
-  ! use :: vulkan_driver_create_render_pass
-  ! use :: vulkan_driver_create_graphics_pipeline
-  ! use :: vulkan_driver_create_framebuffers
-  ! use :: vulkan_driver_create_command_pool
-  ! use :: vulkan_driver_create_command_buffer
-  ! use :: vulkan_driver_create_sync_objects
-  ! !? Then after this, it's just helpers.
-  ! use :: vulkan_driver_record_command_buffer
-  ! use :: vulkan_driver_draw_frame
-  ! use :: vulkan_driver_clean_up_swapchain
-  ! use :: vulkan_driver_create_vertex_buffer
-  ! use :: vulkan_driver_create_index_buffer
-  ! use :: vulkan_driver_create_uniform_buffers
-  ! use :: vulkan_driver_create_descriptor_pool
-  ! use :: vulkan_driver_create_descriptor_sets
+
   ! !! THIS IS TEMPORARY
   ! use :: vulkan_vertex
   ! use :: vulkan_driver_uniform_buffer
