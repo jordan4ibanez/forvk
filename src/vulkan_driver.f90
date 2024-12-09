@@ -692,10 +692,10 @@ contains
   end subroutine vk_driver_clean_up_swapchain
 
 
-  subroutine vk_driver_ensure_validation_layer_support(DEBUG_MODE)
+  subroutine vk_driver_ensure_validation_layer_support(this)
     implicit none
 
-    logical(c_bool), intent(in), value :: DEBUG_MODE
+    class(vk_driver), intent(inout) :: this
     ! const char *
     type(vec) :: required_validation_layers
     ! VkLayerProperties
@@ -708,11 +708,11 @@ contains
     integer(c_int) :: i, j
     character(len = :, kind = c_char), pointer :: required_layer, temp
 
-    call create_required_validation_layers(required_validation_layers, DEBUG_MODE)
+    call this%create_required_validation_layers(required_validation_layers)
 
 
     ! If we're not in debug mode, don't bother with this.
-    if (.not. DEBUG_MODE) then
+    if (.not. this%DEBUG_MODE) then
       return
     end if
 
