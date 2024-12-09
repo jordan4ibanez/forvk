@@ -118,6 +118,7 @@ module vulkan_driver
     procedure :: create_surface => vk_driver_create_surface
     procedure :: select_physical_device => vk_driver_select_physical_device
     procedure :: device_is_suitable => vk_driver_device_is_suitable
+    procedure :: check_device_extension_support => vk_driver_check_device_extension_support
   end type vk_driver
 
 
@@ -932,7 +933,7 @@ contains
       suitable = .false.
     end if
 
-    if (.not. check_device_extension_support(physical_device_pointer, window_surface)) then
+    if (.not. this%check_device_extension_support()) then
       !! FIXME: this needs to list which extension!
       print"(A)", "[Vulkan]: Device is missing extension support."
       suitable = .false.
@@ -943,11 +944,10 @@ contains
   end function vk_driver_device_is_suitable
 
 
-  function check_device_extension_support(physical_device, window_surface) result(has_support)
+  function vk_driver_check_device_extension_support(this) result(has_support)
     implicit none
 
-    type(vk_physical_device), intent(in), value :: physical_device
-    type(vk_surface_khr), intent(in), value :: window_surface
+    class(vk_driver), intent(inout) :: this
     type(forvulkan_swapchain_support_details) :: swapchain_support_details
     logical(c_bool) :: has_support
     integer(c_int32_t) :: extension_count
@@ -967,7 +967,7 @@ contains
     call this%create_required_physical_device_extensions(required_device_extensions)
 
     ! Now, let us store the vector of available device extensions.
-    if (vk_enumerate_device_extension_properties(physical_device, c_null_ptr, extension_count, c_null_ptr) /= VK_SUCCESS) then
+    if (vk_enumerate_device_extension_properties(this%physical_device, c_null_ptr, extension_count, c_null_ptr) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to enumerate device extension properties."
     end if
 
@@ -977,7 +977,7 @@ contains
     deallocate(extension_properties)
 
     ! This is pointing the function straight into the internal C array of the vector.
-    if (vk_enumerate_device_extension_properties(physical_device, c_null_ptr, extension_count, available_extensions%get(1_8)) /= VK_SUCCESS) then
+    if (vk_enumerate_device_extension_properties(this%physical_device, c_null_ptr, extension_count, available_extensions%get(1_8)) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to enumerate device extension properties."
     end if
 
@@ -1028,7 +1028,7 @@ contains
     ! If it has no swapchain support, then we can't use this device.
     ! But we're only going to run this if the device passed all the other checks.
     if (has_support) then
-      has_support = query_swapchain_support(physical_device, window_surface, swapchain_support_details)
+      has_support = this%query_swapchain_support(this%physical_device, this%window_surface, swapchain_support_details)
 
       call swapchain_support_details%formats%destroy()
       call swapchain_support_details%present_modes%destroy()
@@ -1037,6 +1037,6 @@ contains
         print"(A)", "[Vulkan]: Physical device is missing swapchain support. Skipping."
       end if
     end if
-  end function check_device_extension_support
+  end function vk_driver_check_device_extension_support
 
 end module vulkan_driver
