@@ -114,6 +114,7 @@ module vulkan_driver
     procedure :: clean_up_swapchain => vk_driver_clean_up_swapchain
     procedure :: ensure_validation_layer_support => vk_driver_ensure_validation_layer_support
     procedure :: setup_debug_messenger => vk_driver_setup_debug_messenger
+    procedure :: create_surface => vk_driver_create_surface
   end type vk_driver
 
 
@@ -166,7 +167,7 @@ contains
 
     call this%setup_debug_messenger(debug_messenger)
 
-    ! call create_surface(vulkan_instance, window_surface)
+    call this%create_surface()
 
     ! call select_physical_device(vulkan_instance, physical_device, window_surface)
 
@@ -803,6 +804,20 @@ contains
       error stop "[Vulkan] Error: Failed to set up debug messenger."
     end if
   end subroutine vk_driver_setup_debug_messenger
+
+
+  subroutine vk_driver_create_surface(this)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+    type(c_ptr) :: window_pointer
+
+    window_pointer = glfw_get_window_pointer()
+
+    if (glfw_create_window_surface(this%vulkan_instance, window_pointer, c_null_ptr, this%window_surface) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to create window surface."
+    end if
+  end subroutine vk_driver_create_surface
 
 
 end module vulkan_driver
