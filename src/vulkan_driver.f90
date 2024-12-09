@@ -1133,15 +1133,10 @@ contains
   end function vk_driver_find_queue_families
 
 
-  subroutine create_logical_device(physical_device, logical_device, graphics_queue, present_queue, window_surface, DEBUG_MODE)
+  subroutine vk_driver_create_logical_device(this)
     implicit none
 
-    type(vk_physical_device), intent(in), value :: physical_device
-    type(vk_device), intent(inout), target :: logical_device
-    type(vk_queue), intent(inout) :: graphics_queue
-    type(vk_queue), intent(inout) :: present_queue
-    type(vk_surface_khr), intent(in), value :: window_surface
-    logical(c_bool), intent(in), value :: DEBUG_MODE
+    class(vk_driver), intent(inout) :: this
     ! const char **
     type(vec) :: required_validation_layers
     type(vk_device_queue_create_info) :: logical_device_queue_create_info
@@ -1157,7 +1152,7 @@ contains
     print"(A)","[Vulkan]: Creating logical device."
 
     ! Physical and logical devices can have multiple queues.
-    physical_queue_family_indices = find_queue_families(physical_device, window_surface)
+    physical_queue_family_indices = this%find_queue_families()
 
     logical_device_queue_create_infos = new_vec(sizeof(logical_device_queue_create_info), 0_8)
 
@@ -1193,8 +1188,8 @@ contains
     logical_device_create_info%enabled_extension_count = int(required_physical_device_extensions%size())
     logical_device_create_info%pp_enabled_extension_names = required_physical_device_extensions%get(1_8)
 
-    if (DEBUG_MODE) then
-      call create_required_validation_layers(required_validation_layers, DEBUG_MODE)
+    if (this%DEBUG_MODE) then
+      call create_required_validation_layers(required_validation_layers, this%DEBUG_MODE)
       logical_device_create_info%enabled_layer_count = int(required_validation_layers%size())
       ! Passing in the underlying C array.
       logical_device_create_info%pp_enabled_layer_names = required_validation_layers%get(1_8)
@@ -1202,18 +1197,18 @@ contains
       logical_device_create_info%enabled_layer_count = 0
     end if
 
-    if (vk_create_device(physical_device, c_loc(logical_device_create_info), c_null_ptr, logical_device) /= VK_SUCCESS) then
+    if (vk_create_device(this%physical_device, c_loc(logical_device_create_info), c_null_ptr, this%logical_device) /= VK_SUCCESS) then
       error stop "[Vulkan]: Failed to create logical device."
     end if
 
     ! Now we can create the graphics queues so the logical devices can control the physical device queues.
-    call vk_get_device_queue(logical_device, physical_queue_family_indices%graphics_family, 0, graphics_queue)
-    call vk_get_device_queue(logical_device, physical_queue_family_indices%present_family, 0, present_queue)
+    call vk_get_device_queue(this%logical_device, physical_queue_family_indices%graphics_family, 0, this%graphics_queue)
+    call vk_get_device_queue(this%logical_device, physical_queue_family_indices%present_family, 0, this%present_queue)
 
     call logical_device_queue_create_infos%destroy()
     call required_validation_layers%destroy()
     call required_physical_device_extensions%destroy()
-  end subroutine create_logical_device
+  end subroutine vk_driver_create_logical_device
 
 
 end module vulkan_driver
