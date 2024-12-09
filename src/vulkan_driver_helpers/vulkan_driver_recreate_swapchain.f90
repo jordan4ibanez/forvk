@@ -4,7 +4,6 @@ module vulkan_driver_recreate_swapchain
   use :: vulkan_driver_create_swapchain
   use :: vulkan_driver_create_image_views
   use :: vulkan_driver_create_framebuffers
-  use :: vulkan_driver_clean_up_swapchain
   use :: vector
   implicit none
 
