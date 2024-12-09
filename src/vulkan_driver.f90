@@ -121,6 +121,7 @@ module vulkan_driver
     procedure :: check_device_extension_support => vk_driver_check_device_extension_support
     procedure :: create_required_physical_device_extensions => vk_driver_create_required_physical_device_extensions
     procedure :: find_queue_families => vk_driver_find_queue_families
+    procedure :: create_logical_device => vk_driver_create_logical_device
   end type vk_driver
 
 
@@ -1077,7 +1078,7 @@ contains
   end subroutine device_extensions_vec_gc
 
 
-  function find_queue_families(this) result(queue_family_indices)
+  function vk_driver_find_queue_families(this) result(queue_family_indices)
     implicit none
 
     class(vk_driver), intent(inout) :: this
@@ -1129,7 +1130,7 @@ contains
     end do
 
     call queue_families%destroy()
-  end function find_queue_families
+  end function vk_driver_find_queue_families
 
 
   subroutine create_logical_device(physical_device, logical_device, graphics_queue, present_queue, window_surface, DEBUG_MODE)
