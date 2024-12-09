@@ -159,7 +159,7 @@ contains
 
     call this%ensure_validation_layer_support()
 
-    ! call create_vulkan_instance(vulkan_instance, DEBUG_MODE)
+    call this%create_vulkan_instance()
 
     ! call setup_debug_messenger(vulkan_instance, debug_messenger, DEBUG_MODE)
 
@@ -558,7 +558,7 @@ contains
       vulkan_create_info%enabled_layer_count = int(required_validation_layers%size())
       vulkan_create_info%pp_enabled_layer_names = required_validation_layers%get(1_8)
 
-      call this%create_debug_messenger_struct(before_init_messenger_create_info, DEBUG_MODE)
+      call this%create_debug_messenger_struct(before_init_messenger_create_info)
       vulkan_create_info%p_next = c_loc(before_init_messenger_create_info)
     else
       vulkan_create_info%enabled_layer_count = 0
@@ -606,14 +606,13 @@ contains
   end subroutine validation_layers_vector_gc
 
 
-  subroutine vk_driver_create_debug_messenger_struct(this, messenger_create_info, DEBUG_MODE)
+  subroutine vk_driver_create_debug_messenger_struct(this, messenger_create_info)
     implicit none
 
     class(vk_driver), intent(inout) :: this
     type(vk_debug_utils_messenger_create_info_ext), intent(inout) :: messenger_create_info
-    logical(c_bool), intent(in), value :: DEBUG_MODE
 
-    if (.not. DEBUG_MODE) then
+    if (.not. this%DEBUG_MODE) then
       return
     end if
 
