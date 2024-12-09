@@ -112,6 +112,7 @@ module vulkan_driver
     procedure :: create_debug_messenger_struct => vk_driver_create_debug_messenger_struct
     procedure :: create_app_info => vk_driver_create_app_info
     procedure :: clean_up_swapchain => vk_driver_clean_up_swapchain
+    procedure :: ensure_validation_layer_support => vk_driver_ensure_validation_layer_support
   end type vk_driver
 
 
@@ -691,7 +692,7 @@ contains
   end subroutine vk_driver_clean_up_swapchain
 
 
-  subroutine ensure_validation_layer_support(DEBUG_MODE)
+  subroutine vk_driver_ensure_validation_layer_support(DEBUG_MODE)
     implicit none
 
     logical(c_bool), intent(in), value :: DEBUG_MODE
@@ -778,7 +779,7 @@ contains
     call required_validation_layers%destroy()
 
     print"(A)","[Vulkan]: Found all required validation layers."
-  end subroutine ensure_validation_layer_support
+  end subroutine vk_driver_ensure_validation_layer_support
 
 
 end module vulkan_driver
