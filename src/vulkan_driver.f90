@@ -179,9 +179,9 @@ contains
 
     call this%select_physical_device()
 
-    ! call create_logical_device(physical_device, logical_device, graphics_queue, present_queue, window_surface, DEBUG_MODE)
+    call this%create_logical_device()
 
-    ! call create_swapchain(physical_device, logical_device, window_surface, swapchain, swapchain_images, swapchain_image_format, swapchain_extent)
+    call this%create_swapchain(physical_device, logical_device, window_surface, swapchain, swapchain_images, swapchain_image_format, swapchain_extent)
 
     ! call create_image_views(logical_device, swapchain_images, swapchain_image_views, swapchain_image_format)
 
