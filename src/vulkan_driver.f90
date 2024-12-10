@@ -1809,14 +1809,14 @@ contains
 
     buffer_size%data = sizeof(vertices(1)) * size(vertices)
 
-    call create_buffer(this%physical_device, this%logical_device, buffer_size, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, ior(VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT, VK_MEMORY_PROPERTY_HOST_COHERENT_BIT), staging_buffer, staging_buffer_memory)
+    call this%create_buffer(buffer_size, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, ior(VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT, VK_MEMORY_PROPERTY_HOST_COHERENT_BIT), staging_buffer, staging_buffer_memory)
     if (vk_map_memory(this%logical_device, staging_buffer_memory, vk_device_size(0_8), buffer_size, 0, data) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to map memory."
     end if
     call totally_not_memcpy_vertices(data, vertices)
     call vk_unmap_memory(this%logical_device, staging_buffer_memory)
 
-    call create_buffer(this%physical_device, this%logical_device, buffer_size, ior(VK_BUFFER_USAGE_TRANSFER_DST_BIT, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT), VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, this%vertex_buffer, this%vertex_buffer_memory)
+    call this%create_buffer(buffer_size, ior(VK_BUFFER_USAGE_TRANSFER_DST_BIT, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT), VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, this%vertex_buffer, this%vertex_buffer_memory)
     call copy_buffer(this%logical_device, staging_buffer, this%vertex_buffer, buffer_size, this%command_pool, this%graphics_queue)
 
     call vk_destroy_buffer(this%logical_device, staging_buffer, c_null_ptr)
@@ -1864,7 +1864,7 @@ contains
 
     alloc_info%s_type = VK_STRUCTURE_TYPE%MEMORY%ALLOCATE_INFO
     alloc_info%allocation_size = mem_requirements%size
-    alloc_info%memory_type_index = find_memory_type(this%physical_device, mem_requirements%memory_type_bits, properties)
+    alloc_info%memory_type_index = this%find_memory_type(mem_requirements%memory_type_bits, properties)
 
     if (vk_allocate_memory(this%logical_device, c_loc(alloc_info), c_null_ptr, buffer_memory) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to allocate buffer memory."
