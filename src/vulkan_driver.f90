@@ -1207,12 +1207,12 @@ contains
     print"(A)","[Vulkan]: Querying swapchain support information."
 
     ! First, get device surface capabilities.
-    if (vk_get_physical_device_surface_capabilities_khr(this%physical_device, this%window_surface, c_loc(swapchain_support_details%capabilities)) /= VK_SUCCESS) then
+    if (vk_get_physical_device_surface_capabilities_khr(physical_device, this%window_surface, c_loc(swapchain_support_details%capabilities)) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to get physical device surface capabilities."
     end if
 
     ! Next, we must get the available device window surface formats.
-    if (vk_get_physical_device_surface_formats_khr(this%physical_device, this%window_surface, format_count, c_null_ptr) /= VK_SUCCESS) then
+    if (vk_get_physical_device_surface_formats_khr(physical_device, this%window_surface, format_count, c_null_ptr) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to get available physical device surface formats."
     end if
 
@@ -1232,12 +1232,12 @@ contains
     deallocate(surface_format_pointer)
 
     ! We're passing in the underlying C array pointer.
-    if (vk_get_physical_device_surface_formats_khr(this%physical_device, this%window_surface, format_count, swapchain_support_details%formats%get(1_8)) /= VK_SUCCESS) then
+    if (vk_get_physical_device_surface_formats_khr(physical_device, this%window_surface, format_count, swapchain_support_details%formats%get(1_8)) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to get available physical device surface formats."
     end if
 
     ! Now, we must get the present modes
-    if (vk_get_physical_device_surface_present_modes_khr(this%physical_device, this%window_surface, present_mode_count, c_null_ptr) /= VK_SUCCESS) then
+    if (vk_get_physical_device_surface_present_modes_khr(physical_device, this%window_surface, present_mode_count, c_null_ptr) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to get avilable physical device surface present modes."
     end if
 
@@ -1254,7 +1254,7 @@ contains
     swapchain_support_details%present_modes = new_vec(sizeof(0_4), 0_8)
     call swapchain_support_details%present_modes%resize(int(present_mode_count, c_int64_t), 0_4)
 
-    if (vk_get_physical_device_surface_present_modes_khr(this%physical_device, this%window_surface, present_mode_count, swapchain_support_details%present_modes%get(1_8)) /= VK_SUCCESS) then
+    if (vk_get_physical_device_surface_present_modes_khr(physical_device, this%window_surface, present_mode_count, swapchain_support_details%present_modes%get(1_8)) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to get avilable physical device surface present modes."
     end if
   end function vk_driver_query_swapchain_support
