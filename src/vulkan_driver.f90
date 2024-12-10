@@ -8,6 +8,7 @@ module vulkan_driver
   use :: vector_2f
   use :: integer32_set
   use :: vulkan_vertex
+  use :: vulkan_uniform_buffer
 
   ! !! THIS IS TEMPORARY
   ! use :: vulkan_vertex
