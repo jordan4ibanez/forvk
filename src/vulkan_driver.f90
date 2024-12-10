@@ -107,6 +107,7 @@ module vulkan_driver
     procedure :: create_descriptor_set_layout => vk_driver_create_descriptor_set_layout
     procedure :: create_graphics_pipeline => vk_driver_create_graphics_pipeline
     procedure :: create_framebuffers => vk_driver_create_framebuffers
+    procedure :: create_command_pool => vk_driver_create_command_pool
   end type vk_driver
 
 
@@ -177,9 +178,9 @@ contains
 
     call this%create_framebuffers()
 
-    ! call create_command_pool(physical_device, window_surface, logical_device, command_pool)
+    call this%create_command_pool()
 
-    ! call create_vertex_buffer(physical_device, logical_device, vertices, vertex_buffer, vertex_buffer_memory, command_pool, graphics_queue)
+    call create_vertex_buffer(physical_device, logical_device, vertices, vertex_buffer, vertex_buffer_memory, command_pool, graphics_queue)
 
     ! call create_index_buffer(physical_device, logical_device, indices, index_buffer, index_buffer_memory, command_pool, graphics_queue)
 
@@ -1771,5 +1772,25 @@ contains
       end if
     end do
   end subroutine vk_driver_create_framebuffers
+
+
+  subroutine vk_driver_create_command_pool(this)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+    type(forvulkan_queue_family_indices) :: queue_family_indices
+    type(vk_command_pool_create_info), target :: command_pool_create_info
+
+    queue_family_indices = this%find_queue_families(this%physical_device)
+
+    command_pool_create_info%s_type = VK_STRUCTURE_TYPE%COMMAND_POOL_CREATE_INFO
+    command_pool_create_info%flags = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT
+    command_pool_create_info%queue_family_index = queue_family_indices%graphics_family
+
+    if (vk_create_command_pool(this%logical_device, c_loc(command_pool_create_info), c_null_ptr, this%command_pool) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to create command pool."
+    end if
+  end subroutine vk_driver_create_command_pool
+
 
 end module vulkan_driver
