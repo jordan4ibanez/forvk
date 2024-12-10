@@ -950,7 +950,7 @@ contains
     call this%create_required_physical_device_extensions(required_device_extensions)
 
     ! Now, let us store the vector of available device extensions.
-    if (vk_enumerate_device_extension_properties(this%physical_device, c_null_ptr, extension_count, c_null_ptr) /= VK_SUCCESS) then
+    if (vk_enumerate_device_extension_properties(physical_device, c_null_ptr, extension_count, c_null_ptr) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to enumerate device extension properties."
     end if
 
@@ -960,7 +960,7 @@ contains
     deallocate(extension_properties)
 
     ! This is pointing the function straight into the internal C array of the vector.
-    if (vk_enumerate_device_extension_properties(this%physical_device, c_null_ptr, extension_count, available_extensions%get(1_8)) /= VK_SUCCESS) then
+    if (vk_enumerate_device_extension_properties(physical_device, c_null_ptr, extension_count, available_extensions%get(1_8)) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to enumerate device extension properties."
     end if
 
@@ -1011,7 +1011,7 @@ contains
     ! If it has no swapchain support, then we can't use this device.
     ! But we're only going to run this if the device passed all the other checks.
     if (has_support) then
-      has_support = this%query_swapchain_support(swapchain_support_details)
+      has_support = this%query_swapchain_support(physical_device, swapchain_support_details)
 
       call swapchain_support_details%formats%destroy()
       call swapchain_support_details%present_modes%destroy()
