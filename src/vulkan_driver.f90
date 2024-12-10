@@ -162,7 +162,7 @@ contains
 
     call this%create_swapchain()
 
-    ! call create_image_views(logical_device, swapchain_images, swapchain_image_views, swapchain_image_format)
+    call this%create_image_views()
 
     ! call create_render_pass(logical_device, render_pass, swapchain_image_format)
 
