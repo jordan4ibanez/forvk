@@ -1,7 +1,6 @@
 module vulkan_driver_recreate_swapchain
   use, intrinsic :: iso_c_binding
   use :: forvulkan
-  use :: vulkan_driver_create_image_views
   use :: vulkan_driver_create_framebuffers
   use :: vector
   implicit none
