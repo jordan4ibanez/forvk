@@ -2,7 +2,7 @@ module vulkan_driver_create_descriptor_sets
   use, intrinsic :: iso_c_binding
   use :: forvulkan
   use :: vector
-  use :: vulkan_driver_uniform_buffer
+  ! use :: vulkan_driver_uniform_buffer
   implicit none
 
 
