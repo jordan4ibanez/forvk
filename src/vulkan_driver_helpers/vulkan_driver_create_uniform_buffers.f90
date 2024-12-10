@@ -3,7 +3,6 @@ module vulkan_driver_create_uniform_buffers
   use :: forvulkan
   use :: vector
   use :: vulkan_driver_uniform_buffer
-  use :: vulkan_driver_create_buffer
   implicit none
 
 
