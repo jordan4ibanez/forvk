@@ -108,6 +108,7 @@ module vulkan_driver
     procedure :: create_graphics_pipeline => vk_driver_create_graphics_pipeline
     procedure :: create_framebuffers => vk_driver_create_framebuffers
     procedure :: create_command_pool => vk_driver_create_command_pool
+    procedure :: create_vertex_buffer => vk_driver_create_vertex_buffer
   end type vk_driver
 
 
@@ -138,17 +139,17 @@ contains
     class(vk_driver), intent(inout) :: this
     ! This will go out of scope at the end of the init.
     type(vk_debug_utils_messenger_ext) :: debug_messenger
-    ! type(vertex), dimension(4) :: vertices
-    ! integer(c_int32_t), dimension(6) :: indices
+    type(vertex), dimension(4) :: vertices
+    integer(c_int32_t), dimension(6) :: indices
 
-    ! vertices(1) = vertex(vec2f(-0.5, -0.5), vec3f(1.0, 0.0, 0.0))
-    ! vertices(2) = vertex(vec2f(0.5,  -0.5), vec3f(0.0, 1.0, 0.0))
-    ! vertices(3) = vertex(vec2f(0.5,   0.5), vec3f(0.0, 0.0, 1.0))
-    ! vertices(4) = vertex(vec2f(-0.5,  0.5), vec3f(1.0, 1.0, 1.0))
+    vertices(1) = vertex(vec2f(-0.5, -0.5), vec3f(1.0, 0.0, 0.0))
+    vertices(2) = vertex(vec2f(0.5,  -0.5), vec3f(0.0, 1.0, 0.0))
+    vertices(3) = vertex(vec2f(0.5,   0.5), vec3f(0.0, 0.0, 1.0))
+    vertices(4) = vertex(vec2f(-0.5,  0.5), vec3f(1.0, 1.0, 1.0))
 
-    ! indices = [0,1,2,2,3,0]
+    indices = [0,1,2,2,3,0]
 
-    ! indices_size = size(indices)
+    this%indices_size = size(indices)
 
     call this%create_glfw(800, 600)
 
@@ -180,7 +181,7 @@ contains
 
     call this%create_command_pool()
 
-    call create_vertex_buffer(physical_device, logical_device, vertices, vertex_buffer, vertex_buffer_memory, command_pool, graphics_queue)
+    call this%create_vertex_buffer(vertices)
 
     ! call create_index_buffer(physical_device, logical_device, indices, index_buffer, index_buffer_memory, command_pool, graphics_queue)
 
@@ -1792,5 +1793,44 @@ contains
     end if
   end subroutine vk_driver_create_command_pool
 
+
+  subroutine vk_driver_create_vertex_buffer(this, vertices)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+    type(vertex), dimension(:), intent(in) :: vertices
+    type(vk_device_size) :: buffer_size
+    ! void *
+    type(c_ptr) :: data
+    type(vk_buffer) :: staging_buffer
+    type(vk_device_memory) :: staging_buffer_memory
+
+    buffer_size%data = sizeof(vertices(1)) * size(vertices)
+
+    call create_buffer(this%physical_device, this%logical_device, buffer_size, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, ior(VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT, VK_MEMORY_PROPERTY_HOST_COHERENT_BIT), staging_buffer, staging_buffer_memory)
+    if (vk_map_memory(this%logical_device, staging_buffer_memory, vk_device_size(0_8), buffer_size, 0, data) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to map memory."
+    end if
+    call totally_not_memcpy_vertices(data, vertices)
+    call vk_unmap_memory(this%logical_device, staging_buffer_memory)
+
+    call create_buffer(this%physical_device, this%logical_device, buffer_size, ior(VK_BUFFER_USAGE_TRANSFER_DST_BIT, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT), VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, this%vertex_buffer, this%vertex_buffer_memory)
+    call copy_buffer(this%logical_device, staging_buffer, this%vertex_buffer, buffer_size, this%command_pool, this%graphics_queue)
+
+    call vk_destroy_buffer(this%logical_device, staging_buffer, c_null_ptr)
+    call vk_free_memory(this%logical_device, staging_buffer_memory, c_null_ptr)
+  end subroutine vk_driver_create_vertex_buffer
+
+
+  subroutine totally_not_memcpy_vertices(data, vertices)
+    implicit none
+
+    type(c_ptr), intent(in), value :: data
+    type(vertex), dimension(:), intent(in) :: vertices
+    type(vertex), dimension(:), pointer :: data_in_buffer
+
+    call c_f_pointer(data, data_in_buffer, [size(vertices)])
+    data_in_buffer = vertices
+  end subroutine totally_not_memcpy_vertices
 
 end module vulkan_driver
