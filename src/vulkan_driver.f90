@@ -101,6 +101,7 @@ module vulkan_driver
     procedure :: create_logical_device => vk_driver_create_logical_device
     procedure :: query_swapchain_support => vk_driver_query_swapchain_support
     procedure :: create_swapchain => vk_driver_create_swapchain
+    procedure :: create_image_views => vk_driver_create_image_views
   end type vk_driver
 
 
@@ -1445,5 +1446,49 @@ contains
       selected_image_count = capabilities%max_image_count
     end if
   end function select_image_count
+
+
+  subroutine vk_driver_create_image_views(this)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+    integer(c_int64_t) :: i
+    type(vk_image), pointer :: image_pointer
+    type(vk_image_view), pointer :: image_view_pointer
+    type(vk_image_view_create_info), target :: image_view_create_info
+
+    print*,  this%swapchain_images%size()
+
+    this%swapchain_image_views = new_vec(sizeof(0_8), 0_8)
+    call this%swapchain_image_views%resize(this%swapchain_images%size(), 0_8)
+
+    do i = 1,this%swapchain_images%size()
+      image_view_create_info%s_type = VK_STRUCTURE_TYPE%IMAGE%VIEW_CREATE_INFO
+
+      call c_f_pointer(this%swapchain_images%get(i), image_pointer)
+      image_view_create_info%image = image_pointer
+
+      image_view_create_info%view_type = VK_IMAGE_VIEW_TYPE_2D
+      image_view_create_info%format = this%swapchain_image_format
+
+      image_view_create_info%components%r = VK_COMPONENT_SWIZZLE_IDENTITY
+      image_view_create_info%components%g = VK_COMPONENT_SWIZZLE_IDENTITY
+      image_view_create_info%components%b = VK_COMPONENT_SWIZZLE_IDENTITY
+      image_view_create_info%components%a = VK_COMPONENT_SWIZZLE_IDENTITY
+
+      image_view_create_info%subresource_range%aspect_mask = VK_IMAGE_ASPECT_COLOR_BIT
+      image_view_create_info%subresource_range%base_mip_level = 0
+      image_view_create_info%subresource_range%level_count = 1
+      image_view_create_info%subresource_range%base_array_layer = 0
+      image_view_create_info%subresource_range%layer_count = 1
+
+      call c_f_pointer(this%swapchain_image_views%get(i), image_view_pointer)
+
+      if (vk_create_image_view(this%logical_device, c_loc(image_view_create_info), c_null_ptr, image_view_pointer) /= VK_SUCCESS) then
+        error stop "[Vulkan] Error: Failed to create image view. Index ["//int64_to_string(i)//"]"
+      end if
+    end do
+  end subroutine vk_driver_create_image_views
+
 
 end module vulkan_driver
