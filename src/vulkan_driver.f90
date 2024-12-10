@@ -103,6 +103,7 @@ module vulkan_driver
     procedure :: create_swapchain => vk_driver_create_swapchain
     procedure :: create_image_views => vk_driver_create_image_views
     procedure :: create_render_pass => vk_driver_create_render_pass
+    procedure :: create_descriptor_set_layout => vk_driver_create_descriptor_set_layout
   end type vk_driver
 
 
@@ -167,7 +168,7 @@ contains
 
     call this%create_render_pass()
 
-    ! call create_descriptor_set_layout(logical_device, descriptor_set_layout)
+    call this%create_descriptor_set_layout()
 
     ! call create_graphics_pipeline(logical_device, vertex_shader_module, fragment_shader_module, swapchain_extent, pipeline_layout, render_pass, graphics_pipeline, descriptor_set_layout)
 
@@ -1535,5 +1536,29 @@ contains
       error stop "[Vulkan] Error: Failed to create render pass."
     end if
   end subroutine vk_driver_create_render_pass
+
+
+  subroutine vk_driver_create_descriptor_set_layout(this)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+    type(vk_descriptor_set_layout_binding), target :: ubo_layout_binding
+    type(vk_descriptor_set_layout_create_info), target :: layout_info
+
+    ubo_layout_binding%binding = 0
+    ubo_layout_binding%descriptor_type = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER
+    ubo_layout_binding%descriptor_count = 1
+    ubo_layout_binding%stage_flags = VK_SHADER_STAGE_VERTEX_BIT
+    ubo_layout_binding%p_immutable_samplers = c_null_ptr
+
+    layout_info%s_type = VK_STRUCTURE_TYPE%DESCRIPTOR_SET_LAYOUT_CREATE_INFO
+    layout_info%binding_count = 1
+    layout_info%p_bindings = c_loc(ubo_layout_binding)
+
+    if (vk_create_descriptor_set_layout(this%logical_device, c_loc(layout_info), c_null_ptr, this%descriptor_set_layout) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to create descriptor set layout."
+    end if
+  end subroutine vk_driver_create_descriptor_set_layout
+
 
 end module vulkan_driver
