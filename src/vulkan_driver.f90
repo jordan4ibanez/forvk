@@ -1569,7 +1569,7 @@ contains
 
     ! TODO: Break this monstrosity up.
 
-    type(vk_driver), intent(inout), target :: this
+    class(vk_driver), intent(inout), target :: this
     type(vk_pipeline_shader_stage_create_info) :: vertex_shader_stage_info, fragment_shader_stage_info
     character(len = 5, kind = c_char), target :: vert_p_name, frag_p_name
     type(vk_pipeline_shader_stage_create_info), dimension(2), target :: shader_stages
@@ -1725,7 +1725,7 @@ contains
     graphics_pipeline_create_info%base_pipeline_handle%data = VK_NULL_HANDLE
     graphics_pipeline_create_info%base_pipeline_index = -1
 
-    if (vk_create_graphics_pipelines(this%logical_device, VK_NULL_HANDLE, 1, c_loc(graphics_pipeline_create_info), c_null_ptr, graphics_pipeline) /= VK_SUCCESS) then
+    if (vk_create_graphics_pipelines(this%logical_device, VK_NULL_HANDLE, 1, c_loc(graphics_pipeline_create_info), c_null_ptr, this%graphics_pipeline) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to create graphics pipelines."
     end if
 
