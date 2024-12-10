@@ -926,10 +926,11 @@ contains
   end function vk_driver_device_is_suitable
 
 
-  function vk_driver_check_device_extension_support(this) result(has_support)
+  function vk_driver_check_device_extension_support(this, physical_device) result(has_support)
     implicit none
 
     class(vk_driver), intent(inout) :: this
+    type(vk_physical_device), intent(in), value :: physical_device
     type(forvulkan_swapchain_support_details) :: swapchain_support_details
     logical(c_bool) :: has_support
     integer(c_int32_t) :: extension_count
