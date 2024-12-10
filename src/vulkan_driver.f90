@@ -77,7 +77,7 @@ module vulkan_driver
     type(vec) :: uniform_buffers_mapped
     logical(c_bool) :: framebuffer_resized = .false.
     ! Controls debugging output. ! todo: make this hidden with private
-    logical(c_bool) :: DEBUG_MODE = .true.
+    logical(c_bool) :: DEBUG_MODE = .false.
   contains
     procedure :: init => vk_driver_init
     !! fixme: this is temporary!
