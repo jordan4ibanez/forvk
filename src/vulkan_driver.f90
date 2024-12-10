@@ -110,6 +110,7 @@ module vulkan_driver
     procedure :: create_command_pool => vk_driver_create_command_pool
     procedure :: create_vertex_buffer => vk_driver_create_vertex_buffer
     procedure :: create_buffer => vk_driver_create_buffer
+    procedure :: find_memory_type => vk_driver_find_memory_type
   end type vk_driver
 
 
@@ -1874,6 +1875,30 @@ contains
       error stop "[Vulkan] Error: Failed to bind buffer memory."
     end if
   end subroutine vk_driver_create_buffer
+
+
+  function vk_driver_find_memory_type(this, type_filter, properties) result(t)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+    integer(c_int32_t), intent(in), value :: type_filter
+    integer(c_int32_t), intent(in), value :: properties
+    integer(c_int32_t) :: t
+    integer(c_int32_t) :: i
+    type(vk_physical_device_memory_properties), target :: mem_properties
+
+    call vk_get_physical_device_memory_properties(this%physical_device, c_loc(mem_properties))
+
+    do i = 0,mem_properties%memory_type_count - 1
+      if (iand(type_filter, shiftl(1, i)) /= 0 .and. iand(mem_properties%memory_types(i + 1)%property_flags, properties) == properties) then
+        t = i
+        return
+      end if
+    end do
+
+    error stop "[Vulkan] Error: Failed to find suitable memory type."
+  end function vk_driver_find_memory_type
+
 
 
 end module vulkan_driver
