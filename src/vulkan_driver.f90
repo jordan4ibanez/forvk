@@ -118,6 +118,7 @@ module vulkan_driver
     procedure :: create_descriptor_pool => vk_driver_create_descriptor_pool
     procedure :: create_descriptor_sets => vk_driver_create_descriptor_sets
     procedure :: create_command_buffers => vk_driver_create_command_buffers
+    procedure :: create_sync_objects => vk_driver_create_sync_objects
   end type vk_driver
 
 
@@ -202,7 +203,7 @@ contains
 
     call this%create_command_buffers()
 
-    ! call create_sync_objects(logical_device, MAX_FRAMES_IN_FLIGHT, image_available_semaphores, render_finished_semaphores, in_flight_fences)
+    call this%create_sync_objects()
   end subroutine vk_driver_init
 
 
@@ -2132,6 +2133,49 @@ contains
       error stop "[Vulkan] Error: Failed to allocate command buffers."
     end if
   end subroutine vk_driver_create_command_buffers
+
+
+  subroutine vk_driver_create_sync_objects(this)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+    type(vk_semaphore_create_info), target :: semaphore_create_info
+    type(vk_fence_create_info), target :: fence_create_info
+    integer(c_int64_t) :: i
+    type(vk_semaphore), pointer :: semaphore_pointer
+    type(vk_fence), pointer :: fence_pointer
+
+    this%image_available_semaphores = new_vec(sizeof(VK_NULL_HANDLE), this%MAX_FRAMES_IN_FLIGHT)
+    call this%image_available_semaphores%resize(this%MAX_FRAMES_IN_FLIGHT, VK_NULL_HANDLE)
+
+    this%render_finished_semaphores = new_vec(sizeof(VK_NULL_HANDLE), this%MAX_FRAMES_IN_FLIGHT)
+    call this%render_finished_semaphores%resize(this%MAX_FRAMES_IN_FLIGHT, VK_NULL_HANDLE)
+
+    this%in_flight_fences = new_vec(sizeof(VK_NULL_HANDLE), this%MAX_FRAMES_IN_FLIGHT)
+    call this%in_flight_fences%resize(this%MAX_FRAMES_IN_FLIGHT, VK_NULL_HANDLE)
+
+    semaphore_create_info%s_type = VK_STRUCTURE_TYPE%SEMAPHORE_CREATE_INFO
+
+    fence_create_info%s_type = VK_STRUCTURE_TYPE%FENCE_CREATE_INFO
+    fence_create_info%flags = VK_FENCE_CREATE_SIGNALED_BIT
+
+    do i = 1,this%MAX_FRAMES_IN_FLIGHT
+      call c_f_pointer(this%image_available_semaphores%get(i), semaphore_pointer)
+      if (vk_create_semaphore(this%logical_device, c_loc(semaphore_create_info), c_null_ptr, semaphore_pointer) /= VK_SUCCESS) then
+        error stop "[Vulkan] Error: Failed to create image available semaphore"
+      end if
+
+      call c_f_pointer(this%render_finished_semaphores%get(i), semaphore_pointer)
+      if (vk_create_semaphore(this%logical_device, c_loc(semaphore_create_info), c_null_ptr, semaphore_pointer) /= VK_SUCCESS) then
+        error stop "[Vulkan] Error: Failed to create render finished semaphore"
+      end if
+
+      call c_f_pointer(this%in_flight_fences%get(i), fence_pointer)
+      if (vk_create_fence(this%logical_device, c_loc(fence_create_info), c_null_ptr, fence_pointer) /= VK_SUCCESS) then
+        error stop "[Vulkan] Error: Failed to create in flight fence"
+      end if
+    end do
+  end subroutine vk_driver_create_sync_objects
 
 
 end module vulkan_driver
