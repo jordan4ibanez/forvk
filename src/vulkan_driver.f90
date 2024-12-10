@@ -1468,8 +1468,6 @@ contains
     type(vk_image_view), pointer :: image_view_pointer
     type(vk_image_view_create_info), target :: image_view_create_info
 
-    print*,  this%swapchain_images%size()
-
     this%swapchain_image_views = new_vec(sizeof(0_8), 0_8)
     call this%swapchain_image_views%resize(this%swapchain_images%size(), 0_8)
 
