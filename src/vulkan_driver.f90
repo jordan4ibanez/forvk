@@ -1270,8 +1270,6 @@ contains
     implicit none
 
     class(vk_driver), intent(inout) :: this
-    ! Vk Image vector
-    type(vec) :: swapchain_images
     type(forvulkan_swapchain_support_details), target :: swapchain_support_details
     type(vk_surface_format_khr) :: selected_surface_format
     ! VkPresentModeKHR
@@ -1330,10 +1328,10 @@ contains
       error stop "[Vulkan] Error: Failed to get swapchain images."
     end if
 
-    swapchain_images = new_vec(sizeof(0_8), 0_8)
-    call swapchain_images%resize(int(swappchain_image_count, c_int64_t), 0_8)
+    this%swapchain_images = new_vec(sizeof(0_8), 0_8)
+    call this%swapchain_images%resize(int(swappchain_image_count, c_int64_t), 0_8)
 
-    if (vk_get_swapchain_images_khr(this%logical_device, this%swapchain, swappchain_image_count, swapchain_images%get(1_8)) /= VK_SUCCESS) then
+    if (vk_get_swapchain_images_khr(this%logical_device, this%swapchain, swappchain_image_count, this%swapchain_images%get(1_8)) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to get swapchain images."
     end if
 
