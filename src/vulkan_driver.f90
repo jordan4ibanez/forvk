@@ -115,6 +115,7 @@ module vulkan_driver
     procedure :: copy_buffer => vk_driver_copy_buffer
     procedure :: create_index_buffer => vk_driver_create_index_buffer
     procedure :: create_uniform_buffers => vk_driver_create_uniform_buffers
+    procedure :: create_descriptor_pool => vk_driver_create_descriptor_pool
   end type vk_driver
 
 
@@ -193,7 +194,7 @@ contains
 
     call this%create_uniform_buffers()
 
-    ! call create_descriptor_pool(logical_device, descriptor_pool, MAX_FRAMES_IN_FLIGHT)
+    call this%create_descriptor_pool()
 
     ! call create_descriptor_sets(logical_device, descriptor_sets, descriptor_set_layout, descriptor_pool, MAX_FRAMES_IN_FLIGHT, uniform_buffers)
 
@@ -2034,5 +2035,25 @@ contains
     end do
   end subroutine vk_driver_create_uniform_buffers
 
+
+  subroutine vk_driver_create_descriptor_pool(this)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+    type(vk_descriptor_pool_size), target :: pool_size
+    type(vk_descriptor_pool_create_info), target :: pool_info
+
+    pool_size%type = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER
+    pool_size%descriptor_count = int(this%MAX_FRAMES_IN_FLIGHT)
+
+    pool_info%s_type = VK_STRUCTURE_TYPE%DESCRIPTOR_POOL_CREATE_INFO
+    pool_info%pool_size_count = 1
+    pool_info%p_pool_sizes = c_loc(pool_size)
+    pool_info%max_sets = int(this%MAX_FRAMES_IN_FLIGHT)
+
+    if (vk_create_descriptor_pool(this%logical_device, c_loc(pool_info), c_null_ptr, this%descriptor_pool) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to create descriptor pool."
+    end if
+  end subroutine vk_driver_create_descriptor_pool
 
 end module vulkan_driver
