@@ -2179,41 +2179,6 @@ contains
     implicit none
 
     class(vk_driver), intent(inout) :: this
-    type(vk_device), intent(in), value :: logical_device
-    integer(c_int64_t), intent(inout) :: current_frame
-    integer(c_int64_t), intent(in), value :: MAX_FRAMES_IN_FLIGHT
-    ! Vk Fence Vector
-    type(vec), intent(inout) :: in_flight_fences
-    ! Vk Semaphore Vector
-    type(vec), intent(inout) :: image_available_semaphores
-    ! Vk Semaphore Vector
-    type(vec), intent(inout) :: render_finished_semaphores
-    type(vk_swapchain_khr), intent(inout) :: swapchain
-    ! Vk CommandBuffer Vector
-    type(vec), intent(inout) :: command_buffers
-    type(vk_render_pass), intent(in), value :: render_pass
-    ! Vk Framebuffer Vector
-    type(vec), intent(inout) :: swapchain_framebuffers
-    type(vk_extent_2d), intent(inout) :: swapchain_extent
-    type(vk_pipeline), intent(in), value :: graphics_pipeline
-    type(vk_queue), intent(in), value :: graphics_queue
-    type(vk_queue), intent(in), value, target :: present_queue
-    type(vk_physical_device), intent(in), value :: physical_device
-    type(vk_surface_khr), intent(inout) :: window_surface
-    ! Vk Image Vector
-    type(vec), intent(inout) :: swapchain_images
-    type(vk_format), intent(inout) :: swapchain_image_format
-    ! Vk ImageView Vector
-    type(vec), intent(inout) :: swapchain_image_views
-    logical(c_bool), intent(inout) :: framebuffer_resized
-    type(vk_buffer), intent(in), value :: vertex_buffer
-    type(vk_buffer), intent(in), value :: index_buffer
-    integer(c_int32_t), intent(in), value :: indices_size
-    ! void * Vector (Vector of raw pointers to [currently] uniform_buffer_object)
-    type(vec), intent(inout) :: uniform_buffers_mapped
-    ! Vk DescriptorSet Vector
-    type(vec), intent(inout) :: descriptor_sets
-    type(vk_pipeline_layout), intent(in), value :: pipeline_layout
     ! uint32_t
     integer(c_int32_t), target :: image_index
     type(vk_submit_info), target :: submit_info
