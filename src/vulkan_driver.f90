@@ -114,6 +114,7 @@ module vulkan_driver
     procedure :: find_memory_type => vk_driver_find_memory_type
     procedure :: copy_buffer => vk_driver_copy_buffer
     procedure :: create_index_buffer => vk_driver_create_index_buffer
+    procedure :: create_uniform_buffers => vk_driver_create_uniform_buffers
   end type vk_driver
 
 
@@ -190,7 +191,7 @@ contains
 
     call this%create_index_buffer(indices)
 
-    ! call create_uniform_buffers(physical_device, logical_device, MAX_FRAMES_IN_FLIGHT, uniform_buffers, uniform_buffers_memory, uniform_buffers_mapped)
+    call this%create_uniform_buffers()
 
     ! call create_descriptor_pool(logical_device, descriptor_pool, MAX_FRAMES_IN_FLIGHT)
 
@@ -1995,6 +1996,43 @@ contains
     call c_f_pointer(data, data_in_buffer, [size(indices)])
     data_in_buffer = indices
   end subroutine totally_not_memcpy_indices
+
+
+  subroutine vk_driver_create_uniform_buffers(this)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+    integer(c_int64_t) :: i
+    type(vk_device_size) :: buffer_size
+    type(vk_buffer), pointer :: buffer_pointer
+    type(vk_device_memory), pointer :: buffer_memory_pointer
+    type(c_ptr) :: mapped_buffer_ptr
+
+    buffer_size = vk_device_size(sizeof(uniform_buffer_object()))
+
+    this%uniform_buffers = new_vec(sizeof(vk_buffer()), this%MAX_FRAMES_IN_FLIGHT)
+    call this%uniform_buffers%resize(this%MAX_FRAMES_IN_FLIGHT, vk_buffer())
+
+    this%uniform_buffers_memory = new_vec(sizeof(vk_device_memory()), this%MAX_FRAMES_IN_FLIGHT)
+    call this%uniform_buffers_memory%resize(this%MAX_FRAMES_IN_FLIGHT, vk_device_memory())
+
+    this%uniform_buffers_mapped = new_vec(buffer_size%data, this%MAX_FRAMES_IN_FLIGHT)
+    call this%uniform_buffers_mapped%resize(this%MAX_FRAMES_IN_FLIGHT, c_null_ptr)
+
+    do i = 1,this%MAX_FRAMES_IN_FLIGHT
+
+      call c_f_pointer(this%uniform_buffers%get(i), buffer_pointer)
+      call c_f_pointer(this%uniform_buffers_memory%get(i), buffer_memory_pointer)
+
+      call this%create_buffer(buffer_size, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, ior(VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT, VK_MEMORY_PROPERTY_HOST_COHERENT_BIT), buffer_pointer, buffer_memory_pointer)
+
+      if (vk_map_memory(this%logical_device, buffer_memory_pointer, vk_device_size(0_8), buffer_size, 0, mapped_buffer_ptr) /= VK_SUCCESS) then
+        error stop "[Vulkan] Error: Failed to map uniform buffer memory."
+      end if
+      ! We got the mapped buffer memory location, set it in the vector. This is an awkard way to do this but my brain is too fried to think about a better way.
+      call this%uniform_buffers_mapped%set(i, mapped_buffer_ptr)
+    end do
+  end subroutine vk_driver_create_uniform_buffers
 
 
 end module vulkan_driver
