@@ -1284,7 +1284,7 @@ contains
 
     print"(A)","[Vulkan]: Creating swapchain."
 
-    if (.not. query_swapchain_support(physical_device, window_surface, swapchain_support_details)) then
+    if (.not. this%query_swapchain_support(this%physical_device, swapchain_support_details)) then
       error stop "[Vulkan] Severe Error: This physical device was already tested to have swapchain support, suddenly it does not."
     end if
 
@@ -1294,7 +1294,7 @@ contains
     selected_image_count = select_image_count(swapchain_support_details%capabilities)
 
     create_info%s_type = VK_STRUCTURE_TYPE%SWAPCHAIN_CREATE_INFO_KHR
-    create_info%surface = window_surface
+    create_info%surface = this%window_surface
     create_info%min_image_count = selected_image_count
     create_info%image_format = selected_surface_format%format
     create_info%image_color_space = selected_surface_format%color_space
@@ -1302,7 +1302,7 @@ contains
     create_info%image_array_layers = 1
     create_info%image_usage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
 
-    queue_family_indices = find_queue_families(physical_device, window_surface)
+    queue_family_indices = this%find_queue_families(this%physical_device)
 
     if (queue_family_indices%graphics_family /= queue_family_indices%present_family) then
       queue_indices_array = [queue_family_indices%graphics_family, queue_family_indices%present_family]
@@ -1320,25 +1320,25 @@ contains
     create_info%present_mode = selected_present_mode
     create_info%old_swapchain%data = VK_NULL_HANDLE
 
-    if (vk_create_swapchain_khr(logical_device, c_loc(create_info), c_null_ptr, swapchain) /= VK_SUCCESS) then
+    if (vk_create_swapchain_khr(this%logical_device, c_loc(create_info), c_null_ptr, this%swapchain) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to create the swapchain."
     end if
 
     ! Now, we shall create the swapchain images.
-    if (vk_get_swapchain_images_khr(logical_device, swapchain, swappchain_image_count, c_null_ptr) /= VK_SUCCESS) then
+    if (vk_get_swapchain_images_khr(this%logical_device, this%swapchain, swappchain_image_count, c_null_ptr) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to get swapchain images."
     end if
 
     swapchain_images = new_vec(sizeof(0_8), 0_8)
     call swapchain_images%resize(int(swappchain_image_count, c_int64_t), 0_8)
 
-    if (vk_get_swapchain_images_khr(logical_device, swapchain, swappchain_image_count, swapchain_images%get(1_8)) /= VK_SUCCESS) then
+    if (vk_get_swapchain_images_khr(this%logical_device, this%swapchain, swappchain_image_count, swapchain_images%get(1_8)) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to get swapchain images."
     end if
 
     ! Finally, set the module variables so we can reuse them.
-    swapchain_image_format%data = selected_surface_format%format
-    swapchain_extent = selected_extent
+    this%swapchain_image_format%data = selected_surface_format%format
+    this%swapchain_extent = selected_extent
 
     call swapchain_support_details%formats%destroy()
     call swapchain_support_details%present_modes%destroy()
