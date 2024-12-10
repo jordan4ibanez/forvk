@@ -100,6 +100,7 @@ module vulkan_driver
     procedure :: find_queue_families => vk_driver_find_queue_families
     procedure :: create_logical_device => vk_driver_create_logical_device
     procedure :: query_swapchain_support => vk_driver_query_swapchain_support
+    procedure :: create_swapchain => vk_driver_create_swapchain
   end type vk_driver
 
 
@@ -1262,7 +1263,7 @@ contains
 
 
 
-  subroutine create_swapchain(physical_device, logical_device, window_surface, swapchain, swapchain_images, swapchain_image_format, swapchain_extent)
+  subroutine vk_driver_create_swapchain(physical_device, logical_device, window_surface, swapchain, swapchain_images, swapchain_image_format, swapchain_extent)
     implicit none
 
     type(vk_physical_device), intent(in), value :: physical_device
@@ -1344,7 +1345,7 @@ contains
 
     call swapchain_support_details%formats%destroy()
     call swapchain_support_details%present_modes%destroy()
-  end subroutine create_swapchain
+  end subroutine vk_driver_create_swapchain
 
 
   function select_swap_surface_format(available_formats) result(selected_surface_format)
