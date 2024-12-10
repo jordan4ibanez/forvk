@@ -159,7 +159,7 @@ contains
 
     call this%create_logical_device()
 
-    call this%create_swapchain(physical_device, logical_device, window_surface, swapchain, swapchain_images, swapchain_image_format, swapchain_extent)
+    call this%create_swapchain()
 
     ! call create_image_views(logical_device, swapchain_images, swapchain_image_views, swapchain_image_format)
 
