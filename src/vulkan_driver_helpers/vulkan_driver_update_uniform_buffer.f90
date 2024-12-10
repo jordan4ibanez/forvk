@@ -2,7 +2,7 @@ module vulkan_driver_update_uniform_buffer
   use, intrinsic :: iso_c_binding
   use :: forvulkan
   use :: matrix_4f
-  use :: vulkan_driver_uniform_buffer
+  ! use :: vulkan_driver_uniform_buffer
   use :: math_helpers
   implicit none
 
