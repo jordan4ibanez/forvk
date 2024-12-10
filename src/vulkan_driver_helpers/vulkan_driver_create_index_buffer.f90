@@ -1,6 +1,5 @@
 module vulkan_driver_create_index_buffer
   use, intrinsic :: iso_c_binding
-  use :: vulkan_driver_create_buffer
   use :: vulkan_driver_copy_buffer
   use :: forvulkan
   implicit none
