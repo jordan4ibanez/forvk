@@ -148,8 +148,6 @@ contains
     implicit none
 
     class(vk_driver), intent(inout) :: this
-    ! This will go out of scope at the end of the init.
-    type(vk_debug_utils_messenger_ext) :: debug_messenger
     type(vertex), dimension(4) :: vertices
     integer(c_int32_t), dimension(6) :: indices
 
@@ -170,7 +168,7 @@ contains
 
     call this%create_vulkan_instance()
 
-    call this%setup_debug_messenger(debug_messenger)
+    call this%setup_debug_messenger()
 
     call this%create_surface()
 
