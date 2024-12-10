@@ -786,11 +786,10 @@ contains
   end subroutine vk_driver_ensure_validation_layer_support
 
 
-  subroutine vk_driver_setup_debug_messenger(this, debug_messenger)
+  subroutine vk_driver_setup_debug_messenger(this)
     implicit none
 
     class(vk_driver), intent(inout) :: this
-    type(vk_debug_utils_messenger_ext), intent(inout) :: debug_messenger
     type(vk_debug_utils_messenger_create_info_ext), target :: debug_messenger_create_info
 
     ! Don't need this if we're not in debug mode.
@@ -802,7 +801,7 @@ contains
 
     call this%create_debug_messenger_struct(debug_messenger_create_info)
 
-    if (forvulkan_create_debug_utils_messenger_ext(this%vulkan_instance, c_loc(debug_messenger_create_info), c_null_ptr, debug_messenger) /= VK_SUCCESS) then
+    if (forvulkan_create_debug_utils_messenger_ext(this%vulkan_instance, c_loc(debug_messenger_create_info), c_null_ptr, this%debug_messenger) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to set up debug messenger."
     end if
   end subroutine vk_driver_setup_debug_messenger
