@@ -218,20 +218,20 @@ contains
 
     ! a = 0
 
-    ! do while(.not. glfw_window_should_close())
-    !   call glfw_poll_events()
-    !   call draw_frame(logical_device, current_frame, MAX_FRAMES_IN_FLIGHT, in_flight_fences, image_available_semaphores, render_finished_semaphores, swapchain, command_buffers, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue, physical_device, window_surface, swapchain_images, swapchain_image_format, swapchain_image_views, framebuffer_resized, vertex_buffer, index_buffer, indices_size, uniform_buffers_mapped, descriptor_sets, pipeline_layout)
+    do while(.not. glfw_window_should_close())
+      call glfw_poll_events()
+      !   call draw_frame(logical_device, current_frame, MAX_FRAMES_IN_FLIGHT, in_flight_fences, image_available_semaphores, render_finished_semaphores, swapchain, command_buffers, render_pass, swapchain_framebuffers, swapchain_extent, graphics_pipeline, graphics_queue, present_queue, physical_device, window_surface, swapchain_images, swapchain_image_format, swapchain_image_views, framebuffer_resized, vertex_buffer, index_buffer, indices_size, uniform_buffers_mapped, descriptor_sets, pipeline_layout)
 
-    !   if (a >= 100) then
-    !     ! call glfw_close_window()
-    !   end if
+      !   if (a >= 100) then
+      !     ! call glfw_close_window()
+      !   end if
 
-    !   a = a + 1
-    ! end do
+      !   a = a + 1
+    end do
 
-    ! if (vk_device_wait_idle(logical_device) /= VK_SUCCESS) then
-    !   error stop "[Vulkan] Error: Failed to wait idle on logical device."
-    ! end if
+    if (vk_device_wait_idle(this%logical_device) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to wait idle on logical device."
+    end if
   end subroutine vk_driver_main_loop
 
 
