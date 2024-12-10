@@ -82,6 +82,7 @@ module vulkan_driver
     procedure :: init => vk_driver_init
     !! fixme: this is temporary!
     procedure :: main => vk_driver_main_loop
+    !! fixme: end temporary!
     procedure :: create_glfw => vk_driver_create_glfw
     procedure :: destroy => vk_driver_destroy
     procedure :: ensure_extensions_present => vk_driver_ensure_extensions_present
