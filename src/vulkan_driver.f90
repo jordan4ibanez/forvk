@@ -1265,17 +1265,12 @@ contains
 
 
 
-  subroutine vk_driver_create_swapchain(physical_device, logical_device, window_surface, swapchain, swapchain_images, swapchain_image_format, swapchain_extent)
+  subroutine vk_driver_create_swapchain(this)
     implicit none
 
-    type(vk_physical_device), intent(in), value :: physical_device
-    type(vk_device), intent(in), value :: logical_device
-    type(vk_surface_khr), intent(in), value :: window_surface
-    type(vk_swapchain_khr), intent(inout) :: swapchain
+    class(vk_driver), intent(inout) :: this
     ! Vk Image vector
     type(vec) :: swapchain_images
-    type(vk_format), intent(inout) :: swapchain_image_format
-    type(vk_extent_2d), intent(inout) :: swapchain_extent
     type(forvulkan_swapchain_support_details), target :: swapchain_support_details
     type(vk_surface_format_khr) :: selected_surface_format
     ! VkPresentModeKHR
