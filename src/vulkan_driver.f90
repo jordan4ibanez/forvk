@@ -7,6 +7,7 @@ module vulkan_driver
   use :: vector_3f
   use :: vector_2f
   use :: integer32_set
+  use :: vulkan_vertex
 
   ! !! THIS IS TEMPORARY
   ! use :: vulkan_vertex
