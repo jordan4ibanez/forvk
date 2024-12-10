@@ -120,6 +120,7 @@ module vulkan_driver
     procedure :: create_descriptor_sets => vk_driver_create_descriptor_sets
     procedure :: create_command_buffers => vk_driver_create_command_buffers
     procedure :: create_sync_objects => vk_driver_create_sync_objects
+    procedure :: draw_frame => vk_driver_draw_frame
   end type vk_driver
 
 
@@ -2175,7 +2176,8 @@ contains
 
   !* Implementation note: indices_size needs to be baked into the hashmap.
   !* It is currently a hackjob.
-  subroutine draw_frame(this)
+  !! TODO: break this up into [start | do things | submit ]
+  subroutine vk_driver_draw_frame(this)
     implicit none
 
     class(vk_driver), intent(inout) :: this
@@ -2280,6 +2282,6 @@ contains
 
     ! Tick and cycle frames.
     this%current_frame = mod(this%current_frame, this%MAX_FRAMES_IN_FLIGHT) + 1
-  end subroutine draw_frame
+  end subroutine vk_driver_draw_frame
 
 end module vulkan_driver
