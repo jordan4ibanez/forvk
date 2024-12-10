@@ -117,6 +117,7 @@ module vulkan_driver
     procedure :: create_uniform_buffers => vk_driver_create_uniform_buffers
     procedure :: create_descriptor_pool => vk_driver_create_descriptor_pool
     procedure :: create_descriptor_sets => vk_driver_create_descriptor_sets
+    procedure :: create_command_buffers => vk_driver_create_command_buffers
   end type vk_driver
 
 
@@ -199,7 +200,7 @@ contains
 
     call this%create_descriptor_sets()
 
-    ! call create_command_buffers(logical_device, MAX_FRAMES_IN_FLIGHT, command_pool, command_buffers)
+    call this%create_command_buffers()
 
     ! call create_sync_objects(logical_device, MAX_FRAMES_IN_FLIGHT, image_available_semaphores, render_finished_semaphores, in_flight_fences)
   end subroutine vk_driver_init
@@ -2111,6 +2112,26 @@ contains
       call vk_update_descriptor_sets(this%logical_device, 1, c_loc(descriptor_write), 0, c_null_ptr)
     end do
   end subroutine vk_driver_create_descriptor_sets
+
+
+  subroutine vk_driver_create_command_buffers(this)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+    type(vk_command_buffer_allocate_info), target :: allocate_info
+
+    this%command_buffers = new_vec(sizeof(VK_NULL_HANDLE), this%MAX_FRAMES_IN_FLIGHT)
+    call this%command_buffers%resize(this%MAX_FRAMES_IN_FLIGHT, VK_NULL_HANDLE)
+
+    allocate_info%s_type = VK_STRUCTURE_TYPE%COMMAND_BUFFER_ALLOCATE_INFO
+    allocate_info%command_pool = this%command_pool
+    allocate_info%level = VK_COMMAND_BUFFER_LEVEL_PRIMARY
+    allocate_info%command_buffer_count = int(this%MAX_FRAMES_IN_FLIGHT, c_int32_t)
+
+    if (vk_allocate_command_buffers(this%logical_device, c_loc(allocate_info), this%command_buffers%get(1_8)) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to allocate command buffers."
+    end if
+  end subroutine vk_driver_create_command_buffers
 
 
 end module vulkan_driver
