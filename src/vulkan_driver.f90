@@ -99,7 +99,7 @@ module vulkan_driver
     procedure :: select_physical_device => vk_driver_select_physical_device
     procedure :: device_is_suitable => vk_driver_device_is_suitable
     procedure :: check_device_extension_support => vk_driver_check_device_extension_support
-    procedure :: create_required_physical_device_extensions => vk_driver_create_required_physical_device_extensions
+    procedure, nopass :: create_required_physical_device_extensions => vk_driver_create_required_physical_device_extensions
     procedure :: find_queue_families => vk_driver_find_queue_families
     procedure :: create_logical_device => vk_driver_create_logical_device
     procedure :: query_swapchain_support => vk_driver_query_swapchain_support
@@ -1044,10 +1044,9 @@ contains
   ! We use this to check the physical device has everything.
   ! Then we enable it in the logical device.
   ! This allows for it to be passed around by using this one function
-  subroutine vk_driver_create_required_physical_device_extensions(this, required_device_extensions)
+  subroutine vk_driver_create_required_physical_device_extensions(required_device_extensions)
     implicit none
 
-    class(vk_driver), intent(inout) :: this
     ! character **
     type(vec), intent(inout) :: required_device_extensions
     character(len = :, kind = c_char), pointer :: required_extension
