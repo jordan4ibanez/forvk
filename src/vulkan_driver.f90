@@ -1192,10 +1192,11 @@ contains
   end subroutine vk_driver_create_logical_device
 
 
-  function vk_driver_query_swapchain_support(this, swapchain_support_details) result(has_swapchain_support)
+  function vk_driver_query_swapchain_support(this, physical_device, swapchain_support_details) result(has_swapchain_support)
     implicit none
 
-    class(vk_driver), intent(inout) :: this
+    class(vk_driver), intent(inout), target :: this
+    type(vk_physical_device), intent(in), value :: physical_device
     logical(c_bool) :: has_swapchain_support
     type(forvulkan_swapchain_support_details), intent(inout), target :: swapchain_support_details
     integer(c_int32_t) :: format_count, present_mode_count
