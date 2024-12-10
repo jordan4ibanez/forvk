@@ -915,7 +915,7 @@ contains
       suitable = .false.
     end if
 
-    if (.not. this%check_device_extension_support()) then
+    if (.not. this%check_device_extension_support(physical_device_pointer)) then
       !! FIXME: this needs to list which extension!
       print"(A)", "[Vulkan]: Device is missing extension support."
       suitable = .false.
