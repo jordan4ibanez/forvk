@@ -535,14 +535,13 @@ contains
   end subroutine vk_driver_create_vulkan_instance
 
 
-  subroutine vk_driver_create_vulkan_instance_create_info(this, vulkan_create_info, app_info, before_init_messenger_create_info, DEBUG_MODE, required_extensions, required_validation_layers)
+  subroutine vk_driver_create_vulkan_instance_create_info(this, vulkan_create_info, app_info, before_init_messenger_create_info, required_extensions, required_validation_layers)
     implicit none
 
     class(vk_driver), intent(inout) :: this
     type(vk_instance_create_info), intent(inout) :: vulkan_create_info
     type(vk_application_info), intent(in), target :: app_info
     type(vk_debug_utils_messenger_create_info_ext), intent(inout), target :: before_init_messenger_create_info
-    logical(c_bool), intent(in), value :: DEBUG_MODE
     type(vec), intent(inout) :: required_extensions
     type(vec), intent(inout) :: required_validation_layers
 
@@ -560,7 +559,7 @@ contains
     !? Note: This basically turns the vector into a pointer array.
     vulkan_create_info%pp_enabled_extension_names = required_extensions%get(1_8)
 
-    if (DEBUG_MODE) then
+    if (this%DEBUG_MODE) then
       ! Passing the underlying char** array in.
       vulkan_create_info%enabled_layer_count = int(required_validation_layers%size())
       vulkan_create_info%pp_enabled_layer_names = required_validation_layers%get(1_8)
