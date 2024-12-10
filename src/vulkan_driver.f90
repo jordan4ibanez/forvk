@@ -106,6 +106,7 @@ module vulkan_driver
     procedure :: create_render_pass => vk_driver_create_render_pass
     procedure :: create_descriptor_set_layout => vk_driver_create_descriptor_set_layout
     procedure :: create_graphics_pipeline => vk_driver_create_graphics_pipeline
+    procedure :: create_framebuffers => vk_driver_create_framebuffers
   end type vk_driver
 
 
@@ -174,7 +175,7 @@ contains
 
     call this%create_graphics_pipeline()
 
-    ! call create_framebuffers(logical_device, swapchain_framebuffers, swapchain_image_views, render_pass, swapchain_extent)
+    call this%create_framebuffers()
 
     ! call create_command_pool(physical_device, window_surface, logical_device, command_pool)
 
@@ -1734,5 +1735,41 @@ contains
     call vk_destroy_shader_module(this%logical_device, this%vertex_shader_module, c_null_ptr)
   end subroutine vk_driver_create_graphics_pipeline
 
+
+  subroutine vk_driver_create_framebuffers(this)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+    integer(c_int64_t) :: i
+    type(vk_image_view), dimension(1), target :: attachments
+    type(vk_image_view), pointer :: image_view
+    type(vk_framebuffer), pointer :: framebuffer_pointer
+    type(vk_framebuffer_create_info), target :: frame_buffer_create_info
+
+    this%swapchain_framebuffers = new_vec(sizeof(0_8), this%swapchain_image_views%size())
+    call this%swapchain_framebuffers%resize(this%swapchain_image_views%size(), 0_8)
+
+    do i = 1,this%swapchain_framebuffers%size()
+
+      call c_f_pointer(this%swapchain_image_views%get(i), image_view)
+
+      attachments(1) = image_view
+
+      frame_buffer_create_info%s_type = VK_STRUCTURE_TYPE%FRAMEBUFFER_CREATE_INFO
+      frame_buffer_create_info%render_pass = this%render_pass
+      frame_buffer_create_info%attachment_count = 1
+      frame_buffer_create_info%p_attachments = c_loc(attachments)
+      frame_buffer_create_info%width = this%swapchain_extent%width
+      frame_buffer_create_info%height = this%swapchain_extent%height
+      frame_buffer_create_info%layers = 1
+
+      ! We're pointing this into the array from the driver.
+      call c_f_pointer(this%swapchain_framebuffers%get(i), framebuffer_pointer)
+
+      if (vk_create_framebuffer(this%logical_device, c_loc(frame_buffer_create_info), c_null_ptr, framebuffer_pointer) /= VK_SUCCESS) then
+        error stop "[Vulkan] Error: Failed to create framebuffer."
+      end if
+    end do
+  end subroutine vk_driver_create_framebuffers
 
 end module vulkan_driver
