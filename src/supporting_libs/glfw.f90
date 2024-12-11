@@ -75,6 +75,7 @@ module glfw
   public :: glfw_set_content_scale_callback
   public :: glfw_set_framebuffer_size_callback
   public :: glfw_wait_events
+  public :: glfw_get_key
 
 
   public :: glfw_image
