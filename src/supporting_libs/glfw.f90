@@ -591,6 +591,17 @@ module glfw
     end subroutine glfw_wait_events
 
 
+    function internal_glfw_get_key(window, key) result(state) bind(c, name = "glfwGetKey")
+      use, intrinsic :: iso_c_binding
+      implicit none
+
+      ! GLFWwindow *
+      type(c_ptr), intent(in), value :: window
+      integer(c_int32_t), intent(in), value :: key
+      integer(c_int32_t) :: state
+    end function internal_glfw_get_key
+
+
   end interface
 
 
