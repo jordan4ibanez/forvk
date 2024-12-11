@@ -1079,6 +1079,21 @@ module forvulkan
     end subroutine vk_cmd_bind_descriptor_sets
 
 
+    function vk_create_image(logical_device, p_create_info, p_allocator, p_image) result(vk_result) bind(c, name = "vkCreateImage")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_device), intent(in), value :: logical_device
+      ! const VkImageCreateInfo *
+      type(c_ptr), intent(in), value :: p_create_info
+      ! const VkAllocationCallbacks *
+      type(c_ptr), intent(in), value :: p_allocator
+      type(vk_image), intent(inout) :: p_image
+      integer(c_int32_t) :: vk_result
+    end function vk_create_image
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
