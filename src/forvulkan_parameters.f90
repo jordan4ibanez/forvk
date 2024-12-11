@@ -4658,4 +4658,13 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_IMAGE_TYPE_3D = 2
 
 
+  !? VkImageTiling.
+
+
+  integer(c_int32_t), parameter, public :: VK_IMAGE_TILING_OPTIMAL = 0
+  integer(c_int32_t), parameter, public :: VK_IMAGE_TILING_LINEAR = 1
+  ! Provided by VK_EXT_image_drm_format_modifier.
+  integer(c_int32_t), parameter, public :: VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT = 1000158000
+
+  
 end module forvulkan_parameters
