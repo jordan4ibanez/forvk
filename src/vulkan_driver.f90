@@ -121,6 +121,7 @@ module vulkan_driver
     procedure :: create_command_buffers => vk_driver_create_command_buffers
     procedure :: create_sync_objects => vk_driver_create_sync_objects
     procedure :: draw_frame => vk_driver_draw_frame
+    procedure :: record_command_buffer => vk_driver_record_command_buffer
   end type vk_driver
 
 
@@ -2218,7 +2219,7 @@ contains
       error stop "[Vulkan] Error: Faield to reset command buffer."
     end if
 
-    call record_command_buffer(command_buffer_pointer, image_index, this%render_pass, this%swapchain_framebuffers, this%swapchain_extent, this%graphics_pipeline, this%vertex_buffer, this%index_buffer, this%indices_size, this%descriptor_sets, this%current_frame, this%pipeline_layout)
+    call this%record_command_buffer(command_buffer_pointer, image_index)
 
     submit_info%s_type = VK_STRUCTURE_TYPE%SUBMIT_INFO
 
@@ -2283,5 +2284,82 @@ contains
     ! Tick and cycle frames.
     this%current_frame = mod(this%current_frame, this%MAX_FRAMES_IN_FLIGHT) + 1
   end subroutine vk_driver_draw_frame
+
+
+  !* Implementation note: indices_size needs to be baked into the hashmap.
+  !* It is currently a hackjob.
+  subroutine vk_driver_record_command_buffer(this, command_buffer, image_index)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+    type(vk_command_buffer), intent(in), value :: command_buffer
+    ! uint32_t
+    integer(c_int32_t), intent(in), value :: image_index
+    type(vk_command_buffer_begin_info), target :: begin_info
+    type(vk_render_pass_begin_info), target :: render_pass_info
+    type(vk_framebuffer), pointer :: framebuffer
+    type(vk_clear_color_value_f32), target :: clear_color
+    type(vk_viewport), target :: viewport
+    type(vk_rect_2d), target :: scissor
+    type(vk_buffer), dimension(1), target :: vertex_buffers
+    type(vk_device_size), dimension(1), target :: offsets
+
+    begin_info%s_type = VK_STRUCTURE_TYPE%COMMAND_BUFFER_BEGIN_INFO
+    begin_info%flags = 0
+    begin_info%p_inheritence_info = c_null_ptr
+
+    if (vk_begin_command_buffer(command_buffer, c_loc(begin_info)) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to begin recording command buffer."
+    end if
+
+    render_pass_info%s_type = VK_STRUCTURE_TYPE%RENDER_PASS_BEGIN_INFO
+    render_pass_info%render_pass = this%render_pass
+    call c_f_pointer(this%swapchain_framebuffers%get(int(image_index, c_int64_t)), framebuffer)
+    render_pass_info%framebuffer = framebuffer
+    render_pass_info%render_area%offset%x = 0
+    render_pass_info%render_area%offset%y = 0
+    render_pass_info%render_area%extent = this%swapchain_extent
+
+    clear_color%data = [0.0, 0.0, 0.0, 1.0]
+    render_pass_info%clear_value_count = 1
+    render_pass_info%p_clear_values = c_loc(clear_color)
+
+    call vk_cmd_begin_render_pass(command_buffer, c_loc(render_pass_info), VK_SUBPASS_CONTENTS_INLINE)
+
+    call vk_cmd_bind_pipeline(command_buffer, VK_PIPELINE_BIND_POINT_GRAPHICS, this%graphics_pipeline)
+
+    vertex_buffers = [this%vertex_buffer]
+    offsets = [vk_device_size(0_8)]
+
+    call vk_cmd_bind_vertex_buffers(command_buffer, 0, 1, c_loc(vertex_buffers), c_loc(offsets))
+
+    call vk_cmd_bind_index_buffer(command_buffer, this%index_buffer, vk_device_size(0_8), VK_INDEX_TYPE_UINT32)
+
+    viewport%x = 0.0
+    viewport%y = 0.0
+    viewport%width = this%swapchain_extent%width
+    viewport%height = this%swapchain_extent%height
+    viewport%min_depth = 0.0
+    viewport%max_depth = 1.0
+
+    call vk_cmd_set_viewport(command_buffer, 0, 1, c_loc(viewport))
+
+    scissor%offset%x = 0
+    scissor%offset%y = 0
+    scissor%extent = this%swapchain_extent
+
+    call vk_cmd_set_scissor(command_buffer, 0, 1, c_loc(scissor))
+
+    call vk_cmd_bind_descriptor_sets(command_buffer, VK_PIPELINE_BIND_POINT_GRAPHICS, this%pipeline_layout, 0, 1, this%descriptor_sets%get(this%current_frame), 0, c_null_ptr)
+
+    ! call vk_cmd_draw(command_buffer, 3, 1, 0, 0)
+    call vk_cmd_draw_indexed(command_buffer, this%indices_size, 1, 0, 0, 0)
+
+    call vk_cmd_end_render_pass(command_buffer)
+
+    if (vk_end_command_buffer(command_buffer) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to record command buffer."
+    end if
+  end subroutine vk_driver_record_command_buffer
 
 end module vulkan_driver
