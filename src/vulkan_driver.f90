@@ -2439,7 +2439,7 @@ contains
     type(vk_buffer) :: staging_buffer
     type(vk_device_memory) :: staging_buffer_memory
     type(c_ptr) :: raw_c_ptr
-    type(vk_image_create_info) :: image_info
+    type(vk_image_create_info), target :: image_info
 
     texture_data = stbi_load("textures/fortran_logo_512x512.png", width, height, channels, 4)
 
@@ -2472,8 +2472,9 @@ contains
     image_info%samples = VK_SAMPLE_COUNT_1_BIT
     image_info%flags = 0
 
-    if ()
-
+    if (vk_create_image(this%logical_device, c_loc(image_info), c_null_ptr, this%texture_image) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to create image."
+    end if
 
   end subroutine vk_driver_create_texture_image
 
