@@ -238,8 +238,8 @@ contains
 
       !   a = a + 1
 
-      if (glfw_is_key_down(GLFW_KEY_ESCAPE)) then
-
+      if (glfw_get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) then
+        call glfw_close_window()
       end if
     end do
 
