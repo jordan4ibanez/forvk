@@ -2432,20 +2432,24 @@ contains
 
     class(vk_driver), intent(inout) :: this
     integer(c_int32_t) :: width, height, channels
-    integer(1), dimension(:), allocatable :: data
+    integer(1), dimension(:), allocatable :: texture_data
     type(vk_device_size) :: image_size
     type(vk_buffer) :: staging_buffer
     type(vk_device_memory) :: staging_buffer_memory
+    type(c_ptr) :: raw_c_ptr
 
-    data = stbi_load("textures/fortran_logo_512x512.png", width, height, channels, 4)
+    texture_data = stbi_load("textures/fortran_logo_512x512.png", width, height, channels, 4)
 
-    if (.not. allocated(data)) then
+    if (.not. allocated(texture_data)) then
       error stop "[Vulkan] Error: Failed to load texture."
     end if
 
     image_size%data = width * height * 4
 
-    
+    if (vk_map_memory(this%logical_device, staging_buffer_memory, vk_device_size(0), image_size, 0, raw_c_ptr) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to map memory."
+    end if
+
   end subroutine vk_driver_create_texture_image
 
 
