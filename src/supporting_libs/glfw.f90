@@ -588,7 +588,7 @@ module glfw
       use, intrinsic :: iso_c_binding
       implicit none
 
-    end subroutine
+    end subroutine glfw_wait_events
 
 
   end interface
