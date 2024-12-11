@@ -10,6 +10,7 @@ module vulkan_driver
   use :: vulkan_vertex
   use :: vulkan_uniform_buffer
   use :: math_helpers
+  use :: stb_image
 
   ! !! THIS IS TEMPORARY
   ! use :: vulkan_vertex
@@ -125,6 +126,7 @@ module vulkan_driver
     procedure :: record_command_buffer => vk_driver_record_command_buffer
     procedure :: update_uniform_buffer => vk_driver_update_uniform_buffer
     procedure :: recreate_swapchain => vk_driver_recreate_swapchain
+    procedure :: create_texture_image => vk_driver_create_texture_image
   end type vk_driver
 
 
@@ -196,6 +198,8 @@ contains
 
     call this%create_command_pool()
 
+    call this%create_texture_image()
+
     call this%create_vertex_buffer(vertices)
 
     call this%create_index_buffer(indices)
@@ -233,6 +237,10 @@ contains
       !   end if
 
       !   a = a + 1
+
+      if (glfw_is_key_down(GLFW_KEY_ESCAPE)) then
+
+      end if
     end do
 
     if (vk_device_wait_idle(this%logical_device) /= VK_SUCCESS) then
@@ -2418,5 +2426,16 @@ contains
     call this%create_framebuffers()
   end subroutine vk_driver_recreate_swapchain
 
+
+  subroutine vk_driver_create_texture_image(this)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+    integer(c_int32_t) :: x, y, channels
+    integer(1), dimension(:), allocatable :: data
+
+    data = stbi_load("textures/fortran_logo_512x512.png", x, y, channels, 4)
+
+  end subroutine vk_driver_create_texture_image
 
 end module vulkan_driver
