@@ -2431,11 +2431,21 @@ contains
     implicit none
 
     class(vk_driver), intent(inout) :: this
-    integer(c_int32_t) :: x, y, channels
+    integer(c_int32_t) :: width, height, channels
     integer(1), dimension(:), allocatable :: data
+    type(vk_device_size) :: image_size
+    type(vk_buffer) :: staging_buffer
+    type(vk_device_memory) :: staging_buffer_memory
 
-    data = stbi_load("textures/fortran_logo_512x512.png", x, y, channels, 4)
+    data = stbi_load("textures/fortran_logo_512x512.png", width, height, channels, 4)
 
+    if (.not. allocated(data)) then
+      error stop "[Vulkan] Error: Failed to load texture."
+    end if
+
+    image_size%data = width * height * 4
+
+    
   end subroutine vk_driver_create_texture_image
 
 end module vulkan_driver
