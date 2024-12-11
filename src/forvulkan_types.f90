@@ -1726,6 +1726,41 @@ module forvulkan_types
   end type vk_write_descriptor_set
 
 
+  !? VkImageCreateInfo.
+  type, bind(c) :: vk_image_create_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkImageCreateFlags
+    integer(c_int32_t) :: flags = 0
+    ! VkImageType
+    integer(c_int32_t) :: image_type = 0
+    ! VkFormat
+    integer(c_int32_t) :: format
+    ! VkExtent3D
+    type(vk_extent_3d) :: extent
+    ! uint32_t
+    integer(c_int32_t) :: mip_levels = 0
+    ! uint32_t
+    integer(c_int32_t) :: array_layers = 0
+    ! VkSampleCountFlagBits
+    integer(c_int32_t) :: samples = 0
+    ! VkImageTiling
+    integer(c_int32_t) :: tiling = 0
+    ! VkImageUsageFlags
+    integer(c_int32_t) :: usage = 0
+    ! VkSharingMode
+    integer(c_int32_t) :: sharing_mode = 0
+    ! uint32_t
+    integer(c_int32_t) :: queue_family_index_count = 0
+    ! const uint32_t*
+    type(c_ptr) :: p_queue_family_indices = c_null_ptr
+    ! VkImageLayout
+    integer(c_int32_t) :: initial_layout = 0
+  end type vk_image_create_info
+
+
 !? CUSTOM TYPES. ===============================================================
 
 
