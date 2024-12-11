@@ -69,6 +69,8 @@ module vulkan_driver
     type(vk_buffer) :: index_buffer
     type(vk_device_memory) :: index_buffer_memory
     integer(c_int32_t) :: indices_size
+    type(vk_image) :: texture_image
+    type(vk_device_memory) :: texture_image_memory
     !! End temporary.
     !? This is the storage for the uniform buffer data.
     ! Vk Buffer Vector
@@ -2446,9 +2448,13 @@ contains
 
     image_size%data = width * height * 4
 
+    call this%create_buffer(image_size, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, ior(VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT, VK_MEMORY_PROPERTY_HOST_COHERENT_BIT), staging_buffer, staging_buffer_memory)
+
     if (vk_map_memory(this%logical_device, staging_buffer_memory, vk_device_size(0), image_size, 0, raw_c_ptr) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to map memory."
     end if
+    call totally_not_memcpy_texture(raw_c_ptr, texture_data)
+    call vk_unmap_memory(this%logical_device, staging_buffer_memory)
 
   end subroutine vk_driver_create_texture_image
 
