@@ -123,6 +123,7 @@ module vulkan_driver
     procedure :: create_sync_objects => vk_driver_create_sync_objects
     procedure :: draw_frame => vk_driver_draw_frame
     procedure :: record_command_buffer => vk_driver_record_command_buffer
+    procedure :: update_uniform_buffer => vk_driver_update_uniform_buffer
   end type vk_driver
 
 
@@ -2229,7 +2230,7 @@ contains
 
     wait_stages = [VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT]
 
-    call update_uniform_buffer(this%current_frame, this%uniform_buffers_mapped, this%swapchain_extent)
+    call this%update_uniform_buffer(this%current_frame)
 
     submit_info%wait_semaphore_count = 1
     submit_info%p_wait_semaphores = c_loc(wait_semaphores)
@@ -2364,13 +2365,11 @@ contains
   end subroutine vk_driver_record_command_buffer
 
 
-  subroutine update_uniform_buffer(current_image, uniform_buffers_mapped, swapchain_extent)
+  subroutine vk_driver_update_uniform_buffer(this, current_image)
     implicit none
 
+    class(vk_driver), intent(inout) :: this
     integer(c_int64_t), intent(in), value :: current_image
-    ! void * Vector (Vector of raw pointers to [currently] uniform_buffer_object)
-    type(vec), intent(inout) :: uniform_buffers_mapped
-    type(vk_extent_2d), intent(in) :: swapchain_extent
     type(uniform_buffer_object) :: ubo
     type(c_ptr), pointer :: raw_c_ptr_ptr
     type(uniform_buffer_object), pointer :: ubo_pointer
@@ -2380,18 +2379,18 @@ contains
     call ubo%camera_matrix%identity()
     call ubo%object_matrix%identity()
 
-    call ubo%camera_matrix%perspective_left_handed(to_radians_f32(60.0), real(swapchain_extent%width) / real(swapchain_extent%height), 0.01, 1000.0, .true.)
+    call ubo%camera_matrix%perspective_left_handed(to_radians_f32(60.0), real(this%swapchain_extent%width) / real(this%swapchain_extent%height), 0.01, 1000.0, .true.)
 
     call ubo%object_matrix%translate(cos(time / 1.7), sin(time / 3.0), 3.0)
     call ubo%object_matrix%rotate_y(time)
 
-    call c_f_pointer(uniform_buffers_mapped%get(current_image), raw_c_ptr_ptr)
+    call c_f_pointer(this%uniform_buffers_mapped%get(current_image), raw_c_ptr_ptr)
     call c_f_pointer(raw_c_ptr_ptr, ubo_pointer)
 
     ! We have memcpy at home.
     ubo_pointer%camera_matrix = ubo%camera_matrix
     ubo_pointer%object_matrix = ubo%object_matrix
-  end subroutine update_uniform_buffer
+  end subroutine vk_driver_update_uniform_buffer
 
 
 end module vulkan_driver
