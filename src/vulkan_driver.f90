@@ -91,7 +91,7 @@ module vulkan_driver
     procedure :: create_vulkan_instance_create_info => vk_driver_create_vulkan_instance_create_info
     procedure :: create_required_validation_layers => vk_driver_create_required_validation_layers
     procedure :: create_debug_messenger_struct => vk_driver_create_debug_messenger_struct
-    procedure :: create_app_info => vk_driver_create_app_info
+    procedure, nopass :: create_app_info => vk_driver_create_app_info
     procedure :: clean_up_swapchain => vk_driver_clean_up_swapchain
     procedure :: ensure_validation_layer_support => vk_driver_ensure_validation_layer_support
     procedure :: setup_debug_messenger => vk_driver_setup_debug_messenger
@@ -658,10 +658,9 @@ contains
   end function debug_callback
 
 
-  subroutine vk_driver_create_app_info(this, app_info, app_name, engine_name)
+  subroutine vk_driver_create_app_info(app_info, app_name, engine_name)
     implicit none
 
-    class(vk_driver), intent(inout) :: this
     type(vk_application_info), intent(inout) :: app_info
     character(len = :, kind = c_char), intent(in), pointer :: app_name, engine_name
 
