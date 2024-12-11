@@ -2448,4 +2448,17 @@ contains
     
   end subroutine vk_driver_create_texture_image
 
+
+  subroutine totally_not_memcpy_texture(data, texture_data)
+    implicit none
+
+    type(c_ptr), intent(in), value :: data
+    integer(1), dimension(:), intent(in) :: texture_data
+    integer(1), dimension(:), pointer :: data_in_buffer
+
+    call c_f_pointer(data, data_in_buffer, [size(texture_data)])
+    data_in_buffer = texture_data
+  end subroutine totally_not_memcpy_texture
+
+
 end module vulkan_driver
