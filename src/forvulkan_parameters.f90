@@ -4650,4 +4650,12 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_VALVE = VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT
 
 
+  !? VkImageType.
+
+
+  integer(c_int32_t), parameter, public :: VK_IMAGE_TYPE_1D = 0
+  integer(c_int32_t), parameter, public :: VK_IMAGE_TYPE_2D = 1
+  integer(c_int32_t), parameter, public :: VK_IMAGE_TYPE_3D = 2
+
+
 end module forvulkan_parameters
