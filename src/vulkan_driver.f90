@@ -124,6 +124,7 @@ module vulkan_driver
     procedure :: draw_frame => vk_driver_draw_frame
     procedure :: record_command_buffer => vk_driver_record_command_buffer
     procedure :: update_uniform_buffer => vk_driver_update_uniform_buffer
+    procedure :: recreate_swapchain => vk_driver_recreate_swapchain
   end type vk_driver
 
 
@@ -2274,7 +2275,7 @@ contains
     ! The Vulkan tutorial is very vague on this part.
     ! If you're reading this, this part was supposed to be split up like so lol.
     if (acquire_result == VK_ERROR_OUT_OF_DATE_KHR .or. acquire_result == VK_SUBOPTIMAL_KHR .or. this%framebuffer_resized) then
-      call recreate_swapchain(this%logical_device, this%physical_device, this%window_surface, this%swapchain, this%swapchain_images, this%swapchain_image_format, this%swapchain_extent, this%swapchain_image_views, this%swapchain_framebuffers, this%render_pass)
+      call this%recreate_swapchain()
       this%framebuffer_resized = .false.
       print*,"recreating swap chain"
       ! This early return prevents a deadlock.
@@ -2391,6 +2392,31 @@ contains
     ubo_pointer%camera_matrix = ubo%camera_matrix
     ubo_pointer%object_matrix = ubo%object_matrix
   end subroutine vk_driver_update_uniform_buffer
+
+
+  subroutine vk_driver_recreate_swapchain(this)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+    integer(c_int32_t) :: width, height
+
+    if (vk_device_wait_idle(this%logical_device) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to wait for logical device."
+    end if
+
+    call glfw_get_framebuffer_size(width, height)
+    do while (width == 0 .or. height == 0)
+      print*,"waiting"
+      call glfw_get_framebuffer_size(width, height)
+      call glfw_wait_events()
+    end do
+
+    call this%clean_up_swapchain()
+
+    call this%create_swapchain()
+    call this%create_image_views()
+    call this%create_framebuffers()
+  end subroutine vk_driver_recreate_swapchain
 
 
 end module vulkan_driver
