@@ -1087,4 +1087,14 @@ contains
   end subroutine glfw_get_framebuffer_size
 
 
+  function glfw_get_key(key) result(status)
+    implicit none
+
+    integer(c_int32_t), intent(in), value :: key
+    integer(c_int32_t) :: status
+
+    status = internal_glfw_get_key(window_pointer, key)
+  end function glfw_get_key
+
+
 end module glfw
