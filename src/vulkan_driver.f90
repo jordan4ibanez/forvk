@@ -137,6 +137,7 @@ module vulkan_driver
     procedure :: copy_buffer_to_image => vk_driver_copy_buffer_to_image
     procedure :: create_texture_image_view => vk_driver_create_texture_image_view
     procedure :: create_image_view => vk_driver_create_image_view
+    procedure :: create_texture_sampler => vk_driver_create_texture_sampler
   end type vk_driver
 
 
@@ -211,6 +212,8 @@ contains
     call this%create_texture_image()
 
     call this%create_texture_image_view()
+
+    call this%create_texture_sampler()
 
     call this%create_vertex_buffer(vertices)
 
@@ -2673,6 +2676,15 @@ contains
       error stop "[Vulkan] Error: Failed to create image view."
     end if
   end function vk_driver_create_image_view
+
+
+  subroutine vk_driver_create_texture_sampler(this)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+
+
+  end subroutine vk_driver_create_texture_sampler
 
 
 end module vulkan_driver
