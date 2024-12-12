@@ -1821,6 +1821,47 @@ module forvulkan_types
   end type vk_buffer_image_copy
 
 
+  !? VkSamplerCreateInfo.
+  type, bind(c) :: vk_sampler_create_info
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkSamplerCreateFlags
+    integer(c_int32_t) :: flags = 0
+    ! VkFilter
+    integer(c_int32_t) :: mag_filter = 0
+    ! VkFilter
+    integer(c_int32_t) :: min_filter = 0
+    ! VkSamplerMipmapMode
+    integer(c_int32_t) :: mipmap_mode = 0
+    ! VkSamplerAddressMode
+    integer(c_int32_t) :: address_mode_u = 0
+    ! VkSamplerAddressMode
+    integer(c_int32_t) :: address_mode_v = 0
+    ! VkSamplerAddressMode
+    integer(c_int32_t) :: address_mode_w = 0
+    ! float
+    real(c_float) :: mip_lod_bias = 0.0
+    ! VkBool32
+    integer(c_int32_t) :: anistropy_enabled = 0
+    ! float
+    real(c_float) :: max_anistropy = 0.0
+    ! VkBool32
+    integer(c_int32_t) :: compare_enabled = 0
+    ! VkCompareOp
+    integer(c_int32_t) :: compare_op = 0
+    ! float
+    real(c_float) :: min_lod = 0.0
+    ! float
+    real(c_float) :: max_lod = 0.0
+    ! VkBorderColor
+    integer(c_int32_t) :: border_color = 0
+    ! VkBool32
+    integer(c_int32_t) :: unnormalized_coordinates = 0
+  end type vk_sampler_create_info
+
+
 !? CUSTOM TYPES. ===============================================================
 
 
