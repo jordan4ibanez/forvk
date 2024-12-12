@@ -2477,10 +2477,10 @@ contains
     image_info%extent%depth = 1
     image_info%mip_levels = 1
     image_info%array_layers = 1
-    image_info%format = VK_FORMAT_R8G8B8A8_SRGB
-    image_info%tiling = VK_IMAGE_TILING_OPTIMAL
+    image_info%format = format
+    image_info%tiling = tiling
     image_info%initial_layout = VK_IMAGE_LAYOUT_UNDEFINED
-    image_info%usage = ior(VK_IMAGE_USAGE_TRANSFER_DST_BIT, VK_IMAGE_USAGE_SAMPLED_BIT)
+    image_info%usage = usage
     image_info%sharing_mode = VK_SHARING_MODE_EXCLUSIVE
     image_info%samples = VK_SAMPLE_COUNT_1_BIT
     image_info%flags = 0
@@ -2493,7 +2493,7 @@ contains
 
     alloc_info%s_type = VK_STRUCTURE_TYPE%MEMORY%ALLOCATE_INFO
     alloc_info%allocation_size = mem_requirements%size
-    alloc_info%memory_type_index = this%find_memory_type(mem_requirements%memory_type_bits, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT)
+    alloc_info%memory_type_index = this%find_memory_type(mem_requirements%memory_type_bits, properties)
 
     if (vk_allocate_memory(this%logical_device, c_loc(alloc_info), c_null_ptr, image_memory) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to allocate memory."
