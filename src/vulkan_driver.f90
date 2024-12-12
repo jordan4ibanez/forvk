@@ -136,6 +136,7 @@ module vulkan_driver
     procedure :: transition_image_layout => vk_driver_transition_image_layout
     procedure :: copy_buffer_to_image => vk_driver_copy_buffer_to_image
     procedure :: create_texture_image_view => vk_driver_create_texture_image_view
+    procedure :: create_image_view => vk_driver_create_image_view
   end type vk_driver
 
 
@@ -2673,6 +2674,31 @@ contains
       error stop "[Vulkan] Error: Failed to create image view."
     end if
   end subroutine vk_driver_create_texture_image_view
+
+
+  function vk_driver_create_image_view(this, image, format) result(image_view)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+    type(vk_image), intent(in), value :: image
+    type(vk_format), intent(in), value :: format
+    type(vk_image_view) :: image_view
+    type(vk_image_view_create_info), target :: view_info
+
+    view_info%s_type = VK_STRUCTURE_TYPE%IMAGE%VIEW_CREATE_INFO
+    view_info%image = image
+    view_info%view_type = VK_IMAGE_VIEW_TYPE_2D
+    view_info%format = format
+    view_info%subresource_range%aspect_mask = VK_IMAGE_ASPECT_COLOR_BIT
+    view_info%subresource_range%base_mip_level = 0
+    view_info%subresource_range%level_count = 1
+    view_info%subresource_range%base_array_layer = 0
+    view_info%subresource_range%layer_count = 1
+
+    if (vk_create_image_view(this%logical_device, c_loc(view_info), c_null_ptr, image_view) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to create image view."
+    end if
+  end function vk_driver_create_image_view
 
 
 end module vulkan_driver
