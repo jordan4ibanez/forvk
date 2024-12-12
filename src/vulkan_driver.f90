@@ -2550,8 +2550,10 @@ contains
     type(vk_format), intent(in), value :: format
     integer(c_int32_t), intent(in), value :: old_layout, new_layout
     type(vk_command_buffer) :: command_buffer
+    
 
     command_buffer = this%begin_single_time_commands()
+
 
 
 
