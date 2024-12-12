@@ -4682,4 +4682,13 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM = int(z"00000010")
 
 
+  !? VkFilter.
+
+
+  integer(c_int32_t), parameter, public :: VK_FILTER_NEAREST = 0
+  integer(c_int32_t), parameter, public :: VK_FILTER_LINEAR = 1
+  ! Provided by VK_EXT_filter_cubic
+  integer(c_int32_t), parameter, public :: VK_FILTER_CUBIC_EXT = 1000015000
+
+
 end module forvulkan_parameters
