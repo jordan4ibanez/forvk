@@ -133,6 +133,7 @@ module vulkan_driver
     procedure :: begin_single_time_commands => vk_driver_begin_single_time_commands
     procedure :: end_single_time_commands => vk_driver_end_single_time_commands
     procedure :: transition_image_layout => vk_driver_transition_image_layout
+    procedure :: copy_buffer_to_image => vk_driver_copy_buffer_to_image
   end type vk_driver
 
 
@@ -2580,6 +2581,41 @@ contains
 
     call this%end_single_time_commands(command_buffer)
   end subroutine vk_driver_transition_image_layout
+
+
+  subroutine vk_driver_copy_buffer_to_image(this, buffer, image, width, height)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+    type(vk_buffer), intent(in), value :: buffer
+    type(vk_image), intent(in), value :: image
+    integer(c_int32_t), intent(in), value :: width, height
+    type(vk_command_buffer) :: command_buffer
+    type(vk_buffer_image_copy) :: region
+
+    command_buffer = this%begin_single_time_commands()
+
+    region%buffer_offset = vk_device_size(0)
+    region%buffer_row_length = 0
+    region%buffer_image_height = 0
+
+    region%image_subresource%aspect_mask = VK_IMAGE_ASPECT_COLOR_BIT
+    region%image_subresource%mip_level = 0
+    region%image_subresource%base_array_layer = 0
+    region%image_subresource%layer_count = 1
+
+    region%image_offset%x = 0
+    region%image_offset%y = 0
+    region%image_offset%z = 0
+
+    region%image_extent%width = width
+    region%image_extent%height = height
+    region%image_extent%depth = 1
+
+    
+
+    call this%end_single_time_commands(command_buffer)
+  end subroutine vk_driver_copy_buffer_to_image
 
 
 end module vulkan_driver
