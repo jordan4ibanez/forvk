@@ -2439,7 +2439,6 @@ contains
     type(vk_buffer) :: staging_buffer
     type(vk_device_memory) :: staging_buffer_memory
     type(c_ptr) :: raw_c_ptr
-    type(vk_image_create_info), target :: image_info
 
     texture_data = stbi_load("textures/fortran_logo_512x512.png", width, height, channels, 4)
 
@@ -2457,6 +2456,20 @@ contains
     call totally_not_memcpy_texture(raw_c_ptr, texture_data)
     call vk_unmap_memory(this%logical_device, staging_buffer_memory)
 
+  end subroutine vk_driver_create_texture_image
+
+
+  subroutine create_image(this, width, height, format, tiling, usage, properties, image, image_memory)
+    implicit none
+
+    type(vk_driver), intent(inout) :: this
+    integer(c_int32_t), intent(in), value :: width, height, format, tiling, usage, properties
+    type(vk_image), intent(inout) :: image
+    type(vk_device_memory), intent(inout) :: image_memory
+    type(vk_image_create_info), target :: image_info
+    type(vk_memory_requirements) :: mem_requirements
+    type(vk_memory_allocate_info), target :: alloc_info
+
     image_info%s_type = VK_STRUCTURE_TYPE%IMAGE%CREATE_INFO
     image_info%image_type = VK_IMAGE_TYPE_2D
     image_info%extent%width = width
@@ -2472,11 +2485,24 @@ contains
     image_info%samples = VK_SAMPLE_COUNT_1_BIT
     image_info%flags = 0
 
-    if (vk_create_image(this%logical_device, c_loc(image_info), c_null_ptr, this%texture_image) /= VK_SUCCESS) then
+    if (vk_create_image(this%logical_device, c_loc(image_info), c_null_ptr, image) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to create image."
     end if
 
-  end subroutine vk_driver_create_texture_image
+    call vk_get_image_memory_requirements(this%logical_device, image, mem_requirements)
+
+    alloc_info%s_type = VK_STRUCTURE_TYPE%MEMORY%ALLOCATE_INFO
+    alloc_info%allocation_size = mem_requirements%size
+    alloc_info%memory_type_index = this%find_memory_type(mem_requirements%memory_type_bits, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT)
+
+    if (vk_allocate_memory(this%logical_device, c_loc(alloc_info), c_null_ptr, image_memory) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to allocate memory."
+    end if
+
+    if (vk_bind_image_memory(this%logical_device, image, image_memory, vk_device_size(0)) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to bind image memory."
+    end if
+  end subroutine create_image
 
 
   subroutine totally_not_memcpy_texture(data, texture_data)
