@@ -2436,6 +2436,10 @@ contains
 
     call this%transition_image_layout(this%texture_image, vk_format(VK_FORMAT_R8G8B8A8_SRGB), VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL)
 
+    call vk_destroy_buffer(this%logical_device, staging_buffer, c_null_ptr)
+
+    call vk_free_memory(this%logical_device, staging_buffer_memory, c_null_ptr)
+
   end subroutine vk_driver_create_texture_image
 
 
