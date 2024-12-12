@@ -2592,9 +2592,6 @@ contains
       error stop "[Vulkan] Error: Unsupported layout transistion."
     end if
 
-    ! this is a valid memory address.
-    print*,"pointer:", c_loc(barrier)
-
     call vk_cmd_pipeline_barrier( &
       command_buffer, &
       source_stage, destination_stage, &
