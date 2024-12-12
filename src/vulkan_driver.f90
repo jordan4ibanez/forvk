@@ -131,6 +131,7 @@ module vulkan_driver
     procedure :: create_texture_image => vk_driver_create_texture_image
     procedure :: create_image => vk_driver_create_image
     procedure :: begin_single_time_commands => vk_driver_begin_single_time_commands
+    procedure :: end_single_time_commands => vk_driver_end_single_time_commands
   end type vk_driver
 
 
@@ -2544,5 +2545,30 @@ contains
       error stop "[Vulkan] Error: Failed to begin command buffer."
     end if
   end function vk_driver_begin_single_time_commands
+
+
+  subroutine vk_driver_end_single_time_commands(this, command_buffer)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+    type(vk_command_buffer), intent(in), value, target :: command_buffer
+    type(vk_submit_info), target :: submit_info
+
+    submit_info%s_type = VK_STRUCTURE_TYPE%SUBMIT_INFO
+    submit_info%command_buffer_count = 1
+    submit_info%p_command_buffers = c_loc(command_buffer)
+
+    if (vk_queue_submit(this%graphics_queue, 1, c_loc(submit_info), vk_fence(VK_NULL_HANDLE)) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to submit queue."
+    end if
+
+    if (vk_queue_wait_idle(this%graphics_queue) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to wait idle for graphics queue."
+    end if
+
+    call vk_free_command_buffers(this%logical_device, this%command_pool, 1, c_loc(command_buffer))
+  end subroutine vk_driver_end_single_time_commands
+
+
 
 end module vulkan_driver
