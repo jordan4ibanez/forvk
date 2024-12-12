@@ -1784,6 +1784,17 @@ module forvulkan_types
   end type
 
 
+  !? VkImageSubresourceLayers.
+  type, bind(c) :: vk_image_subresource_layers
+    ! VkImageAspectFlags
+    integer(c_int32_t) :: aspect_mask = 0
+    ! uint32_t
+    integer(c_int32_t) :: mip_level = 0
+    ! uint32_t
+    integer(c_int32_t) :: base_array_layer = 0
+    ! uint32_t
+    integer(c_int32_t) :: layer_count = 0
+  end type vk_image_subresource_layers
 !? CUSTOM TYPES. ===============================================================
 
 
