@@ -2559,9 +2559,9 @@ contains
     integer(c_int32_t), intent(in), value :: old_layout, new_layout
     type(vk_command_buffer) :: command_buffer
     type(vk_image_memory_barrier), target :: barrier
+    integer(c_int32_t) :: source_stage, destination_stage
 
     command_buffer = this%begin_single_time_commands()
-
 
     barrier%s_type = VK_STRUCTURE_TYPE%IMAGE%MEMORY_BARRIER
     barrier%old_layout = old_layout
@@ -2577,6 +2577,22 @@ contains
     barrier%src_access_mask = 0
     barrier%dst_access_mask = 0
 
+    if (old_layout == VK_IMAGE_LAYOUT_UNDEFINED .and. new_layout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL) then
+      barrier%src_access_mask = 0
+      barrier%dst_access_mask = VK_ACCESS_TRANSFER_WRITE_BIT
+
+      source_stage = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT
+      destination_stage = VK_PIPELINE_STAGE_TRANSFER_BIT
+
+    else if (old_layout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL .and. new_layout == VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL) then
+      barrier%src_access_mask = VK_ACCESS_TRANSFER_WRITE_BIT
+      barrier%dst_access_mask = VK_ACCESS_SHADER_READ_BIT
+
+      source_stage = VK_PIPELINE_STAGE_TRANSFER_BIT
+      destination_stage = VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT
+    else
+      error stop "[Vulkan] Error: Unsupported layout transistion."
+    end if
 
     
 
