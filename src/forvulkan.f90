@@ -1195,6 +1195,18 @@ module forvulkan
     end subroutine vk_cmd_copy_buffer_to_image
 
 
+    subroutine vk_destroy_image(logical_device, image, p_allocator) bind(c, name = "vkDestroyImage")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_device), intent(in), value :: logical_device
+      type(vk_image), intent(in), value :: image
+      ! const VkAllocationCallbacks *
+      type(c_ptr), intent(in), value :: p_allocator
+    end subroutine vk_destroy_image
+
+
   end interface
 
 
