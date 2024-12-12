@@ -4698,4 +4698,18 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_SAMPLER_MIPMAP_MODE_LINEAR = 1
 
 
+  !? VkSamplerAddressMode.
+
+
+  integer(c_int32_t), parameter, public :: VK_SAMPLER_ADDRESS_MODE_REPEAT = 0
+  integer(c_int32_t), parameter, public :: VK_SAMPLER_ADDRESS_MODE_MIRRORED_REPEAT = 1
+  integer(c_int32_t), parameter, public :: VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE = 2
+  integer(c_int32_t), parameter, public :: VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER = 3
+  ! Provided by VK_VERSION_1_2, VK_KHR_sampler_mirror_clamp_to_edge
+  integer(c_int32_t), parameter, public :: VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE = 4
+  ! Provided by VK_KHR_sampler_mirror_clamp_to_edge
+  ! VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE_KHR is a deprecated alias
+  integer(c_int32_t), parameter, public :: VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE_KHR = VK_SAMPLER_ADDRESS_MODE_MIRROR_CLAMP_TO_EDGE
+
+
 end module forvulkan_parameters
