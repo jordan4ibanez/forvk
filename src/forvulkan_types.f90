@@ -1795,6 +1795,18 @@ module forvulkan_types
     ! uint32_t
     integer(c_int32_t) :: layer_count = 0
   end type vk_image_subresource_layers
+
+
+  !? VkOffset3D.
+  type, bind(c) :: vk_offset_3d
+    ! int32_t
+    integer(c_int32_t) :: x = 0
+    ! int32_t
+    integer(c_int32_t) :: y = 0
+    ! int32_t
+    integer(c_int32_t) :: z = 0
+  end type vk_offset_3d
+
 !? CUSTOM TYPES. ===============================================================
 
 
