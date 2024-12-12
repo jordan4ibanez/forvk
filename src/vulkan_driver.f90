@@ -2429,6 +2429,13 @@ contains
     call vk_unmap_memory(this%logical_device, staging_buffer_memory)
 
     call this%create_image(width, height, VK_FORMAT_R8G8B8A8_SRGB, VK_IMAGE_TILING_OPTIMAL, ior(VK_IMAGE_USAGE_TRANSFER_DST_BIT, VK_IMAGE_USAGE_SAMPLED_BIT), VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, this%texture_image, this%texture_image_memory)
+
+    call this%transition_image_layout(this%texture_image, vk_format(VK_FORMAT_R8G8B8A8_SRGB), VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL)
+
+    call this%copy_buffer_to_image(staging_buffer, this%texture_image, width, height)
+
+    call this%transition_image_layout(this%texture_image, vk_format(VK_FORMAT_R8G8B8A8_SRGB), VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL)
+
   end subroutine vk_driver_create_texture_image
 
 
@@ -2570,6 +2577,9 @@ contains
     barrier%src_access_mask = 0
     barrier%dst_access_mask = 0
 
+
+    
+
     call vk_cmd_pipeline_barrier( &
       command_buffer, &
       0, 0, & ! todo
@@ -2591,7 +2601,7 @@ contains
     type(vk_image), intent(in), value :: image
     integer(c_int32_t), intent(in), value :: width, height
     type(vk_command_buffer) :: command_buffer
-    type(vk_buffer_image_copy) :: region
+    type(vk_buffer_image_copy), target :: region
 
     command_buffer = this%begin_single_time_commands()
 
@@ -2612,7 +2622,7 @@ contains
     region%image_extent%height = height
     region%image_extent%depth = 1
 
-    
+    call vk_cmd_copy_buffer_to_image(command_buffer, buffer, image, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, c_loc(region))
 
     call this%end_single_time_commands(command_buffer)
   end subroutine vk_driver_copy_buffer_to_image
