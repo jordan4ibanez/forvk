@@ -1807,6 +1807,20 @@ module forvulkan_types
     integer(c_int32_t) :: z = 0
   end type vk_offset_3d
 
+
+  !? VkBufferImageCopy.
+  type, bind(c) :: vk_buffer_image_copy
+    type(vk_device_size) :: buffer_offset
+    ! uint32_t
+    integer(c_int32_t) :: buffer_row_length = 0
+    ! uint32_t
+    integer(c_int32_t) :: buffer_image_height = 0
+    type(vk_image_subresource_layers) :: image_subresource
+    type(vk_offset_3d) :: image_offset
+    type(vk_extent_3d) :: image_extent
+  end type vk_buffer_image_copy
+
+
 !? CUSTOM TYPES. ===============================================================
 
 
