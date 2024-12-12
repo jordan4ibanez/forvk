@@ -1761,6 +1761,29 @@ module forvulkan_types
   end type vk_image_create_info
 
 
+  !? VkImageMemoryBarrier.
+  type, bind(c) :: vk_image_memory_barrier
+    ! uint32_t [VkStructureType]
+    integer(c_int32_t) :: s_type = 0
+    ! const void *
+    type(c_ptr) :: p_next = c_null_ptr
+    ! VkAccessFlags
+    integer(c_int32_t) :: src_access_mask = 0
+    ! VkAccessFlags
+    integer(c_int32_t) :: dst_access_mask = 0
+    ! VkImageLayout
+    integer(c_int32_t) :: old_layout = 0
+    ! VkImageLayout
+    integer(c_int32_t) :: new_layout = 0
+    ! uint32_t
+    integer(c_int32_t) :: src_queue_family_index = 0
+    ! uint32_t
+    integer(c_int32_t) :: dst_queue_family_index = 0
+    type(vk_image) :: image
+    type(vk_image_subresource_range) :: subresource_range
+  end type
+
+
 !? CUSTOM TYPES. ===============================================================
 
 
