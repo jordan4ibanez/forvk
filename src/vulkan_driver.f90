@@ -2550,12 +2550,27 @@ contains
     type(vk_format), intent(in), value :: format
     integer(c_int32_t), intent(in), value :: old_layout, new_layout
     type(vk_command_buffer) :: command_buffer
-    
+    type(vk_image_memory_barrier), target :: barrier
 
     command_buffer = this%begin_single_time_commands()
 
 
+    barrier%s_type = VK_STRUCTURE_TYPE%IMAGE%MEMORY_BARRIER
+    barrier%old_layout = old_layout
+    barrier%new_layout = new_layout
+    barrier%src_queue_family_index = VK_QUEUE_FAMILY_IGNORED
+    barrier%dst_queue_family_index = VK_QUEUE_FAMILY_IGNORED
+    barrier%image = image
+    barrier%subresource_range%aspect_mask = VK_IMAGE_ASPECT_COLOR_BIT
+    barrier%subresource_range%base_mip_level = 0
+    barrier%subresource_range%level_count = 1
+    barrier%subresource_range%base_array_layer = 0
+    barrier%subresource_range%layer_count = 1
+    barrier%src_access_mask = 0
+    barrier%dst_access_mask = 0
 
+
+    
 
     call this%end_single_time_commands(command_buffer)
   end subroutine vk_driver_transition_image_layout
