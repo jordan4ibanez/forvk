@@ -129,6 +129,7 @@ module vulkan_driver
     procedure :: update_uniform_buffer => vk_driver_update_uniform_buffer
     procedure :: recreate_swapchain => vk_driver_recreate_swapchain
     procedure :: create_texture_image => vk_driver_create_texture_image
+    procedure :: create_image => vk_driver_create_image
   end type vk_driver
 
 
@@ -2459,10 +2460,10 @@ contains
   end subroutine vk_driver_create_texture_image
 
 
-  subroutine create_image(this, width, height, format, tiling, usage, properties, image, image_memory)
+  subroutine vk_driver_create_image(this, width, height, format, tiling, usage, properties, image, image_memory)
     implicit none
 
-    type(vk_driver), intent(inout) :: this
+    class(vk_driver), intent(inout) :: this
     integer(c_int32_t), intent(in), value :: width, height, format, tiling, usage, properties
     type(vk_image), intent(inout) :: image
     type(vk_device_memory), intent(inout) :: image_memory
@@ -2502,7 +2503,7 @@ contains
     if (vk_bind_image_memory(this%logical_device, image, image_memory, vk_device_size(0)) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to bind image memory."
     end if
-  end subroutine create_image
+  end subroutine vk_driver_create_image
 
 
   subroutine totally_not_memcpy_texture(data, texture_data)
