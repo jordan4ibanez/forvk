@@ -2457,6 +2457,7 @@ contains
     call totally_not_memcpy_texture(raw_c_ptr, texture_data)
     call vk_unmap_memory(this%logical_device, staging_buffer_memory)
 
+    call this%create_image(width, height, VK_FORMAT_R8G8B8A8_SRGB, VK_IMAGE_TILING_OPTIMAL, ior(VK_IMAGE_USAGE_TRANSFER_DST_BIT, VK_IMAGE_USAGE_SAMPLED_BIT), VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, this%texture_image, this%texture_image_memory)
   end subroutine vk_driver_create_texture_image
 
 
