@@ -2550,6 +2550,7 @@ contains
   end subroutine vk_driver_end_single_time_commands
 
 
+  ! todo: figure out why format is a dummy variable
   subroutine vk_driver_transition_image_layout(this, image, format, old_layout, new_layout)
     implicit none
 
