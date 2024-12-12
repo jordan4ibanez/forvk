@@ -71,6 +71,7 @@ module vulkan_driver
     integer(c_int32_t) :: indices_size
     type(vk_image) :: texture_image
     type(vk_device_memory) :: texture_image_memory
+    type(vk_image_view) :: texture_image_view
     !! End temporary.
     !? This is the storage for the uniform buffer data.
     ! Vk Buffer Vector
@@ -2656,8 +2657,21 @@ contains
     implicit none
 
     class(vk_driver), intent(inout) :: this
+    type(vk_image_view_create_info), target :: view_info
 
+    view_info%s_type = VK_STRUCTURE_TYPE%IMAGE%VIEW_CREATE_INFO
+    view_info%image = this%texture_image
+    view_info%view_type = VK_IMAGE_VIEW_TYPE_2D
+    view_info%format = vk_format(VK_FORMAT_R8G8B8A8_SRGB)
+    view_info%subresource_range%aspect_mask = VK_IMAGE_ASPECT_COLOR_BIT
+    view_info%subresource_range%base_mip_level = 0
+    view_info%subresource_range%level_count = 1
+    view_info%subresource_range%base_array_layer = 0
+    view_info%subresource_range%layer_count = 1
 
+    if (vk_create_image_view(this%logical_device, c_loc(view_info), c_null_ptr, this%texture_image_view) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to create image view."
+    end if
   end subroutine vk_driver_create_texture_image_view
 
 
