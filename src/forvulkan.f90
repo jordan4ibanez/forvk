@@ -1150,6 +1150,34 @@ module forvulkan
     end subroutine pfn_vk_destroy_debug_utils_messenger_ext
 
 
+    subroutine vk_cmd_pipeline_barrier(command_buffer, src_stage_mask, dst_stage_mask, dependency_flags, memory_barrier_count, p_memory_barriers, buffer_memory_barrier_count, p_buffer_memory_barriers, image_memory_barrier_count, p_image_memory_barriers) bind(c, name = "vkCmdPipelineBarrier")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      ! VkCommandBuffer
+      type(vk_command_buffer), intent(in), value :: command_buffer
+      ! VkPipelineStageFlags
+      integer(c_int32_t), intent(in), value :: src_stage_mask
+      ! VkPipelineStageFlags
+      integer(c_int32_t), intent(in), value :: dst_stage_mask
+      ! VkDependencyFlags
+      integer(c_int32_t), intent(in), value :: dependency_flags
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: memory_barrier_count
+      ! const VkMemoryBarrier *
+      type(c_ptr), intent(in), value :: p_memory_barriers
+      ! uint32_t
+      integer(c_int32_t) :: buffer_memory_barrier_count
+      ! const VkBufferMemoryBarrier *
+      type(c_ptr), intent(in), value :: p_buffer_memory_barriers
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: image_memory_barrier_count
+      ! const VkImageMemoryBarrier *
+      type(c_ptr), intent(in), value :: p_image_memory_barriers
+    end subroutine vk_cmd_pipeline_barrier
+
+
   end interface
 
 
