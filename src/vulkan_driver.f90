@@ -2682,6 +2682,9 @@ contains
     implicit none
 
     class(vk_driver), intent(inout) :: this
+    type(vk_sampler_create_info) :: sampler_info
+
+    error stop "was here lol"
 
 
   end subroutine vk_driver_create_texture_sampler
