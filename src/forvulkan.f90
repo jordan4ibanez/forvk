@@ -1178,6 +1178,23 @@ module forvulkan
     end subroutine vk_cmd_pipeline_barrier
 
 
+    subroutine vk_cmd_copy_buffer_to_image(command_buffer, src_buffer, dst_image, dst_image_layout, region_count, p_regions) bind(c, name = "vkCmdCopyBufferToImage")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_command_buffer), intent(in), value :: command_buffer
+      type(vk_buffer), intent(in), value :: src_buffer
+      type(vk_image), intent(in), value :: dst_image
+      ! VkImageLayout
+      integer(c_int32_t), intent(in), value :: dst_image_layout
+      ! uint32_t
+      integer(c_int32_t), intent(in), value :: region_count
+      ! const VkBufferImageCopy *
+      type(c_ptr), intent(in), value :: p_regions
+    end subroutine vk_cmd_copy_buffer_to_image
+
+
   end interface
 
 
