@@ -2574,8 +2574,6 @@ contains
     barrier%subresource_range%level_count = 1
     barrier%subresource_range%base_array_layer = 0
     barrier%subresource_range%layer_count = 1
-    barrier%src_access_mask = 0
-    barrier%dst_access_mask = 0
 
     if (old_layout == VK_IMAGE_LAYOUT_UNDEFINED .and. new_layout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL) then
       barrier%src_access_mask = 0
