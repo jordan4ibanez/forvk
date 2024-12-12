@@ -1168,7 +1168,7 @@ module forvulkan
       ! const VkMemoryBarrier *
       type(c_ptr), intent(in), value :: p_memory_barriers
       ! uint32_t
-      integer(c_int32_t) :: buffer_memory_barrier_count
+      integer(c_int32_t), intent(in), value :: buffer_memory_barrier_count
       ! const VkBufferMemoryBarrier *
       type(c_ptr), intent(in), value :: p_buffer_memory_barriers
       ! uint32_t
