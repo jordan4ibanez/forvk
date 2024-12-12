@@ -134,6 +134,7 @@ module vulkan_driver
     procedure :: end_single_time_commands => vk_driver_end_single_time_commands
     procedure :: transition_image_layout => vk_driver_transition_image_layout
     procedure :: copy_buffer_to_image => vk_driver_copy_buffer_to_image
+    procedure :: create_texture_image_view => vk_driver_create_texture_image_view
   end type vk_driver
 
 
@@ -206,6 +207,8 @@ contains
     call this%create_command_pool()
 
     call this%create_texture_image()
+
+    call this%create_texture_image_view()
 
     call this%create_vertex_buffer(vertices)
 
@@ -2647,6 +2650,15 @@ contains
 
     call this%end_single_time_commands(command_buffer)
   end subroutine vk_driver_copy_buffer_to_image
+
+
+  subroutine vk_driver_create_texture_image_view(this)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+
+
+  end subroutine vk_driver_create_texture_image_view
 
 
 end module vulkan_driver
