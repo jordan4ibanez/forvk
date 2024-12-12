@@ -1105,6 +1105,19 @@ module forvulkan
     end subroutine vk_get_image_memory_requirements
 
 
+    function vk_bind_image_memory(logical_device, image, memory, memory_offset) result(vk_result) bind(c, name = "vkBindImageMemory")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_device), intent(in), value :: logical_device
+      type(vk_image), intent(in), value :: image
+      type(vk_device_memory), intent(in), value :: memory
+      type(vk_device_size), intent(in), value :: memory_offset
+      integer(c_int32_t) :: vk_result
+    end function vk_bind_image_memory
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
