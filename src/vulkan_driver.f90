@@ -132,6 +132,7 @@ module vulkan_driver
     procedure :: create_image => vk_driver_create_image
     procedure :: begin_single_time_commands => vk_driver_begin_single_time_commands
     procedure :: end_single_time_commands => vk_driver_end_single_time_commands
+    procedure :: transition_image_layout => vk_driver_transition_image_layout
   end type vk_driver
 
 
@@ -2540,6 +2541,22 @@ contains
     call vk_free_command_buffers(this%logical_device, this%command_pool, 1, c_loc(command_buffer))
   end subroutine vk_driver_end_single_time_commands
 
+
+  subroutine vk_driver_transition_image_layout(this, image, format, old_layout, new_layout)
+    implicit none
+
+    class(vk_driver), intent(inout) :: this
+    type(vk_image), intent(in), value :: image
+    type(vk_format), intent(in), value :: format
+    integer(c_int32_t), intent(in), value :: old_layout, new_layout
+    type(vk_command_buffer) :: command_buffer
+
+    command_buffer = this%begin_single_time_commands()
+
+
+
+    call this%end_single_time_commands(command_buffer)
+  end subroutine vk_driver_transition_image_layout
 
 
 end module vulkan_driver
