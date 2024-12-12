@@ -4666,5 +4666,20 @@ module forvulkan_parameters
   ! Provided by VK_EXT_image_drm_format_modifier.
   integer(c_int32_t), parameter, public :: VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT = 1000158000
 
-  
+
+  !? VkSamplerCreateFlagBits.
+
+
+  ! Provided by VK_EXT_fragment_density_map
+  integer(c_int32_t), parameter, public :: VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT = int(z"00000001")
+  ! Provided by VK_EXT_fragment_density_map
+  integer(c_int32_t), parameter, public :: VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT = int(z"00000002")
+  ! Provided by VK_EXT_descriptor_buffer
+  integer(c_int32_t), parameter, public :: VK_SAMPLER_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT = int(z"00000008")
+  ! Provided by VK_EXT_non_seamless_cube_map
+  integer(c_int32_t), parameter, public :: VK_SAMPLER_CREATE_NON_SEAMLESS_CUBE_MAP_BIT_EXT = int(z"00000004")
+  ! Provided by VK_QCOM_image_processing
+  integer(c_int32_t), parameter, public :: VK_SAMPLER_CREATE_IMAGE_PROCESSING_BIT_QCOM = int(z"00000010")
+
+
 end module forvulkan_parameters
