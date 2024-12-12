@@ -1504,27 +1504,12 @@ contains
       image_view_create_info%s_type = VK_STRUCTURE_TYPE%IMAGE%VIEW_CREATE_INFO
 
       call c_f_pointer(this%swapchain_images%get(i), image_pointer)
-      image_view_create_info%image = image_pointer
 
-      image_view_create_info%view_type = VK_IMAGE_VIEW_TYPE_2D
-      image_view_create_info%format = this%swapchain_image_format
-
-      image_view_create_info%components%r = VK_COMPONENT_SWIZZLE_IDENTITY
-      image_view_create_info%components%g = VK_COMPONENT_SWIZZLE_IDENTITY
-      image_view_create_info%components%b = VK_COMPONENT_SWIZZLE_IDENTITY
-      image_view_create_info%components%a = VK_COMPONENT_SWIZZLE_IDENTITY
-
-      image_view_create_info%subresource_range%aspect_mask = VK_IMAGE_ASPECT_COLOR_BIT
-      image_view_create_info%subresource_range%base_mip_level = 0
-      image_view_create_info%subresource_range%level_count = 1
-      image_view_create_info%subresource_range%base_array_layer = 0
-      image_view_create_info%subresource_range%layer_count = 1
-
+      ! We grab this memory address out of the internal array of the vector to assign to it.
       call c_f_pointer(this%swapchain_image_views%get(i), image_view_pointer)
 
-      if (vk_create_image_view(this%logical_device, c_loc(image_view_create_info), c_null_ptr, image_view_pointer) /= VK_SUCCESS) then
-        error stop "[Vulkan] Error: Failed to create image view. Index ["//int64_to_string(i)//"]"
-      end if
+      image_view_pointer = this%create_image_view(image_pointer, this%swapchain_image_format)
+
     end do
   end subroutine vk_driver_create_image_views
 
