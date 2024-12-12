@@ -4691,4 +4691,11 @@ module forvulkan_parameters
   integer(c_int32_t), parameter, public :: VK_FILTER_CUBIC_EXT = 1000015000
 
 
+  !? VkSamplerMipmapMode.
+
+
+  integer(c_int32_t), parameter, public :: VK_SAMPLER_MIPMAP_MODE_NEAREST = 0
+  integer(c_int32_t), parameter, public :: VK_SAMPLER_MIPMAP_MODE_LINEAR = 1
+
+
 end module forvulkan_parameters
