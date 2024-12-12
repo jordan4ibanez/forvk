@@ -2554,6 +2554,10 @@ contains
     type(vk_command_buffer), intent(in), value, target :: command_buffer
     type(vk_submit_info), target :: submit_info
 
+    if (vk_end_command_buffer(command_buffer) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to end command buffer."
+    end if
+
     submit_info%s_type = VK_STRUCTURE_TYPE%SUBMIT_INFO
     submit_info%command_buffer_count = 1
     submit_info%p_command_buffers = c_loc(command_buffer)
