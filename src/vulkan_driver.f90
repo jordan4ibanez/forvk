@@ -271,6 +271,10 @@ contains
 
     call this%clean_up_swapchain()
 
+    call vk_destroy_image(this%logical_device, this%texture_image, c_null_ptr)
+
+    call vk_free_memory(this%logical_device, this%texture_image_memory, c_null_ptr)
+
     do i = 1,this%MAX_FRAMES_IN_FLIGHT
       call c_f_pointer(this%uniform_buffers%get(i), uniform_buffer_pointer)
       call vk_destroy_buffer(this%logical_device, uniform_buffer_pointer, c_null_ptr)
