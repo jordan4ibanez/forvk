@@ -2569,8 +2569,14 @@ contains
     barrier%src_access_mask = 0
     barrier%dst_access_mask = 0
 
-
-    
+    call vk_cmd_pipeline_barrier( &
+      command_buffer, &
+      0, 0, & ! todo
+      0, &
+      0, c_null_ptr, &
+      0, c_null_ptr, &
+      1, c_loc(barrier) &
+      )
 
     call this%end_single_time_commands(command_buffer)
   end subroutine vk_driver_transition_image_layout
