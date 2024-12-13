@@ -1862,6 +1862,15 @@ module forvulkan_types
   end type vk_sampler_create_info
 
 
+  !? VkDescriptorImageInfo.
+  type, bind(c) :: vk_descriptor_image_info
+    type(vk_sampler) :: sampler
+    type(vk_image_view) :: image_view
+    ! VkImageLayout
+    integer(c_int32_t) :: image_layout = 0
+  end type vk_descriptor_image_info
+
+
 !? CUSTOM TYPES. ===============================================================
 
 
