@@ -2683,7 +2683,7 @@ contains
     implicit none
 
     class(vk_driver), intent(inout) :: this
-    type(vk_sampler_create_info) :: sampler_info
+    type(vk_sampler_create_info), target :: sampler_info
     type(vk_physical_device_properties), target :: properties
 
     call vk_get_physical_device_properties(this%physical_device, c_loc(properties))
@@ -2706,7 +2706,9 @@ contains
     sampler_info%max_lod = 0.0
 
 
-
+    if (vk_create_sampler(this%logical_device, c_loc(sampler_info), c_null_ptr, this%texture_sampler) /= VK_SUCCESS) then
+      error stop "[Vulkan] Error: Failed to create sampler."
+    end if
   end subroutine vk_driver_create_texture_sampler
 
 
