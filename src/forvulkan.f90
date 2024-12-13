@@ -1133,6 +1133,18 @@ module forvulkan
     end function vk_create_sampler
 
 
+    subroutine vk_destroy_sampler(logical_device, sampler, p_allocator) bind(c, name = "vkDestroySampler")
+      use, intrinsic :: iso_c_binding
+      use :: forvulkan_types
+      implicit none
+
+      type(vk_device), intent(in), value :: logical_device
+      type(vk_sampler), intent(in), value :: sampler
+      ! const VkAllocationCallbacks *
+      type(c_ptr), intent(in), value :: p_allocator
+    end subroutine vk_destroy_sampler
+
+
     ! todo: marker for end of functions.
 
 !? FUNCTION BLUEPRINTS. ============================================================
