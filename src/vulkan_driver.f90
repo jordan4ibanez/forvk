@@ -1579,6 +1579,8 @@ contains
     class(vk_driver), intent(inout) :: this
     type(vk_descriptor_set_layout_binding), target :: ubo_layout_binding
     type(vk_descriptor_set_layout_create_info), target :: layout_info
+    type(vk_descriptor_set_layout_binding), target :: sampler_layout_binding
+    type(vk_descriptor_set_layout_binding), dimension(2), target :: bindings
 
     ubo_layout_binding%binding = 0
     ubo_layout_binding%descriptor_type = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER
@@ -1586,9 +1588,18 @@ contains
     ubo_layout_binding%stage_flags = VK_SHADER_STAGE_VERTEX_BIT
     ubo_layout_binding%p_immutable_samplers = c_null_ptr
 
+    sampler_layout_binding%binding = 1
+    sampler_layout_binding%descriptor_count = 1
+    sampler_layout_binding%descriptor_type = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER
+    sampler_layout_binding%p_immutable_samplers = c_null_ptr
+    sampler_layout_binding%stage_flags = VK_SHADER_STAGE_FRAGMENT_BIT
+
+    bindings = [ubo_layout_binding, sampler_layout_binding]
+
     layout_info%s_type = VK_STRUCTURE_TYPE%DESCRIPTOR_SET_LAYOUT_CREATE_INFO
-    layout_info%binding_count = 1
-    layout_info%p_bindings = c_loc(ubo_layout_binding)
+    layout_info%binding_count = size(bindings)
+    layout_info%p_bindings = c_loc(bindings)
+
 
     if (vk_create_descriptor_set_layout(this%logical_device, c_loc(layout_info), c_null_ptr, this%descriptor_set_layout) /= VK_SUCCESS) then
       error stop "[Vulkan] Error: Failed to create descriptor set layout."
