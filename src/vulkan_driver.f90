@@ -2684,7 +2684,15 @@ contains
     class(vk_driver), intent(inout) :: this
     type(vk_sampler_create_info) :: sampler_info
 
-    error stop "was here lol"
+    sampler_info%s_type = VK_STRUCTURE_TYPE%SAMPLER_CREATE_INFO
+    sampler_info%mag_filter = VK_FILTER_LINEAR
+    sampler_info%min_filter = VK_FILTER_LINEAR
+    sampler_info%address_mode_u = VK_SAMPLER_ADDRESS_MODE_REPEAT
+    sampler_info%address_mode_v = VK_SAMPLER_ADDRESS_MODE_REPEAT
+    sampler_info%address_mode_w = VK_SAMPLER_ADDRESS_MODE_REPEAT
+
+    sampler_info%anistropy_enabled = VK_TRUE
+
 
 
   end subroutine vk_driver_create_texture_sampler
