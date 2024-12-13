@@ -953,8 +953,8 @@ contains
     print"(A)","[Vulkan]: Found physical device ["//device_name//"]"
 
     ! Now, if we have all needed components, we have our physical device!
-    if (queue_family_indices%graphics_family_has_value .and. queue_family_indices%present_family_has_value) then
-      print"(A)","[Vulkan]: Device has graphical queue family and present support."
+    if (queue_family_indices%graphics_family_has_value .and. queue_family_indices%present_family_has_value .and. device_features%sampler_anisotropy == VK_TRUE) then
+      print"(A)","[Vulkan]: Device has graphical queue family, present support, and anistropic filtering."
     else
       ! No if else, we want to warn about every unsupported queue family.
       if (.not. queue_family_indices%graphics_family_has_value) then
@@ -962,6 +962,9 @@ contains
       end if
       if (.not. queue_family_indices%present_family_has_value) then
         print"(A)", "[Vulkan]: Device has no present queue family."
+      end if
+      if (device_features%sampler_anisotropy == VK_FALSE) then
+        print"(A)", "[Vulkan]: Device does not support anistropic filtering."
       end if
 
       suitable = .false.
@@ -1208,6 +1211,7 @@ contains
 
     !? Device features is left alone for now. I'm just putting this here to copy the C code.
     physical_device_features = vk_physical_device_features()
+    physical_device_features%sampler_anisotropy = VK_TRUE
 
     ! Create the create info for the logical device.
 
