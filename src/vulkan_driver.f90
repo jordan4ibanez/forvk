@@ -171,12 +171,11 @@ contains
     type(vertex), dimension(4) :: vertices
     integer(c_int32_t), dimension(6) :: indices
 
-    error stop "here"
 
-    vertices(1) = vertex(vec2f(-0.5, -0.5), vec3f(1.0, 0.0, 0.0), vec2f(1.0, 0.0))
-    vertices(2) = vertex(vec2f(0.5,  -0.5), vec3f(0.0, 1.0, 0.0), vec2f(0.0, 0.0))
-    vertices(3) = vertex(vec2f(0.5,   0.5), vec3f(0.0, 0.0, 1.0), vec2f(0.0, 1.0))
-    vertices(4) = vertex(vec2f(-0.5,  0.5), vec3f(1.0, 1.0, 1.0), vec2f(1.0, 1.0))
+    vertices(1) = vertex(vec2f(-0.5,  0.5), vec3f(1.0, 0.0, 0.0), vec2f(1.0, 0.0))
+    vertices(2) = vertex(vec2f(-0.5, -0.5), vec3f(0.0, 1.0, 0.0), vec2f(0.0, 0.0))
+    vertices(3) = vertex(vec2f(0.5,  -0.5), vec3f(0.0, 0.0, 1.0), vec2f(0.0, 1.0))
+    vertices(4) = vertex(vec2f(0.5,   0.5), vec3f(1.0, 1.0, 1.0), vec2f(1.0, 1.0))
 
     indices = [0,1,2,2,3,0]
 
