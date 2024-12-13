@@ -171,10 +171,10 @@ contains
     type(vertex), dimension(4) :: vertices
     integer(c_int32_t), dimension(6) :: indices
 
-    vertices(1) = vertex(vec2f(-0.5, -0.5), vec3f(1.0, 0.0, 0.0))
-    vertices(2) = vertex(vec2f(0.5,  -0.5), vec3f(0.0, 1.0, 0.0))
-    vertices(3) = vertex(vec2f(0.5,   0.5), vec3f(0.0, 0.0, 1.0))
-    vertices(4) = vertex(vec2f(-0.5,  0.5), vec3f(1.0, 1.0, 1.0))
+    vertices(1) = vertex(vec2f(-0.5, -0.5), vec3f(1.0, 0.0, 0.0), vec2f(1.0, 0.0))
+    vertices(2) = vertex(vec2f(0.5,  -0.5), vec3f(0.0, 1.0, 0.0), vec2f(0.0, 0.0))
+    vertices(3) = vertex(vec2f(0.5,   0.5), vec3f(0.0, 0.0, 1.0), vec2f(0.0, 1.0))
+    vertices(4) = vertex(vec2f(-0.5,  0.5), vec3f(1.0, 1.0, 1.0), vec2f(1.0, 1.0))
 
     indices = [0,1,2,2,3,0]
 
@@ -1633,7 +1633,7 @@ contains
     type(vk_pipeline_layout_create_info), target :: pipeline_layout_create_info
     type(vk_graphics_pipeline_create_info), target :: graphics_pipeline_create_info
     type(vk_vertex_input_binding_description), target :: binding_description
-    type(vk_vertex_input_attribute_description), dimension(2), target :: attribute_descriptions
+    type(vk_vertex_input_attribute_description), dimension(3), target :: attribute_descriptions
 
     ! First compile GLSL into shader modules.
     this%vertex_shader_module = compile_glsl_shaders(this%logical_device, "vertex.vert")
