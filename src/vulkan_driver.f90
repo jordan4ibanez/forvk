@@ -280,6 +280,8 @@ contains
 
     call this%clean_up_swapchain()
 
+    call vk_destroy_sampler(this%logical_device, this%texture_sampler, c_null_ptr)
+
     call vk_destroy_image_view(this%logical_device, this%texture_image_view, c_null_ptr)
 
     call vk_destroy_image(this%logical_device, this%texture_image, c_null_ptr)
