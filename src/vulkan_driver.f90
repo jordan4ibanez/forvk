@@ -2694,6 +2694,15 @@ contains
     sampler_info%address_mode_v = VK_SAMPLER_ADDRESS_MODE_REPEAT
     sampler_info%address_mode_w = VK_SAMPLER_ADDRESS_MODE_REPEAT
     sampler_info%anistropy_enabled = VK_TRUE
+    sampler_info%max_anistropy = properties%limits%max_sampler_anisotropy
+    sampler_info%border_color = VK_BORDER_COLOR_INT_OPAQUE_BLACK
+    sampler_info%unnormalized_coordinates = VK_FALSE
+    sampler_info%compare_enabled = VK_FALSE
+    sampler_info%compare_op = VK_COMPARE_OP_ALWAYS
+    sampler_info%mipmap_mode = VK_SAMPLER_MIPMAP_MODE_LINEAR
+    sampler_info%mip_lod_bias = 0.0
+    sampler_info%min_lod = 0.0
+    sampler_info%max_lod = 0.0
     
 
 
