@@ -10,6 +10,7 @@ module vulkan_vertex
   type :: vertex
     type(vec2f) :: position
     type(vec3f) :: color
+    type(vec2f) :: texture_coordinate
   end type vertex
 
 
@@ -30,7 +31,7 @@ contains
   function vertex_get_attribute_descriptions() result(attribute_descriptions)
     implicit none
 
-    type(vk_vertex_input_attribute_description), dimension(2) :: attribute_descriptions
+    type(vk_vertex_input_attribute_description), dimension(3) :: attribute_descriptions
 
     ! There is no offsetof in gfortran (yet) so we will have to calculate offset ourselves. :D
     ! You can use fpm to make a small project and recalculate this with sizeof() and break your struct down.
@@ -48,6 +49,12 @@ contains
     attribute_descriptions(2)%format = vk_format(VK_FORMAT_R32G32B32_SFLOAT)
     ! vec2 elements * 4 byte float = 8 bytes
     attribute_descriptions(2)%offset = 8
+
+    attribute_descriptions(3)%binding = 0
+    attribute_descriptions(3)%location = 2
+    attribute_descriptions(3)%format = vk_format(VK_FORMAT_R32G32_SFLOAT)
+    ! 8 bytes + 12 bytes = 16 bytes
+    attribute_descriptions(3)%offset = 16
   end function
 
 
