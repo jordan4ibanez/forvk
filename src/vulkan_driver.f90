@@ -2070,8 +2070,9 @@ contains
     integer(c_int64_t) :: i
     type(vk_descriptor_buffer_info), target :: buffer_info
     type(vk_buffer), pointer :: buffer_pointer
-    type(vk_write_descriptor_set), target :: descriptor_write
+    type(vk_write_descriptor_set), dimension(2), target :: descriptor_writes
     type(vk_descriptor_set), pointer :: descriptor_pointer
+    type(vk_descriptor_image_info), target :: image_info
 
     layouts = new_vec(sizeof(this%descriptor_set_layout), this%MAX_FRAMES_IN_FLIGHT)
     call layouts%resize(this%MAX_FRAMES_IN_FLIGHT, this%descriptor_set_layout)
@@ -2098,19 +2099,33 @@ contains
       buffer_info%offset = vk_device_size(0)
       buffer_info%range = vk_device_size(sizeof(uniform_buffer_object()))
 
+      image_info%image_layout = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL
+      image_info%image_view = this%texture_image_view
+      image_info%sampler = this%texture_sampler
+
       call c_f_pointer(this%descriptor_sets%get(i), descriptor_pointer)
 
-      descriptor_write%s_type = VK_STRUCTURE_TYPE%WRITE_DESCRIPTOR_SET
-      descriptor_write%dst_set = descriptor_pointer
-      descriptor_write%dst_binding = 0
-      descriptor_write%dst_array_element = 0
-      descriptor_write%descriptor_type = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER
-      descriptor_write%descriptor_count = 1
-      descriptor_write%p_buffer_info = c_loc(buffer_info)
-      descriptor_write%p_image_info = c_null_ptr
-      descriptor_write%p_texel_buffer_view = c_null_ptr
+      descriptor_writes(1)%s_type = VK_STRUCTURE_TYPE%WRITE_DESCRIPTOR_SET
+      descriptor_writes(1)%dst_set = descriptor_pointer
+      descriptor_writes(1)%dst_binding = 0
+      descriptor_writes(1)%dst_array_element = 0
+      descriptor_writes(1)%descriptor_type = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER
+      descriptor_writes(1)%descriptor_count = 1
+      descriptor_writes(1)%p_buffer_info = c_loc(buffer_info)
+      descriptor_writes(1)%p_image_info = c_null_ptr
+      descriptor_writes(1)%p_texel_buffer_view = c_null_ptr
 
-      call vk_update_descriptor_sets(this%logical_device, 1, c_loc(descriptor_write), 0, c_null_ptr)
+      descriptor_writes(2)%s_type = VK_STRUCTURE_TYPE%WRITE_DESCRIPTOR_SET
+      descriptor_writes(2)%dst_set = descriptor_pointer
+      descriptor_writes(2)%dst_binding = 1
+      descriptor_writes(2)%dst_array_element = 0
+      descriptor_writes(2)%descriptor_type = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER
+      descriptor_writes(2)%descriptor_count = 1
+      descriptor_writes(2)%p_buffer_info = c_null_ptr
+      descriptor_writes(2)%p_image_info = c_loc(image_info)
+      descriptor_writes(2)%p_texel_buffer_view = c_null_ptr
+
+      call vk_update_descriptor_sets(this%logical_device, size(descriptor_writes), c_loc(descriptor_writes), 0, c_null_ptr)
     end do
   end subroutine vk_driver_create_descriptor_sets
 
