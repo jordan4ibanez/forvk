@@ -2041,15 +2041,17 @@ contains
     implicit none
 
     class(vk_driver), intent(inout) :: this
-    type(vk_descriptor_pool_size), target :: pool_size
+    type(vk_descriptor_pool_size), dimension(2), target :: pool_sizes
     type(vk_descriptor_pool_create_info), target :: pool_info
 
-    pool_size%type = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER
-    pool_size%descriptor_count = int(this%MAX_FRAMES_IN_FLIGHT)
+    pool_sizes(1)%type = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER
+    pool_sizes(1)%descriptor_count = int(this%MAX_FRAMES_IN_FLIGHT)
+    pool_sizes(2)%type = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER
+    pool_sizes(2)%descriptor_count = int(this%MAX_FRAMES_IN_FLIGHT)
 
     pool_info%s_type = VK_STRUCTURE_TYPE%DESCRIPTOR_POOL_CREATE_INFO
-    pool_info%pool_size_count = 1
-    pool_info%p_pool_sizes = c_loc(pool_size)
+    pool_info%pool_size_count = size(pool_sizes)
+    pool_info%p_pool_sizes = c_loc(pool_sizes)
     pool_info%max_sets = int(this%MAX_FRAMES_IN_FLIGHT)
 
     if (vk_create_descriptor_pool(this%logical_device, c_loc(pool_info), c_null_ptr, this%descriptor_pool) /= VK_SUCCESS) then
