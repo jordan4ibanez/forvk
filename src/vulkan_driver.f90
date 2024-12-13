@@ -72,6 +72,7 @@ module vulkan_driver
     type(vk_image) :: texture_image
     type(vk_device_memory) :: texture_image_memory
     type(vk_image_view) :: texture_image_view
+    type(vk_sampler) :: texture_sampler
     !! End temporary.
     !? This is the storage for the uniform buffer data.
     ! Vk Buffer Vector
@@ -2703,7 +2704,7 @@ contains
     sampler_info%mip_lod_bias = 0.0
     sampler_info%min_lod = 0.0
     sampler_info%max_lod = 0.0
-    
+
 
 
   end subroutine vk_driver_create_texture_sampler
